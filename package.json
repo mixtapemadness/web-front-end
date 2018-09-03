@@ -1,0 +1,95 @@
+{
+  "name": "mixtape-front",
+  "version": "1.0.0",
+  "description": "Mixtape Front",
+  "main": "src/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/btomashvili/mixtape-front.git"
+  },
+  "keywords": [],
+  "author": "Vobi.io",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/btomashvili/mixtape-front/issues"
+  },
+  "scripts": {
+    "start": "NODE_ENV=development webpack-dev-server --open  --mode development --config webpack/client/dev.js --progress --profile --colors",
+    "start:local": "NODE_ENV=development_local webpack-dev-server --open --mode development --config webpack/client/dev.js --progress --profile --colors",
+    "build:test": "NODE_ENV=testing webpack --mode production --config webpack/client/testing.js --progress --profile --colors && NODE_ENV=testing webpack --mode production --config webpack/server/testing.js --progress --profile --colors",
+    "serv-dist": "node ./dist",
+    "format": "prettier --write \"src/**/*.js\" --single-quote --no-semi --trailing-comma=all",
+    "precommit": "lint-staged",
+    "lint": "eslint ./src"
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --write --single-quote --no-semi --trailing-comma=all",
+      "git add",
+      "eslint"
+    ]
+  },
+  "pre-commit": [
+    "precommit"
+  ],
+  "devDependencies": {
+    "@babel/core": "7.0.0",
+    "@babel/plugin-proposal-class-properties": "7.0.0",
+    "@babel/preset-env": "7.0.0",
+    "@babel/preset-react": "7.0.0",
+    "babel-eslint": "9.0.0",
+    "babel-loader": "8.0.2",
+    "babel-plugin-module-resolver": "3.1.1",
+    "eslint": "5.5.0",
+    "eslint-config-airbnb": "17.1.0",
+    "eslint-loader": "2.1.0",
+    "eslint-plugin-import": "2.14.0",
+    "eslint-plugin-jsx-a11y": "6.1.1",
+    "eslint-plugin-react": "7.11.1",
+    "file-loader": "2.0.0",
+    "html-webpack-plugin": "3.2.0",
+    "husky": "0.14.3",
+    "image-webpack-loader": "4.3.1",
+    "lint-staged": "7.2.2",
+    "mini-css-extract-plugin": "0.4.2",
+    "postcss-loader": "3.0.0",
+    "prettier": "1.14.2",
+    "prettier-eslint": "8.8.2",
+    "prettier-eslint-cli": "4.7.1",
+    "sass-loader": "7.1.0",
+    "style-loader": "0.23.0",
+    "url-loader": "1.1.1",
+    "webpack": "4.17.1",
+    "webpack-bundle-analyzer": "2.13.1",
+    "webpack-cli": "3.1.0",
+    "webpack-dev-server": "3.1.7",
+    "webpack-node-externals": "1.7.2"
+  },
+  "dependencies": {
+    "@babel/polyfill": "7.0.0",
+    "apollo-cache-inmemory": "1.2.9",
+    "apollo-client": "2.4.1",
+    "apollo-link": "1.2.2",
+    "apollo-link-context": "1.0.8",
+    "apollo-link-error": "1.1.0",
+    "apollo-link-http": "1.5.4",
+    "apollo-upload-client": "8.1.0",
+    "apollo-utilities": "1.0.20",
+    "body-parser": "1.18.3",
+    "express": "4.16.3",
+    "fbemitter": "2.1.1",
+    "graphql": "14.0.0",
+    "graphql-tag": "2.9.2",
+    "history": "4.7.2",
+    "prop-types": "15.6.2",
+    "react": "16.4.2",
+    "react-apollo": "2.1.11",
+    "react-dom": "16.4.2",
+    "react-helmet": "5.2.0",
+    "react-router": "4.3.1",
+    "react-router-dom": "4.3.1",
+    "react-select": "2.0.0",
+    "recompose": "0.30.0",
+    "styled-components": "3.4.5"
+  }
+}

@@ -7,7 +7,8 @@ module.exports = [
   {
     test: /\.(js|jsx)$/,
     exclude: /node_modules/,
-    use: ['babel-loader', 'eslint-loader'],
+    // use: ['babel-loader', 'eslint-loader'], maybe turn on this in production building
+    loader: 'babel-loader',
   },
   {
     test: /\.css$/,

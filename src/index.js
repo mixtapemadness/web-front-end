@@ -5,6 +5,8 @@ import { hydrate } from 'react-dom'
 import Router from './router'
 import App from './App'
 
+import 'resources/assets/scss/main.scss'
+
 const supportsHistory = 'pushState' in window.history
 
 hydrate(

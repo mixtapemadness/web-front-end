@@ -7,7 +7,7 @@ import { createUploadLink } from 'apollo-upload-client'
 import { getMainDefinition } from 'apollo-utilities'
 import { onError } from 'apollo-link-error'
 
-import config from '../../config'
+import config from 'config'
 import { getToken, clearToken } from '../services/auth'
 
 export const errorLink = onError(

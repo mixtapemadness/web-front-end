@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import PropTypes from 'prop-types'
 
 import PlayIcon from 'resources/assets/svg/Play.svg'
 import ViewsIcon from 'resources/assets/svg/eye.svg'
@@ -35,6 +34,9 @@ const ContentContainer = styled.div`
   display: flex;
   justify-content: space-between;
   box-sizing: content-box;
+  @media only screen and (max-width: 1150px) {
+    height: auto;
+  }
 `
 const Icon = styled.img`
   display: block;
@@ -115,9 +117,5 @@ const Video = ({ data }) => (
     </ContentContainer>
   </Container>
 )
-
-Video.propTypes = {
-  data: PropTypes.object.isRequired,
-}
 
 export default Video

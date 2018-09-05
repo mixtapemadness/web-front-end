@@ -67,15 +67,18 @@ const SocialContainer = styled.div`
 const SignUpContainer = styled.div`
   margin-top: 20px;
   margin-bottom: 20px;
+  display: flex;
+  align-items: center;
 `
 const Input = styled.input`
-  height: 42px;
-  width: 150px;
+  height: 44px;
+  width: 160px;
   border: 1px solid black;
   padding-left: 15px;
   border-right: 0;
   outline: none;
   background-color: transparent;
+  box-sizing: content-box;
 `
 const SignUpButton = styled.button`
   height: 46px;
@@ -89,6 +92,8 @@ const SignUpButton = styled.button`
   font-size: 14px;
   outline: none;
   cursor: pointer;
+  box-sizing: content-box;
+  border: 0;
 `
 const Line = styled.div`
   width: 100%;

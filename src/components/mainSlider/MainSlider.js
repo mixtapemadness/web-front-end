@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import PropTypes from 'prop-types'
 
 import Slider from 'react-slick'
 
@@ -396,13 +395,5 @@ const MainSlider = ({ data }) => (
     </Override>
   </Container>
 )
-
-MainSlider.propTypes = {
-  data: PropTypes.array,
-}
-
-MainSlider.defaultProps = {
-  data: [],
-}
 
 export default MainSlider

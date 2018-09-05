@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import PropTypes from 'prop-types'
 
 import SearchIcon from 'resources/assets/svg/search.svg'
 import DotsIcon from 'resources/assets/svg/ellipsis.svg'
@@ -153,13 +152,5 @@ const Header = ({ bottomBorder }) => (
     </ContentContainer>
   </HeaderContainer>
 )
-
-Header.propTypes = {
-  bottomBorder: PropTypes.bool,
-}
-
-Header.defaultProps = {
-  bottomBorder: false,
-}
 
 export default Header

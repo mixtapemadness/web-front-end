@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import PropTypes from 'prop-types'
 import Slider from 'react-slick'
 
 import Prev from 'resources/assets/svg/prev.svg'
@@ -356,9 +355,5 @@ const PlaylistSlider = ({ data }) => (
     </Override>
   </Container>
 )
-
-PlaylistSlider.propTypes = {
-  data: PropTypes.array.isRequired,
-}
 
 export default PlaylistSlider

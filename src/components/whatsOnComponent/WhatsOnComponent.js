@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import PropTypes from 'prop-types'
 
 import PlayIcon from 'resources/assets/svg/Play.svg'
 import ViewsIcon from 'resources/assets/svg/eye.svg'
@@ -38,6 +37,9 @@ const ContentContainer = styled.div`
   display: flex;
   height: 107px;
   box-sizing: content-box;
+  @media only screen and (max-width: 850px) {
+    height: auto;
+  }
 `
 
 const Icon = styled.img`
@@ -87,10 +89,7 @@ const FlexDiv = styled.div`
   ${p => p.jc && `justify-content: ${p.jc}`};
   ${p => p.width && `width: ${p.width}`};
 `
-// const LittleIcon = styled.img`
-//   ${p => p.height && `height: ${p.height}px`};
-//   ${p => p.pointer && 'cursor: pointer'};
-// `
+
 const Span = styled.span`
   color: #666666;
   font-size: 13px;
@@ -130,9 +129,5 @@ const WhatsOnComponent = ({ data }) => (
     </ContentContainer>
   </Container>
 )
-
-WhatsOnComponent.propTypes = {
-  data: PropTypes.object.isRequired,
-}
 
 export default WhatsOnComponent

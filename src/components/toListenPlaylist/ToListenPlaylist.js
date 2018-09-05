@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import PropTypes from 'prop-types'
 
 import PlayIcon from 'resources/assets/svg/Play.svg'
 import PlayListIcon from 'resources/assets/svg/playlist.svg'
@@ -37,6 +36,9 @@ const ContentContainer = styled.div`
   display: flex;
   height: 107px;
   box-sizing: content-box;
+  @media only screen and (max-width: 1170px) {
+    height: auto;
+  }
 `
 const LeftSide = styled.div`
   width: calc(40% - 15px);
@@ -118,8 +120,5 @@ const ToListenPlaylist = ({ data }) => (
     </ContentContainer>
   </Container>
 )
-ToListenPlaylist.propTypes = {
-  data: PropTypes.object.isRequired,
-}
 
 export default ToListenPlaylist

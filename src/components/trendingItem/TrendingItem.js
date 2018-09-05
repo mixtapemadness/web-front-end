@@ -31,6 +31,9 @@ const ContentContainer = styled.div`
   display: flex;
   flex-direction: column;
   box-sizing: content-box;
+  @media only screen and (max-width: 1150px) {
+    height: auto;
+  }
 `
 const TypeContainer = styled.div`
   margin-bottom: 20px;

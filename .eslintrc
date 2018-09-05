@@ -1,4 +1,14 @@
 {
+  "settings": {
+    "import/resolver": {
+      "babel-module": {
+        "root": ["./src"],
+        "alias": {
+          "config": "./config"
+        }
+      }
+    }
+  },
   "parser": "babel-eslint",
   "extends": "airbnb",
   "plugins": [

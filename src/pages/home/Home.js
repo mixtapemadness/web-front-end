@@ -1,8 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 
-// import styled from 'styled-components'
-
 import Header from 'components/header'
 import MainSlider from 'components/mainSlider'
 import TrendingItem from 'components/trendingItem'

@@ -70,6 +70,7 @@ const Logo = styled.img`
   height: 50px;
   padding-bottom: 20px;
   margin-right: 20px;
+  box-sizing: content-box;
 `
 const Search = styled.img`
   width: 20px;

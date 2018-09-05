@@ -1,6 +1,6 @@
 /* eslint import/no-extraneous-dependencies: 0 */
 const path = require('path')
-const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
+// const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
 const webpackNodeExternals = require('webpack-node-externals')
 const loaders = require('../loaders')
 
@@ -25,6 +25,6 @@ module.exports = {
   module: {
     rules: loaders,
   },
-  plugins: [new BundleAnalyzerPlugin()],
+  // plugins: [new BundleAnalyzerPlugin()],
   externals: [webpackNodeExternals()],
 }

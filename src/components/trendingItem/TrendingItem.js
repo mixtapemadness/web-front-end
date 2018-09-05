@@ -84,8 +84,7 @@ const TrendingItem = ({ data, height }) => (
         {data.text}
       </Span>
       <Span color="black" mb={20}>
-        By
-        <Span color="#FF9D00">{data.author}</Span>
+        By <Span color="#FF9D00">{data.author}</Span>
       </Span>
       <FlexDiv jc="space-between">
         <FlexDiv>

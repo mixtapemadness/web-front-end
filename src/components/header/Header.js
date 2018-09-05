@@ -64,6 +64,7 @@ const Span = styled.span`
   font-weight: 600;
   margin-left: 20px;
   letter-spacing: 1.5px;
+  cursor: pointer;
 `
 const Logo = styled.img`
   height: 50px;
@@ -87,13 +88,13 @@ const ContactUsContainer = styled.div`
   border: 1px solid orange;
   border-radius: 15px;
   margin-left: 20px;
-`
-const ContactUs = styled.span`
   padding: 0px 5px;
   color: orange;
   font-weight: 600;
   letter-spacing: 1.5px;
+  cursor: pointer;
 `
+
 const SocialIconsContainer = styled.div`
   display: flex;
   align-items: center;
@@ -105,12 +106,52 @@ const SocialIcon = styled.img`
   margin-left: 20px;
   ${props => props.facebook && 'height: 17px'};
   ${props => props.youtube && 'height: 22px'};
+  cursor: pointer;
 `
 const Burger = styled.img`
   width: 19px;
   margin-bottom: 36px;
   margin-right: 40px;
   cursor: pointer;
+`
+
+const DropDown = styled.div`
+  position: relative;
+  div {
+    display: none;
+  }
+  &:hover {
+    div {
+      display: flex;
+    }
+  }
+`
+const DropDownContent = styled.div`
+  z-index: 1;
+  position: absolute;
+  background-color: #ffffff;
+  top: 62px;
+  padding: 20px;
+  border: 1px solid #e7e7e7;
+  justify-content: space-between;
+  width: 310px;
+  height: 124px;
+  div {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    font-size: 13px;
+    span {
+      cursor: pointer;
+    }
+  }
+`
+const Join = styled.div`
+  border: 1px solid #ff9d00;
+  border-radius: 15px;
+  cursor: pointer;
+  background: transparent;
+  padding: 0px 12px;
 `
 
 const Header = ({ bottomBorder }) => (
@@ -124,10 +165,41 @@ const Header = ({ bottomBorder }) => (
         />
         <NavBar>
           <Ul>
-            <Li active>Music</Li>
-            <Li>News</Li>
-            <Li>Events</Li>
-            <Li>Video</Li>
+            <DropDown>
+              <Li active>Music</Li>
+              <DropDownContent>
+                <div>
+                  <span>Top 100</span>
+                  <span>Top 30</span>
+                  <span>Hottest</span>
+                  <span>Latest</span>
+                </div>
+                <div>
+                  <span>Trending</span>
+                  <span>Hottest</span>
+                  <span>Singles</span>
+                  <span>Mixtapes</span>
+                </div>
+                <div>
+                  <span>Videos</span>
+                  <span>Browse</span>
+                  <span>Albums</span>
+                  <Join>Join MM</Join>
+                </div>
+              </DropDownContent>
+            </DropDown>
+            <DropDown>
+              <Li>News</Li>
+              <DropDownContent>Content</DropDownContent>
+            </DropDown>
+            <DropDown>
+              <Li>Events</Li>
+              <DropDownContent>Content</DropDownContent>
+            </DropDown>
+            <DropDown>
+              <Li>Video</Li>
+              <DropDownContent>Content</DropDownContent>
+            </DropDown>
           </Ul>
         </NavBar>
         <Dots src={DotsIcon} alt="dots" />
@@ -138,9 +210,7 @@ const Header = ({ bottomBorder }) => (
           <Span>Upload</Span>
           <Span>Register</Span>
           <Span>Log In</Span>
-          <ContactUsContainer>
-            <ContactUs>Contact Us</ContactUs>
-          </ContactUsContainer>
+          <ContactUsContainer>Contact Us</ContactUsContainer>
         </OrangeContainer>
         <SocialIconsContainer>
           <SocialIcon src={TwitterIcon} alt="twitter" />

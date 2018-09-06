@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
 import SearchIcon from 'resources/assets/svg/search.svg'
 import DotsIcon from 'resources/assets/svg/ellipsis.svg'
@@ -14,7 +15,7 @@ const HeaderContainer = styled.div`
   height: 120px;
   background-color: #ffffff;
   font-size: 16px;
-  ${p => p.bottomBorder === true && 'border-bottom: 1px solid #E7E7E7'};
+  ${p => p.bottomBorder && 'border-bottom: 1px solid #E7E7E7'};
 `
 const ContentContainer = styled.div`
   max-width: 1200px;
@@ -159,10 +160,12 @@ const Header = ({ bottomBorder }) => (
     <ContentContainer>
       <LeftSide>
         <Burger src={BurgerIcon} alt="burger" />
-        <Logo
-          src="http://www.mixtapemadness.com/assets/images/logo-full.png"
-          alt="logo"
-        />
+        <Link to="/">
+          <Logo
+            src="http://www.mixtapemadness.com/assets/images/logo-full.png"
+            alt="logo"
+          />
+        </Link>
         <NavBar>
           <Ul>
             <DropDown>

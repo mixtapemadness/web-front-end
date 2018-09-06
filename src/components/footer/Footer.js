@@ -1,8 +1,13 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
 import AppStoreIcon from 'resources/assets/img/appstore.png'
 import GooglePlayIcon from 'resources/assets/img/googleplay.png'
+import SoundCloudIcon from 'resources/assets/svg/soundcloud-logo.svg'
+import TwitterIcon from 'resources/assets/svg/twitter-black.svg'
+import FacebookIcon from 'resources/assets/svg/facebook-black.svg'
+import CircleIcon from 'resources/assets/svg/filled-circle.svg'
 
 const FooterContainer = styled.footer`
   width: 100%;
@@ -63,6 +68,7 @@ const SocialContainer = styled.div`
   display: flex;
   margin-top: 20px;
   margin-bottom: 17px;
+  align-items: center;
 `
 const SignUpContainer = styled.div`
   margin-top: 20px;
@@ -127,6 +133,11 @@ const Anchor = styled.a`
   outline: none;
   text-decoration: none;
 `
+const SocialIcon = styled.img`
+  margin-right: 10px;
+  cursor: pointer;
+  ${p => p.hg && `height: ${p.hg}px`};
+`
 
 const Footer = () => (
   <FooterContainer backgroundColor="#eeeeee">
@@ -149,7 +160,9 @@ const Footer = () => (
         <ListContainer>
           <ContentHeader>Mixtape Madness</ContentHeader>
           <List>
-            <ListItem>About</ListItem>
+            <ListItem>
+              <Link to="/aboutus">About</Link>
+            </ListItem>
             <ListItem>Company</ListItem>
             <ListItem>Help</ListItem>
             <ListItem>Contact</ListItem>
@@ -169,12 +182,12 @@ const Footer = () => (
           </SignUpContainer>
           <ContentHeader>Connect with Mixtape Madness</ContentHeader>
           <SocialContainer>
-            <img alt="soc" />
-            <img alt="soc" />
-            <img alt="soc" />
-            <img alt="soc" />
-            <img alt="soc" />
-            <img alt="soc" />
+            <SocialIcon hg={20} src={TwitterIcon} alt="soc" />
+            <SocialIcon hg={17} src={FacebookIcon} alt="soc" />
+            <SocialIcon hg={17} src={CircleIcon} alt="soc" />
+            <SocialIcon hg={35} src={SoundCloudIcon} alt="soc" />
+            <SocialIcon hg={20} alt="soc" />
+            <SocialIcon hg={20} alt="soc" />
           </SocialContainer>
           <Line mb={10} />
           <FlexDiv>

@@ -1,3 +1,5 @@
+/* eslint react/no-array-index-key: 0 */
+
 import React from 'react'
 import styled from 'styled-components'
 
@@ -379,8 +381,8 @@ const MainSlider = ({ data }) => (
   <Container>
     <Override>
       <Slider {...settings}>
-        {data.map(item => (
-          <SliderContent SliderPhoto={item}>
+        {data.map((item, index) => (
+          <SliderContent SliderPhoto={item} key={index}>
             <FlexDiv>
               <Header>
                 Check Out The Latest Music And News On

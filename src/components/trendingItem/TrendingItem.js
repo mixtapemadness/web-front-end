@@ -58,7 +58,7 @@ const Header = styled.span`
   word-break: break-word;
   margin-bottom: 20px;
   min-height: 48px;
-  ${p => p.height === true && 'height: 130px'};
+  ${p => p.height && 'height: 130px'};
   font-weight: bold;
   color: #000000;
   text-transform: capitalize;

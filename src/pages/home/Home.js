@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
 import Header from 'components/header'
 import MainSlider from 'components/mainSlider'
@@ -16,6 +17,8 @@ import SliderPhotoSecond from 'resources/assets/img/music.jpg'
 import Musician from 'resources/assets/img/musician1.png'
 import Musician1 from 'resources/assets/img/2pac.jpg'
 import Musician2 from 'resources/assets/img/eminem.jpg'
+
+const StyledLink = styled(Link)``
 
 const Span = styled.span`
   ${p => p.color && `color: ${p.color}`};
@@ -96,6 +99,7 @@ const trendingData = [
       'Lorem ipsum dolor sit amet. consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis   natoque penatibus et',
     author: 'Mohhammed Patel',
     views: '10,000',
+    id: 0,
   },
   {
     picture: Musician1,
@@ -105,6 +109,7 @@ const trendingData = [
       'Lorem ipsum dolor sit amet. consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et',
     author: 'Mohhammed Patel',
     views: '10,000',
+    id: 1,
   },
   {
     picture: Musician2,
@@ -114,6 +119,7 @@ const trendingData = [
       'Lorem ipsum dolor sit amet. consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et',
     author: 'Mohhammed Patel',
     views: '10,000',
+    id: 2,
   },
 ]
 
@@ -126,6 +132,7 @@ const haveToListenData = [
       'Lorem ipsum dolor sit amet. consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et',
     tracksCount: 15,
     followersCount: 69000,
+    id: 0,
   },
   {
     picture: Musician2,
@@ -135,6 +142,7 @@ const haveToListenData = [
       'Lorem ipsum dolor sit amet. consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et',
     tracksCount: 15,
     followersCount: 69000,
+    id: 1,
   },
   {
     picture: Musician1,
@@ -144,6 +152,7 @@ const haveToListenData = [
       'Lorem ipsum dolor sit amet. consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et',
     tracksCount: 15,
     followersCount: 69000,
+    id: 2,
   },
   {
     picture: Musician,
@@ -153,6 +162,7 @@ const haveToListenData = [
       'Lorem ipsum dolor sit amet. consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et',
     tracksCount: 15,
     followersCount: 69000,
+    id: 3,
   },
 ]
 
@@ -164,6 +174,7 @@ const whatsOnVideos = [
     text:
       'Lorem ipsum dolor sit amet. consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et',
     views: '10,000',
+    id: 0,
   },
   {
     picture: Musician1,
@@ -172,6 +183,7 @@ const whatsOnVideos = [
     text:
       'Lorem ipsum dolor sit amet. consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et',
     views: '10,000',
+    id: 1,
   },
 ]
 
@@ -183,6 +195,7 @@ const whatsOnData = [
     text:
       'Lorem ipsum dolor sit amet. consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et',
     views: '10,000',
+    id: 2,
   },
   {
     picture: Musician1,
@@ -191,6 +204,7 @@ const whatsOnData = [
     text:
       'Lorem ipsum dolor sit amet. consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et',
     views: '10,000',
+    id: 3,
   },
 ]
 
@@ -200,18 +214,21 @@ const videoData = [
     songName: "I'm Upset",
     views: '10k',
     songAuthor: 'Drake',
+    id: 0,
   },
   {
     picture: Musician1,
     songName: 'Praise The Lord',
     songAuthor: 'A$AP Rocky Feat Skepta',
     views: '10k',
+    id: 1,
   },
   {
     picture: Musician2,
     songName: 'What You Want',
     songAuthor: 'Belly Feat. The Weeknd',
     views: '10k',
+    id: 2,
   },
 ]
 
@@ -221,7 +238,9 @@ const Home = () => (
     <MainSlider data={mainSliderData} />
     <TrendingContainer>
       {trendingData.map(item => (
-        <TrendingItem data={item} />
+        <StyledLink to={`/blog/${item.type}/${item.id}`} key={item.id}>
+          <TrendingItem data={item} />
+        </StyledLink>
       ))}
     </TrendingContainer>
     <HaveToListenContainer>
@@ -239,12 +258,12 @@ const Home = () => (
       </HeaderContainer>
       <FlexDiv jc="space-between" mb={33}>
         {whatsOnVideos.map(item => (
-          <WhatsOnComponent data={item} />
+          <WhatsOnComponent data={item} key={item.id} />
         ))}
       </FlexDiv>
       <FlexDiv jc="space-between">
         {whatsOnData.map(item => (
-          <WhatsOnComponent data={item} />
+          <WhatsOnComponent data={item} key={item.id} />
         ))}
       </FlexDiv>
     </WhatsOn>
@@ -258,7 +277,7 @@ const Home = () => (
       </HeaderContainer>
       <Videos>
         {videoData.map(item => (
-          <Video data={item} />
+          <Video data={item} key={item.id} />
         ))}
       </Videos>
     </VideosContainer>

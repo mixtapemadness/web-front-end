@@ -349,7 +349,7 @@ const PlaylistSlider = ({ data }) => (
     <Override>
       <Slider {...settings}>
         {data.map(item => (
-          <ToListenPlaylist data={item} />
+          <ToListenPlaylist data={item} key={item.id} />
         ))}
       </Slider>
     </Override>

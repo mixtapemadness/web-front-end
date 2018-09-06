@@ -7,7 +7,7 @@ import AboutUsSlider from './AboutUsSlider'
 import Grid from './Grid'
 
 const AboutUsContainer = styled.div`
-  width: 1200px;
+  max-width: 1200px;
   display: flex;
   align-items: center;
   flex-direction: column;

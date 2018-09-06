@@ -4,7 +4,6 @@ import styled from 'styled-components'
 
 const GridContainer = styled.div`
   width: 1024px;
-  height: 250px;
   padding: 20px 0;
   box-sizing: border-box;
   display: flex;
@@ -25,11 +24,13 @@ const GridItems = styled.div`
   display: flex;
   justify-content: space-between;
   margin-top: 20px;
+  @media only screen and (max-width: 1000px) {
+    flex-direction: column;
+  }
 `
 
 const GridItem = styled.div`
   height: 200px;
-  flex: 1 0 150px;
   margin: 10px;
   display: flex;
   flex-direction: column;

@@ -15,6 +15,7 @@ const TopVideo = styled.div`
   padding: 20px 0;
   border-bottom: 1px solid #ccc;
   min-height: 115px;
+  box-sizing: content-box;
 `
 
 const Video = styled.div`

@@ -7,7 +7,7 @@ import ProfileInfo from './ProfileInfo'
 import ResentPosts from './ResentPosts'
 
 const AuthorPageContainer = styled.div`
-  width: 70%;
+  max-width: 1200px;
   margin: auto;
   display: flex;
   flex-direction: column;

@@ -10,7 +10,7 @@ import NewsSlider from './NewsSlider'
 import NewsFilter from './NewsFilter'
 
 const NewsContainer = styled.div`
-  width: 70%;
+  max-width: 1200px;
   display: flex;
   margin: auto;
   flex-direction: column;

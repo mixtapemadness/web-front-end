@@ -37,6 +37,8 @@ const PostContent = styled.div`
   align-items: center;
   flex: 1;
   justify-content: space-between;
+  width: 100%;
+  padding: 10px 25px;
 `
 
 const PostTitle = styled.h2``
@@ -65,10 +67,11 @@ const AuthorFullName = styled.span`
 `
 
 const PostInfo = styled.div`
-  width: 80%;
   display: flex;
   justify-content: space-between;
   margin: 10px 0;
+  font-size: 13px;
+  width: 100%;
 `
 
 const PostInfoItem = styled.span`

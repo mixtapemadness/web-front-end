@@ -12,13 +12,13 @@ import { ApolloLink } from 'apollo-link'
 import { ApolloClient } from 'apollo-client'
 import { InMemoryCache } from 'apollo-cache-inmemory'
 import { createHttpLink } from 'apollo-link-http'
-// import config from '../config'
-// import { errorLink } from '../src/apollo/links'
 import { onError } from 'apollo-link-error'
+import config from '../config'
+// import { errorLink } from '../src/apollo/links'
 import App from '../src/App'
 
 const app = express()
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 8003
 
 app.use(bodyParser.json())
 app.use(express.static('dist/client'))
@@ -38,8 +38,8 @@ app.get('*', (req, res) => {
     }
   })
   const httpLink = createHttpLink({
-    // uri: config.apiGraphqlUrl,
-    uri: 'http://localhost:8001/graphql',
+    uri: config.apiGraphqlUrl,
+    // uri: 'http://localhost:8001/graphql',
     // fetch,
   })
 

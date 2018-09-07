@@ -17,7 +17,7 @@ const FooterContainer = styled.footer`
   ${p => p.backgroundColor && `background-color: ${p.backgroundColor}`};
 `
 const ContentContainer = styled.div`
-  padding: 40px 0px;
+  padding: 40px 20px;
   max-width: 1200px;
   margin: auto;
 `

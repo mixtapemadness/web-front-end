@@ -49,7 +49,6 @@ const girdData = [
 
 export default () => (
   <AboutUsContainer>
-    About Us
     <Header />
     <AboutUsSlider />
     <Grid data={girdData} />

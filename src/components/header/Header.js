@@ -291,7 +291,7 @@ const Header = ({
               <DotsDropDownContent dotsMenu={dotsMenu}>
                 <ul>
                   <li>
-                    <Link to="aboutus">About Us</Link>
+                    <Link to="/aboutus">About Us</Link>
                   </li>
                   <li>Legal</li>
                   <li>Copyright</li>

@@ -21,7 +21,8 @@
     "format": "prettier --write \"src/**/*.js\" --single-quote --no-semi --trailing-comma=all",
     "precommit": "lint-staged",
     "lint": "eslint ./src",
-    "pm2_test": "NODE_ENV=testing DEBUG=* CONFIG=testing pm2 start ./dist/index.js --name mixtape_server_8003"
+    "pm2_test": "NODE_ENV=testing DEBUG=* CONFIG=testing pm2 start ./dist/index.js --name mixtape_front_server_8003",
+    "pm2_delete" : "pm2 delete mixtape_front_server_8003"
   },
   "lint-staged": {
     "*.js": [

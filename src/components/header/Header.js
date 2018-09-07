@@ -67,6 +67,9 @@ const Li = styled.li`
   :not(:last-child) {
     padding-right: 10px;
   }
+  @media only screen and (max-width: 450px) {
+    font-size: 13px;
+  }
 `
 const OrangeContainer = styled.div`
   display: flex;
@@ -84,6 +87,9 @@ const Logo = styled.img`
   padding-bottom: 20px;
   margin-right: 20px;
   box-sizing: content-box;
+  @media only screen and (max-width: 450px) {
+    height: 30px;
+  }
 `
 const Search = styled.img`
   width: 20px;
@@ -126,6 +132,12 @@ const Burger = styled.img`
   margin-bottom: 36px;
   margin-right: 40px;
   cursor: pointer;
+  @media only screen and (max-width: 450px) {
+    margin-right: 20px;
+  }
+  @media only screen (max-width: 350px) {
+    margin-right: 5px;
+  }
 `
 
 const DropDown = styled.div`
@@ -205,19 +217,30 @@ const Div = styled.div`
   align-items: flex-end;
 `
 
-const Header = ({ bottomBorder, dotsMenu, toggleDotsMenu, width }) => (
+const Header = ({
+  bottomBorder,
+  dotsMenu,
+  toggleDotsMenu,
+  width,
+  burgerOpen,
+  toggleBurgerOpen,
+}) => (
   <HeaderContainer bottomBorder={bottomBorder}>
     <ContentContainer>
       <LeftSide>
-        <div>
-          <Burger src={BurgerIcon} alt="burger" />
+        <Div>
+          <Burger
+            src={BurgerIcon}
+            alt="burger"
+            onClick={() => toggleBurgerOpen()}
+          />
           <Link to="/">
             <Logo
               src="http://www.mixtapemadness.com/assets/images/logo-full.png"
               alt="logo"
             />
           </Link>
-        </div>
+        </Div>
         <NavBar>
           <Ul>
             <DropDown>
@@ -315,7 +338,7 @@ const Header = ({ bottomBorder, dotsMenu, toggleDotsMenu, width }) => (
           </SocialIconsContainer>
         </RightSide>
       )}
-      {width <= 1050 && <MobileBurgerMenu />}
+      {width <= 1050 && <MobileBurgerMenu open={burgerOpen} />}
     </ContentContainer>
   </HeaderContainer>
 )

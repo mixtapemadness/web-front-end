@@ -5,9 +5,11 @@ export default compose(
     () => ({
       dotsMenu: false,
       width: window.innerWidth,
+      burgerOpen: false,
     }),
     {
       toggleDotsMenu: ({ dotsMenu }) => () => ({ dotsMenu: !dotsMenu }),
+      toggleBurgerOpen: ({ burgerOpen }) => () => ({ burgerOpen: !burgerOpen }),
       updateWidth: () => () => ({ width: window.innerWidth }),
     },
   ),

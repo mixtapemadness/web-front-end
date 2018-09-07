@@ -18,7 +18,10 @@ import Musician from 'resources/assets/img/musician1.png'
 import Musician1 from 'resources/assets/img/2pac.jpg'
 import Musician2 from 'resources/assets/img/eminem.jpg'
 
-const StyledLink = styled(Link)``
+const StyledLink = styled(Link)`
+  display: flex;
+  justify-content: center;
+`
 
 const Span = styled.span`
   ${p => p.color && `color: ${p.color}`};

@@ -1,3 +1,4 @@
+/* eslint object-curly-newline: 0 */
 import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
@@ -11,6 +12,7 @@ import YoutubeIcon from 'resources/assets/svg/youtube.svg'
 import BurgerIcon from 'resources/assets/svg/burger.svg'
 
 import headerEnhancer from './headerEnhancer'
+import MobileBurgerMenu from './MobileBurgerMenu'
 
 const HeaderContainer = styled.div`
   width: 100%;
@@ -25,10 +27,18 @@ const ContentContainer = styled.div`
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
+  position: relative;
+  @media only screen and (max-width: 1050px) {
+    justify-content: center;
+  }
 `
 const LeftSide = styled.div`
   display: flex;
   align-items: flex-end;
+  @media only screen and (max-width: 1050px) {
+    width: 100%;
+    justify-content: space-around;
+  }
 `
 
 const RightSide = styled.div`
@@ -190,17 +200,24 @@ const Line = styled.div`
   background-color: #e5e5e5;
 `
 
-const Header = ({ bottomBorder, dotsMenu, toggleDotsMenu }) => (
+const Div = styled.div`
+  display: flex;
+  align-items: flex-end;
+`
+
+const Header = ({ bottomBorder, dotsMenu, toggleDotsMenu, width }) => (
   <HeaderContainer bottomBorder={bottomBorder}>
     <ContentContainer>
       <LeftSide>
-        <Burger src={BurgerIcon} alt="burger" />
-        <Link to="/">
-          <Logo
-            src="http://www.mixtapemadness.com/assets/images/logo-full.png"
-            alt="logo"
-          />
-        </Link>
+        <div>
+          <Burger src={BurgerIcon} alt="burger" />
+          <Link to="/">
+            <Logo
+              src="http://www.mixtapemadness.com/assets/images/logo-full.png"
+              alt="logo"
+            />
+          </Link>
+        </div>
         <NavBar>
           <Ul>
             <DropDown>
@@ -240,54 +257,65 @@ const Header = ({ bottomBorder, dotsMenu, toggleDotsMenu }) => (
             </DropDown>
           </Ul>
         </NavBar>
-        <DotsDropDown>
-          <Dots src={DotsIcon} alt="dots" onClick={() => toggleDotsMenu()} />
-          <DotsDropDownContent dotsMenu={dotsMenu}>
-            <ul>
-              <li>
-                <Link to="aboutus">About Us</Link>
-              </li>
-              <li>Legal</li>
-              <li>Copyright</li>
-              <li>Terms & Contitions</li>
-              <Line />
-              <li>Advertising</li>
-              <li>Press</li>
-              <li>
-                <a href="https://itunes.apple.com/us/app/mixtape-madness-latest-uk-mixtapes-singles/id1090862433?mt=8&ign-mpt=uo%3D4">
-                  Download our IOS app
-                </a>
-              </li>
-              <li>Download our Android app</li>
-              <Line />
-              <li>Contact Us</li>
-            </ul>
-          </DotsDropDownContent>
-        </DotsDropDown>
-        <Search src={SearchIcon} alt="search" />
+        {width > 1050 && (
+          <Div>
+            <DotsDropDown>
+              <Dots
+                src={DotsIcon}
+                alt="dots"
+                onClick={() => toggleDotsMenu()}
+              />
+              <DotsDropDownContent dotsMenu={dotsMenu}>
+                <ul>
+                  <li>
+                    <Link to="aboutus">About Us</Link>
+                  </li>
+                  <li>Legal</li>
+                  <li>Copyright</li>
+                  <li>Terms & Contitions</li>
+                  <Line />
+                  <li>Advertising</li>
+                  <li>Press</li>
+                  <li>
+                    <a href="https://itunes.apple.com/us/app/mixtape-madness-latest-uk-mixtapes-singles/id1090862433?mt=8&ign-mpt=uo%3D4">
+                      Download our IOS app
+                    </a>
+                  </li>
+                  <li>Download our Android app</li>
+                  <Line />
+                  <li>Contact Us</li>
+                </ul>
+              </DotsDropDownContent>
+            </DotsDropDown>
+            <Search src={SearchIcon} alt="search" />
+          </Div>
+        )}
       </LeftSide>
-      <RightSide>
-        <OrangeContainer>
-          <Span>Upload</Span>
-          <Span>Register</Span>
-          <Span>Log In</Span>
-          <ContactUsContainer>Contact Us</ContactUsContainer>
-        </OrangeContainer>
-        <SocialIconsContainer>
-          <a href="https://twitter.com/mixtapemadness">
-            <SocialIcon src={TwitterIcon} alt="twitter" />
-          </a>
-          <a href="https://www.facebook.com/MixtapeMadnessUK/">
-            <SocialIcon src={FacebookIcon} facebook alt="facebook" />
-          </a>
-          <a href="https://www.instagram.com/mixtapemadness/">
-            <SocialIcon src={InstagramIcon} facebook alt="insta" />
-          </a>
-          <a href="https://www.youtube.com/user/madaboutmixtapes">
-            <SocialIcon src={YoutubeIcon} youtube alt="youtube" />
-          </a>
-        </SocialIconsContainer>
-      </RightSide>
+      {width > 1050 && (
+        <RightSide>
+          <OrangeContainer>
+            <Span>Upload</Span>
+            <Span>Register</Span>
+            <Span>Log In</Span>
+            <ContactUsContainer>Contact Us</ContactUsContainer>
+          </OrangeContainer>
+          <SocialIconsContainer>
+            <a href="https://twitter.com/mixtapemadness">
+              <SocialIcon src={TwitterIcon} alt="twitter" />
+            </a>
+            <a href="https://www.facebook.com/MixtapeMadnessUK/">
+              <SocialIcon src={FacebookIcon} facebook alt="facebook" />
+            </a>
+            <a href="https://www.instagram.com/mixtapemadness/">
+              <SocialIcon src={InstagramIcon} facebook alt="insta" />
+            </a>
+            <a href="https://www.youtube.com/user/madaboutmixtapes">
+              <SocialIcon src={YoutubeIcon} youtube alt="youtube" />
+            </a>
+          </SocialIconsContainer>
+        </RightSide>
+      )}
+      {width <= 1050 && <MobileBurgerMenu />}
     </ContentContainer>
   </HeaderContainer>
 )

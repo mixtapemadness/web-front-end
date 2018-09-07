@@ -10,6 +10,8 @@ import InstagramIcon from 'resources/assets/svg/instagram-logo.svg'
 import YoutubeIcon from 'resources/assets/svg/youtube.svg'
 import BurgerIcon from 'resources/assets/svg/burger.svg'
 
+import headerEnhancer from './headerEnhancer'
+
 const HeaderContainer = styled.div`
   width: 100%;
   height: 120px;
@@ -53,7 +55,7 @@ const Li = styled.li`
   letter-spacing: 1.5px;
   border-bottom: ${props => (props.active ? '2px solid orange' : null)};
   :not(:last-child) {
-    margin-right: 10px;
+    padding-right: 10px;
   }
 `
 const OrangeContainer = styled.div`
@@ -75,12 +77,12 @@ const Logo = styled.img`
 `
 const Search = styled.img`
   width: 20px;
-  margin-bottom: 35px;
+  margin-bottom: 36px;
   cursor: pointer;
 `
 const Dots = styled.img`
   width: 10px;
-  margin-bottom: 41px;
+  margin-bottom: 35px;
   margin-left: 30px;
   margin-right: 10px;
   cursor: pointer;
@@ -99,7 +101,7 @@ const ContactUsContainer = styled.div`
 const SocialIconsContainer = styled.div`
   display: flex;
   align-items: center;
-  margin-bottom: 38px;
+  margin-bottom: 34px;
   margin-left: 10px;
 `
 const SocialIcon = styled.img`
@@ -144,6 +146,8 @@ const DropDownContent = styled.div`
     font-size: 13px;
     span {
       cursor: pointer;
+      font-size: 14px;
+      color: #333333;
     }
   }
 `
@@ -154,8 +158,39 @@ const Join = styled.div`
   background: transparent;
   padding: 0px 12px;
 `
+const DotsDropDown = styled.div`
+  position: relative;
+`
+const DotsDropDownContent = styled.div`
+  z-index: 1;
+  position: absolute;
+  background-color: #ffffff;
+  border: 1px solid #e7e7e7;
+  top: 53px;
+  width: 208px;
+  min-height: 278px;
+  display: ${p => (p.dotsMenu === true ? 'block' : 'none')};
+  ul {
+    list-style: none;
+    font-size: 14px;
+    color: #333333;
+    padding: 20px 0px;
+  }
+  li {
+    padding: 3px 20px;
+    :hover {
+      background-color: #f5f5f5;
+    }
+  }
+`
+const Line = styled.div`
+  height: 1px;
+  margin: 9px 0;
+  overflow: hidden;
+  background-color: #e5e5e5;
+`
 
-const Header = ({ bottomBorder }) => (
+const Header = ({ bottomBorder, dotsMenu, toggleDotsMenu }) => (
   <HeaderContainer bottomBorder={bottomBorder}>
     <ContentContainer>
       <LeftSide>
@@ -205,7 +240,30 @@ const Header = ({ bottomBorder }) => (
             </DropDown>
           </Ul>
         </NavBar>
-        <Dots src={DotsIcon} alt="dots" />
+        <DotsDropDown>
+          <Dots src={DotsIcon} alt="dots" onClick={() => toggleDotsMenu()} />
+          <DotsDropDownContent dotsMenu={dotsMenu}>
+            <ul>
+              <li>
+                <Link to="aboutus">About Us</Link>
+              </li>
+              <li>Legal</li>
+              <li>Copyright</li>
+              <li>Terms & Contitions</li>
+              <Line />
+              <li>Advertising</li>
+              <li>Press</li>
+              <li>
+                <a href="https://itunes.apple.com/us/app/mixtape-madness-latest-uk-mixtapes-singles/id1090862433?mt=8&ign-mpt=uo%3D4">
+                  Download our IOS app
+                </a>
+              </li>
+              <li>Download our Android app</li>
+              <Line />
+              <li>Contact Us</li>
+            </ul>
+          </DotsDropDownContent>
+        </DotsDropDown>
         <Search src={SearchIcon} alt="search" />
       </LeftSide>
       <RightSide>
@@ -216,14 +274,22 @@ const Header = ({ bottomBorder }) => (
           <ContactUsContainer>Contact Us</ContactUsContainer>
         </OrangeContainer>
         <SocialIconsContainer>
-          <SocialIcon src={TwitterIcon} alt="twitter" />
-          <SocialIcon src={FacebookIcon} facebook alt="facebook" />
-          <SocialIcon src={InstagramIcon} facebook alt="insta" />
-          <SocialIcon src={YoutubeIcon} youtube alt="youtube" />
+          <a href="https://twitter.com/mixtapemadness">
+            <SocialIcon src={TwitterIcon} alt="twitter" />
+          </a>
+          <a href="https://www.facebook.com/MixtapeMadnessUK/">
+            <SocialIcon src={FacebookIcon} facebook alt="facebook" />
+          </a>
+          <a href="https://www.instagram.com/mixtapemadness/">
+            <SocialIcon src={InstagramIcon} facebook alt="insta" />
+          </a>
+          <a href="https://www.youtube.com/user/madaboutmixtapes">
+            <SocialIcon src={YoutubeIcon} youtube alt="youtube" />
+          </a>
         </SocialIconsContainer>
       </RightSide>
     </ContentContainer>
   </HeaderContainer>
 )
 
-export default Header
+export default headerEnhancer(Header)

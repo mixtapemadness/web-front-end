@@ -3,8 +3,10 @@ import styled from 'styled-components'
 
 import Header from 'components/header'
 import Footer from 'components/footer'
+
 import ProfileInfo from './ProfileInfo'
 import ResentPosts from './ResentPosts'
+import authorPageEnhancer from './authorPageEnhancer'
 
 const AuthorPageContainer = styled.div`
   max-width: 1200px;
@@ -179,8 +181,7 @@ const PostsSecondPart = [
     shares: 20,
   },
 ]
-
-export default () => (
+const AuthorPage = ({ width }) => (
   <AuthorPageContainer>
     <Header />
     <ProfileInfo data={AuthorData} />
@@ -188,7 +189,10 @@ export default () => (
     <ResentPosts
       PostsFirstPart={PostsFirstPart}
       PostsSecondPart={PostsSecondPart}
+      width={width}
     />
     <Footer />
   </AuthorPageContainer>
 )
+
+export default authorPageEnhancer(AuthorPage)

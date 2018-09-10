@@ -6,6 +6,9 @@ const SubscribeContainer = styled.div`
   display: flex;
   margin: auto;
   justify-content: space-between;
+  @media only screen and (max-width: 1030px) {
+    flex-direction: column;
+  }
 `
 const Span = styled.span`
   font-size: 20px;
@@ -14,9 +17,9 @@ const Span = styled.span`
 `
 const Form = styled.form`
   display: flex;
-  @media only screen and (max-width: 900px) {
+  @media only screen and (max-width: 1020px) {
     flex-direction: column;
-    align-items: flex-end;
+    align-items: center;
   }
 `
 const Input = styled.input`
@@ -64,8 +67,8 @@ const Button = styled.button`
   letter-spacing: 2px;
   font-size: 20px;
   width: 200px;
-  @media only screen and (max-width: 900px) {
-    margin-top: 10px;
+  @media only screen and (max-width: 1030px) {
+    margin: 10px 0px;
   }
 `
 const Subscribe = () => (

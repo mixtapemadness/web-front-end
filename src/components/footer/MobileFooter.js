@@ -8,7 +8,7 @@ import CircleIcon from 'resources/assets/svg/filled-circle.svg'
 
 const MobileFooterContainer = styled.div`
   max-width: 310px;
-  margin: auto;
+  margin: 20px auto;
   padding-bottom: 20px;
 `
 

@@ -144,7 +144,7 @@ const SocialIcon = styled.img`
 
 const Footer = ({ width }) => (
   <div>
-    {width > 700 && (
+    {width > 900 && (
       <FooterContainer backgroundColor="#eeeeee">
         <ContentContainer>
           <FlexDiv>
@@ -227,7 +227,7 @@ const Footer = ({ width }) => (
         </ContentContainer>
       </FooterContainer>
     )}
-    {width <= 700 && <MobileFooter />}
+    {width <= 900 && <MobileFooter />}
   </div>
 )
 

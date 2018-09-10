@@ -114,6 +114,9 @@ const ProfileDescTxt = styled.span`
   color: #949494;
   font-size: 18px;
   font-weight: 800;
+  @media only screen and (max-width: 450px) {
+    font-size: 16px;
+  }
 `
 
 const ShowMore = styled.div`

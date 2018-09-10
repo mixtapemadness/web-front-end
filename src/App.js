@@ -1,11 +1,11 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom'
 
-import Home from './pages/home'
-import BlogPage from './pages/blogPage'
-import AboutUs from './pages/aboutUs'
-import AuthorPage from './pages/authorPage'
-import News from './pages/news'
+import Home from 'pages/home'
+import BlogPage from 'pages/blogPage'
+import AboutUs from 'pages/aboutUs'
+import AuthorPage from 'pages/authorPage'
+import News from 'pages/news'
 
 const App = () => (
   <div>

@@ -135,8 +135,9 @@ const Burger = styled.img`
   @media only screen and (max-width: 450px) {
     margin-right: 20px;
   }
-  @media only screen (max-width: 350px) {
+  @media only screen and (max-width: 350px) {
     margin-right: 5px;
+    margin-left: 1px;
   }
 `
 

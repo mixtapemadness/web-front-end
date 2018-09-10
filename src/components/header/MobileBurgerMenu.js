@@ -17,6 +17,9 @@ const Container = styled.div`
   top: 120px;
   z-index: 1;
   transition: 0.3s ease-in-out;
+  @media only screen and (max-width: 450px) {
+    padding: ${p => (p.open === true ? '20px 0px' : '0px')};
+  }
 `
 
 const OrangeContainer = styled.div`

@@ -1,4 +1,5 @@
 /* eslint react/jsx-one-expression-per-line: 0 */
+/* eslint operator-linebreak: 0 */
 
 import React from 'react'
 import styled from 'styled-components'
@@ -10,6 +11,7 @@ import YouTubeVideo from 'components/youTubeVideo'
 import TrendingItem from 'components/trendingItem'
 import Footer from 'components/footer'
 import Advertisement from 'components/advertisement'
+import MobileComponent from 'components/mobileComponent'
 
 import Musician from 'resources/assets/img/musician1.png'
 import Musician1 from 'resources/assets/img/2pac.jpg'
@@ -58,6 +60,9 @@ const BackgroundPicture = styled.div`
   background-size: cover;
   background-position: center;
   margin: 60px 0;
+  @media only screen and (max-width: 450px) {
+    height: 300px;
+  }
 `
 const VideoContainer = styled.div`
   width: 78%;
@@ -141,6 +146,17 @@ const MobileAuthorContainer = styled.div`
 const Author = styled.span`
   color: #ff9d00;
 `
+const Div = styled.div`
+  display: flex;
+  max-width: 1200px;
+  margin: auto;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  @media only screen and (max-width: 1150px) {
+    flex-direction: column;
+    align-items: center;
+  }
+`
 
 const blogPostData = {
   title: 'AJ Tracey Drops A New Visual For Mimi',
@@ -167,6 +183,7 @@ const blogPageData = {
         'Lorem ipsum dolor sit amet. consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et',
       author: 'Mohhammed Patel',
       views: '10,000',
+      time: 1,
       id: 12,
     },
     {
@@ -179,6 +196,7 @@ const blogPageData = {
       author: 'Mohhammed Patel',
       views: '10,000',
       id: 15,
+      time: 2,
     },
     {
       picture: Musician2,
@@ -189,6 +207,7 @@ const blogPageData = {
       author: 'Mohhammed Patel',
       views: '10,000',
       id: 7,
+      time: 3,
     },
     {
       picture: Musician,
@@ -199,6 +218,7 @@ const blogPageData = {
       author: 'Mohhammed Patel',
       views: '10,000',
       id: 20,
+      time: 4,
     },
     {
       picture: Musician1,
@@ -209,6 +229,7 @@ const blogPageData = {
       author: 'Mohhammed Patel',
       views: '10,000',
       id: 30,
+      time: 5,
     },
   ],
 }
@@ -248,12 +269,18 @@ const BlogPage = ({ width }) => (
       {width <= 450 && <span>What To Read Next</span>}
     </AlsoLikeHeaderContainer>
     <MayLikeContainer>
-      {width > 450 && <Advertisement />}
-      {blogPageData.mayLike.map(item => (
-        <StyledLink to={`/blog/${item.type}/${item.id}`} key={item.id}>
-          <TrendingItem data={item} height="true" />
-        </StyledLink>
-      ))}
+      {width > 450 && (
+        <Div>
+          <Advertisement />
+          {blogPageData.mayLike.map(item => (
+            <StyledLink to={`/blog/${item.type}/${item.id}`} key={item.id}>
+              <TrendingItem data={item} height="true" />
+            </StyledLink>
+          ))}
+        </Div>
+      )}
+      {width <= 450 &&
+        blogPageData.mayLike.map(item => <MobileComponent data={item} />)}
     </MayLikeContainer>
     <Footer />
   </div>

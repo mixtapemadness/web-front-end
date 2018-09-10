@@ -19,6 +19,9 @@ const Heading = styled.div`
   display: flex;
   justify-content: space-between;
   margin-bottom: 40px;
+  @media only screen and (max-width: 450px) {
+    display: none;
+  }
 `
 const LeftSide = styled.div`
   display: flex;
@@ -52,6 +55,11 @@ const Span = styled.span`
   ${p => p.color && `color: ${p.color}`};
   ${p => p.mb && `margin-bottom: ${p.mb}px`};
 `
+const Paragraph = styled.p`
+  @media only screen and (max-width: 450px) {
+    font-size: 16px;
+  }
+`
 const BlogPost = ({ data }) => (
   <PostContainer>
     <Heading>
@@ -77,7 +85,7 @@ const BlogPost = ({ data }) => (
       </RightSide>
     </Heading>
     <Post>
-      <p>{data.text}</p>
+      <Paragraph>{data.text}</Paragraph>
     </Post>
   </PostContainer>
 )

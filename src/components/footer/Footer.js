@@ -9,6 +9,9 @@ import TwitterIcon from 'resources/assets/svg/twitter-black.svg'
 import FacebookIcon from 'resources/assets/svg/facebook-black.svg'
 import CircleIcon from 'resources/assets/svg/filled-circle.svg'
 
+import footerEnhancer from './footerEnhancer'
+import MobileFooter from './MobileFooter'
+
 const FooterContainer = styled.footer`
   width: 100%;
   bottom: 0;
@@ -139,88 +142,93 @@ const SocialIcon = styled.img`
   ${p => p.hg && `height: ${p.hg}px`};
 `
 
-const Footer = () => (
-  <FooterContainer backgroundColor="#eeeeee">
-    <ContentContainer>
-      <FlexDiv>
-        <ListContainer>
-          <ContentHeader>Music</ContentHeader>
-          <List>
-            <ListItem>Artists</ListItem>
-            <ListItem>Mixtapes</ListItem>
-            <ListItem>Singles</ListItem>
-            <ListItem>Hip Hop</ListItem>
-            <ListItem>Drill</ListItem>
-            <ListItem>Rap</ListItem>
-            <ListItem>Trap</ListItem>
-            <ListItem>Grime</ListItem>
-            <ListItem>All Genres</ListItem>
-          </List>
-        </ListContainer>
-        <ListContainer>
-          <ContentHeader>Mixtape Madness</ContentHeader>
-          <List>
-            <ListItem>
-              <Link to="/aboutus">About</Link>
-            </ListItem>
-            <ListItem>Company</ListItem>
-            <ListItem>Help</ListItem>
-            <ListItem>Contact</ListItem>
-            <ListItem>Press</ListItem>
-            <ListItem>FAQ</ListItem>
-          </List>
-        </ListContainer>
-        <UploadContainer>
-          <ContentHeader>For Artists</ContentHeader>
-          <UploadButton>Upload to mm</UploadButton>
-        </UploadContainer>
-        <div style={{ maxWidth: '280px' }}>
-          <ContentHeader>Sign up for our newsletter</ContentHeader>
-          <SignUpContainer>
-            <Input placeholder="email@example.com" />
-            <SignUpButton>SIGN UP</SignUpButton>
-          </SignUpContainer>
-          <ContentHeader>Connect with Mixtape Madness</ContentHeader>
-          <SocialContainer>
-            <SocialIcon hg={20} src={TwitterIcon} alt="soc" />
-            <SocialIcon hg={17} src={FacebookIcon} alt="soc" />
-            <SocialIcon hg={17} src={CircleIcon} alt="soc" />
-            <SocialIcon hg={35} src={SoundCloudIcon} alt="soc" />
-            <SocialIcon hg={20} alt="soc" />
-            <SocialIcon hg={20} alt="soc" />
-          </SocialContainer>
-          <Line mb={10} />
+const Footer = ({ width }) => (
+  <div>
+    {width > 700 && (
+      <FooterContainer backgroundColor="#eeeeee">
+        <ContentContainer>
           <FlexDiv>
-            <Anchor href="/">
-              <AppStore src={AppStoreIcon} />
-            </Anchor>
-            <Anchor href="/">
-              <GooglePlay src={GooglePlayIcon} />
-            </Anchor>
+            <ListContainer>
+              <ContentHeader>Music</ContentHeader>
+              <List>
+                <ListItem>Artists</ListItem>
+                <ListItem>Mixtapes</ListItem>
+                <ListItem>Singles</ListItem>
+                <ListItem>Hip Hop</ListItem>
+                <ListItem>Drill</ListItem>
+                <ListItem>Rap</ListItem>
+                <ListItem>Trap</ListItem>
+                <ListItem>Grime</ListItem>
+                <ListItem>All Genres</ListItem>
+              </List>
+            </ListContainer>
+            <ListContainer>
+              <ContentHeader>Mixtape Madness</ContentHeader>
+              <List>
+                <ListItem>
+                  <Link to="/aboutus">About</Link>
+                </ListItem>
+                <ListItem>Company</ListItem>
+                <ListItem>Help</ListItem>
+                <ListItem>Contact</ListItem>
+                <ListItem>Press</ListItem>
+                <ListItem>FAQ</ListItem>
+              </List>
+            </ListContainer>
+            <UploadContainer>
+              <ContentHeader>For Artists</ContentHeader>
+              <UploadButton>Upload to mm</UploadButton>
+            </UploadContainer>
+            <div style={{ maxWidth: '280px' }}>
+              <ContentHeader>Sign up for our newsletter</ContentHeader>
+              <SignUpContainer>
+                <Input placeholder="email@example.com" />
+                <SignUpButton>SIGN UP</SignUpButton>
+              </SignUpContainer>
+              <ContentHeader>Connect with Mixtape Madness</ContentHeader>
+              <SocialContainer>
+                <SocialIcon hg={20} src={TwitterIcon} alt="soc" />
+                <SocialIcon hg={17} src={FacebookIcon} alt="soc" />
+                <SocialIcon hg={17} src={CircleIcon} alt="soc" />
+                <SocialIcon hg={35} src={SoundCloudIcon} alt="soc" />
+                <SocialIcon hg={20} alt="soc" />
+                <SocialIcon hg={20} alt="soc" />
+              </SocialContainer>
+              <Line mb={10} />
+              <FlexDiv>
+                <Anchor href="/">
+                  <AppStore src={AppStoreIcon} />
+                </Anchor>
+                <Anchor href="/">
+                  <GooglePlay src={GooglePlayIcon} />
+                </Anchor>
+              </FlexDiv>
+            </div>
           </FlexDiv>
-        </div>
-      </FlexDiv>
-      <Line mt={20} mb={20} />
-      <FlexDiv>
-        <div>
-          <Span fsize={15} color="black">
-            Mixtape Madness
-          </Span>
-        </div>
-        <Flex>
-          <Span fsize={15} color="black">
-            Help
-          </Span>
-          <Span fsize={15} color="black" ml={10}>
-            Terms
-          </Span>
-          <Span fsize={15} color="black" ml={10}>
-            Privacy
-          </Span>
-        </Flex>
-      </FlexDiv>
-    </ContentContainer>
-  </FooterContainer>
+          <Line mt={20} mb={20} />
+          <FlexDiv>
+            <div>
+              <Span fsize={15} color="black">
+                Mixtape Madness
+              </Span>
+            </div>
+            <Flex>
+              <Span fsize={15} color="black">
+                Help
+              </Span>
+              <Span fsize={15} color="black" ml={10}>
+                Terms
+              </Span>
+              <Span fsize={15} color="black" ml={10}>
+                Privacy
+              </Span>
+            </Flex>
+          </FlexDiv>
+        </ContentContainer>
+      </FooterContainer>
+    )}
+    {width <= 700 && <MobileFooter />}
+  </div>
 )
 
-export default Footer
+export default footerEnhancer(Footer)

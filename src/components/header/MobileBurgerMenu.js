@@ -33,6 +33,7 @@ const Span = styled.span`
   cursor: pointer;
   @media only screen and (max-width: 450px) {
     font-size: 13px;
+    margin-left: 5px;
   }
 `
 const ContactUsContainer = styled.div`
@@ -46,6 +47,7 @@ const ContactUsContainer = styled.div`
   cursor: pointer;
   @media only screen and (max-width: 450px) {
     font-size: 13px;
+    margin-left: 5px;
   }
 `
 const SocialIconsContainer = styled.div`

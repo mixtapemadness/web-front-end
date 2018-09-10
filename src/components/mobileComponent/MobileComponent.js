@@ -3,6 +3,8 @@
 import React from 'react'
 import styled from 'styled-components'
 
+import ClockIcon from 'resources/assets/svg/clock.svg'
+
 const Container = styled.div`
   display: flex;
   border-bottom: 1px solid #ccc;
@@ -33,13 +35,21 @@ const TimeContainer = styled.div`
   font-size: 13px;
   color: #ccc;
 `
+const Img = styled.img`
+  width: 16px;
+  height: 17px;
+  margin-right: 10px;
+`
 
 const MobileComponent = ({ data }) => (
   <Container>
     <PhotoContainer background={data.picture} />
     <ContentContainer>
       <span>{data.header}</span>
-      <TimeContainer>{data.time} Hour Ago</TimeContainer>
+      <TimeContainer>
+        <Img src={ClockIcon} />
+        {data.time} Hour Ago
+      </TimeContainer>
     </ContentContainer>
   </Container>
 )

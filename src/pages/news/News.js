@@ -1,3 +1,4 @@
+/* eslint operator-linebreak: 0 */
 import React from 'react'
 import styled from 'styled-components'
 
@@ -5,9 +6,12 @@ import Header from 'components/header'
 import Post from 'components/post'
 import Subscribe from 'components/subscribe'
 import Footer from 'components/footer'
+import MobileComponent from 'components/mobileComponent'
 import TopVideoPosts from './TopVideoPosts'
 import NewsSlider from './NewsSlider'
 import NewsFilter from './NewsFilter'
+
+import newsEnhancer from './newsEnhancer'
 
 const NewsContainer = styled.div`
   max-width: 1200px;
@@ -24,6 +28,10 @@ const PostsContainer = styled.div`
   margin-top: 20px;
 `
 
+const SubscribeContainer = styled.div`
+  margin: 20px 0;
+`
+
 const PostsFirstPart = [
   {
     img:
@@ -35,6 +43,7 @@ const PostsFirstPart = [
     CreationDate: 1,
     comments: 10,
     shares: 20,
+    time: '1 Minute',
   },
   {
     img:
@@ -46,6 +55,7 @@ const PostsFirstPart = [
     CreationDate: 1,
     comments: 10,
     shares: 20,
+    time: '1 Minute',
   },
   {
     img:
@@ -57,6 +67,7 @@ const PostsFirstPart = [
     CreationDate: 1,
     comments: 10,
     shares: 20,
+    time: '1 Minute',
   },
   {
     img:
@@ -68,6 +79,7 @@ const PostsFirstPart = [
     CreationDate: 1,
     comments: 10,
     shares: 20,
+    time: '1 Minute',
   },
   {
     img:
@@ -79,6 +91,7 @@ const PostsFirstPart = [
     CreationDate: 1,
     comments: 10,
     shares: 20,
+    time: '9 Minute',
   },
   {
     img:
@@ -90,6 +103,7 @@ const PostsFirstPart = [
     CreationDate: 1,
     comments: 10,
     shares: 20,
+    time: '5 Minute',
   },
   {
     img:
@@ -101,6 +115,7 @@ const PostsFirstPart = [
     CreationDate: 1,
     comments: 10,
     shares: 20,
+    time: '10 Minute',
   },
   {
     img:
@@ -112,6 +127,7 @@ const PostsFirstPart = [
     CreationDate: 1,
     comments: 10,
     shares: 20,
+    time: '2 Minute',
   },
   {
     img:
@@ -123,6 +139,7 @@ const PostsFirstPart = [
     CreationDate: 1,
     comments: 10,
     shares: 20,
+    time: '30 Minute',
   },
 ]
 
@@ -268,24 +285,34 @@ const TopVideosData = [
   },
 ]
 
-export default () => (
+const News = ({ width }) => (
   <NewsContainer>
     <Header />
-    <NewsSlider />
-    <NewsFilter />
-    <PostsContainer>
-      {PostsFirstPart.map(item => (
-        <Post data={item} />
-      ))}
-      <Subscribe />
-      <TopVideoPosts
-        TopMusicPosts={TopMusicPosts}
-        TopVideosData={TopVideosData}
-      />
-      {PostsSecondPart.map(item => (
-        <Post data={item} />
-      ))}
-    </PostsContainer>
+    {width > 700 && (
+      <div>
+        <NewsSlider />
+        <NewsFilter />
+        <PostsContainer>
+          {PostsFirstPart.map(item => (
+            <Post data={item} />
+          ))}
+          <SubscribeContainer>
+            <Subscribe />
+          </SubscribeContainer>
+          <TopVideoPosts
+            TopMusicPosts={TopMusicPosts}
+            TopVideosData={TopVideosData}
+          />
+          {PostsSecondPart.map(item => (
+            <Post data={item} />
+          ))}
+        </PostsContainer>
+      </div>
+    )}
+    {width <= 700 &&
+      PostsFirstPart.map(item => <MobileComponent data={item} />)}
     <Footer />
   </NewsContainer>
 )
+
+export default newsEnhancer(News)

@@ -183,7 +183,7 @@ const blogPageData = {
         'Lorem ipsum dolor sit amet. consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et',
       author: 'Mohhammed Patel',
       views: '10,000',
-      time: 1,
+      time: '1 Hour',
       id: 12,
     },
     {
@@ -196,7 +196,7 @@ const blogPageData = {
       author: 'Mohhammed Patel',
       views: '10,000',
       id: 15,
-      time: 2,
+      time: '1 Hour',
     },
     {
       picture: Musician2,
@@ -207,7 +207,7 @@ const blogPageData = {
       author: 'Mohhammed Patel',
       views: '10,000',
       id: 7,
-      time: 3,
+      time: '2 Hour',
     },
     {
       picture: Musician,
@@ -218,7 +218,7 @@ const blogPageData = {
       author: 'Mohhammed Patel',
       views: '10,000',
       id: 20,
-      time: 4,
+      time: '5 Hour',
     },
     {
       picture: Musician1,
@@ -229,7 +229,7 @@ const blogPageData = {
       author: 'Mohhammed Patel',
       views: '10,000',
       id: 30,
-      time: 5,
+      time: '3 Hour',
     },
   ],
 }

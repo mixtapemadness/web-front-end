@@ -8,6 +8,9 @@ const TopVideos = styled.div`
   flex-direction: column;
   justify-content: space-around;
   margin: 10px;
+  @media only screen and (max-width: 1130px) {
+    justify-content: normal;
+  }
 `
 
 const Header = styled.h1`

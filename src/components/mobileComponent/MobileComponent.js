@@ -43,12 +43,12 @@ const Img = styled.img`
 
 const MobileComponent = ({ data }) => (
   <Container>
-    <PhotoContainer background={data.picture} />
+    <PhotoContainer background={data.picture || data.img} />
     <ContentContainer>
-      <span>{data.header}</span>
+      <span>{data.header || data.title}</span>
       <TimeContainer>
         <Img src={ClockIcon} />
-        {data.time} Hour Ago
+        {data.time} Ago
       </TimeContainer>
     </ContentContainer>
   </Container>

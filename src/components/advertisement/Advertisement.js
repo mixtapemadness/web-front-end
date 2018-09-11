@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import BackgroundImage from 'resources/assets/img/music.jpg'
 
 const Container = styled.div`
-  width: 375px;
+  width: 357px;
   height: 627px;
   background-image: url(${BackgroundImage});
   background-repeat: no-repeat;

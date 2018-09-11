@@ -19,11 +19,11 @@ const Img = styled.img`
 
 const PrevArrow = (
   { onClick }, // eslint-disable-line
-) => <Img right={20} src={Prev} onClick={onClick} />
+) => <Img right={75} src={Prev} onClick={onClick} />
 
 const NextArrow = (
   { onClick }, // eslint-disable-line
-) => <Img right="0" src={Next} onClick={onClick} />
+) => <Img right={55} src={Next} onClick={onClick} />
 
 const Container = styled.div`
   min-height: 543px;
@@ -46,9 +46,9 @@ const Container = styled.div`
   }
 
   .slick-list {
-    max-width: 1200px;
+    max-width: 1100px;
     margin: auto;
-    margin-top: 100px;
+    margin-top: 64.2px;
 
     display: block;
     overflow: hidden;

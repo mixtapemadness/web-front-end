@@ -24,8 +24,8 @@ const ProfileImg = styled.div`
 `
 
 const Image = styled.div`
-  width: 180px;
-  height: 180px;
+  height: 152px;
+  width: 152px;
   border-radius: 100%;
   background-position: 66%;
   background-image: url(${props => props.src});
@@ -34,10 +34,11 @@ const Image = styled.div`
 
 const EditProfile = styled.div`
   font-weight: 800;
-  font-size: 20px;
-  color: #616161;
   margin-top: 15px;
   cursor: pointer;
+  letter-spacing: 0.7px;
+  font-size: 12px;
+  color: #000000;
 `
 
 const ProfileDesc = styled.div`
@@ -78,14 +79,16 @@ const ProfileInfo = styled.div`
 `
 
 const ProfileDescName = styled.h1`
-  font-size: 28px;
+  letter-spacing: 1.4px;
+  font-size: 22.5px;
   margin: 0;
 `
 
 const ProfileDescOcupation = styled.h3`
   margin: 3px 0 0 0;
-  font-size: 18px;
   font-weight: 800;
+  letter-spacing: 0.9px;
+  font-size: 15px;
 `
 
 const ProfileDescIcons = styled.div`
@@ -111,8 +114,9 @@ const ProfileDescContent = styled.div`
 `
 
 const ProfileDescTxt = styled.span`
-  color: #949494;
-  font-size: 18px;
+  color: #666666;
+  font-size: 14px;
+  letter-spacing: 0.8px;
   font-weight: 800;
   @media only screen and (max-width: 450px) {
     font-size: 16px;

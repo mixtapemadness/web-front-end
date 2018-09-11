@@ -36,6 +36,7 @@ const ContentContainer = styled.div`
   box-sizing: content-box;
   height: 313px;
   justify-content: space-between;
+  ${p => p.blog === true && 'height: 373px'};
   @media only screen and (max-width: 1150px) {
     height: auto;
   }
@@ -86,16 +87,16 @@ const Views = styled.span`
   letter-spacing: 0.7px;
 `
 
-const TrendingItem = ({ data, height }) => (
+const TrendingItem = ({ data, blog }) => (
   <TrendingItemContainer>
     <PhotoContainer picture={data.picture} />
-    <ContentContainer>
+    <ContentContainer blog={blog}>
       <TypeContainer>
         <Title>
           Trending / <Type>{data.type}</Type>
         </Title>
       </TypeContainer>
-      <Header height={height}>{data.header}</Header>
+      <Header>{data.header}</Header>
       <Span color="#666666">{data.text}</Span>
       <Span color="#000000">
         By <Span color="#FF9D00">{data.author}</Span>

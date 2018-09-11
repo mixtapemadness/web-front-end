@@ -35,18 +35,18 @@ const TitleContainer = styled.div`
   flex-direction: column;
 `
 const BlogTitle = styled.span`
-  font-size: 60px;
-  font-weight: bold;
-  letter-spacing: 1px;
-  color: #000000;
+  font-weight: 600;
+  font-size: 54px;
+  letter-spacing: 3.2px;
+  color: #010101;
   @media only screen and (max-width: 450px) {
     font-size: 27px;
   }
 `
 const BlogSubTitle = styled.span`
   font-size: 27px;
-  letter-spacing: 1px;
   color: #666666;
+  letter-spacing: 1.6px;
   @media only screen and (max-width: 450px) {
     font-size: 16px;
     color: #000000;
@@ -54,7 +54,7 @@ const BlogSubTitle = styled.span`
 `
 const BackgroundPicture = styled.div`
   width: 100%;
-  height: 500px;
+  height: 730px;
   background-image: url(${backgroundImage});
   background-repeat: no-repeat;
   background-size: cover;
@@ -274,7 +274,7 @@ const BlogPage = ({ width }) => (
           <Advertisement />
           {blogPageData.mayLike.map(item => (
             <StyledLink to={`/blog/${item.type}/${item.id}`} key={item.id}>
-              <TrendingItem data={item} height="true" />
+              <TrendingItem data={item} blog />
             </StyledLink>
           ))}
         </Div>

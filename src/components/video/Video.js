@@ -12,6 +12,9 @@ const Container = styled.div`
     width: 61.458%;
     margin-top: 20px;
   }
+  @media only screen and (max-width: 450px) {
+    width: 90%;
+  }
 `
 
 const PhotoContainer = styled.div`

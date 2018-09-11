@@ -16,15 +16,25 @@ const DownloadContainer = styled.div`
 const ContentContainer = styled.div`
   padding: 100px 50px;
   width: 60%;
+  @media only screen and (max-width: 700px) {
+    width: 90%;
+    padding: 20px 10px;
+  }
 `
 const Header = styled.span`
   font-size: 40px;
   color: white;
+  @media only screen and (max-width: 450px) {
+    font-size: 20px;
+  }
 `
 const SubHeader = styled.span`
   margin-top: 40px;
   font-size: 27px;
   color: white;
+  @media only screen and (max-width: 450px) {
+    font-size: 16px;
+  }
 `
 const DownloadButton = styled.button`
   background: transparent;

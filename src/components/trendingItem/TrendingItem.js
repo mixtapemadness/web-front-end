@@ -7,10 +7,13 @@ import ViewsIcon from 'resources/assets/svg/eye.svg'
 import SignalBarsIcon from 'resources/assets/svg/signal-bars.svg'
 
 const TrendingItemContainer = styled.div`
-  width: 375px;
+  width: 357px;
   @media only screen and (max-width: 1150px) {
     width: 61.458%;
     margin-top: 20px;
+  }
+  @media only screen and (max-width: 450px) {
+    width: 90%;
   }
 `
 const PhotoContainer = styled.div`
@@ -26,11 +29,13 @@ const PhotoContainer = styled.div`
 `
 const ContentContainer = styled.div`
   background-color: #eeeeef;
-  width: calc(100% - 30px);
-  padding: 20px 15px;
+  width: calc(100% - 40px);
+  padding: 27px 20px;
   display: flex;
   flex-direction: column;
   box-sizing: content-box;
+  height: 313px;
+  justify-content: space-between;
   @media only screen and (max-width: 1150px) {
     height: auto;
   }
@@ -41,27 +46,30 @@ const TypeContainer = styled.div`
 `
 const Span = styled.span`
   ${p => p.color && `color: ${p.color}`};
-  ${p => p.bold && 'font-weight: bold'};
-  ${p => p.size && `font-size: ${p.size}`};
-  ${p => p.lspacing && `letter-spacing: ${p.lspacing}px`};
   ${p => p.mb && `margin-bottom: ${p.mb}px`};
-  ${p => p.mt && `margin-top: ${p.mt}px`};
-  ${p => p.ml && `margin-left: ${p.ml}px`};
   ${p => p.maxHeight && `max-height: ${p.maxHeight}`};
+  font-size: 12px;
+  letter-spacing: 0.7px;
 `
+const Title = styled.span`
+  color: #000000;
+  font-size: 12px;
+  letter-spacing: 0.7px;
+  font-weight: 600;
+`
+
 const Type = styled.span`
   color: #ff9d00;
-  font-weight: bold;
 `
 const Header = styled.span`
-  font-size: 20px;
+  font-size: 25px;
   word-break: break-word;
-  margin-bottom: 20px;
-  min-height: 48px;
+  margin-bottom: 22px;
   ${p => p.height && 'height: 130px'};
   font-weight: bold;
   color: #000000;
   text-transform: capitalize;
+  letter-spacing: 1.5px;
 `
 const FlexDiv = styled.div`
   display: flex;
@@ -70,29 +78,35 @@ const FlexDiv = styled.div`
 const Img = styled.img`
   ${p => p.height && `height: ${p.height}px`};
 `
+const Views = styled.span`
+  margin-top: 2px;
+  margin-left: 10px;
+  color: #666666;
+  font-size: 12px;
+  letter-spacing: 0.7px;
+`
+
 const TrendingItem = ({ data, height }) => (
   <TrendingItemContainer>
     <PhotoContainer picture={data.picture} />
     <ContentContainer>
       <TypeContainer>
-        <Span color="black" bold>
+        <Title>
           Trending / <Type>{data.type}</Type>
-        </Span>
+        </Title>
       </TypeContainer>
       <Header height={height}>{data.header}</Header>
-      <Span maxHeight={60} color="#666666" lspacing={1.2} mb={20}>
-        {data.text}
-      </Span>
-      <Span color="black" mb={20}>
+      <Span color="#666666">{data.text}</Span>
+      <Span color="#000000">
         By <Span color="#FF9D00">{data.author}</Span>
       </Span>
       <FlexDiv jc="space-between">
         <FlexDiv>
           <Img src={ViewsIcon} alt="view" height={20} />
-          <Span mt={2} ml={10} color="#666666">
+          <Views>
             {data.views}
             {' Views'}
-          </Span>
+          </Views>
         </FlexDiv>
         <Img src={SignalBarsIcon} alt="bars" height={18} />
       </FlexDiv>

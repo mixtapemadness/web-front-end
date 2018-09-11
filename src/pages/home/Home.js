@@ -11,6 +11,7 @@ import WhatsOnComponent from 'components/whatsOnComponent'
 import Subscribe from 'components/subscribe'
 import Video from 'components/video'
 import PlaylistSlider from 'components/playlistSlider'
+import MobileSubscribe from 'components/mobileSubscribe'
 
 import SliderPhoto from 'resources/assets/img/Live-Music.jpg'
 import SliderPhotoSecond from 'resources/assets/img/music.jpg'
@@ -18,20 +19,13 @@ import Musician from 'resources/assets/img/musician1.png'
 import Musician1 from 'resources/assets/img/2pac.jpg'
 import Musician2 from 'resources/assets/img/eminem.jpg'
 
+import homeEnhancer from './homeEnhancer'
+
 const StyledLink = styled(Link)`
   display: flex;
   justify-content: center;
 `
 
-const Span = styled.span`
-  ${p => p.color && `color: ${p.color}`};
-  ${p => p.bold && 'font-weight: bold'};
-  ${p => p.size && `font-size: ${p.size}px`};
-  ${p => p.lspacing && `letter-spacing: ${p.lspacing}px`};
-  ${p => p.mb && `margin-bottom: ${p.mb}px`};
-  ${p => p.mt && `margin-top: ${p.mt}px`};
-  ${p => p.ml && `margin-left: ${p.ml}px`};
-`
 const FlexDiv = styled.div`
   display: flex;
   ${p => p.jc && `justify-content: ${p.jc}`};
@@ -89,6 +83,15 @@ const Videos = styled.div`
   }
 `
 
+const SectionHeader = styled.span`
+  font-weight: 600;
+  font-size: 28px;
+`
+const SectionSubHeader = styled.span`
+  font-size: 17.5px;
+  letter-spacing: 1.1px;
+  font-weight: 600;
+`
 // trendingData, haveToListenData, whatsOnVideos, whatsOnData, videoData, mainSliderData,)
 
 const mainSliderData = [SliderPhoto, SliderPhotoSecond]
@@ -235,7 +238,7 @@ const videoData = [
   },
 ]
 
-const Home = () => (
+const Home = ({ width }) => (
   <div>
     <Header />
     <MainSlider data={mainSliderData} />
@@ -248,16 +251,20 @@ const Home = () => (
     </TrendingContainer>
     <HaveToListenContainer>
       <HeaderContainer>
-        <Span size={30}>You Have To Listen</Span>
-        <Span size={20}>Mixtape Madness Share Their Top Playlists</Span>
+        <SectionHeader>You Have To Listen</SectionHeader>
+        <SectionSubHeader size={17.5}>
+          Mixtape Madness Share Their Top Playlists
+        </SectionSubHeader>
       </HeaderContainer>
       <PlaylistSlider data={haveToListenData} />
     </HaveToListenContainer>
     <Download />
     <WhatsOn>
       <HeaderContainer mb={60}>
-        <Span size={30}>What&apos;s On</Span>
-        <Span size={20}>Check Out The Latest Music And News This Week</Span>
+        <SectionHeader>What&apos;s On</SectionHeader>
+        <SectionSubHeader>
+          Check Out The Latest Music And News This Week
+        </SectionSubHeader>
       </HeaderContainer>
       <FlexDiv jc="space-between" mb={33}>
         {whatsOnVideos.map(item => (
@@ -271,12 +278,15 @@ const Home = () => (
       </FlexDiv>
     </WhatsOn>
     <SubscribeContainer>
-      <Subscribe />
+      {width > 450 && <Subscribe />}
+      {width <= 450 && <MobileSubscribe />}
     </SubscribeContainer>
     <VideosContainer>
       <HeaderContainer mb={60}>
-        <Span size={30}>Videos</Span>
-        <Span size={20}>Mixtape Madness Share Their Top Videos This Week</Span>
+        <SectionHeader>Videos</SectionHeader>
+        <SectionSubHeader>
+          Mixtape Madness Share Their Top Videos This Week
+        </SectionSubHeader>
       </HeaderContainer>
       <Videos>
         {videoData.map(item => (
@@ -288,4 +298,4 @@ const Home = () => (
   </div>
 )
 
-export default Home
+export default homeEnhancer(Home)

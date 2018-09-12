@@ -285,7 +285,9 @@ const Header = ({
               <DropDownContent>Content</DropDownContent>
             </DropDown>
             <DropDown>
-              <Li>Events</Li>
+              <Li>
+                <Link to="/events">Events</Link>
+              </Li>
               <DropDownContent>Content</DropDownContent>
             </DropDown>
             <DropDown>

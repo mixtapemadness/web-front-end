@@ -60,6 +60,7 @@ const Title = styled.span`
 
 const Type = styled.span`
   color: #ff9d00;
+  font-weight: 600;
 `
 const Header = styled.span`
   font-size: 25px;
@@ -97,9 +98,12 @@ const TrendingItem = ({ data, blog }) => (
     <PhotoContainer picture={data.picture || data.img} />
     <ContentContainer blog={blog}>
       <TypeContainer>
-        <Title>
-          Trending / <Type>{data.type}</Type>
-        </Title>
+        {data.type !== 'Events' && (
+          <Title>
+            Trending / <Type>{data.type}</Type>
+          </Title>
+        )}
+        {data.type === 'Events' && <Type>{data.type}</Type>}
       </TypeContainer>
       <Header>{data.header || data.title}</Header>
       <Description>{data.text || data.PostDescription}</Description>

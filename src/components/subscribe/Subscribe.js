@@ -75,8 +75,9 @@ const Button = styled.button`
 const Subscribe = () => (
   <SubscribeContainer>
     <Span>
-      Subscribe to Mixtape Madness for the latest on news, music, and upcoming
-      releases
+      Subscribe to Mixtape Madness for the
+      <br />
+      latest on news, music, and upcoming releases
     </Span>
     <Form>
       <Input placeholder="Type Email Here..." />

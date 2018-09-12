@@ -1,23 +1,72 @@
-/* eslint operator-linebreak: 0 */
 import React from 'react'
 import styled from 'styled-components'
 
 import Header from 'components/header'
 import TrendingItem from 'components/trendingItem'
-import Subscribe from 'components/subscribe'
 import Footer from 'components/footer'
-import MobileComponent from 'components/mobileComponent'
-import TopVideoPosts from './TopVideoPosts'
-import NewsSlider from './NewsSlider'
-import NewsFilter from './NewsFilter'
-
-import newsEnhancer from './newsEnhancer'
+import Subscribe from 'components/subscribe'
+import EventAdvertisement from './eventAdvertisement'
 
 const NewsContainer = styled.div`
   max-width: 1200px;
   display: flex;
   margin: auto;
   flex-direction: column;
+`
+
+const newsSliderImg = //eslint-disable-line
+  'https://static1.squarespace.com/static/52c723b4e4b0b6f0473fa0c7/52c73e8ee4b0b674fecbb8d6/5ab0190303ce6497ede69670/1521490244848/music_Autonomics_coBandcamp_4344.jpg?format=1000w' //eslint-disable-line
+const NewsSlliderContainer = styled.div`
+  width: 100%;
+  flex-direction: column;
+`
+
+const SlliderImg = styled.div`
+  width: 100%;
+  height: 500px;
+  background-image: url(${props => props.src});
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  position: relative;
+`
+
+const NewsSlliderWrapper = styled.div`
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 26px;
+  text-align: center;
+`
+
+const SliderText = styled.h1`
+  width: 80%;
+  color: #fff;
+`
+
+const FilterContainer = styled.div`
+  width: 100%;
+  display: flex;
+  border-bottom: 2px solid #f5f5f5;
+`
+
+const FilterItem = styled.div`
+  flex: 1;
+  text-align: center;
+  color: 111;
+  font-size: 26px;
+  padding: 20px;
+  box-sizing: border-box;
+  font-weight: 800;
+  cursor: pointer;
+  transition: 0.3s;
+  &:hover {
+    color: #ff9600;
+  }
 `
 
 const PostsContainer = styled.div`
@@ -43,16 +92,6 @@ const FooterContainer = styled.div`
   margin-top: 40px;
 `
 
-const MoreNews = styled.span`
-  cursor: pointer;
-  font-size: 14.5px;
-  letter-spacing: 0.9px;
-  color: #000000;
-  font-weight: 600;
-  text-align: center;
-  margin-top: 30px;
-`
-
 const PostsFirstPart = [
   {
     img:
@@ -65,7 +104,7 @@ const PostsFirstPart = [
     comments: 10,
     shares: 20,
     time: '1 Minute',
-    type: 'News',
+    type: 'Events',
     views: '10,000',
   },
   {
@@ -79,7 +118,8 @@ const PostsFirstPart = [
     comments: 10,
     shares: 20,
     time: '1 Minute',
-    type: 'News',
+    type: 'Events',
+    views: '10,000',
   },
   {
     img:
@@ -92,7 +132,7 @@ const PostsFirstPart = [
     comments: 10,
     shares: 20,
     time: '1 Minute',
-    type: 'News',
+    type: 'Events',
     views: '10,000',
   },
   {
@@ -106,7 +146,7 @@ const PostsFirstPart = [
     comments: 10,
     shares: 20,
     time: '1 Minute',
-    type: 'News',
+    type: 'Events',
     views: '10,000',
   },
   {
@@ -120,7 +160,7 @@ const PostsFirstPart = [
     comments: 10,
     shares: 20,
     time: '9 Minute',
-    type: 'News',
+    type: 'Events',
     views: '10,000',
   },
   {
@@ -134,7 +174,7 @@ const PostsFirstPart = [
     comments: 10,
     shares: 20,
     time: '5 Minute',
-    type: 'News',
+    type: 'Events',
     views: '10,000',
   },
   {
@@ -148,7 +188,7 @@ const PostsFirstPart = [
     comments: 10,
     shares: 20,
     time: '10 Minute',
-    type: 'News',
+    type: 'Events',
     views: '10,000',
   },
   {
@@ -162,7 +202,7 @@ const PostsFirstPart = [
     comments: 10,
     shares: 20,
     time: '2 Minute',
-    type: 'News',
+    type: 'Events',
     views: '10,000',
   },
   {
@@ -176,7 +216,7 @@ const PostsFirstPart = [
     comments: 10,
     shares: 20,
     time: '30 Minute',
-    type: 'News',
+    type: 'Events',
     views: '10,000',
   },
 ]
@@ -192,7 +232,7 @@ const PostsSecondPart = [
     CreationDate: 1,
     comments: 10,
     shares: 20,
-    type: 'News',
+    type: 'Events',
   },
   {
     img:
@@ -204,7 +244,7 @@ const PostsSecondPart = [
     CreationDate: 1,
     comments: 10,
     shares: 20,
-    type: 'News',
+    type: 'Events',
   },
   {
     img:
@@ -216,90 +256,51 @@ const PostsSecondPart = [
     CreationDate: 1,
     comments: 10,
     shares: 20,
-    type: 'News',
+    type: 'Events',
   },
 ]
 
-const TopVideosData = [
-  {
-    img:
-      'https://imagesvc.timeincapp.com/v3/mm/image?url=https%3A%2F%2Fewedit.files.wordpress.com%2F2018%2F03%2Fdcs9416.jpg%3Fw%3D2000&w=700&q=85',
-    songName: "I'm Upset",
-    duration: '1h',
-    songAuthor: 'drake',
-    views: 10000,
-    comments: 10,
-  },
-  {
-    img:
-      'https://imagesvc.timeincapp.com/v3/mm/image?url=https%3A%2F%2Fewedit.files.wordpress.com%2F2018%2F03%2Fdcs9416.jpg%3Fw%3D2000&w=700&q=85',
-    songName: "I'm Upset",
-    duration: '1h',
-    songAuthor: 'drake',
-    views: 10000,
-    comments: 10,
-  },
-  {
-    img:
-      'https://imagesvc.timeincapp.com/v3/mm/image?url=https%3A%2F%2Fewedit.files.wordpress.com%2F2018%2F03%2Fdcs9416.jpg%3Fw%3D2000&w=700&q=85',
-    songName: "I'm Upset",
-    duration: '1h',
-    songAuthor: 'drake',
-    views: 10000,
-    comments: 10,
-  },
-  {
-    img:
-      'https://imagesvc.timeincapp.com/v3/mm/image?url=https%3A%2F%2Fewedit.files.wordpress.com%2F2018%2F03%2Fdcs9416.jpg%3Fw%3D2000&w=700&q=85',
-    songName: "I'm Upset",
-    duration: '1h',
-    songAuthor: 'drake',
-    views: 10000,
-    comments: 10,
-  },
-  {
-    img:
-      'https://imagesvc.timeincapp.com/v3/mm/image?url=https%3A%2F%2Fewedit.files.wordpress.com%2F2018%2F03%2Fdcs9416.jpg%3Fw%3D2000&w=700&q=85',
-    songName: "I'm Upset",
-    duration: '1h',
-    songAuthor: 'drake',
-    views: 10000,
-    comments: 10,
-  },
-]
-
-const News = ({ width }) => (
+const EventPage = () => (
   <NewsContainer>
     <Header />
-    {width > 700 && (
-      <div>
-        <NewsSlider />
-        <NewsFilter />
-        <PostsContainer>
-          {PostsFirstPart.map(item => (
-            <Div>
-              <TrendingItem data={item} />
-            </Div>
-          ))}
-          <SubscribeContainer>
-            <Subscribe />
-          </SubscribeContainer>
-          <TopVideoPosts TopVideosData={TopVideosData} />
-          {PostsSecondPart.map(item => (
-            <Div>
-              <TrendingItem data={item} />
-            </Div>
-          ))}
-        </PostsContainer>
-      </div>
-    )}
-    {width <= 700 &&
-      PostsFirstPart.map(item => <MobileComponent data={item} />)}
-    <MoreNews>More News +</MoreNews>
+    <NewsSlliderContainer>
+      <SlliderImg src={newsSliderImg}>
+        <NewsSlliderWrapper>
+          <SliderText>
+            Browse The Latest News
+            <br />
+            On MixTape Madness
+          </SliderText>
+        </NewsSlliderWrapper>
+      </SlliderImg>
+    </NewsSlliderContainer>
+    <FilterContainer>
+      <FilterItem>Trending</FilterItem>
+      <FilterItem>Latest</FilterItem>
+      <FilterItem>MixTapes</FilterItem>
+      <FilterItem>Singles</FilterItem>
+      <FilterItem>Videos</FilterItem>
+    </FilterContainer>
+    <PostsContainer>
+      {PostsFirstPart.map(item => (
+        <Div>
+          <TrendingItem data={item} />
+        </Div>
+      ))}
+      <SubscribeContainer>
+        <Subscribe />
+      </SubscribeContainer>
+      {PostsSecondPart.map(item => (
+        <Div>
+          <TrendingItem data={item} />
+        </Div>
+      ))}
+    </PostsContainer>
+    <EventAdvertisement />
     <FooterContainer>
       <Footer />
     </FooterContainer>
   </NewsContainer>
 )
 
-export default newsEnhancer(News)
+export default EventPage

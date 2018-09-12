@@ -89,15 +89,15 @@ const Views = styled.span`
 
 const TrendingItem = ({ data, blog }) => (
   <TrendingItemContainer>
-    <PhotoContainer picture={data.picture} />
+    <PhotoContainer picture={data.picture || data.img} />
     <ContentContainer blog={blog}>
       <TypeContainer>
         <Title>
           Trending / <Type>{data.type}</Type>
         </Title>
       </TypeContainer>
-      <Header>{data.header}</Header>
-      <Span color="#666666">{data.text}</Span>
+      <Header>{data.header || data.title}</Header>
+      <Span color="#666666">{data.text || data.PostDescription}</Span>
       <Span color="#000000">
         By <Span color="#FF9D00">{data.author}</Span>
       </Span>

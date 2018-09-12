@@ -87,6 +87,13 @@ const Views = styled.span`
   letter-spacing: 0.7px;
 `
 
+const Description = styled.div`
+  color: #666666;
+  font-size: 12px;
+  letter-spacing: 0.7px;
+  height: 150px;
+`
+
 const TrendingItem = ({ data, blog }) => (
   <TrendingItemContainer>
     <PhotoContainer picture={data.picture || data.img} />
@@ -97,7 +104,7 @@ const TrendingItem = ({ data, blog }) => (
         </Title>
       </TypeContainer>
       <Header>{data.header || data.title}</Header>
-      <Span color="#666666">{data.text || data.PostDescription}</Span>
+      <Description>{data.text || data.PostDescription}</Description>
       <Span color="#000000">
         By <Span color="#FF9D00">{data.author}</Span>
       </Span>

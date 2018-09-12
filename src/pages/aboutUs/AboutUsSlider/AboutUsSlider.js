@@ -20,16 +20,21 @@ const SliderContainer = styled.div`
 `
 
 const SliderHeader = styled.h1`
-  width: 70%;
   color: #fff;
-  font-size: 48px;
   text-align: center;
+  font-size: 56px;
+  letter-spacing: 3.4px;
+  line-height: 1.2;
 `
 
 const AboutUsSlider = () => (
   <SliderContainer image={imgUrl}>
     <SliderHeader>
-      Join Music Music Madness To Have Your Music Played Around The World
+      Join Mixtape Madness
+      <br />
+      to have your music played around
+      <br />
+      the world.
     </SliderHeader>
     <JoinNowBtn />
   </SliderContainer>

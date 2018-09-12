@@ -42,7 +42,6 @@ const ContentContainer = styled.div`
   }
 `
 const TypeContainer = styled.div`
-  margin-bottom: 20px;
   display: flex;
 `
 const Span = styled.span`
@@ -65,7 +64,6 @@ const Type = styled.span`
 const Header = styled.span`
   font-size: 25px;
   word-break: break-word;
-  margin-bottom: 22px;
   ${p => p.height && 'height: 130px'};
   font-weight: bold;
   color: #000000;

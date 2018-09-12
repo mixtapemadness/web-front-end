@@ -45,7 +45,7 @@ const TrendingContainer = styled.div`
   display: flex;
   max-width: 1200px;
   margin: 40px auto;
-  justify-content: space-between;
+  justify-content: space-around;
   @media only screen and (max-width: 1150px) {
     flex-direction: column;
     align-items: center;

@@ -5,6 +5,9 @@ const FilterContainer = styled.div`
   width: 100%;
   display: flex;
   border-bottom: 2px solid #f5f5f5;
+  @media only screen and (max-width: 750px) {
+    flex-direction: column;
+  }
 `
 
 const FilterItem = styled.div`

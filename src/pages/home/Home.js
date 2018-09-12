@@ -92,7 +92,6 @@ const SectionSubHeader = styled.span`
   letter-spacing: 1.1px;
   font-weight: 600;
 `
-// trendingData, haveToListenData, whatsOnVideos, whatsOnData, videoData, mainSliderData,)
 
 const mainSliderData = [SliderPhoto, SliderPhotoSecond]
 

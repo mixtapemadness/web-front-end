@@ -8,6 +8,8 @@ import SoundCloudIcon from 'resources/assets/svg/soundcloud-logo.svg'
 import TwitterIcon from 'resources/assets/svg/twitter-black.svg'
 import FacebookIcon from 'resources/assets/svg/facebook-black.svg'
 import CircleIcon from 'resources/assets/svg/filled-circle.svg'
+import InstagramIcon from 'resources/assets/svg/instagram-black.svg'
+import YouTubeIcon from 'resources/assets/svg/youtube-black.svg'
 
 import footerEnhancer from './footerEnhancer'
 import MobileFooter from './MobileFooter'
@@ -217,8 +219,8 @@ const Footer = ({ width }) => (
                 <SocialIcon hg={17} src={FacebookIcon} alt="soc" />
                 <SocialIcon hg={17} src={CircleIcon} alt="soc" />
                 <SocialIcon hg={35} src={SoundCloudIcon} alt="soc" />
-                <SocialIcon hg={20} alt="soc" />
-                <SocialIcon hg={20} alt="soc" />
+                <SocialIcon hg={23} src={YouTubeIcon} alt="soc" />
+                <SocialIcon hg={19} src={InstagramIcon} alt="soc" />
               </SocialContainer>
               <Line mb={10} />
               <FlexDiv>

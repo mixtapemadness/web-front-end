@@ -1,4 +1,5 @@
 /* eslint operator-linebreak: 0 */
+/* eslint object-curly-newline: 0 */
 import React from 'react'
 import styled from 'styled-components'
 
@@ -285,13 +286,17 @@ const TopVideosData = [
   },
 ]
 
-const News = ({ width }) => (
+const News = ({ width, data, handleFilterCategory, handleSortNews }) => (
   <NewsContainer>
+    {console.log(data, 'data')}
     <Header />
     {width > 700 && (
       <div>
         <NewsSlider />
-        <NewsFilter />
+        <NewsFilter
+          handleSortNews={handleSortNews}
+          handleFilterCategory={handleFilterCategory}
+        />
         <PostsContainer>
           {PostsFirstPart.map(item => (
             <Post data={item} />

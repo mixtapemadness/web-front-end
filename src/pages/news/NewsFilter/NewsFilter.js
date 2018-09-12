@@ -1,3 +1,5 @@
+/* eslint react/jsx-one-expression-per-line: 0 */
+
 import React from 'react'
 import styled from 'styled-components'
 
@@ -22,12 +24,14 @@ const FilterItem = styled.div`
   }
 `
 
-export default () => (
+export default ({ handleFilterCategory, handleSortNews }) => (
   <FilterContainer>
     <FilterItem>Trending</FilterItem>
-    <FilterItem>Latest</FilterItem>
+    <FilterItem onClick={() => handleSortNews('DATE_ASC')}>Latest</FilterItem>
     <FilterItem>MixTapes</FilterItem>
     <FilterItem>Singles</FilterItem>
-    <FilterItem>Videos</FilterItem>
+    <FilterItem onClick={() => handleFilterCategory('VIDEOS')}>
+      Videos
+    </FilterItem>
   </FilterContainer>
 )

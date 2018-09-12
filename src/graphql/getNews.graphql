@@ -1,0 +1,11 @@
+query getPosts($filter:filterPostInput,$sort:sortPostInput) {
+  getPosts(filter:$filter,sort:$sort) {
+		id
+		link
+		name
+    Category{
+      id
+      name
+    }
+  }
+}

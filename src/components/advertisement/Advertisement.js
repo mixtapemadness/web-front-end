@@ -16,7 +16,7 @@ const Container = styled.div`
   align-items: center;
   text-align: center;
   @media only screen and (max-width: 1150px) {
-    width: 61.458%;
+    width: ${p => (p.fromNews === true ? '100%' : '61.458%')};
   }
 `
 
@@ -40,8 +40,8 @@ const ContactUs = styled.span`
   text-transform: capitalize;
   color: #ffffff;
 `
-const Advertisement = () => (
-  <Container>
+const Advertisement = ({ news }) => (
+  <Container fromNews={news}>
     <Upload>Upload To</Upload>
     <MixTape>MixTape</MixTape>
     <MixTape>Madness</MixTape>

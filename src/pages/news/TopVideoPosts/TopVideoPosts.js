@@ -10,7 +10,7 @@ const Container = styled.div`
 `
 
 const AdvertisementContainer = styled.div`
-  width: 777px;
+  width: 64.75%;
   height: 838px;
   margin-top: 24px;
 `
@@ -18,7 +18,7 @@ const AdvertisementContainer = styled.div`
 export default ({ TopVideosData }) => (
   <Container>
     <AdvertisementContainer>
-      <Advertisement />
+      <Advertisement news />
     </AdvertisementContainer>
     <TopVideos data={TopVideosData} />
   </Container>

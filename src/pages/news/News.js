@@ -41,6 +41,16 @@ const Div = styled.div`
 const FooterContainer = styled.div`
   margin-top: 40px;
 `
+
+const MoreNews = styled.span`
+  cursor: pointer;
+  font-size: 14.5px;
+  letter-spacing: 0.9px;
+  color: #000000;
+  font-weight: 600;
+  text-align: center;
+`
+
 const PostsFirstPart = [
   {
     img:
@@ -295,6 +305,7 @@ const News = ({ width }) => (
     )}
     {width <= 700 &&
       PostsFirstPart.map(item => <MobileComponent data={item} />)}
+    <MoreNews>More News +</MoreNews>
     <FooterContainer>
       <Footer />
     </FooterContainer>

@@ -4,8 +4,8 @@ import styled from 'styled-components'
 import BackgroundImage from 'resources/assets/img/music.jpg'
 
 const Container = styled.div`
-  width: 357px;
-  height: 627px;
+  width: 100%;
+  height: 100%;
   background-image: url(${BackgroundImage});
   background-repeat: no-repeat;
   background-size: cover;
@@ -19,32 +19,37 @@ const Container = styled.div`
     width: 61.458%;
   }
 `
-const Span = styled.span`
+
+const Upload = styled.span`
+  font-size: 51px;
   text-transform: capitalize;
   color: #ffffff;
-  ${p => p.color && `color: ${p.color}`};
-  ${p => p.bold && 'font-weight: bold'};
-  ${p => p.size && `font-size: ${p.size}px`};
-  ${p => p.lspacing && `letter-spacing: ${p.lspacing}px`};
-  ${p => p.mb && `margin-bottom: ${p.mb}px`};
-  ${p => p.mt && `margin-top: ${p.mt}px`};
-  ${p => p.color && `color: ${p.color}`};
-  ${p => p.width && `width: ${p.width}px`};
+  font-weight: 600;
 `
-
+const MixTape = styled.span`
+  font-size: 76.5px;
+  letter-spacing: -2.3px;
+  line-height: 1;
+  text-transform: capitalize;
+  color: #ffffff;
+  font-weight: 600;
+`
+const ContactUs = styled.span`
+  font-size: 17.5px;
+  font-weight: 600;
+  text-transform: capitalize;
+  color: #ffffff;
+`
 const Advertisement = () => (
   <Container>
-    <Span size={50} bold>
-      Upload To
-    </Span>
-    <Span size={80} bold>
-      MixTape
+    <Upload>Upload To</Upload>
+    <MixTape>MixTape</MixTape>
+    <MixTape>Madness</MixTape>
+    <ContactUs>
+      Click To Contact Us
       <br />
-      Madness
-    </Span>
-    <Span size={20} width={225}>
-      Click To Contact Us and Find More
-    </Span>
+      and Find More
+    </ContactUs>
   </Container>
 )
 

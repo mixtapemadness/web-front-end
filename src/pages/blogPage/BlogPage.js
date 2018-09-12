@@ -158,6 +158,11 @@ const Div = styled.div`
   }
 `
 
+const AdvertisementContainer = styled.div`
+  width: 357px;
+  height: 627px;
+`
+
 const blogPostData = {
   title: 'AJ Tracey Drops A New Visual For Mimi',
   subTitle: 'AJ Also Talks About His Upcoming Album And Tour',
@@ -271,7 +276,9 @@ const BlogPage = ({ width }) => (
     <MayLikeContainer>
       {width > 450 && (
         <Div>
-          <Advertisement />
+          <AdvertisementContainer>
+            <Advertisement />
+          </AdvertisementContainer>
           {blogPageData.mayLike.map(item => (
             <StyledLink to={`/blog/${item.type}/${item.id}`} key={item.id}>
               <TrendingItem data={item} blog />

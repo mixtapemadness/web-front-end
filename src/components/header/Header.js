@@ -279,7 +279,9 @@ const Header = ({
               </DropDownContent>
             </DropDown>
             <DropDown>
-              <Li>News</Li>
+              <Li>
+                <Link to="/news">News</Link>
+              </Li>
               <DropDownContent>Content</DropDownContent>
             </DropDown>
             <DropDown>

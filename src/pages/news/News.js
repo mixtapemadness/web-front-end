@@ -30,7 +30,7 @@ const PostsContainer = styled.div`
 `
 
 const SubscribeContainer = styled.div`
-  margin: 20px 0;
+  margin: 40px 0;
 `
 const Div = styled.div`
   margin-top: 20px;
@@ -220,57 +220,6 @@ const PostsSecondPart = [
   },
 ]
 
-const TopMusicPosts = [
-  {
-    img:
-      'https://i.pinimg.com/originals/30/35/c0/3035c0dbdb704ec8107ec1140c340702.jpg',
-    title: 'Inside Uk,with 67',
-    PostDescription:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
-    author: 'Mohamed Patal',
-    CreationDate: 1,
-    comments: 10,
-    shares: 20,
-    type: 'News',
-  },
-  {
-    img:
-      'https://i.pinimg.com/originals/30/35/c0/3035c0dbdb704ec8107ec1140c340702.jpg',
-    title: 'Inside Uk,with 67',
-    PostDescription:
-      'Lorem ipsum dolor sit amet,  voluptate velit esse cillum dolore eu fugiat nulla pariatur. ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud.',
-    author: 'Mohamed Patal',
-    CreationDate: 1,
-    comments: 10,
-    shares: 20,
-    type: 'News',
-  },
-  {
-    img:
-      'https://i.pinimg.com/originals/30/35/c0/3035c0dbdb704ec8107ec1140c340702.jpg',
-    title: 'Inside Uk,with 67',
-    PostDescription:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
-    author: 'Mohamed Patal',
-    CreationDate: 1,
-    comments: 10,
-    shares: 20,
-    type: 'News',
-  },
-  {
-    img:
-      'https://i.pinimg.com/originals/30/35/c0/3035c0dbdb704ec8107ec1140c340702.jpg',
-    title: 'Inside Uk,with 67',
-    PostDescription:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
-    author: 'Mohamed Patal',
-    CreationDate: 1,
-    comments: 10,
-    shares: 20,
-    type: 'News',
-  },
-]
-
 const TopVideosData = [
   {
     img:
@@ -335,10 +284,7 @@ const News = ({ width }) => (
           <SubscribeContainer>
             <Subscribe />
           </SubscribeContainer>
-          <TopVideoPosts
-            TopMusicPosts={TopMusicPosts}
-            TopVideosData={TopVideosData}
-          />
+          <TopVideoPosts TopVideosData={TopVideosData} />
           {PostsSecondPart.map(item => (
             <Div>
               <TrendingItem data={item} />

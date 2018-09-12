@@ -2,9 +2,10 @@
 
 import React from 'react'
 import styled from 'styled-components'
-// import { } from '../../../assets/svg/BookingGenius/Twitter.svg'
 import EyeIcon from 'resources/assets/svg/eye.svg'
-import CommentsIcon from 'resources/assets/svg/comments.svg'
+import ClockIcon from 'resources/assets/svg/clock.svg'
+import SignalBars from 'resources/assets/svg/signal-bars.svg'
+import PlayIcon from 'resources/assets/svg/Play.svg'
 
 const TopVideo = styled.div`
   flex: 0 0 115px;
@@ -25,6 +26,9 @@ const Video = styled.div`
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
+  justify-content: center;
+  display: flex;
+  align-items: center;
 `
 
 const VideoDesc = styled.div`
@@ -54,6 +58,7 @@ const VideoDescSongName = styled.div`
 
 const VideoDescDuration = styled.div`
   display: flex;
+  align-items: center;
 `
 
 const VideoDescArtist = styled.div`
@@ -68,41 +73,38 @@ const VideoDescView = styled.div`
   align-items: center;
 `
 
-const VideoDescComments = styled.div`
-  color: #b4b4b4;
-  display: flex;
-  align-items: center;
-`
-
 const Icon = styled.div`
   width: 15px;
-  height: 15px;
+  height: ${p => (p.play ? '19px' : '15px')};
   background-image: url(${porps => porps.src});
   background-size: cover;
   background-position: center center;
   margin-right: 5px;
+  cursor: ${p => (p.play ? 'pointer' : 'default')};
 `
 
 export default ({ data }) => (
   <TopVideo>
-    <Video src={data.img} />
+    <Video src={data.img}>
+      <Icon src={PlayIcon} play />
+    </Video>
     <VideoDesc>
       <VideoDescTop>
         <VideoDescTitle>
           <VideoDescSongName>{data.songName}</VideoDescSongName>
-          <VideoDescDuration>{data.duration}</VideoDescDuration>
+          <VideoDescDuration>
+            <Icon src={ClockIcon} />
+            {data.duration}
+          </VideoDescDuration>
         </VideoDescTitle>
         <VideoDescArtist>{data.songAuthor}</VideoDescArtist>
       </VideoDescTop>
       <VideoDescBottom>
         <VideoDescView>
-          <Icon src={CommentsIcon} />
+          <Icon src={EyeIcon} />
           {data.comments} Views
         </VideoDescView>
-        <VideoDescComments>
-          <Icon src={EyeIcon} />
-          {data.views} Comments
-        </VideoDescComments>
+        <Icon src={SignalBars} />
       </VideoDescBottom>
     </VideoDesc>
   </TopVideo>

@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import Post from 'components/post'
+import Advertisement from 'components/advertisement'
 import TopVideos from '../TopVideos'
 
 const Container = styled.div`
@@ -9,19 +9,17 @@ const Container = styled.div`
   display: flex;
 `
 
-const Posts = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  flex: 2;
+const AdvertisementContainer = styled.div`
+  width: 64.75%;
+  height: 838px;
+  margin-top: 24px;
 `
 
-export default ({ TopMusicPosts, TopVideosData }) => (
+export default ({ TopVideosData }) => (
   <Container>
-    <Posts>
-      {TopMusicPosts.map(item => (
-        <Post data={item} />
-      ))}
-    </Posts>
+    <AdvertisementContainer>
+      <Advertisement news />
+    </AdvertisementContainer>
     <TopVideos data={TopVideosData} />
   </Container>
 )

@@ -157,7 +157,7 @@ const DropDownContent = styled.div`
   position: absolute;
   background-color: #ffffff;
   top: 62px;
-  padding: 20px;
+  padding: 18px 20px;
   border: 1px solid #e7e7e7;
   justify-content: space-between;
   width: 310px;
@@ -180,6 +180,10 @@ const Join = styled.div`
   cursor: pointer;
   background: transparent;
   padding: 0px 12px;
+  justify-content: center;
+  font-size: 13px;
+  letter-spacing: 0.8px;
+  color: #000000;
 `
 const DotsDropDown = styled.div`
   position: relative;
@@ -193,6 +197,7 @@ const DotsDropDownContent = styled.div`
   width: 208px;
   min-height: 278px;
   display: ${p => (p.dotsMenu === true ? 'block' : 'none')};
+
   ul {
     list-style: none;
     font-size: 14px;
@@ -216,6 +221,12 @@ const Line = styled.div`
 const Div = styled.div`
   display: flex;
   align-items: flex-end;
+`
+
+const DropDownItem = styled.span`
+  font-size: 13px;
+  letter-spacing: 0.8px;
+  color: #000000;
 `
 
 const Header = ({
@@ -248,27 +259,29 @@ const Header = ({
               <Li active>Music</Li>
               <DropDownContent>
                 <div>
-                  <span>Top 100</span>
-                  <span>Top 30</span>
-                  <span>Hottest</span>
-                  <span>Latest</span>
+                  <DropDownItem>Top 100</DropDownItem>
+                  <DropDownItem>Top 30</DropDownItem>
+                  <DropDownItem>Hottest</DropDownItem>
+                  <DropDownItem>Latest</DropDownItem>
                 </div>
                 <div>
-                  <span>Trending</span>
-                  <span>Hottest</span>
-                  <span>Singles</span>
-                  <span>Mixtapes</span>
+                  <DropDownItem>Trending</DropDownItem>
+                  <DropDownItem>Hottest</DropDownItem>
+                  <DropDownItem>Singles</DropDownItem>
+                  <DropDownItem>Mixtapes</DropDownItem>
                 </div>
                 <div>
-                  <span>Videos</span>
-                  <span>Browse</span>
-                  <span>Albums</span>
+                  <DropDownItem>Videos</DropDownItem>
+                  <DropDownItem>Browse</DropDownItem>
+                  <DropDownItem>Albums</DropDownItem>
                   <Join>Join MM</Join>
                 </div>
               </DropDownContent>
             </DropDown>
             <DropDown>
-              <Li>News</Li>
+              <Li>
+                <Link to="/news">News</Link>
+              </Li>
               <DropDownContent>Content</DropDownContent>
             </DropDown>
             <DropDown>

@@ -12,6 +12,9 @@ const Container = styled.div`
     width: 61.458%;
     margin-top: 20px;
   }
+  @media only screen and (max-width: 450px) {
+    width: 90%;
+  }
 `
 
 const PhotoContainer = styled.div`
@@ -74,23 +77,26 @@ const Img = styled.img`
   ${p => p.height && `height: ${p.height}px`};
 `
 const Name = styled.span`
-  font-size: 30px;
-  color: black;
-  margin-bottom: 10px;
+  font-weight: 600;
+  font-size: 19.5px;
+  letter-spacing: 1.2px;
+  line-height: 1.08;
+  margin-bottom: 16px;
 `
 const Text = styled.span`
   color: #666666;
-  font-size: 14px;
   word-break: break-word;
-  ${p => p.color && `color: ${p.color}`};
-  ${p => p.bold && 'font-weight: bold'};
-  ${p => p.size && `font-size: ${p.size}`};
-  ${p => p.lspacing && `letter-spacing: ${p.lspacing}px`};
-  ${p => p.mb && `margin-bottom: ${p.mb}px`};
-  ${p => p.mt && `margin-top: ${p.mt}px`};
-  ${p => p.ml && `margin-left: ${p.ml}px`};
+  font-size: 14.5px;
+  line-height: 1.45;
+  letter-spacing: 0.9px;
 `
 
+const Views = styled.span`
+  font-size: 12.5px;
+  letter-spacing: 0.8px;
+  color: #666666;
+  margin-left: 7px;
+`
 const Video = ({ data }) => (
   <Container>
     <PhotoContainer picture={data.picture}>
@@ -105,10 +111,10 @@ const Video = ({ data }) => (
       <RightSide>
         <FlexDiv>
           <Img src={ViewsIcon} alt="view" height={20} />
-          <Text mt={2} ml={7}>
+          <Views>
             {data.views}
             {' Views'}
-          </Text>
+          </Views>
         </FlexDiv>
         <FlexDiv jc="flex-end" height="100%" align="flex-end">
           <Img src={SignalBarsIcon} alt="bars" height={18} />

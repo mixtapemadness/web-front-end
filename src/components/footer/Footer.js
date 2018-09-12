@@ -33,22 +33,26 @@ const ListContainer = styled.div`
   ${props => props.mr && `margin-right: ${props.mr}px`};
 `
 const ContentHeader = styled.span`
-  color: black;
-  font-size: 20px;
+  font-size: 16.5px;
+  letter-spacing: 1px;
+  color: #000000;
+  font-weight: 600;
 `
 const List = styled.ul`
   margin: 0;
   padding: 0;
   margin-top: 20px;
-  color: #979797;
-  font-size: 15px;
-  font-weight: 600;
-  list-style: none;
 `
 const ListItem = styled.li`
   text-transform: uppercase;
   margin-bottom: 15px;
   letter-spacing: 1px;
+  font-weight: 600;
+  list-style: none;
+  letter-spacing: 0.8px;
+  opacity: 0.5;
+  font-size: 13px;
+  color: rgba(0, 0, 0, 0.5);
 `
 const UploadContainer = styled.div`
   display: flex;
@@ -56,8 +60,6 @@ const UploadContainer = styled.div`
 `
 const UploadButton = styled.button`
   border: 1px solid black;
-  width: 220px;
-  height: 46px;
   background-color: transparent;
   text-transform: uppercase;
   outline: none;
@@ -66,6 +68,8 @@ const UploadButton = styled.button`
   font-size: 16px;
   letter-spacing: 2px;
   margin-top: 20px;
+  width: 219px;
+  height: 47px;
 `
 const SocialContainer = styled.div`
   display: flex;
@@ -80,17 +84,38 @@ const SignUpContainer = styled.div`
   align-items: center;
 `
 const Input = styled.input`
-  height: 44px;
+  height: 45px;
   width: 160px;
   border: 1px solid black;
   padding-left: 15px;
   border-right: 0;
   outline: none;
   background-color: transparent;
+  font-size: 12px;
   box-sizing: content-box;
+  ::-webkit-input-placeholder {
+    font-size: 10.5px;
+    color: rgba(0, 0, 0, 0.8);
+    font-weight: 600;
+  }
+  ::-moz-placeholder {
+    font-size: 10.5px;
+    color: rgba(0, 0, 0, 0.8);
+    font-weight: 600;
+  }
+  :-ms-input-placeholder {
+    font-size: 10.5px;
+    color: rgba(0, 0, 0, 0.8);
+    font-weight: 600;
+  }
+  :-moz-placeholder {
+    font-size: 10.5px;
+    color: rgba(0, 0, 0, 0.8);
+    font-weight: 600;
+  }
 `
 const SignUpButton = styled.button`
-  height: 46px;
+  height: 47px;
   width: 100px;
   background-color: black;
   color: #ffffff;
@@ -125,6 +150,7 @@ const Flex = styled.div`
   display: flex;
 `
 const Span = styled.span`
+  font-weight: 600;
   ${props => props.fsize && `font-size: ${props.fsize}px`};
   ${props => props.color && `color: ${props.color}`};
   ${props => props.mr && `margin-right: ${props.mr}px;`}
@@ -179,7 +205,7 @@ const Footer = ({ width }) => (
               <ContentHeader>For Artists</ContentHeader>
               <UploadButton>Upload to mm</UploadButton>
             </UploadContainer>
-            <div style={{ maxWidth: '280px' }}>
+            <div>
               <ContentHeader>Sign up for our newsletter</ContentHeader>
               <SignUpContainer>
                 <Input placeholder="email@example.com" />
@@ -208,18 +234,18 @@ const Footer = ({ width }) => (
           <Line mt={20} mb={20} />
           <FlexDiv>
             <div>
-              <Span fsize={15} color="black">
+              <Span fsize={13} color="#000000">
                 Mixtape Madness
               </Span>
             </div>
             <Flex>
-              <Span fsize={15} color="black">
+              <Span fsize={13} color="#000000">
                 Help
               </Span>
-              <Span fsize={15} color="black" ml={10}>
+              <Span fsize={13} color="#000000" ml={10}>
                 Terms
               </Span>
-              <Span fsize={15} color="black" ml={10}>
+              <Span fsize={13} color="#000000" ml={10}>
                 Privacy
               </Span>
             </Flex>

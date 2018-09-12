@@ -4,7 +4,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 import Header from 'components/header'
-import Post from 'components/post'
+import TrendingItem from 'components/trendingItem'
 import Subscribe from 'components/subscribe'
 import Footer from 'components/footer'
 import MobileComponent from 'components/mobileComponent'
@@ -27,10 +27,29 @@ const PostsContainer = styled.div`
   justify-content: center;
   flex-wrap: wrap;
   margin-top: 20px;
+  justify-content: space-between;
 `
 
 const SubscribeContainer = styled.div`
-  margin: 20px 0;
+  margin: 40px 0;
+`
+const Div = styled.div`
+  margin-top: 20px;
+  justify-content: center;
+  display: flex;
+`
+
+const FooterContainer = styled.div`
+  margin-top: 40px;
+`
+
+const MoreNews = styled.span`
+  cursor: pointer;
+  font-size: 14.5px;
+  letter-spacing: 0.9px;
+  color: #000000;
+  font-weight: 600;
+  text-align: center;
 `
 
 const PostsFirstPart = [
@@ -39,108 +58,125 @@ const PostsFirstPart = [
       'https://i.pinimg.com/originals/30/35/c0/3035c0dbdb704ec8107ec1140c340702.jpg',
     title: 'Inside Uk,with 67',
     PostDescription:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
     author: 'Mohamed Patal',
     CreationDate: 1,
     comments: 10,
     shares: 20,
     time: '1 Minute',
+    type: 'News',
+    views: '10,000',
   },
   {
     img:
       'https://i.pinimg.com/originals/30/35/c0/3035c0dbdb704ec8107ec1140c340702.jpg',
     title: 'Inside Uk,with 67',
     PostDescription:
-      'Lorem ipsum dolor sit amet,  voluptate velit esse cillum dolore eu fugiat nulla pariatur.Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+      'Lorem ipsum dolor sit amet,  voluptate velit esse cillum dolore eu fugiat nulla pariatur.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
     author: 'Mohamed Patal',
     CreationDate: 1,
     comments: 10,
     shares: 20,
     time: '1 Minute',
+    type: 'News',
   },
   {
     img:
       'https://i.pinimg.com/originals/30/35/c0/3035c0dbdb704ec8107ec1140c340702.jpg',
     title: 'Inside Uk,with 67',
     PostDescription:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
     author: 'Mohamed Patal',
     CreationDate: 1,
     comments: 10,
     shares: 20,
     time: '1 Minute',
+    type: 'News',
+    views: '10,000',
   },
   {
     img:
       'https://i.pinimg.com/originals/30/35/c0/3035c0dbdb704ec8107ec1140c340702.jpg',
     title: 'Inside Uk,with 67',
     PostDescription:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Duis aute irure dolor in reprehenderit in voluptate velit.',
     author: 'Mohamed Patal',
     CreationDate: 1,
     comments: 10,
     shares: 20,
     time: '1 Minute',
+    type: 'News',
+    views: '10,000',
   },
   {
     img:
       'https://i.pinimg.com/originals/30/35/c0/3035c0dbdb704ec8107ec1140c340702.jpg',
     title: 'Inside Uk,with 67',
     PostDescription:
-      'Lorem ipsum dolor sit amet,  voluptate velit esse cillum dolore eu fugiat nulla pariatur.Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+      'Lorem ipsum dolor sit amet,  voluptate velit esse cillum dolore eu fugiat nulla pariatur ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud.',
     author: 'Mohamed Patal',
     CreationDate: 1,
     comments: 10,
     shares: 20,
     time: '9 Minute',
+    type: 'News',
+    views: '10,000',
   },
   {
     img:
       'https://i.pinimg.com/originals/30/35/c0/3035c0dbdb704ec8107ec1140c340702.jpg',
     title: 'Inside Uk,with 67',
     PostDescription:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
     author: 'Mohamed Patal',
     CreationDate: 1,
     comments: 10,
     shares: 20,
     time: '5 Minute',
+    type: 'News',
+    views: '10,000',
   },
   {
     img:
       'https://i.pinimg.com/originals/30/35/c0/3035c0dbdb704ec8107ec1140c340702.jpg',
     title: 'Inside Uk,with 67',
     PostDescription:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Duis aute irure dolor in reprehenderit.',
     author: 'Mohamed Patal',
     CreationDate: 1,
     comments: 10,
     shares: 20,
     time: '10 Minute',
+    type: 'News',
+    views: '10,000',
   },
   {
     img:
       'https://i.pinimg.com/originals/30/35/c0/3035c0dbdb704ec8107ec1140c340702.jpg',
     title: 'Inside Uk,with 67',
     PostDescription:
-      'Lorem ipsum dolor sit amet,  voluptate velit esse cillum dolore eu fugiat nulla pariatur.Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+      'Lorem ipsum dolor sit amet,  voluptate velit esse cillum dolore eu fugiat nulla pariatur ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud.',
     author: 'Mohamed Patal',
     CreationDate: 1,
     comments: 10,
     shares: 20,
     time: '2 Minute',
+    type: 'News',
+    views: '10,000',
   },
   {
     img:
       'https://i.pinimg.com/originals/30/35/c0/3035c0dbdb704ec8107ec1140c340702.jpg',
     title: 'Inside Uk,with 67',
     PostDescription:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Duis aute irure dolor in reprehenderit.',
     author: 'Mohamed Patal',
     CreationDate: 1,
     comments: 10,
     shares: 20,
     time: '30 Minute',
+    type: 'News',
+    views: '10,000',
   },
 ]
 
@@ -150,91 +186,48 @@ const PostsSecondPart = [
       'https://i.pinimg.com/originals/30/35/c0/3035c0dbdb704ec8107ec1140c340702.jpg',
     title: 'Inside Uk,with 67',
     PostDescription:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Duis aute irure dolor.',
     author: 'Mohamed Patal',
     CreationDate: 1,
     comments: 10,
     shares: 20,
+    type: 'News',
   },
   {
     img:
       'https://i.pinimg.com/originals/30/35/c0/3035c0dbdb704ec8107ec1140c340702.jpg',
     title: 'Inside Uk,with 67',
     PostDescription:
-      'Lorem ipsum dolor sit amet,  voluptate velit esse cillum dolore eu fugiat nulla pariatur.Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+      'Lorem ipsum dolor sit amet,  voluptate velit esse cillum dolore eu fugiat nulla pariatur ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud.',
     author: 'Mohamed Patal',
     CreationDate: 1,
     comments: 10,
     shares: 20,
+    type: 'News',
   },
   {
     img:
       'https://i.pinimg.com/originals/30/35/c0/3035c0dbdb704ec8107ec1140c340702.jpg',
     title: 'Inside Uk,with 67',
     PostDescription:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Duis aute irure dolor in reprehenderit.',
     author: 'Mohamed Patal',
     CreationDate: 1,
     comments: 10,
     shares: 20,
+    type: 'News',
   },
   {
     img:
       'https://i.pinimg.com/originals/30/35/c0/3035c0dbdb704ec8107ec1140c340702.jpg',
     title: 'Inside Uk,with 67',
     PostDescription:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Duis aute irure.',
     author: 'Mohamed Patal',
     CreationDate: 1,
     comments: 10,
     shares: 20,
-  },
-]
-
-const TopMusicPosts = [
-  {
-    img:
-      'https://i.pinimg.com/originals/30/35/c0/3035c0dbdb704ec8107ec1140c340702.jpg',
-    title: 'Inside Uk,with 67',
-    PostDescription:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-    author: 'Mohamed Patal',
-    CreationDate: 1,
-    comments: 10,
-    shares: 20,
-  },
-  {
-    img:
-      'https://i.pinimg.com/originals/30/35/c0/3035c0dbdb704ec8107ec1140c340702.jpg',
-    title: 'Inside Uk,with 67',
-    PostDescription:
-      'Lorem ipsum dolor sit amet,  voluptate velit esse cillum dolore eu fugiat nulla pariatur.Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-    author: 'Mohamed Patal',
-    CreationDate: 1,
-    comments: 10,
-    shares: 20,
-  },
-  {
-    img:
-      'https://i.pinimg.com/originals/30/35/c0/3035c0dbdb704ec8107ec1140c340702.jpg',
-    title: 'Inside Uk,with 67',
-    PostDescription:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-    author: 'Mohamed Patal',
-    CreationDate: 1,
-    comments: 10,
-    shares: 20,
-  },
-  {
-    img:
-      'https://i.pinimg.com/originals/30/35/c0/3035c0dbdb704ec8107ec1140c340702.jpg',
-    title: 'Inside Uk,with 67',
-    PostDescription:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-    author: 'Mohamed Patal',
-    CreationDate: 1,
-    comments: 10,
-    shares: 20,
+    type: 'News',
   },
 ]
 
@@ -299,24 +292,28 @@ const News = ({ width, data, handleFilterCategory, handleSortNews }) => (
         />
         <PostsContainer>
           {PostsFirstPart.map(item => (
-            <Post data={item} />
+            <Div>
+              <TrendingItem data={item} />
+            </Div>
           ))}
           <SubscribeContainer>
             <Subscribe />
           </SubscribeContainer>
-          <TopVideoPosts
-            TopMusicPosts={TopMusicPosts}
-            TopVideosData={TopVideosData}
-          />
+          <TopVideoPosts TopVideosData={TopVideosData} />
           {PostsSecondPart.map(item => (
-            <Post data={item} />
+            <Div>
+              <TrendingItem data={item} />
+            </Div>
           ))}
         </PostsContainer>
       </div>
     )}
     {width <= 700 &&
       PostsFirstPart.map(item => <MobileComponent data={item} />)}
-    <Footer />
+    <MoreNews>More News +</MoreNews>
+    <FooterContainer>
+      <Footer />
+    </FooterContainer>
   </NewsContainer>
 )
 

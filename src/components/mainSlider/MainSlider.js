@@ -345,19 +345,21 @@ const Span = styled.span`
   @media only screen and (max-width: 950px) {
     font-size: 60px;
   }
+  @media only screen and (max-width: 740px) {
+    font-size: 45px;
+  }
 `
 const LatestSingles = styled.button`
-  border: 1px solid #ff9d00;
+  font-size: 15.5px;
+  letter-spacing: 0.9px;
+  width: 189px;
+  height: 40px;
+  border: solid 1.5px #ffa019;
   background: transparent;
-  border-radius: 15px;
-  color: white;
-  font-weight: bold;
-  outline: none;
-  padding: 10px 5px;
-  width: 150px;
+  color: #ffffff;
+  font-weight: 600;
+  border-radius: 25px;
   cursor: pointer;
-  margin-top: 30px;
-  box-sizing: content-box;
 `
 const FlexDiv = styled.div`
   width: 100%;

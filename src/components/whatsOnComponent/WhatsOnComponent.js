@@ -19,6 +19,9 @@ const Container = styled.div`
       margin-left: 0px;
     }
   }
+  @media only screen and (max-width: 450px) {
+    width: 90%;
+  }
 `
 
 const PhotoContainer = styled.div`
@@ -35,7 +38,6 @@ const ContentContainer = styled.div`
   width: calc(100% - 30px);
   padding: 20px 15px;
   display: flex;
-  height: 107px;
   box-sizing: content-box;
   @media only screen and (max-width: 850px) {
     height: auto;

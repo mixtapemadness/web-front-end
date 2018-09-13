@@ -236,6 +236,7 @@ const Header = ({
   width,
   burgerOpen,
   toggleBurgerOpen,
+  toggleSearch,
 }) => (
   <HeaderContainer bottomBorder={bottomBorder}>
     <ContentContainer>
@@ -326,7 +327,11 @@ const Header = ({
                 </ul>
               </DotsDropDownContent>
             </DotsDropDown>
-            <Search src={SearchIcon} alt="search" />
+            <Search
+              src={SearchIcon}
+              alt="search"
+              onClick={() => toggleSearch()}
+            />
           </Div>
         )}
       </LeftSide>

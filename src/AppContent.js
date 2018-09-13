@@ -7,8 +7,9 @@ import AboutUs from 'pages/aboutUs'
 import AuthorPage from 'pages/authorPage'
 import News from 'pages/news'
 import EventPage from 'pages/eventPage'
+import Search from 'components/search'
 
-const App = () => (
+const AppContent = ({ searchOpened, toggleSearch }) => (
   <Fragment>
     <Switch>
       <Route exact path="/" component={Home} />
@@ -18,7 +19,8 @@ const App = () => (
       <Route path="/news" component={News} />
       <Route path="/events" component={EventPage} />
     </Switch>
+    {searchOpened && <Search toggleSearch={toggleSearch} />}
   </Fragment>
 )
 
-export default App
+export default AppContent

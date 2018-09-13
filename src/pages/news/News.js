@@ -2,7 +2,6 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import Header from 'components/header'
 import TrendingItem from 'components/trendingItem'
 import Subscribe from 'components/subscribe'
 import Footer from 'components/footer'
@@ -270,7 +269,6 @@ const TopVideosData = [
 
 const News = ({ width }) => (
   <NewsContainer>
-    <Header />
     {width > 700 && (
       <div>
         <NewsSlider />

@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import Header from 'components/header'
 import TrendingItem from 'components/trendingItem'
 import Footer from 'components/footer'
 import Subscribe from 'components/subscribe'
@@ -265,7 +264,6 @@ const PostsSecondPart = [
 
 const EventPage = () => (
   <NewsContainer>
-    <Header />
     <NewsSlliderContainer>
       <SlliderImg src={newsSliderImg}>
         <NewsSlliderWrapper>

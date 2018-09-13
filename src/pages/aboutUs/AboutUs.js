@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import Header from 'components/header'
 import Footer from 'components/footer'
 import AboutUsSlider from './AboutUsSlider'
 import Grid from './Grid'
@@ -48,7 +47,6 @@ const girdData = [
 
 export default () => (
   <AboutUsContainer>
-    <Header />
     <AboutUsSlider />
     <Grid data={girdData} />
     <FooterContainer>

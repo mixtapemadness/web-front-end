@@ -2,7 +2,6 @@ import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
-import Header from 'components/header'
 import MainSlider from 'components/mainSlider'
 import TrendingItem from 'components/trendingItem'
 import Footer from 'components/footer'
@@ -239,7 +238,6 @@ const videoData = [
 
 const Home = ({ width }) => (
   <div>
-    <Header />
     <MainSlider data={mainSliderData} />
     <TrendingContainer>
       {trendingData.map(item => (

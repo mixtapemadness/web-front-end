@@ -5,7 +5,6 @@ import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
-import Header from 'components/header'
 import BlogPost from 'components/blogPost'
 import YouTubeVideo from 'components/youTubeVideo'
 import TrendingItem from 'components/trendingItem'
@@ -241,7 +240,6 @@ const blogPageData = {
 
 const BlogPage = ({ width }) => (
   <div>
-    <Header bottomBorder />
     <Heading>
       <TitleContainer>
         <BlogTitle>{blogPageData.blogPostData.title}</BlogTitle>

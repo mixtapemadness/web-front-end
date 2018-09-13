@@ -7,7 +7,7 @@ const Container = styled.div`
   width: 100%;
   height: 100%;
   background-color: #f7941d;
-  z-index: 1;
+  z-index: 3;
   opacity: 0.89;
   overflow-y: auto;
 `

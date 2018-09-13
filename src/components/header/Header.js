@@ -3,22 +3,24 @@ import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
-import SearchIcon from 'resources/assets/svg/search.svg'
-import DotsIcon from 'resources/assets/svg/ellipsis.svg'
-import TwitterIcon from 'resources/assets/svg/twitter-logo.svg'
-import FacebookIcon from 'resources/assets/svg/facebook-app-logo.svg'
-import InstagramIcon from 'resources/assets/svg/instagram-logo.svg'
-import YoutubeIcon from 'resources/assets/svg/youtube.svg'
-import BurgerIcon from 'resources/assets/svg/burger.svg'
+import FacebookIcon from 'resources/assets/svgComponents/Facebook'
+import TwitterIcon from 'resources/assets/svgComponents/Twitter'
+import InstagramIcon from 'resources/assets/svgComponents/Instagram'
+import YoutubeIcon from 'resources/assets/svgComponents/Youtube'
+import DotsIcon from 'resources/assets/svgComponents/Dots'
+import SearchIcon from 'resources/assets/svgComponents/Search'
 
 import headerEnhancer from './headerEnhancer'
-import MobileBurgerMenu from './MobileBurgerMenu'
 
 const HeaderContainer = styled.div`
   width: 100%;
   height: 120px;
   background-color: #ffffff;
   font-size: 16px;
+  position: fixed;
+  top: 0;
+  z-index: 2;
+  ${p => p.menuOpened && 'background-color: #ff9600'};
   ${p => p.bottomBorder && 'border-bottom: 1px solid #E7E7E7'};
 `
 const ContentContainer = styled.div`
@@ -59,11 +61,10 @@ const Ul = styled.ul`
 `
 const Li = styled.li`
   padding-bottom: 35px;
-  color: grey;
   cursor: pointer;
   font-weight: 600;
   letter-spacing: 1.5px;
-  border-bottom: ${props => (props.active ? '2px solid orange' : null)};
+  border-bottom: ${props => (props.active ? '2px solid #ff9600' : null)};
   :not(:last-child) {
     padding-right: 10px;
   }
@@ -74,9 +75,9 @@ const Li = styled.li`
 const OrangeContainer = styled.div`
   display: flex;
   margin-bottom: 37px;
+  color: ${p => (p.menuOpened ? '#ffffff' : '#ffa019')};
 `
 const Span = styled.span`
-  color: orange;
   font-weight: 600;
   margin-left: 20px;
   letter-spacing: 1.5px;
@@ -91,12 +92,12 @@ const Logo = styled.img`
     height: 30px;
   }
 `
-const Search = styled.img`
+const Search = styled.div`
   width: 20px;
-  margin-bottom: 36px;
+  margin-bottom: 30px;
   cursor: pointer;
 `
-const Dots = styled.img`
+const Dots = styled.div`
   width: 10px;
   margin-bottom: 35px;
   margin-left: 30px;
@@ -104,11 +105,11 @@ const Dots = styled.img`
   cursor: pointer;
 `
 const ContactUsContainer = styled.div`
-  border: 1px solid orange;
+  border: 1px solid ${p => (p.menuOpened ? '#ffffff' : '#ffa019')};
   border-radius: 15px;
   margin-left: 20px;
   padding: 0px 5px;
-  color: orange;
+  color: ${p => (p.menuOpened ? '#ffffff' : '#ffa019')};
   font-weight: 600;
   letter-spacing: 1.5px;
   cursor: pointer;
@@ -117,21 +118,20 @@ const ContactUsContainer = styled.div`
 const SocialIconsContainer = styled.div`
   display: flex;
   align-items: center;
-  margin-bottom: 34px;
+  margin-bottom: 40px;
   margin-left: 10px;
 `
-const SocialIcon = styled.img`
+const SocialIcon = styled.a`
   height: 20px;
   margin-left: 20px;
-  ${props => props.facebook && 'height: 17px'};
-  ${props => props.youtube && 'height: 22px'};
   cursor: pointer;
 `
-const Burger = styled.img`
-  width: 19px;
-  margin-bottom: 36px;
-  margin-right: 40px;
-  cursor: pointer;
+
+const BurgerIcon = styled.div`
+  width: 23px;
+  height: 16px;
+  position: relative;
+  margin: 0px 40px 45px 0px;
   @media only screen and (max-width: 450px) {
     margin-right: 20px;
   }
@@ -139,10 +139,64 @@ const Burger = styled.img`
     margin-right: 5px;
     margin-left: 1px;
   }
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: 0.5s ease-in-out;
+  -moz-transition: 0.5s ease-in-out;
+  -o-transition: 0.5s ease-in-out;
+  transition: 0.5s ease-in-out;
+  cursor: pointer;
+  span {
+    display: block;
+    position: absolute;
+    height: 3px;
+    width: 100%;
+    background: #666666;
+    ${p => p.menuOpened && 'background: #ffffff'} border-radius: 9px;
+    opacity: 1;
+    left: 0;
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+    -webkit-transition: 0.25s ease-in-out;
+    -moz-transition: 0.25s ease-in-out;
+    -o-transition: 0.25s ease-in-out;
+    transition: 0.25s ease-in-out;
+  }
+  span:nth-child(1) {
+    top: 0;
+    ${p => p.menuOpened && 'top: 18px'};
+    ${p => p.menuOpened && 'width: 0%'};
+    ${p => p.menuOpened && 'left: 50%'};
+  }
+  span:nth-child(2) {
+    top: 6px;
+    ${p => p.menuOpened && '-webkit-transform: rotate(45deg)'};
+    ${p => p.menuOpened && '-moz-transform: rotate(45deg)'};
+    ${p => p.menuOpened && '-o-transform: rotate(45deg)'};
+    ${p => p.menuOpened && 'transform: rotate(45deg)'};
+  }
+  span:nth-child(3) {
+    top: 6px;
+    ${p => p.menuOpened && '-webkit-transform: rotate(-45deg)'};
+    ${p => p.menuOpened && '-moz-transform: rotate(-45deg)'};
+    ${p => p.menuOpened && '-o-transform: rotate(-45deg)'};
+    ${p => p.menuOpened && 'transform: rotate(-45deg)'};
+  }
+  span:nth-child(4) {
+    top: 12px;
+    ${p => p.menuOpened && 'top: 18px'};
+    ${p => p.menuOpened && 'width: 0%'};
+    ${p => p.menuOpened && 'left: 50%'};
+  }
 `
 
 const DropDown = styled.div`
   position: relative;
+  color: ${props => (props.menuOpened ? '#ffffff' : '#666666')};
   div {
     display: none;
   }
@@ -234,19 +288,20 @@ const Header = ({
   dotsMenu,
   toggleDotsMenu,
   width,
-  burgerOpen,
-  toggleBurgerOpen,
   toggleSearch,
+  toggleMenu,
+  menuOpened,
 }) => (
-  <HeaderContainer bottomBorder={bottomBorder}>
+  <HeaderContainer bottomBorder={bottomBorder} menuOpened={menuOpened}>
     <ContentContainer>
       <LeftSide>
         <Div>
-          <Burger
-            src={BurgerIcon}
-            alt="burger"
-            onClick={() => toggleBurgerOpen()}
-          />
+          <BurgerIcon menuOpened={menuOpened} onClick={() => toggleMenu()}>
+            <span />
+            <span />
+            <span />
+            <span />
+          </BurgerIcon>
           <Link to="/">
             <Logo
               src="http://www.mixtapemadness.com/assets/images/logo-full.png"
@@ -256,7 +311,7 @@ const Header = ({
         </Div>
         <NavBar>
           <Ul>
-            <DropDown>
+            <DropDown menuOpened={menuOpened}>
               <Li active>Music</Li>
               <DropDownContent>
                 <div>
@@ -279,19 +334,19 @@ const Header = ({
                 </div>
               </DropDownContent>
             </DropDown>
-            <DropDown>
+            <DropDown menuOpened={menuOpened}>
               <Li>
                 <Link to="/news">News</Link>
               </Li>
               <DropDownContent>Content</DropDownContent>
             </DropDown>
-            <DropDown>
+            <DropDown menuOpened={menuOpened}>
               <Li>
                 <Link to="/events">Events</Link>
               </Li>
               <DropDownContent>Content</DropDownContent>
             </DropDown>
-            <DropDown>
+            <DropDown menuOpened={menuOpened}>
               <Li>Video</Li>
               <DropDownContent>Content</DropDownContent>
             </DropDown>
@@ -300,11 +355,12 @@ const Header = ({
         {width > 1050 && (
           <Div>
             <DotsDropDown>
-              <Dots
-                src={DotsIcon}
-                alt="dots"
-                onClick={() => toggleDotsMenu()}
-              />
+              <Dots onClick={() => toggleDotsMenu()}>
+                <DotsIcon
+                  width="10px"
+                  color={menuOpened ? '#ffffff' : '#666666'}
+                />
+              </Dots>
               <DotsDropDownContent dotsMenu={dotsMenu}>
                 <ul>
                   <li>
@@ -327,39 +383,53 @@ const Header = ({
                 </ul>
               </DotsDropDownContent>
             </DotsDropDown>
-            <Search
-              src={SearchIcon}
-              alt="search"
-              onClick={() => toggleSearch()}
-            />
+            <Search onClick={() => toggleSearch()}>
+              <SearchIcon
+                width="20px"
+                color={menuOpened ? '#ffffff' : '#666666'}
+              />
+            </Search>
           </Div>
         )}
       </LeftSide>
       {width > 1050 && (
         <RightSide>
-          <OrangeContainer>
+          <OrangeContainer menuOpened={menuOpened}>
             <Span>Upload</Span>
             <Span>Register</Span>
             <Span>Log In</Span>
-            <ContactUsContainer>Contact Us</ContactUsContainer>
+            <ContactUsContainer menuOpened={menuOpened}>
+              Contact Us
+            </ContactUsContainer>
           </OrangeContainer>
           <SocialIconsContainer>
-            <a href="https://twitter.com/mixtapemadness">
-              <SocialIcon src={TwitterIcon} alt="twitter" />
-            </a>
-            <a href="https://www.facebook.com/MixtapeMadnessUK/">
-              <SocialIcon src={FacebookIcon} facebook alt="facebook" />
-            </a>
-            <a href="https://www.instagram.com/mixtapemadness/">
-              <SocialIcon src={InstagramIcon} facebook alt="insta" />
-            </a>
-            <a href="https://www.youtube.com/user/madaboutmixtapes">
-              <SocialIcon src={YoutubeIcon} youtube alt="youtube" />
-            </a>
+            <SocialIcon href="https://twitter.com/mixtapemadness">
+              <TwitterIcon
+                height="20px"
+                color={menuOpened ? '#ffffff' : '#666666'}
+              />
+            </SocialIcon>
+            <SocialIcon href="https://www.facebook.com/MixtapeMadnessUK/">
+              <FacebookIcon
+                height="17px"
+                color={menuOpened ? '#ffffff' : '#666666'}
+              />
+            </SocialIcon>
+            <SocialIcon href="https://www.instagram.com/mixtapemadness/">
+              <InstagramIcon
+                height="17px"
+                color={menuOpened ? '#ffffff' : '#666666'}
+              />
+            </SocialIcon>
+            <SocialIcon href="https://www.youtube.com/user/madaboutmixtapes">
+              <YoutubeIcon
+                height="22px"
+                color={menuOpened ? '#ffffff' : '#666666'}
+              />
+            </SocialIcon>
           </SocialIconsContainer>
         </RightSide>
       )}
-      {width <= 1050 && <MobileBurgerMenu open={burgerOpen} />}
     </ContentContainer>
   </HeaderContainer>
 )

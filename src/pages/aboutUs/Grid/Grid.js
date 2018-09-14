@@ -3,7 +3,7 @@ import styled from 'styled-components'
 // import DotsIcon from '../../../../assets/svg/MixTape/ellipsis.svg'
 
 const GridContainer = styled.div`
-  width: 1024px;
+  max-width: 1100px;
   padding: 20px 0;
   box-sizing: border-box;
   display: flex;
@@ -12,11 +12,12 @@ const GridContainer = styled.div`
 `
 
 const GridTitle = styled.div`
-  color: #111;
+  color: #000000;
   width: 65%;
   text-align: center;
-  font-size: 34px;
   font-weight: 600;
+  font-size: 38px;
+  letter-spacing: 2.3px;
 `
 
 const GridItems = styled.div`
@@ -30,7 +31,6 @@ const GridItems = styled.div`
 `
 
 const GridItem = styled.div`
-  height: 200px;
   margin: 10px;
   display: flex;
   flex-direction: column;
@@ -39,13 +39,13 @@ const GridItem = styled.div`
 `
 
 const GridItemIcon = styled.div`
-  width: 150px;
-  height: 150px;
-  border: 2px solid #111;
-  border-radius: 100%;
+  min-width: 226px;
+  min-height: 226px;
+  border: solid 1px #000000;
   display: flex;
-  align-items: center;
+  border-radius: 50%;
   justify-content: center;
+  align-items: center;
 `
 
 const Icon = styled.div`
@@ -66,14 +66,11 @@ const GridItemTxt = styled.div`
   margin-top: 20px;
 `
 
-const GridItemtitle = styled.span`
-  font-weight: bold;
-  text-align: center;
-`
-
-const GridItemHelper = styled.span`
-  color: #dfdfdf;
-  text-align: center;
+const GridItemText = styled.span`
+  font-size: 24.5px;
+  letter-spacing: 1.5px;
+  font-weight: 600;
+  color: #000000;
 `
 
 export default props => {
@@ -88,8 +85,8 @@ export default props => {
               <Icon src={item.icon} />
             </GridItemIcon>
             <GridItemTxt>
-              <GridItemtitle>{item.title}</GridItemtitle>
-              <GridItemHelper>{item.helperTxt}</GridItemHelper>
+              <GridItemText>{item.title}</GridItemText>
+              <GridItemText>{item.helperTxt}</GridItemText>
             </GridItemTxt>
           </GridItem>
         ))}

@@ -1,22 +1,39 @@
+/* eslint object-curly-newline: 0 */
+
 import React from 'react'
-import { Switch, Route } from 'react-router-dom'
+import { compose, withStateHandlers } from 'recompose'
 
-import Home from 'pages/home'
-import BlogPage from 'pages/blogPage'
-import AboutUs from 'pages/aboutUs'
-import AuthorPage from 'pages/authorPage'
-import News from 'pages/blog'
+import Header from 'components/header'
+import AppContent from './AppContent'
 
-const App = () => (
-  <div>
-    <Switch>
-      <Route exact path="/" component={Home} />
-      <Route exact path="/blog/category/:filter" component={News} />
-      <Route path="/blog/:category/:slug" component={BlogPage} />
-      <Route path="/aboutus" component={AboutUs} />
-      <Route path="/author" component={AuthorPage} />
-    </Switch>
+const App = ({ toggleSearch, searchOpened, menuOpened, toggleMenu }) => (
+  <div style={{ width: '100%' }}>
+    <Header
+      toggleSearch={toggleSearch}
+      menuOpened={menuOpened}
+      toggleMenu={toggleMenu}
+    />
+    <AppContent
+      searchOpened={searchOpened}
+      toggleSearch={toggleSearch}
+      menuOpened={menuOpened}
+    />
   </div>
 )
 
-export default App
+export default compose(
+  withStateHandlers(
+    () => ({
+      searchOpened: false,
+      menuOpened: false,
+    }),
+    {
+      toggleSearch: ({ searchOpened }) => () => ({
+        searchOpened: !searchOpened,
+      }),
+      toggleMenu: ({ menuOpened }) => () => ({
+        menuOpened: !menuOpened,
+      }),
+    },
+  ),
+)(App)

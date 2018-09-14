@@ -39,7 +39,11 @@ export default () => (
   <NewsSlliderContainer>
     <SlliderImg src={newsSliderImg}>
       <NewsSlliderWrapper>
-        <SliderText>Browse The Latest News On MixTape Madness</SliderText>
+        <SliderText>
+          Browse The Latest News
+          <br />
+          On MixTape Madness
+        </SliderText>
       </NewsSlliderWrapper>
     </SlliderImg>
   </NewsSlliderContainer>

@@ -1,13 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import Header from 'components/header'
 import Footer from 'components/footer'
 import AboutUsSlider from './AboutUsSlider'
 import Grid from './Grid'
 
 const AboutUsContainer = styled.div`
-  max-width: 1200px;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -49,7 +47,6 @@ const girdData = [
 
 export default () => (
   <AboutUsContainer>
-    <Header />
     <AboutUsSlider />
     <Grid data={girdData} />
     <FooterContainer>

@@ -4,10 +4,12 @@ import { Link } from 'react-router-dom'
 
 import AppStoreIcon from 'resources/assets/img/appstore.png'
 import GooglePlayIcon from 'resources/assets/img/googleplay.png'
-import SoundCloudIcon from 'resources/assets/svg/soundcloud-logo.svg'
-import TwitterIcon from 'resources/assets/svg/twitter-black.svg'
-import FacebookIcon from 'resources/assets/svg/facebook-black.svg'
-import CircleIcon from 'resources/assets/svg/filled-circle.svg'
+import FacebookIcon from 'resources/assets/svgComponents/Facebook'
+import TwitterIcon from 'resources/assets/svgComponents/Twitter'
+import InstagramIcon from 'resources/assets/svgComponents/Instagram'
+import YoutubeIcon from 'resources/assets/svgComponents/Youtube'
+import CircleIcon from 'resources/assets/svgComponents/Circle'
+import SoundCloudIcon from 'resources/assets/svgComponents/SoundCloud'
 
 import footerEnhancer from './footerEnhancer'
 import MobileFooter from './MobileFooter'
@@ -17,7 +19,7 @@ const FooterContainer = styled.footer`
   bottom: 0;
   left: 0;
   right: 0;
-  ${p => p.backgroundColor && `background-color: ${p.backgroundColor}`};
+  background-color: ${p => (p.menuOpened ? 'transparent' : '#efefef')};
 `
 const ContentContainer = styled.div`
   padding: 40px 20px;
@@ -35,13 +37,15 @@ const ListContainer = styled.div`
 const ContentHeader = styled.span`
   font-size: 16.5px;
   letter-spacing: 1px;
-  color: #000000;
+  color: ${p => (p.menuOpened ? '#ffffff' : '#000000')};
   font-weight: 600;
 `
 const List = styled.ul`
   margin: 0;
   padding: 0;
   margin-top: 20px;
+  color: ${p => (p.menuOpened ? '#ffffff' : 'rgba(0, 0, 0, 0.5)')};
+  opacity: ${p => (p.menuOpened ? '1' : '0.5')};
 `
 const ListItem = styled.li`
   text-transform: uppercase;
@@ -50,16 +54,15 @@ const ListItem = styled.li`
   font-weight: 600;
   list-style: none;
   letter-spacing: 0.8px;
-  opacity: 0.5;
   font-size: 13px;
-  color: rgba(0, 0, 0, 0.5);
 `
 const UploadContainer = styled.div`
   display: flex;
   flex-direction: column;
 `
 const UploadButton = styled.button`
-  border: 1px solid black;
+  border: 1px solid ${p => (p.menuOpened ? '#ffffff' : '#000000')};
+  color: ${p => (p.menuOpened ? '#ffffff' : '#000000')};
   background-color: transparent;
   text-transform: uppercase;
   outline: none;
@@ -86,7 +89,7 @@ const SignUpContainer = styled.div`
 const Input = styled.input`
   height: 45px;
   width: 160px;
-  border: 1px solid black;
+  border: 1px solid ${p => (p.menuOpened ? '#ffffff' : '#000000')};
   padding-left: 15px;
   border-right: 0;
   outline: none;
@@ -95,30 +98,30 @@ const Input = styled.input`
   box-sizing: content-box;
   ::-webkit-input-placeholder {
     font-size: 10.5px;
-    color: rgba(0, 0, 0, 0.8);
+    color: ${p => (p.menuOpened ? '#ffffff' : 'rgba(0, 0, 0, 0.8)')};
     font-weight: 600;
   }
   ::-moz-placeholder {
     font-size: 10.5px;
-    color: rgba(0, 0, 0, 0.8);
+    color: ${p => (p.menuOpened ? '#ffffff' : 'rgba(0, 0, 0, 0.8)')};
     font-weight: 600;
   }
   :-ms-input-placeholder {
     font-size: 10.5px;
-    color: rgba(0, 0, 0, 0.8);
+    color: ${p => (p.menuOpened ? '#ffffff' : 'rgba(0, 0, 0, 0.8)')};
     font-weight: 600;
   }
   :-moz-placeholder {
     font-size: 10.5px;
-    color: rgba(0, 0, 0, 0.8);
+    color: ${p => (p.menuOpened ? '#ffffff' : 'rgba(0, 0, 0, 0.8)')};
     font-weight: 600;
   }
 `
 const SignUpButton = styled.button`
   height: 47px;
   width: 100px;
-  background-color: black;
-  color: #ffffff;
+  background-color: ${p => (p.menuOpened ? '#ffffff' : '#000000')};
+  color: ${p => (p.menuOpened ? '#ff9600' : '#ffffff')};
   border: 1px solid black;
   border-left: none;
   font-weight: bold;
@@ -132,7 +135,7 @@ const SignUpButton = styled.button`
 const Line = styled.div`
   width: 100%;
   height: 2px;
-  background-color: #979797;
+  background-color: ${p => (p.menuOpened ? '#ffffff' : '#979797')};
   ${props => props.mr && `margin-right: ${props.mr}px;`}
   ${props => props.ml && `margin-left: ${props.ml}px;`}
   ${props => props.mt && `margin-top: ${props.mt}px;`}
@@ -162,21 +165,20 @@ const Anchor = styled.a`
   outline: none;
   text-decoration: none;
 `
-const SocialIcon = styled.img`
+const SocialIcon = styled.div`
   margin-right: 10px;
   cursor: pointer;
-  ${p => p.hg && `height: ${p.hg}px`};
 `
 
-const Footer = ({ width }) => (
+const Footer = ({ width, menuOpened }) => (
   <div>
     {width > 900 && (
-      <FooterContainer backgroundColor="#eeeeee">
+      <FooterContainer menuOpened={menuOpened}>
         <ContentContainer>
           <FlexDiv>
             <ListContainer>
-              <ContentHeader>Music</ContentHeader>
-              <List>
+              <ContentHeader menuOpened={menuOpened}>Music</ContentHeader>
+              <List menuOpened={menuOpened}>
                 <ListItem>Artists</ListItem>
                 <ListItem>Mixtapes</ListItem>
                 <ListItem>Singles</ListItem>
@@ -189,8 +191,10 @@ const Footer = ({ width }) => (
               </List>
             </ListContainer>
             <ListContainer>
-              <ContentHeader>Mixtape Madness</ContentHeader>
-              <List>
+              <ContentHeader menuOpened={menuOpened}>
+                Mixtape Madness
+              </ContentHeader>
+              <List menuOpened={menuOpened}>
                 <ListItem>
                   <Link to="/aboutus">About</Link>
                 </ListItem>
@@ -202,25 +206,62 @@ const Footer = ({ width }) => (
               </List>
             </ListContainer>
             <UploadContainer>
-              <ContentHeader>For Artists</ContentHeader>
-              <UploadButton>Upload to mm</UploadButton>
+              <ContentHeader menuOpened={menuOpened}>For Artists</ContentHeader>
+              <UploadButton menuOpened={menuOpened}>Upload to mm</UploadButton>
             </UploadContainer>
             <div>
-              <ContentHeader>Sign up for our newsletter</ContentHeader>
+              <ContentHeader menuOpened={menuOpened}>
+                Sign up for our newsletter
+              </ContentHeader>
               <SignUpContainer>
-                <Input placeholder="email@example.com" />
-                <SignUpButton>SIGN UP</SignUpButton>
+                <Input
+                  placeholder="email@example.com"
+                  menuOpened={menuOpened}
+                />
+                <SignUpButton menuOpened={menuOpened}>SIGN UP</SignUpButton>
               </SignUpContainer>
-              <ContentHeader>Connect with Mixtape Madness</ContentHeader>
+              <ContentHeader menuOpened={menuOpened}>
+                Connect with Mixtape Madness
+              </ContentHeader>
               <SocialContainer>
-                <SocialIcon hg={20} src={TwitterIcon} alt="soc" />
-                <SocialIcon hg={17} src={FacebookIcon} alt="soc" />
-                <SocialIcon hg={17} src={CircleIcon} alt="soc" />
-                <SocialIcon hg={35} src={SoundCloudIcon} alt="soc" />
-                <SocialIcon hg={20} alt="soc" />
-                <SocialIcon hg={20} alt="soc" />
+                <SocialIcon>
+                  <TwitterIcon
+                    height="20px"
+                    color={menuOpened ? '#ffffff' : '#666666'}
+                  />
+                </SocialIcon>
+                <SocialIcon>
+                  <FacebookIcon
+                    height="17px"
+                    color={menuOpened ? '#ffffff' : '#666666'}
+                  />
+                </SocialIcon>
+                <SocialIcon>
+                  <CircleIcon
+                    height="17px"
+                    color={menuOpened ? '#ffffff' : '#666666'}
+                  />
+                </SocialIcon>
+                <SocialIcon>
+                  <SoundCloudIcon
+                    height="35px"
+                    color={menuOpened ? '#ffffff' : '#666666'}
+                  />
+                </SocialIcon>
+                <SocialIcon>
+                  <YoutubeIcon
+                    height="23px"
+                    color={menuOpened ? '#ffffff' : '#666666'}
+                  />
+                </SocialIcon>
+                <SocialIcon>
+                  <InstagramIcon
+                    height="19px"
+                    color={menuOpened ? '#ffffff' : '#666666'}
+                  />
+                </SocialIcon>
               </SocialContainer>
-              <Line mb={10} />
+              <Line mb={10} menuOpened={menuOpened} />
               <FlexDiv>
                 <Anchor href="/">
                   <AppStore src={AppStoreIcon} />
@@ -231,21 +272,29 @@ const Footer = ({ width }) => (
               </FlexDiv>
             </div>
           </FlexDiv>
-          <Line mt={20} mb={20} />
+          <Line mt={20} mb={20} menuOpened={menuOpened} />
           <FlexDiv>
             <div>
-              <Span fsize={13} color="#000000">
+              <Span fsize={13} color={menuOpened ? '#ffffff' : '#000000'}>
                 Mixtape Madness
               </Span>
             </div>
             <Flex>
-              <Span fsize={13} color="#000000">
+              <Span fsize={13} color={menuOpened ? '#ffffff' : '#000000'}>
                 Help
               </Span>
-              <Span fsize={13} color="#000000" ml={10}>
+              <Span
+                fsize={13}
+                color={menuOpened ? '#ffffff' : '#000000'}
+                ml={10}
+              >
                 Terms
               </Span>
-              <Span fsize={13} color="#000000" ml={10}>
+              <Span
+                fsize={13}
+                color={menuOpened ? '#ffffff' : '#000000'}
+                ml={10}
+              >
                 Privacy
               </Span>
             </Flex>

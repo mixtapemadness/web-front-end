@@ -28,7 +28,7 @@ const FilterItem = styled(Link)`
 export default () => (
   <FilterContainer>
     {/* <FilterItem to="/news/news">Trending</FilterItem> */}
-    <FilterItem to="/blog/category/categorvideos">Videos</FilterItem>
+    <FilterItem to="/blog/category/videos">Videos</FilterItem>
     <FilterItem to="/blog/category/articles">Articles</FilterItem>
     <FilterItem to="/blog/category/events">Events</FilterItem>
     <FilterItem to="/blog/category/reviews">Reviews</FilterItem>

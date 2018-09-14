@@ -4,7 +4,6 @@ import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
-import Header from 'components/header'
 import MainSlider from 'components/mainSlider'
 import PostItem from 'components/postItem'
 import Footer from 'components/footer'
@@ -47,7 +46,7 @@ const TrendingContainer = styled.div`
   display: flex;
   max-width: 1200px;
   margin: 40px auto;
-  justify-content: space-between;
+  justify-content: space-around;
   @media only screen and (max-width: 1150px) {
     flex-direction: column;
     align-items: center;
@@ -94,7 +93,6 @@ const SectionSubHeader = styled.span`
   letter-spacing: 1.1px;
   font-weight: 600;
 `
-// trendingData, haveToListenData, whatsOnVideos, whatsOnData, videoData, mainSliderData,)
 
 const mainSliderData = [SliderPhoto, SliderPhotoSecond]
 
@@ -242,7 +240,6 @@ const videoData = [
 
 const Home = ({ width }) => (
   <div>
-    <Header />
     <MainSlider data={mainSliderData} />
     <TrendingContainer>
       {trendingData.map(item => (

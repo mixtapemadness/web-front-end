@@ -1,11 +1,10 @@
-/* eslint react/jsx-one-expression-per-line: 0 */
+/* eslint jsx-one-expression-per-line: 0 */
 /* eslint operator-linebreak: 0 */
-
+/* eslint jsx-indent: 0 */
 import React from 'react'
 import styled from 'styled-components'
 // import { Link } from 'react-router-dom'
 
-import Header from 'components/header'
 import BlogPost from 'components/blogPost'
 import YouTubeVideo from 'components/youTubeVideo'
 import PostItem from 'components/postItem'
@@ -246,7 +245,6 @@ const blogPageData = {
 
 const BlogPage = ({ width, data }) => (
   <div>
-    <Header bottomBorder />
     <Heading>
       <TitleContainer>
         <BlogTitle>

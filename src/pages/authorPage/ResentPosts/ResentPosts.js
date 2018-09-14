@@ -1,6 +1,7 @@
+/* eslint operator-linebreak: 0 */
 import React from 'react'
 import styled from 'styled-components'
-import Post from 'components/post'
+import PostItem from 'components/postItem'
 import Subscribe from 'components/subscribe'
 import MobileSubscribe from 'components/mobileSubscribe'
 
@@ -10,29 +11,14 @@ const ResentPostsContainer = styled.div`
   flex-direction: column;
 `
 
-const PostsTitle = styled.div`
-  width: 100%;
-  text-align: center;
-`
-
-const PostsTitleTxt = styled.h1`
-  font-size: 36px;
-`
-
 const PostsContainer = styled.div`
   width: 100%;
+  margin: 40px 0;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-around;
 `
-const LoadMore = styled.div`
-  width: 100%;
-  text-align: center;
-  font-size: 18px;
-  font-weight: 800;
-  margin: 20px 0;
-  cursor: pointer;
-`
+
 const ButtonContainer = styled.div`
   display: flex;
   margin: 40px 0;
@@ -57,23 +43,41 @@ const PreviousButton = styled.button`
   font-weight: bold;
   width: 100px;
 `
+const ItemContainer = styled.div`
+  margin-top: 28px;
+  display: flex;
+  justify-content: center;
+`
+const SubscribeContainer = styled.div`
+  margin: 40px 0;
+  max-width: 1100px;
+`
 
 export default ({ PostsFirstPart, PostsSecondPart, width }) => (
   <ResentPostsContainer>
-    <PostsTitle>
-      <PostsTitleTxt>Resent Posts</PostsTitleTxt>
-    </PostsTitle>
     {width > 450 && (
       <PostsContainer>
-        {PostsFirstPart && PostsFirstPart.map(item => <Post data={item} />)}
-        <Subscribe />
-        {PostsSecondPart && PostsSecondPart.map(item => <Post data={item} />)}
-        <LoadMore>Load More +</LoadMore>
+        {PostsFirstPart &&
+          PostsFirstPart.map(item => (
+            <ItemContainer>
+              <PostItem data={item} />
+            </ItemContainer>
+          ))}
+        <SubscribeContainer>
+          <Subscribe />
+        </SubscribeContainer>
+        {PostsSecondPart &&
+          PostsSecondPart.map(item => (
+            <ItemContainer>
+              <PostItem data={item} />
+            </ItemContainer>
+          ))}
       </PostsContainer>
     )}
     {width <= 450 && (
       <PostsContainer>
-        {PostsSecondPart && PostsSecondPart.map(item => <Post data={item} />)}
+        {PostsSecondPart &&
+          PostsSecondPart.map(item => <PostItem data={item} />)}
         <ButtonContainer>
           <PreviousButton>Previous</PreviousButton>
           <NextButton>Next</NextButton>

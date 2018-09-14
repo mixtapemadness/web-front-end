@@ -5,16 +5,16 @@ import Home from 'pages/home'
 import BlogPage from 'pages/blogPage'
 import AboutUs from 'pages/aboutUs'
 import AuthorPage from 'pages/authorPage'
-import News from 'pages/news'
+import News from 'pages/blog'
 
 const App = () => (
   <div>
     <Switch>
       <Route exact path="/" component={Home} />
-      <Route path="/blog/:type/:id" component={BlogPage} />
+      <Route exact path="/blog/category/:filter" component={News} />
+      <Route path="/blog/:category/:slug" component={BlogPage} />
       <Route path="/aboutus" component={AboutUs} />
       <Route path="/author" component={AuthorPage} />
-      <Route path="/news" component={News} />
     </Switch>
   </div>
 )

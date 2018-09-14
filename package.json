@@ -83,6 +83,7 @@
     "apollo-utilities": "1.0.20",
     "autoprefixer": "9.1.5",
     "body-parser": "1.18.3",
+    "cross-env": "5.2.0",
     "express": "4.16.3",
     "fbemitter": "2.1.1",
     "graphql": "14.0.0",

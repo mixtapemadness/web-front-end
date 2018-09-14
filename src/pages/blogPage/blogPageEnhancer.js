@@ -1,7 +1,20 @@
 import { compose, withStateHandlers, lifecycle } from 'recompose'
 import { withRouter } from 'react-router-dom'
 
+import loadDataAsync from '../../hocs'
+import getPosts from '../../graphql/getPosts.graphql'
+
 export default compose(
+  loadDataAsync({
+    query: getPosts,
+    config: {
+      options: props => ({
+        variables: {
+          filter: { slug: props.match.params.slug },
+        },
+      }),
+    },
+  }),
   withRouter,
   withStateHandlers(
     () => ({

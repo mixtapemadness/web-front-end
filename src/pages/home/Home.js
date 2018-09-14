@@ -1,10 +1,12 @@
+/* eslint react/jsx-one-expression-per-line: 0 */
+
 import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
 import Header from 'components/header'
 import MainSlider from 'components/mainSlider'
-import TrendingItem from 'components/trendingItem'
+import PostItem from 'components/postItem'
 import Footer from 'components/footer'
 import Download from 'components/download'
 import WhatsOnComponent from 'components/whatsOnComponent'
@@ -245,7 +247,7 @@ const Home = ({ width }) => (
     <TrendingContainer>
       {trendingData.map(item => (
         <StyledLink to={`/blog/${item.type}/${item.id}`} key={item.id}>
-          <TrendingItem data={item} />
+          <PostItem data={item} />
         </StyledLink>
       ))}
     </TrendingContainer>
@@ -263,6 +265,7 @@ const Home = ({ width }) => (
       <HeaderContainer mb={60}>
         <SectionHeader>What&apos;s On</SectionHeader>
         <SectionSubHeader>
+          {' '}
           Check Out The Latest Music And News This Week
         </SectionSubHeader>
       </HeaderContainer>

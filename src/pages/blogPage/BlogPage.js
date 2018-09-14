@@ -3,12 +3,12 @@
 
 import React from 'react'
 import styled from 'styled-components'
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 
 import Header from 'components/header'
 import BlogPost from 'components/blogPost'
 import YouTubeVideo from 'components/youTubeVideo'
-import TrendingItem from 'components/trendingItem'
+import PostItem from 'components/postItem'
 import Footer from 'components/footer'
 import Advertisement from 'components/advertisement'
 import MobileComponent from 'components/mobileComponent'
@@ -16,7 +16,7 @@ import MobileComponent from 'components/mobileComponent'
 import Musician from 'resources/assets/img/musician1.png'
 import Musician1 from 'resources/assets/img/2pac.jpg'
 import Musician2 from 'resources/assets/img/eminem.jpg'
-import backgroundImage from 'resources/assets/img/background.png'
+// import backgroundImage from 'resources/assets/img/background.png'
 
 import blogPageEnhancer from './blogPageEnhancer'
 
@@ -55,7 +55,7 @@ const BlogSubTitle = styled.span`
 const BackgroundPicture = styled.div`
   width: 100%;
   height: 730px;
-  background-image: url(${backgroundImage});
+  background-image: url(${props => props.src});
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -64,6 +64,11 @@ const BackgroundPicture = styled.div`
     height: 300px;
   }
 `
+// const BackgroundImg = styled.img`
+//     width: 100%;
+//     height:100%;
+// `
+
 const VideoContainer = styled.div`
   width: 78%;
   margin: auto;
@@ -126,13 +131,13 @@ const MayLikeContainer = styled.div`
   }
 `
 
-const StyledLink = styled(Link)`
-  margin-bottom: 60px;
-  @media only screen and (max-width: 1150px) {
-    display: flex;
-    justify-content: center;
-  }
-`
+// const StyledLink = styled(Link)`
+//   margin-bottom: 60px;
+//   @media only screen and (max-width: 1150px) {
+//     display: flex;
+//     justify-content: center;
+//   }
+// `
 const MobileAuthorContainer = styled.div`
   display: none;
   color: #666666;
@@ -239,13 +244,21 @@ const blogPageData = {
   ],
 }
 
-const BlogPage = ({ width }) => (
+const BlogPage = ({ width, data }) => (
   <div>
     <Header bottomBorder />
     <Heading>
       <TitleContainer>
-        <BlogTitle>{blogPageData.blogPostData.title}</BlogTitle>
-        <BlogSubTitle>{blogPageData.blogPostData.subTitle}</BlogSubTitle>
+        <BlogTitle>
+          {data.getPosts && data.getPosts.length > 0
+            ? data.getPosts[0].title
+            : ''}
+        </BlogTitle>
+        <BlogSubTitle>
+          {data.getPosts && data.getPosts.length > 0
+            ? data.getPosts[0].excerpt
+            : ''}
+        </BlogSubTitle>
         <MobileAuthorContainer>
           <span>
             {'By '}
@@ -257,17 +270,29 @@ const BlogPage = ({ width }) => (
         </MobileAuthorContainer>
       </TitleContainer>
     </Heading>
-    <BackgroundPicture />
-    <BlogPost data={blogPageData.blogPostData} />
+    <BackgroundPicture
+      src={
+        data.getPosts && data.getPosts.length > 0
+          ? data.getPosts[0].media[0].imgs.full
+          : ''
+      }
+    />
+    {data.getPosts && data.getPosts.length > 0 ? (
+      <BlogPost data={data.getPosts[0]} />
+    ) : (
+      ''
+    )}
     {width > 450 && (
       <VideoContainer>
         <YouTubeVideo url={blogPageData.video} />
       </VideoContainer>
     )}
     <TagsContainer>
-      {blogPageData.tags.map(item => (
-        <Tag key={item}>{item}</Tag>
-      ))}
+      {data.getPosts && data.getPosts.length > 0
+        ? data.getPosts[0].tags.map(item => (
+            <Tag key={item.id}>{item.name}</Tag>
+          ))
+        : ''}
     </TagsContainer>
     <AlsoLikeHeaderContainer>
       {width > 450 && <span>You May also like</span>}
@@ -280,9 +305,9 @@ const BlogPage = ({ width }) => (
             <Advertisement />
           </AdvertisementContainer>
           {blogPageData.mayLike.map(item => (
-            <StyledLink to={`/blog/${item.type}/${item.id}`} key={item.id}>
-              <TrendingItem data={item} blog />
-            </StyledLink>
+            // <StyledLink to={`/blog/${item.type}/${item.id}`} key={item.id}>
+            // </StyledLink>
+            <PostItem key={item.id} data={item} />
           ))}
         </Div>
       )}

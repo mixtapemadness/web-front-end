@@ -66,6 +66,7 @@ const Paragraph = styled.p`
 `
 const BlogPost = ({ data }) => (
   <PostContainer>
+    {console.log('dataaaaaaa', data)}
     <Heading>
       <LeftSide>
         <Social>
@@ -76,12 +77,12 @@ const BlogPost = ({ data }) => (
         </Social>
         <Span mb={10}>-</Span>
         <Span mb={10}>
-          {data.views}
-          {' Views'} : {data.raiting}
+          {/* {data.views} */}
+          {/* {' Views'} : {data.raiting} */}
         </Span>
         <Span mb={10}>{data.date}</Span>
         <Span>
-          By <Span color="#FF9D00">{data.author}</Span>
+          By <Span color="#FF9D00">{data.author.name}</Span>
         </Span>
       </LeftSide>
       <RightSide>
@@ -89,7 +90,7 @@ const BlogPost = ({ data }) => (
       </RightSide>
     </Heading>
     <Post>
-      <Paragraph>{data.text}</Paragraph>
+      <Paragraph>{data.content}</Paragraph>
     </Post>
   </PostContainer>
 )

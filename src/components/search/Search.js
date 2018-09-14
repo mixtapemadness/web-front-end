@@ -1,6 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
 
+import MobileComponent from 'components/mobileComponent'
+import searchEnhancer from './searchEnhancer'
+
 const Container = styled.div`
   position: fixed;
   top: 0;
@@ -10,6 +13,7 @@ const Container = styled.div`
   z-index: 3;
   opacity: 0.89;
   overflow-y: auto;
+  padding-bottom: 40px;
 `
 const Input = styled.input`
   width: 77%;
@@ -61,13 +65,33 @@ const Close = styled.span`
   cursor: pointer;
   color: #ffffff;
 `
-const Search = ({ toggleSearch }) => (
+const DataContainer = styled.div`
+  max-width: 1200px;
+  margin: 20px auto;
+`
+const ShowMore = styled.div`
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 17px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+`
+const Search = ({ toggleSearch, handleSubmit, data }) => (
   <Container>
+    {console.log('data from search', data)}
     <Close onClick={() => toggleSearch()}>X</Close>
     <InputContainer>
-      <Input placeholder="Search" />
+      <Input placeholder="Search" onKeyPress={handleSubmit} />
     </InputContainer>
+    <DataContainer>
+      {data && data.getPosts && data.getPosts.length > 0
+        ? data.getPosts.map(item => <MobileComponent data={item} fromSearch />)
+        : null}
+    </DataContainer>
+    {data && <ShowMore>Show more +</ShowMore>}
   </Container>
 )
 
-export default Search
+export default searchEnhancer(Search)

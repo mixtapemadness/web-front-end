@@ -7,7 +7,6 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import Header from 'components/header'
 import PostItem from 'components/postItem'
 import Subscribe from 'components/subscribe'
 import Footer from 'components/footer'
@@ -109,7 +108,6 @@ const Blog = ({ width, data, handleLoadMore }) => {
   let Posts = []
   return (
     <NewsContainer>
-      <Header />
       {width > 700 && (
         <div>
           <BlogSlider />

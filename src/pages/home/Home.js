@@ -2,7 +2,6 @@
 
 import React from 'react'
 import styled from 'styled-components'
-import { Link } from 'react-router-dom'
 
 import MainSlider from 'components/mainSlider'
 import PostItem from 'components/postItem'
@@ -22,7 +21,7 @@ import Musician2 from 'resources/assets/img/eminem.jpg'
 
 import homeEnhancer from './homeEnhancer'
 
-const StyledLink = styled(Link)`
+const PostItemContainer = styled.div`
   display: flex;
   justify-content: center;
 `
@@ -243,9 +242,9 @@ const Home = ({ width }) => (
     <MainSlider data={mainSliderData} />
     <TrendingContainer>
       {trendingData.map(item => (
-        <StyledLink to={`/blog/${item.type}/${item.id}`} key={item.id}>
+        <PostItemContainer to={`/blog/${item.type}/${item.id}`} key={item.id}>
           <PostItem data={item} />
-        </StyledLink>
+        </PostItemContainer>
       ))}
     </TrendingContainer>
     <HaveToListenContainer>

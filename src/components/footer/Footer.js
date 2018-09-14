@@ -165,7 +165,7 @@ const Anchor = styled.a`
   outline: none;
   text-decoration: none;
 `
-const SocialIcon = styled.div`
+const SocialIcon = styled.a`
   margin-right: 10px;
   cursor: pointer;
 `
@@ -224,13 +224,13 @@ const Footer = ({ width, menuOpened }) => (
                 Connect with Mixtape Madness
               </ContentHeader>
               <SocialContainer>
-                <SocialIcon>
+                <SocialIcon href="https://twitter.com/mixtapemadness">
                   <TwitterIcon
                     height="20px"
                     color={menuOpened ? '#ffffff' : '#666666'}
                   />
                 </SocialIcon>
-                <SocialIcon>
+                <SocialIcon href="https://www.facebook.com/MixtapeMadnessUK/">
                   <FacebookIcon
                     height="17px"
                     color={menuOpened ? '#ffffff' : '#666666'}
@@ -242,19 +242,19 @@ const Footer = ({ width, menuOpened }) => (
                     color={menuOpened ? '#ffffff' : '#666666'}
                   />
                 </SocialIcon>
-                <SocialIcon>
+                <SocialIcon href="https://soundcloud.com/mixtapemadnessuk">
                   <SoundCloudIcon
                     height="35px"
                     color={menuOpened ? '#ffffff' : '#666666'}
                   />
                 </SocialIcon>
-                <SocialIcon>
+                <SocialIcon href="https://www.youtube.com/user/madaboutmixtapes">
                   <YoutubeIcon
                     height="23px"
                     color={menuOpened ? '#ffffff' : '#666666'}
                   />
                 </SocialIcon>
-                <SocialIcon>
+                <SocialIcon href="https://www.instagram.com/mixtapemadness/">
                   <InstagramIcon
                     height="19px"
                     color={menuOpened ? '#ffffff' : '#666666'}
@@ -263,10 +263,10 @@ const Footer = ({ width, menuOpened }) => (
               </SocialContainer>
               <Line mb={10} menuOpened={menuOpened} />
               <FlexDiv>
-                <Anchor href="/">
+                <Anchor href="https://itunes.apple.com/us/app/mixtape-madness-latest-uk-mixtapes-singles/id1090862433?mt=8&ign-mpt=uo%3D4">
                   <AppStore src={AppStoreIcon} />
                 </Anchor>
-                <Anchor href="/">
+                <Anchor href="https://play.google.com/store/apps/details?id=com.mixtape.madness">
                   <GooglePlay src={GooglePlayIcon} />
                 </Anchor>
               </FlexDiv>

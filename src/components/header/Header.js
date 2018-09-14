@@ -19,6 +19,7 @@ const HeaderContainer = styled.div`
   font-size: 16px;
   position: fixed;
   top: 0;
+  left: 0;
   z-index: 2;
   ${p => p.menuOpened && 'background-color: #ff9600'};
   ${p => p.bottomBorder && 'border-bottom: 1px solid #E7E7E7'};
@@ -153,8 +154,8 @@ const BurgerIcon = styled.div`
     position: absolute;
     height: 3px;
     width: 100%;
-    background: #666666;
-    ${p => p.menuOpened && 'background: #ffffff'} border-radius: 9px;
+    background-color: ${p => (p.menuOpened === true ? '#ffffff' : '#666666')};
+    border-radius: 9px;
     opacity: 1;
     left: 0;
     -webkit-transform: rotate(0deg);
@@ -336,18 +337,20 @@ const Header = ({
             </DropDown>
             <DropDown menuOpened={menuOpened}>
               <Li>
-                <Link to="/news">News</Link>
+                <Link to="/blog/category/news">News</Link>
               </Li>
               <DropDownContent>Content</DropDownContent>
             </DropDown>
             <DropDown menuOpened={menuOpened}>
               <Li>
-                <Link to="/events">Events</Link>
+                <Link to="/blog/category/events">Events</Link>
               </Li>
               <DropDownContent>Content</DropDownContent>
             </DropDown>
             <DropDown menuOpened={menuOpened}>
-              <Li>Video</Li>
+              <Li>
+                <Link to="/blog/category/videos">Video</Link>
+              </Li>
               <DropDownContent>Content</DropDownContent>
             </DropDown>
           </Ul>

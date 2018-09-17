@@ -135,6 +135,7 @@ const BurgerIcon = styled.div`
   margin: 0px 40px 45px 0px;
   @media only screen and (max-width: 450px) {
     margin-right: 20px;
+    margin-bottom: 35px;
   }
   @media only screen and (max-width: 350px) {
     margin-right: 5px;

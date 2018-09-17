@@ -302,7 +302,7 @@ const Footer = ({ width, menuOpened }) => (
         </ContentContainer>
       </FooterContainer>
     )}
-    {width <= 900 && <MobileFooter />}
+    {width <= 900 && <MobileFooter menuOpened={menuOpened} />}
   </div>
 )
 

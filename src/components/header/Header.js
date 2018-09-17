@@ -73,17 +73,17 @@ const Li = styled.li`
     font-size: 13px;
   }
 `
-// const OrangeContainer = styled.div`
-//   display: flex;
-//   margin-bottom: 37px;
-//   color: ${p => (p.menuOpened ? '#ffffff' : '#ffa019')};
-// `
-// const Span = styled.span`
-//   font-weight: 600;
-//   margin-left: 20px;
-//   letter-spacing: 1.5px;
-//   cursor: pointer;
-// `
+const OrangeContainer = styled.div`
+  display: flex;
+  margin-bottom: 37px;
+  color: ${p => (p.menuOpened ? '#ffffff' : '#ffa019')};
+`
+const Span = styled.span`
+  font-weight: 600;
+  margin-left: 20px;
+  letter-spacing: 1.5px;
+  cursor: pointer;
+`
 const Logo = styled.img`
   height: 50px;
   padding-bottom: 20px;
@@ -105,16 +105,16 @@ const Dots = styled.div`
   margin-right: 10px;
   cursor: pointer;
 `
-// const ContactUsContainer = styled.div`
-//   border: 1px solid ${p => (p.menuOpened ? '#ffffff' : '#ffa019')};
-//   border-radius: 15px;
-//   margin-left: 20px;
-//   padding: 0px 5px;
-//   color: ${p => (p.menuOpened ? '#ffffff' : '#ffa019')};
-//   font-weight: 600;
-//   letter-spacing: 1.5px;
-//   cursor: pointer;
-// `
+const ContactUsContainer = styled.div`
+  border: 1px solid ${p => (p.menuOpened ? '#ffffff' : '#ffa019')};
+  border-radius: 15px;
+  margin-left: 20px;
+  padding: 0px 5px;
+  color: ${p => (p.menuOpened ? '#ffffff' : '#ffa019')};
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  cursor: pointer;
+`
 
 const SocialIconsContainer = styled.div`
   display: flex;
@@ -398,14 +398,14 @@ const Header = ({
       </LeftSide>
       {width > 1050 && (
         <RightSide>
-          {/* <OrangeContainer menuOpened={menuOpened}>
+          <OrangeContainer menuOpened={menuOpened}>
             <Span>Upload</Span>
             <Span>Register</Span>
             <Span>Log In</Span>
             <ContactUsContainer menuOpened={menuOpened}>
               Contact Us
             </ContactUsContainer>
-          </OrangeContainer> */}
+          </OrangeContainer>
           <SocialIconsContainer>
             <SocialIcon href="https://twitter.com/mixtapemadness">
               <TwitterIcon

@@ -13,6 +13,10 @@ const ProfileContainer = styled.div`
   @media only screen and (max-width: 1024px) {
     flex-direction: column;
   }
+  @media only screen and (max-width: 450px) {
+    width: 90%;
+    margin: 30px auto 0px auto;
+  }
 `
 
 const ProfileImg = styled.div`
@@ -118,9 +122,6 @@ const ProfileDescTxt = styled.span`
   font-size: 14px;
   letter-spacing: 0.8px;
   font-weight: 800;
-  @media only screen and (max-width: 450px) {
-    font-size: 16px;
-  }
 `
 
 const ShowMore = styled.div`

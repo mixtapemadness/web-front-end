@@ -21,6 +21,11 @@ import Musician2 from 'resources/assets/img/eminem.jpg'
 
 import homeEnhancer from './homeEnhancer'
 
+const Container = styled.div`
+  max-width: 1200px;
+  margin: auto;
+`
+
 const PostItemContainer = styled.div`
   display: flex;
   justify-content: center;
@@ -238,7 +243,7 @@ const videoData = [
 ]
 
 const Home = ({ width }) => (
-  <div>
+  <Container>
     <MainSlider data={mainSliderData} />
     <TrendingContainer>
       {trendingData.map(item => (
@@ -294,7 +299,7 @@ const Home = ({ width }) => (
       </Videos>
     </VideosContainer>
     <Footer />
-  </div>
+  </Container>
 )
 
 export default homeEnhancer(Home)

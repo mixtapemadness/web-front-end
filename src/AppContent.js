@@ -9,6 +9,7 @@ import Blog from 'pages/blog'
 import EventPage from 'pages/eventPage'
 import Search from 'components/search'
 import Menu from 'components/menu'
+import TeamPage from 'pages/teamPage'
 
 const AppContent = ({ searchOpened, toggleSearch, menuOpened }) => (
   <div style={{ marginTop: 120 }}>
@@ -19,6 +20,7 @@ const AppContent = ({ searchOpened, toggleSearch, menuOpened }) => (
       <Route path="/aboutus" component={AboutUs} />
       <Route path="/author" component={AuthorPage} />
       <Route path="/events" component={EventPage} />
+      <Route path="/team" component={TeamPage} />
     </Switch>
     {searchOpened && <Search toggleSearch={toggleSearch} />}
     {menuOpened && <Menu />}

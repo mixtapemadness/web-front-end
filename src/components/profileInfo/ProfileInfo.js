@@ -31,7 +31,7 @@ const Image = styled.div`
   height: 152px;
   width: 152px;
   border-radius: 100%;
-  background-position: 66%;
+  background-position: ${p => (p.fromTeam ? 'center' : '66%')};
   background-image: url(${props => props.src});
   background-size: cover;
 `
@@ -131,13 +131,13 @@ const ShowMore = styled.div`
   cursor: pointer;
 `
 
-export default ({ data }) => {
+export default ({ data, fromTeam }) => {
   const { img, name, ocupation, bio } = data //eslint-disable-line
   return (
     <ProfileContainer>
       <ProfileImg>
-        <Image src={img} />
-        <EditProfile>Edit Profile</EditProfile>
+        <Image src={img} fromTeam={fromTeam} />
+        <EditProfile>{fromTeam ? 'View Profile' : 'Edit Profile'}</EditProfile>
       </ProfileImg>
       <ProfileDesc>
         <ProfileDescTitle>

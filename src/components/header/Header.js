@@ -9,6 +9,7 @@ import InstagramIcon from 'resources/assets/svgComponents/Instagram'
 import YoutubeIcon from 'resources/assets/svgComponents/Youtube'
 import DotsIcon from 'resources/assets/svgComponents/Dots'
 import SearchIcon from 'resources/assets/svgComponents/Search'
+import MixtapeLogo from 'resources/assets/img/mixtape-logo.png'
 
 import headerEnhancer from './headerEnhancer'
 
@@ -85,8 +86,8 @@ const Span = styled.span`
   cursor: pointer;
 `
 const Logo = styled.img`
-  height: 50px;
-  padding-bottom: 20px;
+  height: 70px;
+  padding-bottom: 10px;
   margin-right: 20px;
   box-sizing: content-box;
   @media only screen and (max-width: 450px) {
@@ -305,10 +306,7 @@ const Header = ({
             <span />
           </BurgerIcon>
           <Link to="/">
-            <Logo
-              src="http://www.mixtapemadness.com/assets/images/logo-full.png"
-              alt="logo"
-            />
+            <Logo src={MixtapeLogo} alt="logo" />
           </Link>
         </Div>
         <NavBar>

@@ -2,8 +2,8 @@ import React from 'react'
 import styled from 'styled-components'
 
 import Footer from 'components/footer'
+import ProfileInfo from 'components/profileInfo'
 
-import ProfileInfo from './ProfileInfo'
 import ResentPosts from './ResentPosts'
 import authorPageEnhancer from './authorPageEnhancer'
 

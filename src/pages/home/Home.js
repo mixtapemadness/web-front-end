@@ -10,8 +10,9 @@ import Download from 'components/download'
 import WhatsOnComponent from 'components/whatsOnComponent'
 import Subscribe from 'components/subscribe'
 import Video from 'components/video'
-import PlaylistSlider from 'components/playlistSlider'
 import MobileSubscribe from 'components/mobileSubscribe'
+import SliderComponent from 'components/slider'
+import ToListenPlaylist from 'components/toListenPlaylist'
 
 import SliderPhoto from 'resources/assets/img/Live-Music.jpg'
 import SliderPhotoSecond from 'resources/assets/img/music.jpg'
@@ -242,6 +243,21 @@ const videoData = [
   },
 ]
 
+const playlistSliderData = haveToListenData.map(item => (
+  <ToListenPlaylist data={item} key={item.id} />
+))
+
+const playlistSliderSettings = {
+  dots: false,
+  infinite: true,
+  slidesToShow: 2,
+  slidesToScroll: 2,
+  breakpoint: 1170,
+  slidesToShowResponsive: 1,
+  slidesToScrollResponsive: 1,
+  infiniteResponsive: true,
+}
+
 const Home = ({ width }) => (
   <Container>
     <MainSlider data={mainSliderData} />
@@ -259,7 +275,9 @@ const Home = ({ width }) => (
           Mixtape Madness Share Their Top Playlists
         </SectionSubHeader>
       </HeaderContainer>
-      <PlaylistSlider data={haveToListenData} />
+      <SliderComponent settings={playlistSliderSettings}>
+        {playlistSliderData}
+      </SliderComponent>
     </HaveToListenContainer>
     <Download />
     <WhatsOn>

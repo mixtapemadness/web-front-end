@@ -5,8 +5,6 @@ import Slider from 'react-slick'
 import Prev from 'resources/assets/svg/prev.svg'
 import Next from 'resources/assets/svg/next.svg'
 
-import ToListenPlaylist from 'components/toListenPlaylist'
-
 const Img = styled.img`
   display: block;
   cursor: pointer;
@@ -325,35 +323,32 @@ const Override = styled.div`
   }
 `
 
-const settings = {
-  dots: false,
-  infinite: true,
-  slidesToShow: 2,
-  slidesToScroll: 2,
-  nextArrow: <NextArrow />,
-  prevArrow: <PrevArrow />,
-  responsive: [
-    {
-      breakpoint: 1170,
-      settings: {
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        infinite: true,
+const SliderComponent = ({ children, settings }) => {
+  const innerSettings = {
+    dots: settings.dots,
+    infinite: settings.infinite,
+    slidesToShow: settings.slidesToShow,
+    slidesToScroll: settings.slidesToScroll,
+    nextArrow: <NextArrow />,
+    prevArrow: <PrevArrow />,
+    responsive: [
+      {
+        breakpoint: settings.breakpoint,
+        settings: {
+          slidesToShow: settings.slidesToShowResponsive,
+          slidesToScroll: settings.slidesToScrollResponsive,
+          infinite: settings.infiniteResponsive,
+        },
       },
-    },
-  ],
+    ],
+  }
+  return (
+    <Container>
+      <Override>
+        <Slider {...innerSettings}>{children}</Slider>
+      </Override>
+    </Container>
+  )
 }
 
-const PlaylistSlider = ({ data }) => (
-  <Container>
-    <Override>
-      <Slider {...settings}>
-        {data.map(item => (
-          <ToListenPlaylist data={item} key={item.id} />
-        ))}
-      </Slider>
-    </Override>
-  </Container>
-)
-
-export default PlaylistSlider
+export default SliderComponent

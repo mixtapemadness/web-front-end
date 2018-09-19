@@ -4,10 +4,8 @@ import styled from 'styled-components'
 import searchMediaEnhancer from './searchEnhancer'
 
 const Container = styled.div`
-  width: 100%;
-  height: 200px;
-  width: 100%;
-  height: 200px;
+  width: 50%;
+  height: 150px;
   background: url(${props => props.img});
   background-repeat: no-repeat;
   background-size: cover;

@@ -91,7 +91,7 @@ const Logo = styled.img`
   margin-right: 20px;
   box-sizing: content-box;
   @media only screen and (max-width: 450px) {
-    height: 30px;
+    height: 52px;
   }
 `
 const Search = styled.div`

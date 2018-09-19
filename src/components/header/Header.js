@@ -398,8 +398,12 @@ const Header = ({
         <RightSide>
           <OrangeContainer menuOpened={menuOpened}>
             <Span>Upload</Span>
-            <Span>Register</Span>
-            <Span>Log In</Span>
+            <Span>
+              <Link to="/register">Register</Link>
+            </Span>
+            <Span>
+              <Link to="/login">Log In</Link>
+            </Span>
             <ContactUsContainer menuOpened={menuOpened}>
               Contact Us
             </ContactUsContainer>

@@ -23,6 +23,9 @@ const FilterItem = styled(Link)`
   &:hover {
     color: #ff9600;
   }
+  @media only screen and (max-width: 850px) {
+    font-size: 20px;
+  }
 `
 
 export default () => (

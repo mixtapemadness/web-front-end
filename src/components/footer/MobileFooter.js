@@ -1,10 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import SoundCloudIcon from 'resources/assets/svg/soundcloud-logo.svg'
-import TwitterIcon from 'resources/assets/svg/twitter-black.svg'
-import FacebookIcon from 'resources/assets/svg/facebook-black.svg'
-import CircleIcon from 'resources/assets/svg/filled-circle.svg'
+import InstagramIcon from 'resources/assets/svgComponents/Instagram'
+import YoutubeIcon from 'resources/assets/svgComponents/Youtube'
+import FacebookIcon from 'resources/assets/svgComponents/Facebook'
+import TwitterIcon from 'resources/assets/svgComponents/Twitter'
+import CircleIcon from 'resources/assets/svgComponents/Circle'
+import SoundCloudIcon from 'resources/assets/svgComponents/SoundCloud'
 
 const MobileFooterContainer = styled.div`
   max-width: 310px;
@@ -16,8 +18,9 @@ const MobileContentContainer = styled.div`
   display: flex;
   justify-content: center;
   justify-content: ${p => p.jc && 'space-between'};
+  color: ${p => (p.menuOpened ? '#ffffff' : '#000000')};
 `
-const SocialIcon = styled.img`
+const SocialIcon = styled.a`
   margin-right: 10px;
   cursor: pointer;
   ${p => p.hg && `height: ${p.hg}px`};
@@ -30,28 +33,48 @@ const SocialContainer = styled.div`
   justify-content: space-between;
 `
 const Span = styled.span`
-  color: #000000;
   font-weight: bold;
   margin-right: ${p => p.mr && '10px'};
 `
 
-const MobileFooter = () => (
+const MobileFooter = ({ menuOpened }) => (
   <MobileFooterContainer>
     <SocialContainer>
-      <SocialIcon hg={20} src={TwitterIcon} alt="soc" />
-      <SocialIcon hg={17} src={FacebookIcon} alt="soc" />
-      <SocialIcon hg={17} src={CircleIcon} alt="soc" />
-      <SocialIcon hg={35} src={SoundCloudIcon} alt="soc" />
-      <SocialIcon hg={20} alt="soc" />
-      <SocialIcon hg={20} alt="soc" />
+      <SocialIcon href="https://twitter.com/mixtapemadness">
+        <TwitterIcon height="20px" color={menuOpened ? '#ffffff' : '#666666'} />
+      </SocialIcon>
+      <SocialIcon href="https://www.facebook.com/MixtapeMadnessUK/">
+        <FacebookIcon
+          height="17px"
+          color={menuOpened ? '#ffffff' : '#666666'}
+        />
+      </SocialIcon>
+      <SocialIcon>
+        <CircleIcon height="17px" color={menuOpened ? '#ffffff' : '#666666'} />
+      </SocialIcon>
+      <SocialIcon href="https://soundcloud.com/mixtapemadnessuk">
+        <SoundCloudIcon
+          height="35px"
+          color={menuOpened ? '#ffffff' : '#666666'}
+        />
+      </SocialIcon>
+      <SocialIcon href="https://www.youtube.com/user/madaboutmixtapes">
+        <YoutubeIcon height="23px" color={menuOpened ? '#ffffff' : '#666666'} />
+      </SocialIcon>
+      <SocialIcon href="https://www.instagram.com/mixtapemadness/">
+        <InstagramIcon
+          height="19px"
+          color={menuOpened ? '#ffffff' : '#666666'}
+        />
+      </SocialIcon>
     </SocialContainer>
-    <MobileContentContainer jc>
+    <MobileContentContainer jc menuOpened={menuOpened}>
       <Span>About</Span>
       <Span>Careers</Span>
       <Span>Contact</Span>
       <Span>Advertise</Span>
     </MobileContentContainer>
-    <MobileContentContainer>
+    <MobileContentContainer menuOpened={menuOpened}>
       <Span mr>Privacy Policy</Span>
       <Span>Terms</Span>
     </MobileContentContainer>

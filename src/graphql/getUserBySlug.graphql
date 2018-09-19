@@ -1,7 +1,7 @@
-getUserBySlug{
- user: getUserBySlug(slug:"akeemmushini"){
+getUserBySlug($slug:String){
+ user: getUserBySlug(slug:$slug){
     	id
-    name
-    description
+      name
+      description
   }
 }

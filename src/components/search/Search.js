@@ -1,5 +1,11 @@
+/* eslint operator-linebreak: 0 */
+
 import React from 'react'
 import styled from 'styled-components'
+
+import MobileComponent from 'components/mobileComponent'
+import searchEnhancer from './searchEnhancer'
+import SearchMedia from './searchMedia'
 
 const Container = styled.div`
   position: fixed;
@@ -10,6 +16,7 @@ const Container = styled.div`
   z-index: 3;
   opacity: 0.89;
   overflow-y: auto;
+  padding-bottom: 40px;
 `
 const Input = styled.input`
   width: 77%;
@@ -61,13 +68,41 @@ const Close = styled.span`
   cursor: pointer;
   color: #ffffff;
 `
-const Search = ({ toggleSearch }) => (
-  <Container>
-    <Close onClick={() => toggleSearch()}>X</Close>
-    <InputContainer>
-      <Input placeholder="Search" />
-    </InputContainer>
-  </Container>
-)
+const DataContainer = styled.div`
+  max-width: 1200px;
+  margin: 20px auto;
+`
+const ShowMore = styled.div`
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 17px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+`
 
-export default Search
+const Search = ({ toggleSearch, handleSubmit, data }) => {
+  const searchResut =
+    data && data.searchedData && data.searchedData.length > 0
+      ? data.searchedData
+      : {}
+  return (
+    <Container>
+      <SearchMedia id={searchResut.featured_media} />
+      {console.log('data from search', data)}
+      <Close onClick={() => toggleSearch()}>X</Close>
+      <InputContainer>
+        <Input placeholder="Search" onKeyPress={handleSubmit} />
+      </InputContainer>
+      <DataContainer>
+        {searchResut && searchResut.lenght > 0
+          ? searchResut.map(item => <MobileComponent data={item} />)
+          : ''}
+      </DataContainer>
+      {data && <ShowMore>Show more +</ShowMore>}
+    </Container>
+  )
+}
+
+export default searchEnhancer(Search)

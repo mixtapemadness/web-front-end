@@ -45,6 +45,9 @@ const ListContainer = styled.div`
   display: flex;
   justify-content: space-between;
   margin-top: 65px;
+  @media only screen and (max-width: 850px) {
+    flex-direction: column;
+  }
 `
 const List = styled.ul`
   font-size: 29.5px;
@@ -55,22 +58,39 @@ const List = styled.ul`
   li {
     cursor: pointer;
   }
+  @media only screen and (max-width: 850px) {
+    margin-bottom: 20px;
+    width: 100%;
+    text-align: center;
+  }
 `
 
 const ItemContainer = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
+  @media only screen and (max-width: 850px) {
+    flex-direction: column;
+  }
 `
 const Divider = styled.div`
   width: 1px;
   background-color: #ffffff;
   height: auto;
+  @media only screen and (max-width: 850px) {
+    height: 1px;
+    width: 100%;
+  }
 `
 const FlexDiv = styled.div`
   display: flex;
   justify-content: space-between;
   width: 29%;
+  @media only screen and (max-width: 850px) {
+    flex-direction: column;
+    width: 100%
+    align-items: center;
+  }
 `
 
 const Title = styled.div`
@@ -79,6 +99,9 @@ const Title = styled.div`
   color: #ffffff;
   font-weight: 600;
   margin: 79px 0 46px 0;
+  @media only screen and (max-width: 850px) {
+    text-align: center;
+  }
 `
 const menuDummyData = [
   {

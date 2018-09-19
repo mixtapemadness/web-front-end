@@ -9,6 +9,7 @@ import InstagramIcon from 'resources/assets/svgComponents/Instagram'
 import YoutubeIcon from 'resources/assets/svgComponents/Youtube'
 import DotsIcon from 'resources/assets/svgComponents/Dots'
 import SearchIcon from 'resources/assets/svgComponents/Search'
+import MixtapeLogo from 'resources/assets/img/mixtape-logo.png'
 
 import headerEnhancer from './headerEnhancer'
 
@@ -19,6 +20,7 @@ const HeaderContainer = styled.div`
   font-size: 16px;
   position: fixed;
   top: 0;
+  left: 0;
   z-index: 2;
   ${p => p.menuOpened && 'background-color: #ff9600'};
   ${p => p.bottomBorder && 'border-bottom: 1px solid #E7E7E7'};
@@ -84,8 +86,8 @@ const Span = styled.span`
   cursor: pointer;
 `
 const Logo = styled.img`
-  height: 50px;
-  padding-bottom: 20px;
+  height: 70px;
+  padding-bottom: 10px;
   margin-right: 20px;
   box-sizing: content-box;
   @media only screen and (max-width: 450px) {
@@ -134,6 +136,7 @@ const BurgerIcon = styled.div`
   margin: 0px 40px 45px 0px;
   @media only screen and (max-width: 450px) {
     margin-right: 20px;
+    margin-bottom: 35px;
   }
   @media only screen and (max-width: 350px) {
     margin-right: 5px;
@@ -153,8 +156,8 @@ const BurgerIcon = styled.div`
     position: absolute;
     height: 3px;
     width: 100%;
-    background: #666666;
-    ${p => p.menuOpened && 'background: #ffffff'} border-radius: 9px;
+    background-color: ${p => (p.menuOpened === true ? '#ffffff' : '#666666')};
+    border-radius: 9px;
     opacity: 1;
     left: 0;
     -webkit-transform: rotate(0deg);
@@ -303,10 +306,7 @@ const Header = ({
             <span />
           </BurgerIcon>
           <Link to="/">
-            <Logo
-              src="http://www.mixtapemadness.com/assets/images/logo-full.png"
-              alt="logo"
-            />
+            <Logo src={MixtapeLogo} alt="logo" />
           </Link>
         </Div>
         <NavBar>
@@ -336,18 +336,20 @@ const Header = ({
             </DropDown>
             <DropDown menuOpened={menuOpened}>
               <Li>
-                <Link to="/news">News</Link>
+                <Link to="/blog/category/news">News</Link>
               </Li>
               <DropDownContent>Content</DropDownContent>
             </DropDown>
             <DropDown menuOpened={menuOpened}>
               <Li>
-                <Link to="/events">Events</Link>
+                <Link to="/blog/category/events">Events</Link>
               </Li>
               <DropDownContent>Content</DropDownContent>
             </DropDown>
             <DropDown menuOpened={menuOpened}>
-              <Li>Video</Li>
+              <Li>
+                <Link to="/blog/category/videos">Video</Link>
+              </Li>
               <DropDownContent>Content</DropDownContent>
             </DropDown>
           </Ul>

@@ -4,7 +4,11 @@ import styled from 'styled-components'
 import SignalBarsIcon from 'resources/assets/svgComponents/SignalBars'
 import ViewsIcon from 'resources/assets/svgComponents/Views'
 
-const Container = styled.div``
+const Container = styled.div`
+  @media only screen and (max-width: 850px) {
+    margin-top: 10px;
+  }
+`
 const PhotoContainer = styled.div`
   width: 260px;
   height: 170px;

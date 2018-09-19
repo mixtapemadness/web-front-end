@@ -2,7 +2,6 @@
 
 import React from 'react'
 import styled from 'styled-components'
-import { Link } from 'react-router-dom'
 
 import MainSlider from 'components/mainSlider'
 import PostItem from 'components/postItem'
@@ -11,8 +10,9 @@ import Download from 'components/download'
 import WhatsOnComponent from 'components/whatsOnComponent'
 import Subscribe from 'components/subscribe'
 import Video from 'components/video'
-import PlaylistSlider from 'components/playlistSlider'
 import MobileSubscribe from 'components/mobileSubscribe'
+import SliderComponent from 'components/slider'
+import ToListenPlaylist from 'components/toListenPlaylist'
 
 import SliderPhoto from 'resources/assets/img/Live-Music.jpg'
 import SliderPhotoSecond from 'resources/assets/img/music.jpg'
@@ -22,7 +22,12 @@ import Musician2 from 'resources/assets/img/eminem.jpg'
 
 import homeEnhancer from './homeEnhancer'
 
-const StyledLink = styled(Link)`
+const Container = styled.div`
+  max-width: 1200px;
+  margin: auto;
+`
+
+const PostItemContainer = styled.div`
   display: flex;
   justify-content: center;
 `
@@ -238,14 +243,29 @@ const videoData = [
   },
 ]
 
+const playlistSliderData = haveToListenData.map(item => (
+  <ToListenPlaylist data={item} key={item.id} />
+))
+
+const playlistSliderSettings = {
+  dots: false,
+  infinite: true,
+  slidesToShow: 2,
+  slidesToScroll: 2,
+  breakpoint: 1170,
+  slidesToShowResponsive: 1,
+  slidesToScrollResponsive: 1,
+  infiniteResponsive: true,
+}
+
 const Home = ({ width }) => (
-  <div>
+  <Container>
     <MainSlider data={mainSliderData} />
     <TrendingContainer>
       {trendingData.map(item => (
-        <StyledLink to={`/blog/${item.type}/${item.id}`} key={item.id}>
+        <PostItemContainer to={`/blog/${item.type}/${item.id}`} key={item.id}>
           <PostItem data={item} />
-        </StyledLink>
+        </PostItemContainer>
       ))}
     </TrendingContainer>
     <HaveToListenContainer>
@@ -255,7 +275,9 @@ const Home = ({ width }) => (
           Mixtape Madness Share Their Top Playlists
         </SectionSubHeader>
       </HeaderContainer>
-      <PlaylistSlider data={haveToListenData} />
+      <SliderComponent settings={playlistSliderSettings}>
+        {playlistSliderData}
+      </SliderComponent>
     </HaveToListenContainer>
     <Download />
     <WhatsOn>
@@ -295,7 +317,7 @@ const Home = ({ width }) => (
       </Videos>
     </VideosContainer>
     <Footer />
-  </div>
+  </Container>
 )
 
 export default homeEnhancer(Home)

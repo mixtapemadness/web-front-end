@@ -2,8 +2,8 @@ import React from 'react'
 import styled from 'styled-components'
 
 import Footer from 'components/footer'
+import ProfileInfo from 'components/profileInfo'
 
-import ProfileInfo from './ProfileInfo'
 import ResentPosts from './ResentPosts'
 import authorPageEnhancer from './authorPageEnhancer'
 
@@ -12,9 +12,6 @@ const AuthorPageContainer = styled.div`
   margin: auto;
   display: flex;
   flex-direction: column;
-  @media only screen and (max-width: 1024px) {
-    width: 80%;
-  }
 `
 
 const LineSeparator = styled.div`

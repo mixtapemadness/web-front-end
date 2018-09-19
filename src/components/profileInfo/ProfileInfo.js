@@ -13,6 +13,10 @@ const ProfileContainer = styled.div`
   @media only screen and (max-width: 1024px) {
     flex-direction: column;
   }
+  @media only screen and (max-width: 450px) {
+    width: 90%;
+    margin: 30px auto 0px auto;
+  }
 `
 
 const ProfileImg = styled.div`
@@ -27,7 +31,7 @@ const Image = styled.div`
   height: 152px;
   width: 152px;
   border-radius: 100%;
-  background-position: 66%;
+  background-position: ${p => (p.fromTeam ? 'center' : '66%')};
   background-image: url(${props => props.src});
   background-size: cover;
 `
@@ -118,9 +122,6 @@ const ProfileDescTxt = styled.span`
   font-size: 14px;
   letter-spacing: 0.8px;
   font-weight: 800;
-  @media only screen and (max-width: 450px) {
-    font-size: 16px;
-  }
 `
 
 const ShowMore = styled.div`
@@ -130,13 +131,13 @@ const ShowMore = styled.div`
   cursor: pointer;
 `
 
-export default ({ data }) => {
+export default ({ data, fromTeam }) => {
   const { img, name, ocupation, bio } = data //eslint-disable-line
   return (
     <ProfileContainer>
       <ProfileImg>
-        <Image src={img} />
-        <EditProfile>Edit Profile</EditProfile>
+        <Image src={img} fromTeam={fromTeam} />
+        <EditProfile>{fromTeam ? 'View Profile' : 'Edit Profile'}</EditProfile>
       </ProfileImg>
       <ProfileDesc>
         <ProfileDescTitle>

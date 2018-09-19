@@ -11,6 +11,7 @@ import EventPage from 'pages/eventPage'
 import Search from 'components/search'
 import Music from 'pages/music'
 import MusicProfilePage from 'pages/musicProfilePage'
+import TeamPage from 'pages/teamPage'
 
 const AppContent = ({ searchOpened, toggleSearch, menuOpened }) => (
   <div style={{ marginTop: 120 }}>
@@ -23,6 +24,7 @@ const AppContent = ({ searchOpened, toggleSearch, menuOpened }) => (
       <Route path="/events" component={EventPage} />
       <Route path="/music" component={Music} />
       <Route path="/music-profile/:slug" component={MusicProfilePage} />
+      <Route path="/team" component={TeamPage} />
     </Switch>
     {searchOpened && <Search toggleSearch={toggleSearch} />}
     {menuOpened && <Menu />}

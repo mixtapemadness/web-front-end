@@ -1,20 +1,9 @@
-/* eslint no-unused-vars: 0 */
-
 import { compose, withStateHandlers, lifecycle } from 'recompose'
+
 import { loadDataAsync } from '../../../hocs'
-import getUserBySlug from '../../../graphql/getUserBySlug.graphql'
+import getMediaById from '../../../graphql/getMediaById.graphql'
 
 export default compose(
-  loadDataAsync({
-    query: getUserBySlug,
-    config: {
-      options: props => ({
-        variables: {
-          id: 20,
-        },
-      }),
-    },
-  }),
   withStateHandlers(
     () => ({
       width: window.innerWidth,
@@ -29,6 +18,16 @@ export default compose(
     },
     componentWillUnmount() {
       window.removeEventListener('resize', this.props.updateWidth)
+    },
+  }),
+  loadDataAsync({
+    query: getMediaById,
+    config: {
+      options: props => ({
+        variables: {
+          id: parseInt(props.id, 10),
+        },
+      }),
     },
   }),
 )

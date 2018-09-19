@@ -1,20 +1,20 @@
+/* eslint no-unused-vars: 0 */
+
 import { compose, withStateHandlers, lifecycle } from 'recompose'
-import { withRouter } from 'react-router-dom'
-import { loadDataAsync } from '../../hocs'
-import getBlogPage from '../../graphql/getBlogPage.graphql'
+import { loadDataAsync } from '../../../hocs'
+import getUserBySlug from '../../../graphql/getUserBySlug.graphql'
 
 export default compose(
   loadDataAsync({
-    query: getBlogPage,
+    query: getUserBySlug,
     config: {
       options: props => ({
         variables: {
-          filter: { slug: props.match.params.slug },
+          id: 20,
         },
       }),
     },
   }),
-  withRouter,
   withStateHandlers(
     () => ({
       width: window.innerWidth,

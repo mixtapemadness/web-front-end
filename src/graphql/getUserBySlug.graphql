@@ -1,0 +1,7 @@
+getUserBySlug{
+ user: getUserBySlug(slug:"akeemmushini"){
+    	id
+    name
+    description
+  }
+}

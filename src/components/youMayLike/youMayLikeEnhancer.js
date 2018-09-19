@@ -1,26 +1,34 @@
 import { compose, withStateHandlers, lifecycle } from 'recompose'
 import { withRouter } from 'react-router-dom'
-import { loadDataAsync } from '../../hocs'
-import getBlogPage from '../../graphql/getBlogPage.graphql'
+import { REFETCH_USER } from '../../eventTypes'
+import { loadDataAsync, refetchOn } from '../../hocs'
+import getEventEmitter from '../../eventEmitter'
+import getPosts from '../../graphql/getPosts.graphql'
 
 export default compose(
+  withRouter,
   loadDataAsync({
-    query: getBlogPage,
+    query: getPosts,
     config: {
       options: props => ({
         variables: {
-          filter: { slug: props.match.params.slug },
+          page: 1,
+          perPage: 5,
+          filter: { categories: props.match.params.category.toUpperCase() },
         },
       }),
     },
   }),
-  withRouter,
+  refetchOn(REFETCH_USER),
   withStateHandlers(
     () => ({
       width: window.innerWidth,
     }),
     {
       updateWidth: () => () => ({ width: window.innerWidth }),
+      handleRefetch: () => () => {
+        getEventEmitter.emit(REFETCH_USER)
+      },
     },
   ),
   lifecycle({

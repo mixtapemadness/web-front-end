@@ -3,6 +3,7 @@
 /* eslint array-callback-return: 0 */
 /* eslint react/jsx-one-expression-per-line: 0 */
 /* eslint prefer-const: 0 */
+/* eslint implicit-arrow-linebreak: 0 */
 
 import React from 'react'
 import styled from 'styled-components'
@@ -105,54 +106,39 @@ const TopVideosData = [
     comments: 10,
   },
 ]
+
+const PostItemT = (item, index) => {
+  if (index === 5) {
+    return (
+      <React.Fragment>
+        <PostItem data={item} />
+        <TopVideoPosts TopVideosData={TopVideosData} />
+        <SubscribeContainer>
+          <Subscribe />
+        </SubscribeContainer>
+      </React.Fragment>
+    )
+  }
+  return <PostItem data={item} />
+}
+const PostItems = ({ items }) =>
+  items.map((item, index) => PostItemT(item, index))
+
 const Blog = ({ width, data, handleLoadMore }) => {
-  let Posts = []
+  const Data = data.Posts && data.Posts.length > 0 && data.Posts
   return (
     <NewsContainer>
+      {console.log('Posts', Data)}
       <Header />
       {width > 700 && (
         <div>
           <BlogSlider />
           <BlogFilter />
-          <PostsContainer>
-            {data.getPosts &&
-              data.getPosts.length > 0 &&
-              data.getPosts.map((item, index) => {
-                Posts.push(
-                  <Div>
-                    {' '}
-                    <PostItem data={item} />
-                  </Div>,
-                )
-                if (index !== 0 && index % 5 === 0) {
-                  Posts.push(
-                    <SubscribeContainer>
-                      <Subscribe />
-                    </SubscribeContainer>,
-                  )
-                  Posts.push(<TopVideoPosts TopVideosData={TopVideosData} />)
-                }
-              })}
-
-            {console.log('Posts', Posts)}
-
-            {Posts && Posts.map(item => item)}
-            {/* <SubscribeContainer>
-              <Subscribe />
-            </SubscribeContainer> */}
-            {/* <TopVideoPosts TopVideosData={TopVideosData} /> */}
-            {/* {PostsSecondPart.map(item => (
-            <Div>
-              <PostItem data={item} />
-            </Div>
-          ))} */}
-          </PostsContainer>
+          <PostsContainer>{Data && <PostItems items={Data} />}</PostsContainer>
         </div>
       )}
       {width <= 700 &&
-        data.getPosts &&
-        data.getPosts.length > 0 &&
-        data.getPosts.map(item => (
+        Data.getPosts.map(item => (
           <Div>
             {' '}
             <PostItem key={item.id} data={item} />

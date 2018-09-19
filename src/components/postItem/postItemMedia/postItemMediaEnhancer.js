@@ -1,43 +1,31 @@
 import { compose, withStateHandlers, lifecycle } from 'recompose'
-// import { withRouter } from 'react-router-dom'
-import { loadDataAsync } from '../../hocs'
-import getPosts from '../../graphql/getPosts.graphql'
+
+import { loadDataAsync } from '../../../hocs'
+import getMediaById from '../../../graphql/getMediaById.graphql'
 
 export default compose(
-  // withRouter,
   withStateHandlers(
     () => ({
       width: window.innerWidth,
-      newsFilter: 'NEWS',
-      sort: 'DATE_DESC',
-      perPage: 9,
-      arr: [],
     }),
     {
       updateWidth: () => () => ({ width: window.innerWidth }),
-      handleLoadMore: ({ perPage }) => () => ({ perPage: perPage + 9 }),
     },
   ),
-
   lifecycle({
     componentDidMount() {
       window.addEventListener('resize', this.props.updateWidth)
     },
-
     componentWillUnmount() {
       window.removeEventListener('resize', this.props.updateWidth)
     },
   }),
-
   loadDataAsync({
-    query: getPosts,
+    query: getMediaById,
     config: {
       options: props => ({
         variables: {
-          page: 1,
-          perPage: props.perPage,
-          filter: { categories: props.match.params.filter.toUpperCase() },
-          sort: props.sort,
+          id: parseInt(props.id, 10),
         },
       }),
     },

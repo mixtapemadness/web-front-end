@@ -1,10 +1,12 @@
-/* eslint jsx-one-expression-per-line: 0 */
+/* eslint react/jsx-one-expression-per-line: 0 */
 /* eslint operator-linebreak: 0 */
-/* eslint jsx-indent: 0 */
+/* eslint no-unused-vars: 0 */
+
 import React from 'react'
 import styled from 'styled-components'
 // import { Link } from 'react-router-dom'
 
+import Header from 'components/header'
 import BlogPost from 'components/blogPost'
 import YouTubeVideo from 'components/youTubeVideo'
 import PostItem from 'components/postItem'
@@ -17,6 +19,7 @@ import Musician1 from 'resources/assets/img/2pac.jpg'
 import Musician2 from 'resources/assets/img/eminem.jpg'
 // import backgroundImage from 'resources/assets/img/background.png'
 
+import YouMayLike from 'components/youMayLike'
 import blogPageEnhancer from './blogPageEnhancer'
 
 const Heading = styled.div`
@@ -243,8 +246,9 @@ const blogPageData = {
   ],
 }
 
-const BlogPage = ({ width, data }) => (
+const BlogPage = ({ width, data }, props) => (
   <div>
+    <Header bottomBorder />
     <Heading>
       <TitleContainer>
         <BlogTitle>
@@ -292,26 +296,7 @@ const BlogPage = ({ width, data }) => (
           ))
         : ''}
     </TagsContainer>
-    <AlsoLikeHeaderContainer>
-      {width > 450 && <span>You May also like</span>}
-      {width <= 450 && <span>What To Read Next</span>}
-    </AlsoLikeHeaderContainer>
-    <MayLikeContainer>
-      {width > 450 && (
-        <Div>
-          <AdvertisementContainer>
-            <Advertisement />
-          </AdvertisementContainer>
-          {blogPageData.mayLike.map(item => (
-            // <StyledLink to={`/blog/${item.type}/${item.id}`} key={item.id}>
-            // </StyledLink>
-            <PostItem key={item.id} data={item} />
-          ))}
-        </Div>
-      )}
-      {width <= 450 &&
-        blogPageData.mayLike.map(item => <MobileComponent data={item} />)}
-    </MayLikeContainer>
+    <YouMayLike />
     <Footer />
   </div>
 )

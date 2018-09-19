@@ -1,34 +1,32 @@
 /* eslint react/jsx-one-expression-per-line: 0 */
+/* eslint indent: 0 */
+/* eslint react/jsx-indent-props: 0 */
+/* eslint react/jsx-indent: 0 */
+/* eslint implicit-arrow-linebreak: 0 */
+/* eslint operator-linebreak: 0 */
+
 import React from 'react'
 import styled from 'styled-components'
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 
 import ViewsIcon from 'resources/assets/svg/eye.svg'
 import SignalBarsIcon from 'resources/assets/svg/signal-bars.svg'
 
-const PostItemContainer = styled(Link)`
+import PostItemMedia from './postItemMedia'
+import PostItemCategory from './postItemCategory'
+import PostItemAuthor from './postItemAuthor'
+
+const PostItemContainer = styled.div`
   width: 357px;
-  cursor: pointer;
   display: flex;
   flex-direction: column;
+  margin: 20px 0;
   @media only screen and (max-width: 1150px) {
     width: 61.458%;
     margin-top: 20px;
   }
   @media only screen and (max-width: 450px) {
     width: 90%;
-  }
-`
-
-const PhotoContainer = styled.div`
-  width: 100%;
-  height: 200px;
-  background: url(${props => props.picture});
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  @media only screen and (max-width: 1150px) {
-    height: 300px;
   }
 `
 
@@ -46,18 +44,9 @@ const ContentContainer = styled.div`
     height: auto;
   }
 `
-const ContentContainerTop = styled.div`
-  display: flex;
-  flex-direction: column;
-`
 const ContentContainerBottom = styled.div`
   display: flex;
   flex-direction: column;
-`
-
-const TypeContainer = styled.div`
-  margin-bottom: 20px;
-  display: flex;
 `
 
 const Span = styled.span`
@@ -67,7 +56,17 @@ const Span = styled.span`
   font-size: 12px;
   letter-spacing: 0.7px;
   margin: 15px 0;
+  display: flex;
+  font-weight: 800;
 `
+
+// const AuthorLink = styled(Link)`
+//   color: 'FF9D00';
+//   cursor: pointer;
+//   font-size: 12px;
+//   letter-spacing: 0.7px;
+//   margin: 15px 0;
+// `
 
 const DataContentContainer = styled.span`
   ${p => p.color && `color: ${p.color}`};
@@ -79,29 +78,6 @@ const DataContentContainer = styled.span`
     content: '...';
     position: absolute;
   }
-`
-
-const Title = styled.span`
-  color: #000000;
-  font-size: 12px;
-  letter-spacing: 0.7px;
-  font-weight: 600;
-`
-
-const Type = styled.span`
-  color: #ff9d00;
-`
-
-const Header = styled.span`
-  font-size: 25px;
-  word-break: break-word;
-  margin-bottom: 22px;
-  ${p => p.height && 'height: 130px'};
-  font-weight: bold;
-  color: #000000;
-  text-transform: capitalize;
-  letter-spacing: 1.5px;
-  line-height: 1.3;
 `
 const FlexDiv = styled.div`
   display: flex;
@@ -118,53 +94,71 @@ const Views = styled.span`
   letter-spacing: 0.7px;
 `
 
-const PostItem = ({ data, blog }) => (
-  <PostItemContainer
-    to={`/blog/${
-      data.category && data.category.length > 0 ? data.category[0].name : ''
-    }/${data.slug && data.slug.length > 0 ? data.slug : ''} `}
-  >
-    <PhotoContainer
-      picture={
-        data.media && data.media.length > 0
-          ? data.media[0].imgs.featured_image
-          : data.img
-      }
-    />
-    <ContentContainer blog={blog && blog}>
-      <ContentContainerTop>
-        <TypeContainer>
-          <Title>
-            Trending /{' '}
-            <Type>
-              {data.category && data.category.length > 0
-                ? data.category[0].name
-                : ''}
-            </Type>
-          </Title>
-        </TypeContainer>
-        <Header>{data.header || data.title}</Header>
-      </ContentContainerTop>
-      <ContentContainerBottom>
-        <DataContentContainer color="#666666">
-          {data.content || data.PostDescription}
-        </DataContentContainer>
-        <Span color="#000000">
-          By <Span color="#FF9D00">{data.author.name}</Span>
-        </Span>
-        <FlexDiv jc="space-between">
-          <FlexDiv>
-            <Img src={ViewsIcon} alt="view" height={20} />
-            <Views>
-              {data.views}
-              {' Views'}
-            </Views>
+const CategoryContainer = styled.div`
+  width: 100%;
+  color: #000;
+  display: flex;
+  font-weight: 800;
+  font-size: 12px;
+`
+
+const Header = styled.div`
+  width: 100%;
+  font-weight: 800;
+  font-size: 26px;
+  line-height: 1.3;
+`
+const ContentContainerTop = styled.div``
+
+const Categories = data =>
+  data.data.map((item, index) => {
+    if (index > 0) {
+      return (
+        <React.Fragment>
+          ,<PostItemCategory id={item} />
+        </React.Fragment>
+      )
+    }
+    return <PostItemCategory id={item} />
+  })
+
+const PostItem = ({ data }) => {
+  const categoriesData =
+    data.categories && data.categories.length > 0 ? data.categories : ''
+  return (
+    <PostItemContainer>
+      {/* {console.log('data', data)} */}
+
+      <PostItemMedia id={data.featured_media} />
+      <ContentContainer>
+        <ContentContainerTop>
+          <CategoryContainer>
+            Trending / <Categories data={categoriesData} />
+          </CategoryContainer>
+          <Header>{data.title}</Header>
+        </ContentContainerTop>
+
+        <ContentContainerBottom>
+          <DataContentContainer color="#666666">
+            {data.content}
+          </DataContentContainer>
+          <Span color="#000000">
+            By <PostItemAuthor id={data.author} />
+          </Span>
+          <FlexDiv jc="space-between">
+            <FlexDiv>
+              <Img src={ViewsIcon} alt="view" height={20} />
+              <Views>
+                {data.views}
+                {' Views'}
+              </Views>
+            </FlexDiv>
+            <Img src={SignalBarsIcon} alt="bars" height={18} />
           </FlexDiv>
-          <Img src={SignalBarsIcon} alt="bars" height={18} />
-        </FlexDiv>
-      </ContentContainerBottom>
-    </ContentContainer>
-  </PostItemContainer>
-)
+        </ContentContainerBottom>
+      </ContentContainer>
+    </PostItemContainer>
+  )
+}
 
 export default PostItem

@@ -4,5 +4,6 @@ query searchPosts($filter:filterPostInput,$page:ID,$perPage:ID) {
    	  date
       featured_media
       slug
+      id
   }
 }

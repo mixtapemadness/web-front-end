@@ -1,11 +1,11 @@
 import { compose, withStateHandlers, lifecycle } from 'recompose'
 import { withRouter } from 'react-router-dom'
+import getPostBySlug from 'graphql/getPostBySlug.graphql'
 import { loadDataAsync } from '../../hocs'
-import getBlogPage from '../../graphql/getBlogPage.graphql'
 
 export default compose(
   loadDataAsync({
-    query: getBlogPage,
+    query: getPostBySlug,
     config: {
       options: props => ({
         variables: {

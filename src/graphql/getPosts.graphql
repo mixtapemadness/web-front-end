@@ -6,5 +6,6 @@ Posts: getPosts(filter:$filter) {
     author
     title
     content
+    slug
   }
 }

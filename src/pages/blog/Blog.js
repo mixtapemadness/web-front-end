@@ -123,7 +123,7 @@ const PostItemT = (item, index) => {
 const PostItems = ({ items }) =>
   items.map((item, index) => PostItemT(item, index))
 
-const Blog = ({ width, data, handleLoadMore }) => {
+const Blog = ({ width, data, onLoadMore }) => {
   const Data = data.Posts && data.Posts.length > 0 && data.Posts
   return (
     <NewsContainer>
@@ -143,7 +143,7 @@ const Blog = ({ width, data, handleLoadMore }) => {
           </Div>
         ))}
 
-      <MorePosts onClick={handleLoadMore}> More News +</MorePosts>
+      <MorePosts onClick={onLoadMore}> More News +</MorePosts>
       <FooterContainer>
         <Footer />
       </FooterContainer>

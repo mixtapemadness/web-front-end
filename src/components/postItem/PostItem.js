@@ -16,6 +16,7 @@ import SignalBarsIcon from 'resources/assets/svg/signal-bars.svg'
 import PostItemMedia from './postItemMedia'
 import PostItemCategory from './postItemCategory'
 import PostItemAuthor from './postItemAuthor'
+import ContinueRead from './continueRead'
 
 const PostItemContainer = styled.div`
   width: 357px;
@@ -163,6 +164,7 @@ const PostItem = ({ data }) => {
             <Img src={SignalBarsIcon} alt="bars" height={18} />
           </FlexDiv>
         </ContentContainerBottom>
+        <ContinueRead categoryId={categoriesData} PostSlug={data.slug} />
       </ContentContainer>
     </PostItemContainer>
   )

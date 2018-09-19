@@ -1,7 +1,10 @@
+/* eslint no-unused-vars: 0 */
+
 import { compose, withStateHandlers, lifecycle } from 'recompose'
 // import { withRouter } from 'react-router-dom'
-import { loadDataAsync } from '../../hocs'
-import getPosts from '../../graphql/getPosts.graphql'
+import { loadDataAsync } from 'hocs'
+import getPosts from 'graphql/getPosts.graphql'
+import getCategoryById from 'graphql/getCategoryById.graphql'
 
 export default compose(
   // withRouter,
@@ -11,11 +14,16 @@ export default compose(
       newsFilter: 'NEWS',
       sort: 'DATE_DESC',
       perPage: 9,
-      arr: [],
+      Posts: [],
     }),
     {
       updateWidth: () => () => ({ width: window.innerWidth }),
-      handleLoadMore: ({ perPage }) => () => ({ perPage: perPage + 9 }),
+      // handleLoadMore: ({ perPage, fetchMore }) => () => (
+      //   fetchMore({
+      //     variables: {
+      //       perPage: perPage + 9,
+      //     },
+      //   })),
     },
   ),
 
@@ -28,6 +36,16 @@ export default compose(
       window.removeEventListener('resize', this.props.updateWidth)
     },
   }),
+  loadDataAsync({
+    query: getCategoryById,
+    config: {
+      options: props => ({
+        variables: {
+          id: parseInt(20, 10),
+        },
+      }),
+    },
+  }),
 
   loadDataAsync({
     query: getPosts,
@@ -35,7 +53,7 @@ export default compose(
       options: props => ({
         variables: {
           page: 1,
-          perPage: props.perPage,
+          perPage: 9,
           filter: { categories: props.match.params.filter.toUpperCase() },
           sort: props.sort,
         },

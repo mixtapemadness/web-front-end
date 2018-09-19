@@ -4,6 +4,7 @@
 /* eslint react/jsx-indent: 0 */
 /* eslint implicit-arrow-linebreak: 0 */
 /* eslint operator-linebreak: 0 */
+/* eslint no-unused-expressions: 0 */
 
 import React from 'react'
 import styled from 'styled-components'
@@ -110,17 +111,23 @@ const Header = styled.div`
 `
 const ContentContainerTop = styled.div``
 
-const Categories = data =>
-  data.data.map((item, index) => {
-    if (index > 0) {
-      return (
-        <React.Fragment>
-          ,<PostItemCategory id={item} />
-        </React.Fragment>
-      )
-    }
-    return <PostItemCategory id={item} />
-  })
+const Categories = data => {
+  let newData
+  data.data
+    ? data.data.map((item, index) => {
+        if (index > 0) {
+          return (
+            <React.Fragment>
+              ,<PostItemCategory id={item} />
+            </React.Fragment>
+          )
+        }
+        return <PostItemCategory id={item} />
+      })
+    : (newData = null)
+
+  return newData
+}
 
 const PostItem = ({ data }) => {
   const categoriesData =

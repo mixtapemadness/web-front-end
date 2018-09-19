@@ -15,6 +15,7 @@ export default compose(
       }),
     },
   }),
+
   withStateHandlers(
     () => ({
       width: window.innerWidth,

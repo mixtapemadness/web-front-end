@@ -9,7 +9,7 @@ export default compose(
     config: {
       options: props => ({
         variables: {
-          filter: { slug: props.match.params.slug },
+          slug: props.match.params.slug,
         },
       }),
     },

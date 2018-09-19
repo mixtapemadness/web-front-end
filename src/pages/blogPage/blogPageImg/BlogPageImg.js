@@ -8,17 +8,15 @@ import blogPageImgEnhancer from './blogPageImgEnhancer'
 
 const Container = styled.div`
   width: 100%;
-  height: 100%;
-  background-image: url(${props => props.image});
+  height: 100vh;
+  background-image: url(${props => props.src});
   background-position: center center;
   background-size: cover;
 `
 
 const BlogPageImg = ({ data }) => {
-  console.log('data', data)
-  const fullImage = data && data.img
-  console.log('fullImage', fullImage)
-  return <Container>asdf</Container>
+  const fullImage = data && data.img && data.img.full
+  return <Container src={fullImage} />
 }
 
 export default blogPageImgEnhancer(BlogPageImg)

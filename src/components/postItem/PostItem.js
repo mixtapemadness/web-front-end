@@ -114,7 +114,7 @@ const ContentContainerTop = styled.div``
 const Categories = data => {
   let newData
   data.data
-    ? data.data.map((item, index) => {
+    ? (newData = data.data.map((item, index) => {
         if (index > 0) {
           return (
             <React.Fragment>
@@ -123,7 +123,7 @@ const Categories = data => {
           )
         }
         return <PostItemCategory id={item} />
-      })
+      }))
     : (newData = null)
 
   return newData

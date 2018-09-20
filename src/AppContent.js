@@ -5,7 +5,7 @@ import Menu from 'components/menu'
 import Home from 'pages/home'
 import BlogPage from 'pages/blogPage'
 import AboutUs from 'pages/aboutUs'
-// import AuthorPage from 'pages/authorPage'
+import AuthorPage from 'pages/authorPage'
 import Blog from 'pages/blog'
 import EventPage from 'pages/eventPage'
 import Search from 'components/search'
@@ -20,7 +20,7 @@ const AppContent = ({ searchOpened, toggleSearch, menuOpened }) => (
       <Route exact path="/blog/category/:filter" component={Blog} />
       <Route path="/blog/:category/:slug" component={BlogPage} />
       <Route path="/aboutus" component={AboutUs} />
-      {/* <Route path="/author/:slug" component={AuthorPage} /> */}
+      <Route path="/author/:slug" component={AuthorPage} />
       <Route path="/events" component={EventPage} />
       <Route path="/music" component={Music} />
       <Route path="/music-profile/:slug" component={MusicProfilePage} />

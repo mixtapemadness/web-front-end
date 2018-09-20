@@ -1,9 +1,20 @@
 import { compose, withStateHandlers, lifecycle } from 'recompose'
-
-import { loadDataAsync } from '../../../hocs'
-import getUserById from '../../../graphql/getUserById.graphql'
+import { withRouter } from 'react-router-dom'
+import getTagsById from 'graphql/getTagsById.graphql'
+import { loadDataAsync } from 'hocs'
 
 export default compose(
+  loadDataAsync({
+    query: getTagsById,
+    config: {
+      options: props => ({
+        variables: {
+          id: props.id,
+        },
+      }),
+    },
+  }),
+  withRouter,
   withStateHandlers(
     () => ({
       width: window.innerWidth,
@@ -18,16 +29,6 @@ export default compose(
     },
     componentWillUnmount() {
       window.removeEventListener('resize', this.props.updateWidth)
-    },
-  }),
-  loadDataAsync({
-    query: getUserById,
-    config: {
-      options: props => ({
-        variables: {
-          id: parseInt(props.id, 10),
-        },
-      }),
     },
   }),
 )

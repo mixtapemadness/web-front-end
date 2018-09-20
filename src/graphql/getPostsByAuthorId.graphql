@@ -1,5 +1,5 @@
-query getPostBySlug($slug:String){
-Post:getPostBySlug(slug:$slug){
+query getPostsByAuthorId($id:ID){
+posts: getPostsByAuthorId(id:$id){
     	id
     	date
       title
@@ -8,5 +8,8 @@ Post:getPostBySlug(slug:$slug){
       featured_media
       author
       tags
+      categories
   }
 }
+
+

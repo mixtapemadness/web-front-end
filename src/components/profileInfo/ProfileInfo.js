@@ -59,6 +59,7 @@ const ProfileDesc = styled.div`
 const ProfileDescTitle = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
   @media only screen and (max-width: 1024px) {
     display: none;
   }
@@ -125,25 +126,31 @@ const ProfileDescTxt = styled.span`
 `
 
 const ShowMore = styled.div`
-  font-ssize: 18px;
+  font-size: 12px;
+  font-weight: 800;
   color: #949494;
   margi-top: 10px;
   cursor: pointer;
 `
 
-export default ({ data, fromTeam }) => {
-  const { img, name, ocupation, bio } = data //eslint-disable-line
+export default ({ data }) => {
+  console.log('data', data)
+  const img = data && data.avatar2
+  const name = data && data.name
+  const description = data && data.description
+
   return (
     <ProfileContainer>
       <ProfileImg>
-        <Image src={img} fromTeam={fromTeam} />
-        <EditProfile>{fromTeam ? 'View Profile' : 'Edit Profile'}</EditProfile>
+        <Image src={img} />
+        <EditProfile>Edit Profile</EditProfile>
       </ProfileImg>
+
       <ProfileDesc>
         <ProfileDescTitle>
           <ProfileInfo>
             <ProfileDescName>{name}</ProfileDescName>
-            <ProfileDescOcupation>{ocupation}</ProfileDescOcupation>
+            <ProfileDescOcupation>occupation</ProfileDescOcupation>
           </ProfileInfo>
           <ProfileDescIcons>
             <ProfileDescIcon src={TwitterIcon} />
@@ -154,14 +161,14 @@ export default ({ data, fromTeam }) => {
         <MobileProfileDescTitle>
           <ProfileDescName>{name}</ProfileDescName>
           <MobileProfileBottom>
-            <ProfileDescOcupation>{ocupation}|</ProfileDescOcupation>
+            <ProfileDescOcupation>ocupation|</ProfileDescOcupation>
             <ProfileDescIcon src={InstagramIcon} />
             <ProfileDescIcon src={TwitterIcon} />
           </MobileProfileBottom>
         </MobileProfileDescTitle>
 
         <ProfileDescContent>
-          <ProfileDescTxt>{bio}</ProfileDescTxt>
+          <ProfileDescTxt>{description}</ProfileDescTxt>
           <ShowMore>+ Show More</ShowMore>
         </ProfileDescContent>
       </ProfileDesc>

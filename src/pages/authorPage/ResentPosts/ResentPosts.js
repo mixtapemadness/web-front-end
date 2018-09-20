@@ -1,9 +1,13 @@
 /* eslint operator-linebreak: 0 */
+/* eslint implicit-arrow-linebreak: 0 */
+
 import React from 'react'
 import styled from 'styled-components'
 import PostItem from 'components/postItem'
 import Subscribe from 'components/subscribe'
 import MobileSubscribe from 'components/mobileSubscribe'
+
+import resentPostsEnhancer from './resentPostsEnhancer'
 
 const ResentPostsContainer = styled.div`
   width: 100%;
@@ -43,47 +47,72 @@ const PreviousButton = styled.button`
   font-weight: bold;
   width: 100px;
 `
-const ItemContainer = styled.div`
-  margin-top: 28px;
-  display: flex;
-  justify-content: center;
-`
+
+// const ItemContainer = styled.div`
+//   margin-top: 28px;
+//   display: flex;
+//   justify-content: center;
+// `
 const SubscribeContainer = styled.div`
   margin: 40px 0;
   max-width: 1100px;
 `
 
-export default ({ PostsFirstPart, PostsSecondPart, width }) => (
-  <ResentPostsContainer>
-    {width > 450 && (
-      <PostsContainer>
-        {PostsFirstPart &&
-          PostsFirstPart.map(item => (
-            <ItemContainer>
-              <PostItem data={item} />
-            </ItemContainer>
-          ))}
+const PostItemT = (item, index) => {
+  if (index === 5) {
+    return (
+      <React.Fragment>
+        <PostItem data={item} />
         <SubscribeContainer>
           <Subscribe />
         </SubscribeContainer>
-        {PostsSecondPart &&
-          PostsSecondPart.map(item => (
-            <ItemContainer>
-              <PostItem data={item} />
-            </ItemContainer>
-          ))}
-      </PostsContainer>
-    )}
-    {width <= 450 && (
-      <PostsContainer>
-        {PostsSecondPart &&
-          PostsSecondPart.map(item => <PostItem data={item} />)}
-        <ButtonContainer>
-          <PreviousButton>Previous</PreviousButton>
-          <NextButton>Next</NextButton>
-        </ButtonContainer>
-        <MobileSubscribe />
-      </PostsContainer>
-    )}
-  </ResentPostsContainer>
-)
+      </React.Fragment>
+    )
+  }
+  return <PostItem data={item} />
+}
+
+const PostItems = ({ items }) =>
+  items.map((item, index) => PostItemT(item, index))
+
+const ResentPosts = ({ width, data }) => {
+  const posts = data && data.posts
+  return (
+    <ResentPostsContainer>
+      {width > 450 && (
+        <PostsContainer>
+          {posts && <PostItems items={posts} />}
+
+          {/* {PostsFirstPart &&
+            PostsFirstPart.map(item => (
+              <ItemContainer>
+                <PostItem data={item} />
+              </ItemContainer>
+            ))} */}
+          {/* <SubscribeContainer>
+            <Subscribe />
+          </SubscribeContainer> */}
+          {/* {PostsSecondPart &&
+            PostsSecondPart.map(item => (
+              <ItemContainer>
+                <PostItem data={item} />
+              </ItemContainer>
+            ))} */}
+        </PostsContainer>
+      )}
+      {width <= 450 && (
+        <PostsContainer>
+          {/* {PostsSecondPart &&
+            PostsSecondPart.map(item => <PostItem data={item} />)} */}
+          <ButtonContainer>
+            <PreviousButton>Previous</PreviousButton>
+            <NextButton>Next</NextButton>
+          </ButtonContainer>
+          <MobileSubscribe />
+        </PostsContainer>
+      )}
+    </ResentPostsContainer>
+  )
+}
+
+export default resentPostsEnhancer(ResentPosts)

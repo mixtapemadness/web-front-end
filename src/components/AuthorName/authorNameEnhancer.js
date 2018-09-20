@@ -1,10 +1,7 @@
-/* eslint no-unused-vars: 0 */
-/* eslint indent: 0 */
-
 import { compose, withStateHandlers, lifecycle } from 'recompose'
-import { withRouter } from 'react-router-dom'
-import getUserBySlug from 'graphql/getUserBySlug.graphql'
-import { loadDataAsync } from '../../hocs'
+
+import { loadDataAsync } from 'hocs'
+import getUserById from 'graphql/getUserById.graphql'
 
 export default compose(
   withStateHandlers(
@@ -17,26 +14,18 @@ export default compose(
   ),
   lifecycle({
     componentDidMount() {
-      window.scrollTo(0, 0)
       window.addEventListener('resize', this.props.updateWidth)
-    },
-    componentDidUpdate() {
-      window.scrollTo(0, 0)
     },
     componentWillUnmount() {
       window.removeEventListener('resize', this.props.updateWidth)
     },
   }),
-  withRouter,
   loadDataAsync({
-    query: getUserBySlug,
+    query: getUserById,
     config: {
       options: props => ({
         variables: {
-          slug: props.match.params.slug,
-          // perPage: props.perPage,
-          // filter: { categories: props.match.params.filter.toUpperCase() },
-          // sort: props.sort,
+          id: parseInt(props.id, 10),
         },
       }),
     },

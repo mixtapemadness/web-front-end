@@ -8,7 +8,7 @@ import blogPageImgEnhancer from './blogPageImgEnhancer'
 
 const Container = styled.div`
   width: 100%;
-  height: 100vh;
+  height: 60vh;
   background-image: url(${props => props.src});
   background-position: center center;
   background-size: cover;

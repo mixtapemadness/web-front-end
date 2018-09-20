@@ -3,8 +3,8 @@
 
 import { compose, withStateHandlers, lifecycle } from 'recompose'
 import { withRouter } from 'react-router-dom'
-import getUserBySlug from 'graphql/getUserBySlug.graphql'
-import { loadDataAsync } from '../../hocs'
+import getPostsByAuthorId from 'graphql/getPostsByAuthorId.graphql'
+import { loadDataAsync } from 'hocs'
 
 export default compose(
   withStateHandlers(
@@ -17,11 +17,7 @@ export default compose(
   ),
   lifecycle({
     componentDidMount() {
-      window.scrollTo(0, 0)
       window.addEventListener('resize', this.props.updateWidth)
-    },
-    componentDidUpdate() {
-      window.scrollTo(0, 0)
     },
     componentWillUnmount() {
       window.removeEventListener('resize', this.props.updateWidth)
@@ -29,11 +25,11 @@ export default compose(
   }),
   withRouter,
   loadDataAsync({
-    query: getUserBySlug,
+    query: getPostsByAuthorId,
     config: {
       options: props => ({
         variables: {
-          slug: props.match.params.slug,
+          id: props.id,
           // perPage: props.perPage,
           // filter: { categories: props.match.params.filter.toUpperCase() },
           // sort: props.sort,

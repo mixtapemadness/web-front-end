@@ -13,9 +13,9 @@ import styled from 'styled-components'
 import ViewsIcon from 'resources/assets/svg/eye.svg'
 import SignalBarsIcon from 'resources/assets/svg/signal-bars.svg'
 
+import AuthorName from 'components/AuthorName'
 import PostItemMedia from './postItemMedia'
 import PostItemCategory from './postItemCategory'
-import PostItemAuthor from './postItemAuthor'
 import ContinueRead from './continueRead'
 
 const PostItemContainer = styled.div`
@@ -135,8 +135,6 @@ const PostItem = ({ data }) => {
     data.categories && data.categories.length > 0 ? data.categories : ''
   return (
     <PostItemContainer>
-      {/* {console.log('data', data)} */}
-
       <PostItemMedia id={data.featured_media} />
       <ContentContainer>
         <ContentContainerTop>
@@ -151,7 +149,7 @@ const PostItem = ({ data }) => {
             {data.content}
           </DataContentContainer>
           <Span color="#000000">
-            By <PostItemAuthor id={data.author} />
+            By <AuthorName id={data.author} />
           </Span>
           <FlexDiv jc="space-between">
             <FlexDiv>

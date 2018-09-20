@@ -127,7 +127,6 @@ const Blog = ({ width, data, onLoadMore }) => {
   const Data = data.Posts && data.Posts.length > 0 && data.Posts
   return (
     <NewsContainer>
-      {console.log('Posts', Data)}
       {width > 700 && (
         <div>
           <BlogSlider />

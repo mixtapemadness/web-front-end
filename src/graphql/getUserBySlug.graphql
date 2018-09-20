@@ -1,7 +1,9 @@
-getUserBySlug($slug:String){
+query getUserBySlug($slug:String){
  user: getUserBySlug(slug:$slug){
     	id
       name
       description
+      name
+   	  avatar2
   }
 }

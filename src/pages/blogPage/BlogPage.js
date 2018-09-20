@@ -1,6 +1,7 @@
 /* eslint react/jsx-one-expression-per-line: 0 */
 /* eslint operator-linebreak: 0 */
 /* eslint no-unused-vars: 0 */
+/* eslint indent: 0 */
 
 import React from 'react'
 import styled from 'styled-components'
@@ -19,9 +20,16 @@ import Musician1 from 'resources/assets/img/2pac.jpg'
 import Musician2 from 'resources/assets/img/eminem.jpg'
 // import backgroundImage from 'resources/assets/img/background.png'
 
+import ReactHtmlParser, {
+  processNodes,
+  convertNodeToElement,
+  htmlparser2,
+} from 'react-html-parser'
 import YouMayLike from 'components/youMayLike'
 import blogPageEnhancer from './blogPageEnhancer'
 import BlogPageImg from './blogPageImg'
+import PostContentHeading from './postContentHeading'
+import Tag from './Tag'
 
 const Container = styled.div`
   width: 100%;
@@ -43,19 +51,20 @@ const TitleContainer = styled.div`
   display: flex;
   flex-direction: column;
 `
-const BlogTitle = styled.span`
-  font-weight: 600;
-  font-size: 54px;
+const BlogTitle = styled.h1`
+  font-size: 46px;
   letter-spacing: 3.2px;
   color: #010101;
+  font-weight: 800;
   @media only screen and (max-width: 450px) {
     font-size: 27px;
   }
 `
-const BlogSubTitle = styled.span`
-  font-size: 27px;
+const BlogSubTitle = styled.h3`
+  /* font-size: 27px; */
   color: #666666;
   letter-spacing: 1.6px;
+  margin-bottom: 20px;
   @media only screen and (max-width: 450px) {
     font-size: 16px;
     color: #000000;
@@ -73,10 +82,16 @@ const BackgroundPicture = styled.div`
     height: 300px;
   }
 `
-// const BackgroundImg = styled.img`
-//     width: 100%;
-//     height:100%;
-// `
+
+const BlogContent = styled.div`
+  width: 70%;
+  margin: auto;
+`
+
+const BlogArticle = styled.div`
+  width: 100%;
+  margin: auto;
+`
 
 const VideoContainer = styled.div`
   width: 78%;
@@ -93,27 +108,29 @@ const TagsContainer = styled.div`
   @media only screen and (max-width: 450px) {
     margin-top: 20px;
   }
+
+  //
 `
-const Tag = styled.button`
-  border: 1px solid #c9c9c9;
-  color: #666666;
-  padding: 3px 10px;
-  background: transparent;
-  border-radius: 15px;
-  font-weight: bold;
-  cursor: pointer;
-  color: #c9c9c9;
-  :not(:last-child) {
-    margin-right: 20px;
-  }
-  @media only screen and (max-width: 530px) {
-    font-size: 11px;
-    padding: 3px 5px;
-    :not(:last-child) {
-      margin-right: 5px;
-    }
-  }
-`
+// const Tag = styled.button`
+//   border: 1px solid #c9c9c9;
+//   color: #666666;
+//   padding: 3px 10px;
+//   background: transparent;
+//   border-radius: 15px;
+//   font-weight: bold;
+//   cursor: pointer;
+//   color: #c9c9c9;
+//   :not(:last-child) {
+//     margin-right: 20px;
+//   }
+//   @media only screen and (max-width: 530px) {
+//     font-size: 11px;
+//     padding: 3px 5px;
+//     :not(:last-child) {
+//       margin-right: 5px;
+//     }
+//   }
+// `
 const AlsoLikeHeaderContainer = styled.div`
   max-width: 1200px;
   margin: 40px auto;
@@ -181,8 +198,6 @@ const BlogPage = ({ width, data }, props) => {
   const postData = data && data.Post ? data.Post : {}
   return (
     <Container>
-      {console.log('data', postData)}
-
       <Heading>
         <TitleContainer>
           <BlogTitle>{postData.title}</BlogTitle>
@@ -198,7 +213,18 @@ const BlogPage = ({ width, data }, props) => {
           </MobileAuthorContainer>
         </TitleContainer>
       </Heading>
+
       <BlogPageImg id={postData.featured_media} />
+      <BlogContent>
+        <PostContentHeading date={postData.date} authorId={postData.author} />
+        <BlogArticle>{ReactHtmlParser(postData.content)}</BlogArticle>
+      </BlogContent>
+
+      {/* {postData.tags && postData.tags.map(id => <Tag key={id} id={id} />)} */}
+      <TagsContainer>
+        {postData.tags && postData.tags.map(id => <Tag key={id} id={id} />)}
+      </TagsContainer>
+
       {/* <Header bottomBorder />
     {data.getPosts && data.getPosts.length > 0 ? (
       <BlogPost data={data.getPosts[0]} />
@@ -216,8 +242,8 @@ const BlogPage = ({ width, data }, props) => {
           <Tag key={item.id}>{item.name}</Tag>
         ))
         : ''}
-    </TagsContainer>
-    <YouMayLike /> */}
+     */}
+      <YouMayLike />
       <Footer />
     </Container>
   )

@@ -227,7 +227,7 @@ const BlogPage = ({ width, data }, props) => {
         {postData.tags && postData.tags.map(id => <Tag key={id} id={id} />)}
       </TagsContainer>
 
-      {/* <Header bottomBorder />
+      {/* <Header />
     {data.getPosts && data.getPosts.length > 0 ? (
       <BlogPost data={data.getPosts[0]} />
     ) : (

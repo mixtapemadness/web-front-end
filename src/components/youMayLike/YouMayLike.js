@@ -54,13 +54,9 @@ const AlsoLikeHeaderContainer = styled.div`
 `
 
 const YouMayLike = ({ width, data }) => {
-  console.log('data', data.Posts)
   const Posts = data && data.Posts && data.Posts
   return (
     <MayLikeContainer>
-      {
-        // console.log('youMaydata', data)
-      }
       <AlsoLikeHeaderContainer>
         {width > 450 && <span>You May also like</span>}
         {width <= 450 && <span>What To Read Next</span>}

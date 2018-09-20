@@ -13,7 +13,7 @@ const FilterContainer = styled.div`
 const FilterItem = styled(Link)`
   flex: 1;
   text-align: center;
-  color: 111;
+  color: ${p => (p.active === 'true' ? '#ff9600' : '#111')};
   font-size: 26px;
   padding: 20px;
   box-sizing: border-box;
@@ -28,14 +28,44 @@ const FilterItem = styled(Link)`
   }
 `
 
-export default () => (
+export default ({ match }) => (
   <FilterContainer>
     {/* <FilterItem to="/news/news">Trending</FilterItem> */}
-    <FilterItem to="/blog/category/videos">Videos</FilterItem>
-    <FilterItem to="/blog/category/articles">Articles</FilterItem>
-    <FilterItem to="/blog/category/events">Events</FilterItem>
-    <FilterItem to="/blog/category/reviews">Reviews</FilterItem>
-    <FilterItem to="/blog/category/news">News</FilterItem>
-    <FilterItem to="/blog/category/interviews">Interviews</FilterItem>
+    <FilterItem
+      to="/blog/category/videos"
+      active={match.url === '/blog/category/videos' ? 'true' : 'false'}
+    >
+      Videos
+    </FilterItem>
+    <FilterItem
+      to="/blog/category/articles"
+      active={match.url === '/blog/category/articles' ? 'true' : 'false'}
+    >
+      Articles
+    </FilterItem>
+    <FilterItem
+      to="/blog/category/events"
+      active={match.url === '/blog/category/events' ? 'true' : 'false'}
+    >
+      Events
+    </FilterItem>
+    <FilterItem
+      to="/blog/category/reviews"
+      active={match.url === '/blog/category/reviews' ? 'true' : 'false'}
+    >
+      Reviews
+    </FilterItem>
+    <FilterItem
+      to="/blog/category/news"
+      active={match.url === '/blog/category/news' ? 'true' : 'false'}
+    >
+      News
+    </FilterItem>
+    <FilterItem
+      to="/blog/category/interviews"
+      active={match.url === '/blog/category/interviews' ? 'true' : 'false'}
+    >
+      Interviews
+    </FilterItem>
   </FilterContainer>
 )

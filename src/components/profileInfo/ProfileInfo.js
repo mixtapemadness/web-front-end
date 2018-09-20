@@ -79,7 +79,7 @@ const MobileProfileBottom = styled.div`
 `
 
 const ProfileInfo = styled.div`
-  dispaly: flex;
+  display: flex;
   flex-direction: column;
 `
 
@@ -129,12 +129,11 @@ const ShowMore = styled.div`
   font-size: 12px;
   font-weight: 800;
   color: #949494;
-  margi-top: 10px;
+  margin-top: 10px;
   cursor: pointer;
 `
 
 export default ({ data }) => {
-  console.log('data', data)
   const img = data && data.avatar2
   const name = data && data.name
   const description = data && data.description

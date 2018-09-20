@@ -123,22 +123,22 @@ const PostItemT = (item, index) => {
 const PostItems = ({ items }) =>
   items.map((item, index) => PostItemT(item, index))
 
-const Blog = ({ width, data, handleLoadMore }) => {
+const Blog = ({ width, data, handleLoadMore, match }) => {
   const Data = data.Posts && data.Posts.length > 0 && data.Posts
   return (
     <NewsContainer>
       {width > 700 && (
         <div>
           <BlogSlider />
-          <BlogFilter />
+          <BlogFilter match={match} />
           <PostsContainer>{Data && <PostItems items={Data} />}</PostsContainer>
         </div>
       )}
       {width <= 700 &&
         Data.getPosts.map(item => (
-          <Div>
+          <Div key={item.id}>
             {' '}
-            <PostItem key={item.id} data={item} />
+            <PostItem data={item} />
           </Div>
         ))}
 

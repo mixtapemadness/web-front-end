@@ -5,11 +5,17 @@ import { Link } from 'react-router-dom'
 import continueReadEnhancer from './continueReadEnhancer'
 
 const Container = styled(Link)`
+  width: auto;
   color: #ff9600;
-  margin: 0 5px;
   cursor: pointer;
   font-weight: 800;
   font-size: 12px;
+  margin-top: 5px;
+  &:after {
+    width: 100%;
+    height: 10px;
+    background: #ff9600;
+  }
 `
 
 const continueRead = ({ data, PostSlug }) => {

@@ -6,6 +6,7 @@
 import React from 'react'
 import styled from 'styled-components'
 // import { Link } from 'react-router-dom'
+import ReactDisqusComments from 'react-disqus-comments'
 
 import Header from 'components/header'
 import BlogPost from 'components/blogPost'
@@ -224,7 +225,14 @@ const BlogPage = ({ width, data }, props) => {
       <TagsContainer>
         {postData.tags && postData.tags.map(id => <Tag key={id} id={id} />)}
       </TagsContainer>
-
+      <ReactDisqusComments
+        shortname="example"
+        identifier="something-unique-12345"
+        title="Example Thread"
+        url="mixtapemadness.com/blog/wp-json/wp/v2/comments"
+        category_id="10431"
+        // onNewComment={this.handleNewComment}
+      />
       {/* <Header bottomBorder />
     {data.getPosts && data.getPosts.length > 0 ? (
       <BlogPost data={data.getPosts[0]} />

@@ -98,6 +98,7 @@
     "prop-types": "15.6.2",
     "react": "16.4.2",
     "react-apollo": "2.1.11",
+    "react-disqus-comments": "1.2.0",
     "react-dom": "16.4.2",
     "react-helmet": "5.2.0",
     "react-html-parser": "2.0.2",

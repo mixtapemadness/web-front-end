@@ -33,7 +33,9 @@ const AppContent = ({ searchOpened, toggleSearch, menuOpened }) => (
       <Route path="/login" component={() => <SignForm type="login" />} />
       <Route path="/register" component={() => <SignForm type="register" />} />
     </Switch>
-    {searchOpened && <Search toggleSearch={toggleSearch} />}
+    {searchOpened && (
+      <Search toggleSearch={toggleSearch} searchOpened={searchOpened} />
+    )}
     {menuOpened && <Menu />}
   </div>
 )

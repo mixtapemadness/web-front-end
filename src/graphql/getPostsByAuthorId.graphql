@@ -9,6 +9,7 @@ posts: getPostsByAuthorId(id:$id){
       author
       tags
       categories
+      slug
   }
 }
 

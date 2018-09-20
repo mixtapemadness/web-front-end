@@ -4,7 +4,6 @@ import React from 'react'
 import styled from 'styled-components'
 
 import MainSlider from 'components/mainSlider'
-import PostItem from 'components/postItem'
 import Footer from 'components/footer'
 import Download from 'components/download'
 import WhatsOnComponent from 'components/whatsOnComponent'
@@ -19,17 +18,13 @@ import SliderPhotoSecond from 'resources/assets/img/music.jpg'
 import Musician from 'resources/assets/img/musician1.png'
 import Musician1 from 'resources/assets/img/2pac.jpg'
 import Musician2 from 'resources/assets/img/eminem.jpg'
+import Posts from './posts'
 
 import homeEnhancer from './homeEnhancer'
 
 const Container = styled.div`
   max-width: 1200px;
   margin: auto;
-`
-
-const PostItemContainer = styled.div`
-  display: flex;
-  justify-content: center;
 `
 
 const FlexDiv = styled.div`
@@ -47,16 +42,6 @@ const FlexDiv = styled.div`
   }
 `
 
-const TrendingContainer = styled.div`
-  display: flex;
-  max-width: 1200px;
-  margin: 40px auto;
-  justify-content: space-around;
-  @media only screen and (max-width: 1150px) {
-    flex-direction: column;
-    align-items: center;
-  }
-`
 const HaveToListenContainer = styled.div`
   max-width: 1200px;
   margin: 40px auto;
@@ -100,39 +85,6 @@ const SectionSubHeader = styled.span`
 `
 
 const mainSliderData = [SliderPhoto, SliderPhotoSecond]
-
-const trendingData = [
-  {
-    picture: Musician,
-    type: 'Music',
-    header: 'Skepta & Wizkid Team Up On "No Energy"',
-    text:
-      'Lorem ipsum dolor sit amet. consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis   natoque penatibus et',
-    author: 'Mohhammed Patel',
-    views: '10,000',
-    id: 0,
-  },
-  {
-    picture: Musician1,
-    type: 'Music',
-    header: 'Lady Leshurr Drops Her New Freestyle',
-    text:
-      'Lorem ipsum dolor sit amet. consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et',
-    author: 'Mohhammed Patel',
-    views: '10,000',
-    id: 1,
-  },
-  {
-    picture: Musician2,
-    type: 'News',
-    header: 'Inside UK Drill, With 67',
-    text:
-      'Lorem ipsum dolor sit amet. consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et',
-    author: 'Mohhammed Patel',
-    views: '10,000',
-    id: 2,
-  },
-]
 
 const haveToListenData = [
   {
@@ -261,13 +213,9 @@ const playlistSliderSettings = {
 const Home = ({ width }) => (
   <Container>
     <MainSlider data={mainSliderData} />
-    <TrendingContainer>
-      {trendingData.map(item => (
-        <PostItemContainer to={`/blog/${item.type}/${item.id}`} key={item.id}>
-          <PostItem data={item} />
-        </PostItemContainer>
-      ))}
-    </TrendingContainer>
+
+    <Posts />
+
     <HaveToListenContainer>
       <HeaderContainer>
         <SectionHeader>You Have To Listen</SectionHeader>

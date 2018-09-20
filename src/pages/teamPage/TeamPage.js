@@ -15,36 +15,36 @@ const ItemContainer = styled.div`
 
 const dummyData = [
   {
-    img: Image,
-    name: 'Bianca Grace',
-    ocupation: 'Music Editor',
-    bio:
-      'Jake is a Content Creator for Mixtape Madness. With a strong background in journalism and Grime/UK Rap, Jake is able to create the best content for Mixtape Madness.',
-    id: 0,
-  },
-  {
-    img: Image,
-    name: 'Benjamin Evalent',
-    ocupation: 'Music Editor',
-    bio:
-      'Benjamin is a 25 year old writer for Mixtape Madness. He has broken stroies predominatntley within the grime scene. He enjoys listening to all artists including AJ Tracey, Nines, Not3s and Skepta',
     id: 1,
-  },
-  {
-    img: Image,
-    name: 'William Vince',
-    ocupation: 'Content Creator',
-    bio:
-      'William is a Content Creator for Mixtape Madness. With a strong background in journalism and Grime/UK Rap, William is able to create the best content for Mixtape Madness.',
-    id: 2,
-  },
-  {
-    img: Image,
+    avatar2: Image,
     name: 'Jon Jones',
     ocupation: 'Content Creator',
-    bio:
+    description:
       'Jon Jones is a Content Creator for Mixtape Madness. With a strong background in journalism and Grime/UK Rap, he is able to create the best content for Mixtape Madness.',
+  },
+  {
+    id: 2,
+    avatar2: Image,
+    name: 'Jon Jones',
+    ocupation: 'Content Creator',
+    description:
+      'Jon Jones is a Content Creator for Mixtape Madness. With a strong background in journalism and Grime/UK Rap, he is able to create the best content for Mixtape Madness.',
+  },
+  {
     id: 3,
+    avatar2: Image,
+    name: 'Jon Jones',
+    ocupation: 'Content Creator',
+    description:
+      'Jon Jones is a Content Creator for Mixtape Madness. With a strong background in journalism and Grime/UK Rap, he is able to create the best content for Mixtape Madness.',
+  },
+  {
+    id: 4,
+    avatar2: Image,
+    name: 'Jon Jones',
+    ocupation: 'Content Creator',
+    description:
+      'Jon Jones is a Content Creator for Mixtape Madness. With a strong background in journalism and Grime/UK Rap, he is able to create the best content for Mixtape Madness.',
   },
 ]
 

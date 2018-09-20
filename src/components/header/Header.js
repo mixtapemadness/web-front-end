@@ -63,10 +63,9 @@ const Ul = styled.ul`
 `
 const Li = styled.li`
   padding-bottom: 35px;
-  cursor: pointer;
   font-weight: 600;
   letter-spacing: 1.5px;
-  border-bottom: ${props => (props.active ? '2px solid #ff9600' : null)};
+  border-bottom: ${props => (props.isActive ? '2px solid #ff9600' : null)};
   :not(:last-child) {
     padding-right: 10px;
   }
@@ -294,6 +293,7 @@ const Header = ({
   toggleSearch,
   toggleMenu,
   menuOpened,
+  location,
 }) => (
   <HeaderContainer bottomBorder={bottomBorder} menuOpened={menuOpened}>
     <ContentContainer>
@@ -312,7 +312,7 @@ const Header = ({
         <NavBar>
           <Ul>
             <DropDown menuOpened={menuOpened}>
-              <Li active>Music</Li>
+              <Li isActive={location.pathname === '/'}>Music</Li>
               <DropDownContent>
                 <div>
                   <DropDownItem>Top 100</DropDownItem>
@@ -335,19 +335,19 @@ const Header = ({
               </DropDownContent>
             </DropDown>
             <DropDown menuOpened={menuOpened}>
-              <Li>
+              <Li isActive={location.pathname === '/blog/category/news'}>
                 <Link to="/blog/category/news">News</Link>
               </Li>
               <DropDownContent>Content</DropDownContent>
             </DropDown>
             <DropDown menuOpened={menuOpened}>
-              <Li>
+              <Li isActive={location.pathname === '/blog/category/events'}>
                 <Link to="/blog/category/events">Events</Link>
               </Li>
               <DropDownContent>Content</DropDownContent>
             </DropDown>
             <DropDown menuOpened={menuOpened}>
-              <Li>
+              <Li isActive={location.pathname === '/blog/category/videos'}>
                 <Link to="/blog/category/videos">Video</Link>
               </Li>
               <DropDownContent>Content</DropDownContent>

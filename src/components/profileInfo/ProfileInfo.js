@@ -134,7 +134,6 @@ const ShowMore = styled.div`
 `
 
 export default ({ data }) => {
-  console.log('data', data)
   const img = data && data.avatar2
   const name = data && data.name
   const description = data && data.description

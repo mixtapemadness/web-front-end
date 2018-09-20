@@ -25,7 +25,6 @@ const LineSeparator = styled.div`
 const AuthorPage = ({ width, data }) => {
   const userData = data && data.user && data.user
   const userId = data && data.user && data.user.id
-  console.log('userId', userId)
 
   return (
     <AuthorPageContainer>

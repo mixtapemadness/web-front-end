@@ -200,8 +200,10 @@ const BlogPage = ({ width, data }, props) => {
     <Container>
       <Heading>
         <TitleContainer>
-          <BlogTitle>{postData.title}</BlogTitle>
-          <BlogSubTitle>{postData.excerpt}</BlogSubTitle>
+          <BlogTitle dangerouslySetInnerHTML={{ __html: postData.title }} />
+          <BlogSubTitle
+            dangerouslySetInnerHTML={{ __html: postData.excerpt }}
+          />
           <MobileAuthorContainer>
             {/* <span>
               {'By '}
@@ -217,7 +219,7 @@ const BlogPage = ({ width, data }, props) => {
       <BlogPageImg id={postData.featured_media} />
       <BlogContent>
         <PostContentHeading date={postData.date} authorId={postData.author} />
-        <BlogArticle>{ReactHtmlParser(postData.content)}</BlogArticle>
+        <BlogArticle dangerouslySetInnerHTML={{ __html: postData.content }} />
       </BlogContent>
 
       {/* {postData.tags && postData.tags.map(id => <Tag key={id} id={id} />)} */}

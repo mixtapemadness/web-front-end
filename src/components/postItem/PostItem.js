@@ -141,13 +141,14 @@ const PostItem = ({ data }) => {
           <CategoryContainer>
             Trending / <Categories data={categoriesData} />
           </CategoryContainer>
-          <Header>{data.title}</Header>
+          <Header dangerouslySetInnerHTML={{ __html: data.title }} />
         </ContentContainerTop>
 
         <ContentContainerBottom>
-          <DataContentContainer color="#666666">
-            {data.content}
-          </DataContentContainer>
+          <DataContentContainer
+            color="#666666"
+            dangerouslySetInnerHTML={{ __html: data.excerpt }}
+          />
           <Span color="#000000">
             By <AuthorName id={data.author} />
           </Span>

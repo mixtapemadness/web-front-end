@@ -91,7 +91,7 @@ const Logo = styled.img`
   margin-right: 20px;
   box-sizing: content-box;
   @media only screen and (max-width: 450px) {
-    height: 30px;
+    height: 52px;
   }
 `
 const Search = styled.div`
@@ -398,8 +398,12 @@ const Header = ({
         <RightSide>
           <OrangeContainer menuOpened={menuOpened}>
             <Span>Upload</Span>
-            <Span>Register</Span>
-            <Span>Log In</Span>
+            <Span>
+              <Link to="/register">Register</Link>
+            </Span>
+            <Span>
+              <Link to="/login">Log In</Link>
+            </Span>
             <ContactUsContainer menuOpened={menuOpened}>
               Contact Us
             </ContactUsContainer>

@@ -43,7 +43,6 @@ const Span = styled.span`
 `
 const MobileComponent = ({ data, fromSearch }) => (
   <Container fromSearch={fromSearch}>
-    {console.log(data)}
     <PhotoContainer
       fromSearch={fromSearch}
       background={data.picture || data.img || data.media[0].imgs.featured_image}

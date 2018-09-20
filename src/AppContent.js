@@ -12,6 +12,8 @@ import Search from 'components/search'
 import Music from 'pages/music'
 import MusicProfilePage from 'pages/musicProfilePage'
 import TeamPage from 'pages/teamPage'
+import SearchResult from 'pages/searchResult/SearchResult'
+import SignForm from 'components/signForm/SignForm'
 
 const AppContent = ({ searchOpened, toggleSearch, menuOpened }) => (
   <div style={{ marginTop: 120 }}>
@@ -25,6 +27,9 @@ const AppContent = ({ searchOpened, toggleSearch, menuOpened }) => (
       <Route path="/music" component={Music} />
       <Route path="/music-profile/:slug" component={MusicProfilePage} />
       <Route path="/team" component={TeamPage} />
+      <Route path="/searchresult/:key" component={SearchResult} />
+      <Route path="/login" component={() => <SignForm type="login" />} />
+      <Route path="/register" component={() => <SignForm type="register" />} />
     </Switch>
     {searchOpened && <Search toggleSearch={toggleSearch} />}
     {menuOpened && <Menu />}

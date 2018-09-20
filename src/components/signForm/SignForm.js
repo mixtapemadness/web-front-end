@@ -71,19 +71,17 @@ const Footer = styled.div`
   }
 `
 
-const SignForm = ({ data }) => (
+const SignForm = ({ type }) => (
   <Container>
     <ContentContainer>
-      {data && data.type === 'login' && <LogIn />}
-      {data && data.type === 'register' && <Register />}
-      {data && data.type === 'newsletter' && <NewsLetter />}
-      {data &&
-        data.type === 'thanks' && (
-          <FormContainer>
-            <Title>Thank You For Registering</Title>
-          </FormContainer>
-        )}
-      {!data && <LogIn />}
+      {type === 'login' && <LogIn />}
+      {type === 'register' && <Register />}
+      {type === 'newsletter' && <NewsLetter />}
+      {type === 'thanks' && (
+        <FormContainer>
+          <Title>Thank You For Registering</Title>
+        </FormContainer>
+      )}
       <Footer>
         <span>Help</span>
         <span>Terms</span>

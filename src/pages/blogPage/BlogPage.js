@@ -228,10 +228,12 @@ const BlogPage = ({ width, data }, props) => {
         {postData.tags && postData.tags.map(id => <Tag key={id} id={id} />)}
       </TagsContainer>
       <ReactDisqusComments
-        shortname="example"
+        // shortname="mixtapemadnessuk"
+        shortname="//mixtapemadnessuk.disqus.com/embed.js"
         identifier="something-unique-12345"
-        title="Example Thread"
-        url="mixtapemadness.com/blog/wp-json/wp/v2/comments"
+        // title="Example Thread"
+        // url="mixtapemadness.com/blog/wp-json/wp/v2/comments"
+        url="http://mixtape.vobi.io/blog/news"
         category_id="10431"
         // onNewComment={this.handleNewComment}
       />

@@ -219,7 +219,13 @@ const BlogPage = ({ width, data }, props) => {
       <BlogPageImg id={postData.featured_media} />
       <BlogContent>
         <PostContentHeading date={postData.date} authorId={postData.author} />
-        <BlogArticle dangerouslySetInnerHTML={{ __html: postData.content }} />
+
+        <div
+          className="blog-page-article"
+          dangerouslySetInnerHTML={{ __html: postData.content }}
+        >
+          {/* <BlogArticle /> */}
+        </div>
       </BlogContent>
 
       {/* {postData.tags && postData.tags.map(id => <Tag key={id} id={id} />)} */}

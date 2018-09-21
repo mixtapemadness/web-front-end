@@ -89,6 +89,14 @@ const Span = styled.div`
   font-size: 17px;
   text-align: center;
 `
+
+const SpanTitle = styled.div`
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 17px;
+  text-align: left;
+`
+
 // ========================================================================================================//
 
 const ItemContainer = styled.div`
@@ -114,6 +122,7 @@ const ContentContainer = styled.div`
   justify-content: space-between;
   color: #ffffff;
 `
+
 const Time = styled.span`
   margin-left: 10px;
 `
@@ -136,7 +145,7 @@ const renderData = searchResult => (
             <Item>
               <SearchMedia id={item.featured_media} />
               <ContentContainer>
-                <span>{item.title}</span>
+                <SpanTitle dangerouslySetInnerHTML={{ __html: item.title }} />
                 <TimeContainer>
                   <ClockIcon height="20px" color="#ffffff" />
                   <Time>{getDate(item.date)}</Time>

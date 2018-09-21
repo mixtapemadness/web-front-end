@@ -1,5 +1,6 @@
 /* eslint react/jsx-curly-brace-presence: 0 */
-/* eslint no-unused-vars: */
+/* eslint no-unused-vars: 0 */
+/* eslint object-curly-newline: 0 */
 
 import React from 'react'
 import styled from 'styled-components'
@@ -28,15 +29,12 @@ const SectionContent = styled.span`
   width: 100%;
 `
 
-const MusicSection = ({ title, children }) => (
+const MusicSection = ({ title, subTitle, artist, children }) => (
   <SectionContainer>
     <SectionHead>
-      <Title size={'36px'}>
-        Secure The Bag!
-        {/* title */}
-      </Title>
+      <Title size={'36px'}>{title}</Title>
       <SubTitle>
-        By <SubTitleTxt color={'#666666'}>AJ Tracey</SubTitleTxt>
+        {subTitle} <SubTitleTxt color={'#666666'}>{artist}</SubTitleTxt>
       </SubTitle>
     </SectionHead>
 

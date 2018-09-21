@@ -102,8 +102,10 @@ const CategoryContainer = styled.div`
   width: 100%;
   color: #000;
   display: flex;
+  flex-wrap: wrap;
   font-weight: 800;
   font-size: 12px;
+  margin-bottom: 10px;
 `
 
 const Header = styled.div`

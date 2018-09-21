@@ -1,8 +1,6 @@
+/* eslint react/jsx-curly-brace-presence: 0 */
 import React from 'react'
-
 import styled from 'styled-components'
-
-import MusicSection from 'components/musicSection'
 import Footer from 'components/footer'
 import musicEnhancer from './musicEnhancer'
 import MusicMainSection from './musicMainSection'
@@ -24,18 +22,10 @@ const Music = () => (
   <MusicContainer>
     <MusicMainSection />
     <MusicSections>
-      <MusicSection>
-        <Songs />
-      </MusicSection>
-      <MusicSection>
-        <MixTapesFromArtist />
-      </MusicSection>
-      <MusicSection>
-        <SimilarMixtapes />
-      </MusicSection>
-      <MusicSection>
-        <SimilarArtists />
-      </MusicSection>
+      <Songs />
+      <MixTapesFromArtist />
+      <SimilarMixtapes />
+      <SimilarArtists />
     </MusicSections>
     <Footer />
   </MusicContainer>

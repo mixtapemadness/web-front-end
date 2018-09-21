@@ -37,6 +37,8 @@ const ContentContainer = styled.div`
   justify-content: space-between;
   color: #666666;
 `
+const Span = styled.span``
+
 const Time = styled.span`
   margin-left: 10px;
 `
@@ -67,7 +69,7 @@ const renderData = searchedData =>
         <Item key={item.id}>
           <SearchMedia id={item.featured_media} />
           <ContentContainer>
-            <span>{item.title}</span>
+            <Span dangerouslySetInnerHTML={{ __html: item.title }} />
             <TimeContainer>
               <ClockIcon height="20px" color="#666666" />
               <Time>{getDate(item.date)}</Time>

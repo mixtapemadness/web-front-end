@@ -6,6 +6,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import AlbumItems from 'components/albumItem'
+import MusicSection from 'components/musicSection'
 
 const Container = styled.div`
   width: 100%;
@@ -14,14 +15,16 @@ const Container = styled.div`
 `
 
 export default () => (
-  <Container>
-    <AlbumItems />
-    <AlbumItems />
-    <AlbumItems />
-    <AlbumItems />
-    <AlbumItems />
-    <AlbumItems />
-    <AlbumItems />
-    <AlbumItems />
-  </Container>
+  <MusicSection title={'Similar Mixtapes'} artist={'Section Boyz'}>
+    <Container>
+      <AlbumItems />
+      <AlbumItems />
+      <AlbumItems />
+      <AlbumItems />
+      <AlbumItems />
+      <AlbumItems />
+      <AlbumItems />
+      <AlbumItems />
+    </Container>
+  </MusicSection>
 )

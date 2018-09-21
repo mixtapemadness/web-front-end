@@ -6,6 +6,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import AlbumItem from 'components/albumItem'
+import MusicSection from 'components/musicSection'
 
 const Container = styled.div`
   width: 100%;
@@ -14,10 +15,16 @@ const Container = styled.div`
 `
 
 export default () => (
-  <Container>
-    <AlbumItem />
-    <AlbumItem />
-    <AlbumItem />
-    <AlbumItem />
-  </Container>
+  <MusicSection
+    title={'Similar Artists'}
+    subTitle={'Suggested Artists You May Enjoy'}
+    artist={'Dave, Stefflon, Notes, Yxng Bane'}
+  >
+    <Container>
+      <AlbumItem />
+      <AlbumItem />
+      <AlbumItem />
+      <AlbumItem />
+    </Container>
+  </MusicSection>
 )

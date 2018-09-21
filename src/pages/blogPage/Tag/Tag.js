@@ -6,9 +6,10 @@
 
 import React from 'react'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 import tagEnhancer from './tagEnhancer'
 
-const TagItem = styled.div`
+const TagItem = styled(Link)`
   border: solid 2px #cacaca;
   color: #cacaca;
   border-radius: 15px;
@@ -18,7 +19,8 @@ const TagItem = styled.div`
 
 const Tag = ({ data }) => {
   const TagName = data && data.tag && data.tag.name
-  return <TagItem>{TagName}</TagItem>
+  const Slug = data && data.tag && data.tag.slug
+  return <TagItem to={`/searchresult/${Slug}`}>{TagName}</TagItem>
 }
 
 export default tagEnhancer(Tag)

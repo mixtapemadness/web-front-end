@@ -1,7 +1,6 @@
 /* eslint disable-line: 0 */
 /* eslint indent: 0 */
 /* eslint react/jsx-indent: 0 */
-/* eslint react/jsx-curly-brace-presence: 0 */
 /* eslint operator-linebreak: 0 */
 
 import React from 'react'

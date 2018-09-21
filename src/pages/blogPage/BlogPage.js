@@ -194,11 +194,17 @@ const AdvertisementContainer = styled.div`
   width: 357px;
   height: 627px;
 `
+const DisqusContainer = styled.div`
+  max-width: 1200px;
+  margin: auto;
+  width: 100%;
+`
 
 const BlogPage = ({ width, data }, props) => {
   const postData = data && data.Post ? data.Post : {}
   return (
     <Container>
+      {console.log(props)}
       <Heading>
         <TitleContainer>
           <BlogTitle dangerouslySetInnerHTML={{ __html: postData.title }} />
@@ -227,16 +233,22 @@ const BlogPage = ({ width, data }, props) => {
       <TagsContainer>
         {postData.tags && postData.tags.map(id => <Tag key={id} id={id} />)}
       </TagsContainer>
-      <ReactDisqusComments
-        // shortname="mixtapemadnessuk"
-        shortname="//mixtapemadnessuk.disqus.com/embed.js"
-        identifier="/blog/news/dj-semtex-announces-leaving-bbc-1xtra-15-years"
-        // title="Example Thread"
-        // url="mixtapemadness.com/blog/wp-json/wp/v2/comments"
-        url="http://mixtape.vobi.io/blog/news/dj-semtex-announces-leaving-bbc-1xtra-15-years"
-        // category_id="10431"
-        // onNewComment={this.handleNewComment}
-      />
+      <DisqusContainer>
+        <ReactDisqusComments
+          // shortname="mixtapemadnessuk"
+          shortname="//mixtapemadnessuk.disqus.com/embed.js"
+          // identifier="/blog/news/dj-semtex-announces-leaving-bbc-1xtra-15-years"
+
+          identifier={window.location.pathname}
+          // title="Example Thread"
+          url={window.location.href}
+
+          // url="http://mixtape.vobi.io/blog/news/dj-semtex-announces-leaving-bbc-1xtra-15-years"
+
+          // category_id="10431"
+          // onNewComment={this.handleNewComment}
+        />
+      </DisqusContainer>
       {/* <Header bottomBorder />
     {data.getPosts && data.getPosts.length > 0 ? (
       <BlogPost data={data.getPosts[0]} />

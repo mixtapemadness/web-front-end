@@ -14,6 +14,14 @@ const Img = styled.img`
   z-index: 1;
   margin-top: 210px;
   height: 150px;
+  @media only screen and (max-width: 850px) {
+    height: 100px;
+    margin-top: 250px;
+  }
+  @media only screen and (max-width: 450px) {
+    height: 50px;
+    margin-top: 260px;
+  }
 `
 
 const PrevArrow = (
@@ -324,10 +332,11 @@ const Override = styled.div`
 `
 
 const SliderContent = styled.div`
-  height: 540px
+  height: 540px;
   background-image: url(${p => p.SliderPhoto});
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center center;
   text-align: center;
 `
 const Header = styled.span`
@@ -336,6 +345,12 @@ const Header = styled.span`
   color: white;
   @media only screen and (max-width: 950px) {
     font-size: 30px;
+  }
+  @media only screen and (max-width: 850px) {
+    font-size: 20px;
+  }
+  @media only screen and (max-width: 450px) {
+    font-size: 14px;
   }
 `
 const Span = styled.span`
@@ -347,6 +362,12 @@ const Span = styled.span`
   }
   @media only screen and (max-width: 740px) {
     font-size: 45px;
+  }
+  @media only screen and (max-width: 850px) {
+    font-size: 30px;
+  }
+  @media only screen and (max-width: 450px) {
+    font-size: 16px;
   }
 `
 const LatestSingles = styled.button`

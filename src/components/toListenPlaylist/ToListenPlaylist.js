@@ -24,7 +24,7 @@ const Container = styled.div`
   }
 `
 const PhotoContainer = styled.div`
-  width: 100%
+  width: 100%;
   height: 300px;
   background: url(${props => props.picture});
   background-repeat: no-repeat;
@@ -79,6 +79,10 @@ const FlexDiv = styled.div`
   ${p => p.mt && `margin-top: ${p.mt}px`};
   ${p => p.ml && `margin-left: ${p.ml}px`};
   ${p => p.mr && `margin-right: ${p.mr}px`};
+  @media only screen and (max-width: 450px) {
+    flex-direction: column;
+    text-align: center;
+  }
 `
 const LittleIcon = styled.img`
   ${p => p.height && `height: ${p.height}px`};
@@ -89,6 +93,11 @@ const Span = styled.span`
   font-size: 13px;
   margin-left: 10px;
   margin-top: 2px;
+`
+
+const IconsContainer = styled.div`
+  display: flex;
+  margin-top: 18px;
 `
 const ToListenPlaylist = ({ data }) => (
   <Container>
@@ -103,7 +112,7 @@ const ToListenPlaylist = ({ data }) => (
       <Line />
       <RightSide>
         <Text>{data.text}</Text>
-        <FlexDiv mt={18}>
+        <IconsContainer>
           <FlexDiv mr={20}>
             <LittleIcon src={PlayListIcon} height={20} pointer />
             <Span>
@@ -118,7 +127,7 @@ const ToListenPlaylist = ({ data }) => (
               {' Followers'}
             </Span>
           </FlexDiv>
-        </FlexDiv>
+        </IconsContainer>
       </RightSide>
     </ContentContainer>
   </Container>

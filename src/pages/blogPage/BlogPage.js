@@ -230,11 +230,11 @@ const BlogPage = ({ width, data }, props) => {
       <ReactDisqusComments
         // shortname="mixtapemadnessuk"
         shortname="//mixtapemadnessuk.disqus.com/embed.js"
-        identifier="something-unique-12345"
+        identifier="/blog/news/dj-semtex-announces-leaving-bbc-1xtra-15-years"
         // title="Example Thread"
         // url="mixtapemadness.com/blog/wp-json/wp/v2/comments"
-        url="http://mixtape.vobi.io/blog/news"
-        category_id="10431"
+        url="http://mixtape.vobi.io/blog/news/dj-semtex-announces-leaving-bbc-1xtra-15-years"
+        // category_id="10431"
         // onNewComment={this.handleNewComment}
       />
       {/* <Header bottomBorder />

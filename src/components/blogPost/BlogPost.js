@@ -66,7 +66,6 @@ const Paragraph = styled.p`
 `
 const BlogPost = ({ data }) => (
   <PostContainer>
-    {console.log('dataaaaaaa', data)}
     <Heading>
       <LeftSide>
         <Social>

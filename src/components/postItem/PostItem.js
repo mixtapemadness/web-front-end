@@ -49,6 +49,7 @@ const ContentContainer = styled.div`
 const ContentContainerBottom = styled.div`
   display: flex;
   flex-direction: column;
+  margin-top: 20px;
 `
 
 const Span = styled.span`
@@ -57,9 +58,9 @@ const Span = styled.span`
   ${p => p.maxHeight && `max-height: ${p.maxHeight}`};
   font-size: 12px;
   letter-spacing: 0.7px;
-  margin: 15px 0;
   display: flex;
   font-weight: 800;
+  margin-top: 3px;
 `
 
 // const AuthorLink = styled(Link)`
@@ -84,6 +85,7 @@ const DataContentContainer = styled.span`
 const FlexDiv = styled.div`
   display: flex;
   ${p => p.jc && `justify-content: ${p.jc}`};
+  margin-top: 3px;
 `
 const Img = styled.img`
   ${p => p.height && `height: ${p.height}px`};
@@ -141,13 +143,14 @@ const PostItem = ({ data }) => {
           <CategoryContainer>
             Trending / <Categories data={categoriesData} />
           </CategoryContainer>
-          <Header>{data.title}</Header>
+          <Header dangerouslySetInnerHTML={{ __html: data.title }} />
         </ContentContainerTop>
 
         <ContentContainerBottom>
-          <DataContentContainer color="#666666">
-            {data.content}
-          </DataContentContainer>
+          <DataContentContainer
+            color="#666666"
+            dangerouslySetInnerHTML={{ __html: data.excerpt }}
+          />
           <Span color="#000000">
             By <AuthorName id={data.author} />
           </Span>
@@ -161,8 +164,8 @@ const PostItem = ({ data }) => {
             </FlexDiv>
             <Img src={SignalBarsIcon} alt="bars" height={18} />
           </FlexDiv>
+          <ContinueRead categoryId={categoriesData} PostSlug={data.slug} />
         </ContentContainerBottom>
-        <ContinueRead categoryId={categoriesData} PostSlug={data.slug} />
       </ContentContainer>
     </PostItemContainer>
   )

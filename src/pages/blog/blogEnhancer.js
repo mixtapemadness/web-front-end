@@ -18,12 +18,7 @@ export default compose(
     }),
     {
       updateWidth: () => () => ({ width: window.innerWidth }),
-      // handleLoadMore: ({ perPage, fetchMore }) => () => (
-      //   fetchMore({
-      //     variables: {
-      //       perPage: perPage + 9,
-      //     },
-      //   })),
+      handleLoadMore: ({ perPage }) => () => ({ perPage: perPage + 3 }),
     },
   ),
 
@@ -32,9 +27,9 @@ export default compose(
       window.scrollTo(0, 0)
       window.addEventListener('resize', this.props.updateWidth)
     },
-    componentDidUpdate() {
-      window.scrollTo(0, 0)
-    },
+    // componentDidUpdate() {
+    //   window.scrollTo(0, 0)
+    // },
     componentWillUnmount() {
       window.removeEventListener('resize', this.props.updateWidth)
     },
@@ -56,7 +51,7 @@ export default compose(
       options: props => ({
         variables: {
           page: 1,
-          perPage: 9,
+          perPage: props.perPage,
           filter: { categories: props.match.params.filter.toUpperCase() },
           sort: props.sort,
         },

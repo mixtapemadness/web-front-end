@@ -11,7 +11,6 @@ const Container = styled(Link)`
 `
 
 const PostItemCategory = ({ data }) => {
-  console.log('data', data)
   const name = data.category ? data.category.name : ''
   const slug = data.category ? data.category.slug : ''
   return <Container to={`/blog/category/${slug}`}>{name}</Container>

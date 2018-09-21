@@ -7,5 +7,6 @@ Posts: getPosts(filter:$filter,page:$page,perPage:$perPage) {
     title
     content
     slug
+    excerpt
   }
 }

@@ -88,7 +88,7 @@ const FlexDiv = styled.div`
   width: 29%;
   @media only screen and (max-width: 850px) {
     flex-direction: column;
-    width: 100%
+    width: 100%;
     align-items: center;
   }
 `
@@ -154,7 +154,7 @@ const Menu = () => (
       <Title>Today’s Most Read News</Title>
       <ItemContainer>
         {menuDummyData.map((item, index, arr) => (
-          <FlexDiv>
+          <FlexDiv key={item.id}>
             <MenuItem data={item} />
             {index !== arr.length - 1 && <Divider />}
           </FlexDiv>

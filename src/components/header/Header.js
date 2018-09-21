@@ -1,4 +1,5 @@
 /* eslint object-curly-newline: 0 */
+/* eslint implicit-arrow-linebreak: 0 */
 import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
@@ -23,7 +24,7 @@ const HeaderContainer = styled.div`
   left: 0;
   z-index: 2;
   ${p => p.menuOpened && 'background-color: #ff9600'};
-  ${p => p.bottomBorder && 'border-bottom: 1px solid #E7E7E7'};
+  box-shadow: 0 3px 5px -4px rgba(0, 0, 0, 0.46);
 `
 const ContentContainer = styled.div`
   max-width: 1200px;
@@ -60,12 +61,15 @@ const Ul = styled.ul`
   text-decoration: none;
   list-style: none;
   display: flex;
+  color: ${props => (props.menuOpened ? '#ffffff' : '#666666')};
+  transition: unset;
 `
 const Li = styled.li`
   padding-bottom: 35px;
   font-weight: 600;
   letter-spacing: 1.5px;
-  border-bottom: ${props => (props.isActive ? '2px solid #ff9600' : null)};
+  border-bottom: ${props =>
+    props.isActive ? '2px solid #ff9600' : '2px solid transparent'};
   :not(:last-child) {
     padding-right: 10px;
   }
@@ -198,7 +202,6 @@ const BurgerIcon = styled.div`
 
 const DropDown = styled.div`
   position: relative;
-  color: ${props => (props.menuOpened ? '#ffffff' : '#666666')};
   div {
     display: none;
   }
@@ -244,35 +247,58 @@ const Join = styled.div`
 const DotsDropDown = styled.div`
   position: relative;
 `
-const DotsDropDownContent = styled.div`
-  z-index: 1;
-  position: absolute;
-  background-color: #ffffff;
-  border: 1px solid #e7e7e7;
-  top: 53px;
-  width: 208px;
-  min-height: 278px;
-  display: ${p => (p.dotsMenu === true ? 'block' : 'none')};
+// const DotsDropDownContent = styled.div`
+//   z-index: 1;
+//   position: absolute;
+//   background-color: #ffffff;
+//   border: 1px solid #e7e7e7;
+//   top: 53px;
+//   width: 208px;
+//   min-height: 278px;
+//   display: ${p => (p.dotsMenu === true ? 'block' : 'none')};
 
-  ul {
-    list-style: none;
-    font-size: 14px;
-    color: #333333;
-    padding: 20px 0px;
-  }
-  li {
-    padding: 3px 20px;
-    :hover {
-      background-color: #f5f5f5;
-    }
-  }
-`
-const Line = styled.div`
-  height: 1px;
-  margin: 9px 0;
-  overflow: hidden;
-  background-color: #e5e5e5;
-`
+//   ul {
+//     list-style: none;
+//     font-size: 14px;
+//     color: #333333;
+//     padding: 20px 0px;
+//   }
+//   li {
+//     padding: 3px 20px;
+//     :hover {
+//       background-color: #f5f5f5;
+//     }
+//   }
+//   `
+// const Line = styled.div`
+//   height: 1px;
+//   margin: 9px 0;
+//   overflow: hidden;
+//   background-color: #e5e5e5;
+// `
+/*
+  <DotsDropDownContent dotsMenu={dotsMenu}>
+    <ul>
+      <li>
+        <Link to="/aboutus">About Us</Link>
+      </li>
+      <li>Legal</li>
+      <li>Copyright</li>
+      <li>Terms & Contitions</li>
+      <Line />
+      <li>Advertising</li>
+      <li>Press</li>
+      <li>
+        <a href="https://itunes.apple.com/us/app/mixtape-madness-latest-uk-mixtapes-singles/id1090862433?mt=8&ign-mpt=uo%3D4">
+          Download our IOS app
+        </a>
+      </li>
+      <li>Download our Android app</li>
+      <Line />
+      <li>Contact Us</li>
+    </ul>
+  </DotsDropDownContent>
+*/
 
 const Div = styled.div`
   display: flex;
@@ -286,8 +312,7 @@ const DropDownItem = styled.span`
 `
 
 const Header = ({
-  bottomBorder,
-  dotsMenu,
+  // dotsMenu,
   toggleDotsMenu,
   width,
   toggleSearch,
@@ -295,7 +320,7 @@ const Header = ({
   menuOpened,
   location,
 }) => (
-  <HeaderContainer bottomBorder={bottomBorder} menuOpened={menuOpened}>
+  <HeaderContainer menuOpened={menuOpened}>
     <ContentContainer>
       <LeftSide>
         <Div>
@@ -310,9 +335,11 @@ const Header = ({
           </Link>
         </Div>
         <NavBar>
-          <Ul>
-            <DropDown menuOpened={menuOpened}>
-              <Li isActive={location.pathname === '/'}>Music</Li>
+          <Ul menuOpened={menuOpened}>
+            <DropDown>
+              <Li isActive={location.pathname === '/music'}>
+                <Link to="/music">Music</Link>
+              </Li>
               <DropDownContent>
                 <div>
                   <DropDownItem>Top 100</DropDownItem>
@@ -334,24 +361,15 @@ const Header = ({
                 </div>
               </DropDownContent>
             </DropDown>
-            <DropDown menuOpened={menuOpened}>
-              <Li isActive={location.pathname === '/blog/category/news'}>
-                <Link to="/blog/category/news">News</Link>
-              </Li>
-              <DropDownContent>Content</DropDownContent>
-            </DropDown>
-            <DropDown menuOpened={menuOpened}>
-              <Li isActive={location.pathname === '/blog/category/events'}>
-                <Link to="/blog/category/events">Events</Link>
-              </Li>
-              <DropDownContent>Content</DropDownContent>
-            </DropDown>
-            <DropDown menuOpened={menuOpened}>
-              <Li isActive={location.pathname === '/blog/category/videos'}>
-                <Link to="/blog/category/videos">Video</Link>
-              </Li>
-              <DropDownContent>Content</DropDownContent>
-            </DropDown>
+            <Li isActive={location.pathname === '/blog/category/news'}>
+              <Link to="/blog/category/news">News</Link>
+            </Li>
+            <Li isActive={location.pathname === '/blog/category/events'}>
+              <Link to="/blog/category/events">Events</Link>
+            </Li>
+            <Li isActive={location.pathname === '/blog/category/videos'}>
+              <Link to="/blog/category/videos">Video</Link>
+            </Li>
           </Ul>
         </NavBar>
         {width > 1050 && (
@@ -363,27 +381,6 @@ const Header = ({
                   color={menuOpened ? '#ffffff' : '#666666'}
                 />
               </Dots>
-              <DotsDropDownContent dotsMenu={dotsMenu}>
-                <ul>
-                  <li>
-                    <Link to="/aboutus">About Us</Link>
-                  </li>
-                  <li>Legal</li>
-                  <li>Copyright</li>
-                  <li>Terms & Contitions</li>
-                  <Line />
-                  <li>Advertising</li>
-                  <li>Press</li>
-                  <li>
-                    <a href="https://itunes.apple.com/us/app/mixtape-madness-latest-uk-mixtapes-singles/id1090862433?mt=8&ign-mpt=uo%3D4">
-                      Download our IOS app
-                    </a>
-                  </li>
-                  <li>Download our Android app</li>
-                  <Line />
-                  <li>Contact Us</li>
-                </ul>
-              </DotsDropDownContent>
             </DotsDropDown>
             <Search onClick={() => toggleSearch()}>
               <SearchIcon

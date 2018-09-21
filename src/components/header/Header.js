@@ -33,13 +33,13 @@ const ContentContainer = styled.div`
   display: flex;
   justify-content: space-between;
   position: relative;
+  font-size: 13px;
   @media only screen and (max-width: 1050px) {
     justify-content: center;
   }
 `
 const LeftSide = styled.div`
   display: flex;
-  align-items: flex-end;
   @media only screen and (max-width: 1050px) {
     width: 100%;
     justify-content: space-around;
@@ -48,12 +48,11 @@ const LeftSide = styled.div`
 
 const RightSide = styled.div`
   display: flex;
-  align-items: flex-end;
+  align-items: center;
 `
 
 const NavBar = styled.nav`
   display: flex;
-  align-items: flex-end;
 `
 const Ul = styled.ul`
   padding: 0;
@@ -65,9 +64,11 @@ const Ul = styled.ul`
   transition: unset;
 `
 const Li = styled.li`
-  padding-bottom: 35px;
   font-weight: 600;
   letter-spacing: 1.5px;
+  display: flex;
+  align-items: center;
+  height: 100%;
   border-bottom: ${props =>
     props.isActive ? '2px solid #ff9600' : '2px solid transparent'};
   :not(:last-child) {
@@ -79,7 +80,6 @@ const Li = styled.li`
 `
 const OrangeContainer = styled.div`
   display: flex;
-  margin-bottom: 37px;
   color: ${p => (p.menuOpened ? '#ffffff' : '#ffa019')};
 `
 const Span = styled.span`
@@ -90,8 +90,6 @@ const Span = styled.span`
 `
 const Logo = styled.img`
   height: 70px;
-  padding-bottom: 10px;
-  margin-right: 20px;
   box-sizing: content-box;
   @media only screen and (max-width: 450px) {
     height: 52px;
@@ -99,12 +97,10 @@ const Logo = styled.img`
 `
 const Search = styled.div`
   width: 20px;
-  margin-bottom: 30px;
   cursor: pointer;
 `
 const Dots = styled.div`
   width: 10px;
-  margin-bottom: 35px;
   margin-left: 30px;
   margin-right: 10px;
   cursor: pointer;
@@ -123,11 +119,8 @@ const ContactUsContainer = styled.div`
 const SocialIconsContainer = styled.div`
   display: flex;
   align-items: center;
-  margin-bottom: 40px;
-  margin-left: 10px;
 `
 const SocialIcon = styled.a`
-  height: 20px;
   margin-left: 20px;
   cursor: pointer;
 `
@@ -136,14 +129,9 @@ const BurgerIcon = styled.div`
   width: 23px;
   height: 16px;
   position: relative;
-  margin: 0px 40px 45px 0px;
   @media only screen and (max-width: 450px) {
-    margin-right: 20px;
-    margin-bottom: 35px;
   }
   @media only screen and (max-width: 350px) {
-    margin-right: 5px;
-    margin-left: 1px;
   }
   -webkit-transform: rotate(0deg);
   -moz-transform: rotate(0deg);
@@ -215,7 +203,7 @@ const DropDownContent = styled.div`
   z-index: 1;
   position: absolute;
   background-color: #ffffff;
-  top: 62px;
+  top: 120px;
   padding: 18px 20px;
   border: 1px solid #e7e7e7;
   justify-content: space-between;
@@ -302,7 +290,7 @@ const DotsDropDown = styled.div`
 
 const Div = styled.div`
   display: flex;
-  align-items: flex-end;
+  align-items: center;
 `
 
 const DropDownItem = styled.span`

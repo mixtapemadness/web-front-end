@@ -35,6 +35,8 @@ import Tag from './Tag'
 const Container = styled.div`
   width: 100%;
   display: flex;
+  max-width: 1200px;
+  margin: auto;
   flex-direction: column;
 `
 
@@ -51,24 +53,31 @@ const TitleContainer = styled.div`
   text-transform: capitalize;
   display: flex;
   flex-direction: column;
+  @media only screen and (max-width: 450px) {
+    width: 90%;
+  }
 `
 const BlogTitle = styled.h1`
   font-size: 46px;
   letter-spacing: 3.2px;
   color: #010101;
   font-weight: 800;
+  margin-bottom: 20px;
+  @media only screen and (max-width: 700px) {
+    font-size: 26px;
+  }
   @media only screen and (max-width: 450px) {
-    font-size: 27px;
+    font-size: 16px;
+    letter-spacing: normal;
   }
 `
 const BlogSubTitle = styled.h3`
-  /* font-size: 27px; */
   color: #666666;
   letter-spacing: 1.6px;
   margin-bottom: 20px;
   @media only screen and (max-width: 450px) {
-    font-size: 16px;
-    color: #000000;
+    font-size: 14px;
+    letter-spacing: normal;
   }
 `
 const BackgroundPicture = styled.div`
@@ -85,13 +94,14 @@ const BackgroundPicture = styled.div`
 `
 
 const BlogContent = styled.div`
-  width: 70%;
+  width: 90%;
   margin: auto;
 `
 
 const BlogArticle = styled.div`
   width: 100%;
   margin: auto;
+  margin-top: 40px;
 `
 
 const VideoContainer = styled.div`
@@ -102,6 +112,7 @@ const VideoContainer = styled.div`
 `
 const TagsContainer = styled.div`
   display: flex;
+  flex-wrap: wrap;
   width: 100%;
   max-width: 1200px;
   justify-content: center;
@@ -197,7 +208,7 @@ const AdvertisementContainer = styled.div`
 const DisqusContainer = styled.div`
   max-width: 1200px;
   margin: auto;
-  width: 100%;
+  width: 90%;
 `
 
 const BlogPage = ({ width, data }, props) => {

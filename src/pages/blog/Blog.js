@@ -38,11 +38,11 @@ const SubscribeContainer = styled.div`
   width: 100%;
   margin: 40px 0;
 `
-const Div = styled.div`
-  margin-top: 20px;
-  justify-content: center;
-  display: flex;
-`
+// const Div = styled.div`
+//   margin-top: 20px;
+//   justify-content: center;
+//   display: flex;
+// `
 
 const FooterContainer = styled.div`
   margin-top: 40px;
@@ -123,24 +123,24 @@ const PostItemT = (item, index) => {
 const PostItems = ({ items }) =>
   items.map((item, index) => PostItemT(item, index))
 
-const Blog = ({ width, data, handleLoadMore, match }) => {
+const Blog = ({ data, handleLoadMore, match }) => {
   const Data = data.Posts && data.Posts.length > 0 && data.Posts
   return (
     <NewsContainer>
-      {width > 700 && (
-        <div>
-          <BlogSlider />
-          <BlogFilter match={match} />
-          <PostsContainer>{Data && <PostItems items={Data} />}</PostsContainer>
-        </div>
-      )}
-      {width <= 700 &&
-        Data.getPosts.map(item => (
+      {/* {width > 700 && ( */}
+      <div>
+        <BlogSlider />
+        <BlogFilter match={match} />
+        <PostsContainer>{Data && <PostItems items={Data} />}</PostsContainer>
+      </div>
+      {/* )} */}
+      {/* {width <= 700 && Data &&
+        Data.map(item => (
           <Div key={item.id}>
             {' '}
             <PostItem data={item} />
           </Div>
-        ))}
+        ))} */}
 
       <MorePosts onClick={handleLoadMore}> More News +</MorePosts>
       <FooterContainer>

@@ -80,30 +80,11 @@ const ResentPosts = ({ width, data }) => {
   return (
     <ResentPostsContainer>
       {width > 450 && (
-        <PostsContainer>
-          {posts && <PostItems items={posts} />}
-
-          {/* {PostsFirstPart &&
-            PostsFirstPart.map(item => (
-              <ItemContainer>
-                <PostItem data={item} />
-              </ItemContainer>
-            ))} */}
-          {/* <SubscribeContainer>
-            <Subscribe />
-          </SubscribeContainer> */}
-          {/* {PostsSecondPart &&
-            PostsSecondPart.map(item => (
-              <ItemContainer>
-                <PostItem data={item} />
-              </ItemContainer>
-            ))} */}
-        </PostsContainer>
+        <PostsContainer>{posts && <PostItems items={posts} />}</PostsContainer>
       )}
       {width <= 450 && (
         <PostsContainer>
-          {/* {PostsSecondPart &&
-            PostsSecondPart.map(item => <PostItem data={item} />)} */}
+          {posts && <PostItems items={posts} />}
           <ButtonContainer>
             <PreviousButton>Previous</PreviousButton>
             <NextButton>Next</NextButton>

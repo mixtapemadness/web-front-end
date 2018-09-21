@@ -35,7 +35,14 @@ const Div = styled.div`
 
 const AdvertisementContainer = styled.div`
   width: 357px;
-  height: 627px;
+  height: 580px;
+  margin-top: 20px;
+  @media only screen and (max-width: 1150px) {
+    width: 61.458%;
+  }
+  @media only screen and (max-width: 450px) {
+    width: 90%;
+  }
 `
 
 const AlsoLikeHeaderContainer = styled.div`
@@ -61,16 +68,12 @@ const YouMayLike = ({ width, data }) => {
         {width > 450 && <span>You May also like</span>}
         {width <= 450 && <span>What To Read Next</span>}
       </AlsoLikeHeaderContainer>
-      {width > 450 && (
-        <Div>
-          <AdvertisementContainer>
-            <Advertisement />
-          </AdvertisementContainer>
-          {Posts && Posts.map(item => <PostItem key={item.id} data={item} />)}
-        </Div>
-      )}
-      {/* {width <= 450 &&
-        blogPageData.mayLike.map(item => <MobileComponent data={item} />)} */}
+      <Div>
+        <AdvertisementContainer>
+          <Advertisement />
+        </AdvertisementContainer>
+        {Posts && Posts.map(item => <PostItem key={item.id} data={item} />)}
+      </Div>
     </MayLikeContainer>
   )
 }

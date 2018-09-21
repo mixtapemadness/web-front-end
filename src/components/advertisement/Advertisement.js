@@ -15,9 +15,6 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   text-align: center;
-  @media only screen and (max-width: 1150px) {
-    width: ${p => (p.fromNews === true ? '100%' : '61.458%')};
-  }
 `
 
 const Upload = styled.span`
@@ -25,6 +22,9 @@ const Upload = styled.span`
   text-transform: capitalize;
   color: #ffffff;
   font-weight: 600;
+  @media only screen and (max-width: 450px) {
+    font-size: 40px;
+  }
 `
 const MixTape = styled.span`
   font-size: 76.5px;
@@ -33,6 +33,9 @@ const MixTape = styled.span`
   text-transform: capitalize;
   color: #ffffff;
   font-weight: 600;
+  @media only screen and (max-width: 450px) {
+    font-size: 60px;
+  }
 `
 const ContactUs = styled.span`
   font-size: 17.5px;

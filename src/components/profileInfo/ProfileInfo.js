@@ -1,4 +1,5 @@
 /* eslint react/jsx-one-expression-per-line: 0 */
+/* eslint no-unused-vars: 0 */
 
 import React from 'react'
 
@@ -143,14 +144,14 @@ export default ({ data }) => {
     <ProfileContainer>
       <ProfileImg>
         <Image src={img} />
-        <EditProfile>Edit Profile</EditProfile>
+        {/* <EditProfile>Edit Profile</EditProfile> */}
       </ProfileImg>
 
       <ProfileDesc>
         <ProfileDescTitle>
           <ProfileInfo>
             <ProfileDescName>{name}</ProfileDescName>
-            <ProfileDescOcupation>occupation</ProfileDescOcupation>
+            {/* <ProfileDescOcupation>occupation</ProfileDescOcupation> */}
           </ProfileInfo>
           <ProfileDescIcons>
             <ProfileDescIcon src={TwitterIcon} />

@@ -13,6 +13,7 @@ const AuthorPageContainer = styled.div`
   max-width: 1200px;
   margin: auto;
   display: flex;
+  flex-wrap: wrap;
   flex-direction: column;
 `
 

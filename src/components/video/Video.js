@@ -7,7 +7,8 @@ import SignalBarsIcon from 'resources/assets/svg/signal-bars.svg'
 import DotsIcon from 'resources/assets/svg/dots.svg'
 
 const Container = styled.div`
-  width: 375px;
+  margin: 7px;
+  flex: 1;
   @media only screen and (max-width: 1150px) {
     width: 61.458%;
     margin-top: 20px;

@@ -19,13 +19,14 @@ import PostItemCategory from './postItemCategory'
 import ContinueRead from './continueRead'
 
 const PostItemContainer = styled.div`
-  width: 357px;
+  flex: 1 0 357px;
   display: flex;
   flex-direction: column;
-  margin: 20px 0;
+  margin: 7px;
   @media only screen and (max-width: 1150px) {
     width: 61.458%;
     margin-top: 20px;
+    flex: 1;
   }
   @media only screen and (max-width: 450px) {
     width: 90%;
@@ -34,11 +35,11 @@ const PostItemContainer = styled.div`
 
 const ContentContainer = styled.div`
   background-color: #eeeeef;
-  width: calc(100% - 40px);
-  padding: 27px 20px;
+  width: 100%;
+  padding: 15px 10px;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  box-sizing: content-box;
   justify-content: space-between;
   flex: 1;
   ${p => p.blog === true && 'height: 373px'};
@@ -60,7 +61,8 @@ const Span = styled.span`
   letter-spacing: 0.7px;
   display: flex;
   font-weight: 800;
-  margin-top: 3px;
+  margin-top: 10px;
+  /* margin-top: 3px; */
 `
 
 // const AuthorLink = styled(Link)`
@@ -85,13 +87,13 @@ const DataContentContainer = styled.span`
 const FlexDiv = styled.div`
   display: flex;
   ${p => p.jc && `justify-content: ${p.jc}`};
-  margin-top: 3px;
+  margin: 3px 0;
 `
 const Img = styled.img`
   ${p => p.height && `height: ${p.height}px`};
 `
+
 const Views = styled.span`
-  margin-top: 2px;
   margin-left: 10px;
   color: #666666;
   font-size: 12px;

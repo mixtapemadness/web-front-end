@@ -19,7 +19,7 @@ import postsEnhancer from './postsEnhancer'
 const TrendingContainer = styled.div`
   display: flex;
   max-width: 1200px;
-  margin: 40px auto;
+  margin: 7px auto;
   justify-content: space-around;
   @media only screen and (max-width: 1150px) {
     flex-direction: column;

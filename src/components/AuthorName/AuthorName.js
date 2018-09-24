@@ -11,10 +11,9 @@ const Container = styled(Link)`
   font-weight: 800;
 `
 
-const AuthorName = ({ data: { user } }) => {
-  const userName = user && user.name
-  const userSlug = user && user.slug
-
+const AuthorName = ({ data }) => {
+  const userName = data && data.user && data.user.name
+  const userSlug = data && data.user && data.user.slug
   return <Container to={`/author/${userSlug}`}>{userName}</Container>
 }
 

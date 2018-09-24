@@ -1,3 +1,5 @@
+/* eslint no-unused-vars: 0 */
+
 import React from 'react'
 import styled from 'styled-components'
 
@@ -54,7 +56,7 @@ const MenuItem = ({ data }) => (
     <ContentContainer>
       <Type>{data.type}</Type>
       <Title>{data.title}</Title>
-      <FlexDiv>
+      {/* <FlexDiv>
         <ViewsContainer>
           <ViewsIcon color="#ffffff" height="20px" />
           <Span>
@@ -63,7 +65,7 @@ const MenuItem = ({ data }) => (
           </Span>
         </ViewsContainer>
         <SignalBarsIcon color="#ffffff" height="13px" />
-      </FlexDiv>
+      </FlexDiv> */}
     </ContentContainer>
   </Container>
 )

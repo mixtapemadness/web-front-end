@@ -5,6 +5,7 @@
 /* eslint implicit-arrow-linebreak: 0 */
 /* eslint operator-linebreak: 0 */
 /* eslint no-unused-expressions: 0 */
+/* eslint no-unused-vars: 0 */
 
 import React from 'react'
 import styled from 'styled-components'
@@ -158,7 +159,9 @@ const PostItem = ({ data }) => {
           <Span color="#000000">
             By <AuthorName id={data.author} />
           </Span>
-          <FlexDiv jc="space-between">
+
+          {/* ---View--- */}
+          {/* <FlexDiv jc="space-between">
             <FlexDiv>
               <Img src={ViewsIcon} alt="view" height={20} />
               <Views>
@@ -167,7 +170,7 @@ const PostItem = ({ data }) => {
               </Views>
             </FlexDiv>
             <Img src={SignalBarsIcon} alt="bars" height={18} />
-          </FlexDiv>
+          </FlexDiv> */}
           <ContinueRead categoryId={categoriesData} PostSlug={data.slug} />
         </ContentContainerBottom>
       </ContentContainer>

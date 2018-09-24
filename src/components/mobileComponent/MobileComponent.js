@@ -41,6 +41,7 @@ const Span = styled.span`
   color: ${p => (p.fromSearch ? '#ffffff' : '#ccc')};
   margin-left: 10px;
 `
+
 const MobileComponent = ({ data, fromSearch }) => (
   <Container fromSearch={fromSearch}>
     <PhotoContainer

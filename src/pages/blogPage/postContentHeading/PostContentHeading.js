@@ -18,6 +18,7 @@ const Container = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
+  margin-bottom: 20px;
 `
 
 const ContainerTop = styled.div`
@@ -66,10 +67,10 @@ const PostContentHeading = ({ date, authorId }) => {
           <SoundCloud width={25} color={'#666666'} />
           <Dots width={25} color={'#666666'} />
         </Links>
-        <Credit>Credit:ParkLife</Credit>
+        {/* <Credit>Credit:ParkLife</Credit> */}
       </ContainerTop>
       <ContainerBottom>
-        <Views>3000 views: 5/5</Views>
+        {/* <Views>3000 views: 5/5</Views> */}
         <Date>{date}</Date>
         <Author>
           By :<AuthorName id={authorId} />

@@ -238,7 +238,6 @@ const BlogPage = ({ width, data }, props) => {
       <BlogPageImg id={postData.featured_media} />
       <BlogContent>
         <PostContentHeading date={postData.date} authorId={postData.author} />
-
         <div
           className="blog-page-article"
           dangerouslySetInnerHTML={{ __html: postData.content }}

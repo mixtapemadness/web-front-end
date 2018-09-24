@@ -10,9 +10,6 @@ const Container = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  @media only screen and (max-width: 1150px) {
-    height: 300px;
-  }
 `
 
 const searchMedia = ({ data }) => {

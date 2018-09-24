@@ -10,6 +10,7 @@ const Container = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
   display: flex;
+  flex: 1;
   flex-direction: column;
   background-position: center;
   justify-content: center;

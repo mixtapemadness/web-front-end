@@ -76,6 +76,7 @@ const MobileProfileDescTitle = styled.div`
 const MobileProfileBottom = styled.div`
   display: flex;
   align-items: center;
+  justify-content: center;
 `
 
 const ProfileInfo = styled.div`

@@ -32,6 +32,7 @@ const ContainerBottom = styled.div`
   font-size: 14px;
   font-weight: 800;
   color: #666666;
+  text-align: left;
 `
 
 const Links = styled.div`

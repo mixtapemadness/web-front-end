@@ -96,6 +96,9 @@ const BackgroundPicture = styled.div`
 const BlogContent = styled.div`
   width: 90%;
   margin: auto;
+  @media only screen and (max-width: 1150px) {
+    text-align: center;
+  }
 `
 
 const BlogArticle = styled.div`
@@ -120,8 +123,6 @@ const TagsContainer = styled.div`
   @media only screen and (max-width: 450px) {
     margin-top: 20px;
   }
-
-  //
 `
 // const Tag = styled.button`
 //   border: 1px solid #c9c9c9;

@@ -32,6 +32,10 @@ const PostsContainer = styled.div`
   flex-wrap: wrap;
   margin-top: 20px;
   justify-content: space-between;
+  @media only screen and (max-width: 1150px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `
 
 const SubscribeContainer = styled.div`

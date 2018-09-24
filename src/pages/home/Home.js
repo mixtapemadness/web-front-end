@@ -9,7 +9,6 @@ import Download from 'components/download'
 import WhatsOnComponent from 'components/whatsOnComponent'
 import Subscribe from 'components/subscribe'
 import Video from 'components/video'
-import MobileSubscribe from 'components/mobileSubscribe'
 import SliderComponent from 'components/slider'
 import ToListenPlaylist from 'components/toListenPlaylist'
 
@@ -210,7 +209,7 @@ const playlistSliderSettings = {
   infiniteResponsive: true,
 }
 
-const Home = ({ width }) => (
+const Home = () => (
   <Container>
     <MainSlider data={mainSliderData} />
 
@@ -248,8 +247,7 @@ const Home = ({ width }) => (
       </FlexDiv>
     </WhatsOn>
     <SubscribeContainer>
-      {width > 450 && <Subscribe />}
-      {width <= 450 && <MobileSubscribe />}
+      <Subscribe />
     </SubscribeContainer>
     <VideosContainer>
       <HeaderContainer mb={60}>

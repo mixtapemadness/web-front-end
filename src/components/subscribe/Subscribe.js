@@ -1,6 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
 
+import MobileSubscribe from 'components/mobileSubscribe'
+import subscribeEnhancer from './subscribeEnhancer'
+
 const SubscribeContainer = styled.div`
   max-width: 1200px;
   display: flex;
@@ -72,18 +75,23 @@ const Button = styled.button`
     margin: 10px 0px;
   }
 `
-const Subscribe = () => (
-  <SubscribeContainer>
-    <Span>
-      Subscribe to Mixtape Madness for the
-      <br />
-      latest on news, music, and upcoming releases
-    </Span>
-    <Form>
-      <Input placeholder="Type Email Here..." />
-      <Button>Subscribe</Button>
-    </Form>
-  </SubscribeContainer>
+const Subscribe = ({ width }) => (
+  <React.Fragment>
+    {width > 450 && (
+      <SubscribeContainer>
+        <Span>
+          Subscribe to Mixtape Madness for the
+          <br />
+          latest on news, music, and upcoming releases
+        </Span>
+        <Form>
+          <Input placeholder="Type Email Here..." />
+          <Button>Subscribe</Button>
+        </Form>
+      </SubscribeContainer>
+    )}
+    {width <= 450 && <MobileSubscribe />}
+  </React.Fragment>
 )
 
-export default Subscribe
+export default subscribeEnhancer(Subscribe)

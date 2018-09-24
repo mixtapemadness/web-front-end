@@ -8,6 +8,7 @@ const FilterContainer = styled.div`
   width: 100%;
   display: flex;
   border-bottom: 2px solid #f5f5f5;
+  flex-wrap: wrap;
 `
 
 const FilterItem = styled(Link)`

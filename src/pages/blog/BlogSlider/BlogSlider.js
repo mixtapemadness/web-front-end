@@ -33,6 +33,9 @@ const NewsSlliderWrapper = styled.div`
 const SliderText = styled.h1`
   width: 80%;
   color: #fff;
+  @media only screen and (max-width: 450px) {
+    font-size: 22px;
+  }
 `
 
 export default () => (

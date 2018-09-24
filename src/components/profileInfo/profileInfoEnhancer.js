@@ -5,23 +5,28 @@ import getUserBySlug from 'graphql/getUserBySlug.graphql'
 import { loadDataAsync } from 'hocs'
 
 export default compose(
-  loadDataAsync({
-    query: getUserBySlug,
-    config: {
-      options: props => ({
-        variables: {
-          id: 20,
-        },
-      }),
-    },
-  }),
+  // loadDataAsync({
+  //   query: getUserBySlug,
+  //   config: {
+  //     options: props => ({
+  //       variables: {
+  //         id: 20,
+  //         showAuthorBio: false,
+  //       },
+  //     }),
+  //   },
+  // }),
 
   withStateHandlers(
     () => ({
       width: window.innerWidth,
+      showAuthorBio: false,
     }),
     {
       updateWidth: () => () => ({ width: window.innerWidth }),
+      handleShowAuthorBio: ({ showAuthorBio }) => () => ({
+        showAuthorBio: !showAuthorBio,
+      }),
     },
   ),
   lifecycle({

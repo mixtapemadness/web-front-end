@@ -6,6 +6,7 @@ import React from 'react'
 import styled from 'styled-components'
 import TwitterIcon from 'resources/assets/svg/twitter-logo.svg'
 import InstagramIcon from 'resources/assets/svg/instagram-logo.svg'
+import profileInfoEnhancer from './profileInfoEnhancer'
 
 const ProfileContainer = styled.div`
   width: 100%;
@@ -50,7 +51,7 @@ const ProfileDesc = styled.div`
   flex: 3;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   @media only screen and (max-width: 1024px) {
     align-items: center;
     text-align: center;
@@ -113,7 +114,7 @@ const ProfileDescIcon = styled.img`
 `
 
 const ProfileDescContent = styled.div`
-  margin-top: 40px;
+  margin-top: 15px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -125,17 +126,20 @@ const ProfileDescTxt = styled.span`
   font-size: 14px;
   letter-spacing: 0.8px;
   font-weight: 800;
+  max-height: ${props => (props.showAuthorBio ? '10ch' : '2ch')};
+  overflow: hidden;
+  transition: 0.3s;
 `
 
 const ShowMore = styled.div`
   font-size: 12px;
   font-weight: 800;
   color: #949494;
-  margin-top: 10px;
   cursor: pointer;
+  margin-top: 3px;
 `
 
-export default ({ data }) => {
+const ProfileInformation = ({ data, showAuthorBio, handleShowAuthorBio }) => {
   const img = data && data.avatar2
   const name = data && data.name
   const description = data && data.description
@@ -162,17 +166,25 @@ export default ({ data }) => {
         <MobileProfileDescTitle>
           <ProfileDescName>{name}</ProfileDescName>
           <MobileProfileBottom>
-            <ProfileDescOcupation>ocupation|</ProfileDescOcupation>
+            {/* <ProfileDescOcupation>ocupation|</ProfileDescOcupation> */}
             <ProfileDescIcon src={InstagramIcon} />
             <ProfileDescIcon src={TwitterIcon} />
           </MobileProfileBottom>
         </MobileProfileDescTitle>
 
         <ProfileDescContent>
-          <ProfileDescTxt>{description}</ProfileDescTxt>
-          <ShowMore>+ Show More</ShowMore>
+          <ProfileDescTxt showAuthorBio={showAuthorBio}>
+            {description}
+          </ProfileDescTxt>
+          {!showAuthorBio ? (
+            <ShowMore onClick={handleShowAuthorBio}>+ Show More</ShowMore>
+          ) : (
+            <ShowMore onClick={handleShowAuthorBio}>- Show Less</ShowMore>
+          )}
         </ProfileDescContent>
       </ProfileDesc>
     </ProfileContainer>
   )
 }
+
+export default profileInfoEnhancer(ProfileInformation)

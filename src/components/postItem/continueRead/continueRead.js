@@ -10,7 +10,6 @@ const Container = styled(Link)`
   cursor: pointer;
   font-weight: 800;
   font-size: 12px;
-  margin-top: 5px;
   &:after {
     width: 100%;
     height: 10px;

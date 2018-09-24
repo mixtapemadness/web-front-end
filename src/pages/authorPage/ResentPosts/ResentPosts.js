@@ -12,6 +12,7 @@ import resentPostsEnhancer from './resentPostsEnhancer'
 const ResentPostsContainer = styled.div`
   width: 100%;
   display: flex;
+  flex-wrap: wrap;
   flex-direction: column;
 `
 
@@ -21,6 +22,10 @@ const PostsContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+  @media only screen and (max-width: 1150px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `
 
 const ButtonContainer = styled.div`

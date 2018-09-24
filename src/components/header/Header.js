@@ -42,7 +42,7 @@ const LeftSide = styled.div`
   display: flex;
   @media only screen and (max-width: 1050px) {
     width: 100%;
-    justify-content: space-around;
+    justify-content: center;
   }
 `
 

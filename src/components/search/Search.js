@@ -111,6 +111,12 @@ const Item = styled.div`
   margin-top: 20px;
   border-bottom: 1px solid #ccc;
   display: flex;
+  @media only screen and (max-width: 1000px) {
+    width: 70%;
+  }
+  @media only screen and (max-width: 750px) {
+    width: 100%;
+  }
 `
 const ContentContainer = styled.div`
   width: 50%;

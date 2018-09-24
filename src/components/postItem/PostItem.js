@@ -24,7 +24,7 @@ const PostItemContainer = styled.div`
   flex-direction: column;
   margin: 7px;
   @media only screen and (max-width: 1150px) {
-    /* width: 61.458%; */
+    width: 61.458%;
     margin-top: 20px;
     flex: 1;
   }

@@ -55,7 +55,7 @@ const PreviousButton = styled.button`
 // `
 const SubscribeContainer = styled.div`
   margin: 40px 0;
-  max-width: 1100px;
+  width: 100%;
 `
 
 const PostItemT = (item, index) => {

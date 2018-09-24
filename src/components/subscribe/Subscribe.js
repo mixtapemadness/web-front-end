@@ -12,6 +12,7 @@ const SubscribeContainer = styled.div`
   align-items: center;
   @media only screen and (max-width: 1030px) {
     flex-direction: column;
+    text-align: center;
   }
 `
 const Span = styled.span`

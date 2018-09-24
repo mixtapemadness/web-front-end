@@ -14,12 +14,12 @@ const Icon = styled.img`
 `
 
 const Container = styled.div`
-  width: 524.2px;
+  margin: 7px;
   @media only screen and (max-width: 1170px) {
     width: 61.458%;
     margin: auto;
   }
-  @media only screen and (max-width: 450px) {
+  @media only screen and (max-width: 650px) {
     width: 90%;
   }
 `
@@ -37,16 +37,22 @@ const ContentContainer = styled.div`
   width: calc(100% - 30px);
   padding: 20px 15px;
   display: flex;
-  height: 107px;
   box-sizing: content-box;
   @media only screen and (max-width: 1170px) {
     height: auto;
+  }
+  @media only screen and (max-width: 450px) {
+    flex-direction: column;
+    text-align: center;
   }
 `
 const LeftSide = styled.div`
   width: calc(40% - 15px);
   display: flex;
   flex-direction: column;
+  @media only screen and (max-width: 450px) {
+    width: 100%;
+  }
 `
 const Type = styled.span`
   color: #ff9d00;
@@ -67,6 +73,9 @@ const RightSide = styled.div`
   display: flex;
   flex-direction: column;
   width: calc(60% - 15px);
+  @media only screen and (max-width: 450px) {
+    width: 100%;
+  }
 `
 const Text = styled.span`
   color: #666666;
@@ -79,10 +88,6 @@ const FlexDiv = styled.div`
   ${p => p.mt && `margin-top: ${p.mt}px`};
   ${p => p.ml && `margin-left: ${p.ml}px`};
   ${p => p.mr && `margin-right: ${p.mr}px`};
-  @media only screen and (max-width: 450px) {
-    flex-direction: column;
-    text-align: center;
-  }
 `
 const LittleIcon = styled.img`
   ${p => p.height && `height: ${p.height}px`};
@@ -98,6 +103,9 @@ const Span = styled.span`
 const IconsContainer = styled.div`
   display: flex;
   margin-top: 18px;
+  @media only screen and (max-width: 450px) {
+    justify-content: space-between;
+  }
 `
 const ToListenPlaylist = ({ data }) => (
   <Container>

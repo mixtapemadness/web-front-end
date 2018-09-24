@@ -3,12 +3,18 @@
 import React from 'react'
 import styled from 'styled-components'
 
+import FooterComponent from 'components/footer'
 import BackgroundImage from 'resources/assets/img/music.jpg'
 
 import LogIn from './LogIn'
 import Register from './Register'
 import NewsLetter from './NewsLetter'
 
+const Div = styled.div`
+  max-width: 1200px;
+  margin: auto;
+  margin-top: 140px;
+`
 const Container = styled.div`
   display: flex;
   width: 100%;
@@ -16,6 +22,7 @@ const Container = styled.div`
   position: relative;
   max-width: 1200px;
   margin: auto;
+  margin-bottom: 20px;
   background-image: url(${BackgroundImage});
   height: 500px;
   background-repeat: no-repeat;
@@ -72,23 +79,26 @@ const Footer = styled.div`
 `
 
 const SignForm = ({ type }) => (
-  <Container>
-    <ContentContainer>
-      {type === 'login' && <LogIn />}
-      {type === 'register' && <Register />}
-      {type === 'newsletter' && <NewsLetter />}
-      {type === 'thanks' && (
-        <FormContainer>
-          <Title>Thank You For Registering</Title>
-        </FormContainer>
-      )}
-      <Footer>
-        <span>Help</span>
-        <span>Terms</span>
-        <span>Privacy</span>
-      </Footer>
-    </ContentContainer>
-  </Container>
+  <Div>
+    <Container>
+      <ContentContainer>
+        {type === 'login' && <LogIn />}
+        {type === 'register' && <Register />}
+        {type === 'newsletter' && <NewsLetter />}
+        {type === 'thanks' && (
+          <FormContainer>
+            <Title>Thank You For Registering</Title>
+          </FormContainer>
+        )}
+        <Footer>
+          <span>Help</span>
+          <span>Terms</span>
+          <span>Privacy</span>
+        </Footer>
+      </ContentContainer>
+    </Container>
+    <FooterComponent />
+  </Div>
 )
 
 export default SignForm

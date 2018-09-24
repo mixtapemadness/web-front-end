@@ -52,7 +52,8 @@ const Button = styled.button`
   background: transparent;
   color: #ffffff;
   margin-top: 17px;
-  width: 74px;
+  width: fit-content;
+  padding: 0px 10px;
   border-radius: 9px;
   outline: none;
   cursor: pointer;

@@ -1,4 +1,6 @@
 /* eslint no-unused-vars: 0 */
+/* eslint react/jsx-curly-brace-presence: 0 */
+/* eslint operator-linebreak: 0 */
 
 import React from 'react'
 import styled from 'styled-components'
@@ -6,19 +8,16 @@ import styled from 'styled-components'
 import SignalBarsIcon from 'resources/assets/svgComponents/SignalBars'
 import ViewsIcon from 'resources/assets/svgComponents/Views'
 
+import GetCategory from 'components/getCategory'
+import ContinueRead from 'components/continueRead'
+import MenuItemPhoto from './menuItemPhoto'
+
 const Container = styled.div`
   @media only screen and (max-width: 850px) {
     margin-top: 10px;
   }
 `
-const PhotoContainer = styled.div`
-  width: 260px;
-  height: 170px;
-  background-image: url(${p => p.pic});
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;
-`
+
 const ContentContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -36,6 +35,7 @@ const Title = styled.span`
   color: #ffffff;
   height: 120px;
 `
+
 const FlexDiv = styled.div`
   display: flex;
   justify-content: space-between;
@@ -45,18 +45,31 @@ const ViewsContainer = styled.div`
   color: #ffffff;
   align-items: center;
 `
+
 const Span = styled.span`
   color: #ffffff;
   font-size: 8.5px;
   margin-left: 7px;
 `
-const MenuItem = ({ data }) => (
-  <Container>
-    <PhotoContainer pic={data.picture} />
-    <ContentContainer>
-      <Type>{data.type}</Type>
-      <Title>{data.title}</Title>
-      {/* <FlexDiv>
+
+const MenuItem = Posts => {
+  const data = Posts && Posts.data
+  const categories = data && data.categories
+  return (
+    <Container>
+      <MenuItemPhoto id={data.featured_media} />
+      {categories &&
+        categories.map(item => (
+          <GetCategory
+            color={'#ffffff'}
+            key={data.categories}
+            id={data.categories}
+          />
+        ))}
+      <ContentContainer>
+        <Type dangerouslySetInnerHTML={{ __html: data.type }} />
+        <Title dangerouslySetInnerHTML={{ __html: data.title }} />
+        {/* <FlexDiv>
         <ViewsContainer>
           <ViewsIcon color="#ffffff" height="20px" />
           <Span>
@@ -66,8 +79,13 @@ const MenuItem = ({ data }) => (
         </ViewsContainer>
         <SignalBarsIcon color="#ffffff" height="13px" />
       </FlexDiv> */}
-    </ContentContainer>
-  </Container>
-)
-
+        <ContinueRead
+          color={'#ffffff'}
+          categoryId={categories}
+          PostSlug={data.slug}
+        />
+      </ContentContainer>
+    </Container>
+  )
+}
 export default MenuItem

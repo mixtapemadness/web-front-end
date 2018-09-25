@@ -1,10 +1,14 @@
 /* eslint object-curly-newline: 0 */
 
 import React from 'react'
-import { compose, withStateHandlers } from 'recompose'
+import { compose, withStateHandlers, lifecycle } from 'recompose'
 
 import Header from 'components/header'
+import { CLOSE_MEGAMENU } from 'constants'
 import AppContent from './AppContent'
+import getEmitter from './eventEmitter'
+
+const eventEmitter = getEmitter()
 
 const App = ({ toggleSearch, searchOpened, menuOpened, toggleMenu }) => (
   <div style={{ width: '100%' }}>
@@ -36,4 +40,9 @@ export default compose(
       }),
     },
   ),
+  lifecycle({
+    componentDidMount() {
+      eventEmitter.addListener(CLOSE_MEGAMENU, () => this.props.toggleMenu())
+    },
+  }),
 )(App)

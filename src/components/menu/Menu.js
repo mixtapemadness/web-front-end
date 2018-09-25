@@ -1,12 +1,15 @@
+/* eslint operator-linebreak: 0 */
+
 import React from 'react'
 import styled from 'styled-components'
 
 import Footer from 'components/footer'
 import MenuItem from 'components/menuItem'
 
-import Musician from 'resources/assets/img/musician1.png'
-import Musician1 from 'resources/assets/img/2pac.jpg'
-import Musician2 from 'resources/assets/img/eminem.jpg'
+// import Musician from 'resources/assets/img/musician1.png'
+// import Musician1 from 'resources/assets/img/2pac.jpg'
+// import Musician2 from 'resources/assets/img/eminem.jpg'
+import menuEnhancer from './menuEnhancer'
 
 const Container = styled.div`
   position: fixed;
@@ -103,67 +106,48 @@ const Title = styled.div`
     text-align: center;
   }
 `
-const menuDummyData = [
-  {
-    picture: Musician,
-    type: 'News',
-    title: 'Romzy Is Back With “Talk On Me” Video',
-    views: '10,000',
-    id: 12,
-  },
-  {
-    picture: Musician1,
-    type: 'News',
-    title: 'Morrisson Drops Video For “Buckingham Palace”',
-    views: '10,000',
-    id: 15,
-  },
-  {
-    picture: Musician2,
-    type: 'News',
-    title: 'Stefflon Don Drops “Oochie Wally” Freestyle',
-    views: '10,000',
-    id: 7,
-  },
-]
-const Menu = () => (
-  <Container>
-    <ContentContainer>
-      <ListContainer>
-        <List>
-          <li>Trending</li>
-          <li>What&apos;s On</li>
-          <li>Hottest</li>
-        </List>
-        <List>
-          <li>Latest</li>
-          <li>Mixtapes</li>
-          <li>Singles</li>
-        </List>
-        <List>
-          <li>Playlists</li>
-          <li>Interviews</li>
-          <li>Reviews</li>
-        </List>
-        <List>
-          <li>Exclusives</li>
-          <li>Charts</li>
-          <li>Blog</li>
-        </List>
-      </ListContainer>
-      <Title>Today’s Most Read News</Title>
-      <ItemContainer>
-        {menuDummyData.map((item, index, arr) => (
-          <FlexDiv key={item.id}>
-            <MenuItem data={item} />
-            {index !== arr.length - 1 && <Divider />}
-          </FlexDiv>
-        ))}
-      </ItemContainer>
-      <Line />
-      <Footer menuOpened />
-    </ContentContainer>
-  </Container>
-)
 
-export default Menu
+const Menu = ({ data, toggleMenu }) => {
+  const Posts = data && data.Posts && data.Posts
+  return (
+    <Container>
+      <ContentContainer>
+        <ListContainer>
+          <List>
+            <li>Trending</li>
+            <li>What&apos;s On</li>
+            <li>Hottest</li>
+          </List>
+          <List>
+            <li>Latest</li>
+            <li>Mixtapes</li>
+            <li>Singles</li>
+          </List>
+          <List>
+            <li>Playlists</li>
+            <li>Interviews</li>
+            <li>Reviews</li>
+          </List>
+          <List>
+            <li>Exclusives</li>
+            <li>Charts</li>
+            <li>Blog</li>
+          </List>
+        </ListContainer>
+        <Title>Today’s Most Read News</Title>
+        <ItemContainer>
+          {Posts &&
+            Posts.map((item, index, arr) => (
+              <FlexDiv key={item.id}>
+                <MenuItem toggleMenu={toggleMenu} data={item} />
+                {index !== arr.length - 1 && <Divider />}
+              </FlexDiv>
+            ))}
+        </ItemContainer>
+        <Line />
+        <Footer menuOpened />
+      </ContentContainer>
+    </Container>
+  )
+}
+export default menuEnhancer(Menu)

@@ -20,7 +20,7 @@ const TagItem = styled(Link)`
 const Tag = ({ data }) => {
   const TagName = data && data.tag && data.tag.name
   const Slug = data && data.tag && data.tag.slug
-  return <TagItem to={`/searchresult/${Slug}`}>{TagName}</TagItem>
+  return <TagItem to={`/searchresult/all/${Slug}`}>{TagName}</TagItem>
 }
 
 export default tagEnhancer(Tag)

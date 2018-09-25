@@ -107,8 +107,8 @@ const SongItem = ({ data, blog }) => (
       </SongItemRightCol>
       <SongItemRightCol>
         <SongItemIcons>
-          <Share width={25} />
-          <Dots width={25} />
+          <Share width={18} />
+          <Dots width={18} />
         </SongItemIcons>
       </SongItemRightCol>
     </SongItemRight>

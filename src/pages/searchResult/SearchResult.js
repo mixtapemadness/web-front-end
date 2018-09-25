@@ -1,11 +1,12 @@
 /* eslint implicit-arrow-linebreak: 0 */
+/* eslint object-curly-newline: 0 */
+/* eslint react/jsx-curly-brace-presence: 0 */
+
 import React from 'react'
 import styled from 'styled-components'
-
 import SearchMedia from 'components/search/searchMedia'
-
 import ClockIcon from 'resources/assets/svgComponents/Clock'
-
+import ContinueRead from 'components/continueRead'
 import searchResultEnhance from './searchResultEnhancer'
 
 const Container = styled.div`
@@ -13,6 +14,44 @@ const Container = styled.div`
   margin: auto;
   padding-top: 40px;
 `
+
+const InputContainer = styled.div`
+  width: 100%;
+  margin-bottom: 25px;
+`
+
+const Input = styled.input`
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid #ffa019;
+  height: 105px;
+  outline: none;
+  color: #ffa019;
+  font-size: 62px;
+  font-weight: 600;
+  ::-webkit-input-placeholder {
+    color: #ffa019;
+    font-size: 62px;
+    font-weight: 600;
+  }
+  ::-moz-placeholder {
+    color: #ffa019;
+    font-size: 62px;
+    font-weight: 600;
+  }
+  :-ms-input-placeholder {
+    color: #ffa019;
+    font-size: 62px;
+    font-weight: 600;
+  }
+  :-moz-placeholder {
+    color: #ffa019;
+    font-size: 62px;
+    font-weight: 600;
+  }
+`
+
 const Filter = styled.div`
   display: flex;
   border-bottom: 1px solid #ccc;
@@ -37,6 +76,9 @@ const ContentContainer = styled.div`
   justify-content: space-between;
   color: #666666;
 `
+
+const ContentContainerBottom = styled.div``
+
 const Span = styled.span``
 
 const Time = styled.span`
@@ -67,20 +109,37 @@ const renderData = searchedData =>
   searchedData && searchedData.length > 0
     ? searchedData.map(item => (
         <Item key={item.id}>
+          {console.log('item', item)}
           <SearchMedia id={item.featured_media} />
           <ContentContainer>
             <Span dangerouslySetInnerHTML={{ __html: item.title }} />
-            <TimeContainer>
-              <ClockIcon height="20px" color="#666666" />
-              <Time>{getDate(item.date)}</Time>
-            </TimeContainer>
+            <ContentContainerBottom>
+              <TimeContainer>
+                <ClockIcon height="20px" color="#666666" />
+                <Time>{getDate(item.date)}</Time>
+              </TimeContainer>
+              <ContinueRead categoryId={item.categories} PostSlug={item.slug} />
+            </ContentContainerBottom>
           </ContentContainer>
         </Item>
       ))
     : ''
 
-const SearchResult = ({ data, category, chooseCategory }) => (
+const SearchResult = ({
+  data,
+  category,
+  chooseCategory,
+  match,
+  handleSubmit,
+}) => (
   <Container>
+    <InputContainer>
+      <Input
+        defaultValue={match ? match.params.key : ''}
+        onKeyPress={handleSubmit}
+      />
+    </InputContainer>
+
     <Filter>
       <span>Filter Results:</span>
       <CategoryContainer>

@@ -29,7 +29,7 @@ const AppContent = ({ searchOpened, toggleSearch, menuOpened }) => (
       <Route path="/music-profile/:slug" component={MusicProfilePage} />
       <Route path="/team" component={TeamPage} />
       <Route path="/moremenu" component={MoreMenu} />
-      <Route path="/searchresult/:key" component={SearchResult} />
+      <Route path="/searchresult/:category/:key" component={SearchResult} />
       <Route path="/login" component={() => <SignForm type="login" />} />
       <Route path="/register" component={() => <SignForm type="register" />} />
     </Switch>

@@ -1,12 +1,13 @@
 /* eslint operator-linebreak: 0 */
 /* eslint object-curly-newline: 0 */
-
+/* eslint react/jsx-curly-brace-presence: 0 */
 import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
 import ClockIcon from 'resources/assets/svgComponents/Clock'
 
+import ContinueRead from 'components/continueRead'
 import searchEnhancer from './searchEnhancer'
 import SearchMedia from './searchMedia'
 
@@ -129,6 +130,8 @@ const ContentContainer = styled.div`
   color: #ffffff;
 `
 
+const ContentContainerBottom = styled.div``
+
 const Time = styled.span`
   margin-left: 10px;
 `
@@ -148,14 +151,22 @@ const renderData = searchResult => (
     {searchResult && searchResult.length > 0
       ? searchResult.map(item => (
           <ItemContainer key={item.id}>
+            {console.log('item', item)}
             <Item>
               <SearchMedia id={item.featured_media} />
               <ContentContainer>
                 <SpanTitle dangerouslySetInnerHTML={{ __html: item.title }} />
-                <TimeContainer>
-                  <ClockIcon height="20px" color="#ffffff" />
-                  <Time>{getDate(item.date)}</Time>
-                </TimeContainer>
+                <ContentContainerBottom>
+                  <TimeContainer>
+                    <ClockIcon height="20px" color="#ffffff" />
+                    <Time>{getDate(item.date)}</Time>
+                  </TimeContainer>
+                  <ContinueRead
+                    color={'#ffffff'}
+                    categoryId={item.categories}
+                    PostSlug={item.slug}
+                  />
+                </ContentContainerBottom>
               </ContentContainer>
             </Item>
           </ItemContainer>
@@ -177,7 +188,10 @@ const Search = ({ toggleSearch, handleSubmit, data, value }) => {
       </InputContainer>
       {renderData(searchResult)}
       {searchResult && (
-        <ShowMore to={`/searchresult/${value}`} onClick={() => toggleSearch()}>
+        <ShowMore
+          to={`/searchresult/all/${value}`}
+          onClick={() => toggleSearch()}
+        >
           View all
         </ShowMore>
       )}

@@ -8,9 +8,9 @@ const Container = styled.div`
   height: 100%;
   background-image: url(${BackgroundImage});
   background-repeat: no-repeat;
+  flex: 1;
   background-size: cover;
   display: flex;
-  flex: 1;
   flex-direction: column;
   background-position: center;
   justify-content: center;

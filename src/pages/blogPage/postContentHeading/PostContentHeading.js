@@ -19,7 +19,7 @@ const Container = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  margin-bottom: 20px;
+  margin: 20px 0;
 `
 
 const ContainerTop = styled.div`

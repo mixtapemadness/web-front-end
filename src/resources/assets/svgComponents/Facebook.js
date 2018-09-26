@@ -1,13 +1,17 @@
+/* eslint space-infix-ops: 0 */
+
 import React from 'react'
 
-export default ({ width, height, color }) => (
+export default ({ width, height = '20px', color }) => (
   <svg
     version="1.1"
     id="Capa_1"
     x="0px"
     y="0px"
     viewBox="0 0 60.734 60.733"
-    style={{ width: `${width}`, height: `${height}`, fill: `${color}` }}
+    width={width}
+    height={height}
+    fill={color}
   >
     <g>
       <path

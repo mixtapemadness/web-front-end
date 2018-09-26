@@ -216,7 +216,6 @@ const BlogPage = ({ width, data }, props) => {
   const postData = data && data.Post ? data.Post : {}
   return (
     <Container>
-      {console.log(props)}
       <Heading>
         <TitleContainer>
           <BlogTitle dangerouslySetInnerHTML={{ __html: postData.title }} />

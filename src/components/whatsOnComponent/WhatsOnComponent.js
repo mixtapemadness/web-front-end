@@ -192,7 +192,7 @@ const WhatsOnComponent = ({ media, data, category }) => {
         <CategoryContainer>
           {CategoriesData &&
             CategoriesData.filter(item => item.name === 'Events').map(item => (
-              <Category to={`/blog/category/${item.slug}`}>
+              <Category key={item.id} to={`/blog/category/${item.slug}`}>
                 {item.name}
               </Category>
             ))}

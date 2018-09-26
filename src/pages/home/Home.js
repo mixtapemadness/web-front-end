@@ -7,7 +7,7 @@ import MainSlider from 'components/mainSlider'
 import Footer from 'components/footer'
 import Download from 'components/download'
 import Subscribe from 'components/subscribe'
-import Video from 'components/video'
+import Videos from 'components/videos'
 import SliderComponent from 'components/slider'
 import ToListenPlaylist from 'components/toListenPlaylist'
 
@@ -34,30 +34,19 @@ const HaveToListenContainer = styled.div`
 const SubscribeContainer = styled.div`
   margin-top: 100px;
 `
-const VideosContainer = styled.div`
-  max-width: 1200px;
-  margin: 60px auto;
-  margin-bottom: 100px;
-`
+
 const HeaderContainer = styled.div`
   display: flex;
   flex-direction: column;
   text-align: center;
   ${p => p.mb && `margin-bottom: ${p.mb}px`};
 `
-const Videos = styled.div`
-  display: flex;
-  justify-content: space-between;
-  @media only screen and (max-width: 1150px) {
-    flex-direction: column;
-    align-items: center;
-  }
-`
 
 const SectionHeader = styled.span`
   font-weight: 600;
   font-size: 28px;
 `
+
 const SectionSubHeader = styled.span`
   font-size: 17.5px;
   letter-spacing: 1.1px;
@@ -109,30 +98,6 @@ const haveToListenData = [
   },
 ]
 
-const videoData = [
-  {
-    picture: Musician,
-    songName: "I'm Upset",
-    views: '10k',
-    songAuthor: 'Drake',
-    id: 0,
-  },
-  {
-    picture: Musician1,
-    songName: 'Praise The Lord',
-    songAuthor: 'A$AP Rocky Feat Skepta',
-    views: '10k',
-    id: 1,
-  },
-  {
-    picture: Musician2,
-    songName: 'What You Want',
-    songAuthor: 'Belly Feat. The Weeknd',
-    views: '10k',
-    id: 2,
-  },
-]
-
 const playlistSliderData = haveToListenData.map(item => (
   <ToListenPlaylist data={item} key={item.id} />
 ))
@@ -167,42 +132,15 @@ const Home = () => (
     </HaveToListenContainer>
     <Download />
     <WhatsOn />
-    {/* <WhatsOn>
-      <HeaderContainer mb={60}>
-        <SectionHeader>What&apos;s On</SectionHeader>
-        <SectionSubHeader>
-          {' '}
-          Check Out The Latest Music And News This Week
-        </SectionSubHeader>
-      </HeaderContainer>
-      <FlexDiv jc="space-between" mb={33}>
-        {whatsOnVideos.map(item => (
-          <WhatsOnComponent data={item} key={item.id} />
-        ))}
-      </FlexDiv>
-      <FlexDiv jc="space-between">
-        {whatsOnData.map(item => (
-          <WhatsOnComponent data={item} key={item.id} />
-        ))}
-      </FlexDiv>
-    </WhatsOn> */}
-
     <SubscribeContainer>
       <Subscribe />
     </SubscribeContainer>
-    <VideosContainer>
-      <HeaderContainer mb={60}>
-        <SectionHeader>Videos</SectionHeader>
-        <SectionSubHeader>
-          Mixtape Madness Share Their Top Videos This Week
-        </SectionSubHeader>
-      </HeaderContainer>
-      <Videos>
-        {videoData.map(item => (
+
+    <Videos />
+    {/* {videoData.map(item => (
           <Video data={item} key={item.id} />
-        ))}
-      </Videos>
-    </VideosContainer>
+        ))} */}
+
     <Footer />
   </Container>
 )

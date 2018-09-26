@@ -1,3 +1,8 @@
+/* eslint no-unused-vars: 0 */
+/* eslint object-curly-newline: 0 */
+/* eslint intdent: 0 */
+/* eslint operator-linebreak: 0 */
+
 import React from 'react'
 import styled from 'styled-components'
 
@@ -5,6 +10,8 @@ import PlayIcon from 'resources/assets/svg/Play.svg'
 import ViewsIcon from 'resources/assets/svg/eye.svg'
 import SignalBarsIcon from 'resources/assets/svg/signal-bars.svg'
 import DotsIcon from 'resources/assets/svg/dots.svg'
+import { Link } from 'react-router-dom'
+import videoEnhancer from './videoEnhancer'
 
 const Container = styled.div`
   margin: 7px;
@@ -18,23 +25,33 @@ const Container = styled.div`
   }
 `
 
-const PhotoContainer = styled.div`
-  width: 100%
+const PhotoContainer = styled(Link)`
+  display: block;
+  width: 100%;
   height: 200px;
   background: url(${props => props.picture});
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
   position: relative;
+  cursor: pointer;
+  background-size: 120%;
+  transition: 0.8s;
+  &:hover {
+    background-size: 140%;
+  }
   @media only screen and (max-width: 1150px) {
     height: 300px;
+    background-size: cover;
+    &:hover {
+      background-size: cover;
+    }
   }
 `
 const ContentContainer = styled.div`
   background-color: #eeeeef;
   width: calc(100% - 30px);
   padding: 20px 15px;
-  max-height: 65px;
   display: flex;
   justify-content: space-between;
   box-sizing: content-box;
@@ -77,12 +94,19 @@ const FlexDiv = styled.div`
 const Img = styled.img`
   ${p => p.height && `height: ${p.height}px`};
 `
-const Name = styled.span`
+const Name = styled(Link)`
   font-weight: 600;
   font-size: 19.5px;
   letter-spacing: 1.2px;
   line-height: 1.08;
   margin-bottom: 16px;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  transition: 0.4s;
+  cursor: pointer;
+  &:hover {
+    text-decoration-color: #111111;
+  }
 `
 const Text = styled.span`
   color: #666666;
@@ -98,31 +122,55 @@ const Views = styled.span`
   color: #666666;
   margin-left: 7px;
 `
-const Video = ({ data }) => (
-  <Container>
-    <PhotoContainer picture={data.picture}>
-      <Icon src={PlayIcon} />
-      <Dots src={DotsIcon} />
-    </PhotoContainer>
-    <ContentContainer>
-      <LeftSide>
-        <Name>{data.songName}</Name>
-        <Text>{data.songAuthor}</Text>
-      </LeftSide>
-      <RightSide>
-        <FlexDiv>
-          <Img src={ViewsIcon} alt="view" height={20} />
-          <Views>
-            {data.views}
-            {' Views'}
-          </Views>
-        </FlexDiv>
-        <FlexDiv jc="flex-end" height="100%" align="flex-end">
-          <Img src={SignalBarsIcon} alt="bars" height={18} />
-        </FlexDiv>
-      </RightSide>
-    </ContentContainer>
-  </Container>
-)
+const Video = ({ data, media, tags, category }) => {
+  const categoriesData = category && category.category && category.category
+  console.log('categoriesData', categoriesData)
+  const tagsData = tags && tags.tags && tags.tags
+  const Image =
+    media && media.img && media.img.featured_image && media.img.featured_image
+  // const CategoriesData = category && category.category && category.category
+  return (
+    <Container>
+      {categoriesData &&
+        data &&
+        Image && (
+          <PhotoContainer
+            picture={Image}
+            to={`/blog/${categoriesData[0]}/${data.slug}`}
+          />
+        )}
+      <ContentContainer>
+        <LeftSide>
+          {data &&
+            categoriesData && (
+              <Name
+                dangerouslySetInnerHTML={{ __html: data.title }}
+                to={`/blog/${categoriesData[0]}/${data.slug}`}
+              />
+            )}
+          {tagsData &&
+            tagsData.map(item => (
+              <Text
+                key={item.id}
+                dangerouslySetInnerHTML={{ __html: item.name }}
+              />
+            ))}
+        </LeftSide>
+        <RightSide>
+          <FlexDiv>
+            <Img src={ViewsIcon} alt="view" height={20} />
+            <Views>
+              {data.views}
+              {' Views'}
+            </Views>
+          </FlexDiv>
+          <FlexDiv jc="flex-end" height="100%" align="flex-end">
+            <Img src={SignalBarsIcon} alt="bars" height={18} />
+          </FlexDiv>
+        </RightSide>
+      </ContentContainer>
+    </Container>
+  )
+}
 
-export default Video
+export default videoEnhancer(Video)

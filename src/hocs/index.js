@@ -1,2 +1,5 @@
 export { default as loadDataAsync } from './loadDataAsync'
 export { default as refetchOn } from './refetchOn'
+export { default as withCategory } from './withCategory'
+export { default as withMedia } from './withMedia'
+export { default as withUser } from './withUser'

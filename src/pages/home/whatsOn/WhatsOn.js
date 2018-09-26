@@ -34,9 +34,10 @@ const SectionSubHeader = styled.span`
 const WhatsOnItemsContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
-  @media only screen and (max-width: 850px) {
+  @media only screen and (max-width: 1190px) {
     /* flex-direction:column; */
+    align-items: center;
+    justify-content: center;
   }
 `
 
@@ -54,13 +55,7 @@ const WhatsOn = ({ width, data }) => {
       </HeaderContainer>
       <WhatsOnItemsContainer>
         {Posts &&
-          Posts.map(item => (
-            <WhatsOnComponent
-              mediaId={item.featured_media}
-              item={item}
-              key={item.id}
-            />
-          ))}
+          Posts.map(item => <WhatsOnComponent data={item} key={item.id} />)}
       </WhatsOnItemsContainer>
       {/* <FlexDiv jc="space-between" mb={33}>
         {whatsOnVideos.map(item => (

@@ -1,5 +1,6 @@
 /* eslint no-unused-vars: 0 */
 /* eslint indent: 0 */
+/* eslint camelcase: 0 */
 
 import { compose, withStateHandlers, lifecycle } from 'recompose'
 import { withRouter } from 'react-router-dom'

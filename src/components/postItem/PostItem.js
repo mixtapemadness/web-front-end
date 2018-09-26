@@ -6,19 +6,17 @@
 /* eslint operator-linebreak: 0 */
 /* eslint no-unused-expressions: 0 */
 /* eslint no-unused-vars: 0 */
+/* eslint object-curly-newline: 0 */
+/* eslint react/jsx-closing-tag-location: 0 */
 
 import React from 'react'
 import styled from 'styled-components'
-// import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import postItemEnhancer from './postItemEnhancer'
 
-import ViewsIcon from 'resources/assets/svg/eye.svg'
-import SignalBarsIcon from 'resources/assets/svg/signal-bars.svg'
-
-import AuthorName from 'components/AuthorName'
-import PostTitle from 'components/postTitle'
-import PostItemMedia from '../postItemMedia'
-import PostItemCategory from './postItemCategory'
-import ContinueRead from '../continueRead'
+// View
+// import ViewsIcon from 'resources/assets/svg/eye.svg'
+// import SignalBarsIcon from 'resources/assets/svg/signal-bars.svg'
 
 const PostItemContainer = styled.div`
   flex: 1 0 357px;
@@ -49,6 +47,50 @@ const ContentContainer = styled.div`
     height: auto;
   }
 `
+
+const ContentContainerTop = styled.div``
+
+const Media = styled(Link)`
+  width: 100%;
+  height: 200px;
+  width: 100%;
+  height: 200px;
+  background: url(${props => props.img});
+  background-repeat: no-repeat;
+  background-size: 120%;
+  background-position: center;
+  transition: 0.8s;
+  @media only screen and (max-width: 1150px) {
+    height: 300px;
+  }
+  &:hover {
+    background-size: 140%;
+
+    /* background-size: */
+  }
+`
+
+const PostTitle = styled(Link)`
+  width: 100%;
+  font-weight: 800;
+  font-size: ${p => (p.fontSize ? p.fontSize : '26px')};
+  line-height: 1.3;
+  transition: 0.4s;
+  color: ${p => (p.color ? p.color : '#111111')};
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  transition: 0.4s;
+  &:hover {
+    text-decoration-color: #111111;
+  }
+`
+
+const Category = styled(Link)`
+  color: #ff9600;
+  margin: 0 5px;
+  cursor: pointer;
+`
+
 const ContentContainerBottom = styled.div`
   display: flex;
   flex-direction: column;
@@ -86,6 +128,14 @@ const DataContentContainer = styled.span`
     position: absolute;
   }
 `
+
+const AuthorName = styled(Link)`
+  color: #ff9600;
+  margin: 0 5px;
+  cursor: pointer;
+  font-weight: 800;
+`
+
 const FlexDiv = styled.div`
   display: flex;
   ${p => p.jc && `justify-content: ${p.jc}`};
@@ -111,53 +161,87 @@ const CategoryContainer = styled.div`
   font-size: 12px;
   margin-bottom: 10px;
 `
+const ContinueRead = styled(Link)`
+  width: 110px;
+  color: ${p => (p.color ? p.color : '#ff9600')};
+  cursor: pointer;
+  font-weight: 800;
+  font-size: 12px;
+  transition: 0.4s;
+  margin-top: 10px;
+  &:hover {
+    opacity: 0.8;
+  }
+  &:after {
+    width: 100%;
+    height: 10px;
+    background: #ff9600;
+  }
+`
 
-const ContentContainerTop = styled.div``
-
-const Categories = data => {
+const Categories = ({ data }) => {
   let newData
-  data.data
-    ? (newData = data.data.map((item, index) => {
+  data && data.length > 0
+    ? (newData = data.map((item, index) => {
         if (index > 0) {
           return (
             <React.Fragment>
-              ,<PostItemCategory id={item} />
+              ,
+              <Category to={`/blog/category/${item.slug}`}>
+                {item.name}
+              </Category>
             </React.Fragment>
           )
         }
-        return <PostItemCategory id={item} />
+        return (
+          <Category to={`/blog/category/${item.slug}`}>{item.name}</Category>
+        )
       }))
     : (newData = null)
-
   return newData
 }
 
-const PostItem = ({ data }) => {
-  const categoriesData =
-    data.categories && data.categories.length > 0 ? data.categories : ''
+const PostItem = ({ media, category, user, data }) => {
+  const Image =
+    media && media.img && media.img.featured_image && media.img.featured_image
+  const CategoriesData = category && category.category && category.category
+  const User = user && user.user && user.user
+
   return (
     <PostItemContainer>
-      <PostItemMedia id={data.featured_media} />
+      {CategoriesData &&
+        data && (
+          <Media
+            img={Image && Image}
+            to={`/blog/${CategoriesData[0]}/${data.slug}`}
+          />
+        )}
       <ContentContainer>
         <ContentContainerTop>
           <CategoryContainer>
-            Trending / <Categories data={categoriesData} />
+            Trending /{CategoriesData && <Categories data={CategoriesData} />}
           </CategoryContainer>
-          <PostTitle
-            categoryId={categoriesData}
-            PostSlug={data.slug}
-            title={data.title}
-          />
-          {/* <Header dangerouslySetInnerHTML={{ __html: data.title }} /> */}
+          {CategoriesData &&
+            data && (
+              <PostTitle
+                dangerouslySetInnerHTML={{ __html: data.title }}
+                to={`/blog/${CategoriesData[0]}/${data.slug}`}
+              />
+            )}
         </ContentContainerTop>
-
         <ContentContainerBottom>
           <DataContentContainer
             color="#666666"
             dangerouslySetInnerHTML={{ __html: data.excerpt }}
           />
           <Span color="#000000">
-            By <AuthorName id={data.author} />
+            By{' '}
+            {User && (
+              <AuthorName
+                to={`/author/${User.slug}`}
+                dangerouslySetInnerHTML={{ __html: User.name }}
+              />
+            )}
           </Span>
 
           {/* ---View--- */}
@@ -171,11 +255,16 @@ const PostItem = ({ data }) => {
             </FlexDiv>
             <Img src={SignalBarsIcon} alt="bars" height={18} />
           </FlexDiv> */}
-          <ContinueRead categoryId={categoriesData} PostSlug={data.slug} />
+          {data &&
+            CategoriesData && (
+              <ContinueRead to={`/blog/${CategoriesData.slug}/${data.slug}`}>
+                Continue Reading
+              </ContinueRead>
+            )}
         </ContentContainerBottom>
       </ContentContainer>
     </PostItemContainer>
   )
 }
 
-export default PostItem
+export default postItemEnhancer(PostItem)

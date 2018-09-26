@@ -1,18 +1,10 @@
-/* eslint no-unused-vars: 0 */
 /* eslint camelcase: 0 */
-/* eslint object-curly-newline: 0 */
 /* eslint no-unneeded-ternary: 0 */
+/* eslint object-curly-newline: 0 */
 
-import {
-  compose,
-  withStateHandlers,
-  lifecycle,
-  branch,
-  withProps,
-} from 'recompose'
-
-import { loadDataAsync, withMedia, withCategory } from 'hocs'
-import getMediaById from 'graphql/getMediaById.graphql'
+import { compose, withStateHandlers, lifecycle, branch } from 'recompose'
+import { withCategory, withMedia, withUser } from 'hocs'
+// import getCategoryById from 'graphql/getCategoryById.graphql'
 
 export default compose(
   withStateHandlers(
@@ -31,10 +23,18 @@ export default compose(
       window.removeEventListener('resize', this.props.updateWidth)
     },
   }),
-  // withProps(props => console.log('withProps', props)),
+
   branch(
     ({ data: { categories } }) => (categories ? true : false),
     withCategory,
   ),
-  branch(({ data }) => (data ? true : false), withMedia),
+  branch(
+    ({ data: { featured_media } }) => (featured_media ? true : false),
+    withMedia,
+  ),
+  branch(({ data }) => (data ? true : false), withUser),
+
+  // withCategory,
+  // withCategory,
+  // withProps(props => console.log('propssssssssssss', props)),
 )

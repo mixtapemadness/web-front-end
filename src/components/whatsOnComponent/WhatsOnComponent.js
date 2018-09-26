@@ -1,12 +1,15 @@
+/* eslint no-unused-vars: 0 */
+/* eslint arrow-body-style: 0 */
+
 import React from 'react'
 import styled from 'styled-components'
+import PostItemMedia from 'components/postItemMedia'
 
-import PlayIcon from 'resources/assets/svg/Play.svg'
-import ViewsIcon from 'resources/assets/svg/eye.svg'
-import SignalBarsIcon from 'resources/assets/svg/signal-bars.svg'
+import whatsOnComponentEnhancer from './whatsOnComponentEnhancer'
 
 const Container = styled.div`
-  width: 575px;
+  flex: 1 0 575px;
+  margin: 7px;
   @media only screen and (max-width: 1190px) {
     :nth-child(even) {
       margin-left: 20px;
@@ -25,7 +28,7 @@ const Container = styled.div`
 `
 
 const PhotoContainer = styled.div`
-  width: 100%
+  width: 100%;
   height: 300px;
   background: url(${props => props.picture});
   background-repeat: no-repeat;
@@ -102,34 +105,35 @@ const Img = styled.img`
   ${p => p.height && `height: ${p.height}px`};
 `
 
-const WhatsOnComponent = ({ data }) => (
-  <Container>
-    <PhotoContainer picture={data.picture}>
-      {data.type === 'Video' && <Icon src={PlayIcon} alt="play-icon" />}
-    </PhotoContainer>
-    <ContentContainer>
-      <LeftSide>
-        <Type>{data.type}</Type>
-        <Name>{data.name}</Name>
-      </LeftSide>
-      <Line />
-      <RightSide>
-        <Text>{data.text}</Text>
-        <FlexDiv mt={18}>
-          <FlexDiv jc="space-between" width="100%">
-            <FlexDiv>
-              <Img src={ViewsIcon} alt="view" height={20} />
-              <Span mt={2} ml={10}>
-                {data.views}
-                {' Views'}
-              </Span>
+const WhatsOnComponent = ({ data, mediaId }) => {
+  return (
+    <Container>
+      <PostItemMedia id={mediaId} />
+
+      {/* <ContentContainer>
+        <LeftSide>
+          <Type>{data.type}</Type>
+          <Name>{data.name}</Name>
+        </LeftSide>
+        <Line />
+        <RightSide>
+          <Text>{data.text}</Text>
+          <FlexDiv mt={18}>
+            <FlexDiv jc="space-between" width="100%">
+              <FlexDiv>
+                <Img src={ViewsIcon} alt="view" height={20} />
+                <Span mt={2} ml={10}>
+                  {data.views}
+                  {' Views'}
+                </Span>
+              </FlexDiv>
+              <Img src={SignalBarsIcon} alt="bars" height={18} />
             </FlexDiv>
-            <Img src={SignalBarsIcon} alt="bars" height={18} />
           </FlexDiv>
-        </FlexDiv>
-      </RightSide>
-    </ContentContainer>
-  </Container>
-)
+        </RightSide>
+      </ContentContainer> */}
+    </Container>
+  )
+}
 
 export default WhatsOnComponent

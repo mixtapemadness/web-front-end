@@ -16,7 +16,7 @@ import SignalBarsIcon from 'resources/assets/svg/signal-bars.svg'
 
 import AuthorName from 'components/AuthorName'
 import PostTitle from 'components/postTitle'
-import PostItemMedia from './postItemMedia'
+import PostItemMedia from '../postItemMedia'
 import PostItemCategory from './postItemCategory'
 import ContinueRead from '../continueRead'
 

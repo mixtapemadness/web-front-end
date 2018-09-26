@@ -6,7 +6,6 @@ import styled from 'styled-components'
 import MainSlider from 'components/mainSlider'
 import Footer from 'components/footer'
 import Download from 'components/download'
-import WhatsOnComponent from 'components/whatsOnComponent'
 import Subscribe from 'components/subscribe'
 import Video from 'components/video'
 import SliderComponent from 'components/slider'
@@ -17,6 +16,7 @@ import SliderPhotoSecond from 'resources/assets/img/music.jpg'
 import Musician from 'resources/assets/img/musician1.png'
 import Musician1 from 'resources/assets/img/2pac.jpg'
 import Musician2 from 'resources/assets/img/eminem.jpg'
+import WhatsOn from './whatsOn'
 import Posts from './posts'
 
 import homeEnhancer from './homeEnhancer'
@@ -26,30 +26,11 @@ const Container = styled.div`
   margin: auto;
 `
 
-const FlexDiv = styled.div`
-  display: flex;
-  ${p => p.jc && `justify-content: ${p.jc}`};
-  ${p => p.width && `width: ${p.width}`};
-  ${p => p.margin && 'margin: auto'};
-  ${p => p.mb && `margin-bottom: ${p.mb}px`};
-  ${p => p.mt && `margin-top: ${p.mt}px`};
-  ${p => p.ml && `margin-left: ${p.ml}px`};
-  ${p => p.mr && `margin-right: ${p.mr}px`};
-  @media only screen and (max-width: 850px) {
-    flex-direction: column;
-    align-items: center;
-  }
-`
-
 const HaveToListenContainer = styled.div`
   max-width: 1200px;
   margin: 40px auto;
 `
 
-const WhatsOn = styled.div`
-  max-width: 1200px;
-  margin: 40px auto;
-`
 const SubscribeContainer = styled.div`
   margin-top: 100px;
 `
@@ -128,48 +109,6 @@ const haveToListenData = [
   },
 ]
 
-const whatsOnVideos = [
-  {
-    picture: Musician,
-    type: 'Video',
-    name: 'Grime Up North',
-    text:
-      'Lorem ipsum dolor sit amet. consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et',
-    views: '10,000',
-    id: 0,
-  },
-  {
-    picture: Musician1,
-    type: 'Video',
-    name: 'Grime Up North',
-    text:
-      'Lorem ipsum dolor sit amet. consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et',
-    views: '10,000',
-    id: 1,
-  },
-]
-
-const whatsOnData = [
-  {
-    picture: Musician2,
-    type: 'News',
-    name: 'Grime Up North',
-    text:
-      'Lorem ipsum dolor sit amet. consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et',
-    views: '10,000',
-    id: 2,
-  },
-  {
-    picture: Musician1,
-    type: 'Playlist',
-    name: 'Grime Up North',
-    text:
-      'Lorem ipsum dolor sit amet. consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et',
-    views: '10,000',
-    id: 3,
-  },
-]
-
 const videoData = [
   {
     picture: Musician,
@@ -227,7 +166,8 @@ const Home = () => (
       </SliderComponent>
     </HaveToListenContainer>
     <Download />
-    <WhatsOn>
+    <WhatsOn />
+    {/* <WhatsOn>
       <HeaderContainer mb={60}>
         <SectionHeader>What&apos;s On</SectionHeader>
         <SectionSubHeader>
@@ -245,7 +185,8 @@ const Home = () => (
           <WhatsOnComponent data={item} key={item.id} />
         ))}
       </FlexDiv>
-    </WhatsOn>
+    </WhatsOn> */}
+
     <SubscribeContainer>
       <Subscribe />
     </SubscribeContainer>

@@ -1,7 +1,10 @@
-import { compose, withStateHandlers, lifecycle } from 'recompose'
+/* eslint no-unused-vars: 0 */
+/* eslint indent: 0 */
 
-import { loadDataAsync } from '../../../hocs'
-import getMediaById from '../../../graphql/getMediaById.graphql'
+import { compose, withStateHandlers, lifecycle } from 'recompose'
+import { withRouter } from 'react-router-dom'
+import getPosts from 'graphql/getPosts.graphql'
+import { loadDataAsync } from 'hocs'
 
 export default compose(
   withStateHandlers(
@@ -20,12 +23,15 @@ export default compose(
       window.removeEventListener('resize', this.props.updateWidth)
     },
   }),
+  withRouter,
   loadDataAsync({
-    query: getMediaById,
+    query: getPosts,
     config: {
       options: props => ({
         variables: {
-          id: parseInt(props.id, 10),
+          filter: { categories: 'EVENTS' },
+          page: 1,
+          perPage: 4,
         },
       }),
     },

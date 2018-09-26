@@ -15,6 +15,7 @@ import ViewsIcon from 'resources/assets/svg/eye.svg'
 import SignalBarsIcon from 'resources/assets/svg/signal-bars.svg'
 
 import AuthorName from 'components/AuthorName'
+import PostTitle from 'components/postTitle'
 import PostItemMedia from './postItemMedia'
 import PostItemCategory from './postItemCategory'
 import ContinueRead from '../continueRead'
@@ -111,12 +112,6 @@ const CategoryContainer = styled.div`
   margin-bottom: 10px;
 `
 
-const Header = styled.div`
-  width: 100%;
-  font-weight: 800;
-  font-size: 26px;
-  line-height: 1.3;
-`
 const ContentContainerTop = styled.div``
 
 const Categories = data => {
@@ -148,7 +143,12 @@ const PostItem = ({ data }) => {
           <CategoryContainer>
             Trending / <Categories data={categoriesData} />
           </CategoryContainer>
-          <Header dangerouslySetInnerHTML={{ __html: data.title }} />
+          <PostTitle
+            categoryId={categoriesData}
+            PostSlug={data.slug}
+            title={data.title}
+          />
+          {/* <Header dangerouslySetInnerHTML={{ __html: data.title }} /> */}
         </ContentContainerTop>
 
         <ContentContainerBottom>

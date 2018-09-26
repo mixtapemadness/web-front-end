@@ -1,12 +1,16 @@
 /* eslint implicit-arrow-linebreak: 0 */
 /* eslint object-curly-newline: 0 */
 /* eslint react/jsx-curly-brace-presence: 0 */
+/* eslint indent: 0 */
+/* eslint react/jsx-indent: 0 */
+/* eslint react/jsx-closing-tag-location: 0 */
 
 import React from 'react'
 import styled from 'styled-components'
 import SearchMedia from 'components/search/searchMedia'
 import ClockIcon from 'resources/assets/svgComponents/Clock'
 import ContinueRead from 'components/continueRead'
+import { dateStringify } from 'helpers'
 import searchResultEnhance from './searchResultEnhancer'
 
 const Container = styled.div`
@@ -100,11 +104,6 @@ const Category = styled.li`
   ${p => p.active && 'border-bottom: 2px solid #ff9600'};
 `
 
-const getDate = date => {
-  const newDate = new Date(date)
-  return `${newDate.getDay()}/${newDate.getMonth()}/${newDate.getFullYear()}`
-}
-
 const renderData = searchedData =>
   searchedData && searchedData.length > 0
     ? searchedData.map(item => (
@@ -116,7 +115,7 @@ const renderData = searchedData =>
             <ContentContainerBottom>
               <TimeContainer>
                 <ClockIcon height="20px" color="#666666" />
-                <Time>{getDate(item.date)}</Time>
+                <Time>{dateStringify(item.date, false, true)}</Time>
               </TimeContainer>
               <ContinueRead categoryId={item.categories} PostSlug={item.slug} />
             </ContentContainerBottom>

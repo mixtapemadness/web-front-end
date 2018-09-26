@@ -25,6 +25,9 @@ const HeaderContainer = styled.div`
   z-index: 2;
   ${p => p.menuOpened && 'background-color: #ff9600'};
   box-shadow: 0 3px 5px -4px rgba(0, 0, 0, 0.46);
+  @media only screen and (max-width: 850px) {
+    height: 80px;
+  }
 `
 const ContentContainer = styled.div`
   max-width: 1200px;

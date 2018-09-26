@@ -43,6 +43,7 @@ const Line = styled.div`
   width: 100%;
   margin-top: 55px;
 `
+
 const ListContainer = styled.div`
   width: 100%;
   display: flex;

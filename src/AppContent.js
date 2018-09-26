@@ -15,9 +15,17 @@ import TeamPage from 'pages/teamPage'
 import SearchResult from 'pages/searchResult/SearchResult'
 import SignForm from 'components/signForm/SignForm'
 import MoreMenu from 'components/moreMenu'
+import styled from 'styled-components'
+
+const Container = styled.div`
+  margin-top: 120px;
+  @media (max-width: 850px) {
+    margin-top: 80px;
+  }
+`
 
 const AppContent = ({ searchOpened, toggleSearch, menuOpened }) => (
-  <div style={{ marginTop: 120 }}>
+  <Container>
     <Switch>
       <Route exact path="/" component={Home} />
       <Route exact path="/blog/category/:filter" component={Blog} />
@@ -37,7 +45,7 @@ const AppContent = ({ searchOpened, toggleSearch, menuOpened }) => (
       <Search toggleSearch={toggleSearch} searchOpened={searchOpened} />
     )}
     {menuOpened && <Menu />}
-  </div>
+  </Container>
 )
 
 export default AppContent

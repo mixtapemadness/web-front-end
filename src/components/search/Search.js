@@ -1,13 +1,16 @@
 /* eslint operator-linebreak: 0 */
 /* eslint object-curly-newline: 0 */
 /* eslint react/jsx-curly-brace-presence: 0 */
+/* eslint curly:0 */
 import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
 import ClockIcon from 'resources/assets/svgComponents/Clock'
 
+import { dateStringify } from 'helpers'
 import ContinueRead from 'components/continueRead'
+import PostTitle from 'components/postTitle'
 import searchEnhancer from './searchEnhancer'
 import SearchMedia from './searchMedia'
 
@@ -141,11 +144,6 @@ const TimeContainer = styled.div`
   font-size: 13px;
 `
 
-const getDate = date => {
-  const newDate = new Date(date)
-  return `${newDate.getDay()}/${newDate.getMonth()}/${newDate.getFullYear()}`
-}
-
 const renderData = searchResult => (
   <DataContainer>
     {searchResult && searchResult.length > 0
@@ -155,12 +153,21 @@ const renderData = searchResult => (
             <Item>
               <SearchMedia id={item.featured_media} />
               <ContentContainer>
-                <SpanTitle dangerouslySetInnerHTML={{ __html: item.title }} />
+                <SpanTitle>
+                  <PostTitle
+                    title={item.title}
+                    categoryId={item.categories}
+                    PostSlug={item.slug}
+                    color={'#ffffff'}
+                    fontSize={'16px'}
+                  />
+                </SpanTitle>
                 <ContentContainerBottom>
                   <TimeContainer>
                     <ClockIcon height="20px" color="#ffffff" />
-                    <Time>{getDate(item.date)}</Time>
+                    <Time>{dateStringify(item.date, false, true)}</Time>
                   </TimeContainer>
+
                   <ContinueRead
                     color={'#ffffff'}
                     categoryId={item.categories}

@@ -10,6 +10,7 @@ import ViewsIcon from 'resources/assets/svgComponents/Views'
 
 import GetCategory from 'components/getCategory'
 import ContinueRead from 'components/continueRead'
+import PostTitle from 'components/postTitle'
 import MenuItemPhoto from './menuItemPhoto'
 
 const Container = styled.div`
@@ -62,13 +63,20 @@ const MenuItem = Posts => {
         categories.map(item => (
           <GetCategory
             color={'#ffffff'}
-            key={data.categories}
+            // key={data.categories}
             id={data.categories}
           />
         ))}
       <ContentContainer>
         <Type dangerouslySetInnerHTML={{ __html: data.type }} />
-        <Title dangerouslySetInnerHTML={{ __html: data.title }} />
+        <PostTitle
+          fontSize={'16px'}
+          title={data.title}
+          categoryId={categories}
+          PostSlug={data.slug}
+          color={'#ffffff'}
+        />
+        {/* <Title dangerouslySetInnerHTML={{ __html: data.title }} /> */}
         {/* <FlexDiv>
         <ViewsContainer>
           <ViewsIcon color="#ffffff" height="20px" />

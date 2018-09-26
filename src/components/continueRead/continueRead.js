@@ -13,6 +13,7 @@ const Container = styled(Link)`
   font-weight: 800;
   font-size: 12px;
   transition: 0.4s;
+  margin-top: 10px;
   &:hover {
     opacity: 0.8;
   }

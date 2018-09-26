@@ -12,6 +12,7 @@ import SoundCloud from 'resources/assets/svgComponents/SoundCloud'
 import Dots from 'resources/assets/svgComponents/Dots'
 
 import AuthorName from 'components/AuthorName'
+import { dateStringify } from 'helpers/'
 import blogPageImgEnhancer from './postContentHeadingEnhancer'
 
 const Container = styled.div`
@@ -71,7 +72,7 @@ const PostContentHeading = ({ date, authorId }) => {
       </ContainerTop>
       <ContainerBottom>
         {/* <Views>3000 views: 5/5</Views> */}
-        <Date>{date}</Date>
+        <Date>{dateStringify(date, false, true)}</Date>
         <Author>
           By :<AuthorName id={authorId} />
         </Author>

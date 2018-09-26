@@ -1,4 +1,5 @@
 /* eslint react/jsx-one-expression-per-line: 0 */
+/* eslint no-unused-vars: 0 */
 
 import React from 'react'
 import styled from 'styled-components'
@@ -116,10 +117,8 @@ const playlistSliderSettings = {
 const Home = () => (
   <Container>
     <MainSlider data={mainSliderData} />
-
     <Posts />
-
-    <HaveToListenContainer>
+    {/* <HaveToListenContainer>
       <HeaderContainer>
         <SectionHeader>You Have To Listen</SectionHeader>
         <SectionSubHeader size={17.5}>
@@ -129,7 +128,7 @@ const Home = () => (
       <SliderComponent settings={playlistSliderSettings}>
         {playlistSliderData}
       </SliderComponent>
-    </HaveToListenContainer>
+    </HaveToListenContainer> */}
     <Download />
     <WhatsOn />
     <SubscribeContainer>

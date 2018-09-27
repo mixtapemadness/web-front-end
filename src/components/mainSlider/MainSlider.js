@@ -1,4 +1,6 @@
 /* eslint react/no-array-index-key: 0 */
+/* eslint object-curly-newline: 0 */
+/* eslint operator-linebreak: 0 */
 
 import React from 'react'
 import styled from 'styled-components'
@@ -7,6 +9,8 @@ import Slider from 'react-slick'
 
 import Prev from 'resources/assets/svg/prev.svg'
 import Next from 'resources/assets/svg/next.svg'
+import SliderContent from './sliderContent'
+import mainSliderEnhancer from './mainSliderEnhancer'
 
 const Img = styled.img`
   display: block;
@@ -331,66 +335,6 @@ const Override = styled.div`
   }
 `
 
-const SliderContent = styled.div`
-  height: 540px;
-  background-image: url(${p => p.SliderPhoto});
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
-  text-align: center;
-`
-const Header = styled.span`
-  font-size: 40px;
-  font-weight: bold;
-  color: white;
-  @media only screen and (max-width: 950px) {
-    font-size: 30px;
-  }
-  @media only screen and (max-width: 850px) {
-    font-size: 20px;
-  }
-  @media only screen and (max-width: 450px) {
-    font-size: 14px;
-  }
-`
-const Span = styled.span`
-  font-size: 70px;
-  font-weight: bold;
-  color: white;
-  @media only screen and (max-width: 950px) {
-    font-size: 60px;
-  }
-  @media only screen and (max-width: 740px) {
-    font-size: 45px;
-  }
-  @media only screen and (max-width: 850px) {
-    font-size: 30px;
-  }
-  @media only screen and (max-width: 450px) {
-    font-size: 16px;
-  }
-`
-const LatestSingles = styled.button`
-  font-size: 15.5px;
-  letter-spacing: 0.9px;
-  width: 189px;
-  height: 40px;
-  border: solid 1.5px #ffa019;
-  background: transparent;
-  color: #ffffff;
-  font-weight: 600;
-  border-radius: 25px;
-  cursor: pointer;
-`
-const FlexDiv = styled.div`
-  width: 100%;
-  align-items: center;
-  text-align: center;
-  height: 100%;
-  justify-content: center;
-  display: flex;
-  flex-direction: column;
-`
 const settings = {
   dots: false,
   infinite: true,
@@ -400,25 +344,18 @@ const settings = {
   prevArrow: <PrevArrow />,
 }
 
-const MainSlider = ({ data }) => (
-  <Container>
-    <Override>
-      <Slider {...settings}>
-        {data.map((item, index) => (
-          <SliderContent SliderPhoto={item} key={index}>
-            <FlexDiv>
-              <Header>
-                Check Out The Latest Music And News On
-                <br />
-                <Span>Mixtape Madness</Span>
-              </Header>
-              <LatestSingles>View Latest Singles</LatestSingles>
-            </FlexDiv>
-          </SliderContent>
-        ))}
-      </Slider>
-    </Override>
-  </Container>
-)
+const MainSlider = ({ data }) => {
+  const Posts = data && data.Posts && data.Posts
+  return (
+    <Container>
+      <Override>
+        <Slider {...settings}>
+          {Posts &&
+            Posts.map(item => <SliderContent key={item.id} data={item} />)}
+        </Slider>
+      </Override>
+    </Container>
+  )
+}
 
-export default MainSlider
+export default mainSliderEnhancer(MainSlider)

@@ -1,4 +1,5 @@
 import { compose, withStateHandlers, lifecycle } from 'recompose'
+import { withMainSlider } from 'hocs'
 
 export default compose(
   withStateHandlers(
@@ -17,4 +18,5 @@ export default compose(
       window.removeEventListener('resize', this.props.updateWidth)
     },
   }),
+  withMainSlider,
 )

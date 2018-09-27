@@ -114,9 +114,9 @@ const playlistSliderSettings = {
   infiniteResponsive: true,
 }
 
-const Home = () => (
+const Home = ({ sliderData }) => (
   <Container>
-    <MainSlider data={mainSliderData} />
+    {sliderData && sliderData.Posts && <MainSlider data={sliderData.Posts} />}
     <Posts />
     {/* <HaveToListenContainer>
       <HeaderContainer>
@@ -136,10 +136,6 @@ const Home = () => (
     </SubscribeContainer>
 
     <Videos />
-    {/* {videoData.map(item => (
-          <Video data={item} key={item.id} />
-        ))} */}
-
     <Footer />
   </Container>
 )

@@ -1,6 +1,6 @@
 /* eslint no-unused-vars: 0 */
 /* eslint object-curly-newline: 0 */
-/* eslint intdent: 0 */
+/* eslint indent: 0 */
 /* eslint operator-linebreak: 0 */
 
 import React from 'react'
@@ -124,7 +124,6 @@ const Views = styled.span`
 `
 const Video = ({ data, media, tags, category }) => {
   const categoriesData = category && category.category && category.category
-  console.log('categoriesData', categoriesData)
   const tagsData = tags && tags.tags && tags.tags
   const Image =
     media && media.img && media.img.featured_image && media.img.featured_image
@@ -136,7 +135,7 @@ const Video = ({ data, media, tags, category }) => {
         Image && (
           <PhotoContainer
             picture={Image}
-            to={`/blog/${categoriesData[0]}/${data.slug}`}
+            to={`/blog/${categoriesData[0].slug}/${data.slug}`}
           />
         )}
       <ContentContainer>
@@ -145,7 +144,7 @@ const Video = ({ data, media, tags, category }) => {
             categoriesData && (
               <Name
                 dangerouslySetInnerHTML={{ __html: data.title }}
-                to={`/blog/${categoriesData[0]}/${data.slug}`}
+                to={`/blog/${categoriesData[0].slug}/${data.slug}`}
               />
             )}
           {tagsData &&

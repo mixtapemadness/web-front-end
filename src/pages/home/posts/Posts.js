@@ -40,14 +40,14 @@ const PostItemT = (item, index) => {
   if (index === 5) {
     return (
       <React.Fragment>
-        <PostItem data={item} />
+        <PostItem key={item.id} data={item} />
         <SubscribeContainer>
           <Subscribe />
         </SubscribeContainer>
       </React.Fragment>
     )
   }
-  return <PostItem data={item} />
+  return <PostItem key={item.id} data={item} />
 }
 
 const PostItems = ({ items }) => {

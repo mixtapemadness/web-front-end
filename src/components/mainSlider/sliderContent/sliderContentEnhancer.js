@@ -1,10 +1,12 @@
-/* eslint camelcase: 0 */
+/* eslint no-unused-vars: 0 */
+/* eslint indent: 0 */
 /* eslint no-unneeded-ternary: 0 */
 /* eslint object-curly-newline: 0 */
 
 import { compose, withStateHandlers, lifecycle, branch } from 'recompose'
-import { withCategory, withMedia, withUser } from 'hocs'
-// import getCategoryById from 'graphql/getCategoryById.graphql'
+import { withRouter } from 'react-router-dom'
+import getPosts from 'graphql/getPosts.graphql'
+import { loadDataAsync, withMedia, withTags, withCategory } from 'hocs'
 
 export default compose(
   withStateHandlers(
@@ -23,17 +25,8 @@ export default compose(
       window.removeEventListener('resize', this.props.updateWidth)
     },
   }),
-  branch(
-    ({ data: { categories } }) => (categories ? true : false),
-    withCategory,
-  ),
-  branch(
-    ({ data: { featured_media } }) => (featured_media ? true : false),
-    withMedia,
-  ),
-  branch(({ data }) => (data ? true : false), withUser),
-
-  // withCategory,
-  // withCategory,
-  // withProps(props => console.log('propssssssssssss', props)),
+  withRouter,
+  branch(({ data }) => (data ? true : false), withMedia),
+  branch(({ data }) => (data ? true : false), withTags),
+  branch(({ data }) => (data ? true : false), withCategory),
 )

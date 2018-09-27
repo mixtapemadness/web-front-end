@@ -60,13 +60,11 @@ const Media = styled(Link)`
   background-size: 120%;
   background-position: center;
   transition: 0.8s;
-  @media only screen and (max-width: 1150px) {
-    height: 300px;
-  }
   &:hover {
     background-size: 140%;
   }
-  @media and (max-width: 850px) {
+  @media only screen and (max-width: 1150px) {
+    height: 300px;
     background-size: cover;
     &:hover {
       background-size: cover;
@@ -189,7 +187,7 @@ const Categories = ({ data }) => {
     ? (newData = data.map((item, index) => {
         if (index > 0) {
           return (
-            <React.Fragment>
+            <React.Fragment key={item.id}>
               ,
               <Category to={`/blog/category/${item.slug}`}>
                 {item.name}
@@ -198,7 +196,9 @@ const Categories = ({ data }) => {
           )
         }
         return (
-          <Category to={`/blog/category/${item.slug}`}>{item.name}</Category>
+          <Category key={item.id} to={`/blog/category/${item.slug}`}>
+            {item.name}
+          </Category>
         )
       }))
     : (newData = null)
@@ -217,7 +217,7 @@ const PostItem = ({ media, category, user, data }) => {
         data && (
           <Media
             img={Image && Image}
-            to={`/blog/${CategoriesData[0]}/${data.slug}`}
+            to={`/blog/${CategoriesData[0].slug}/${data.slug}`}
           />
         )}
       <ContentContainer>
@@ -229,7 +229,7 @@ const PostItem = ({ media, category, user, data }) => {
             data && (
               <PostTitle
                 dangerouslySetInnerHTML={{ __html: data.title }}
-                to={`/blog/${CategoriesData[0]}/${data.slug}`}
+                to={`/blog/${CategoriesData[0].slug}/${data.slug}`}
               />
             )}
         </ContentContainerTop>

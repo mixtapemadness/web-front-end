@@ -185,7 +185,7 @@ const WhatsOnComponent = ({ media, data, category }) => {
         data && (
           <PhotoContainer
             img={Image}
-            to={`/blog/${CategoriesData[0]}/${data.slug}`}
+            to={`/blog/${CategoriesData[0].slug}/${data.slug}`}
           />
         )}
       <ContentContainer>
@@ -203,7 +203,7 @@ const WhatsOnComponent = ({ media, data, category }) => {
               data && (
                 <Name
                   dangerouslySetInnerHTML={{ __html: data.title }}
-                  to={`/blog/${CategoriesData[0]}/${data.slug}`}
+                  to={`/blog/${CategoriesData[0].slug}/${data.slug}`}
                 />
               )}
           </LeftSide>
@@ -212,7 +212,7 @@ const WhatsOnComponent = ({ media, data, category }) => {
             {CategoriesData &&
               data && (
                 <Text
-                  to={`/blog/${CategoriesData[0]}/${data.slug}`}
+                  to={`/blog/${CategoriesData[0].slug}/${data.slug}`}
                   dangerouslySetInnerHTML={{ __html: data.excerpt }}
                 />
               )}

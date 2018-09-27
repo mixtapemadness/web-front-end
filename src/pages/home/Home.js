@@ -9,7 +9,6 @@ import Footer from 'components/footer'
 import Download from 'components/download'
 import Subscribe from 'components/subscribe'
 import Videos from 'components/videos'
-import SliderComponent from 'components/slider'
 import ToListenPlaylist from 'components/toListenPlaylist'
 
 import SliderPhoto from 'resources/assets/img/Live-Music.jpg'
@@ -19,7 +18,6 @@ import Musician1 from 'resources/assets/img/2pac.jpg'
 import Musician2 from 'resources/assets/img/eminem.jpg'
 import WhatsOn from './whatsOn'
 import Posts from './posts'
-
 import homeEnhancer from './homeEnhancer'
 
 const Container = styled.div`
@@ -102,17 +100,6 @@ const haveToListenData = [
 const playlistSliderData = haveToListenData.map(item => (
   <ToListenPlaylist data={item} key={item.id} />
 ))
-
-const playlistSliderSettings = {
-  dots: false,
-  infinite: true,
-  slidesToShow: 2,
-  slidesToScroll: 2,
-  breakpoint: 1170,
-  slidesToShowResponsive: 1,
-  slidesToScrollResponsive: 1,
-  infiniteResponsive: true,
-}
 
 const Home = ({ sliderData }) => (
   <Container>

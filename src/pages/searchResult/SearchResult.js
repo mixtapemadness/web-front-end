@@ -4,13 +4,11 @@
 /* eslint indent: 0 */
 /* eslint react/jsx-indent: 0 */
 /* eslint react/jsx-closing-tag-location: 0 */
+/* eslint operator-linebreak: 0 */
 
 import React from 'react'
 import styled from 'styled-components'
-import SearchMedia from 'components/search/searchMedia'
-import ClockIcon from 'resources/assets/svgComponents/Clock'
-import ContinueRead from 'components/continueRead'
-import { dateStringify } from 'helpers'
+import SearchedItem from 'components/searchedItem'
 import searchResultEnhance from './searchResultEnhancer'
 
 const Container = styled.div`
@@ -63,66 +61,17 @@ const Filter = styled.div`
   font-weight: 600;
 `
 
-const Item = styled.div`
-  width: 50%;
-  padding-bottom: 20px;
-  margin-top: 20px;
-  border-bottom: 1px solid #ccc;
-  display: flex;
-`
-const ContentContainer = styled.div`
-  width: 50%;
-  margin-left: 10px;
-  font-size: 16px;
-  font-weight: bold;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  color: #666666;
-`
-
-const ContentContainerBottom = styled.div``
-
-const Span = styled.span``
-
-const Time = styled.span`
-  margin-left: 10px;
-`
-
-const TimeContainer = styled.div`
-  display: flex;
-  font-size: 13px;
-`
 const CategoryContainer = styled.ul`
   display: flex;
   list-style: none;
 `
+
 const Category = styled.li`
   margin-left: 20px;
   color: #666666;
   cursor: pointer;
   ${p => p.active && 'border-bottom: 2px solid #ff9600'};
 `
-
-const renderData = searchedData =>
-  searchedData && searchedData.length > 0
-    ? searchedData.map(item => (
-        <Item key={item.id}>
-          {console.log('item', item)}
-          <SearchMedia id={item.featured_media} />
-          <ContentContainer>
-            <Span dangerouslySetInnerHTML={{ __html: item.title }} />
-            <ContentContainerBottom>
-              <TimeContainer>
-                <ClockIcon height="20px" color="#666666" />
-                <Time>{dateStringify(item.date, false, true)}</Time>
-              </TimeContainer>
-              <ContinueRead categoryId={item.categories} PostSlug={item.slug} />
-            </ContentContainerBottom>
-          </ContentContainer>
-        </Item>
-      ))
-    : ''
 
 const SearchResult = ({
   data,
@@ -186,7 +135,10 @@ const SearchResult = ({
         </Category>
       </CategoryContainer>
     </Filter>
-    {renderData(data.searchedData)}
+    {/* {renderData(data.searchedData)} */}
+    {data &&
+      data.searchedData &&
+      data.searchedData.map(item => <SearchedItem key={item.id} data={item} />)}
   </Container>
 )
 

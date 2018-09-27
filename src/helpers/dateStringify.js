@@ -17,7 +17,9 @@ export default (date, day, month) => {
     'November',
     'December',
   ]
+
   const days = [
+    '',
     'Sunday',
     'Monday',
     'Tuesday',
@@ -27,7 +29,7 @@ export default (date, day, month) => {
     'Saturday',
   ]
 
-  const numeralDay = new Date(date).getDay()
+  const numeralDay = new Date(date).getDay() + 1
   const numeralMonth = new Date(date).getMonth()
   const numeralYear = new Date(date).getFullYear()
 

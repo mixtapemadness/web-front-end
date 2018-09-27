@@ -8,6 +8,7 @@ import styled from 'styled-components'
 import PostItem from 'components/postItem'
 import Subscribe from 'components/subscribe'
 // import MobileSubscribe from 'components/mobileSubscribe'
+import SliderComponent from 'components/slider'
 
 import postsEnhancer from './postsEnhancer'
 
@@ -54,11 +55,26 @@ const PostItems = ({ items }) => {
   return items.map((item, index) => PostItemT(item, index))
 }
 
+const settings = {
+  dots: false,
+  // infinite: true,
+  speed: 500,
+  slidesToShow: 1,
+  slidesToScroll: 3,
+}
+
 const Posts = ({ width, data }) => {
   const posts = data && data.Posts && data.Posts
   return (
     <TrendingContainer>
       {posts && <PostItems items={posts} />}
+
+      {/* <SliderComponent settings={settings}>
+        {posts && posts.map(item => <PostItem key={item.id} data={item} />)}
+        {
+          // posts && <PostItems items={posts} />
+        }
+      </SliderComponent> */}
     </TrendingContainer>
   )
 }

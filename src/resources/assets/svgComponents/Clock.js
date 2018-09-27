@@ -7,7 +7,9 @@ const Clock = ({ width, height, color }) => (
     x="0px"
     y="0px"
     viewBox="0 0 510 510"
-    style={{ width: `${width}`, height: `${height}` }}
+    width={width}
+    height={height}
+    fill={color || '#666666'}
   >
     <g>
       <g id="access-time">

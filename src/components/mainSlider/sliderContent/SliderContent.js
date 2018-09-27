@@ -79,10 +79,7 @@ const FlexDiv = styled.div`
 const MainSlider = ({ tags, media, category, data }) => {
   const Image = media && media.img && media.img.full && media.img.full
   const CategoriesData = category && category.category && category.category
-  console.log('CategoriesData', CategoriesData)
   const tagsData = tags && tags.tags && tags.tags
-  console.log('tagsData', tagsData)
-
   return (
     <React.Fragment>
       {Image &&

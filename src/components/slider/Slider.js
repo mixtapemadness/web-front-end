@@ -324,6 +324,7 @@ const Override = styled.div`
 `
 
 const SliderComponent = ({ children, settings }) => {
+  console.log('children', children)
   const innerSettings = {
     dots: settings.dots,
     infinite: settings.infinite,

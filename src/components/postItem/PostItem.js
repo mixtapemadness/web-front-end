@@ -121,7 +121,7 @@ const Span = styled.span`
 
 const DataContentContainer = styled.span`
   ${p => p.color && `color: ${p.color}`};
-  height: 10ch;
+  height: 7ch;
   overflow: hidden;
   font-size: 12px;
   letter-spacing: 0.7px;

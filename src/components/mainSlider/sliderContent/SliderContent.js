@@ -2,6 +2,7 @@
 /* eslint object-curly-newline: 0 */
 /* eslint react/jsx-wrap-multilines: 0 */
 /* eslint operator-linebreak: 0 */
+/* eslint indent: 0 */
 
 import React from 'react'
 import styled from 'styled-components'

@@ -23,23 +23,14 @@ const AdvertisementContainer = styled.div`
     width: 100%;
   }
 `
-// loadDataAsync({
-//   query: getPosts,
-//   config: {
-//     options: props => ({
-//       variables: {
-//         page: 1,
-//         perPage: 3,
-//         filter: { categories: 'VIDEOS' },
-//       },
-//     }),
-//   },
-// }),
-export default ({ TopVideosData }) => (
+
+const TopVideoPosts = () => (
   <Container>
     <AdvertisementContainer>
       <Advertisement news />
     </AdvertisementContainer>
-    <TopVideos data={TopVideosData} />
+    <TopVideos />
   </Container>
 )
+
+export default TopVideoPosts

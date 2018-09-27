@@ -1,8 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
 import TopVideo from 'components/topVideo'
+import topVideosEnhancer from './topVideosEnhancer'
 
-const TopVideos = styled.div`
+const TopVideosContainer = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -19,18 +20,19 @@ const Header = styled.h1`
   margin: 0;
 `
 
-const MoreVideos = styled.h3`
+const MoreVideos = styled.h4`
   width: 100%;
   color: #111;
   cursor: pointer;
 `
 
-export default ({ data }) => (
-  <TopVideos>
+const TopVideos = ({ data }) => (
+  <TopVideosContainer>
+    {console.log('data', data)}
     <Header>Top Music Videos</Header>
-    {data.map(item => (
-      <TopVideo data={item} />
-    ))}
+    {data && data.Posts && data.Posts.map(item => <TopVideo data={item} />)}
     <MoreVideos>More Videos +</MoreVideos>
-  </TopVideos>
+  </TopVideosContainer>
 )
+
+export default topVideosEnhancer(TopVideos)

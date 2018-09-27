@@ -110,29 +110,30 @@ const Title = styled.div`
 
 const Menu = ({ data, toggleMenu }) => {
   const Posts = data && data.Posts && data.Posts
+  console.log('data', data)
   return (
     <Container>
       <ContentContainer>
         <ListContainer>
           <List>
-            <li>Trending</li>
-            <li>What&apos;s On</li>
-            <li>Hottest</li>
-          </List>
-          <List>
-            <li>Latest</li>
-            <li>Mixtapes</li>
-            <li>Singles</li>
-          </List>
-          <List>
-            <li>Playlists</li>
             <li>Interviews</li>
-            <li>Reviews</li>
+            <li>Articles</li>
+            <li>News</li>
           </List>
           <List>
-            <li>Exclusives</li>
-            <li>Charts</li>
-            <li>Blog</li>
+            {/* <li>Latest</li> */}
+            {/* <li>Mixtapes</li> */}
+            {/* <li>Singles</li> */}
+          </List>
+          <List>
+            {/* <li>Playlists</li> */}
+            {/* <li>Interviews</li> */}
+            {/* <li>Reviews</li> */}
+          </List>
+          <List>
+            {/* <li>Exclusives</li> */}
+            {/* <li>Charts</li> */}
+            {/* <li>Blog</li> */}
           </List>
         </ListContainer>
         <Title>Today’s Most Read News</Title>

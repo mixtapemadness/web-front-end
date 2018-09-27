@@ -65,8 +65,12 @@ const Media = styled(Link)`
   }
   &:hover {
     background-size: 140%;
-
-    /* background-size: */
+  }
+  @media and (max-width: 850px) {
+    background-size: cover;
+    &:hover {
+      background-size: cover;
+    }
   }
 `
 

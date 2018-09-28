@@ -19,8 +19,8 @@ import styled from 'styled-components'
 
 const Container = styled.div`
   margin-top: 120px;
-  height: ${p => (p.searchOpened ? '80vh' : 'auto')};
-  overflow: ${p => (p.searchOpened ? 'hidden' : 'visible')};
+  height: ${p => (p.searchOpened || p.menuOpened ? '80vh' : 'auto')};
+  overflow: ${p => (p.searchOpened || p.menuOpened ? 'hidden' : 'visible')};
   @media (max-width: 850px) {
     margin-top: 80px;
   }
@@ -28,7 +28,7 @@ const Container = styled.div`
 
 const AppContent = ({ searchOpened, toggleSearch, menuOpened }) => (
   <React.Fragment>
-    <Container searchOpened={searchOpened}>
+    <Container searchOpened={searchOpened} menuOpened={menuOpened}>
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/blog/category/:filter" component={Blog} />

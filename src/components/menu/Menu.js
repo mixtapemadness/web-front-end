@@ -31,6 +31,10 @@ const Container = styled.div`
   ::-webkit-scrollbar {
     width: 5px;
   }
+  @media only screen and (max-width: 850px) {
+    top: 80px;
+    border-top: 0;
+  }
 `
 const ContentContainer = styled.div`
   max-width: 1200px;

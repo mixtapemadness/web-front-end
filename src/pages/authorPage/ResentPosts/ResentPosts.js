@@ -22,7 +22,7 @@ const PostsContainer = styled.div`
   margin: 40px 0;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: flex-start;
   @media only screen and (max-width: 1150px) {
     flex-direction: column;
     align-items: center;

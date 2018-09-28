@@ -20,6 +20,7 @@ import postItemEnhancer from './postItemEnhancer'
 
 const PostItemContainer = styled.div`
   flex: 1 0 357px;
+  max-width: 386px;
   display: flex;
   flex-direction: column;
   margin: 7px;

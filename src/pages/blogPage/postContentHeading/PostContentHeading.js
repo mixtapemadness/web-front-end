@@ -54,7 +54,7 @@ const ContainerBottom = styled.div`
 
 const Links = styled.div`
   display: flex;
-  width: 120px;
+  width: 50px;
   justify-content: space-between;
 `
 

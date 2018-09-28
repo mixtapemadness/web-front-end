@@ -23,7 +23,8 @@ const Container = styled.div`
 `
 
 const Content = styled.div`
-  width: 1024px;
+  width: 80%;
+  max-width: 1024px;
   padding: 20px;
   box-sizing: border-box;
   margin: auto;
@@ -31,6 +32,9 @@ const Content = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  @media only screen and (max-width: 680px) {
+    width: 100%;
+  }
 `
 
 const Input = styled.input`
@@ -98,6 +102,7 @@ const ShowMore = styled(Link)`
   justify-content: center;
   cursor: pointer;
 `
+
 const Span = styled.div`
   color: #ffffff;
   font-weight: 600;
@@ -129,7 +134,6 @@ const Search = ({ toggleSearch, handleSubmit, data, value }) => {
               />
             ))}
         </DataContainer>
-
         {searchResult && (
           <ShowMore
             to={`/searchresult/all/${value}`}

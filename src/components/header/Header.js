@@ -1,5 +1,7 @@
 /* eslint object-curly-newline: 0 */
 /* eslint implicit-arrow-linebreak: 0 */
+/* eslint indent: 0 */
+
 import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
@@ -101,6 +103,8 @@ const Logo = styled.img`
 const Search = styled.div`
   width: 20px;
   cursor: pointer;
+  display: flex;
+  align-items: center;
 `
 const Dots = styled.div`
   width: 10px;
@@ -361,8 +365,17 @@ const Header = ({
             <Li isActive={location.pathname === '/blog/category/videos'}>
               <Link to="/blog/category/videos">Video</Link>
             </Li>
+            <Li>
+              <Search onClick={() => toggleSearch()}>
+                <SearchIcon
+                  width="20px"
+                  color={menuOpened ? '#ffffff' : '#666666'}
+                />
+              </Search>
+            </Li>
           </Ul>
         </NavBar>
+
         {width > 1050 && (
           <Div>
             <DotsDropDown>
@@ -373,12 +386,6 @@ const Header = ({
                 />
               </Dots>
             </DotsDropDown>
-            <Search onClick={() => toggleSearch()}>
-              <SearchIcon
-                width="20px"
-                color={menuOpened ? '#ffffff' : '#666666'}
-              />
-            </Search>
           </Div>
         )}
       </LeftSide>

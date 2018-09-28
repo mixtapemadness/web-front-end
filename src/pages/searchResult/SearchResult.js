@@ -15,6 +15,7 @@ const Container = styled.div`
   max-width: 1200px;
   margin: auto;
   padding-top: 40px;
+  padding: 0 50px;
 `
 
 const InputContainer = styled.div`
@@ -59,11 +60,20 @@ const Filter = styled.div`
   border-bottom: 1px solid #ccc;
   color: #000000;
   font-weight: 600;
+  @media only screen and (max-width: 1050px) {
+    justify-content: center;
+  }
+  @media only screen and (max-width: 750px) {
+    flex-direction: column;
+  }
 `
 
 const CategoryContainer = styled.ul`
   display: flex;
   list-style: none;
+  @media only screen and (max-width: 750px) {
+    flex-direction: column;
+  }
 `
 
 const Category = styled.li`
@@ -71,6 +81,9 @@ const Category = styled.li`
   color: #666666;
   cursor: pointer;
   ${p => p.active && 'border-bottom: 2px solid #ff9600'};
+  @media only screen and (max-width: 750px) {
+    margin: 0;
+  }
 `
 
 const SearchResult = ({

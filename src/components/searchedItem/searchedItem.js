@@ -3,6 +3,7 @@
 /* eslint object-curly-newline: 0 */
 /* eslint operator-linebreak: 0 */
 /* eslint react/jsx-wrap-multilines: 0 */
+/* eslint indent: 0 */
 
 import React from 'react'
 
@@ -15,11 +16,19 @@ import dateStringify from 'helpers/dateStringify'
 import searchedItemEnhancer from './searchedItemEnhancer'
 
 const Item = styled.div`
-  width: 50%;
+  width: 550px;
   padding-bottom: 20px;
   margin-top: 20px;
   border-bottom: 1px solid #ccc;
   display: flex;
+  @media only screen and (max-width: 680px) {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  @media only screen and (max-width: 529px) {
+    width: 100%;
+  }
 `
 
 const SearchMedia = styled(Link)`
@@ -29,6 +38,9 @@ const SearchMedia = styled(Link)`
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+  @media only screen and (max-width: 529px) {
+    width: 100%;
+  }
 `
 
 const ContentContainer = styled.div`
@@ -40,6 +52,9 @@ const ContentContainer = styled.div`
   flex-direction: column;
   justify-content: space-between;
   color: #666666;
+  @media only screen and (max-width: 529px) {
+    width: 100%;
+  }
 `
 
 const ContentContainerBottom = styled.div``
@@ -56,18 +71,25 @@ const Title = styled(Link)`
   cursor: pointer;
   color: ${p => (p.color ? p.color : '')};
   &:hover {
-    text-decoration-color: #111111;
+    text-decoration-color: ${p => (p.color ? p.color : '#111111')};
+  }
+  @media only screen and (max-width: 680px) {
+    margin-top: 10px;
+  }
+`
+
+const TimeContainer = styled.div`
+  display: flex;
+  font-size: 13px;
+  @media only screen and (max-width: 680px) {
+    display: flex;
+    justify-content: center;
   }
 `
 
 const Time = styled.span`
   margin-left: 10px;
   color: ${p => (p.color ? p.color : '#666666')};
-`
-
-const TimeContainer = styled.div`
-  display: flex;
-  font-size: 13px;
 `
 
 const ContinueRead = styled(Link)`

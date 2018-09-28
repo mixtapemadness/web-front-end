@@ -19,33 +19,40 @@ import styled from 'styled-components'
 
 const Container = styled.div`
   margin-top: 120px;
+  height: ${p => (p.searchOpened ? '80vh' : 'auto')};
+  overflow: ${p => (p.searchOpened ? 'hidden' : 'visible')};
   @media (max-width: 850px) {
     margin-top: 80px;
   }
 `
 
 const AppContent = ({ searchOpened, toggleSearch, menuOpened }) => (
-  <Container>
-    <Switch>
-      <Route exact path="/" component={Home} />
-      <Route exact path="/blog/category/:filter" component={Blog} />
-      <Route path="/blog/:category/:slug" component={BlogPage} />
-      <Route path="/aboutus" component={AboutUs} />
-      <Route path="/author/:slug" component={AuthorPage} />
-      <Route path="/events" component={EventPage} />
-      <Route path="/music" component={Music} />
-      <Route path="/music-profile/:slug" component={MusicProfilePage} />
-      <Route path="/team" component={TeamPage} />
-      <Route path="/moremenu" component={MoreMenu} />
-      <Route path="/searchresult/:category/:key" component={SearchResult} />
-      <Route path="/login" component={() => <SignForm type="login" />} />
-      <Route path="/register" component={() => <SignForm type="register" />} />
-    </Switch>
+  <React.Fragment>
+    <Container searchOpened={searchOpened}>
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route exact path="/blog/category/:filter" component={Blog} />
+        <Route path="/blog/:category/:slug" component={BlogPage} />
+        <Route path="/aboutus" component={AboutUs} />
+        <Route path="/author/:slug" component={AuthorPage} />
+        <Route path="/events" component={EventPage} />
+        <Route path="/music" component={Music} />
+        <Route path="/music-profile/:slug" component={MusicProfilePage} />
+        <Route path="/team" component={TeamPage} />
+        <Route path="/moremenu" component={MoreMenu} />
+        <Route path="/searchresult/:category/:key" component={SearchResult} />
+        <Route path="/login" component={() => <SignForm type="login" />} />
+        <Route
+          path="/register"
+          component={() => <SignForm type="register" />}
+        />
+      </Switch>
+      {menuOpened && <Menu />}
+    </Container>
     {searchOpened && (
       <Search toggleSearch={toggleSearch} searchOpened={searchOpened} />
     )}
-    {menuOpened && <Menu />}
-  </Container>
+  </React.Fragment>
 )
 
 export default AppContent

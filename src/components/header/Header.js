@@ -1,6 +1,7 @@
 /* eslint object-curly-newline: 0 */
 /* eslint implicit-arrow-linebreak: 0 */
 /* eslint indent: 0 */
+/* eslint jsx-quotes: 0 */
 
 import React from 'react'
 import styled from 'styled-components'
@@ -404,25 +405,37 @@ const Header = ({
             </ContactUsContainer>
           </OrangeContainer>
           <SocialIconsContainer>
-            <SocialIcon href="https://twitter.com/mixtapemadness">
+            <SocialIcon
+              target="_blank"
+              href="https://twitter.com/mixtapemadness"
+            >
               <TwitterIcon
                 height="20px"
                 color={menuOpened ? '#ffffff' : '#666666'}
               />
             </SocialIcon>
-            <SocialIcon href="https://www.facebook.com/MixtapeMadnessUK/">
+            <SocialIcon
+              target="_blank"
+              href="https://www.facebook.com/MixtapeMadnessUK/"
+            >
               <FacebookIcon
                 height="17px"
                 color={menuOpened ? '#ffffff' : '#666666'}
               />
             </SocialIcon>
-            <SocialIcon href="https://www.instagram.com/mixtapemadness/">
+            <SocialIcon
+              target="_blank"
+              href="https://www.instagram.com/mixtapemadness/"
+            >
               <InstagramIcon
                 height="17px"
                 color={menuOpened ? '#ffffff' : '#666666'}
               />
             </SocialIcon>
-            <SocialIcon href="https://www.youtube.com/user/madaboutmixtapes">
+            <SocialIcon
+              target="_blank"
+              href="https://www.youtube.com/user/madaboutmixtapes"
+            >
               <YoutubeIcon
                 height="22px"
                 color={menuOpened ? '#ffffff' : '#666666'}

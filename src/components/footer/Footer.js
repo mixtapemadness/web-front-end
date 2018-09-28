@@ -1,3 +1,5 @@
+/* eslint jsx-quotes: 0 */
+
 import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
@@ -58,10 +60,12 @@ const ListItem = styled.li`
   letter-spacing: 0.8px;
   font-size: 13px;
 `
+
 const UploadContainer = styled.div`
   display: flex;
   flex-direction: column;
 `
+
 const UploadButton = styled.button`
   border: 1px solid ${p => (p.menuOpened ? '#ffffff' : '#000000')};
   color: ${p => (p.menuOpened ? '#ffffff' : '#000000')};
@@ -76,18 +80,21 @@ const UploadButton = styled.button`
   width: 219px;
   height: 47px;
 `
+
 const SocialContainer = styled.div`
   display: flex;
   margin-top: 20px;
   margin-bottom: 17px;
   align-items: center;
 `
+
 const SignUpContainer = styled.div`
   margin-top: 20px;
   margin-bottom: 20px;
   display: flex;
   align-items: center;
 `
+
 const Input = styled.input`
   height: 45px;
   width: 160px;
@@ -231,13 +238,19 @@ const Footer = ({ width, menuOpened }) => (
                 Connect with Mixtape Madness
               </ContentHeader>
               <SocialContainer>
-                <SocialIcon href="https://twitter.com/mixtapemadness">
+                <SocialIcon
+                  target="_blank"
+                  href="https://twitter.com/mixtapemadness"
+                >
                   <TwitterIcon
                     height="20px"
                     color={menuOpened ? '#ffffff' : '#666666'}
                   />
                 </SocialIcon>
-                <SocialIcon href="https://www.facebook.com/MixtapeMadnessUK/">
+                <SocialIcon
+                  target="_blank"
+                  href="https://www.facebook.com/MixtapeMadnessUK/"
+                >
                   <FacebookIcon
                     height="17px"
                     color={menuOpened ? '#ffffff' : '#666666'}
@@ -249,19 +262,28 @@ const Footer = ({ width, menuOpened }) => (
                     color={menuOpened ? '#ffffff' : '#666666'}
                   />
                 </SocialIcon>
-                <SocialIcon href="https://soundcloud.com/mixtapemadnessuk">
+                <SocialIcon
+                  target="_blank"
+                  href="https://soundcloud.com/mixtapemadnessuk"
+                >
                   <SoundCloudIcon
                     height="35px"
                     color={menuOpened ? '#ffffff' : '#666666'}
                   />
                 </SocialIcon>
-                <SocialIcon href="https://www.youtube.com/user/madaboutmixtapes">
+                <SocialIcon
+                  target="_blank"
+                  href="https://www.youtube.com/user/madaboutmixtapes"
+                >
                   <YoutubeIcon
                     height="23px"
                     color={menuOpened ? '#ffffff' : '#666666'}
                   />
                 </SocialIcon>
-                <SocialIcon href="https://www.instagram.com/mixtapemadness/">
+                <SocialIcon
+                  target="_blank"
+                  href="https://www.instagram.com/mixtapemadness/"
+                >
                   <InstagramIcon
                     height="19px"
                     color={menuOpened ? '#ffffff' : '#666666'}
@@ -270,10 +292,16 @@ const Footer = ({ width, menuOpened }) => (
               </SocialContainer>
               <Line mb={10} menuOpened={menuOpened} />
               <FlexDiv>
-                <Anchor href="https://itunes.apple.com/us/app/mixtape-madness-latest-uk-mixtapes-singles/id1090862433?mt=8&ign-mpt=uo%3D4">
+                <Anchor
+                  target="_blank"
+                  href="https://itunes.apple.com/us/app/mixtape-madness-latest-uk-mixtapes-singles/id1090862433?mt=8&ign-mpt=uo%3D4"
+                >
                   <AppStore src={AppStoreIcon} />
                 </Anchor>
-                <Anchor href="https://play.google.com/store/apps/details?id=com.mixtape.madness">
+                <Anchor
+                  target="_blank"
+                  href="https://play.google.com/store/apps/details?id=com.mixtape.madness"
+                >
                   <GooglePlay src={GooglePlayIcon} />
                 </Anchor>
               </FlexDiv>

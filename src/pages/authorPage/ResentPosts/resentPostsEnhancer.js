@@ -10,14 +10,28 @@ export default compose(
   withStateHandlers(
     () => ({
       width: window.innerWidth,
+      perPage: 9,
+      page: 1,
+      perPageMobile: 4,
+      Mobilepage: 1,
     }),
     {
       updateWidth: () => () => ({ width: window.innerWidth }),
+      increacePagination: ({ Mobilepage }) => () => ({
+        Mobilepage: Mobilepage + 1,
+      }),
+      decreacePagination: ({ Mobilepage }) => () => ({
+        Mobilepage: Mobilepage - 1,
+      }),
     },
   ),
   lifecycle({
     componentDidMount() {
+      console.log('Mobilepage', this.props.Mobilepage)
       window.addEventListener('resize', this.props.updateWidth)
+    },
+    componentDidUpdate(prevProps, prevState) {
+      window.scrollTo(0, 0)
     },
     componentWillUnmount() {
       window.removeEventListener('resize', this.props.updateWidth)
@@ -30,9 +44,8 @@ export default compose(
       options: props => ({
         variables: {
           id: props.id,
-          // perPage: props.perPage,
-          // filter: { categories: props.match.params.filter.toUpperCase() },
-          // sort: props.sort,
+          page: props.width > 550 ? 1 : props.Mobilepage,
+          perPage: props.width > 550 ? props.perPage : props.perPageMobile,
         },
       }),
     },

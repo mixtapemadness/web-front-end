@@ -1,5 +1,5 @@
-query getPostsByAuthorId($id:ID){
-posts: getPostsByAuthorId(id:$id){
+query getPostsByAuthorId($id:ID,$page:ID,$perPage:ID){
+posts: getPostsByAuthorId(id:$id,page:$page,perPage:$perPage){
     	id
     	date
       title

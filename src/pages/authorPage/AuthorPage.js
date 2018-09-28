@@ -23,6 +23,7 @@ const LineSeparator = styled.div`
   height: 1px;
   background: #e0e0e0;
 `
+
 const AuthorPage = ({ width, data }) => {
   const userData = data && data.user && data.user
   const userId = data && data.user && data.user.id

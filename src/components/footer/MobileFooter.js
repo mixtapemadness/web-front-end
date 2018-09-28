@@ -40,10 +40,13 @@ const Span = styled.span`
 const MobileFooter = ({ menuOpened }) => (
   <MobileFooterContainer>
     <SocialContainer>
-      <SocialIcon href="https://twitter.com/mixtapemadness">
+      <SocialIcon target="_blank" href="https://twitter.com/mixtapemadness">
         <TwitterIcon height="20px" color={menuOpened ? '#ffffff' : '#666666'} />
       </SocialIcon>
-      <SocialIcon href="https://www.facebook.com/MixtapeMadnessUK/">
+      <SocialIcon
+        target="_blank"
+        href="https://www.facebook.com/MixtapeMadnessUK/"
+      >
         <FacebookIcon
           height="17px"
           color={menuOpened ? '#ffffff' : '#666666'}
@@ -52,16 +55,25 @@ const MobileFooter = ({ menuOpened }) => (
       <SocialIcon>
         <CircleIcon height="17px" color={menuOpened ? '#ffffff' : '#666666'} />
       </SocialIcon>
-      <SocialIcon href="https://soundcloud.com/mixtapemadnessuk">
+      <SocialIcon
+        target="_blank"
+        href="https://soundcloud.com/mixtapemadnessuk"
+      >
         <SoundCloudIcon
           height="35px"
           color={menuOpened ? '#ffffff' : '#666666'}
         />
       </SocialIcon>
-      <SocialIcon href="https://www.youtube.com/user/madaboutmixtapes">
+      <SocialIcon
+        target="_blank"
+        href="https://www.youtube.com/user/madaboutmixtapes"
+      >
         <YoutubeIcon height="23px" color={menuOpened ? '#ffffff' : '#666666'} />
       </SocialIcon>
-      <SocialIcon href="https://www.instagram.com/mixtapemadness/">
+      <SocialIcon
+        target="_blank"
+        href="https://www.instagram.com/mixtapemadness/"
+      >
         <InstagramIcon
           height="19px"
           color={menuOpened ? '#ffffff' : '#666666'}

@@ -34,7 +34,6 @@ export default compose(
       options: props => ({
         variables: {
           slug: props.match.params.slug,
-          // perPage: props.perPage,
           // filter: { categories: props.match.params.filter.toUpperCase() },
           // sort: props.sort,
         },

@@ -1,5 +1,6 @@
 /* eslint operator-linebreak: 0 */
 /* eslint implicit-arrow-linebreak: 0 */
+/* eslint object-curly-newline: 0 */
 
 import React from 'react'
 import styled from 'styled-components'
@@ -31,6 +32,7 @@ const PostsContainer = styled.div`
 const ButtonContainer = styled.div`
   display: flex;
   margin: 40px 0;
+  padding: 0 20px;
   justify-content: space-between;
   width: 100%;
 `
@@ -45,8 +47,9 @@ const NextButton = styled.button`
   font-weight: bold;
 `
 const PreviousButton = styled.button`
-  background: none;
-  color: #ccc;
+  background: ${p => (p.Mobilepage > 1 ? '#efefef' : 'none')};
+  color: ${p => (p.Mobilepage > 1 ? '#000000' : '#ccc')};
+  pointer-events: ${p => (p.Mobilepage > 1 ? 'inherit' : 'none')};
   border: 1px solid #efefef;
   cursor: pointer;
   font-weight: bold;
@@ -80,19 +83,30 @@ const PostItemT = (item, index) => {
 const PostItems = ({ items }) =>
   items.map((item, index) => PostItemT(item, index))
 
-const ResentPosts = ({ width, data }) => {
+const ResentPosts = ({
+  width,
+  data,
+  increacePagination,
+  decreacePagination,
+  Mobilepage,
+}) => {
   const posts = data && data.posts
   return (
     <ResentPostsContainer>
-      {width > 450 && (
+      {width > 550 && (
         <PostsContainer>{posts && <PostItems items={posts} />}</PostsContainer>
       )}
-      {width <= 450 && (
+      {width <= 550 && (
         <PostsContainer>
-          {posts && <PostItems items={posts} />}
+          {posts && posts.map(item => <PostItem key={item.id} data={item} />)}
           <ButtonContainer>
-            <PreviousButton>Previous</PreviousButton>
-            <NextButton>Next</NextButton>
+            <PreviousButton
+              Mobilepage={Mobilepage}
+              onClick={() => decreacePagination()}
+            >
+              Previous
+            </PreviousButton>
+            <NextButton onClick={() => increacePagination()}>Next</NextButton>
           </ButtonContainer>
           <MobileSubscribe />
         </PostsContainer>

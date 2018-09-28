@@ -55,7 +55,6 @@ const PreviousButton = styled.button`
   font-weight: bold;
   width: 100px;
 `
-
 // const ItemContainer = styled.div`
 //   margin-top: 28px;
 //   display: flex;

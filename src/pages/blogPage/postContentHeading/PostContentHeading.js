@@ -3,6 +3,11 @@
 /* eslint no-unused-vars: 0 */
 /* eslint react/jsx-curly-brace-presence: 0 */
 /* eslint arrow-body-style: 0 */
+/* eslint indent: 0 */
+/* eslint react/jsx-indent: 0 */
+/* eslint react/jsx-indent-props: 0 */
+/* eslint react/jsx-closing-tag-location: 0 */
+/* eslint react/jsx-boolean-value: 0 */
 
 import React from 'react'
 import styled from 'styled-components'
@@ -10,6 +15,16 @@ import Facebook from 'resources/assets/svgComponents/Facebook'
 import Twitter from 'resources/assets/svgComponents/Twitter'
 import SoundCloud from 'resources/assets/svgComponents/SoundCloud'
 import Dots from 'resources/assets/svgComponents/Dots'
+import {
+  TwitterShareButton,
+  FacebookShareButton,
+  GooglePlusShareButton,
+  LinkedinShareButton,
+  FacebookIcon,
+  TwitterIcon,
+  GooglePlusIcon,
+  LinkedinIcon,
+} from 'react-share'
 
 import AuthorName from 'components/AuthorName'
 import { dateStringify } from 'helpers/'
@@ -59,14 +74,28 @@ const Author = styled.div`
 `
 
 const PostContentHeading = ({ date, authorId }) => {
+  const url = window.location.href.toString()
   return (
     <Container>
       <ContainerTop>
         <Links>
-          <Facebook width={20} color={'#666666'} />
-          <Twitter width={20} color={'#666666'} />
-          <SoundCloud width={25} color={'#666666'} />
-          <Dots width={25} color={'#666666'} />
+          <FacebookShareButton url={url} title={'facebook'}>
+            <FacebookIcon
+              url={window.location.href.toString()}
+              size={32}
+              round={true}
+            />
+          </FacebookShareButton>
+          <GooglePlusShareButton url={url} title={'twitter'}>
+            <GooglePlusIcon size={32} round={true} />
+          </GooglePlusShareButton>
+          ,
+          <LinkedinShareButton url={url} title={'twitter'}>
+            <LinkedinIcon size={32} round={true} />
+          </LinkedinShareButton>
+          <TwitterShareButton url={url} title={'twitter'}>
+            <TwitterIcon size={32} round={true} />
+          </TwitterShareButton>
         </Links>
         {/* <Credit>Credit:ParkLife</Credit> */}
       </ContainerTop>

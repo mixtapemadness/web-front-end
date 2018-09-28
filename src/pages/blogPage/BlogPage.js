@@ -67,7 +67,7 @@ const BlogTitle = styled.h1`
     font-size: 26px;
   }
   @media only screen and (max-width: 450px) {
-    font-size: 16px;
+    font-size: 18px;
     letter-spacing: normal;
   }
 `
@@ -76,7 +76,7 @@ const BlogSubTitle = styled.h3`
   letter-spacing: 1.6px;
   margin-bottom: 20px;
   @media only screen and (max-width: 450px) {
-    font-size: 14px;
+    font-size: 12px;
     letter-spacing: normal;
   }
 `

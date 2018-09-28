@@ -366,8 +366,8 @@ const Header = ({
             <Li isActive={location.pathname === '/blog/category/videos'}>
               <Link to="/blog/category/videos">Video</Link>
             </Li>
-            <Li>
-              <Search onClick={() => toggleSearch()}>
+            <Li onClick={() => toggleSearch()}>
+              <Search>
                 <SearchIcon
                   width="20px"
                   color={menuOpened ? '#ffffff' : '#666666'}

@@ -16,7 +16,7 @@ const getCategory = ({ data, color }) => {
   const slug = data.category ? data.category.slug : ''
   return (
     <Container color={color && color} to={`/blog/category/${slug}`}>
-      Trending / {name}
+      {name}
     </Container>
   )
 }

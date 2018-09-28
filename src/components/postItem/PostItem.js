@@ -224,7 +224,7 @@ const PostItem = ({ media, category, user, data }) => {
       <ContentContainer>
         <ContentContainerTop>
           <CategoryContainer>
-            Trending /{CategoriesData && <Categories data={CategoriesData} />}
+            {CategoriesData && <Categories data={CategoriesData} />}
           </CategoryContainer>
           {CategoriesData &&
             data && (

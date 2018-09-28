@@ -125,7 +125,7 @@ const Menu = ({ data, toggleMenu }) => {
         <ListContainer>
           <List>
             <Link onClick={() => toggleMenu()} to={'/blog/category/videos'}>
-              <li>Interviews</li>
+              <li>Videos</li>
             </Link>
             <Link onClick={() => toggleMenu()} to={'/blog/category/articles'}>
               <li>Articles</li>

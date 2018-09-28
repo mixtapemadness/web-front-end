@@ -11,8 +11,10 @@ import YoutubeIcon from 'resources/assets/svgComponents/Youtube'
 import CircleIcon from 'resources/assets/svgComponents/Circle'
 import SoundCloudIcon from 'resources/assets/svgComponents/SoundCloud'
 
+import { CLOSE_MEGAMENU } from 'constants'
 import footerEnhancer from './footerEnhancer'
 import MobileFooter from './MobileFooter'
+import eventEmitter from '../../eventEmitter'
 
 const FooterContainer = styled.footer`
   width: 100%;
@@ -179,15 +181,15 @@ const Footer = ({ width, menuOpened }) => (
             <ListContainer>
               <ContentHeader menuOpened={menuOpened}>Music</ContentHeader>
               <List menuOpened={menuOpened}>
-                <ListItem>Artists</ListItem>
-                <ListItem>Mixtapes</ListItem>
-                <ListItem>Singles</ListItem>
-                <ListItem>Hip Hop</ListItem>
-                <ListItem>Drill</ListItem>
-                <ListItem>Rap</ListItem>
-                <ListItem>Trap</ListItem>
-                <ListItem>Grime</ListItem>
-                <ListItem>All Genres</ListItem>
+                {/* <ListItem>Artists</ListItem> */}
+                {/* <ListItem>Mixtapes</ListItem> */}
+                {/* <ListItem>Singles</ListItem> */}
+                {/* <ListItem>Hip Hop</ListItem> */}
+                {/* <ListItem>Drill</ListItem> */}
+                {/* <ListItem>Rap</ListItem> */}
+                {/* <ListItem>Trap</ListItem> */}
+                {/* <ListItem>Grime</ListItem> */}
+                {/* <ListItem>All Genres</ListItem> */}
               </List>
             </ListContainer>
             <ListContainer>
@@ -196,13 +198,18 @@ const Footer = ({ width, menuOpened }) => (
               </ContentHeader>
               <List menuOpened={menuOpened}>
                 <ListItem>
-                  <Link to="/aboutus">About</Link>
+                  <Link
+                    to="/aboutus"
+                    onClick={() => eventEmitter.emit(CLOSE_MEGAMENU)}
+                  >
+                    About
+                  </Link>
                 </ListItem>
-                <ListItem>Company</ListItem>
-                <ListItem>Help</ListItem>
-                <ListItem>Contact</ListItem>
-                <ListItem>Press</ListItem>
-                <ListItem>FAQ</ListItem>
+                {/* <ListItem>Company</ListItem> */}
+                {/* <ListItem>Help</ListItem> */}
+                {/* <ListItem>Contact</ListItem> */}
+                {/* <ListItem>Press</ListItem> */}
+                {/* <ListItem>FAQ</ListItem> */}
               </List>
             </ListContainer>
             <UploadContainer>

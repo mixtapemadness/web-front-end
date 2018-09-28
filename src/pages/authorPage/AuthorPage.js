@@ -33,7 +33,6 @@ const AuthorPage = ({ width, data }) => {
       <ProfileInfo data={userData} />
       <LineSeparator />
       <ResentPosts id={userId} />
-      <Footer />
     </AuthorPageContainer>
   )
 }

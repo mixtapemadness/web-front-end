@@ -10,7 +10,6 @@ import styled from 'styled-components'
 
 import PostItem from 'components/postItem'
 import Subscribe from 'components/subscribe'
-import Footer from 'components/footer'
 // import MobileComponent from 'components/mobileComponent'
 import TopVideoPosts from './TopVideoPosts'
 import BlogSlider from './BlogSlider'
@@ -47,10 +46,6 @@ const SubscribeContainer = styled.div`
 //   justify-content: center;
 //   display: flex;
 // `
-
-const FooterContainer = styled.div`
-  margin-top: 40px;
-`
 
 const MorePosts = styled.span`
   cursor: pointer;
@@ -99,9 +94,6 @@ const Blog = ({ data, handleLoadMore, match }) => {
         ))} */}
 
       <MorePosts onClick={handleLoadMore}> More News +</MorePosts>
-      <FooterContainer>
-        <Footer />
-      </FooterContainer>
     </NewsContainer>
   )
 }

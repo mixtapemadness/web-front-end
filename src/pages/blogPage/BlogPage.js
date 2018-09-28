@@ -284,7 +284,6 @@ const BlogPage = ({ width, data }, props) => {
         : ''}
      */}
       <YouMayLike />
-      <Footer />
     </Container>
   )
 }

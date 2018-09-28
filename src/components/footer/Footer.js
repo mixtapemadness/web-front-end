@@ -24,6 +24,7 @@ const FooterContainer = styled.footer`
   left: 0;
   right: 0;
   background-color: ${p => (p.menuOpened ? 'transparent' : '#efefef')};
+  margin-top: 50px;
 `
 const ContentContainer = styled.div`
   padding: 40px 20px;

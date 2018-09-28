@@ -16,6 +16,7 @@ import SearchResult from 'pages/searchResult/SearchResult'
 import SignForm from 'components/signForm/SignForm'
 import MoreMenu from 'components/moreMenu'
 import styled from 'styled-components'
+import Footer from 'components/footer'
 
 const Container = styled.div`
   margin-top: 120px;
@@ -48,6 +49,7 @@ const AppContent = ({ searchOpened, toggleSearch, menuOpened }) => (
         />
       </Switch>
       {menuOpened && <Menu />}
+      <Footer />
     </Container>
     {searchOpened && (
       <Search toggleSearch={toggleSearch} searchOpened={searchOpened} />

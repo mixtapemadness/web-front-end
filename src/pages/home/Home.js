@@ -123,7 +123,6 @@ const Home = ({ sliderData }) => (
     </SubscribeContainer>
 
     <Videos />
-    <Footer />
   </Container>
 )
 

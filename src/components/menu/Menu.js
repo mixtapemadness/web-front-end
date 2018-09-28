@@ -1,16 +1,16 @@
 /* eslint operator-linebreak: 0 */
+/* eslint react/jsx-curly-brace-presence: 0 */
 
 import React from 'react'
 import styled from 'styled-components'
 
 import Footer from 'components/footer'
 import MenuItem from 'components/menuItem'
-
+import { Link } from 'react-router-dom'
+import menuEnhancer from './menuEnhancer'
 // import Musician from 'resources/assets/img/musician1.png'
 // import Musician1 from 'resources/assets/img/2pac.jpg'
 // import Musician2 from 'resources/assets/img/eminem.jpg'
-import menuEnhancer from './menuEnhancer'
-
 const Container = styled.div`
   position: fixed;
   top: 120px;
@@ -60,7 +60,11 @@ const List = styled.ul`
   list-style: none;
   font-weight: 600;
   li {
+    transition: 0.4s;
     cursor: pointer;
+    &:hover {
+      color: #ded6d6;
+    }
   }
   @media only screen and (max-width: 850px) {
     margin-bottom: 20px;
@@ -77,6 +81,7 @@ const ItemContainer = styled.div`
     flex-direction: column;
   }
 `
+
 const Divider = styled.div`
   width: 1px;
   background-color: #ffffff;
@@ -110,20 +115,31 @@ const Title = styled.div`
 
 const Menu = ({ data, toggleMenu }) => {
   const Posts = data && data.Posts && data.Posts
-  console.log('data', data)
   return (
     <Container>
       <ContentContainer>
         <ListContainer>
           <List>
-            <li>Interviews</li>
-            <li>Articles</li>
-            <li>News</li>
+            <Link onClick={() => toggleMenu()} to={'/blog/category/videos'}>
+              <li>Interviews</li>
+            </Link>
+            <Link onClick={() => toggleMenu()} to={'/blog/category/articles'}>
+              <li>Articles</li>
+            </Link>
+            <Link onClick={() => toggleMenu()} to={'/blog/category/events'}>
+              <li>Events</li>
+            </Link>
           </List>
           <List>
-            {/* <li>Latest</li> */}
-            {/* <li>Mixtapes</li> */}
-            {/* <li>Singles</li> */}
+            <Link onClick={() => toggleMenu()} to={'/blog/category/reviews'}>
+              <li>Reviews</li>
+            </Link>
+            <Link onClick={() => toggleMenu()} to={'/blog/category/news'}>
+              <li>News</li>
+            </Link>
+            <Link onClick={() => toggleMenu()} to={'/blog/category/interviews'}>
+              <li>Interviews</li>
+            </Link>
           </List>
           <List>
             {/* <li>Playlists</li> */}

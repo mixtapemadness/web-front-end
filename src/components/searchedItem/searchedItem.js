@@ -64,6 +64,7 @@ const Time = styled.span`
   margin-left: 10px;
   color: ${p => (p.color ? p.color : '#666666')};
 `
+
 const TimeContainer = styled.div`
   display: flex;
   font-size: 13px;
@@ -103,6 +104,7 @@ const searchedItem = ({ toggleSearch, data, category, tags, media, color }) => {
           <SearchMedia
             to={`/blog/${categoriesData[0].slug}/${data.slug}`}
             img={Image}
+            onClick={() => toggleSearch()}
           />
         )}
       <ContentContainer>
@@ -113,6 +115,7 @@ const searchedItem = ({ toggleSearch, data, category, tags, media, color }) => {
               color={color}
               to={`/blog/${categoriesData[0].slug}/${data.slug}`}
               dangerouslySetInnerHTML={{ __html: data.title }}
+              onClick={() => toggleSearch()}
             />
           )}
         <ContentContainerBottom>

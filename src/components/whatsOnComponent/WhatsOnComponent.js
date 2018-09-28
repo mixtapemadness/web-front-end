@@ -115,6 +115,7 @@ const Name = styled(Link)`
   text-decoration-color: transparent;
   height: 5ch;
   overflow: hidden;
+  transition: 0.4s;
   &:hover {
     text-decoration-color: #111111;
   }

@@ -50,6 +50,10 @@ const LeftSide = styled.div`
     width: 100%;
     justify-content: center;
   }
+  @media only screen and (max-width: 475px) {
+    justify-content: space-between;
+    padding: 0 20px;
+  }
 `
 
 const RightSide = styled.div`
@@ -68,6 +72,10 @@ const Ul = styled.ul`
   display: flex;
   color: ${props => (props.menuOpened ? '#ffffff' : '#666666')};
   transition: unset;
+  margin-right: 10px;
+  @media only screen and (max-width: 475px) {
+    display: none;
+  }
 `
 const Li = styled.li`
   font-weight: 600;
@@ -366,15 +374,13 @@ const Header = ({
             <Li isActive={location.pathname === '/blog/category/videos'}>
               <Link to="/blog/category/videos">Video</Link>
             </Li>
-            <Li onClick={() => toggleSearch()}>
-              <Search>
-                <SearchIcon
-                  width="20px"
-                  color={menuOpened ? '#ffffff' : '#666666'}
-                />
-              </Search>
-            </Li>
           </Ul>
+          <Search onClick={() => toggleSearch()}>
+            <SearchIcon
+              width="20px"
+              color={menuOpened ? '#ffffff' : '#666666'}
+            />
+          </Search>
         </NavBar>
 
         {width > 1050 && (

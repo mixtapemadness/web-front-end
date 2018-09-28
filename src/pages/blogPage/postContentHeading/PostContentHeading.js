@@ -72,6 +72,9 @@ const Author = styled.div`
   display: flex;
   font-weight: 800;
 `
+const IconWrapper = styled.div`
+  cursor: pointer;
+`
 
 const PostContentHeading = ({ date, authorId }) => {
   const url = window.location.href.toString()
@@ -79,22 +82,19 @@ const PostContentHeading = ({ date, authorId }) => {
     <Container>
       <ContainerTop>
         <Links>
-          <FacebookShareButton url={url} title={'facebook'}>
-            <FacebookIcon
-              url={window.location.href.toString()}
-              size={32}
-              round={true}
-            />
+          <FacebookShareButton
+            iconBgStyle={'cursor:pointer'}
+            url={url}
+            title={'facebook'}
+          >
+            <IconWrapper>
+              <Facebook width={20} height={20} color={'#666666'} />
+            </IconWrapper>
           </FacebookShareButton>
-          <GooglePlusShareButton url={url} title={'twitter'}>
-            <GooglePlusIcon size={32} round={true} />
-          </GooglePlusShareButton>
-          ,
-          <LinkedinShareButton url={url} title={'twitter'}>
-            <LinkedinIcon size={32} round={true} />
-          </LinkedinShareButton>
           <TwitterShareButton url={url} title={'twitter'}>
-            <TwitterIcon size={32} round={true} />
+            <IconWrapper>
+              <Twitter width={20} height={20} color={'#666666'} />
+            </IconWrapper>
           </TwitterShareButton>
         </Links>
         {/* <Credit>Credit:ParkLife</Credit> */}

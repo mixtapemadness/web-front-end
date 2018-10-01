@@ -57,24 +57,49 @@ const PostItems = ({ items }) => {
 
 const settings = {
   dots: false,
-  // infinite: true,
+  infinite: true,
   speed: 500,
-  slidesToShow: 1,
+  slidesToShow: 3,
   slidesToScroll: 3,
+  breakpoint: 1154,
+  slidesToShowResponsive: 2,
+  slidesToScrollResponsive: 2,
+  responsive: [
+    {
+      breakpoint: 1154,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 3,
+      },
+    },
+    {
+      breakpoint: 1050,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2,
+      },
+    },
+    {
+      breakpoint: 751,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+      },
+    },
+  ],
 }
 
 const Posts = ({ width, data }) => {
   const posts = data && data.Posts && data.Posts
   return (
     <TrendingContainer>
-      {posts && <PostItems items={posts} />}
-
-      {/* <SliderComponent settings={settings}>
+      {/* {posts && <PostItems items={posts} />} */}
+      <SliderComponent settings={settings}>
         {posts && posts.map(item => <PostItem key={item.id} data={item} />)}
         {
           // posts && <PostItems items={posts} />
         }
-      </SliderComponent> */}
+      </SliderComponent>
     </TrendingContainer>
   )
 }

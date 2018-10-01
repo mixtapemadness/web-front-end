@@ -32,7 +32,7 @@ export default compose(
         variables: {
           id: props.id,
           page: 1,
-          perPage: 3,
+          perPage: 9,
         },
       }),
     },

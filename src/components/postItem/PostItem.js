@@ -21,17 +21,10 @@ import postItemEnhancer from './postItemEnhancer'
 const PostItemContainer = styled.div`
   flex: 1 0 357px;
   max-width: 386px;
+  height: 100%;
   display: flex;
   flex-direction: column;
   margin: 7px;
-  @media only screen and (max-width: 1150px) {
-    width: 61.458%;
-    margin-top: 20px;
-    flex: 1;
-  }
-  @media only screen and (max-width: 450px) {
-    width: 90%;
-  }
 `
 
 const ContentContainer = styled.div`
@@ -65,7 +58,6 @@ const Media = styled(Link)`
     background-size: 140%;
   }
   @media only screen and (max-width: 1150px) {
-    height: 300px;
     background-size: cover;
     &:hover {
       background-size: cover;

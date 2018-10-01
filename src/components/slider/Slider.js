@@ -1,3 +1,5 @@
+/* eslint operator-linebreak: 0 */
+
 import React from 'react'
 import styled from 'styled-components'
 import Slider from 'react-slick'
@@ -27,7 +29,6 @@ const Container = styled.div`
   min-height: 543px;
   .slick-slider {
     position: relative;
-
     display: block;
     box-sizing: border-box;
 
@@ -44,10 +45,9 @@ const Container = styled.div`
   }
 
   .slick-list {
-    max-width: 1100px;
+    /* max-width: 1100px; */
     margin: auto;
     margin-top: 64.2px;
-
     display: block;
     overflow: hidden;
     padding: 0;
@@ -73,7 +73,7 @@ const Container = styled.div`
     position: relative;
     top: 0;
     left: 0;
-
+    height: 500px;
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -94,7 +94,6 @@ const Container = styled.div`
   .slick-slide {
     display: none;
     float: left;
-
     height: 100%;
     min-height: 1px;
   }
@@ -301,12 +300,27 @@ const Override = styled.div`
     align-items: flex-start;
     margin: auto;
     max-width: 1200px;
+    @media screen and (max-width: 1154px) {
+      width: 1000px;
+    }
+    @media screen and (max-width: 1050px) {
+      width: 700px;
+    }
+    @media screen and (max-width: 751px) {
+      width: 400px;
+    }
   }
 
   .slick-slide {
     display: flex !important;
+    @media screen and (max-width: 1154px) {
+      justify-content: center;
+    }
   }
 
+  .slick-initialized .slick-slide {
+    max-width: 1100px !important;
+  }
   .slick-current ~ .slick-slide {
     justify-content: center;
   }
@@ -332,21 +346,23 @@ const SliderComponent = ({ children, settings }) => {
     slidesToScroll: settings.slidesToScroll,
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
-    responsive: [
-      {
-        breakpoint: settings.breakpoint,
-        settings: {
-          slidesToShow: settings.slidesToShowResponsive,
-          slidesToScroll: settings.slidesToScrollResponsive,
-          infinite: settings.infiniteResponsive,
-        },
-      },
-    ],
+    // responsive: [
+    //   {
+    //     breakpoint: settings.breakpoint,
+    //     settings: {
+    //       slidesToShow: settings.slidesToShowResponsive,
+    //       slidesToScroll: settings.slidesToScrollResponsive,
+    //       infinite: settings.infiniteResponsive,
+    //     },
+    //   },
+    // ],
+    responsive: [...settings.responsive],
   }
   return (
     <Container>
       <Override>
-        <Slider {...innerSettings}>{children}</Slider>
+        {innerSettings &&
+          children && <Slider {...innerSettings}>{children}</Slider>}
       </Override>
     </Container>
   )

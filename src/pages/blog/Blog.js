@@ -114,7 +114,7 @@ const Blog = ({ data, handleLoadMore, match }) => {
         ))} */}
 
       <ShowMoreContainer>
-        <ShowMore onClick={handleLoadMore}>Show {match.params.filter}</ShowMore>
+        <ShowMore onClick={handleLoadMore}>More {match.params.filter}</ShowMore>
       </ShowMoreContainer>
     </NewsContainer>
   )

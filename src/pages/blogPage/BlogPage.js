@@ -208,6 +208,7 @@ const AdvertisementContainer = styled.div`
   width: 357px;
   height: 627px;
 `
+
 const DisqusContainer = styled.div`
   max-width: 1200px;
   margin: auto;
@@ -235,7 +236,6 @@ const BlogPage = ({ width, data }, props) => {
           </MobileAuthorContainer>
         </TitleContainer>
       </Heading>
-
       <BlogPageImg id={postData.featured_media} />
       <BlogContent>
         <PostContentHeading date={postData.date} authorId={postData.author} />
@@ -256,13 +256,10 @@ const BlogPage = ({ width, data }, props) => {
           // shortname="mixtapemadnessuk"
           shortname="//mixtapemadnessuk.disqus.com/embed.js"
           // identifier="/blog/news/dj-semtex-announces-leaving-bbc-1xtra-15-years"
-
           identifier={window.location.pathname}
           // title="Example Thread"
           url={window.location.href}
-
           // url="http://mixtape.vobi.io/blog/news/dj-semtex-announces-leaving-bbc-1xtra-15-years"
-
           // category_id="10431"
           // onNewComment={this.handleNewComment}
         />

@@ -209,12 +209,13 @@ const DropDown = styled.div`
   div {
     display: none;
   }
-  &:hover {
+  /* &:hover {
     div {
       display: flex;
-    }
+    } */
   }
 `
+
 const DropDownContent = styled.div`
   z-index: 1;
   position: absolute;

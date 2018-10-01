@@ -57,6 +57,7 @@ const TitleContainer = styled.div`
     width: 90%;
   }
 `
+
 const BlogTitle = styled.h1`
   font-size: 46px;
   letter-spacing: 3.2px;
@@ -71,6 +72,7 @@ const BlogTitle = styled.h1`
     letter-spacing: normal;
   }
 `
+
 const BlogSubTitle = styled.h3`
   color: #666666;
   letter-spacing: 1.6px;

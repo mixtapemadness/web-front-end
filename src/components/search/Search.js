@@ -15,7 +15,7 @@ const Container = styled.div`
   top: 0;
   width: 100%;
   height: 100%;
-  background-color: rgb(247, 148, 29, 0.89);
+  background-color: rgba(247, 148, 29, 0.89);
   z-index: 3;
   overflow-y: auto;
   padding-bottom: 40px;

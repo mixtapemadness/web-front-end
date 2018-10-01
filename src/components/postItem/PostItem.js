@@ -25,6 +25,9 @@ const PostItemContainer = styled.div`
   display: flex;
   flex-direction: column;
   margin: 7px;
+  @media only screen and (max-width: 1150px) {
+    flex: 1 0 auto;
+  }
 `
 
 const ContentContainer = styled.div`
@@ -161,6 +164,9 @@ const ContinueReadContainer = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
+  @media only screen and (max-width: 1150px) {
+    justify-content: flex-start;
+  }
 `
 
 const ContinueRead = styled(Link)`

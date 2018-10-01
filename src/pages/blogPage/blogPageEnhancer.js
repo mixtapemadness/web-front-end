@@ -25,12 +25,10 @@ export default compose(
   ),
   lifecycle({
     componentDidMount() {
-      // window.scrollTo(0, 0)
+      window.scrollTo(0, 0)
       window.addEventListener('resize', this.props.updateWidth)
     },
-    componentDidUpdate() {
-      window.scrollTo(0, 0)
-    },
+    componentDidUpdate() {},
     componentWillUnmount() {
       window.removeEventListener('resize', this.props.updateWidth)
     },

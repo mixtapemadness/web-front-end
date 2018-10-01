@@ -309,6 +309,10 @@ const Override = styled.div`
     @media screen and (max-width: 751px) {
       width: 400px;
     }
+
+    @media screen and (max-width: 500px) {
+      width: 350px;
+    }
   }
 
   .slick-slide {

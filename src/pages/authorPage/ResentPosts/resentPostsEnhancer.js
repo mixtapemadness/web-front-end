@@ -23,14 +23,12 @@ export default compose(
       decreacePagination: ({ Mobilepage }) => () => ({
         Mobilepage: Mobilepage - 1,
       }),
+      handleLoadMore: ({ perPage }) => () => ({ perPage: perPage + 3 }),
     },
   ),
   lifecycle({
     componentDidMount() {
-      console.log('Mobilepage', this.props.Mobilepage)
       window.addEventListener('resize', this.props.updateWidth)
-    },
-    componentDidUpdate(prevProps, prevState) {
       window.scrollTo(0, 0)
     },
     componentWillUnmount() {

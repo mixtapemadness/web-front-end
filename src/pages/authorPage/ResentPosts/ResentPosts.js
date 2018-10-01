@@ -55,14 +55,40 @@ const PreviousButton = styled.button`
   font-weight: bold;
   width: 100px;
 `
-// const ItemContainer = styled.div`
-//   margin-top: 28px;
-//   display: flex;
-//   justify-content: center;
-// `
+
 const SubscribeContainer = styled.div`
   margin: 40px 0;
   width: 100%;
+`
+
+const ShowMoreContainer = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+`
+
+const ShowMore = styled.div`
+  cursor: pointer;
+  font-weight: 800;
+  color: #111;
+  position: relative;
+  transition: 0.4s;
+  &:after {
+    content: '';
+    width: 0%;
+    height: 2px;
+    position: absolute;
+    background: #656464;
+    bottom: 0;
+    left: 0;
+    transition: 0.4s;
+  }
+  &:hover {
+    color: #656464;
+    &:after {
+      width: 100%;
+    }
+  }
 `
 
 const PostItemT = (item, index) => {
@@ -88,6 +114,7 @@ const ResentPosts = ({
   increacePagination,
   decreacePagination,
   Mobilepage,
+  handleLoadMore,
 }) => {
   const posts = data && data.posts
   return (
@@ -110,6 +137,9 @@ const ResentPosts = ({
           <MobileSubscribe />
         </PostsContainer>
       )}
+      <ShowMoreContainer>
+        <ShowMore onClick={handleLoadMore}>Show More</ShowMore>
+      </ShowMoreContainer>
     </ResentPostsContainer>
   )
 }

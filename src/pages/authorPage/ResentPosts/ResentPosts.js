@@ -115,7 +115,9 @@ const ResentPosts = ({
   decreacePagination,
   Mobilepage,
   handleLoadMore,
+  match,
 }) => {
+  console.log('match', match)
   const posts = data && data.posts
   return (
     <ResentPostsContainer>

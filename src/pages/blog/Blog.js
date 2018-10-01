@@ -47,14 +47,34 @@ const SubscribeContainer = styled.div`
 //   display: flex;
 // `
 
-const MorePosts = styled.span`
+const ShowMoreContainer = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+`
+const ShowMore = styled.div`
   cursor: pointer;
-  font-size: 14.5px;
-  letter-spacing: 0.9px;
-  color: #000000;
-  font-weight: 600;
-  text-align: center;
-  margin-top: 40px;
+  font-weight: 800;
+  color: #111;
+  position: relative;
+  margin-top: 50px;
+  transition: 0.4s;
+  &:after {
+    content: '';
+    width: 0%;
+    height: 2px;
+    position: absolute;
+    background: #656464;
+    bottom: 0;
+    left: 0;
+    transition: 0.4s;
+  }
+  &:hover {
+    color: #656464;
+    &:after {
+      width: 100%;
+    }
+  }
 `
 
 const PostItemT = (item, index) => {
@@ -93,7 +113,9 @@ const Blog = ({ data, handleLoadMore, match }) => {
           </Div>
         ))} */}
 
-      <MorePosts onClick={handleLoadMore}> More News +</MorePosts>
+      <ShowMoreContainer>
+        <ShowMore onClick={handleLoadMore}>Show {match.params.filter}</ShowMore>
+      </ShowMoreContainer>
     </NewsContainer>
   )
 }

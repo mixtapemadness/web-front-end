@@ -164,21 +164,35 @@ const CategoryContainer = styled.div`
   font-size: 12px;
   margin-bottom: 10px;
 `
+
+const ContinueReadContainer = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+`
+
 const ContinueRead = styled(Link)`
-  width: 110px;
   color: ${p => (p.color ? p.color : '#ff9600')};
   cursor: pointer;
   font-weight: 800;
   font-size: 12px;
   transition: 0.4s;
   margin-top: 10px;
-  &:hover {
-    opacity: 0.8;
-  }
+  position: relative;
   &:after {
-    width: 100%;
-    height: 10px;
-    background: #ff9600;
+    content: '';
+    width: 0%;
+    height: 2px;
+    position: absolute;
+    background: ${p => (p.color ? p.color : '#ff9600')};
+    bottom: 0;
+    left: 0;
+    transition: 0.4s;
+  }
+  &:hover {
+    &:after {
+      width: 100%;
+    }
   }
 `
 
@@ -262,9 +276,13 @@ const PostItem = ({ media, category, user, data }) => {
           </FlexDiv> */}
           {data &&
             CategoriesData && (
-              <ContinueRead to={`/blog/${CategoriesData.slug}/${data.slug}`}>
-                Continue Reading
-              </ContinueRead>
+              <ContinueReadContainer>
+                <ContinueRead
+                  to={`/blog/${CategoriesData[0].slug}/${data.slug}`}
+                >
+                  Continue Reading
+                </ContinueRead>
+              </ContinueReadContainer>
             )}
         </ContentContainerBottom>
       </ContentContainer>

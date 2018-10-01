@@ -9,6 +9,8 @@ const Container = styled(Link)`
   cursor: pointer;
   color: ${props => (props.color ? props.color : '#e68600')};
   font-weight: 800;
+  text-align: center;
+  width: 100%;
 `
 
 const getCategory = ({ data, color }) => {
@@ -16,7 +18,7 @@ const getCategory = ({ data, color }) => {
   const slug = data.category ? data.category.slug : ''
   return (
     <Container color={color && color} to={`/blog/category/${slug}`}>
-      {name}
+      <span>{name}</span>
     </Container>
   )
 }

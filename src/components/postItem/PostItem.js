@@ -71,13 +71,14 @@ const Media = styled(Link)`
 const PostTitle = styled(Link)`
   width: 100%;
   font-weight: 800;
-  font-size: ${p => (p.fontSize ? p.fontSize : '26px')};
+  font-size: ${p => (p.fontSize ? p.fontSize : '15px')};
   line-height: 1.3;
   transition: 0.4s;
   color: ${p => (p.color ? p.color : '#111111')};
   text-decoration: underline;
   text-decoration-color: transparent;
   transition: 0.4s;
+
   &:hover {
     text-decoration-color: #111111;
   }

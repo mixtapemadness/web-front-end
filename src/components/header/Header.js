@@ -22,6 +22,7 @@ const HeaderContainer = styled.div`
   height: 120px;
   background-color: #ffffff;
   font-size: 16px;
+  padding: 0 10px;
   position: fixed;
   top: 0;
   left: 0;
@@ -32,6 +33,7 @@ const HeaderContainer = styled.div`
     height: 80px;
   }
 `
+
 const ContentContainer = styled.div`
   max-width: 1200px;
   height: 100%;

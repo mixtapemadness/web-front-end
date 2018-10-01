@@ -21,6 +21,7 @@ const Container = styled.div`
   padding-bottom: 100px;
   border-top: 1px solid #ffffff;
   overflow-y: auto;
+  padding: 0 20px;
   ::-webkit-scrollbar-track {
     -webkit-box-shadow: inset 0 0 6px #e68600;
   }
@@ -36,6 +37,7 @@ const Container = styled.div`
     border-top: 0;
   }
 `
+
 const ContentContainer = styled.div`
   max-width: 1200px;
   margin: 0 auto;
@@ -45,7 +47,6 @@ const Line = styled.div`
   height: 3px;
   background-color: #ffffff;
   width: 100%;
-  margin-top: 55px;
 `
 
 const ListContainer = styled.div`
@@ -53,10 +54,11 @@ const ListContainer = styled.div`
   display: flex;
   justify-content: space-between;
   margin-top: 65px;
-  @media only screen and (max-width: 850px) {
-    flex-direction: column;
+  @media only screen and (max-width: 1050px) {
+    justify-content: center;
   }
 `
+
 const List = styled.ul`
   font-size: 29.5px;
   color: #ffffff;
@@ -69,10 +71,14 @@ const List = styled.ul`
     &:hover {
       color: #ded6d6;
     }
+    @media only screen and (max-width: 1050px) {
+      margin: 10px;
+      font-size: 18px;
+      text-align: center;
+    }
   }
   @media only screen and (max-width: 850px) {
     margin-bottom: 20px;
-    width: 100%;
     text-align: center;
   }
 `
@@ -83,6 +89,7 @@ const ItemContainer = styled.div`
   justify-content: space-between;
   @media only screen and (max-width: 850px) {
     flex-direction: column;
+    align-items: center;
   }
 `
 
@@ -95,13 +102,13 @@ const Divider = styled.div`
     width: 100%;
   }
 `
+
 const FlexDiv = styled.div`
   display: flex;
   justify-content: space-between;
   width: 29%;
   @media only screen and (max-width: 850px) {
     flex-direction: column;
-    width: 100%;
     align-items: center;
   }
 `
@@ -112,8 +119,9 @@ const Title = styled.div`
   color: #ffffff;
   font-weight: 600;
   margin: 79px 0 46px 0;
-  @media only screen and (max-width: 850px) {
+  @media only screen and (max-width: 1050px) {
     text-align: center;
+    margin: 20px 0;
   }
 `
 

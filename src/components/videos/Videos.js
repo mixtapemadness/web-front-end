@@ -26,7 +26,7 @@ const SectionHeader = styled.span`
 `
 
 const SectionSubHeader = styled.span`
-  font-size: 17.5px;
+  font-size: 15px;
   letter-spacing: 1.1px;
   font-weight: 600;
 `
@@ -46,7 +46,7 @@ const Videos = ({ data }) => {
   // console.log('Posts', Posts);
   return (
     <VideosContainer>
-      <HeaderContainer mb={60}>
+      <HeaderContainer mb={20}>
         <SectionHeader>Videos</SectionHeader>
         <SectionSubHeader>
           Mixtape Madness Share Their Top Videos This Week

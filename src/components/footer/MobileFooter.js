@@ -12,6 +12,9 @@ const MobileFooterContainer = styled.div`
   max-width: 310px;
   margin: 20px auto;
   padding-bottom: 20px;
+  @media only screen and (max-width: 1050px) {
+    height: 200px;
+  }
 `
 
 const MobileContentContainer = styled.div`

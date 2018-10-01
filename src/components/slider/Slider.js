@@ -19,11 +19,11 @@ const Img = styled.img`
 
 const PrevArrow = (
   { onClick }, // eslint-disable-line
-) => <Img right={75} src={Prev} onClick={onClick} />
+) => <Img right={15} src={Prev} onClick={onClick} />
 
 const NextArrow = (
   { onClick }, // eslint-disable-line
-) => <Img right={55} src={Next} onClick={onClick} />
+) => <Img right={-1} src={Next} onClick={onClick} />
 
 const Container = styled.div`
   min-height: 543px;
@@ -76,7 +76,7 @@ const Container = styled.div`
     display: block;
     margin-left: auto;
     margin-right: auto;
-    height: 500px !important;
+    height: 450px !important;
   }
   .slick-track:before,
   .slick-track:after {

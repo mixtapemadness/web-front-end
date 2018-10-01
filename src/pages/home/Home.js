@@ -31,7 +31,7 @@ const HaveToListenContainer = styled.div`
 `
 
 const SubscribeContainer = styled.div`
-  margin-top: 100px;
+  margin: 40px;
 `
 
 const HeaderContainer = styled.div`

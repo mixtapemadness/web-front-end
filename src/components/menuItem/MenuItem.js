@@ -17,13 +17,21 @@ const Container = styled.div`
   @media only screen and (max-width: 850px) {
     margin-top: 10px;
   }
+  @media only screen and (max-width: 1050px) {
+    text-align: center;
+  }
 `
 
 const ContentContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 260px;
+  margin: 10px 0;
+  @media only screen and (max-width: 1050px) {
+    text-align: center;
+  }
 `
+
 const Type = styled.span`
   font-size: 9.5px;
   letter-spacing: 0.6px;
@@ -62,7 +70,7 @@ const MenuItem = Posts => {
       {categories &&
         categories.map(item => (
           <GetCategory
-            color={'#ffffff'}
+            color={'#4f4f4f'}
             // key={data.categories}
             id={data.categories}
           />

@@ -73,10 +73,10 @@ const Container = styled.div`
     position: relative;
     top: 0;
     left: 0;
-    height: 500px;
     display: block;
     margin-left: auto;
     margin-right: auto;
+    height: 500px !important;
   }
   .slick-track:before,
   .slick-track:after {
@@ -303,9 +303,11 @@ const Override = styled.div`
     @media screen and (max-width: 1154px) {
       width: 1000px;
     }
+
     @media screen and (max-width: 1050px) {
       width: 700px;
     }
+
     @media screen and (max-width: 751px) {
       width: 400px;
     }

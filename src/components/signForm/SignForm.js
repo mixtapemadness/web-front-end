@@ -3,7 +3,6 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import FooterComponent from 'components/footer'
 import BackgroundImage from 'resources/assets/img/music.jpg'
 
 import LogIn from './LogIn'
@@ -27,7 +26,13 @@ const Container = styled.div`
   height: 500px;
   background-repeat: no-repeat;
   background-size: 60% 100%;
+  @media only screen and (max-width: 925px) {
+    background-size: cover;
+    display: flex;
+    align-items: flex-end;
+  }
 `
+
 const FormContainer = styled.div`
   color: #ffffff;
   font-weight: 600;
@@ -49,6 +54,15 @@ const ContentContainer = styled.div`
   height: 500px;
   display: flex;
   align-items: center;
+  @media only screen and (max-width: 925px) {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(242, 151, 0, 0.7);
+  }
   ::before {
     content: ' ';
     position: absolute;
@@ -62,6 +76,9 @@ const ContentContainer = styled.div`
     -ms-transform: skew(35deg, 0deg);
     -webkit-transform: skew(35deg, 0deg);
     transform: skew(35deg, 0deg);
+    @media only screen and (max-width: 925px) {
+      display: none;
+    }
   }
 `
 
@@ -75,6 +92,11 @@ const Footer = styled.div`
     font-weight: 600;
     letter-spacing: 0.5px;
     margin-left: 10px;
+  }
+  @media only screen and (max-width: 925px) {
+    width: 100%;
+    text-align: center;
+    right: 0;
   }
 `
 
@@ -97,7 +119,6 @@ const SignForm = ({ type }) => (
         </Footer>
       </ContentContainer>
     </Container>
-    <FooterComponent />
   </Div>
 )
 

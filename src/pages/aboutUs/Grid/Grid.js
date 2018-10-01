@@ -18,6 +18,12 @@ const GridTitle = styled.div`
   font-weight: 600;
   font-size: 38px;
   letter-spacing: 2.3px;
+  @media only screen and (max-width: 1024px) {
+    font-size: 36px;
+  }
+  @media only screen and (max-width: 760px) {
+    font-size: 26px;
+  }
 `
 
 const GridItems = styled.div`
@@ -46,6 +52,14 @@ const GridItemIcon = styled.div`
   border-radius: 50%;
   justify-content: center;
   align-items: center;
+  @media only screen and (max-width: 1024px) {
+    min-width: 180px;
+    min-height: 180px;
+  }
+  @media only screen and (max-width: 760px) {
+    min-width: 120px;
+    min-height: 120px;
+  }
 `
 
 const Icon = styled.div`
@@ -54,6 +68,14 @@ const Icon = styled.div`
   background-image: url(${props => props.src});
   background-position: center center;
   background-repeat: no-repeat;
+  @media only screen and (max-width: 1024px) {
+    width: 60px;
+    height: 60px;
+  }
+  @media only screen and (max-width: 760px) {
+    width: 40px;
+    height: 40px;
+  }
 `
 
 const GridItemTxt = styled.div`
@@ -71,6 +93,12 @@ const GridItemText = styled.span`
   letter-spacing: 1.5px;
   font-weight: 600;
   color: #000000;
+  @media only screen and (max-width: 1024px) {
+    font-size: 26px;
+  }
+  @media only screen and (max-width: 760px) {
+    font-size: 16px;
+  }
 `
 
 export default props => {

@@ -15,6 +15,11 @@ const JoinNowBtnContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  @media only screen and (max-width: 760px) {
+    width: 150px;
+    height: 40px;
+    font-size: 18.5px;
+  }
 `
 
 export default () => <JoinNowBtnContainer>Join Now</JoinNowBtnContainer>

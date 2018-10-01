@@ -7,6 +7,9 @@ const FormContainer = styled.div`
   display: flex;
   flex-direction: column;
   z-index: 1;
+  @media only screen and (max-width: 925px) {
+    align-items: center;
+  }
 `
 const Title = styled.span`
   font-size: 26.5px;

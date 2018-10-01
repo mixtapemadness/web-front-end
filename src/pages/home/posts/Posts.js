@@ -26,6 +26,9 @@ const TrendingContainer = styled.div`
     flex-direction: column;
     align-items: center;
   }
+  @media only screen and (max-width: 500px) {
+    margin: 15px;
+  }
 `
 // const ItemContainer = styled.div`
 //   margin-top: 28px;

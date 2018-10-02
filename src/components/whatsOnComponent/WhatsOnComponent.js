@@ -20,8 +20,7 @@ const Container = styled.div`
     flex: 0 1 475px;
   }
   @media only screen and (max-width: 850px) {
-    width: 61.458%;
-    flex: 0 1 375px;
+    /* flex: 0 1 375px; */
   }
   /* @media only screen and (max-width: 450px) {
     flex: 0 1 300px;

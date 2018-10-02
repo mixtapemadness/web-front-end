@@ -53,25 +53,11 @@ const settings = {
   slidesPerRow: 2,
   centerPadding: '0px',
   responsive: [
-    // {
-    //   breakpoint: 1250,
-    //   settings: {
-    //     rows: 2,
-    //     slidesPerRow: 2,
-    //   },
-    // },
-    // {
-    //   breakpoint: 1050,
-    //   settings: {
-    //     slidesToShow: 2,
-    //     slidesToScroll: 2,
-    //   },
-    // },
     {
-      breakpoint: 751,
+      breakpoint: 1050,
       settings: {
-        slidesToShow: 1,
-        slidesToScroll: 1,
+        rows: 1,
+        slidesPerRow: 1,
       },
     },
   ],
@@ -82,7 +68,7 @@ const WhatsOn = ({ width, data }) => {
   // const posts = data && data.Posts && data.Posts
   return (
     <Container>
-      <HeaderContainer mb={60}>
+      <HeaderContainer mb={0}>
         <SectionHeader>What&apos;s On</SectionHeader>
         <SectionSubHeader>
           {' '}

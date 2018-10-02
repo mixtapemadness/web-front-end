@@ -23,6 +23,7 @@ const MobileContentContainer = styled.div`
   justify-content: ${p => p.jc && 'space-between'};
   color: ${p => (p.menuOpened ? '#ffffff' : '#000000')};
 `
+
 const SocialIcon = styled.a`
   margin-right: 10px;
   cursor: pointer;

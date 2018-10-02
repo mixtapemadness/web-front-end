@@ -115,9 +115,7 @@ const ResentPosts = ({
   decreacePagination,
   Mobilepage,
   handleLoadMore,
-  match,
 }) => {
-  console.log('match', match)
   const posts = data && data.posts
   return (
     <ResentPostsContainer>
@@ -140,7 +138,9 @@ const ResentPosts = ({
         </PostsContainer>
       )}
       <ShowMoreContainer>
-        <ShowMore onClick={handleLoadMore}>Show More</ShowMore>
+        <ShowMore onClick={handleLoadMore}>
+          Show More {posts && posts.length > 0 ? '+' : '-'}
+        </ShowMore>
       </ShowMoreContainer>
     </ResentPostsContainer>
   )

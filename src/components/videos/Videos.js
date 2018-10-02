@@ -4,6 +4,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import Video from 'components/video'
+import SliderComponent from 'components/slider'
 import videosEnhancer from './videosEnhancer'
 
 const VideosContainer = styled.div`
@@ -40,6 +41,43 @@ const VideoItems = styled.div`
   }
 `
 
+const settings = {
+  dots: false,
+  infinite: true,
+  speed: 500,
+  slidesToShow: 3,
+  slidesToScroll: 3,
+  slidesToShowResponsive: 2,
+  slidesToScrollResponsive: 2,
+  rows: 1,
+  centerMode: true,
+  slidesPerRow: 1,
+  centerPadding: '0px',
+  responsive: [
+    {
+      breakpoint: 1154,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 3,
+      },
+    },
+    {
+      breakpoint: 1050,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2,
+      },
+    },
+    {
+      breakpoint: 751,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+      },
+    },
+  ],
+}
+
 const Videos = ({ data }) => {
   // console.log('data', data.Posts)
   const Posts = data && data.Posts && data.Posts
@@ -52,9 +90,10 @@ const Videos = ({ data }) => {
           Mixtape Madness Share Their Top Videos This Week
         </SectionSubHeader>
       </HeaderContainer>
-
       <VideoItems>
-        {Posts && Posts.map(item => <Video key={item.id} data={item} />)}
+        <SliderComponent settings={settings}>
+          {Posts && Posts.map(item => <Video key={item.id} data={item} />)}
+        </SliderComponent>
       </VideoItems>
     </VideosContainer>
   )

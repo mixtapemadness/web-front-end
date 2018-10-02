@@ -64,9 +64,12 @@ const settings = {
   speed: 500,
   slidesToShow: 3,
   slidesToScroll: 3,
-  breakpoint: 1154,
   slidesToShowResponsive: 2,
   slidesToScrollResponsive: 2,
+  rows: 1,
+  centerMode: true,
+  slidesPerRow: 1,
+  centerPadding: '0px',
   responsive: [
     {
       breakpoint: 1154,

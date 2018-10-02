@@ -16,13 +16,14 @@ import videoEnhancer from './videoEnhancer'
 const Container = styled.div`
   margin: 7px;
   flex: 1;
-  @media only screen and (max-width: 1150px) {
+  height: 100%;
+  /* @media only screen and (max-width: 1150px) {
     width: 61.458%;
     margin-top: 20px;
   }
   @media only screen and (max-width: 450px) {
     width: 90%;
-  }
+  } */
 `
 
 const PhotoContainer = styled(Link)`
@@ -52,13 +53,13 @@ const ContentContainer = styled.div`
   background-color: #eeeeef;
   width: calc(100% - 30px);
   padding: 20px 15px;
+  height: 130px;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   box-sizing: content-box;
-  @media only screen and (max-width: 1150px) {
-    height: auto;
-  }
 `
+
 const Icon = styled.img`
   display: block;
   position: absolute;
@@ -67,6 +68,7 @@ const Icon = styled.img`
   left: 50%;
   height: 30px;
 `
+
 const Dots = styled.img`
   display: block;
   position: absolute;
@@ -75,15 +77,19 @@ const Dots = styled.img`
   right: 10px;
   height: 22px;
 `
+
 const LeftSide = styled.div`
   display: flex;
   flex-direction: column;
+  height: 100%;
+  justify-content: space-between;
 `
 
 const RightSide = styled.div`
   display: flex;
   flex-direction: column;
 `
+
 const FlexDiv = styled.div`
   display: flex;
   width: 100%;
@@ -91,9 +97,11 @@ const FlexDiv = styled.div`
   ${p => p.align && `align-items: ${p.align}`};
   ${p => p.height && `height: ${p.height}`};
 `
+
 const Img = styled.img`
   ${p => p.height && `height: ${p.height}px`};
 `
+
 const Name = styled(Link)`
   font-weight: 600;
   font-size: 19.5px;
@@ -156,16 +164,16 @@ const Video = ({ data, media, tags, category }) => {
             ))}
         </LeftSide>
         <RightSide>
-          <FlexDiv>
+          {/* <FlexDiv>
             <Img src={ViewsIcon} alt="view" height={20} />
             <Views>
               {data.views}
               {' Views'}
             </Views>
-          </FlexDiv>
-          <FlexDiv jc="flex-end" height="100%" align="flex-end">
+          </FlexDiv> */}
+          {/* <FlexDiv jc="flex-end" height="100%" align="flex-end">
             <Img src={SignalBarsIcon} alt="bars" height={18} />
-          </FlexDiv>
+          </FlexDiv> */}
         </RightSide>
       </ContentContainer>
     </Container>

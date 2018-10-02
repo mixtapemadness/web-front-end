@@ -48,7 +48,7 @@ const Container = styled.div`
     /* max-width: 1100px; */
     margin: auto;
     margin-top: 64.2px;
-    display: block;
+    display: flex;
     overflow: hidden;
     padding: 0;
   }
@@ -73,7 +73,7 @@ const Container = styled.div`
     position: relative;
     top: 0;
     left: 0;
-    display: block;
+    display: flex;
     margin-left: auto;
     margin-right: auto;
     max-height: 850px !important;

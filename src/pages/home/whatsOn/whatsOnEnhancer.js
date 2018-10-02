@@ -32,7 +32,7 @@ export default compose(
         variables: {
           filter: { categories: 'EVENTS' },
           page: 1,
-          perPage: 4,
+          perPage: 12,
         },
       }),
     },

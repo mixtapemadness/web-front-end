@@ -6,6 +6,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import WhatsOnComponent from 'components/whatsOnComponent'
+import SliderComponent from 'components/slider'
 import whatsOnEnhancer from './whatsOnEnhancer'
 
 const Container = styled.div`
@@ -41,6 +42,41 @@ const WhatsOnItemsContainer = styled.div`
   }
 `
 
+const settings = {
+  // dots: false,
+  infinite: true,
+  speed: 500,
+  slidesToShow: 1,
+  slidesToShowResponsive: 2,
+  slidesToScrollResponsive: 2,
+  rows: 2,
+  slidesPerRow: 2,
+  centerPadding: '0px',
+  responsive: [
+    // {
+    //   breakpoint: 1250,
+    //   settings: {
+    //     rows: 2,
+    //     slidesPerRow: 2,
+    //   },
+    // },
+    // {
+    //   breakpoint: 1050,
+    //   settings: {
+    //     slidesToShow: 2,
+    //     slidesToScroll: 2,
+    //   },
+    // },
+    {
+      breakpoint: 751,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+      },
+    },
+  ],
+}
+
 const WhatsOn = ({ width, data }) => {
   const Posts = data && data.Posts && data.Posts
   // const posts = data && data.Posts && data.Posts
@@ -54,8 +90,10 @@ const WhatsOn = ({ width, data }) => {
         </SectionSubHeader>
       </HeaderContainer>
       <WhatsOnItemsContainer>
-        {Posts &&
-          Posts.map(item => <WhatsOnComponent data={item} key={item.id} />)}
+        <SliderComponent settings={settings}>
+          {Posts &&
+            Posts.map(item => <WhatsOnComponent data={item} key={item.id} />)}
+        </SliderComponent>
       </WhatsOnItemsContainer>
       {/* <FlexDiv jc="space-between" mb={33}>
         {whatsOnVideos.map(item => (

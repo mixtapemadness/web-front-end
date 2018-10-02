@@ -26,25 +26,30 @@ const FooterContainer = styled.footer`
   background-color: ${p => (p.menuOpened ? 'transparent' : '#efefef')};
   margin-top: 50px;
 `
+
 const ContentContainer = styled.div`
   padding: 40px 20px;
   max-width: 1200px;
   margin: auto;
 `
+
 const FlexDiv = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
 `
+
 const ListContainer = styled.div`
   ${props => props.mr && `margin-right: ${props.mr}px`};
 `
+
 const ContentHeader = styled.span`
   font-size: 16.5px;
   letter-spacing: 1px;
   color: ${p => (p.menuOpened ? '#ffffff' : '#000000')};
   font-weight: 600;
 `
+
 const List = styled.ul`
   margin: 0;
   padding: 0;
@@ -52,6 +57,7 @@ const List = styled.ul`
   color: ${p => (p.menuOpened ? '#ffffff' : 'rgba(0, 0, 0, 0.5)')};
   opacity: ${p => (p.menuOpened ? '1' : '0.5')};
 `
+
 const ListItem = styled.li`
   text-transform: uppercase;
   margin-bottom: 15px;

@@ -76,7 +76,7 @@ const Container = styled.div`
     display: block;
     margin-left: auto;
     margin-right: auto;
-    height: 450px !important;
+    max-height: 850px !important;
   }
   .slick-track:before,
   .slick-track:after {
@@ -325,7 +325,7 @@ const Override = styled.div`
   }
 
   .slick-initialized .slick-slide {
-    max-width: 1100px !important;
+    max-width: 1200px !important;
   }
   .slick-current ~ .slick-slide {
     justify-content: center;
@@ -344,26 +344,20 @@ const Override = styled.div`
 `
 
 const SliderComponent = ({ children, settings }) => {
-  console.log('children', children)
   const innerSettings = {
     dots: settings.dots,
     infinite: settings.infinite,
     slidesToShow: settings.slidesToShow,
     slidesToScroll: settings.slidesToScroll,
+    rows: settings.rows,
+    centerMode: true,
+    slidesPerRow: settings.slidesPerRow,
+    centerPadding: settings.centerPadding,
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
-    // responsive: [
-    //   {
-    //     breakpoint: settings.breakpoint,
-    //     settings: {
-    //       slidesToShow: settings.slidesToShowResponsive,
-    //       slidesToScroll: settings.slidesToScrollResponsive,
-    //       infinite: settings.infiniteResponsive,
-    //     },
-    //   },
-    // ],
     responsive: [...settings.responsive],
   }
+
   return (
     <Container>
       <Override>

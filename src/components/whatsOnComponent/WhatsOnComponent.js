@@ -56,7 +56,10 @@ const PhotoContainer = styled(Link)`
   }
   @media only screen and (max-width: 1150px) {
     height: 300px;
-    background-size: 140%;
+    background-size: cover;
+    &:hover {
+      background-size: cover;
+    }
   }
 `
 

@@ -26,7 +26,7 @@ const TopVideoContainer = styled.div`
   box-sizing: content-box;
 `
 
-const Video = styled.div`
+const Video = styled(Link)`
   flex: 1;
   box-sizing: border-box;
   background-image: url(${props => props.src});
@@ -50,6 +50,8 @@ const VideoDesc = styled.div`
 const VideoDescTop = styled.div`
   display: flex;
   flex-direction: column;
+  height: 100%;
+  justify-content: space-between;
 `
 
 const VideoDescTitle = styled.div`
@@ -98,14 +100,20 @@ const Icon = styled.div`
 `
 
 const TopVideo = ({ data, media, category, tags }) => {
-  const Image =
-    media && media.img && media.img.featured_image && media.img.featured_image
+  const Image = media && media.img && media.img.full && media.img.full
   const CategoriesData = category && category.category && category.category
   const tagsData = tags && tags.tags && tags.tags
 
   return (
     <TopVideoContainer>
-      <Video src={Image}>{/* <Icon src={PlayIcon} play /> */}</Video>
+      <Video
+        to={`/blog/${CategoriesData &&
+          CategoriesData[0] &&
+          CategoriesData[0].slug}/${data.slug}`}
+        src={Image}
+      >
+        {/* <Icon src={PlayIcon} play /> */}
+      </Video>
       <VideoDesc>
         <VideoDescTop>
           <VideoDescTitle>

@@ -7,8 +7,8 @@ import styled from 'styled-components'
 
 import Slider from 'react-slick'
 
-import Prev from 'resources/assets/svg/prev.svg'
-import Next from 'resources/assets/svg/next.svg'
+import MainPrev from 'resources/assets/svg/mainprev.svg'
+import MainNext from 'resources/assets/svg/mainnext.svg'
 import SliderContent from './sliderContent'
 import mainSliderEnhancer from './mainSliderEnhancer'
 
@@ -30,11 +30,11 @@ const Img = styled.img`
 
 const PrevArrow = (
   { onClick }, // eslint-disable-line
-) => <Img src={Prev} onClick={onClick} />
+) => <Img src={MainPrev} onClick={onClick} />
 
 const NextArrow = (
   { onClick }, // eslint-disable-line
-) => <Img src={Next} onClick={onClick} />
+) => <Img src={MainNext} onClick={onClick} />
 
 const Container = styled.div`
   min-height: 543px;
@@ -346,7 +346,6 @@ const settings = {
 
 const MainSlider = ({ data }) => {
   const Posts = data && data.Posts && data.Posts
-  console.log('Posts', Posts)
   return (
     <Container>
       <Override>

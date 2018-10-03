@@ -3,6 +3,7 @@
 /* eslint react/jsx-wrap-multilines: 0 */
 /* eslint operator-linebreak: 0 */
 /* eslint indent: 0 */
+/* eslint no-unused-vars: 0 */
 
 import React from 'react'
 import styled from 'styled-components'
@@ -55,8 +56,8 @@ const LatestSingles = styled(Link)`
   letter-spacing: 0.9px;
   width: 189px;
   height: 40px;
-  border: solid 1.5px #ffa019;
-  background: transparent;
+  margin-top: 40px;
+  background: #ffa019;
   color: #ffffff;
   font-weight: 600;
   border-radius: 25px;
@@ -94,9 +95,8 @@ const MainSlider = ({ tags, media, category, data }) => {
           <SliderContent SliderPhoto={Image}>
             <FlexDiv>
               <Header dangerouslySetInnerHTML={{ __html: data.title }} />
-              <Span>Mixtape Madness</Span>
               <LatestSingles to={`blog/${CategoriesData[0].slug}/${data.slug}`}>
-                {tagsData[0].name}
+                Read More
               </LatestSingles>
             </FlexDiv>
           </SliderContent>

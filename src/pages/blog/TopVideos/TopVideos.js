@@ -28,7 +28,6 @@ const MoreVideos = styled.h4`
 
 const TopVideos = ({ data }) => (
   <TopVideosContainer>
-    {console.log('data', data)}
     <Header>Top Music Videos</Header>
     {data && data.Posts && data.Posts.map(item => <TopVideo data={item} />)}
     <MoreVideos>More Videos +</MoreVideos>

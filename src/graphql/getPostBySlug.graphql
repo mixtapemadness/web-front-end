@@ -2,6 +2,7 @@ query getPostBySlug($slug:String){
 Post:getPostBySlug(slug:$slug){
     	id
     	date
+      categories
       title
       content
       excerpt

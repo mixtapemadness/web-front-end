@@ -31,7 +31,6 @@ export default compose(
       window.removeEventListener('resize', this.props.updateWidth)
     },
   }),
-  // withProps(props => console.log('withProps', props)),
   branch(
     ({ data: { categories } }) => (categories ? true : false),
     withCategory,

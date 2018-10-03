@@ -105,7 +105,6 @@ const TopVideo = ({ data, media, category, tags }) => {
 
   return (
     <TopVideoContainer>
-      {console.log('media', media)}
       <Video src={Image}>{/* <Icon src={PlayIcon} play /> */}</Video>
       <VideoDesc>
         <VideoDescTop>

@@ -32,7 +32,9 @@ export default compose(
       window.scrollTo(0, 0)
       window.addEventListener('resize', this.props.updateWidth)
     },
-    componentDidUpdate() {},
+    componentDidUpdate() {
+      window.scrollTo(0, 0)
+    },
     componentWillUnmount() {
       window.removeEventListener('resize', this.props.updateWidth)
     },

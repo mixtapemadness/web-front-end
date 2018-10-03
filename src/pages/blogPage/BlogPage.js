@@ -3,6 +3,7 @@
 /* eslint no-unused-vars: 0 */
 /* eslint indent: 0 */
 /* eslint object-curly-newline: 0 */
+/* eslint no-unneeded-ternary: 0 */
 
 import React from 'react'
 import styled from 'styled-components'
@@ -21,6 +22,7 @@ import Musician from 'resources/assets/img/musician1.png'
 import Musician1 from 'resources/assets/img/2pac.jpg'
 import Musician2 from 'resources/assets/img/eminem.jpg'
 // import backgroundImage from 'resources/assets/img/background.png'
+import { getYouTubeId } from 'helpers'
 
 import ReactHtmlParser, {
   processNodes,
@@ -83,6 +85,18 @@ const BlogSubTitle = styled.h3`
     letter-spacing: normal;
   }
 `
+const BlogPageVideo = styled.div`
+  width: 100%;
+  height: 60vh;
+  background-image: url(${props => props.src});
+  background-position: center center;
+  background-size: cover;
+  iframe {
+    width: 100%;
+    height: 100%;
+  }
+`
+
 const BackgroundPicture = styled.div`
   width: 100%;
   height: 730px;
@@ -233,10 +247,31 @@ const BlogArticleContent = styled.div`
   }
 `
 
-const BlogPage = ({ width, data, user }, props) => {
+const BlogPage = ({ width, data, user, match }, props) => {
   const userName = user && user.user && user.user.name && user.user.name
   const userSlug = user && user.user && user.user.slug && user.user.slug
   const postData = data && data.Post ? data.Post : {}
+  const categories =
+    data && data.Post && data.Post.categories && data.Post.categories
+
+  const isVideoArr =
+    categories && categories.filter(item => parseInt(item, 10) === 15)
+  const isVideo = isVideoArr && isVideoArr.length > 0 ? true : false
+
+  const Content =
+    isVideo &&
+    postData &&
+    postData.content &&
+    postData.content.replace(
+      /(?:<iframe[^>]*)(?:(?:\/>)|(?:>.*?<\/iframe>))/,
+      '',
+    )
+  const Video =
+    isVideo &&
+    postData &&
+    postData.content &&
+    postData.content.match(/(?:<iframe[^>]*)(?:(?:\/>)|(?:>.*?<\/iframe>))/, '')
+  // cons HasVideo = Video.
 
   return (
     <Container>
@@ -257,16 +292,28 @@ const BlogPage = ({ width, data, user }, props) => {
           </MobileAuthorContainer>
         </TitleContainer>
       </Heading>
-      <BlogPageImg id={postData.featured_media} />
+
+      {isVideo && Video ? (
+        <BlogPageVideo dangerouslySetInnerHTML={{ __html: Video && Video }} />
+      ) : (
+        <BlogPageImg id={postData.featured_media} />
+      )}
+
       <BlogContent>
         <PostContentHeading
           date={postData.date}
           userName={userName}
           userSlug={userSlug}
         />
-        <BlogArticleContent
-          dangerouslySetInnerHTML={{ __html: postData.content }}
-        />
+        {isVideo && Video ? (
+          <BlogArticleContent
+            dangerouslySetInnerHTML={{ __html: Content && Content }}
+          />
+        ) : (
+          <BlogArticleContent
+            dangerouslySetInnerHTML={{ __html: postData.content }}
+          />
+        )}
         {/* <BlogArticle /> */}
       </BlogContent>
 

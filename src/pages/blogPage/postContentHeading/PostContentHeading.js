@@ -63,7 +63,7 @@ const AuthorName = styled(Link)`
 const Links = styled.div`
   display: flex;
   width: 50px;
-  justify-content: space - between;
+  justify-content: space-between;
 `
 
 const Credit = styled.div`

@@ -9,7 +9,7 @@ const Container = styled(Link)`
   cursor: pointer;
   color: ${props => (props.color ? props.color : '#e68600')};
   font-weight: 800;
-  text-align: center;
+  text-align: left;
   width: 100%;
 `
 

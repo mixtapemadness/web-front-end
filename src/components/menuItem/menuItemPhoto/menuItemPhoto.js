@@ -12,7 +12,7 @@ const Container = styled.div`
   background-position: center center;
 `
 const MenuItem = ({ data }) => {
-  const Image = data && data.img && data.img.featured_image
+  const Image = data && data.img && data.img.full
   return <Container src={Image} />
 }
 export default menuItemPhotoEnhancer(MenuItem)

@@ -11,7 +11,8 @@ const Container = styled.div`
   height: 60vh;
   background-image: url(${props => props.src});
   background-position: center center;
-  background-size: cover;
+  background-size: contain;
+  background-repeat: no-repeat;
 `
 
 const BlogPageImg = ({ data }) => {

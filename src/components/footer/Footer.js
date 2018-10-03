@@ -1,4 +1,6 @@
 /* eslint jsx-quotes: 0 */
+/* eslint react/jsx-first-prop-new-line: 0 */
+/* eslint react/jsx-closing-tag-location: 0 */
 
 import React from 'react'
 import styled from 'styled-components'
@@ -207,9 +209,7 @@ const Footer = ({ width, menuOpened }) => (
               </List>
             </ListContainer>
             <ListContainer>
-              <ContentHeader menuOpened={menuOpened}>
-                Mixtape Madness
-              </ContentHeader>
+              <ContentHeader menuOpened={menuOpened}>Blog</ContentHeader>
               <List menuOpened={menuOpened}>
                 <ListItem>
                   <Link
@@ -219,11 +219,54 @@ const Footer = ({ width, menuOpened }) => (
                     About
                   </Link>
                 </ListItem>
-                {/* <ListItem>Company</ListItem> */}
-                {/* <ListItem>Help</ListItem> */}
-                {/* <ListItem>Contact</ListItem> */}
-                {/* <ListItem>Press</ListItem> */}
-                {/* <ListItem>FAQ</ListItem> */}
+                <ListItem>
+                  <Link
+                    to="/blog/category/videos"
+                    onClick={() => eventEmitter.emit(CLOSE_MEGAMENU)}
+                  >
+                    Videos
+                  </Link>
+                </ListItem>
+                <ListItem>
+                  <Link
+                    to="/blog/category/articles"
+                    onClick={() => eventEmitter.emit(CLOSE_MEGAMENU)}
+                  >
+                    Articles
+                  </Link>
+                </ListItem>
+                <ListItem>
+                  <Link
+                    to="/blog/category/events"
+                    onClick={() => eventEmitter.emit(CLOSE_MEGAMENU)}
+                  >
+                    Events
+                  </Link>
+                </ListItem>
+                <ListItem>
+                  <Link
+                    to="/blog/category/reviews"
+                    onClick={() => eventEmitter.emit(CLOSE_MEGAMENU)}
+                  >
+                    Reviews{' '}
+                  </Link>
+                </ListItem>
+                <ListItem>
+                  <Link
+                    to="/blog/category/news"
+                    onClick={() => eventEmitter.emit(CLOSE_MEGAMENU)}
+                  >
+                    News
+                  </Link>
+                </ListItem>
+                <ListItem>
+                  <Link
+                    to="/blog/category/interviews"
+                    onClick={() => eventEmitter.emit(CLOSE_MEGAMENU)}
+                  >
+                    Interviews
+                  </Link>
+                </ListItem>
               </List>
             </ListContainer>
             <UploadContainer>

@@ -2,16 +2,10 @@
 /* eslint no-unneeded-ternary: 0 */
 /* eslint no-unused-vars: 0 */
 
-import {
-  compose,
-  withStateHandlers,
-  lifecycle,
-  branch,
-  withProps,
-} from 'recompose'
+import { compose, withStateHandlers, lifecycle, branch } from 'recompose'
 import { withRouter } from 'react-router-dom'
 import getPostBySlug from 'graphql/getPostBySlug.graphql'
-import { loadDataAsync, withMedia, withTags, withCategory } from '../../hocs'
+import { loadDataAsync, withUser } from 'hocs'
 
 export default compose(
   loadDataAsync({
@@ -44,8 +38,8 @@ export default compose(
     },
   }),
 
-  withProps(props => console.log('proooops', props)),
-  // branch(({ data: { featured_media } }) => (featured_media ? true : false), withMedia),
-  // branch(({ data }) => (data ? true : false), withTags),
-  // branch(({ data }) => (data ? true : false), withCategory),
+  branch(
+    ({ data }) => (data && data.Post && data.Post.author ? true : false),
+    withUser,
+  ),
 )

@@ -233,12 +233,10 @@ const BlogArticleContent = styled.div`
   }
 `
 
-const BlogPage = ({ width, data, tags, media, category }, props) => {
+const BlogPage = ({ width, data, user }, props) => {
+  const userName = user && user.user && user.user.name && user.user.name
+  const userSlug = user && user.user && user.user.slug && user.user.slug
   const postData = data && data.Post ? data.Post : {}
-  const Image = media && media.img && media.img.full && media.img.full
-  const CategoriesData = category && category.category && category.category
-  const tagsData = tags && tags.tags && tags.tags
-  console.log('data', data)
 
   return (
     <Container>
@@ -261,7 +259,11 @@ const BlogPage = ({ width, data, tags, media, category }, props) => {
       </Heading>
       <BlogPageImg id={postData.featured_media} />
       <BlogContent>
-        <PostContentHeading date={postData.date} authorId={postData.author} />
+        <PostContentHeading
+          date={postData.date}
+          userName={userName}
+          userSlug={userSlug}
+        />
         <BlogArticleContent
           dangerouslySetInnerHTML={{ __html: postData.content }}
         />

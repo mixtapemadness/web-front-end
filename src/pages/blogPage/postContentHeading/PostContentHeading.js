@@ -11,10 +11,12 @@
 
 import React from 'react'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 import Facebook from 'resources/assets/svgComponents/Facebook'
 import Twitter from 'resources/assets/svgComponents/Twitter'
 import SoundCloud from 'resources/assets/svgComponents/SoundCloud'
 import Dots from 'resources/assets/svgComponents/Dots'
+
 import {
   TwitterShareButton,
   FacebookShareButton,
@@ -26,7 +28,7 @@ import {
   LinkedinIcon,
 } from 'react-share'
 
-import AuthorName from 'components/AuthorName'
+// import AuthorName from 'components/AuthorName'
 import { dateStringify } from 'helpers/'
 import blogPageImgEnhancer from './postContentHeadingEnhancer'
 
@@ -51,11 +53,17 @@ const ContainerBottom = styled.div`
   color: #666666;
   text-align: left;
 `
+const AuthorName = styled(Link)`
+  color: #ff9600;
+  margin: 0 5px;
+  cursor: pointer;
+  font-weight: 800;
+`
 
 const Links = styled.div`
   display: flex;
   width: 50px;
-  justify-content: space-between;
+  justify-content: space - between;
 `
 
 const Credit = styled.div`
@@ -72,11 +80,12 @@ const Author = styled.div`
   display: flex;
   font-weight: 800;
 `
+
 const IconWrapper = styled.div`
   cursor: pointer;
 `
 
-const PostContentHeading = ({ date, authorId }) => {
+const PostContentHeading = ({ date, userName, userSlug }) => {
   const url = window.location.href.toString()
   return (
     <Container>
@@ -103,7 +112,7 @@ const PostContentHeading = ({ date, authorId }) => {
         {/* <Views>3000 views: 5/5</Views> */}
         <Date>{dateStringify(date, false, true)}</Date>
         <Author>
-          By :<AuthorName id={authorId} />
+          By :<AuthorName to={`/ author / ${userSlug} `}>{userName}</AuthorName>
         </Author>
       </ContainerBottom>
     </Container>

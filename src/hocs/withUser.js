@@ -1,3 +1,5 @@
+/*  eslint operator-linebreak: 0 */
+
 import { compose } from 'recompose'
 import getUserById from 'graphql/getUserById.graphql'
 import loadDataAsync from './loadDataAsync'
@@ -9,7 +11,9 @@ const withUser = compose(
     config: {
       options: props => ({
         variables: {
-          id: parseInt(props.data.author, 10),
+          id:
+            parseInt(props.data.author, 10) ||
+            parseInt(props.data.Post.author, 10),
         },
       }),
     },

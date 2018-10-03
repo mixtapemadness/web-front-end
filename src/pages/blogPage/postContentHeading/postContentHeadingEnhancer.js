@@ -1,3 +1,5 @@
+/* eslint no-unneeded-ternary: 0 */
+
 import { compose, withStateHandlers, lifecycle } from 'recompose'
 import { withRouter } from 'react-router-dom'
 import getMediaById from 'graphql/getMediaById.graphql'

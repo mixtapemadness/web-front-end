@@ -2,6 +2,7 @@
 /* eslint operator-linebreak: 0 */
 /* eslint no-unused-vars: 0 */
 /* eslint indent: 0 */
+/* eslint object-curly-newline: 0 */
 
 import React from 'react'
 import styled from 'styled-components'
@@ -218,6 +219,11 @@ const DisqusContainer = styled.div`
 const BlogArticleContent = styled.div`
   p {
     margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    img {
+      margin: 5px 0;
+    }
     @media only screen and (max-width: 575px) {
       iframe {
         width: 90%;
@@ -227,9 +233,13 @@ const BlogArticleContent = styled.div`
   }
 `
 
-const BlogPage = ({ width, data }, props) => {
+const BlogPage = ({ width, data, tags, media, category }, props) => {
   const postData = data && data.Post ? data.Post : {}
-  console.log('postData', postData)
+  const Image = media && media.img && media.img.full && media.img.full
+  const CategoriesData = category && category.category && category.category
+  const tagsData = tags && tags.tags && tags.tags
+  console.log('data', data)
+
   return (
     <Container>
       <Heading>

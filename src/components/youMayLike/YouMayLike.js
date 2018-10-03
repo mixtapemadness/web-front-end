@@ -37,9 +37,6 @@ const AdvertisementContainer = styled.div`
   flex: 1 0 357px;
   height: 480px;
   margin: 5px;
-  @media only screen and (max-width: 1150px) {
-    width: 61.458%;
-  }
   @media only screen and (max-width: 450px) {
     width: 90%;
   }

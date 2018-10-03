@@ -85,6 +85,8 @@ const MainSlider = ({ tags, media, category, data }) => {
       {Image &&
         data &&
         tagsData &&
+        tagsData.length > 0 &&
+        tagsData[0] &&
         CategoriesData &&
         CategoriesData.length > 0 &&
         CategoriesData[0] &&

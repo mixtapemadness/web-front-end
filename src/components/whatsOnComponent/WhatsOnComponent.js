@@ -46,12 +46,12 @@ const PhotoContainer = styled(Link)`
   height: 200px;
   background: url(${props => props.img});
   background-repeat: no-repeat;
-  background-size: 120%;
+  background-size: cover;
   background-position: center;
   transition: 0.8s;
   cursor: pointer;
   &:hover {
-    background-size: 140%;
+    /* background-size: 140%; */
   }
   @media only screen and (max-width: 1150px) {
     height: 300px;
@@ -178,8 +178,7 @@ const Img = styled.img`
 // }
 
 const WhatsOnComponent = ({ media, data, category }) => {
-  const Image =
-    media && media.img && media.img.featured_image && media.img.featured_image
+  const Image = media && media.img && media.img.full && media.img.full
   const CategoriesData = category && category.category && category.category
 
   return (

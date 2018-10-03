@@ -114,8 +114,7 @@ const ContinueRead = styled(Link)`
 const searchedItem = ({ toggleSearch, data, category, tags, media, color }) => {
   const categoriesData = category && category.category && category.category
   const tagsData = tags && tags.tags && tags.tags
-  const Image =
-    media && media.img && media.img.featured_image && media.img.featured_image
+  const Image = media && media.img && media.img.full && media.img.full
 
   return (
     <Item>

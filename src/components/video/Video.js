@@ -36,10 +36,10 @@ const PhotoContainer = styled(Link)`
   background-position: center;
   position: relative;
   cursor: pointer;
-  background-size: 120%;
+  background-size: cover;
   transition: 0.8s;
   &:hover {
-    background-size: 140%;
+    /* background-size: 140%; */
   }
   @media only screen and (max-width: 1150px) {
     height: 300px;
@@ -133,8 +133,7 @@ const Views = styled.span`
 const Video = ({ data, media, tags, category }) => {
   const categoriesData = category && category.category && category.category
   const tagsData = tags && tags.tags && tags.tags
-  const Image =
-    media && media.img && media.img.featured_image && media.img.featured_image
+  const Image = media && media.img && media.img.full && media.img.full
   // const CategoriesData = category && category.category && category.category
   return (
     <Container>

@@ -36,6 +36,7 @@ const ButtonContainer = styled.div`
   justify-content: space-between;
   width: 100%;
 `
+
 const NextButton = styled.button`
   background-color: #efefef;
   color: #000000;
@@ -46,6 +47,7 @@ const NextButton = styled.button`
   cursor: pointer;
   font-weight: bold;
 `
+
 const PreviousButton = styled.button`
   background: ${p => (p.Mobilepage > 1 ? '#efefef' : 'none')};
   color: ${p => (p.Mobilepage > 1 ? '#000000' : '#ccc')};
@@ -115,7 +117,11 @@ const ResentPosts = ({
   decreacePagination,
   Mobilepage,
   handleLoadMore,
+  count,
+  perPage,
 }) => {
+  console.log('perPage', perPage)
+  const countValue = count && count.count && count.count && count.count.count
   const posts = data && data.posts
   return (
     <ResentPostsContainer>
@@ -139,7 +145,8 @@ const ResentPosts = ({
       )}
       <ShowMoreContainer>
         <ShowMore onClick={handleLoadMore}>
-          Show More {posts && posts.length > 0 ? '+' : '-'}
+          Show More {posts && perPage < parseInt(countValue, 10) ? '+' : '-'}
+          {countValue && console.log('countValue', parseInt(countValue, 10))}
         </ShowMore>
       </ShowMoreContainer>
     </ResentPostsContainer>

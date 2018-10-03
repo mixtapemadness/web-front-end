@@ -15,6 +15,7 @@ const SubscribeContainer = styled.div`
     text-align: center;
   }
 `
+
 const Span = styled.span`
   font-size: 20px;
   font-weight: 600;

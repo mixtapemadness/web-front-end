@@ -54,11 +54,11 @@ const Media = styled(Link)`
   height: 200px;
   background: url(${props => props.img});
   background-repeat: no-repeat;
-  background-size: 120%;
+  background-size: cover;
   background-position: center;
   transition: 0.8s;
   &:hover {
-    background-size: 140%;
+    /* background-size: 120%; */
   }
   @media only screen and (max-width: 1150px) {
     background-size: cover;
@@ -222,6 +222,8 @@ const Categories = ({ data }) => {
 const PostItem = ({ media, category, user, data }) => {
   const Image =
     media && media.img && media.img.featured_image && media.img.featured_image
+  const FullImage = media && media.img && media.img.full && media.img.full
+
   const CategoriesData = category && category.category && category.category
   const User = user && user.user && user.user
 
@@ -230,7 +232,7 @@ const PostItem = ({ media, category, user, data }) => {
       {CategoriesData &&
         data && (
           <Media
-            img={Image && Image}
+            img={FullImage && FullImage}
             to={`/blog/${CategoriesData[0].slug}/${data.slug}`}
           />
         )}

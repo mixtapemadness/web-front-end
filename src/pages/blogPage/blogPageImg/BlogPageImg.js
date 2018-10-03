@@ -16,6 +16,8 @@ const Container = styled.div`
 
 const BlogPageImg = ({ data }) => {
   const fullImage = data && data.img && data.img.full
+  console.log('data', data)
+  console.log('fullImage', fullImage)
   return <Container src={fullImage} />
 }
 

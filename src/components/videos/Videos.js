@@ -84,7 +84,7 @@ const Videos = ({ data }) => {
   // console.log('Posts', Posts);
   return (
     <VideosContainer>
-      <HeaderContainer mb={20}>
+      <HeaderContainer mb={0}>
         <SectionHeader>Videos</SectionHeader>
         <SectionSubHeader>
           Mixtape Madness Share Their Top Videos This Week

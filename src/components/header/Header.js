@@ -98,12 +98,14 @@ const OrangeContainer = styled.div`
   display: flex;
   color: ${p => (p.menuOpened ? '#ffffff' : '#ffa019')};
 `
-const Span = styled.span`
-  font-weight: 600;
-  margin-left: 20px;
-  letter-spacing: 1.5px;
-  cursor: pointer;
-`
+
+// const Span = styled.span`
+//   font-weight: 600;
+//   margin-left: 20px;
+//   letter-spacing: 1.5px;
+//   cursor: pointer;
+// `
+
 const Logo = styled.img`
   height: 70px;
   box-sizing: content-box;
@@ -111,6 +113,7 @@ const Logo = styled.img`
     height: 52px;
   }
 `
+
 const Search = styled.div`
   width: 20px;
   cursor: pointer;
@@ -344,9 +347,9 @@ const Header = ({
         <NavBar>
           <Ul menuOpened={menuOpened}>
             <DropDown>
-              <Li isActive={location.pathname === '/music'}>
-                <Link to="/music">Music</Link>
-              </Li>
+              {/* <Li isActive={location.pathname === '/music'}>
+                  <Link to="/music">Music</Link>
+                </Li> */}
               <DropDownContent>
                 <div>
                   <DropDownItem>Top 100</DropDownItem>
@@ -402,13 +405,13 @@ const Header = ({
       {width > 1050 && (
         <RightSide>
           <OrangeContainer menuOpened={menuOpened}>
-            <Span>Upload</Span>
-            <Span>
-              <Link to="/register">Register</Link>
-            </Span>
-            <Span>
-              <Link to="/login">Log In</Link>
-            </Span>
+            {/* <Span>Upload</Span> */}
+            {/* <Span>
+                <Link to="/register">Register</Link>
+              </Span>
+              <Span>
+                <Link to="/login">Log In</Link>
+              </Span> */}
             <ContactUsContainer menuOpened={menuOpened}>
               Contact Us
             </ContactUsContainer>

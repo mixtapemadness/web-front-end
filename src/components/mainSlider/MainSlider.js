@@ -346,6 +346,7 @@ const settings = {
 
 const MainSlider = ({ data }) => {
   const Posts = data && data.Posts && data.Posts
+  console.log('Posts', Posts)
   return (
     <Container>
       <Override>

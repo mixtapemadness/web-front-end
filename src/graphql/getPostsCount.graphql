@@ -1,0 +1,5 @@
+query getPostsCount($filter:filterPostInput) {
+ count: getPostsCount(filter:$filter) {
+		count
+  }
+}

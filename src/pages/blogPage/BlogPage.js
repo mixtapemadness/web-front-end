@@ -215,8 +215,21 @@ const DisqusContainer = styled.div`
   width: 90%;
 `
 
+const BlogArticleContent = styled.div`
+  p {
+    margin-top: 20px;
+    @media only screen and (max-width: 575px) {
+      iframe {
+        width: 90%;
+        height: 250px;
+      }
+    }
+  }
+`
+
 const BlogPage = ({ width, data }, props) => {
   const postData = data && data.Post ? data.Post : {}
+  console.log('postData', postData)
   return (
     <Container>
       <Heading>
@@ -239,12 +252,10 @@ const BlogPage = ({ width, data }, props) => {
       <BlogPageImg id={postData.featured_media} />
       <BlogContent>
         <PostContentHeading date={postData.date} authorId={postData.author} />
-        <div
-          className="blog-page-article"
+        <BlogArticleContent
           dangerouslySetInnerHTML={{ __html: postData.content }}
-        >
-          {/* <BlogArticle /> */}
-        </div>
+        />
+        {/* <BlogArticle /> */}
       </BlogContent>
 
       {/* {postData.tags && postData.tags.map(id => <Tag key={id} id={id} />)} */}

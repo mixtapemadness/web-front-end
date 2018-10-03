@@ -33,11 +33,12 @@ export default compose(
         variables: {
           id: props.id,
           page: 1,
-          perPage: 3,
+          perPage: 4,
         },
       }),
     },
   }),
+
   branch(({ data }) => (data ? true : false), withMedia),
   branch(({ data }) => (data ? true : false), withTags),
   branch(({ data }) => (data ? true : false), withCategory),

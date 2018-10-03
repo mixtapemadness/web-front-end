@@ -1,6 +1,6 @@
 query getMediaById($id:ID){
 img:getMediaById(id:$id){
-      featured_image
+      # featured_image
       full
       id
   }

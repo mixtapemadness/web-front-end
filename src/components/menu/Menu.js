@@ -12,13 +12,12 @@ import menuEnhancer from './menuEnhancer'
 // import Musician2 from 'resources/assets/img/eminem.jpg'
 const Container = styled.div`
   position: fixed;
-  top: 120px;
+  top: 80px;
   width: 100%;
   background-color: #ff9600;
   height: 100%;
   z-index: 2;
   padding-bottom: 100px;
-  border-top: 1px solid #ffffff;
   overflow-y: auto;
   padding: 0 20px;
   ::-webkit-scrollbar-track {

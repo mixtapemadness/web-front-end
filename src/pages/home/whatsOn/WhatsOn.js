@@ -47,10 +47,10 @@ const settings = {
   infinite: true,
   speed: 500,
   slidesToShow: 1,
-  slidesToShowResponsive: 2,
-  slidesToScrollResponsive: 2,
   rows: 2,
   slidesPerRow: 2,
+  slidesToShowResponsive: 2,
+  slidesToScrollResponsive: 2,
   centerPadding: '0px',
   responsive: [
     {

@@ -19,7 +19,7 @@ import headerEnhancer from './headerEnhancer'
 
 const HeaderContainer = styled.div`
   width: 100%;
-  height: 120px;
+  height: 70px;
   background-color: #ffffff;
   font-size: 16px;
   padding: 0 10px;

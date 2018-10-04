@@ -32,7 +32,8 @@ export default compose(
         variables: {
           id: props.id,
           page: 1,
-          perPage: 9,
+          perPage: 18,
+          filter: { categories: 'NEWS' },
         },
       }),
     },

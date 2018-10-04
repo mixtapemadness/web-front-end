@@ -105,17 +105,6 @@ const Home = ({ sliderData }) => (
   <Container>
     {sliderData && sliderData.Posts && <MainSlider data={sliderData.Posts} />}
     <Posts />
-    {/* <HaveToListenContainer>
-      <HeaderContainer>
-        <SectionHeader>You Have To Listen</SectionHeader>
-        <SectionSubHeader size={17.5}>
-          Mixtape Madness Share Their Top Playlists
-        </SectionSubHeader>
-      </HeaderContainer>
-      <SliderComponent settings={playlistSliderSettings}>
-        {playlistSliderData}
-      </SliderComponent>
-    </HaveToListenContainer> */}
     <Download />
     <WhatsOn />
     <SubscribeContainer>

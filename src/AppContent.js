@@ -19,7 +19,7 @@ import styled from 'styled-components'
 import Footer from 'components/footer'
 
 const Container = styled.div`
-  margin-top: 120px;
+  margin-top: 85px;
   height: ${p => (p.searchOpened || p.menuOpened ? '80vh' : 'auto')};
   overflow: ${p => (p.searchOpened || p.menuOpened ? 'hidden' : 'visible')};
   @media (max-width: 850px) {

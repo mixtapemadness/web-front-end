@@ -76,7 +76,7 @@ const Container = styled.div`
     display: flex;
     margin-left: auto;
     margin-right: auto;
-    max-height: 850px !important;
+    max-height: 950px !important;
   }
   .slick-track:before,
   .slick-track:after {
@@ -97,6 +97,10 @@ const Container = styled.div`
     height: 100%;
     min-height: 1px;
   }
+  /* .slick-slide > div{
+    display:flex;f
+    flex-direction:column;
+  } */
   [dir='rtl'] .slick-slide {
     float: right;
   }

@@ -16,7 +16,6 @@ import videoEnhancer from './videoEnhancer'
 const Container = styled.div`
   margin: 7px;
   flex: 1;
-  height: 100%;
   /* @media only screen and (max-width: 1150px) {
     width: 61.458%;
     margin-top: 20px;

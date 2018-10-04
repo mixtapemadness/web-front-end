@@ -22,14 +22,13 @@ const HeaderContainer = styled.div`
 `
 
 const SectionHeader = styled.span`
-  font-weight: 600;
-  font-size: 28px;
+  font-weight: 800;
+  font-size: 38px;
 `
 
 const SectionSubHeader = styled.span`
-  font-size: 15px;
-  letter-spacing: 1.1px;
-  font-weight: 600;
+  font-weight: 800;
+  font-size: 18px;
 `
 
 const VideoItems = styled.div`
@@ -45,27 +44,27 @@ const settings = {
   dots: false,
   infinite: true,
   speed: 500,
-  slidesToShow: 3,
+  slidesToShow: 1,
+  rows: 3,
+  slidesPerRow: 2,
   slidesToScroll: 3,
   slidesToShowResponsive: 2,
   slidesToScrollResponsive: 2,
-  rows: 1,
-  centerMode: true,
-  slidesPerRow: 1,
   centerPadding: '0px',
   responsive: [
     {
       breakpoint: 1154,
       settings: {
-        slidesToShow: 3,
+        slidesToShow: 1,
         slidesToScroll: 3,
       },
     },
     {
       breakpoint: 1050,
       settings: {
-        slidesToShow: 2,
+        slidesToShow: 1,
         slidesToScroll: 2,
+        rows: 2,
       },
     },
     {
@@ -73,11 +72,12 @@ const settings = {
       settings: {
         slidesToShow: 1,
         slidesToScroll: 1,
+        rows: 1,
+        slidesPerRow: 1,
       },
     },
   ],
 }
-
 const Videos = ({ data }) => {
   const Posts = data && data.Posts && data.Posts
   return (

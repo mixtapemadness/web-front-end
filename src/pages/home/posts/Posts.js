@@ -19,8 +19,9 @@ import postsEnhancer from './postsEnhancer'
 
 const TrendingContainer = styled.div`
   display: flex;
+  flex-direction: column;
   max-width: 1200px;
-  margin: 7px auto;
+  margin: 50px auto;
   justify-content: space-around;
   @media only screen and (max-width: 1150px) {
     flex-direction: column;
@@ -30,11 +31,27 @@ const TrendingContainer = styled.div`
     margin: 15px;
   }
 `
-// const ItemContainer = styled.div`
-//   margin-top: 28px;
-//   display: flex;
-//   justify-content: center;
-// `
+
+const TitleContainer = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  @media only screen and (max-width: 751px) {
+    text-align: center;
+  }
+`
+
+const Title = styled.h1`
+  font-weight: 800;
+  font-size: 38px;
+`
+
+const SubTitle = styled.h2`
+  font-weight: 800;
+  font-size: 18px;
+`
+
 const SubscribeContainer = styled.div`
   margin: 40px 0;
   max-width: 1100px;
@@ -62,27 +79,27 @@ const settings = {
   dots: false,
   infinite: true,
   speed: 500,
-  slidesToShow: 3,
+  slidesToShow: 1,
+  rows: 3,
+  slidesPerRow: 2,
   slidesToScroll: 3,
   slidesToShowResponsive: 2,
   slidesToScrollResponsive: 2,
-  rows: 1,
-  centerMode: true,
-  slidesPerRow: 1,
   centerPadding: '0px',
   responsive: [
     {
       breakpoint: 1154,
       settings: {
-        slidesToShow: 3,
+        slidesToShow: 1,
         slidesToScroll: 3,
       },
     },
     {
       breakpoint: 1050,
       settings: {
-        slidesToShow: 2,
+        slidesToShow: 1,
         slidesToScroll: 2,
+        rows: 2,
       },
     },
     {
@@ -90,6 +107,8 @@ const settings = {
       settings: {
         slidesToShow: 1,
         slidesToScroll: 1,
+        rows: 1,
+        slidesPerRow: 1,
       },
     },
   ],
@@ -99,12 +118,12 @@ const Posts = ({ width, data }) => {
   const posts = data && data.Posts && data.Posts
   return (
     <TrendingContainer>
-      {/* {posts && <PostItems items={posts} />} */}
+      <TitleContainer>
+        <Title>News</Title>
+        <SubTitle>Check Out The Latest Music And News This Week</SubTitle>
+      </TitleContainer>
       <SliderComponent settings={settings}>
         {posts && posts.map(item => <PostItem key={item.id} data={item} />)}
-        {
-          // posts && <PostItems items={posts} />
-        }
       </SliderComponent>
     </TrendingContainer>
   )

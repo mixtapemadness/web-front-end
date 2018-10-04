@@ -120,7 +120,6 @@ const ResentPosts = ({
   count,
   perPage,
 }) => {
-  console.log('perPage', perPage)
   const countValue = count && count.count && count.count && count.count.count
   const posts = data && data.posts
   return (

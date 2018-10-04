@@ -79,9 +79,7 @@ const settings = {
 }
 
 const Videos = ({ data }) => {
-  // console.log('data', data.Posts)
   const Posts = data && data.Posts && data.Posts
-  // console.log('Posts', Posts);
   return (
     <VideosContainer>
       <HeaderContainer mb={0}>

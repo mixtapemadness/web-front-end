@@ -1,6 +1,7 @@
 /* eslint jsx-quotes: 0 */
 /* eslint react/jsx-first-prop-new-line: 0 */
 /* eslint react/jsx-closing-tag-location: 0 */
+/* eslint no-unused-vars: 0 */
 
 import React from 'react'
 import styled from 'styled-components'
@@ -271,7 +272,7 @@ const Footer = ({ width, menuOpened }) => (
             </ListContainer>
             <UploadContainer>
               <ContentHeader menuOpened={menuOpened}>For Artists</ContentHeader>
-              <UploadButton menuOpened={menuOpened}>Upload to mm</UploadButton>
+              {/* <UploadButton menuOpened={menuOpened}>Upload to mm</UploadButton> */}
             </UploadContainer>
             <div>
               <ContentHeader menuOpened={menuOpened}>

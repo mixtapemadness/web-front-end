@@ -4,6 +4,7 @@
 /* eslint react/jsx-one-expression-per-line: 0 */
 /* eslint prefer-const: 0 */
 /* eslint implicit-arrow-linebreak: 0 */
+/* eslint no-unused-vars: 0 */
 
 import React from 'react'
 import styled from 'styled-components'
@@ -94,7 +95,7 @@ const PostItemT = (item, index) => {
 const PostItems = ({ items }) =>
   items.map((item, index) => PostItemT(item, index))
 
-const Blog = ({ data, handleLoadMore, match }) => {
+const Blog = ({ Posts, data, handleLoadMore, match }) => {
   const Data = data.Posts && data.Posts.length > 0 && data.Posts
   return (
     <NewsContainer>

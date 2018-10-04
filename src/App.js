@@ -5,6 +5,7 @@ import { compose, withStateHandlers, lifecycle } from 'recompose'
 
 import Header from 'components/header'
 import { CLOSE_MEGAMENU } from 'constants'
+import ReactGA from 'react-ga'
 import AppContent from './AppContent'
 import getEmitter from './eventEmitter'
 
@@ -42,6 +43,8 @@ export default compose(
   ),
   lifecycle({
     componentDidMount() {
+      ReactGA.initialize('UA-75737603-1')
+      ReactGA.pageview(window.location.pathname + window.location.search)
       eventEmitter.addListener(CLOSE_MEGAMENU, () => this.props.toggleMenu())
     },
   }),

@@ -232,7 +232,7 @@ const PostItem = ({ media, category, user, data }) => {
       {CategoriesData &&
         data && (
           <Media
-            img={FullImage && FullImage}
+            img={Image && Image}
             to={`/blog/${CategoriesData[0].slug}/${data.slug}`}
           />
         )}

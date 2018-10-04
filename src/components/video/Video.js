@@ -49,11 +49,12 @@ const PhotoContainer = styled(Link)`
     }
   }
 `
+
 const ContentContainer = styled.div`
   background-color: #eeeeef;
   width: calc(100% - 30px);
   padding: 20px 15px;
-  height: 130px;
+  height: 160px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -122,6 +123,7 @@ const Text = styled.span`
   font-size: 14.5px;
   line-height: 1.45;
   letter-spacing: 0.9px;
+  margin-right: 10px;
 `
 
 const Views = styled.span`
@@ -130,6 +132,11 @@ const Views = styled.span`
   color: #666666;
   margin-left: 7px;
 `
+
+const TagsContainer = styled.span`
+  display: flex;
+`
+
 const Video = ({ data, media, tags, category }) => {
   const categoriesData = category && category.category && category.category
   const tagsData = tags && tags.tags && tags.tags
@@ -154,13 +161,15 @@ const Video = ({ data, media, tags, category }) => {
                 to={`/blog/${categoriesData[0].slug}/${data.slug}`}
               />
             )}
-          {tagsData &&
-            tagsData.map(item => (
-              <Text
-                key={item.id}
-                dangerouslySetInnerHTML={{ __html: item.name }}
-              />
-            ))}
+          <TagsContainer>
+            {tagsData &&
+              tagsData.map(item => (
+                <Text
+                  key={item.id}
+                  dangerouslySetInnerHTML={{ __html: item.name }}
+                />
+              ))}
+          </TagsContainer>
         </LeftSide>
         <RightSide>
           {/* <FlexDiv>

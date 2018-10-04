@@ -4,7 +4,6 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import Footer from 'components/footer'
 import MenuItem from 'components/menuItem'
 import { Link } from 'react-router-dom'
 import menuEnhancer from './menuEnhancer'
@@ -175,7 +174,7 @@ const Menu = ({ data, toggleMenu }) => {
             ))}
         </ItemContainer>
         <Line />
-        <Footer menuOpened />
+        {/* <Footer menuOpened /> */}
       </ContentContainer>
     </Container>
   )

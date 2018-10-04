@@ -343,7 +343,7 @@ const Footer = ({ width, menuOpened }) => (
               </SocialContainer>
               <Line mb={10} menuOpened={menuOpened} />
               <FlexDiv>
-                <Anchor
+                {/* <Anchor
                   target="_blank"
                   href="https://itunes.apple.com/us/app/mixtape-madness-latest-uk-mixtapes-singles/id1090862433?mt=8&ign-mpt=uo%3D4"
                 >
@@ -354,7 +354,7 @@ const Footer = ({ width, menuOpened }) => (
                   href="https://play.google.com/store/apps/details?id=com.mixtape.madness"
                 >
                   <GooglePlay src={GooglePlayIcon} />
-                </Anchor>
+                </Anchor> */}
               </FlexDiv>
             </div>
           </FlexDiv>

@@ -44,9 +44,10 @@ const ContactUs = styled.span`
   text-transform: capitalize;
   color: #ffffff;
 `
+
 const Advertisement = ({ news }) => (
   <Container fromNews={news}>
-    <Upload>Upload To</Upload>
+    <Upload>Advertise on</Upload>
     <MixTape>MixTape</MixTape>
     <MixTape>Madness</MixTape>
     <ContactUs>

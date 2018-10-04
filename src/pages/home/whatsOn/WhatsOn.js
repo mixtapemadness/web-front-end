@@ -22,14 +22,13 @@ const HeaderContainer = styled.div`
 `
 
 const SectionHeader = styled.span`
-  font-weight: 600;
-  font-size: 28px;
+  font-weight: 800;
+  font-size: 38px;
 `
 
 const SectionSubHeader = styled.span`
-  font-size: 17.5px;
-  letter-spacing: 1.1px;
-  font-weight: 600;
+  font-weight: 800;
+  font-size: 18px;
 `
 
 const WhatsOnItemsContainer = styled.div`
@@ -72,7 +71,7 @@ const WhatsOn = ({ width, data }) => {
         <SectionHeader>What&apos;s On</SectionHeader>
         <SectionSubHeader>
           {' '}
-          Check Out The Latest Music And News This Week
+          Check Out The Latest Music This Week
         </SectionSubHeader>
       </HeaderContainer>
       <WhatsOnItemsContainer>

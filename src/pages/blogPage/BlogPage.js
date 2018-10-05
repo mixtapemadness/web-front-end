@@ -91,7 +91,7 @@ const BlogPageVideo = styled.div`
   background-image: url(${props => props.src});
   background-position: center center;
   background-size: cover;
-  iframe {
+  embed {
     width: 100%;
     height: 100%;
   }
@@ -239,7 +239,7 @@ const BlogArticleContent = styled.div`
       margin: 5px 0;
     }
     @media only screen and (max-width: 575px) {
-      iframe {
+      embed {
         width: 90%;
         height: 250px;
       }
@@ -270,7 +270,10 @@ const BlogPage = ({ width, data, user, match }, props) => {
     isVideo &&
     postData &&
     postData.content &&
-    postData.content.match(/(?:<iframe[^>]*)(?:(?:\/>)|(?:>.*?<\/iframe>))/, '')
+    postData.content
+      .match(/(?:<iframe[^>]*)(?:(?:\/>)|(?:>.*?<\/iframe>))/, '')
+      .toString()
+      .replace('iframe', 'embed')
   // cons HasVideo = Video.
 
   return (

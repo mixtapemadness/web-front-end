@@ -14,6 +14,11 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: flex-end;
   padding: 10px;
+  max-height: ${p => (p.isSubscribed ? '200px' : '0px')};
+  overflow: hidden;
+  transition: 0.4s;
+  transition-delay: 1s;
+  display: none;
 `
 
 const Input = styled.input`
@@ -72,8 +77,8 @@ const Title = styled.span`
   font-weight: bold;
 `
 
-const MobileSubscribe = () => (
-  <Container>
+const MobileSubscribe = ({ isSubscribed }) => (
+  <Container isSubscribed={isSubscribed}>
     <Title>
       Subscribe to MixTape Madness for the latest news, music and upcoming
       releases

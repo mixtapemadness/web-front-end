@@ -85,6 +85,7 @@ const BlogSubTitle = styled.h3`
     letter-spacing: normal;
   }
 `
+
 const BlogPageVideo = styled.div`
   width: 100%;
   height: 60vh;
@@ -130,6 +131,7 @@ const VideoContainer = styled.div`
   margin-top: 80px;
   margin-bottom: 60px;
 `
+
 const TagsContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -161,6 +163,7 @@ const TagsContainer = styled.div`
 //     }
 //   }
 // `
+
 const AlsoLikeHeaderContainer = styled.div`
   max-width: 1200px;
   margin: 40px auto;
@@ -175,6 +178,7 @@ const AlsoLikeHeaderContainer = styled.div`
   font-size: 30px;
   color: #000000;
 `
+
 const MayLikeContainer = styled.div`
   display: flex;
   max-width: 1200px;

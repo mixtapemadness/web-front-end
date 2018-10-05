@@ -1,7 +1,8 @@
+/* eslint react/jsx-indent: 0 */
+
 import React from 'react'
 import styled from 'styled-components'
 
-import MobileSubscribe from 'components/mobileSubscribe'
 import subscribeEnhancer from './subscribeEnhancer'
 
 const SubscribeContainer = styled.div`
@@ -10,21 +11,60 @@ const SubscribeContainer = styled.div`
   margin: auto;
   justify-content: space-between;
   align-items: center;
+  flex-direction: column;
   @media only screen and (max-width: 1030px) {
+    flex-direction: column;
+    text-align: center;
+  }
+`
+const SubscribeThakYou = styled.div`
+  max-height: ${p => (p.isSubscribed ? '400px' : '0px')};
+  overflow: hidden;
+  transition: 1s;
+  transition-delay: 1s;
+  font-weight: 800;
+  font-size: 18px;
+  text-align: center;
+`
+
+const Mixtape = styled.div`
+  color: #ff9d00;
+`
+
+const SubscribeForm = styled.div`
+  max-height: ${p => (!p.isSubscribed ? '400px' : '0px')};
+  overflow: hidden;
+  transition: 0.4s;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 20px;
+  @media only screen and (max-width: 1035px) {
     flex-direction: column;
     text-align: center;
   }
 `
 
 const Span = styled.span`
-  font-size: 20px;
   font-weight: 600;
   word-break: break-word;
+  @media only screen and (max-width: 1122px) {
+    font-size: 16px;
+  }
+  @media only screen and (max-width: 1035px) {
+    font-size: 18px;
+  }
 `
 const Form = styled.form`
   display: flex;
   @media only screen and (max-width: 1020px) {
     flex-direction: column;
+    align-items: center;
+  }
+  @media only screen and (max-width: 1035px) {
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
   }
 `
@@ -60,8 +100,15 @@ const Input = styled.input`
     letter-spacing: 1.5;
     font-weight: 100;
   }
+  @media only screen and (max-width: 1035px) {
+    margin: 15px 0 0 0;
+  }
 `
-const Button = styled.button`
+
+const Button = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-transform: uppercase;
   cursor: pointer;
   height: 47px;
@@ -76,24 +123,33 @@ const Button = styled.button`
   @media only screen and (max-width: 1030px) {
     margin: 10px 0px;
   }
+  @media only screen and (max-width: 1035px) {
+    margin: 15px 0 0 0;
+  }
 `
-const Subscribe = ({ width }) => (
-  <React.Fragment>
-    {width > 450 && (
+const Subscribe = ({ handleSubscribe, handleInput, res }) => {
+  const isSubscribed = !!res
+  return (
+    <React.Fragment>
       <SubscribeContainer>
-        <Span>
-          Subscribe to Mixtape Madness for the
-          <br />
-          latest on news, music, and upcoming releases
-        </Span>
-        <Form>
-          <Input placeholder="Type Email Here..." />
-          <Button>Subscribe</Button>
-        </Form>
+        <SubscribeThakYou isSubscribed={isSubscribed && isSubscribed}>
+          Thank You, You have Subscribed To
+          <Mixtape> Mixtape Madness</Mixtape>
+        </SubscribeThakYou>
+        <SubscribeForm isSubscribed={isSubscribed && isSubscribed}>
+          <Span>
+            Subscribe to Mixtape Madness for the
+            <br />
+            latest on news, music, and upcoming releases
+          </Span>
+          <Form>
+            <Input onChange={handleInput} placeholder="Type Email Here..." />
+            <Button onClick={handleSubscribe}>Subscribe</Button>
+          </Form>
+        </SubscribeForm>
       </SubscribeContainer>
-    )}
-    {width <= 450 && <MobileSubscribe />}
-  </React.Fragment>
-)
+    </React.Fragment>
+  )
+}
 
 export default subscribeEnhancer(Subscribe)

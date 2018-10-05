@@ -274,67 +274,68 @@ const BlogPage = ({ width, data, user, match }, props) => {
   // cons HasVideo = Video.
 
   return (
-    <Container>
-      <Heading>
-        <TitleContainer>
-          <BlogTitle dangerouslySetInnerHTML={{ __html: postData.title }} />
-          <BlogSubTitle
-            dangerouslySetInnerHTML={{ __html: postData.excerpt }}
-          />
-          <MobileAuthorContainer>
-            {/* <span>
+    <React.Fragment>
+      <Container>
+        <Heading>
+          <TitleContainer>
+            <BlogTitle dangerouslySetInnerHTML={{ __html: postData.title }} />
+            <BlogSubTitle
+              dangerouslySetInnerHTML={{ __html: postData.excerpt }}
+            />
+            <MobileAuthorContainer>
+              {/* <span>
               {'By '}
               <Author>{blogPageData.blogPostData.author}</Author>
               {' - '}
               {blogPageData.blogPostData.time}
               {' Hour Ago'}
             </span> */}
-          </MobileAuthorContainer>
-        </TitleContainer>
-      </Heading>
+            </MobileAuthorContainer>
+          </TitleContainer>
+        </Heading>
 
-      {isVideo && Video ? (
-        <BlogPageVideo dangerouslySetInnerHTML={{ __html: Video && Video }} />
-      ) : (
-        <BlogPageImg id={postData.featured_media} />
-      )}
-
-      <BlogContent>
-        <PostContentHeading
-          date={postData.date}
-          userName={userName}
-          userSlug={userSlug}
-        />
         {isVideo && Video ? (
-          <BlogArticleContent
-            dangerouslySetInnerHTML={{ __html: Content && Content }}
-          />
+          <BlogPageVideo dangerouslySetInnerHTML={{ __html: Video && Video }} />
         ) : (
-          <BlogArticleContent
-            dangerouslySetInnerHTML={{ __html: postData.content }}
-          />
+          <BlogPageImg id={postData.featured_media} />
         )}
-        {/* <BlogArticle /> */}
-      </BlogContent>
 
-      {/* {postData.tags && postData.tags.map(id => <Tag key={id} id={id} />)} */}
-      <TagsContainer>
-        {postData.tags && postData.tags.map(id => <Tag key={id} id={id} />)}
-      </TagsContainer>
-      <DisqusContainer>
-        <ReactDisqusComments
-          // shortname="mixtapemadnessuk"
-          shortname="//mixtapemadnessuk.disqus.com/embed.js"
-          // identifier="/blog/news/dj-semtex-announces-leaving-bbc-1xtra-15-years"
-          identifier={window.location.pathname}
-          // title="Example Thread"
-          url={window.location.href}
-          // url="http://mixtape.vobi.io/blog/news/dj-semtex-announces-leaving-bbc-1xtra-15-years"
-          // category_id="10431"
-          // onNewComment={this.handleNewComment}
-        />
-      </DisqusContainer>
-      {/* <Header bottomBorder />
+        <BlogContent>
+          <PostContentHeading
+            date={postData.date}
+            userName={userName}
+            userSlug={userSlug}
+          />
+          {isVideo && Video ? (
+            <BlogArticleContent
+              dangerouslySetInnerHTML={{ __html: Content && Content }}
+            />
+          ) : (
+            <BlogArticleContent
+              dangerouslySetInnerHTML={{ __html: postData.content }}
+            />
+          )}
+          {/* <BlogArticle /> */}
+        </BlogContent>
+
+        {/* {postData.tags && postData.tags.map(id => <Tag key={id} id={id} />)} */}
+        <TagsContainer>
+          {postData.tags && postData.tags.map(id => <Tag key={id} id={id} />)}
+        </TagsContainer>
+        <DisqusContainer>
+          <ReactDisqusComments
+            // shortname="mixtapemadnessuk"
+            shortname="//mixtapemadnessuk.disqus.com/embed.js"
+            // identifier="/blog/news/dj-semtex-announces-leaving-bbc-1xtra-15-years"
+            identifier={window.location.pathname}
+            // title="Example Thread"
+            url={window.location.href}
+            // url="http://mixtape.vobi.io/blog/news/dj-semtex-announces-leaving-bbc-1xtra-15-years"
+            // category_id="10431"
+            // onNewComment={this.handleNewComment}
+          />
+        </DisqusContainer>
+        {/* <Header bottomBorder />
     {data.getPosts && data.getPosts.length > 0 ? (
       <BlogPost data={data.getPosts[0]} />
     ) : (
@@ -352,8 +353,9 @@ const BlogPage = ({ width, data, user, match }, props) => {
         ))
         : ''}
      */}
-      <YouMayLike />
-    </Container>
+        <YouMayLike />
+      </Container>
+    </React.Fragment>
   )
 }
 

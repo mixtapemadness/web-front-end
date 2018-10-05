@@ -178,7 +178,8 @@ const Img = styled.img`
 // }
 
 const WhatsOnComponent = ({ media, data, category }) => {
-  const Image = media && media.img && media.img.full && media.img.full
+  const Image =
+    media && media.img && media.img.featured_image && media.img.featured_image
   const CategoriesData = category && category.category && category.category
 
   return (

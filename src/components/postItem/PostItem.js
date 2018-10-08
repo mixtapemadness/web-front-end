@@ -58,6 +58,9 @@ const Media = styled(Link)`
   background-size: cover;
   background-position: center;
   transition: 0.8s;
+  img {
+    width: 100%;
+  }
   &:hover {
     /* background-size: 120%; */
   }
@@ -232,12 +235,11 @@ const PostItem = ({ media, category, user, data }) => {
     <PostItemContainer>
       {CategoriesData &&
         data && (
-          <LazyLoad height={200}>
-            <Media
-              img={Image && Image}
-              to={`/blog/${CategoriesData[0].slug}/${data.slug}`}
-            />
-          </LazyLoad>
+          <Media to={`/blog/${CategoriesData[0].slug}/${data.slug}`}>
+            <LazyLoad height={200}>
+              <img src={`${Image && Image}`} alt="" />
+            </LazyLoad>
+          </Media>
         )}
       <ContentContainer>
         <ContentContainerTop>

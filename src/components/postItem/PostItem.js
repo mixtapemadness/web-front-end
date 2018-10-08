@@ -12,6 +12,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
+import LazyLoad from 'react-lazyload'
 import postItemEnhancer from './postItemEnhancer'
 
 // View
@@ -231,10 +232,12 @@ const PostItem = ({ media, category, user, data }) => {
     <PostItemContainer>
       {CategoriesData &&
         data && (
-          <Media
-            img={Image && Image}
-            to={`/blog/${CategoriesData[0].slug}/${data.slug}`}
-          />
+          <LazyLoad height={200}>
+            <Media
+              img={Image && Image}
+              to={`/blog/${CategoriesData[0].slug}/${data.slug}`}
+            />
+          </LazyLoad>
         )}
       <ContentContainer>
         <ContentContainerTop>

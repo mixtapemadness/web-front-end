@@ -8,6 +8,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
+import LazyLoad from 'react-lazyload'
 import mainSliderEnhancer from './sliderContentEnhancer'
 
 const SliderContent = styled.div`
@@ -92,14 +93,18 @@ const MainSlider = ({ tags, media, category, data }) => {
         CategoriesData.length > 0 &&
         CategoriesData[0] &&
         CategoriesData[0].name && (
-          <SliderContent SliderPhoto={Image}>
-            <FlexDiv>
-              <Header dangerouslySetInnerHTML={{ __html: data.title }} />
-              <LatestSingles to={`blog/${CategoriesData[0].slug}/${data.slug}`}>
-                Read More
-              </LatestSingles>
-            </FlexDiv>
-          </SliderContent>
+          <LazyLoad>
+            <SliderContent SliderPhoto={Image}>
+              <FlexDiv>
+                <Header dangerouslySetInnerHTML={{ __html: data.title }} />
+                <LatestSingles
+                  to={`blog/${CategoriesData[0].slug}/${data.slug}`}
+                >
+                  Read More
+                </LatestSingles>
+              </FlexDiv>
+            </SliderContent>
+          </LazyLoad>
         )}
     </React.Fragment>
   )

@@ -127,6 +127,13 @@ const Button = styled.div`
     margin: 15px 0 0 0;
   }
 `
+
+const handleKeypress = (e, handleSubscribe) => {
+  if (e.key === 'Enter') {
+    handleSubscribe()
+  }
+}
+
 const Subscribe = ({ handleSubscribe, handleInput, res }) => {
   const isSubscribed = !!res
   return (
@@ -142,8 +149,12 @@ const Subscribe = ({ handleSubscribe, handleInput, res }) => {
             <br />
             latest on news, music, and upcoming releases
           </Span>
-          <Form>
-            <Input onChange={handleInput} placeholder="Type Email Here..." />
+          <Form onSubmit={e => e.preventDefault()}>
+            <Input
+              onKeyPress={e => handleKeypress(e, handleSubscribe)}
+              onChange={handleInput}
+              placeholder="Type Email Here..."
+            />
             <Button onClick={handleSubscribe}>Subscribe</Button>
           </Form>
         </SubscribeForm>

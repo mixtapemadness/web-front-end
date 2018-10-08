@@ -18,6 +18,7 @@ import WhatsOn from './whatsOn'
 import Interviews from './interviews'
 import Posts from './posts'
 import homeEnhancer from './homeEnhancer'
+import Reviews from './reviews'
 
 const Container = styled.div`
   max-width: 1200px;
@@ -63,7 +64,7 @@ const Home = ({ sliderData }) => (
     <SubscribeContainer>
       <Subscribe />
     </SubscribeContainer>
-
+    <Reviews />
     <Videos />
   </Container>
 )

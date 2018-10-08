@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import TopVideo from 'components/topVideo'
+import { Link } from 'react-router-dom'
 import topVideosEnhancer from './topVideosEnhancer'
 
 const TopVideosContainer = styled.div`
@@ -20,17 +21,18 @@ const Header = styled.h1`
   margin: 0;
 `
 
-const MoreVideos = styled.h4`
+const MoreVideos = styled(Link)`
   width: 100%;
   color: #111;
   cursor: pointer;
+  font-weight: 800;
 `
 
 const TopVideos = ({ data }) => (
   <TopVideosContainer>
     <Header>Top Music Videos</Header>
     {data && data.Posts && data.Posts.map(item => <TopVideo data={item} />)}
-    <MoreVideos>More Videos +</MoreVideos>
+    <MoreVideos to="/blog/category/videos">More Videos +</MoreVideos>
   </TopVideosContainer>
 )
 

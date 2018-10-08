@@ -164,7 +164,7 @@ const CategoryContainer = styled.div`
 const ContinueReadContainer = styled.div`
   width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   @media only screen and (max-width: 1150px) {
     justify-content: flex-start;
   }

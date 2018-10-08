@@ -32,8 +32,8 @@ export default compose(
       subscribeToMailchimp,
       handleRes,
       email,
-    }) => async event => {
-      event.preventDefault()
+    }) => async () => {
+      // event.preventDefault()
       const res = await subscribeToMailchimp({ email_address: email })
       // const res = { email_address: email }
 

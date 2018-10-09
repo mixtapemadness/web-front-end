@@ -32,7 +32,7 @@ export default compose(
         variables: {
           id: props.id,
           page: 1,
-          perPage: 18,
+          perPage: window.innerWidth > 550 ? 18 : 9,
           filter: { categories: 'INTERVIEWS' },
         },
       }),

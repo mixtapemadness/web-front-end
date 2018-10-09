@@ -67,7 +67,7 @@ const Home = ({ sliderData }) => (
         </LazyLoad>
       )}
     <Posts />
-    <LazyLoad once offset={0}>
+    <LazyLoad once>
       <Interviews />
     </LazyLoad>
     <Download />

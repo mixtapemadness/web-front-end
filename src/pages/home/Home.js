@@ -1,9 +1,12 @@
 /* eslint react/jsx-one-expression-per-line: 0 */
 /* eslint no-unused-vars: 0 */
+/* eslint operator-linebreak: 0 */
+/* eslint indent: 0 */
 
 import React from 'react'
 import styled from 'styled-components'
 
+import LazyLoad from 'react-lazyload'
 import MainSlider from 'components/mainSlider'
 import Footer from 'components/footer'
 import Download from 'components/download'
@@ -56,16 +59,30 @@ const mainSliderData = [SliderPhoto, SliderPhotoSecond]
 
 const Home = ({ sliderData }) => (
   <Container>
-    {sliderData && sliderData.Posts && <MainSlider data={sliderData.Posts} />}
+    {sliderData &&
+      sliderData.Posts && (
+        <LazyLoad once offset={100}>
+          {' '}
+          <MainSlider data={sliderData.Posts} />{' '}
+        </LazyLoad>
+      )}
     <Posts />
-    <Interviews />
+    <LazyLoad once offset={0}>
+      <Interviews />
+    </LazyLoad>
     <Download />
-    <WhatsOn />
+    <LazyLoad once offset={100}>
+      <WhatsOn />
+    </LazyLoad>
     <SubscribeContainer>
       <Subscribe />
     </SubscribeContainer>
-    <Reviews />
-    <Videos />
+    <LazyLoad once offset={100}>
+      <Reviews />
+    </LazyLoad>
+    <LazyLoad once offset={100}>
+      <Videos />
+    </LazyLoad>
   </Container>
 )
 

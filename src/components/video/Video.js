@@ -11,7 +11,7 @@ import ViewsIcon from 'resources/assets/svg/eye.svg'
 import SignalBarsIcon from 'resources/assets/svg/signal-bars.svg'
 import DotsIcon from 'resources/assets/svg/dots.svg'
 import { Link } from 'react-router-dom'
-import LazyLoad from 'react-lazyload'
+import LazyLoad from 'react-lazy-load'
 import videoEnhancer from './videoEnhancer'
 
 const Container = styled.div`
@@ -139,14 +139,11 @@ const Video = ({ data, media, tags, category }) => {
   return (
     <Container>
       {categoriesData &&
-        data &&
-        Image && (
-          <LazyLoad>
-            <PhotoContainer
-              picture={Image}
-              to={`/blog/${categoriesData[0].slug}/${data.slug}`}
-            />
-          </LazyLoad>
+        data && (
+          <PhotoContainer
+            picture={Image && Image}
+            to={`/blog/${categoriesData[0].slug}/${data.slug}`}
+          />
         )}
       <ContentContainer>
         <LeftSide>

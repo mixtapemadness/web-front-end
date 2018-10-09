@@ -12,7 +12,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
-import LazyLoad from 'react-lazyload'
+import LazyLoad from 'react-lazy-load'
 import postItemEnhancer from './postItemEnhancer'
 
 // View
@@ -51,16 +51,14 @@ const ContentContainerTop = styled.div``
 const Media = styled(Link)`
   width: 100%;
   height: 200px;
-  width: 100%;
-  height: 200px;
   background: url(${props => props.img});
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
   transition: 0.8s;
-  img {
+  /* img {
     width: 100%;
-  }
+  } */
   &:hover {
     /* background-size: 120%; */
   }
@@ -235,11 +233,15 @@ const PostItem = ({ media, category, user, data }) => {
     <PostItemContainer>
       {CategoriesData &&
         data && (
-          <Media to={`/blog/${CategoriesData[0].slug}/${data.slug}`}>
-            <LazyLoad height={200}>
-              <img src={`${Image && Image}`} alt="" />
-            </LazyLoad>
-          </Media>
+          <Media
+            to={`/blog/${CategoriesData[0].slug}/${data.slug}`}
+            img={Image && Image}
+          />
+          // <Media to={`/blog/${CategoriesData[0].slug}/${data.slug}`}>
+          //   <LazyLoad height={200}>
+          //     <img src={`${Image && Image}`} alt="" />
+          //   </LazyLoad>
+          // </Media>
         )}
       <ContentContainer>
         <ContentContainerTop>

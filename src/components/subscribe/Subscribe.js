@@ -101,6 +101,7 @@ const Input = styled.input`
     font-weight: 100;
   }
   @media only screen and (max-width: 1035px) {
+    width: 100%;
     margin: 15px 0 0 0;
   }
 `

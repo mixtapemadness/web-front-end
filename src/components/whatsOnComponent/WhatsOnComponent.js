@@ -7,7 +7,6 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
-import LazyLoad from 'react-lazyload'
 import whatsOnComponentEnhancer from './whatsOnComponentEnhancer'
 
 const Container = styled.div`
@@ -187,12 +186,10 @@ const WhatsOnComponent = ({ media, data, category }) => {
     <Container>
       {CategoriesData &&
         data && (
-          <LazyLoad>
-            <PhotoContainer
-              img={Image}
-              to={`/blog/${CategoriesData[0].slug}/${data.slug}`}
-            />
-          </LazyLoad>
+          <PhotoContainer
+            img={Image}
+            to={`/blog/${CategoriesData[0].slug}/${data.slug}`}
+          />
         )}
       <ContentContainer>
         <CategoryContainer>

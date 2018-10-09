@@ -3,5 +3,6 @@ img:getMediaById(id:$id){
       featured_image
       full
       id
+      medium
   }
 }

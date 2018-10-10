@@ -112,7 +112,7 @@ const PostContentHeading = ({ date, userName, userSlug }) => {
         {/* <Views>3000 views: 5/5</Views> */}
         <Date>{dateStringify(date, false, true)}</Date>
         <Author>
-          By :<AuthorName to={`/ author / ${userSlug} `}>{userName}</AuthorName>
+          By :<AuthorName to={`/author/${userSlug}`}>{userName}</AuthorName>
         </Author>
       </ContainerBottom>
     </Container>

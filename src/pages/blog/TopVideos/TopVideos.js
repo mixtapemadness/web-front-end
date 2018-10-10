@@ -1,3 +1,5 @@
+/* eslint operator-linebreak: 0 */
+
 import React from 'react'
 import styled from 'styled-components'
 import TopVideo from 'components/topVideo'
@@ -31,7 +33,9 @@ const MoreVideos = styled(Link)`
 const TopVideos = ({ data }) => (
   <TopVideosContainer>
     <Header>Top Music Videos</Header>
-    {data && data.Posts && data.Posts.map(item => <TopVideo data={item} />)}
+    {data &&
+      data.Posts &&
+      data.Posts.map(item => <TopVideo key={item.id} data={item} />)}
     <MoreVideos to="/blog/category/videos">More Videos +</MoreVideos>
   </TopVideosContainer>
 )

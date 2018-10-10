@@ -18,6 +18,7 @@ import SignForm from 'components/signForm/SignForm'
 import MoreMenu from 'components/moreMenu'
 import styled from 'styled-components'
 import Footer from 'components/footer'
+import GA from 'components/googleAnalytics'
 
 const Container = styled.div`
   margin-top: 85px;
@@ -31,6 +32,7 @@ const Container = styled.div`
 const AppContent = ({ searchOpened, toggleSearch, menuOpened }) => (
   <React.Fragment>
     <Container searchOpened={searchOpened} menuOpened={menuOpened}>
+      <GA.RouteTracker />
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/blog/category/:filter" component={Blog} />

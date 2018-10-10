@@ -91,11 +91,7 @@ const PostContentHeading = ({ date, userName, userSlug }) => {
     <Container>
       <ContainerTop>
         <Links>
-          <FacebookShareButton
-            iconBgStyle={'cursor:pointer'}
-            url={url}
-            title={'facebook'}
-          >
+          <FacebookShareButton iconBgStyle={'cursor:pointer'} url={url}>
             <IconWrapper>
               <Facebook width={20} height={20} color={'#666666'} />
             </IconWrapper>

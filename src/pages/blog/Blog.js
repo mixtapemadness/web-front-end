@@ -81,7 +81,7 @@ const ShowMore = styled.div`
 const PostItemT = (item, index) => {
   if (index === 5) {
     return (
-      <React.Fragment>
+      <React.Fragment key={item.id}>
         <PostItem data={item} />
         <TopVideoPosts />
         <SubscribeContainer>
@@ -90,7 +90,7 @@ const PostItemT = (item, index) => {
       </React.Fragment>
     )
   }
-  return <PostItem data={item} />
+  return <PostItem key={item.id} data={item} />
 }
 const PostItems = ({ items }) =>
   items.map((item, index) => PostItemT(item, index))

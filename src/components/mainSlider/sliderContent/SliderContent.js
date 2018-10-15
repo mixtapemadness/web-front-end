@@ -17,12 +17,22 @@ const SliderContent = styled.div`
   background-size: cover;
   background-position: center center;
   text-align: center;
+  position: relative;
+`
+
+const SliderWrapper = styled.span`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  left: 0;
 `
 
 const Header = styled.span`
   font-size: 40px;
   font-weight: bold;
   color: white;
+  position: relative;
   @media only screen and (max-width: 950px) {
     font-size: 30px;
   }
@@ -66,6 +76,7 @@ const LatestSingles = styled(Link)`
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
 `
 
 const FlexDiv = styled.div`
@@ -94,6 +105,7 @@ const MainSlider = ({ tags, media, category, data }) => {
         CategoriesData[0] &&
         CategoriesData[0].name && (
           <SliderContent SliderPhoto={Image}>
+            <SliderWrapper />
             <FlexDiv>
               <Header dangerouslySetInnerHTML={{ __html: data.title }} />
               <LatestSingles to={`blog/${CategoriesData[0].slug}/${data.slug}`}>

@@ -1,13 +1,13 @@
-query getPostBySlug($slug:String){
-Post:getPostBySlug(slug:$slug){
-    	id
-    	date
-      categories
-      title
-      content
-      excerpt
-      featured_media
-      author
-      tags
+query getPostBySlug($slug: String) {
+  Post: getPostBySlug(slug: $slug) {
+    id
+    date
+    categories
+    title
+    content
+    excerpt
+    featured_media
+    author
+    tags
   }
 }

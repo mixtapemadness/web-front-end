@@ -374,7 +374,12 @@ const Footer = ({ width, menuOpened }) => (
                 color={menuOpened ? '#ffffff' : '#000000'}
                 ml={10}
               >
-                Terms
+                <Link
+                  to="/termsconditions"
+                  onClick={() => eventEmitter.emit(CLOSE_MEGAMENU)}
+                >
+                  Terms{' '}
+                </Link>
               </Span>
               <Span
                 fsize={13}

@@ -16,6 +16,7 @@ import TeamPage from 'pages/teamPage'
 import SearchResult from 'pages/searchResult/SearchResult'
 import SignForm from 'components/signForm/SignForm'
 import MoreMenu from 'components/moreMenu'
+import TermsAndConditions from 'pages/termsAndConditions'
 import styled from 'styled-components'
 import Footer from 'components/footer'
 import GA from 'components/googleAnalytics'
@@ -44,6 +45,7 @@ const AppContent = ({ searchOpened, toggleSearch, menuOpened }) => (
         <Route path="/music-profile/:slug" component={MusicProfilePage} />
         <Route path="/team" component={TeamPage} />
         <Route path="/moremenu" component={MoreMenu} />
+        <Route path="/termsconditions" component={TermsAndConditions} />
         <Route path="/searchresult/:category/:key" component={SearchResult} />
         <Route path="/login" component={() => <SignForm type="login" />} />
         <Route

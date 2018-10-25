@@ -21,7 +21,7 @@ const Heading = styled.h1`
 
 const Headingh2 = styled.h2`
   font-weight: 800;
-  margin-top: 10px;
+  margin-top: 22px;
 `
 
 const Headingh3 = styled.h3`

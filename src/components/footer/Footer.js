@@ -386,7 +386,12 @@ const Footer = ({ width, menuOpened }) => (
                 color={menuOpened ? '#ffffff' : '#000000'}
                 ml={10}
               >
-                Privacy
+                <Link
+                  to="/privacy"
+                  onClick={() => eventEmitter.emit(CLOSE_MEGAMENU)}
+                >
+                  Privacy{' '}
+                </Link>
               </Span>
             </Flex>
           </FlexDiv>

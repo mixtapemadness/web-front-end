@@ -3,8 +3,9 @@ import React from 'react'
 import styled from 'styled-components'
 
 const Container = styled.div`
-  width: 100%;
-  padding: 20px 50px 50px 50px;
+  width: 1200px;
+  margin: auto;
+  padding: 20px;
 `
 
 const Heading = styled.h1`
@@ -16,16 +17,18 @@ const Heading = styled.h1`
 const Headingh2 = styled.h2`
   font-weight: 800;
   margin-top: 10px;
+  text-align: justify;
 `
 
 const Headingh3 = styled.h3`
   font-weight: 800;
   margin-top: 10px;
+  text-align: justify;
 `
 
 const Content = styled.p`
   font-weight: 400;
-  text-align: left;
+  text-align: justify;
 `
 
 const PrivacyAndPolicy = () => (

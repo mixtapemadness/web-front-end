@@ -12,7 +12,7 @@ import menuEnhancer from './menuEnhancer'
 // import Musician2 from 'resources/assets/img/eminem.jpg'
 const Container = styled.div`
   position: fixed;
-  top: 80px;
+  top: 70px;
   width: 100%;
   background-color: #ff9600;
   height: 100%;

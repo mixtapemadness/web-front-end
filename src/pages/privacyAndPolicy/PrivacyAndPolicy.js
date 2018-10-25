@@ -6,18 +6,22 @@ const Container = styled.div`
   width: 1200px;
   margin: auto;
   padding: 20px;
+  @media only screen and (max-width: 1220px) {
+    width: 1000px;
+  }
+  @media only screen and (max-width: 1020px) {
+    width: 80%;
+  }
 `
 
 const Heading = styled.h1`
   font-weight: 800;
-  text-align: justify;
   margin-bottom: 20px;
 `
 
 const Headingh2 = styled.h2`
   font-weight: 800;
   margin-top: 10px;
-  text-align: justify;
 `
 
 const Headingh3 = styled.h3`

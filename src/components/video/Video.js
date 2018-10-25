@@ -6,12 +6,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import PlayIcon from 'resources/assets/svg/Play.svg'
-import ViewsIcon from 'resources/assets/svg/eye.svg'
-import SignalBarsIcon from 'resources/assets/svg/signal-bars.svg'
-import DotsIcon from 'resources/assets/svg/dots.svg'
 import { Link } from 'react-router-dom'
-import LazyLoad from 'react-lazy-load'
 import videoEnhancer from './videoEnhancer'
 
 const Container = styled.div`

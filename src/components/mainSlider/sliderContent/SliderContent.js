@@ -8,6 +8,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
+import CardLoader from 'components/loaders'
 import mainSliderEnhancer from './sliderContentEnhancer'
 
 const SliderContent = styled.div`

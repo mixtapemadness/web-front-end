@@ -12,6 +12,7 @@ import styled from 'styled-components'
 import PostItem from 'components/postItem'
 import Subscribe from 'components/subscribe'
 // import MobileComponent from 'components/mobileComponent'
+import { CardLoader } from 'components/loaders'
 import TopVideoPosts from './TopVideoPosts'
 import BlogSlider from './BlogSlider'
 import BlogFilter from './BlogFilter'
@@ -99,21 +100,14 @@ const Blog = ({ Posts, data, handleLoadMore, match }) => {
   const Data = data.Posts && data.Posts.length > 0 && data.Posts
   return (
     <NewsContainer>
-      {/* {width > 700 && ( */}
       <div>
         <BlogSlider />
         <BlogFilter match={match} />
-        <PostsContainer>{Data && <PostItems items={Data} />}</PostsContainer>
+        <PostsContainer>
+          {data.loading && [...Array(8)].map(i => <CardLoader />)}
+          {!data.loading && (Data && <PostItems items={Data} />)}
+        </PostsContainer>
       </div>
-      {/* )} */}
-      {/* {width <= 700 && Data &&
-        Data.map(item => (
-          <Div key={item.id}>
-            {' '}
-            <PostItem data={item} />
-          </Div>
-        ))} */}
-
       <ShowMoreContainer>
         <ShowMore onClick={handleLoadMore}>More {match.params.filter}</ShowMore>
       </ShowMoreContainer>

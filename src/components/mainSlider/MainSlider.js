@@ -9,6 +9,7 @@ import Slider from 'react-slick'
 
 import MainPrev from 'resources/assets/svg/mainprev.svg'
 import MainNext from 'resources/assets/svg/mainnext.svg'
+import { CardLoader } from 'components/loaders'
 import SliderContent from './sliderContent'
 import mainSliderEnhancer from './mainSliderEnhancer'
 
@@ -345,13 +346,18 @@ const settings = {
 }
 
 const MainSlider = ({ data }) => {
+  const loading = data && data.loading && data.loading
   const Posts = data && data.Posts && data.Posts
   return (
     <Container>
       <Override>
         <Slider {...settings}>
-          {Posts &&
-            Posts.map(item => <SliderContent key={item.id} data={item} />)}
+          {loading && <CardLoader />}
+          {!loading &&
+            Posts &&
+            Posts.map(item => (
+              <SliderContent loading={loading} key={item.id} data={item} />
+            ))}
         </Slider>
       </Override>
     </Container>

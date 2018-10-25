@@ -27,12 +27,12 @@ const LineSeparator = styled.div`
 const AuthorPage = ({ width, data }) => {
   const userData = data && data.user && data.user
   const userId = data && data.user && data.user.id
-
+  const loading = data && data.loading && data.loading
   return (
     <AuthorPageContainer>
       <ProfileInfo data={userData} />
       <LineSeparator />
-      <ResentPosts id={userId} />
+      <ResentPosts loading={loading} id={userId} />
     </AuthorPageContainer>
   )
 }

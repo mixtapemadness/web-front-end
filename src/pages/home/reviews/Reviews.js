@@ -7,15 +7,10 @@ import React from 'react'
 import styled from 'styled-components'
 import PostItem from 'components/postItem'
 import Subscribe from 'components/subscribe'
-// import MobileSubscribe from 'components/mobileSubscribe'
 import SliderComponent from 'components/slider'
+import { CardLoader } from 'components/loaders'
 
 import reviewsEnhancer from './reviewsEnhancer'
-
-// const PostItemContainer = styled.div`
-//   display: flex;
-//   justify-content: center;
-// `
 
 const ReviewContainer = styled.div`
   display: flex;
@@ -123,7 +118,10 @@ const Reviews = ({ width, data }) => {
         <SubTitle>Check Out The Latest Reviews</SubTitle>
       </TitleContainer>
       <SliderComponent settings={settings}>
-        {posts && posts.map(item => <PostItem key={item.id} data={item} />)}
+        {data.loading && [...Array(8)].map(i => <CardLoader />)}
+        {!data.loading &&
+          posts &&
+          posts.map(item => <PostItem key={item.id} data={item} />)}
       </SliderComponent>
     </ReviewContainer>
   )

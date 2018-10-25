@@ -7,28 +7,7 @@
 
 import React from 'react'
 import styled from 'styled-components'
-// import { Link } from 'react-router-dom'
 import ReactDisqusComments from 'react-disqus-comments'
-
-import Header from 'components/header'
-import BlogPost from 'components/blogPost'
-import YouTubeVideo from 'components/youTubeVideo'
-import PostItem from 'components/postItem'
-import Footer from 'components/footer'
-import Advertisement from 'components/advertisement'
-import MobileComponent from 'components/mobileComponent'
-
-import Musician from 'resources/assets/img/musician1.png'
-import Musician1 from 'resources/assets/img/2pac.jpg'
-import Musician2 from 'resources/assets/img/eminem.jpg'
-// import backgroundImage from 'resources/assets/img/background.png'
-import { getYouTubeId } from 'helpers'
-
-import ReactHtmlParser, {
-  processNodes,
-  convertNodeToElement,
-  htmlparser2,
-} from 'react-html-parser'
 import YouMayLike from 'components/youMayLike'
 import blogPageEnhancer from './blogPageEnhancer'
 import BlogPageImg from './blogPageImg'
@@ -289,15 +268,7 @@ const BlogPage = ({ width, data, user, match }, props) => {
             <BlogSubTitle
               dangerouslySetInnerHTML={{ __html: postData.excerpt }}
             />
-            <MobileAuthorContainer>
-              {/* <span>
-              {'By '}
-              <Author>{blogPageData.blogPostData.author}</Author>
-              {' - '}
-              {blogPageData.blogPostData.time}
-              {' Hour Ago'}
-            </span> */}
-            </MobileAuthorContainer>
+            <MobileAuthorContainer />
           </TitleContainer>
         </Heading>
 
@@ -306,7 +277,6 @@ const BlogPage = ({ width, data, user, match }, props) => {
         ) : (
           <BlogPageImg id={postData.featured_media} />
         )}
-
         <BlogContent>
           <PostContentHeading
             date={postData.date}
@@ -322,44 +292,17 @@ const BlogPage = ({ width, data, user, match }, props) => {
               dangerouslySetInnerHTML={{ __html: postData.content }}
             />
           )}
-          {/* <BlogArticle /> */}
         </BlogContent>
-
-        {/* {postData.tags && postData.tags.map(id => <Tag key={id} id={id} />)} */}
         <TagsContainer>
           {postData.tags && postData.tags.map(id => <Tag key={id} id={id} />)}
         </TagsContainer>
         <DisqusContainer>
           <ReactDisqusComments
-            // shortname="mixtapemadnessuk"
             shortname="//mixtapemadnessuk.disqus.com/embed.js"
-            // identifier="/blog/news/dj-semtex-announces-leaving-bbc-1xtra-15-years"
             identifier={window.location.pathname}
-            // title="Example Thread"
             url={window.location.href}
-            // url="http://mixtape.vobi.io/blog/news/dj-semtex-announces-leaving-bbc-1xtra-15-years"
-            // category_id="10431"
-            // onNewComment={this.handleNewComment}
           />
         </DisqusContainer>
-        {/* <Header bottomBorder />
-    {data.getPosts && data.getPosts.length > 0 ? (
-      <BlogPost data={data.getPosts[0]} />
-    ) : (
-        ''
-      )}
-    {width > 450 && (
-      <VideoContainer>
-        <YouTubeVideo url={blogPageData.video} />
-      </VideoContainer>
-    )}
-    <TagsContainer>
-      {data.getPosts && data.getPosts.length > 0
-        ? data.getPosts[0].tags.map(item => (
-          <Tag key={item.id}>{item.name}</Tag>
-        ))
-        : ''}
-     */}
         <YouMayLike />
       </Container>
     </React.Fragment>

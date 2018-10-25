@@ -1,10 +1,12 @@
 /* eslint operator-linebreak: 0 */
 /* eslint implicit-arrow-linebreak: 0 */
+/* eslint no-unused-vars: 0 */
 
 import React from 'react'
 import styled from 'styled-components'
 import Video from 'components/video'
 import SliderComponent from 'components/slider'
+import { CardLoader } from 'components/loaders'
 import videosEnhancer from './videosEnhancer'
 
 const VideosContainer = styled.div`
@@ -90,7 +92,10 @@ const Videos = ({ data }) => {
       </HeaderContainer>
       <VideoItems>
         <SliderComponent settings={settings}>
-          {Posts && Posts.map(item => <Video key={item.id} data={item} />)}
+          {data.loading && [...Array(8)].map(i => <CardLoader />)}
+          {!data.loading &&
+            Posts &&
+            Posts.map(item => <Video key={item.id} data={item} />)}
         </SliderComponent>
       </VideoItems>
     </VideosContainer>

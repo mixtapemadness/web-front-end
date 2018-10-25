@@ -9,7 +9,7 @@ import PostItem from 'components/postItem'
 import Subscribe from 'components/subscribe'
 // import MobileSubscribe from 'components/mobileSubscribe'
 import SliderComponent from 'components/slider'
-
+import { CardLoader } from 'components/loaders'
 import postsEnhancer from './postsEnhancer'
 
 // const PostItemContainer = styled.div`
@@ -115,6 +115,7 @@ const settings = {
 }
 
 const Posts = ({ width, data }) => {
+  console.log('data', data)
   const posts = data && data.Posts && data.Posts
   return (
     <TrendingContainer>
@@ -123,7 +124,10 @@ const Posts = ({ width, data }) => {
         <SubTitle>Check Out The Latest Music And News This Week</SubTitle>
       </TitleContainer>
       <SliderComponent settings={settings}>
-        {posts && posts.map(item => <PostItem key={item.id} data={item} />)}
+        {data.loading && [...Array(8)].map(i => <CardLoader />)}
+        {!data.loading &&
+          posts &&
+          posts.map(item => <PostItem key={item.id} data={item} />)}
       </SliderComponent>
     </TrendingContainer>
   )

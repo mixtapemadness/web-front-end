@@ -7,6 +7,7 @@ import React from 'react'
 import styled from 'styled-components'
 import WhatsOnComponent from 'components/whatsOnComponent'
 import SliderComponent from 'components/slider'
+import { CardLoader } from 'components/loaders'
 import whatsOnEnhancer from './whatsOnEnhancer'
 
 const Container = styled.div`
@@ -76,7 +77,9 @@ const WhatsOn = ({ width, data }) => {
       </HeaderContainer>
       <WhatsOnItemsContainer>
         <SliderComponent settings={settings}>
-          {Posts &&
+          {data.loading && [...Array(8)].map(i => <CardLoader />)}
+          {!data.loading &&
+            Posts &&
             Posts.map(item => <WhatsOnComponent data={item} key={item.id} />)}
         </SliderComponent>
       </WhatsOnItemsContainer>

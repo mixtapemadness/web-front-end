@@ -213,60 +213,25 @@ const Footer = ({ width, menuOpened }) => (
               <ContentHeader menuOpened={menuOpened}>Blog</ContentHeader>
               <List menuOpened={menuOpened}>
                 <ListItem>
-                  <Link
-                    to="/aboutus"
-                    onClick={() => eventEmitter.emit(CLOSE_MEGAMENU)}
-                  >
-                    About
-                  </Link>
+                  <Link to="/aboutus">About</Link>
                 </ListItem>
                 <ListItem>
-                  <Link
-                    to="/blog/category/videos"
-                    onClick={() => eventEmitter.emit(CLOSE_MEGAMENU)}
-                  >
-                    Videos
-                  </Link>
+                  <Link to="/blog/category/videos">Videos</Link>
                 </ListItem>
                 <ListItem>
-                  <Link
-                    to="/blog/category/articles"
-                    onClick={() => eventEmitter.emit(CLOSE_MEGAMENU)}
-                  >
-                    Articles
-                  </Link>
+                  <Link to="/blog/category/articles">Articles</Link>
                 </ListItem>
                 <ListItem>
-                  <Link
-                    to="/blog/category/events"
-                    onClick={() => eventEmitter.emit(CLOSE_MEGAMENU)}
-                  >
-                    Events
-                  </Link>
+                  <Link to="/blog/category/events">Events</Link>
                 </ListItem>
                 <ListItem>
-                  <Link
-                    to="/blog/category/reviews"
-                    onClick={() => eventEmitter.emit(CLOSE_MEGAMENU)}
-                  >
-                    Reviews{' '}
-                  </Link>
+                  <Link to="/blog/category/reviews">Reviews </Link>
                 </ListItem>
                 <ListItem>
-                  <Link
-                    to="/blog/category/news"
-                    onClick={() => eventEmitter.emit(CLOSE_MEGAMENU)}
-                  >
-                    News
-                  </Link>
+                  <Link to="/blog/category/news">News</Link>
                 </ListItem>
                 <ListItem>
-                  <Link
-                    to="/blog/category/interviews"
-                    onClick={() => eventEmitter.emit(CLOSE_MEGAMENU)}
-                  >
-                    Interviews
-                  </Link>
+                  <Link to="/blog/category/interviews">Interviews</Link>
                 </ListItem>
               </List>
             </ListContainer>

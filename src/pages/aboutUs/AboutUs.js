@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-
+import aboutUsEnhancer from './aboutUsEnhancer'
 import AboutUsSlider from './AboutUsSlider'
 import Grid from './Grid'
 
@@ -39,9 +39,11 @@ const girdData = [
   },
 ]
 
-export default () => (
+const AboutUs = () => (
   <AboutUsContainer>
     <AboutUsSlider />
     <Grid data={girdData} />
   </AboutUsContainer>
 )
+
+export default aboutUsEnhancer(AboutUs)

@@ -7,6 +7,7 @@ import styled from 'styled-components'
 import MenuItem from 'components/menuItem'
 import { Link } from 'react-router-dom'
 import menuEnhancer from './menuEnhancer'
+
 // import Musician from 'resources/assets/img/musician1.png'
 // import Musician1 from 'resources/assets/img/2pac.jpg'
 // import Musician2 from 'resources/assets/img/eminem.jpg'
@@ -130,24 +131,24 @@ const Menu = ({ data, toggleMenu }) => {
       <ContentContainer>
         <ListContainer>
           <List>
-            <Link onClick={() => toggleMenu()} to={'/blog/category/videos'}>
+            <Link to={'/blog/category/videos'}>
               <li>Videos</li>
             </Link>
-            <Link onClick={() => toggleMenu()} to={'/blog/category/articles'}>
+            <Link to={'/blog/category/articles'}>
               <li>Articles</li>
             </Link>
-            <Link onClick={() => toggleMenu()} to={'/blog/category/events'}>
+            <Link to={'/blog/category/events'}>
               <li>Events</li>
             </Link>
           </List>
           <List>
-            <Link onClick={() => toggleMenu()} to={'/blog/category/reviews'}>
+            <Link to={'/blog/category/reviews'}>
               <li>Reviews</li>
             </Link>
-            <Link onClick={() => toggleMenu()} to={'/blog/category/news'}>
+            <Link to={'/blog/category/news'}>
               <li>News</li>
             </Link>
-            <Link onClick={() => toggleMenu()} to={'/blog/category/interviews'}>
+            <Link to={'/blog/category/interviews'}>
               <li>Interviews</li>
             </Link>
           </List>

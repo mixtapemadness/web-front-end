@@ -1,7 +1,7 @@
-query getPosts($filter:filterPostInput,$page:ID,$perPage:ID) {
-Posts: getPosts(filter:$filter,page:$page,perPage:$perPage) {
+query getPosts($filter: filterPostInput, $page: ID, $perPage: ID) {
+  Posts: getPosts(filter: $filter, page: $page, perPage: $perPage) {
     id
-		categories
+    categories
     featured_media
     author
     title

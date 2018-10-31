@@ -6,6 +6,13 @@ import { compose, withStateHandlers, lifecycle, withProps } from 'recompose'
 import { loadDataAsync } from 'hocs'
 import getPosts from 'graphql/getPosts.graphql'
 import getCategoryById from 'graphql/getCategoryById.graphql'
+import { CLOSE_MEGAMENU } from 'constants'
+import getEmitter from '../../eventEmitter'
+
+const eventEmitter = getEmitter()
+// eventEmitter.emit(CLOSE_MEGAMENU)
+
+// const eventEmitter = getEmitter()
 
 export default compose(
   // withRouter,
@@ -26,27 +33,17 @@ export default compose(
 
   lifecycle({
     componentDidMount() {
+      eventEmitter.emit(CLOSE_MEGAMENU)
       window.scrollTo(0, 0)
       window.addEventListener('resize', this.props.updateWidth)
     },
-    componentDidUpdate() {
+    componentDidUpdate(prevProps, prevState) {
       window.scrollTo(0, 0)
     },
     componentWillUnmount() {
       window.removeEventListener('resize', this.props.updateWidth)
     },
   }),
-  // loadDataAsync({
-  //   query: getCategoryById,
-  //   config: {
-  //     options: props => ({
-  //       variables: {
-  //         id: parseInt(20, 10),
-  //       },
-  //     }),
-  //   },
-  // }),
-
   loadDataAsync({
     query: getPosts,
     config: {

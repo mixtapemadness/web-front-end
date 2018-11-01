@@ -3,19 +3,17 @@
 
 import { compose, withStateHandlers, lifecycle, withProps } from 'recompose'
 // import { withRouter } from 'react-router-dom'
-import { loadDataAsync } from 'hocs'
+import { loadDataAsync, refetchOn } from 'hocs'
 import getPosts from 'graphql/getPosts.graphql'
 import getCategoryById from 'graphql/getCategoryById.graphql'
-import { CLOSE_MEGAMENU } from 'constants'
+import { LOAD_MORE_POSTS, CLOSE_MEGAMENU } from 'constants'
 import getEmitter from '../../eventEmitter'
 
 const eventEmitter = getEmitter()
-// eventEmitter.emit(CLOSE_MEGAMENU)
-
-// const eventEmitter = getEmitter()
 
 export default compose(
   // withRouter,
+
   withStateHandlers(
     () => ({
       width: window.innerWidth,
@@ -30,7 +28,6 @@ export default compose(
       handleLoadMore: ({ perPage }) => () => ({ perPage: perPage + 3 }),
     },
   ),
-
   lifecycle({
     componentDidMount() {
       eventEmitter.emit(CLOSE_MEGAMENU)
@@ -38,7 +35,15 @@ export default compose(
       window.addEventListener('resize', this.props.updateWidth)
     },
     componentDidUpdate(prevProps, prevState) {
-      window.scrollTo(0, 0)
+      eventEmitter.emit(LOAD_MORE_POSTS)
+    },
+    // WARNING! To be deprecated in React v17. Use new lifecycle static getDerivedStateFromProps instead.
+    componentWillReceiveProps(nextProps) {
+      console.log('nextProps')
+      console.log('this.props')
+      if (nextProps.perPage === this.props.perPage) {
+        window.scrollTo(0, 0)
+      }
     },
     componentWillUnmount() {
       window.removeEventListener('resize', this.props.updateWidth)
@@ -46,6 +51,7 @@ export default compose(
   }),
   loadDataAsync({
     query: getPosts,
+    name: 'data',
     config: {
       options: props => ({
         variables: {
@@ -57,7 +63,5 @@ export default compose(
       }),
     },
   }),
-  withProps(({ data, Posts }) => {
-    Posts.push(data.Posts)
-  }),
+  refetchOn(LOAD_MORE_POSTS, 'data'),
 )

@@ -39,8 +39,8 @@ export default compose(
     },
     // WARNING! To be deprecated in React v17. Use new lifecycle static getDerivedStateFromProps instead.
     componentWillReceiveProps(nextProps) {
-      console.log('nextProps')
-      console.log('this.props')
+      console.log('nextProps', nextProps)
+      console.log('this.props', this.props)
       if (nextProps.perPage === this.props.perPage) {
         window.scrollTo(0, 0)
       }

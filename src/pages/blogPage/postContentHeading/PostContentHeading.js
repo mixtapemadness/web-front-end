@@ -8,6 +8,7 @@
 /* eslint react/jsx-indent-props: 0 */
 /* eslint react/jsx-closing-tag-location: 0 */
 /* eslint react/jsx-boolean-value: 0 */
+/* eslint object-curly-newline: 0 */
 
 import React from 'react'
 import styled from 'styled-components'
@@ -16,7 +17,6 @@ import Facebook from 'resources/assets/svgComponents/Facebook'
 import Twitter from 'resources/assets/svgComponents/Twitter'
 import SoundCloud from 'resources/assets/svgComponents/SoundCloud'
 import Dots from 'resources/assets/svgComponents/Dots'
-
 import {
   TwitterShareButton,
   FacebookShareButton,
@@ -30,6 +30,7 @@ import {
 
 // import AuthorName from 'components/AuthorName'
 import { dateStringify } from 'helpers/'
+import config from '../../../../config'
 import blogPageImgEnhancer from './postContentHeadingEnhancer'
 
 const Container = styled.div`
@@ -85,8 +86,11 @@ const IconWrapper = styled.div`
   cursor: pointer;
 `
 
-const PostContentHeading = ({ date, userName, userSlug }) => {
-  const url = window.location.href.toString()
+const PostContentHeading = ({ date, userName, userSlug, match }) => {
+  const { category, slug } = match.params
+  const url = `${config.apiUrl}api/v1/blog/${
+    match.params.category
+  }/${slug}/share`
   return (
     <Container>
       <ContainerTop>

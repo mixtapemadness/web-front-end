@@ -109,7 +109,15 @@ const MainSlider = ({ tags, media, category, data }) => {
             <SliderWrapper />
             <FlexDiv>
               <Header dangerouslySetInnerHTML={{ __html: data.title }} />
-              <LatestSingles to={`blog/${CategoriesData[0].slug}/${data.slug}`}>
+              <LatestSingles
+                to={{
+                  pathname: `/blog/${CategoriesData[0].slug}/${data.slug}`,
+                  state: {
+                    prevPath: window.location.pathname,
+                    category: CategoriesData[0].slug,
+                  },
+                }}
+              >
                 Read More
               </LatestSingles>
             </FlexDiv>

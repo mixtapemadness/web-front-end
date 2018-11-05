@@ -221,7 +221,7 @@ const Categories = ({ data }) => {
   return newData
 }
 
-const PostItem = ({ media, category, user, data }) => {
+const PostItem = ({ media, category, user, data, match }) => {
   const Image =
     media && media.img && media.img.featured_image && media.img.featured_image
   const FullImage = media && media.img && media.img.full && media.img.full
@@ -234,7 +234,14 @@ const PostItem = ({ media, category, user, data }) => {
       {CategoriesData &&
         data && (
           <Media
-            to={`/blog/${CategoriesData[0].slug}/${data.slug}`}
+            to={{
+              pathname: `/blog/${CategoriesData[0].slug}/${data.slug}`,
+              state: {
+                prevPath: window.location.pathname,
+                category: CategoriesData[0].slug,
+                authorId: User && User.id,
+              },
+            }}
             img={Image && Image}
           />
           // <Media to={`/blog/${CategoriesData[0].slug}/${data.slug}`}>
@@ -252,7 +259,14 @@ const PostItem = ({ media, category, user, data }) => {
             data && (
               <PostTitle
                 dangerouslySetInnerHTML={{ __html: data.title }}
-                to={`/blog/${CategoriesData[0].slug}/${data.slug}`}
+                to={{
+                  pathname: `/blog/${CategoriesData[0].slug}/${data.slug}`,
+                  state: {
+                    prevPath: window.location.pathname,
+                    category: CategoriesData[0].slug,
+                    authorId: User && User.id,
+                  },
+                }}
               />
             )}
         </ContentContainerTop>
@@ -286,7 +300,14 @@ const PostItem = ({ media, category, user, data }) => {
             CategoriesData && (
               <ContinueReadContainer>
                 <ContinueRead
-                  to={`/blog/${CategoriesData[0].slug}/${data.slug}`}
+                  to={{
+                    pathname: `/blog/${CategoriesData[0].slug}/${data.slug}`,
+                    state: {
+                      prevPath: window.location.pathname,
+                      category: CategoriesData[0].slug,
+                      authorId: User && User.id,
+                    },
+                  }}
                 >
                   Continue Reading
                 </ContinueRead>

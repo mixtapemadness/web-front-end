@@ -188,7 +188,13 @@ const WhatsOnComponent = ({ media, data, category }) => {
         data && (
           <PhotoContainer
             img={Image}
-            to={`/blog/${CategoriesData[0].slug}/${data.slug}`}
+            to={{
+              pathname: `/blog/${CategoriesData[0].slug}/${data.slug}`,
+              state: {
+                prevPath: window.location.pathname,
+                category: CategoriesData[0].slug,
+              },
+            }}
           />
         )}
       <ContentContainer>

@@ -1,7 +1,12 @@
 /* eslint object-curly-newline: 0 */
 import { compose, withStateHandlers, lifecycle, withProps } from 'recompose'
 import searchQuery from 'graphql/searchQuery.graphql'
+import { withRouter } from 'react-router-dom'
+import { CLOSE_SEARCH } from 'constants'
 import { loadDataAsync } from '../../hocs'
+import getEmitter from '../../eventEmitter'
+
+const eventEmitter = getEmitter()
 
 export default compose(
   withStateHandlers(
@@ -24,6 +29,7 @@ export default compose(
       },
     },
   ),
+  withRouter,
   loadDataAsync({
     query: searchQuery,
     config: {
@@ -41,6 +47,11 @@ export default compose(
     escape: e => props.toggle(e, props.toggleSearch),
   })),
   lifecycle({
+    componentDidUpdate(prevProps) {
+      if (prevProps.location.pathname !== window.location.pathname) {
+        eventEmitter.emit(CLOSE_SEARCH)
+      }
+    },
     componentDidMount() {
       document.addEventListener('keydown', this.props.escape)
     },

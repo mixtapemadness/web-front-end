@@ -111,7 +111,7 @@ const ContinueRead = styled(Link)`
   }
 `
 
-const searchedItem = ({ toggleSearch, data, category, tags, media, color }) => {
+const searchedItem = ({ data, category, tags, media, color }) => {
   const categoriesData = category && category.category && category.category
   const tagsData = tags && tags.tags && tags.tags
   const Image = media && media.img && media.img.full && media.img.full
@@ -123,9 +123,14 @@ const searchedItem = ({ toggleSearch, data, category, tags, media, color }) => {
         categoriesData.length &&
         data && (
           <SearchMedia
-            to={`/blog/${categoriesData[0].slug}/${data.slug}`}
+            to={{
+              pathname: `/blog/${categoriesData[0].slug}/${data.slug}`,
+              state: {
+                prevPath: window.location.pathname,
+                category: categoriesData[0].slug,
+              },
+            }}
             img={Image}
-            onClick={() => toggleSearch()}
           />
         )}
       <ContentContainer>
@@ -134,9 +139,14 @@ const searchedItem = ({ toggleSearch, data, category, tags, media, color }) => {
           data && (
             <Title
               color={color}
-              to={`/blog/${categoriesData[0].slug}/${data.slug}`}
+              to={{
+                pathname: `/blog/${categoriesData[0].slug}/${data.slug}`,
+                state: {
+                  prevPath: window.location.pathname,
+                  category: categoriesData[0].slug,
+                },
+              }}
               dangerouslySetInnerHTML={{ __html: data.title }}
-              onClick={() => toggleSearch()}
             />
           )}
         <ContentContainerBottom>
@@ -149,8 +159,13 @@ const searchedItem = ({ toggleSearch, data, category, tags, media, color }) => {
             data && (
               <ContinueRead
                 color={color}
-                to={`/blog/${categoriesData[0].slug}/${data.slug}`}
-                onClick={() => toggleSearch()}
+                to={{
+                  pathname: `/blog/${categoriesData[0].slug}/${data.slug}`,
+                  state: {
+                    prevPath: window.location.pathname,
+                    category: categoriesData[0].slug,
+                  },
+                }}
               >
                 Continue Reading
               </ContinueRead>

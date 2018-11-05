@@ -4,11 +4,17 @@
 /* eslint indent: 0 */
 /* eslint object-curly-newline: 0 */
 /* eslint no-unneeded-ternary: 0 */
+/* eslint no-nested-ternary: 0 */
+/*  eslint implicit-arrow-linebreak: 0 */
 
 import React from 'react'
 import styled from 'styled-components'
 import ReactDisqusComments from 'react-disqus-comments'
 import YouMayLike from 'components/youMayLike'
+import Forward from 'resources/assets/svgComponents/Forward'
+import Back from 'resources/assets/svgComponents/Back'
+
+import { Link } from 'react-router-dom'
 import blogPageEnhancer from './blogPageEnhancer'
 import BlogPageImg from './blogPageImg'
 import PostContentHeading from './postContentHeading'
@@ -26,9 +32,38 @@ const Heading = styled.div`
   max-width: 1200px;
   margin: auto;
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
   margin-top: 40px;
 `
+
+const PagingArrows = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+`
+
+const ForwardArrow = styled(Link)`
+  cursor: pointer;
+  pointer-events: ${props => (props.isLoading ? 'none' : 'inherit')};
+  svg {
+    fill: ${props =>
+      props.index === 0 || props.isLoading ? '#ccc' : '#666666'};
+  }
+`
+
+const BackArrow = styled(Link)`
+  cursor:pointer;
+  margin-right:20px;
+  pointer-events:${props =>
+    props.index === 0 || props.isLoading ? 'none' : 'inherit'}
+  svg{
+    fill:${props =>
+      props.index === 0 || props.isLoading ? '#ccc' : '#666666'};
+  }
+`
+
 const TitleContainer = styled.div`
   width: 76%;
   text-align: center;
@@ -230,7 +265,17 @@ const BlogArticleContent = styled.div`
   }
 `
 
-const BlogPage = ({ width, data, user, match }, props) => {
+const BlogPage = ({
+  data,
+  user,
+  location,
+  index,
+  prevUrl,
+  nextUrl,
+  match,
+  isLoading,
+}) => {
+  console.log('location', location)
   const userName = user && user.user && user.user.name && user.user.name
   const userSlug = user && user.user && user.user.slug && user.user.slug
   const postData = data && data.Post ? data.Post : {}
@@ -253,6 +298,10 @@ const BlogPage = ({ width, data, user, match }, props) => {
     isVideo &&
     postData &&
     postData.content &&
+    postData.content.match(
+      /(?:<iframe[^>]*)(?:(?:\/>)|(?:>.*?<\/iframe>))/,
+      '',
+    ) &&
     postData.content
       .match(/(?:<iframe[^>]*)(?:(?:\/>)|(?:>.*?<\/iframe>))/, '')
       .toString()
@@ -263,20 +312,64 @@ const BlogPage = ({ width, data, user, match }, props) => {
     <React.Fragment>
       <Container>
         <Heading>
+          <PagingArrows>
+            <BackArrow
+              index={index}
+              isLoading={isLoading}
+              to={{
+                pathname: `/blog/${match.params.category}/${prevUrl}`,
+                state: {
+                  prevPath: location.state.prevPath,
+                  category: match.params.category,
+                  authorId: user && user.user && user.user.id,
+                },
+              }}
+            >
+              <Back fill="#666666" width={20} height={20} />
+            </BackArrow>
+            <ForwardArrow
+              isLoading={isLoading}
+              to={{
+                pathname: `/blog/${match.params.category}/${nextUrl}`,
+                state: {
+                  prevPath: location.state.prevPath,
+                  category: match.params.category,
+                  authorId: user && user.user && user.user.id,
+                },
+              }}
+            >
+              <Forward fill="#666666" width={20} height={20} />
+            </ForwardArrow>
+          </PagingArrows>
           <TitleContainer>
             <BlogTitle dangerouslySetInnerHTML={{ __html: postData.title }} />
             <BlogSubTitle
               dangerouslySetInnerHTML={{ __html: postData.excerpt }}
             />
-            <MobileAuthorContainer />
+            <MobileAuthorContainer>
+              {/* <span>
+              {'By '}
+              <Author>{blogPageData.blogPostData.author}</Author>
+              {' - '}
+              {blogPageData.blogPostData.time}
+              {' Hour Ago'}
+            </span> */}
+            </MobileAuthorContainer>
           </TitleContainer>
         </Heading>
 
         {isVideo && Video ? (
-          <BlogPageVideo dangerouslySetInnerHTML={{ __html: Video && Video }} />
+          !isLoading ? (
+            <BlogPageVideo
+              dangerouslySetInnerHTML={{ __html: Video && Video }}
+            />
+          ) : (
+            ''
+          )
         ) : (
           <BlogPageImg id={postData.featured_media} />
         )}
+
         <BlogContent>
           <PostContentHeading
             date={postData.date}
@@ -292,17 +385,44 @@ const BlogPage = ({ width, data, user, match }, props) => {
               dangerouslySetInnerHTML={{ __html: postData.content }}
             />
           )}
+          {/* <BlogArticle /> */}
         </BlogContent>
+
+        {/* {postData.tags && postData.tags.map(id => <Tag key={id} id={id} />)} */}
         <TagsContainer>
           {postData.tags && postData.tags.map(id => <Tag key={id} id={id} />)}
         </TagsContainer>
         <DisqusContainer>
           <ReactDisqusComments
+            // shortname="mixtapemadnessuk"
             shortname="//mixtapemadnessuk.disqus.com/embed.js"
+            // identifier="/blog/news/dj-semtex-announces-leaving-bbc-1xtra-15-years"
             identifier={window.location.pathname}
+            // title="Example Thread"
             url={window.location.href}
+            // url="http://mixtape.vobi.io/blog/news/dj-semtex-announces-leaving-bbc-1xtra-15-years"
+            // category_id="10431"
+            // onNewComment={this.handleNewComment}
           />
         </DisqusContainer>
+        {/* <Header bottomBorder />
+    {data.getPosts && data.getPosts.length > 0 ? (
+      <BlogPost data={data.getPosts[0]} />
+    ) : (
+        ''
+      )}
+    {width > 450 && (
+      <VideoContainer>
+        <YouTubeVideo url={blogPageData.video} />
+      </VideoContainer>
+    )}
+    <TagsContainer>
+      {data.getPosts && data.getPosts.length > 0
+        ? data.getPosts[0].tags.map(item => (
+          <Tag key={item.id}>{item.name}</Tag>
+        ))
+        : ''}
+     */}
         <YouMayLike />
       </Container>
     </React.Fragment>

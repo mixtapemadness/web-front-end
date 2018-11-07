@@ -1,9 +1,8 @@
 /* eslint object-curly-newline: 0 */
 /* eslint no-unneeded-ternary: 0 */
 /* eslint no-unused-vars: 0 */
-/* eslint operator-linebreak: 0 */
-/* eslint consistent-return: 0 */
 /* eslint implicit-arrow-linebreak: 0 */
+/* eslint operator-linebreak: 0 */
 
 import {
   compose,
@@ -14,17 +13,14 @@ import {
 } from 'recompose'
 import { withRouter } from 'react-router-dom'
 import getPostBySlug from 'graphql/getPostBySlug.graphql'
-import getPosts from 'graphql/getPosts.graphql'
-import getPostsByAuthorId from 'graphql/getPostsByAuthorId.graphql'
 import { loadDataAsync, withUser } from 'hocs'
-import { redirect } from 'helpers'
-import { CLOSE_SEARCH } from 'constants'
-
-import getEmitter from '../../eventEmitter'
-
-const eventEmitter = getEmitter()
+import getNextPost from 'graphql/getNextPost.graphql'
+import getPreviousPost from 'graphql/getPreviousPost.graphql'
+import getPrevPostByAuthorId from 'graphql/getPrevPostByAuthorId.graphql'
+import getNextPostByAuthorId from 'graphql/getNextPostByAuthorId.graphql'
 
 export default compose(
+  withRouter,
   loadDataAsync({
     query: getPostBySlug,
     config: {
@@ -35,135 +31,162 @@ export default compose(
       }),
     },
   }),
-  withRouter,
   withStateHandlers(
     () => ({
-      page: 1,
-      perPage: 9,
+      width: window.innerWidth,
+      fetchPrev: false,
+      fetchNext: false,
+      date: '',
+      category: '',
     }),
     {
-      handlePage: () => () => {},
-      handlePerPage: ({ perPage }) => () => {
-        console.log('perPage', perPage)
-        return { perPage: perPage + 9 }
-      },
+      updateWidth: () => () => ({ width: window.innerWidth }),
+      handlePrev: ({ fetchPrev }) => date => ({ fetchPrev: true, date }),
+      handleNext: ({ fetchNext }) => date => ({ fetchNext: true, date }),
     },
   ),
+  branch(
+    ({ location }) =>
+      location &&
+      location.state &&
+      location.state.prevPath &&
+      location.state.prevPath.split('/')[1] === 'author'
+        ? true
+        : false,
+    loadDataAsync({
+      query: getNextPostByAuthorId,
+      name: 'getNextPostByAuthorId',
+      config: {
+        options: props => ({
+          variables: {
+            page: 1,
+            perPage: 1,
+            date:
+              props.data &&
+              props.data.Post &&
+              props.data.Post.date &&
+              props.data.Post.date,
+            id:
+              props.location.state.prevPath.authorId &&
+              props.location.state.prevPath.authorId,
+          },
+        }),
+      },
+    }),
+    loadDataAsync({
+      query: getNextPost,
+      name: 'getNextPost',
+      config: {
+        options: props => ({
+          variables: {
+            page: 1,
+            perPage: 1,
+            date:
+              props.data &&
+              props.data.Post &&
+              props.data.Post.date &&
+              props.data.Post.date,
+            filter: { categories: props.match.params.category.toUpperCase() },
+          },
+        }),
+      },
+    }),
+  ),
+
+  branch(
+    ({ location }) =>
+      location &&
+      location.state &&
+      location.state.prevPath &&
+      location.state.prevPath.split('/')[1] === 'author'
+        ? true
+        : false,
+    loadDataAsync({
+      query: getPrevPostByAuthorId,
+      name: 'getPrevPostByAuthorId',
+      config: {
+        options: props => ({
+          variables: {
+            page: 2,
+            perPage: 1,
+            date:
+              props.data &&
+              props.data.Post &&
+              props.data.Post.date &&
+              props.data.Post.date,
+            id:
+              props.location.state.prevPath.authorId &&
+              props.location.state.prevPath.authorId,
+          },
+        }),
+      },
+    }),
+    loadDataAsync({
+      query: getPreviousPost,
+      name: 'getPrevPost',
+      config: {
+        options: props => ({
+          variables: {
+            page: 2,
+            perPage: 1,
+            date:
+              props.data &&
+              props.data.Post &&
+              props.data.Post.date &&
+              props.data.Post.date,
+            filter: { categories: props.match.params.category.toUpperCase() },
+          },
+        }),
+      },
+    }),
+  ),
+  withProps(props => console.log('პროპსისგოდ', props)),
+  branch(
+    ({ location }) =>
+      location &&
+      location.state &&
+      location.state.prevPath &&
+      location.state.prevPath.split('/')[1] === 'author'
+        ? true
+        : false,
+    withProps(props => ({
+      nextRoute:
+        props.getNextPostByAuthorId &&
+        props.getNextPostByAuthorId.getNextPostByAuthorId &&
+        props.getNextPostByAuthorId.getNextPostByAuthorId.slug,
+      prevRoute:
+        props.getPrevPostByAuthorId &&
+        props.getPrevPostByAuthorId.getPrevPostByAuthorId &&
+        props.getPrevPostByAuthorId.getPrevPostByAuthorId[0] &&
+        props.getPrevPostByAuthorId.getPrevPostByAuthorId[0].slug,
+    })),
+    withProps(props => ({
+      nextRoute:
+        props.getNextPost &&
+        props.getNextPost.getNextPost &&
+        props.getNextPost.getNextPost.slug,
+      prevRoute:
+        props.getPrevPost &&
+        props.getPrevPost.getPrevPost &&
+        props.getPrevPost.getPrevPost[0] &&
+        props.getPrevPost.getPrevPost[0].slug,
+    })),
+  ),
+
   lifecycle({
     componentDidMount() {
-      eventEmitter.emit(CLOSE_SEARCH)
       window.scrollTo(0, 0)
       window.addEventListener('resize', this.props.updateWidth)
     },
-    componentWillReceiveProps(nextProps) {
-      if (
-        nextProps &&
-        nextProps.PostsByAuthor &&
-        nextProps.PostsByAuthor.posts &&
-        this.props.PostsByAuthor &&
-        this.props.PostsByAuthor.posts &&
-        nextProps.PostsByAuthor.posts.length ===
-          this.props.PostsByAuthor.posts.length
-      ) {
-        window.scrollTo(0, 0)
-      }
+    componentDidUpdate(prevProps, prevState) {
+      window.scrollTo(0, 0)
     },
     componentWillUnmount() {
       window.removeEventListener('resize', this.props.updateWidth)
     },
   }),
-
   branch(
     ({ data }) => (data && data.Post && data.Post.author ? true : false),
     withUser,
   ),
-  branch(
-    props =>
-      props.location &&
-      props.location.state &&
-      props.location.state.prevPath &&
-      props.location.state.prevPath.split('/')[1] === 'author'
-        ? true
-        : false,
-    loadDataAsync({
-      query: getPostsByAuthorId,
-      name: 'PostsByAuthor',
-      config: {
-        options: props => ({
-          variables: {
-            id: props.location.state.authorId,
-            page: 1,
-            perPage: props.perPage,
-          },
-        }),
-      },
-    }),
-    loadDataAsync({
-      query: getPosts,
-      name: 'PostsByCategory',
-      config: {
-        options: props => ({
-          variables: {
-            page: 1,
-            perPage: props.perPage,
-            filter: {
-              categories: props.location.state.category.toUpperCase(),
-            },
-          },
-        }),
-      },
-    }),
-  ),
-  branch(
-    props =>
-      props.PostsByAuthor &&
-      props.PostsByAuthor.posts &&
-      props.PostsByAuthor.posts.length === props.perPage
-        ? true
-        : false,
-    withProps(props => {
-      eventEmitter.emit(CLOSE_SEARCH)
-      if (props.PostsByAuthor && props.PostsByAuthor.posts) {
-        const arrOfSlugs = props.PostsByAuthor.posts.map(item => item.slug)
-        const index = arrOfSlugs.indexOf(props.match.params.slug)
-        if (index === -1 || index >= arrOfSlugs.length - 3) {
-          props.handlePerPage()
-        } else {
-          const nextUrl = arrOfSlugs[index + 1]
-          const prevUrl = arrOfSlugs[index - 1]
-          return { nextUrl, prevUrl, index }
-        }
-      }
-    }),
-  ),
-  branch(
-    props =>
-      props.PostsByCategory &&
-      props.PostsByCategory.Posts &&
-      props.PostsByCategory.Posts.length === props.perPage
-        ? true
-        : false,
-    withProps(props => {
-      // eventEmitter.emit(CLOSE_SEARCH)
-      if (props.PostsByCategory && props.PostsByCategory.Posts) {
-        const arrOfSlugs = props.PostsByCategory.Posts.map(item => item.slug)
-        const index = arrOfSlugs.indexOf(props.match.params.slug)
-        console.log('index', index)
-        if (index === -1 || index >= arrOfSlugs.length - 3) {
-          console.log('arrOfSlugs', arrOfSlugs)
-          props.handlePerPage()
-        } else {
-          const nextUrl = arrOfSlugs[index + 1]
-          const prevUrl = arrOfSlugs[index - 1]
-          return { nextUrl, prevUrl, index }
-        }
-      }
-    }),
-  ),
-  withProps(props => {
-    if (props.location.state.prevPath.split('/')[1] === 'author') {
-      return { isLoading: props.PostsByAuthor.loading }
-    }
-    return { isLoading: props.PostsByCategory.loading }
-  }),
 )

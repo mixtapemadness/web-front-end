@@ -4,8 +4,7 @@
 /* eslint indent: 0 */
 /* eslint object-curly-newline: 0 */
 /* eslint no-unneeded-ternary: 0 */
-/* eslint no-nested-ternary: 0 */
-/*  eslint implicit-arrow-linebreak: 0 */
+/* eslint implicit-arrow-linebreak: 0 */
 
 import React from 'react'
 import styled from 'styled-components'
@@ -13,7 +12,6 @@ import ReactDisqusComments from 'react-disqus-comments'
 import YouMayLike from 'components/youMayLike'
 import Forward from 'resources/assets/svgComponents/Forward'
 import Back from 'resources/assets/svgComponents/Back'
-
 import { Link } from 'react-router-dom'
 import blogPageEnhancer from './blogPageEnhancer'
 import BlogPageImg from './blogPageImg'
@@ -32,9 +30,9 @@ const Heading = styled.div`
   max-width: 1200px;
   margin: auto;
   display: flex;
+  justify-content: center;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   margin-top: 40px;
 `
 
@@ -46,21 +44,20 @@ const PagingArrows = styled.div`
 
 const ForwardArrow = styled(Link)`
   cursor: pointer;
-  pointer-events: ${props => (props.isLoading ? 'none' : 'inherit')};
-  svg {
+  /* pointer-events: ${props => (props.isLoading ? 'none' : 'inherit')}; */
+  /* svg {
     fill: ${props =>
       props.index === 0 || props.isLoading ? '#ccc' : '#666666'};
-  }
+  } */
 `
-
 const BackArrow = styled(Link)`
   cursor:pointer;
   margin-right:20px;
   pointer-events:${props =>
-    props.index === 0 || props.isLoading ? 'none' : 'inherit'}
+    props.index === 0 || props.isDisabled ? 'none' : 'inherit'}
   svg{
     fill:${props =>
-      props.index === 0 || props.isLoading ? '#ccc' : '#666666'};
+      props.index === 0 || props.isDisabled ? '#ccc' : '#666666'};
   }
 `
 
@@ -266,16 +263,14 @@ const BlogArticleContent = styled.div`
 `
 
 const BlogPage = ({
+  width,
   data,
   user,
-  location,
-  index,
-  prevUrl,
-  nextUrl,
   match,
-  isLoading,
+  nextRoute,
+  prevRoute,
+  location,
 }) => {
-  console.log('location', location)
   const userName = user && user.user && user.user.name && user.user.name
   const userSlug = user && user.user && user.user.slug && user.user.slug
   const postData = data && data.Post ? data.Post : {}
@@ -285,6 +280,7 @@ const BlogPage = ({
   const isVideoArr =
     categories && categories.filter(item => parseInt(item, 10) === 15)
   const isVideo = isVideoArr && isVideoArr.length > 0 ? true : false
+  const PostDate = data && data.Post && data.Post.date && data.Post.date
 
   const Content =
     isVideo &&
@@ -298,78 +294,72 @@ const BlogPage = ({
     isVideo &&
     postData &&
     postData.content &&
-    postData.content.match(
-      /(?:<iframe[^>]*)(?:(?:\/>)|(?:>.*?<\/iframe>))/,
-      '',
-    ) &&
     postData.content
       .match(/(?:<iframe[^>]*)(?:(?:\/>)|(?:>.*?<\/iframe>))/, '')
       .toString()
       .replace('iframe', 'embed')
   // cons HasVideo = Video.
-
+  const disablePrev = !prevRoute
   return (
     <React.Fragment>
+      {console.log('prevRoute', prevRoute)}
+      {console.log('nextRoute', nextRoute)}
       <Container>
         <Heading>
           <PagingArrows>
             <BackArrow
-              index={index}
-              isLoading={isLoading}
+              isDisabled={disablePrev}
               to={{
-                pathname: `/blog/${match.params.category}/${prevUrl}`,
+                pathname: `/blog/${match.params.category}/${prevRoute &&
+                  prevRoute}`,
                 state: {
-                  prevPath: location.state.prevPath,
-                  category: match.params.category,
-                  authorId: user && user.user && user.user.id,
+                  prevPath:
+                    location.state && location.state.prevPath
+                      ? location.state.prevPath
+                      : window.location.pathname,
+                  authorId:
+                    location.state && location.state.authorId
+                      ? location.state.authorId
+                      : window.location.pathname,
                 },
               }}
             >
               <Back fill="#666666" width={20} height={20} />
             </BackArrow>
             <ForwardArrow
-              isLoading={isLoading}
               to={{
-                pathname: `/blog/${match.params.category}/${nextUrl}`,
+                pathname: `/blog/${match.params.category}/${nextRoute &&
+                  nextRoute}`,
                 state: {
-                  prevPath: location.state.prevPath,
-                  category: match.params.category,
-                  authorId: user && user.user && user.user.id,
+                  prevPath:
+                    location.state && location.state.prevPath
+                      ? location.state.prevPath
+                      : window.location.pathname,
+                  authorId:
+                    location.state &&
+                    location.state.authorId &&
+                    location.state.authorId,
                 },
               }}
             >
               <Forward fill="#666666" width={20} height={20} />
             </ForwardArrow>
           </PagingArrows>
+
           <TitleContainer>
             <BlogTitle dangerouslySetInnerHTML={{ __html: postData.title }} />
             <BlogSubTitle
               dangerouslySetInnerHTML={{ __html: postData.excerpt }}
             />
-            <MobileAuthorContainer>
-              {/* <span>
-              {'By '}
-              <Author>{blogPageData.blogPostData.author}</Author>
-              {' - '}
-              {blogPageData.blogPostData.time}
-              {' Hour Ago'}
-            </span> */}
-            </MobileAuthorContainer>
+            <MobileAuthorContainer />
           </TitleContainer>
         </Heading>
 
         {isVideo && Video ? (
-          !isLoading ? (
-            <BlogPageVideo
-              dangerouslySetInnerHTML={{ __html: Video && Video }}
-            />
-          ) : (
-            ''
-          )
+          <BlogPageVideo dangerouslySetInnerHTML={{ __html: Video && Video }} />
         ) : (
           <BlogPageImg id={postData.featured_media} />
         )}
-
         <BlogContent>
           <PostContentHeading
             date={postData.date}
@@ -385,44 +375,17 @@ const BlogPage = ({
               dangerouslySetInnerHTML={{ __html: postData.content }}
             />
           )}
-          {/* <BlogArticle /> */}
         </BlogContent>
-
-        {/* {postData.tags && postData.tags.map(id => <Tag key={id} id={id} />)} */}
         <TagsContainer>
           {postData.tags && postData.tags.map(id => <Tag key={id} id={id} />)}
         </TagsContainer>
         <DisqusContainer>
           <ReactDisqusComments
-            // shortname="mixtapemadnessuk"
             shortname="//mixtapemadnessuk.disqus.com/embed.js"
-            // identifier="/blog/news/dj-semtex-announces-leaving-bbc-1xtra-15-years"
             identifier={window.location.pathname}
-            // title="Example Thread"
             url={window.location.href}
-            // url="http://mixtape.vobi.io/blog/news/dj-semtex-announces-leaving-bbc-1xtra-15-years"
-            // category_id="10431"
-            // onNewComment={this.handleNewComment}
           />
         </DisqusContainer>
-        {/* <Header bottomBorder />
-    {data.getPosts && data.getPosts.length > 0 ? (
-      <BlogPost data={data.getPosts[0]} />
-    ) : (
-        ''
-      )}
-    {width > 450 && (
-      <VideoContainer>
-        <YouTubeVideo url={blogPageData.video} />
-      </VideoContainer>
-    )}
-    <TagsContainer>
-      {data.getPosts && data.getPosts.length > 0
-        ? data.getPosts[0].tags.map(item => (
-          <Tag key={item.id}>{item.name}</Tag>
-        ))
-        : ''}
-     */}
         <YouMayLike />
       </Container>
     </React.Fragment>

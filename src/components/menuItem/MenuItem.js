@@ -128,23 +128,18 @@ const MenuItem = ({ data, media, category, tags }) => {
   const categorySlug =
     category &&
     category.category &&
+    category.category &&
     category.category[0] &&
-    category.category[0].slug &&
-    category.category[0].slug
+    category.category[0].id &&
+    category.category[0].name
 
   const tagsData = tags && tags.tags && tags.tags
 
   return (
     <Container>
-      {console.log('categorySlug', categorySlug)}
       <MenuItemPhoto
-        to={{
-          pathname: `/blog/${categorySlug && categorySlug}/${data.slug}`,
-          state: {
-            prevPath: window.location.pathname,
-            category: categorySlug,
-          },
-        }}
+        to={`/blog/${categorySlug && categorySlug}/${data.slug}`}
+        onClick={() => eventEmitter.emit(CLOSE_MEGAMENU)}
         src={Image && Image}
       />
       <ContentContainer>
@@ -159,19 +154,15 @@ const MenuItem = ({ data, media, category, tags }) => {
 
             ))} */}
           <Category
-            to={`/blog/category/${categorySlug && categorySlug}`}
+            to={`/blog/${categorySlug && categorySlug}/${data.slug}`}
             color={'#4f4f4f'}
             dangerouslySetInnerHTML={{ __html: categorySlug && categorySlug }}
+            onClick={() => eventEmitter.emit(CLOSE_MEGAMENU)}
           />
           <Type dangerouslySetInnerHTML={{ __html: data.type }} />
           <PostTitle
-            to={{
-              pathname: `/blog/${categorySlug && categorySlug}/${data.slug}`,
-              state: {
-                prevPath: window.location.pathname,
-                category: categorySlug,
-              },
-            }}
+            to={`/blog/${categorySlug && categorySlug}/${data.slug}`}
+            onClick={() => eventEmitter.emit(CLOSE_MEGAMENU)}
             dangerouslySetInnerHTML={{ __html: data.title }}
           />
           {/* <Title dangerouslySetInnerHTML={{ __html: data.title }} /> */}
@@ -188,13 +179,8 @@ const MenuItem = ({ data, media, category, tags }) => {
         </ContentContainerTop>
         <ContinueRead
           color={'#ffffff'}
-          to={{
-            pathname: `/blog/${categorySlug && categorySlug}/${data.slug}`,
-            state: {
-              prevPath: window.location.pathname,
-              category: categorySlug,
-            },
-          }}
+          to={`/blog/${categorySlug && categorySlug}/${data.slug}`}
+          onClick={() => eventEmitter.emit(CLOSE_MEGAMENU)}
         >
           Continue Read
         </ContinueRead>

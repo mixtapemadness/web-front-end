@@ -221,7 +221,7 @@ const Categories = ({ data }) => {
   return newData
 }
 
-const PostItem = ({ media, category, user, data, match }) => {
+const PostItem = ({ media, category, user, data }) => {
   const Image =
     media && media.img && media.img.featured_image && media.img.featured_image
   const FullImage = media && media.img && media.img.full && media.img.full
@@ -238,7 +238,6 @@ const PostItem = ({ media, category, user, data, match }) => {
               pathname: `/blog/${CategoriesData[0].slug}/${data.slug}`,
               state: {
                 prevPath: window.location.pathname,
-                category: CategoriesData[0].slug,
                 authorId: User && User.id,
               },
             }}
@@ -263,7 +262,6 @@ const PostItem = ({ media, category, user, data, match }) => {
                   pathname: `/blog/${CategoriesData[0].slug}/${data.slug}`,
                   state: {
                     prevPath: window.location.pathname,
-                    category: CategoriesData[0].slug,
                     authorId: User && User.id,
                   },
                 }}
@@ -304,7 +302,6 @@ const PostItem = ({ media, category, user, data, match }) => {
                     pathname: `/blog/${CategoriesData[0].slug}/${data.slug}`,
                     state: {
                       prevPath: window.location.pathname,
-                      category: CategoriesData[0].slug,
                       authorId: User && User.id,
                     },
                   }}

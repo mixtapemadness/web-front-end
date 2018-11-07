@@ -5,7 +5,7 @@ import React from 'react'
 import { compose, withStateHandlers, lifecycle, withHandlers } from 'recompose'
 
 import Header from 'components/header'
-import { CLOSE_MEGAMENU, CLOSE_SEARCH } from 'constants'
+import { CLOSE_MEGAMENU } from 'constants'
 import ReactGA from 'react-ga'
 import AppContent from './AppContent'
 import getEmitter from './eventEmitter'
@@ -34,12 +34,10 @@ export default compose(
       menuOpened: false,
     }),
     {
-      toggleSearch: ({ searchOpened }) => action => {
-        if (action === 'close') {
-          return { searchOpened: false }
-        }
-        return { searchOpened: !searchOpened }
-      },
+      toggleSearch: ({ searchOpened }) => () => ({
+        searchOpened: !searchOpened,
+      }),
+
       toggleMenu: ({ menuOpened }) => action => {
         if (action === 'close') {
           return { menuOpened: false }
@@ -55,9 +53,6 @@ export default compose(
       ReactGA.pageview(window.location.pathname + window.location.search)
       eventEmitter.addListener(CLOSE_MEGAMENU, () =>
         this.props.toggleMenu('close'),
-      )
-      eventEmitter.addListener(CLOSE_SEARCH, () =>
-        this.props.toggleSearch('close'),
       )
     },
   }),

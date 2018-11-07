@@ -4,7 +4,6 @@
 
 import { compose, withStateHandlers, lifecycle, branch } from 'recompose'
 import { withCategory, withMedia, withUser } from 'hocs'
-import { withRouter } from 'react-router-dom'
 // import getCategoryById from 'graphql/getCategoryById.graphql'
 
 export default compose(
@@ -16,7 +15,6 @@ export default compose(
       updateWidth: () => () => ({ width: window.innerWidth }),
     },
   ),
-  withRouter,
   lifecycle({
     componentDidMount() {
       window.addEventListener('resize', this.props.updateWidth)

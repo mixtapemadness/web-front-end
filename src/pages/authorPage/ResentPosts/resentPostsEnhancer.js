@@ -3,13 +3,7 @@
 /* eslint object-curly-newline: 0 */
 /* eslint no-unneeded-ternary: 0 */
 
-import {
-  compose,
-  withStateHandlers,
-  lifecycle,
-  branch,
-  withProps,
-} from 'recompose'
+import { compose, withStateHandlers, lifecycle, branch } from 'recompose'
 import { withRouter } from 'react-router-dom'
 import getPostsByAuthorId from 'graphql/getPostsByAuthorId.graphql'
 import { loadDataAsync, withCount } from 'hocs'
@@ -18,10 +12,10 @@ export default compose(
   withStateHandlers(
     () => ({
       width: window.innerWidth,
-      page: 1,
       perPage: 9,
-      Mobilepage: 1,
+      page: 1,
       perPageMobile: 4,
+      Mobilepage: 1,
     }),
     {
       updateWidth: () => () => ({ width: window.innerWidth }),
@@ -51,12 +45,11 @@ export default compose(
       options: props => ({
         variables: {
           id: props.id,
-          page: props.width > 550 ? props.page : props.page,
+          page: props.width > 550 ? props.page : props.Mobilepage,
           perPage: props.width > 550 ? props.perPage : props.perPageMobile,
         },
       }),
     },
   }),
   branch(({ id }) => (id ? true : false), withCount),
-  withProps(props => console.log('propspropsprops', props)),
 )

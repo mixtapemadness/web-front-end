@@ -111,7 +111,7 @@ const ContinueRead = styled(Link)`
   }
 `
 
-const searchedItem = ({ data, category, tags, media, color }) => {
+const searchedItem = ({ toggleSearch, data, category, tags, media, color }) => {
   const categoriesData = category && category.category && category.category
   const tagsData = tags && tags.tags && tags.tags
   const Image = media && media.img && media.img.full && media.img.full
@@ -123,14 +123,9 @@ const searchedItem = ({ data, category, tags, media, color }) => {
         categoriesData.length &&
         data && (
           <SearchMedia
-            to={{
-              pathname: `/blog/${categoriesData[0].slug}/${data.slug}`,
-              state: {
-                prevPath: window.location.pathname,
-                category: categoriesData[0].slug,
-              },
-            }}
+            to={`/blog/${categoriesData[0].slug}/${data.slug}`}
             img={Image}
+            onClick={() => toggleSearch()}
           />
         )}
       <ContentContainer>
@@ -139,14 +134,9 @@ const searchedItem = ({ data, category, tags, media, color }) => {
           data && (
             <Title
               color={color}
-              to={{
-                pathname: `/blog/${categoriesData[0].slug}/${data.slug}`,
-                state: {
-                  prevPath: window.location.pathname,
-                  category: categoriesData[0].slug,
-                },
-              }}
+              to={`/blog/${categoriesData[0].slug}/${data.slug}`}
               dangerouslySetInnerHTML={{ __html: data.title }}
+              onClick={() => toggleSearch()}
             />
           )}
         <ContentContainerBottom>
@@ -159,13 +149,8 @@ const searchedItem = ({ data, category, tags, media, color }) => {
             data && (
               <ContinueRead
                 color={color}
-                to={{
-                  pathname: `/blog/${categoriesData[0].slug}/${data.slug}`,
-                  state: {
-                    prevPath: window.location.pathname,
-                    category: categoriesData[0].slug,
-                  },
-                }}
+                to={`/blog/${categoriesData[0].slug}/${data.slug}`}
+                onClick={() => toggleSearch()}
               >
                 Continue Reading
               </ContinueRead>

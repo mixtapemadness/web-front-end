@@ -1,0 +1,10 @@
+query getPrevPost(
+  $date: String
+  $filter: filterPostInput
+  $page: ID
+  $perPage: ID
+) {
+  getPrevPost(date: $date, filter: $filter, page: $page, perPage: $perPage) {
+    slug
+  }
+}

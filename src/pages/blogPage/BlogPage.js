@@ -39,26 +39,55 @@ const Heading = styled.div`
 const PagingArrows = styled.div`
   width: 100%;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
 `
 
 const ForwardArrow = styled(Link)`
+  display:flex;
+  align-items:center;
+  justify-content:center;
   cursor: pointer;
   /* pointer-events: ${props => (props.isLoading ? 'none' : 'inherit')}; */
   /* svg {
     fill: ${props =>
       props.index === 0 || props.isLoading ? '#ccc' : '#666666'};
   } */
-`
-const BackArrow = styled(Link)`
-  cursor:pointer;
-  margin-right:20px;
-  pointer-events:${props =>
-    props.index === 0 || props.isDisabled ? 'none' : 'inherit'}
   svg{
-    fill:${props =>
+    transition:0.3s
+  }
+  &:hover{
+    color: #ffa019;
+      svg {
+        fill: #ffa019
+    }
+  }
+`
+
+const BackArrow = styled(Link)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin-right: 20px;
+  transition: 0.3s;
+  pointer-events: ${props =>
+      props.index === 0 || props.isDisabled ? 'none' : 'inherit'}
+    svg {
+    transition: 0.3s;
+    fill: ${props =>
       props.index === 0 || props.isDisabled ? '#ccc' : '#666666'};
   }
+  &:hover {
+    color: #ffa019;
+    svg {
+      fill: #ffa019;
+    }
+  }
+`
+
+const ArrowText = styled.div`
+  margin: 0 10px;
+  font-size: 14px;
 `
 
 const TitleContainer = styled.div`
@@ -302,8 +331,6 @@ const BlogPage = ({
   const disablePrev = !prevRoute
   return (
     <React.Fragment>
-      {console.log('prevRoute', prevRoute)}
-      {console.log('nextRoute', nextRoute)}
       <Container>
         <Heading>
           <PagingArrows>
@@ -325,6 +352,7 @@ const BlogPage = ({
               }}
             >
               <Back fill="#666666" width={20} height={20} />
+              <ArrowText>Previous post</ArrowText>
             </BackArrow>
             <ForwardArrow
               to={{
@@ -342,6 +370,7 @@ const BlogPage = ({
                 },
               }}
             >
+              <ArrowText> next post</ArrowText>
               <Forward fill="#666666" width={20} height={20} />
             </ForwardArrow>
           </PagingArrows>

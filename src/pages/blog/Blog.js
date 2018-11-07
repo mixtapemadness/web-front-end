@@ -61,6 +61,7 @@ const ShowMore = styled.div`
   position: relative;
   margin-top: 50px;
   transition: 0.4s;
+  pointer-events:${props => (props.isMoreData ? 'inherit' : 'none')}
   &:after {
     content: '';
     width: 0%;
@@ -96,7 +97,16 @@ const PostItemT = (item, index) => {
 const PostItems = ({ items }) =>
   items.map((item, index) => PostItemT(item, index))
 
-const Blog = ({ Posts, data, handleLoadMore, match }) => {
+const Blog = ({
+  Posts,
+  data,
+  page,
+  handleLoadMore,
+  match,
+  count,
+  isMoreData,
+}) => {
+  const postCount = count && count.count && count.count.count
   const Data = data.Posts && data.Posts.length > 0 && data.Posts
   return (
     <NewsContainer>
@@ -104,12 +114,14 @@ const Blog = ({ Posts, data, handleLoadMore, match }) => {
         <BlogSlider />
         <BlogFilter match={match} />
         <PostsContainer>
-          {data.loading && [...Array(8)].map(i => <CardLoader />)}
+          {data.loading && [...Array(9)].map(i => <CardLoader />)}
           {!data.loading && (Data && <PostItems items={Data} />)}
         </PostsContainer>
       </div>
       <ShowMoreContainer>
-        <ShowMore onClick={handleLoadMore}>More {match.params.filter}</ShowMore>
+        <ShowMore isMoreData={isMoreData} onClick={handleLoadMore}>
+          More {match.params.filter} {isMoreData ? '+' : '-'}
+        </ShowMore>
       </ShowMoreContainer>
     </NewsContainer>
   )

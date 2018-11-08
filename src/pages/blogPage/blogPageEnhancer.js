@@ -107,7 +107,7 @@ export default compose(
       config: {
         options: props => ({
           variables: {
-            page: 2,
+            page: 1,
             perPage: 1,
             date:
               props.data &&
@@ -127,7 +127,7 @@ export default compose(
       config: {
         options: props => ({
           variables: {
-            page: 2,
+            page: 1,
             perPage: 1,
             date:
               props.data &&
@@ -140,7 +140,6 @@ export default compose(
       },
     }),
   ),
-  withProps(props => console.log('პროპსისგოდ', props)),
   branch(
     ({ location }) =>
       location &&

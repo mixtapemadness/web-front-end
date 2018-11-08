@@ -115,6 +115,7 @@ const Blog = ({
         <BlogFilter match={match} />
         <PostsContainer>
           {data.loading && [...Array(9)].map(i => <CardLoader />)}
+          {/* {data.loading && [...Array(3)].map(i => <CardLoader />)} */}
           {!data.loading && (Data && <PostItems items={Data} />)}
         </PostsContainer>
       </div>

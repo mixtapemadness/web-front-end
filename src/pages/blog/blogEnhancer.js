@@ -72,31 +72,21 @@ export default compose(
         },
         updateQuery: (previousResult, { fetchMoreResult }) => ({
           ...previousResult,
-          // Add the new feed data to the end of the old feed data.
           Posts: [...previousResult.Posts, ...fetchMoreResult.Posts],
         }),
       })
     },
   }),
   lifecycle({
+    componentWillReceiveProps(nextProps) {
+      if (nextProps.location.pathname !== this.props.location.pathname) {
+        window.scrollTo(0, 0)
+      }
+    },
     componentDidMount() {
       eventEmitter.emit(CLOSE_MEGAMENU)
       window.scrollTo(0, 0)
       window.addEventListener('resize', this.props.updateWidth)
-    },
-    componentDidUpdate(prevProps, prevState) {
-      // eventEmitter.emit(LOAD_MORE_POSTS)s
-    },
-    componentWillReceiveProps(nextProps) {
-      if (nextProps.perPage === this.props.perPage) {
-        // window.scrollTo(0, 0)
-      }
-      // if (nextProps.page !== this.props.page) {
-      //   this.props.handlePosts(nextProps.data.Posts)
-      // }
-      // if (this.props.data && this.props.data.Posts && this.props.data.Posts.length === 9) {
-      //   this.props.handlePosts(this.props.data.Posts)
-      // }
     },
     componentWillUnmount() {
       window.removeEventListener('resize', this.props.updateWidth)

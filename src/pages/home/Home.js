@@ -5,8 +5,8 @@
 
 import React from 'react'
 import styled from 'styled-components'
-
 import LazyLoad from 'react-lazyload'
+
 import MainSlider from 'components/mainSlider'
 import Footer from 'components/footer'
 import Download from 'components/download'
@@ -14,9 +14,6 @@ import Subscribe from 'components/subscribe'
 import Videos from 'components/videos'
 import SliderPhoto from 'resources/assets/img/Live-Music.jpg'
 import SliderPhotoSecond from 'resources/assets/img/music.jpg'
-import Musician from 'resources/assets/img/musician1.png'
-import Musician1 from 'resources/assets/img/2pac.jpg'
-import Musician2 from 'resources/assets/img/eminem.jpg'
 import WhatsOn from './whatsOn'
 import Interviews from './interviews'
 import Posts from './posts'
@@ -61,26 +58,29 @@ const Home = ({ sliderData }) => (
   <Container>
     {sliderData &&
       sliderData.Posts && (
-        <LazyLoad once offset={100}>
-          {' '}
-          <MainSlider data={sliderData.Posts} />{' '}
+        <LazyLoad once offsetVertical={0}>
+          <MainSlider data={sliderData.Posts} />
         </LazyLoad>
       )}
     <Posts />
-    <LazyLoad once>
+    <LazyLoad once offset={0}>
       <Interviews />
     </LazyLoad>
-    <Download />
-    <LazyLoad once offset={100}>
+    <LazyLoad once offset={0}>
+      <Download />
+    </LazyLoad>
+    <LazyLoad once offset={50}>
       <WhatsOn />
     </LazyLoad>
-    <SubscribeContainer>
-      <Subscribe />
-    </SubscribeContainer>
-    <LazyLoad once offset={100}>
+    <LazyLoad once offset={50}>
+      <SubscribeContainer>
+        <Subscribe />
+      </SubscribeContainer>
+    </LazyLoad>
+    <LazyLoad once offset={50}>
       <Reviews />
     </LazyLoad>
-    <LazyLoad once offset={100}>
+    <LazyLoad once offset={50}>
       <Videos />
     </LazyLoad>
   </Container>

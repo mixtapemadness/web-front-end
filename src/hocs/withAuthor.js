@@ -1,12 +1,12 @@
 /*  eslint operator-linebreak: 0 */
 
 import { compose } from 'recompose'
-import getUserById from 'graphql/getUserById.graphql'
+import getAuthorById from 'graphql/getAuthorById.graphql'
 import loadDataAsync from './loadDataAsync'
 
-const withUser = compose(
+const withAuthor = compose(
   loadDataAsync({
-    query: getUserById,
+    query: getAuthorById,
     name: 'user',
     config: {
       options: props => ({
@@ -20,4 +20,4 @@ const withUser = compose(
   }),
 )
 
-export default withUser
+export default withAuthor

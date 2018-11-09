@@ -2,23 +2,11 @@
 /* eslint object-curly-newline: 0 */
 /* eslint no-unneeded-ternary: 0 */
 
-import getUserBySlug from 'graphql/getUserBySlug.graphql'
+import getAuthorBySlug from 'graphql/getAuthorBySlug.graphql'
 import { compose, withStateHandlers, lifecycle, branch } from 'recompose'
 import { loadDataAsync, withMedia, withTags, withCategory } from 'hocs'
 
 export default compose(
-  // loadDataAsync({
-  //   query: getUserBySlug,
-  //   config: {
-  //     options: props => ({
-  //       variables: {
-  //         id: 20,
-  //         showAuthorBio: false,
-  //       },
-  //     }),
-  //   },
-  // }),
-
   withStateHandlers(
     () => ({
       width: window.innerWidth,

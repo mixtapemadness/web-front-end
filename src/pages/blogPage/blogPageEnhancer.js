@@ -13,7 +13,7 @@ import {
 } from 'recompose'
 import { withRouter } from 'react-router-dom'
 import getPostBySlug from 'graphql/getPostBySlug.graphql'
-import { loadDataAsync, withUser } from 'hocs'
+import { loadDataAsync, withAuthor } from 'hocs'
 import getNextPost from 'graphql/getNextPost.graphql'
 import getPreviousPost from 'graphql/getPreviousPost.graphql'
 import getPrevPostByAuthorId from 'graphql/getPrevPostByAuthorId.graphql'
@@ -186,6 +186,6 @@ export default compose(
   }),
   branch(
     ({ data }) => (data && data.Post && data.Post.author ? true : false),
-    withUser,
+    withAuthor,
   ),
 )

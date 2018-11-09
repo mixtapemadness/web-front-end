@@ -1,7 +1,0 @@
-query getUserById($id:ID) {
- user: getUserById(id:$id) {
-		id
-    name
-    slug
-  }
-}

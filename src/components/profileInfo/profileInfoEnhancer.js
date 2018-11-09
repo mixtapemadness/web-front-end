@@ -1,22 +1,10 @@
 /* eslint no-unused-vars: 0 */
 
 import { compose, withStateHandlers, lifecycle } from 'recompose'
-import getUserBySlug from 'graphql/getUserBySlug.graphql'
+import getAuthorBySlug from 'graphql/getAuthorBySlug.graphql'
 import { loadDataAsync } from 'hocs'
 
 export default compose(
-  // loadDataAsync({
-  //   query: getUserBySlug,
-  //   config: {
-  //     options: props => ({
-  //       variables: {
-  //         id: 20,
-  //         showAuthorBio: false,
-  //       },
-  //     }),
-  //   },
-  // }),
-
   withStateHandlers(
     () => ({
       width: window.innerWidth,

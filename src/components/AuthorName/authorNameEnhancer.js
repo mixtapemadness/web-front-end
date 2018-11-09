@@ -1,7 +1,7 @@
 import { compose, withStateHandlers, lifecycle } from 'recompose'
 
 import { loadDataAsync } from 'hocs'
-import getUserById from 'graphql/getUserById.graphql'
+import getAuthorById from 'graphql/getAuthorById.graphql'
 
 export default compose(
   withStateHandlers(
@@ -21,7 +21,7 @@ export default compose(
     },
   }),
   loadDataAsync({
-    query: getUserById,
+    query: getAuthorById,
     config: {
       options: props => ({
         variables: {

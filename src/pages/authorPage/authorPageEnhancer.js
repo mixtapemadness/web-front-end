@@ -3,7 +3,7 @@
 
 import { compose, withStateHandlers, lifecycle } from 'recompose'
 import { withRouter } from 'react-router-dom'
-import getUserBySlug from 'graphql/getUserBySlug.graphql'
+import getAuthorBySlug from 'graphql/getAuthorBySlug.graphql'
 import { loadDataAsync } from '../../hocs'
 
 export default compose(
@@ -29,7 +29,7 @@ export default compose(
   }),
   withRouter,
   loadDataAsync({
-    query: getUserBySlug,
+    query: getAuthorBySlug,
     config: {
       options: props => ({
         variables: {

@@ -3,7 +3,7 @@
 /* eslint object-curly-newline: 0 */
 
 import { compose, withStateHandlers, lifecycle, branch } from 'recompose'
-import { withCategory, withMedia, withUser } from 'hocs'
+import { withCategory, withMedia, withAuthor } from 'hocs'
 // import getCategoryById from 'graphql/getCategoryById.graphql'
 
 export default compose(
@@ -31,7 +31,7 @@ export default compose(
     ({ data: { featured_media } }) => (featured_media ? true : false),
     withMedia,
   ),
-  branch(({ data }) => (data ? true : false), withUser),
+  branch(({ data }) => (data ? true : false), withAuthor),
 
   // withCategory,
   // withCategory,

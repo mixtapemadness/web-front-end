@@ -1,0 +1,7 @@
+query getAuthorById($id: ID) {
+  user: getAuthorById(id: $id) {
+    id
+    name
+    slug
+  }
+}

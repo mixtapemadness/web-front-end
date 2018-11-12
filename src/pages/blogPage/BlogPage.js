@@ -352,7 +352,7 @@ const BlogPage = ({
               }}
             >
               <Back fill="#666666" width={20} height={20} />
-              <ArrowText>Previous post</ArrowText>
+              <ArrowText>Previous Post</ArrowText>
             </BackArrow>
             <ForwardArrow
               to={{
@@ -370,7 +370,7 @@ const BlogPage = ({
                 },
               }}
             >
-              <ArrowText> next post</ArrowText>
+              <ArrowText> Next Post</ArrowText>
               <Forward fill="#666666" width={20} height={20} />
             </ForwardArrow>
           </PagingArrows>

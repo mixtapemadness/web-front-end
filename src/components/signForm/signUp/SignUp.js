@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 
+import signUpEnhancer from './signUpEnhancer'
+
 const FormContainer = styled.div`
   color: #ffffff;
   font-weight: 600;
@@ -61,15 +63,53 @@ const Button = styled.button`
   outline: none;
   cursor: pointer;
   font-weight: 600;
+  ${p => p.mt && `margin-top: ${p.mt}px`};
+  ${p => p.mr && `margin-right: ${p.mr}px`};
+`
+const FlexDiv = styled.div`
+  display: flex;
+  margin-top: 17px;
 `
 
-const LogIn = () => (
+const SignUp = ({ submitHandler, handleInput, handleRoleChange }) => (
   <FormContainer>
-    <Title>Log in</Title>
-    <Input placeholder="email@example.com" mt={27} />
-    <Input placeholder="Password" type="password" mt={17} />
-    <Button>Log in</Button>
+    <Title>Register</Title>
+    <Input
+      name="name"
+      placeholder="Name"
+      mt={28}
+      onChange={e => handleInput(e)}
+    />
+    <Input
+      name="email"
+      placeholder="email@example.com"
+      mt={16}
+      onChange={e => handleInput(e)}
+    />
+    <FlexDiv>
+      <Button mr={14} onClick={() => handleRoleChange('artist')}>
+        Artist
+      </Button>
+      <Button onClick={() => handleRoleChange('personal')}>Personal</Button>
+    </FlexDiv>
+    <Input
+      name="password"
+      placeholder="Password"
+      type="password"
+      mt={16}
+      onChange={e => handleInput(e)}
+    />
+    <Input
+      name="confirmPassword"
+      placeholder="Confirm Password"
+      type="password"
+      mt={21}
+      onChange={e => handleInput(e)}
+    />
+    <Button mt={17} onClick={() => submitHandler()}>
+      Register
+    </Button>
   </FormContainer>
 )
 
-export default LogIn
+export default signUpEnhancer(SignUp)

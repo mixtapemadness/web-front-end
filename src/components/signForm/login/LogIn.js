@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const FormContainer = styled.div`
+const FormContainer = styled.form`
   color: #ffffff;
   font-weight: 600;
   display: flex;
@@ -61,27 +61,15 @@ const Button = styled.button`
   outline: none;
   cursor: pointer;
   font-weight: 600;
-  ${p => p.mt && `margin-top: ${p.mt}px`};
-  ${p => p.mr && `margin-right: ${p.mr}px`};
-`
-const FlexDiv = styled.div`
-  display: flex;
-  margin-top: 17px;
 `
 
-const Register = () => (
+const LogIn = () => (
   <FormContainer>
-    <Title>Register</Title>
-    <Input placeholder="Name" mt={28} />
-    <Input placeholder="email@example.com" mt={16} />
-    <FlexDiv>
-      <Button mr={14}>Artist</Button>
-      <Button>Personal</Button>
-    </FlexDiv>
-    <Input placeholder="Password" type="password" mt={16} />
-    <Input placeholder="Confirm Password" type="password" mt={21} />
-    <Button mt={17}>Register</Button>
+    <Title>Log in</Title>
+    <Input placeholder="email@example.com" mt={27} />
+    <Input placeholder="Password" type="password" mt={17} />
+    <Button>Log in</Button>
   </FormContainer>
 )
 
-export default Register
+export default LogIn

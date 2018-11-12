@@ -12,7 +12,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
-import LazyLoad from 'react-lazy-load'
+// import LazyLoad from 'react-lazy-load'
 import postItemEnhancer from './postItemEnhancer'
 
 // View

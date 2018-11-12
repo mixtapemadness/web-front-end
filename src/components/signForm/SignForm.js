@@ -2,11 +2,12 @@
 /* eslint operator-linebreak: 0 */
 import React from 'react'
 import styled from 'styled-components'
+import { withRouter } from 'react-router-dom'
 
 import BackgroundImage from 'resources/assets/img/music.jpg'
 
-import LogIn from './LogIn'
-import Register from './Register'
+import LogIn from './login'
+import SignUp from './signUp'
 import NewsLetter from './NewsLetter'
 
 const Div = styled.div`
@@ -100,16 +101,17 @@ const Footer = styled.div`
   }
 `
 
-const SignForm = ({ type }) => (
+const SignForm = ({ match }) => (
   <Div>
     <Container>
       <ContentContainer>
-        {type === 'login' && <LogIn />}
-        {type === 'register' && <Register />}
-        {type === 'newsletter' && <NewsLetter />}
-        {type === 'thanks' && (
+        {match.params.auth === 'login' && <LogIn />}
+        {match.params.auth === 'register' && <SignUp />}
+        {match.params.auth === 'newsletter' && <NewsLetter />}
+        {match.params.auth === 'thanks' && (
           <FormContainer>
             <Title>Thank You For Registering</Title>
+            <p>We have sent you activation link on your email</p>
           </FormContainer>
         )}
         <Footer>
@@ -122,4 +124,4 @@ const SignForm = ({ type }) => (
   </Div>
 )
 
-export default SignForm
+export default withRouter(SignForm)

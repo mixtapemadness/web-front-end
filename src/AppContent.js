@@ -49,11 +49,7 @@ const AppContent = ({ searchOpened, toggleSearch, menuOpened }) => (
         <Route path="/termsconditions" component={TermsAndConditions} />
         <Route path="/privacy" component={PrivacyAndPolicy} />
         <Route path="/searchresult/:category/:key" component={SearchResult} />
-        <Route path="/login" component={() => <SignForm type="login" />} />
-        <Route
-          path="/register"
-          component={() => <SignForm type="register" />}
-        />
+        <Route path="/:auth" component={SignForm} />
       </Switch>
       {menuOpened && <Menu />}
       <Footer />

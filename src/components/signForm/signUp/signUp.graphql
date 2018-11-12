@@ -1,0 +1,19 @@
+mutation signUp(
+  $firstName: String,
+  $lastName: String,
+  $email: String,
+  $password: String,
+  # $phone: String,
+  $role: EnumUserRole
+) {
+  signUp(
+    firstName: $firstName,
+    lastName: $lastName,
+    email: $email,
+    password: $password,
+    # phone: $phone,
+    role: $role
+  ) {
+    accessToken
+  }
+}

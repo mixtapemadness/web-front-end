@@ -11,8 +11,10 @@ import SignalBarsIcon from 'resources/assets/svgComponents/SignalBars'
 import ViewsIcon from 'resources/assets/svgComponents/Views'
 import GetCategory from 'components/getCategory'
 import { CLOSE_MEGAMENU } from 'constants'
+import ReactImageFallback from 'react-image-fallback'
 import menuItemEnhancer from './menuItemEnhancer'
 import eventEmitter from '../../eventEmitter'
+import placeholderImg from '../../resources/assets/img/placeholderImg.jpg'
 
 const Container = styled.div`
   display: flex;
@@ -29,10 +31,11 @@ const Container = styled.div`
 const MenuItemPhoto = styled(Link)`
   width: 260px;
   height: 170px;
-  background-image: url(${p => p.src});
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 `
 
 const Category = styled(Link)`
@@ -138,10 +141,22 @@ const MenuItem = ({ data, media, category, tags }) => {
   return (
     <Container>
       <MenuItemPhoto
-        to={`/blog/${categorySlug && categorySlug}/${data.slug}`}
+        to={{
+          pathname: `/blog/${categorySlug && categorySlug}/${data.slug}`,
+          state: {
+            prevPath: window.location.pathname,
+          },
+        }}
         onClick={() => eventEmitter.emit(CLOSE_MEGAMENU)}
-        src={Image && Image}
-      />
+        // src={Image && Image}
+      >
+        <ReactImageFallback
+          src={Image && Image}
+          fallbackImage={placeholderImg}
+          initialImage={placeholderImg}
+        />
+      </MenuItemPhoto>
+
       <ContentContainer>
         <ContentContainerTop>
           {/* {categories &&

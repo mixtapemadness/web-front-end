@@ -1,10 +1,11 @@
 /* eslint react/jsx-one-expression-per-line: 0 */
 /* eslint operator-linebreak: 0 */
 /* eslint no-unused-vars: 0 */
-
 import React from 'react'
 import styled from 'styled-components'
+import ReactImageFallback from 'react-image-fallback'
 import blogPageImgEnhancer from './blogPageImgEnhancer'
+import placeholderImg from '../../../resources/assets/img/placeholderImg.jpg'
 
 const Container = styled.div`
   width: 100%;
@@ -13,11 +14,25 @@ const Container = styled.div`
   background-position: center center;
   background-size: contain;
   background-repeat: no-repeat;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 `
 
 const BlogPageImg = ({ data }) => {
   const fullImage = data && data.img && data.img.full
-  return <Container src={fullImage} />
+  return (
+    <Container>
+      <ReactImageFallback
+        src={fullImage && fullImage}
+        fallbackImage={placeholderImg}
+        initialImage={placeholderImg}
+      />
+    </Container>
+  )
+  // <Container src={fullImage} />
 }
 
 export default blogPageImgEnhancer(BlogPageImg)

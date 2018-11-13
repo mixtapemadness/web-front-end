@@ -13,7 +13,10 @@ import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import LazyLoad from 'react-lazy-load'
+import ReactImageFallback from 'react-image-fallback'
+import imageExists from 'image-exists'
 import postItemEnhancer from './postItemEnhancer'
+import placeholderImg from '../../resources/assets/img/placeholderImg.jpg'
 
 // View
 // import ViewsIcon from 'resources/assets/svg/eye.svg'
@@ -67,6 +70,11 @@ const Media = styled(Link)`
     &:hover {
       background-size: cover;
     }
+  }
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 `
 
@@ -231,24 +239,25 @@ const PostItem = ({ media, category, user, data }) => {
 
   return (
     <PostItemContainer>
-      {CategoriesData &&
-        data && (
-          <Media
-            to={{
-              pathname: `/blog/${CategoriesData[0].slug}/${data.slug}`,
-              state: {
-                prevPath: window.location.pathname,
-                authorId: User && User.id,
-              },
-            }}
-            img={Image && Image}
-          />
-          // <Media to={`/blog/${CategoriesData[0].slug}/${data.slug}`}>
-          //   <LazyLoad height={200}>
-          //     <img src={`${Image && Image}`} alt="" />
-          //   </LazyLoad>
-          // </Media>
-        )}
+      <Media
+        to={{
+          pathname:
+            data &&
+            CategoriesData &&
+            `/blog/${CategoriesData[0].slug}/${data.slug}`,
+          state: {
+            prevPath: window.location.pathname,
+            authorId: User && User.id,
+          },
+        }}
+        // img={imageExists(Image, (exists) => !!exists) ? Image : placeholderImg}
+      >
+        <ReactImageFallback
+          src={Image && Image}
+          fallbackImage={placeholderImg}
+          initialImage={placeholderImg}
+        />
+      </Media>
       <ContentContainer>
         <ContentContainerTop>
           <CategoryContainer>

@@ -13,7 +13,10 @@ import ClockIcon from 'resources/assets/svgComponents/Clock'
 
 import { Link } from 'react-router-dom'
 import dateStringify from 'helpers/dateStringify'
+import ReactImageFallback from 'react-image-fallback'
 import searchedItemEnhancer from './searchedItemEnhancer'
+
+import placeholderImg from '../../resources/assets/img/placeholderImg.jpg'
 
 const Item = styled.div`
   width: 550px;
@@ -40,6 +43,11 @@ const SearchMedia = styled(Link)`
   background-position: center;
   @media only screen and (max-width: 529px) {
     width: 100%;
+  }
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 `
 
@@ -118,16 +126,25 @@ const searchedItem = ({ toggleSearch, data, category, tags, media, color }) => {
 
   return (
     <Item>
-      {Image &&
-        categoriesData &&
-        categoriesData.length &&
-        data && (
-          <SearchMedia
-            to={`/blog/${categoriesData[0].slug}/${data.slug}`}
-            img={Image}
-            onClick={() => toggleSearch()}
-          />
-        )}
+      <SearchMedia
+        to={{
+          pathname:
+            data &&
+            categoriesData &&
+            `/blog/${categoriesData[0].slug}/${data.slug}`,
+          state: {
+            prevPath: window.location.pathname,
+          },
+        }}
+        onClick={() => toggleSearch()}
+      >
+        <ReactImageFallback
+          src={Image && Image}
+          fallbackImage={placeholderImg}
+          initialImage={placeholderImg}
+        />
+      </SearchMedia>
+
       <ContentContainer>
         {categoriesData &&
           categoriesData.length &&

@@ -9,7 +9,9 @@ import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import CardLoader from 'components/loaders'
+import ReactImageFallback from 'react-image-fallback'
 import mainSliderEnhancer from './sliderContentEnhancer'
+import placeholderImg from '../../../resources/assets/img/placeholderImg.jpg'
 
 const SliderContent = styled.div`
   height: 540px;
@@ -19,6 +21,12 @@ const SliderContent = styled.div`
   background-position: center center;
   text-align: center;
   position: relative;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+  }
 `
 
 const SliderWrapper = styled.span`
@@ -96,25 +104,24 @@ const MainSlider = ({ tags, media, category, data }) => {
   const tagsData = tags && tags.tags && tags.tags
   return (
     <React.Fragment>
-      {Image &&
-        data &&
-        tagsData &&
-        tagsData.length > 0 &&
-        tagsData[0] &&
-        CategoriesData &&
-        CategoriesData.length > 0 &&
-        CategoriesData[0] &&
-        CategoriesData[0].name && (
-          <SliderContent SliderPhoto={Image}>
-            <SliderWrapper />
+      <SliderContent>
+        <ReactImageFallback
+          src={Image && Image}
+          fallbackImage={placeholderImg}
+          initialImage={placeholderImg}
+        />
+        <SliderWrapper />
+        {data &&
+          CategoriesData && (
             <FlexDiv>
               <Header dangerouslySetInnerHTML={{ __html: data.title }} />
               <LatestSingles to={`blog/${CategoriesData[0].slug}/${data.slug}`}>
                 Read More
               </LatestSingles>
+              )
             </FlexDiv>
-          </SliderContent>
-        )}
+          )}
+      </SliderContent>
     </React.Fragment>
   )
 }

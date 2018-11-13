@@ -7,7 +7,9 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
+import ReactImageFallback from 'react-image-fallback'
 import whatsOnComponentEnhancer from './whatsOnComponentEnhancer'
+import placeholderImg from '../../resources/assets/img/placeholderImg.jpg'
 
 const Container = styled.div`
   flex: 1 0 575px;
@@ -59,6 +61,11 @@ const PhotoContainer = styled(Link)`
     &:hover {
       background-size: cover;
     }
+  }
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 `
 
@@ -184,13 +191,24 @@ const WhatsOnComponent = ({ media, data, category }) => {
 
   return (
     <Container>
-      {CategoriesData &&
+      <PhotoContainer
+        img={Image}
+        to={{
+          pathname:
+            data &&
+            CategoriesData &&
+            `/blog/${CategoriesData[0].slug}/${data.slug}`,
+        }}
+      >
+        <ReactImageFallback
+          src={Image && Image}
+          fallbackImage={placeholderImg}
+          initialImage={placeholderImg}
+        />
+      </PhotoContainer>
+      {/* {CategoriesData &&
         data && (
-          <PhotoContainer
-            img={Image}
-            to={`/blog/${CategoriesData[0].slug}/${data.slug}`}
-          />
-        )}
+        )} */}
       <ContentContainer>
         <CategoryContainer>
           {CategoriesData &&

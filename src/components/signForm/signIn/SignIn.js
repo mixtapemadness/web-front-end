@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import loginEnhancer from './loginEnhancer'
+import signInEnhancer from './signInEnhancer'
 
 const FormContainer = styled.div`
   color: #ffffff;
@@ -85,4 +85,4 @@ const LogIn = ({ submitHandler, handleInput }) => (
   </FormContainer>
 )
 
-export default loginEnhancer(LogIn)
+export default signInEnhancer(LogIn)

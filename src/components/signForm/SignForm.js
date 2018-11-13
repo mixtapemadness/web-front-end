@@ -6,7 +6,7 @@ import { withRouter } from 'react-router-dom'
 
 import BackgroundImage from 'resources/assets/img/music.jpg'
 
-import LogIn from './login'
+import SignIn from './signIn'
 import SignUp from './signUp'
 import NewsLetter from './NewsLetter'
 
@@ -105,7 +105,7 @@ const SignForm = ({ match }) => (
   <Div>
     <Container>
       <ContentContainer>
-        {match.params.auth === 'login' && <LogIn />}
+        {match.params.auth === 'login' && <SignIn />}
         {match.params.auth === 'register' && <SignUp />}
         {match.params.auth === 'newsletter' && <NewsLetter />}
         {match.params.auth === 'thanks' && (

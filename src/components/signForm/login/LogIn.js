@@ -1,7 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const FormContainer = styled.form`
+import loginEnhancer from './loginEnhancer'
+
+const FormContainer = styled.div`
   color: #ffffff;
   font-weight: 600;
   display: flex;
@@ -63,13 +65,24 @@ const Button = styled.button`
   font-weight: 600;
 `
 
-const LogIn = () => (
+const LogIn = ({ submitHandler, handleInput }) => (
   <FormContainer>
     <Title>Log in</Title>
-    <Input placeholder="email@example.com" mt={27} />
-    <Input placeholder="Password" type="password" mt={17} />
-    <Button>Log in</Button>
+    <Input
+      placeholder="email@example.com"
+      mt={27}
+      name="email"
+      onChange={e => handleInput(e)}
+    />
+    <Input
+      placeholder="Password"
+      type="password"
+      mt={17}
+      name="password"
+      onChange={e => handleInput(e)}
+    />
+    <Button onClick={() => submitHandler()}>Log in</Button>
   </FormContainer>
 )
 
-export default LogIn
+export default loginEnhancer(LogIn)

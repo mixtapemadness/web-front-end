@@ -43,6 +43,7 @@ export default compose(
     name: 'data',
     config: {
       options: props => ({
+        notifyOnNetworkStatusChange: true,
         variables: {
           page: 1,
           perPage: 9,
@@ -96,8 +97,6 @@ export default compose(
     const isMoreData = true
     const postCount = count && count.count && count.count.count
     const Data = data.Posts && postCount && data.Posts.length > 0 && data.Posts
-    console.log('Data.length', Data && Data.length)
-    console.log('postCount', postCount)
     if (Data && postCount <= Data.length + 1) {
       return { isMoreData: false }
     }

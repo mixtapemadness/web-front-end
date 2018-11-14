@@ -13,6 +13,7 @@ import PostItem from 'components/postItem'
 import Subscribe from 'components/subscribe'
 // import MobileComponent from 'components/mobileComponent'
 import { CardLoader } from 'components/loaders'
+import Spinner from 'react-spinkit'
 import TopVideoPosts from './TopVideoPosts'
 import BlogSlider from './BlogSlider'
 import BlogFilter from './BlogFilter'
@@ -79,6 +80,9 @@ const ShowMore = styled.div`
     }
   }
 `
+const SpinnerContainer = styled.div`
+  margin-top: 20px;
+`
 
 const PostItemT = (item, index) => {
   if (index === 5) {
@@ -108,6 +112,7 @@ const Blog = ({
 }) => {
   const postCount = count && count.count && count.count.count
   const Data = data.Posts && data.Posts.length > 0 && data.Posts
+  // const Data = data
   return (
     <NewsContainer>
       <div>
@@ -120,9 +125,15 @@ const Blog = ({
         </PostsContainer>
       </div>
       <ShowMoreContainer>
-        <ShowMore isMoreData={isMoreData} onClick={handleLoadMore}>
-          More {match.params.filter} {isMoreData ? '+' : '-'}
-        </ShowMore>
+        {data && !data.loading ? (
+          <ShowMore isMoreData={isMoreData} onClick={handleLoadMore}>
+            More {match.params.filter} {isMoreData ? '+' : '-'}
+          </ShowMore>
+        ) : (
+          <SpinnerContainer>
+            <Spinner />
+          </SpinnerContainer>
+        )}
       </ShowMoreContainer>
     </NewsContainer>
   )

@@ -40,25 +40,24 @@ const PagingArrows = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
+  @media only screen and (max-width: 850px) {
+    justify-content: center;
+    margin-bottom: 20px;
+  }
 `
 
 const ForwardArrow = styled(Link)`
-  display:flex;
-  align-items:center;
-  justify-content:center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
-  /* pointer-events: ${props => (props.isLoading ? 'none' : 'inherit')}; */
-  /* svg {
-    fill: ${props =>
-      props.index === 0 || props.isLoading ? '#ccc' : '#666666'};
-  } */
-  svg{
-    transition:0.3s
+  svg {
+    transition: 0.3s;
   }
-  &:hover{
+  &:hover {
     color: #ffa019;
-      svg {
-        fill: #ffa019
+    svg {
+      fill: #ffa019;
     }
   }
 `
@@ -294,12 +293,14 @@ const BlogArticleContent = styled.div`
 const BlogPage = ({
   width,
   data,
+
   user,
   match,
   nextRoute,
   prevRoute,
   location,
 }) => {
+  console.log('დათა', data)
   const userName = user && user.user && user.user.name && user.user.name
   const userSlug = user && user.user && user.user.slug && user.user.slug
   const postData = data && data.Post ? data.Post : {}
@@ -384,7 +385,7 @@ const BlogPage = ({
           </TitleContainer>
         </Heading>
 
-        {isVideo && Video ? (
+        {data && !data.loading && isVideo && Video ? (
           <BlogPageVideo dangerouslySetInnerHTML={{ __html: Video && Video }} />
         ) : (
           <BlogPageImg id={postData.featured_media} />
@@ -395,7 +396,7 @@ const BlogPage = ({
             userName={userName}
             userSlug={userSlug}
           />
-          {isVideo && Video ? (
+          {!isVideo && Video ? (
             <BlogArticleContent
               dangerouslySetInnerHTML={{ __html: Content && Content }}
             />

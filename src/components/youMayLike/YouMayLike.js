@@ -57,8 +57,14 @@ const AlsoLikeHeaderContainer = styled.div`
   color: #000000;
 `
 
-const YouMayLike = ({ width, data }) => {
-  const Posts = data && data.Posts && data.Posts
+const YouMayLike = ({ width, data, match }) => {
+  console.log('location', match.params.slug)
+  const Posts =
+    data &&
+    data.Posts &&
+    data.Posts.filter(
+      (item, index) => item.slug !== match.params.slug && index < 6,
+    )
   return (
     <MayLikeContainer>
       <AlsoLikeHeaderContainer>

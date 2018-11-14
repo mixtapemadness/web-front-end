@@ -32,7 +32,6 @@ const BlogPageImg = ({ data }) => {
       />
     </Container>
   )
-  // <Container src={fullImage} />
 }
 
 export default blogPageImgEnhancer(BlogPageImg)

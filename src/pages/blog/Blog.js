@@ -13,7 +13,7 @@ import PostItem from 'components/postItem'
 import Subscribe from 'components/subscribe'
 // import MobileComponent from 'components/mobileComponent'
 import { CardLoader } from 'components/loaders'
-import Spinner from 'react-spinkit'
+// import Spinner from 'react-spinkit'
 import TopVideoPosts from './TopVideoPosts'
 import BlogSlider from './BlogSlider'
 import BlogFilter from './BlogFilter'
@@ -130,9 +130,7 @@ const Blog = ({
             More {match.params.filter} {isMoreData ? '+' : '-'}
           </ShowMore>
         ) : (
-          <SpinnerContainer>
-            <Spinner />
-          </SpinnerContainer>
+          <SpinnerContainer>{/* <Spinner /> */}</SpinnerContainer>
         )}
       </ShowMoreContainer>
     </NewsContainer>

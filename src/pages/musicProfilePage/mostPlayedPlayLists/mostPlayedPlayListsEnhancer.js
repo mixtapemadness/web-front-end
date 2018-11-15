@@ -1,5 +1,6 @@
 import { compose, withStateHandlers, lifecycle } from 'recompose'
 import { withRouter } from 'react-router-dom'
+import window from 'global/window'
 import { loadDataAsync } from '../../../hocs'
 import getBlogPage from '../../../graphql/getBlogPage.graphql'
 

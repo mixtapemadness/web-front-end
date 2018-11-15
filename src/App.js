@@ -3,6 +3,7 @@
 /* eslint function-paren-newline: 0 */
 import React from 'react'
 import { compose, withStateHandlers, lifecycle, withHandlers } from 'recompose'
+import window from 'global/window'
 
 import Header from 'components/header'
 import { CLOSE_MEGAMENU } from 'constants'
@@ -50,7 +51,11 @@ export default compose(
   lifecycle({
     componentDidMount() {
       ReactGA.initialize('UA-75737603-1')
-      ReactGA.pageview(window.location.pathname + window.location.search)
+      ReactGA.pageview(
+        window.location
+          ? window.location.pathname + window.location.search
+          : '',
+      )
       eventEmitter.addListener(CLOSE_MEGAMENU, () =>
         this.props.toggleMenu('close'),
       )

@@ -1,5 +1,6 @@
 /* eslint no-unused-vars: 0 */
 import { compose, withStateHandlers, lifecycle } from 'recompose'
+import window from 'global/window'
 
 import { loadDataAsync } from 'hocs'
 import getPosts from 'graphql/getPosts.graphql'

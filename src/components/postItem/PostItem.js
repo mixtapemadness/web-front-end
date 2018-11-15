@@ -12,6 +12,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
+import window from 'global/window'
 import LazyLoad from 'react-lazy-load'
 import ReactImageFallback from 'react-image-fallback'
 import imageExists from 'image-exists'
@@ -229,6 +230,8 @@ const Categories = ({ data }) => {
   return newData
 }
 
+const pathname = window.location ? window.location.pathname : ''
+
 const PostItem = ({ media, category, user, data }) => {
   const Image =
     media && media.img && media.img.featured_image && media.img.featured_image
@@ -246,7 +249,7 @@ const PostItem = ({ media, category, user, data }) => {
             CategoriesData &&
             `/blog/${CategoriesData[0].slug}/${data.slug}`,
           state: {
-            prevPath: window.location.pathname,
+            prevPath: pathname,
             authorId: User && User.id,
           },
         }}
@@ -270,7 +273,7 @@ const PostItem = ({ media, category, user, data }) => {
                 to={{
                   pathname: `/blog/${CategoriesData[0].slug}/${data.slug}`,
                   state: {
-                    prevPath: window.location.pathname,
+                    prevPath: pathname,
                     authorId: User && User.id,
                   },
                 }}
@@ -310,7 +313,7 @@ const PostItem = ({ media, category, user, data }) => {
                   to={{
                     pathname: `/blog/${CategoriesData[0].slug}/${data.slug}`,
                     state: {
-                      prevPath: window.location.pathname,
+                      prevPath: pathname,
                       authorId: User && User.id,
                     },
                   }}

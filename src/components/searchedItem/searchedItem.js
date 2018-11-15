@@ -8,7 +8,7 @@
 import React from 'react'
 
 import styled from 'styled-components'
-
+import window from 'global/window'
 import ClockIcon from 'resources/assets/svgComponents/Clock'
 
 import { Link } from 'react-router-dom'
@@ -133,7 +133,7 @@ const searchedItem = ({ toggleSearch, data, category, tags, media, color }) => {
             categoriesData &&
             `/blog/${categoriesData[0].slug}/${data.slug}`,
           state: {
-            prevPath: window.location.pathname,
+            prevPath: window.location ? window.location.pathname : '',
           },
         }}
         onClick={() => toggleSearch()}

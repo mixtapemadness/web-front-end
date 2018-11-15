@@ -2,6 +2,7 @@
 /* eslint object-curly-newline: 0 */
 
 import { compose, lifecycle } from 'recompose'
+import window from 'global/window'
 
 export default compose(
   lifecycle({

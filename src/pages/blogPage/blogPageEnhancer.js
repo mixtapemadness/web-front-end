@@ -18,6 +18,7 @@ import getNextPost from 'graphql/getNextPost.graphql'
 import getPreviousPost from 'graphql/getPreviousPost.graphql'
 import getPrevPostByAuthorId from 'graphql/getPrevPostByAuthorId.graphql'
 import getNextPostByAuthorId from 'graphql/getNextPostByAuthorId.graphql'
+import window from 'global/window'
 
 export default compose(
   withRouter,

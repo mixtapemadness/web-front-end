@@ -1,5 +1,6 @@
 import { compose, withStateHandlers, lifecycle } from 'recompose'
 import { withRouter } from 'react-router-dom'
+import window from 'global/window'
 import { REFETCH_USER } from '../../eventTypes'
 import { loadDataAsync, refetchOn } from '../../hocs'
 import getEventEmitter from '../../eventEmitter'

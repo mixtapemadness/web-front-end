@@ -5,6 +5,7 @@ import { compose, withStateHandlers, lifecycle } from 'recompose'
 import { withRouter } from 'react-router-dom'
 import getPostsByAuthorId from 'graphql/getPostsByAuthorId.graphql'
 import { loadDataAsync } from 'hocs'
+import window from 'global/window'
 
 export default compose(
   withStateHandlers(

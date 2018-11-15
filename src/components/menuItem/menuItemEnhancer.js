@@ -4,6 +4,7 @@
 
 import { compose, withStateHandlers, lifecycle, branch } from 'recompose'
 import { loadDataAsync, withMedia, withTags, withCategory } from 'hocs'
+import window from 'global/window'
 import getPosts from 'graphql/getPosts.graphql'
 
 export default compose(

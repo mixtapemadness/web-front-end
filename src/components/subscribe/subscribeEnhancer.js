@@ -3,6 +3,7 @@
 import { compose, withStateHandlers, lifecycle, withHandlers } from 'recompose'
 import { mutation } from 'hocs'
 import subscribeMutation from 'graphql/subscribe.graphql'
+import window from 'global/window'
 
 export default compose(
   mutation(subscribeMutation),

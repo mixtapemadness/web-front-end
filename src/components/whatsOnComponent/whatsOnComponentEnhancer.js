@@ -10,7 +10,7 @@ import {
   branch,
   withProps,
 } from 'recompose'
-
+import window from 'global/window'
 import { loadDataAsync, withMedia, withCategory } from 'hocs'
 import getMediaById from 'graphql/getMediaById.graphql'
 

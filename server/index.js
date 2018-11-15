@@ -13,6 +13,7 @@ import { ApolloClient } from 'apollo-client'
 import { InMemoryCache } from 'apollo-cache-inmemory'
 import { createHttpLink } from 'apollo-link-http'
 import { onError } from 'apollo-link-error'
+import { ServerStyleSheet } from 'styled-components'
 import config from '../config'
 // import { errorLink } from '../src/apollo/links'
 import App from '../src/App'
@@ -51,17 +52,27 @@ app.get('*', (req, res) => {
 
   const context = {}
 
+  const sheet = new ServerStyleSheet()
+
   const component = (
+    // <StyleSheetManager sheet={sheet.instance}>
     <ApolloProvider client={client}>
       <StaticRouter location={req.url} context={context}>
         <App />
       </StaticRouter>
     </ApolloProvider>
+    // </StyleSheetManager>
   )
+
+  // const styleTags = sheet.getStyleTags()
+  // const styleTag = sheet.getStyleTags()
+  // console.log('styleTag: ', styleTag)
+  // const styleTags = sheet.getStyleElement()
+  // console.log('styleTags: ', styleTags)
 
   // const helmet = Helmet.renderStatic()
 
-  const Html = ({ content, client: { cache } }) => (
+  const Html = ({ content, styleTags, client: { cache } }) => (
     <html lang="en">
       <head>
         <meta charSet="UTF-8" />
@@ -70,6 +81,110 @@ app.get('*', (req, res) => {
         <meta name="googlebot" content="index,follow" />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         <title>Mixtape</title>
+        <link
+          href="https://fonts.googleapis.com/css?family=Montserrat:300,400"
+          rel="stylesheet"
+        />
+        <link href="/bundle.css" rel="stylesheet" />
+
+        {styleTags}
+        {/* <style dangerouslySetInnerHTML={{
+          __html: `
+          *,
+          *::before,
+          *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+          }
+
+          html {
+            font-family: sans-serif;
+            line-height: 1.15;
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+            -webkit-tap-highlight-color: rgba(black, 0);
+          }
+
+          article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
+              display: block;
+            }
+
+          body {
+              margin: 0;
+              font-family: Montserrat;
+              font-size: 16px;
+              font-weight: normal;
+              line-height: 1.6;
+              color: black;
+              text-align: left;
+              background-color: #fff;
+          }
+
+
+          hr {
+              box-sizing: content-box;
+              height: 0;
+              overflow: visible;
+            }
+
+
+          a {
+              color: inherit;
+              text-decoration: none;
+              background-color: transparent;
+          }
+
+          button {
+              border-radius: 0;
+          }
+
+          input,
+          button,
+          select,
+          optgroup,
+          textarea {
+            margin: 0;
+            font-family: inherit;
+            font-size: inherit;
+            line-height: inherit;
+          }
+
+          button,
+          input {
+            overflow: visible;
+          }
+
+          button,
+          select {
+            text-transform: none;
+          }
+
+          input[type="radio"],
+          input[type="checkbox"] {
+            box-sizing: border-box;
+            padding: 0;
+          }
+
+          video {
+              outline: 0 !important;
+          }
+
+
+          button::-moz-focus-inner,
+          [type="button"]::-moz-focus-inner,
+          [type="reset"]::-moz-focus-inner,
+          [type="submit"]::-moz-focus-inner {
+            padding: 0;
+            border-style: none;
+          }
+
+          input:required {
+            box-shadow: none;
+          }
+        `,
+        }}
+        /> */}
         {/* {helmet.meta.toString()}
         {helmet.title.toString()} */}
       </head>
@@ -84,15 +199,18 @@ app.get('*', (req, res) => {
             )};`,
           }}
         />
-        <script src="bundle.js" charSet="UTF-8" />
+        <script src="/bundle.js" charSet="UTF-8" />
       </body>
     </html>
   )
 
-  renderToStringWithData(component)
+  renderToStringWithData(sheet.collectStyles(component))
     .then(content => {
+      const styleTags = sheet.getStyleElement()
       res.status(200)
-      const html = <Html content={content} client={client} />
+      const html = (
+        <Html content={content} client={client} styleTags={styleTags} />
+      )
       res.send(`<!doctype html>\n${ReactDOMServer.renderToStaticMarkup(html)}`)
       res.end()
     })

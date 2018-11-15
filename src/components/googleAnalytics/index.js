@@ -3,6 +3,7 @@
 import React, { Component } from 'react'
 import ReactGA from 'react-ga'
 import { Route } from 'react-router-dom'
+import window from 'global/window'
 
 const REACT_APP_GA_TRACKING_ID = 'UA-75737603-1'
 

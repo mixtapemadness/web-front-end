@@ -1,4 +1,5 @@
 import { compose, withStateHandlers, lifecycle } from 'recompose'
+import window from 'global/window'
 
 export default compose(
   withStateHandlers(

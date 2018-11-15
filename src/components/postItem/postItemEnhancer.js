@@ -3,6 +3,7 @@
 /* eslint object-curly-newline: 0 */
 
 import { compose, withStateHandlers, lifecycle, branch } from 'recompose'
+import window from 'global/window'
 import { withCategory, withMedia, withAuthor } from 'hocs'
 // import getCategoryById from 'graphql/getCategoryById.graphql'
 

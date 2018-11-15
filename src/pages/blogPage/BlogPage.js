@@ -13,6 +13,7 @@ import YouMayLike from 'components/youMayLike'
 import Forward from 'resources/assets/svgComponents/Forward'
 import Back from 'resources/assets/svgComponents/Back'
 import { Link } from 'react-router-dom'
+import window from 'global/window'
 import blogPageEnhancer from './blogPageEnhancer'
 import BlogPageImg from './blogPageImg'
 import PostContentHeading from './postContentHeading'
@@ -290,6 +291,8 @@ const BlogArticleContent = styled.div`
   }
 `
 
+const pathname = window.location ? window.location.pathname : ''
+
 const BlogPage = ({
   width,
   data,
@@ -344,11 +347,11 @@ const BlogPage = ({
                   prevPath:
                     location.state && location.state.prevPath
                       ? location.state.prevPath
-                      : window.location.pathname,
+                      : pathname,
                   authorId:
                     location.state && location.state.authorId
                       ? location.state.authorId
-                      : window.location.pathname,
+                      : pathname,
                 },
               }}
             >
@@ -363,7 +366,7 @@ const BlogPage = ({
                   prevPath:
                     location.state && location.state.prevPath
                       ? location.state.prevPath
-                      : window.location.pathname,
+                      : pathname,
                   authorId:
                     location.state &&
                     location.state.authorId &&
@@ -412,8 +415,8 @@ const BlogPage = ({
         <DisqusContainer>
           <ReactDisqusComments
             shortname="//mixtapemadnessuk.disqus.com/embed.js"
-            identifier={window.location.pathname}
-            url={window.location.href}
+            identifier={pathname}
+            url={window.location ? window.location.href : ''}
           />
         </DisqusContainer>
         <YouMayLike />

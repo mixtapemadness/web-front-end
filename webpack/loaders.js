@@ -23,7 +23,6 @@ module.exports = [
       'css-loader',
     ],
     exclude: ['node_modules'],
-    // include: /node_modules/,
   },
   {
     test: /\.scss$/,
@@ -40,7 +39,6 @@ module.exports = [
       'sass-loader',
       'postcss-loader',
     ],
-    // include: /node_modules/,
     exclude: ['node_modules'],
   },
   {

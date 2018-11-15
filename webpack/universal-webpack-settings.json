@@ -1,7 +1,0 @@
-{
-  "server":
-  {
-    "input": "./server/server.js",
-    "output": "./dist/server/server.js"
-  }
-}

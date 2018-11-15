@@ -13,6 +13,7 @@ const plugins = [
 ]
 
 if (!process.env.SSR_MODE) {
+  console.log('Not ssr!')
   plugins.push(
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, '../../src/index.html'),

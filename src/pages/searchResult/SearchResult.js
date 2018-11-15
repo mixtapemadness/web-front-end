@@ -16,6 +16,8 @@ const Container = styled.div`
   margin: auto;
   padding-top: 40px;
   padding: 0 50px;
+  display: flex;
+  flex-wrap: wrap;
 `
 
 const InputContainer = styled.div`

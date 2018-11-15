@@ -9,7 +9,6 @@
 
 import React from 'react'
 import styled from 'styled-components'
-
 import PostItem from 'components/postItem'
 import Subscribe from 'components/subscribe'
 // import MobileComponent from 'components/mobileComponent'

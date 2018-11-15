@@ -5,10 +5,10 @@
 /* eslint prefer-const: 0 */
 /* eslint implicit-arrow-linebreak: 0 */
 /* eslint no-unused-vars: 0 */
+/* eslint indent: 0 */
 
 import React from 'react'
 import styled from 'styled-components'
-
 import PostItem from 'components/postItem'
 import Subscribe from 'components/subscribe'
 // import MobileComponent from 'components/mobileComponent'

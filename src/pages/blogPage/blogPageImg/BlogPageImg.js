@@ -23,6 +23,7 @@ const Container = styled.div`
 
 const BlogPageImg = ({ data }) => {
   const fullImage = data && data.img && data.img.full
+  console.log('fullImage', fullImage)
   return (
     <Container>
       <ReactImageFallback

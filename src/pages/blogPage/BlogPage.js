@@ -303,13 +303,11 @@ const BlogPage = ({
   prevRoute,
   location,
 }) => {
-  console.log('დათა', data)
   const userName = user && user.user && user.user.name && user.user.name
   const userSlug = user && user.user && user.user.slug && user.user.slug
   const postData = data && data.Post ? data.Post : {}
   const categories =
     data && data.Post && data.Post.categories && data.Post.categories
-
   const isVideoArr =
     categories && categories.filter(item => parseInt(item, 10) === 15)
   const isVideo = isVideoArr && isVideoArr.length > 0 ? true : false
@@ -324,6 +322,13 @@ const BlogPage = ({
       '',
     )
   const Video =
+    isVideo &&
+    postData &&
+    postData.content &&
+    postData.content.match(
+      /(?:<iframe[^>]*)(?:(?:\/>)|(?:>.*?<\/iframe>))/,
+      '',
+    ) &&
     isVideo &&
     postData &&
     postData.content &&

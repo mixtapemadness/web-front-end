@@ -58,9 +58,9 @@ const Home = ({ sliderData }) => (
   <Container>
     {sliderData &&
       sliderData.Posts && (
-        // <LazyLoad once offsetVertical={0}>
-        <MainSlider data={sliderData.Posts} />
-        // </LazyLoad>
+        <LazyLoad once offsetVertical={0}>
+          <MainSlider data={sliderData.Posts} />
+        </LazyLoad>
       )}
     <Posts />
     <LazyLoad once offset={0}>

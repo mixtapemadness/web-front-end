@@ -1,12 +1,14 @@
 /* eslint react/jsx-indent: 0 */
 /* eslint indent: 0 */
 /* eslint operator-linebreak: 0 */
+/* eslint implicit-arrow-linebreak: 0 */
 
 import React from 'react'
 import styled from 'styled-components'
 import Advertisement from 'components/advertisement'
 import PostItem from 'components/postItem'
 // import MobileComponent from 'components/mobileComponent'
+import { Link } from 'react-router-dom'
 import youMayLikeEnhancer from './youMayLikeEnhancer'
 
 const MayLikeContainer = styled.div`
@@ -33,7 +35,7 @@ const Div = styled.div`
   }
 `
 
-const AdvertisementContainer = styled.div`
+const AdvertisementContainer = styled(Link)`
   flex: 1 0 357px;
   height: 480px;
   margin: 5px;
@@ -58,13 +60,10 @@ const AlsoLikeHeaderContainer = styled.div`
 `
 
 const YouMayLike = ({ width, data, match }) => {
-  console.log('location', match.params.slug)
   const Posts =
     data &&
     data.Posts &&
-    data.Posts.filter(
-      (item, index) => item.slug !== match.params.slug && index < 6,
-    )
+    data.Posts.filter(item => item.slug !== match.params.slug)
   return (
     <MayLikeContainer>
       <AlsoLikeHeaderContainer>
@@ -72,10 +71,14 @@ const YouMayLike = ({ width, data, match }) => {
         {width <= 450 && <span>What To Read Next</span>}
       </AlsoLikeHeaderContainer>
       <Div>
-        <AdvertisementContainer>
+        <AdvertisementContainer to="/contact">
           <Advertisement />
         </AdvertisementContainer>
-        {Posts && Posts.map(item => <PostItem key={item.id} data={item} />)}
+        {Posts &&
+          Posts.map(
+            (item, index) =>
+              index < 5 && <PostItem key={item.id} data={item} />,
+          )}
       </Div>
     </MayLikeContainer>
   )

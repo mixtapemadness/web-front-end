@@ -1,13 +1,15 @@
 /* eslint operator-linebreak: 0 */
 /* eslint implicit-arrow-linebreak: 0 */
 /* eslint object-curly-newline: 0 */
+/* eslint no-unused-vars: 0 */
 
 import React from 'react'
 import styled from 'styled-components'
 import PostItem from 'components/postItem'
 import Subscribe from 'components/subscribe'
 import MobileSubscribe from 'components/mobileSubscribe'
-
+import { CardLoader } from 'components/loaders'
+import Spinner from 'react-spinkit'
 import resentPostsEnhancer from './resentPostsEnhancer'
 
 const ResentPostsContainer = styled.div`
@@ -93,6 +95,10 @@ const ShowMore = styled.div`
   }
 `
 
+const SpinnerContainer = styled.div`
+  margin-top: 20px;
+`
+
 const PostItemT = (item, index) => {
   if (index === 5) {
     return (
@@ -119,13 +125,19 @@ const ResentPosts = ({
   handleLoadMore,
   count,
   perPage,
+  loading,
 }) => {
+  console.log('Posts', data.Posts)
   const countValue = count && count.count && count.count && count.count.count
-  const posts = data && data.posts
+  const posts = data && data.Posts
   return (
     <ResentPostsContainer>
       {width > 550 && (
-        <PostsContainer>{posts && <PostItems items={posts} />}</PostsContainer>
+        <PostsContainer>
+          {data.loading
+            ? [...Array(9)].map(i => <CardLoader />)
+            : posts && <PostItems items={posts} />}
+        </PostsContainer>
       )}
       {width <= 550 && (
         <PostsContainer>
@@ -142,12 +154,21 @@ const ResentPosts = ({
           <MobileSubscribe />
         </PostsContainer>
       )}
-      <ShowMoreContainer>
-        <ShowMore onClick={handleLoadMore}>
-          Show More {posts && perPage < parseInt(countValue, 10) ? '+' : '-'}
-          {countValue && console.log('countValue', parseInt(countValue, 10))}
-        </ShowMore>
-      </ShowMoreContainer>
+      {width > 550 &&
+        (data.loading ? (
+          <SpinnerContainer>
+            <Spinner name="ball-beat" />
+          </SpinnerContainer>
+        ) : (
+          <ShowMoreContainer>
+            <ShowMore onClick={handleLoadMore}>
+              Show More{' '}
+              {posts && perPage < parseInt(countValue, 10) ? '+' : '-'}
+              {countValue &&
+                console.log('countValue', parseInt(countValue, 10))}
+            </ShowMore>
+          </ShowMoreContainer>
+        ))}
     </ResentPostsContainer>
   )
 }

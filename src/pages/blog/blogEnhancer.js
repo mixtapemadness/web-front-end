@@ -8,10 +8,8 @@ import {
   withProps,
   withHandlers,
 } from 'recompose'
-// import { withRouter } from 'react-router-dom'
 import { loadDataAsync, refetchOn } from 'hocs'
 import getPosts from 'graphql/getPosts.graphql'
-import getCategoryById from 'graphql/getCategoryById.graphql'
 import getPostsCount from 'graphql/getPostsCount.graphql'
 import { CLOSE_MEGAMENU } from 'constants'
 import getEmitter from '../../eventEmitter'
@@ -19,8 +17,6 @@ import getEmitter from '../../eventEmitter'
 const eventEmitter = getEmitter()
 
 export default compose(
-  // withRouter,
-
   withStateHandlers(
     () => ({
       newsFilter: 'NEWS',
@@ -31,11 +27,6 @@ export default compose(
     }),
     {
       handleSetPage: ({ page }) => () => ({ page: page + 1 }),
-      handlePosts: ({ Posts }) => data => {
-        const newPosts = Posts
-        newPosts.push(data)
-        return { Posts: newPosts }
-      },
     },
   ),
   loadDataAsync({

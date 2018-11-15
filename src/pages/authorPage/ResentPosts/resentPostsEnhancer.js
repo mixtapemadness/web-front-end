@@ -3,7 +3,13 @@
 /* eslint object-curly-newline: 0 */
 /* eslint no-unneeded-ternary: 0 */
 
-import { compose, withStateHandlers, lifecycle, branch } from 'recompose'
+import {
+  compose,
+  withStateHandlers,
+  withHandlers,
+  lifecycle,
+  branch,
+} from 'recompose'
 import { withRouter } from 'react-router-dom'
 import getPostsByAuthorId from 'graphql/getPostsByAuthorId.graphql'
 import { loadDataAsync, withCount } from 'hocs'
@@ -16,23 +22,29 @@ export default compose(
       page: 1,
       perPageMobile: 4,
       Mobilepage: 1,
+      Posts: [],
     }),
     {
-      updateWidth: () => () => ({ width: window.innerWidth }),
       increacePagination: ({ Mobilepage }) => () => ({
         Mobilepage: Mobilepage + 1,
       }),
       decreacePagination: ({ Mobilepage }) => () => ({
         Mobilepage: Mobilepage - 1,
       }),
+      handleSetPage: ({ page }) => () => ({ page: page + 1 }),
+      updateWidth: () => () => ({ width: window.innerWidth }),
       handleLoadMore: ({ perPage }) => () => ({ perPage: perPage + 3 }),
     },
   ),
-
   lifecycle({
     componentDidMount() {
       window.addEventListener('resize', this.props.updateWidth)
       window.scrollTo(0, 0)
+    },
+    componentDidUpdate(prevProps, prevState) {
+      if (prevProps.page === this.props.page) {
+        window.scrollTo(0, 0)
+      }
     },
     componentWillUnmount() {
       window.removeEventListener('resize', this.props.updateWidth)
@@ -41,6 +53,7 @@ export default compose(
   withRouter,
   loadDataAsync({
     query: getPostsByAuthorId,
+    name: 'data',
     config: {
       options: props => ({
         variables: {
@@ -51,5 +64,20 @@ export default compose(
       }),
     },
   }),
+  withHandlers({
+    handleLoadMore: props => () => {
+      props.handleSetPage()
+      props.data.fetchMore({
+        variables: {
+          page: props.page + 1,
+        },
+        updateQuery: (previousResult, { fetchMoreResult }) => ({
+          ...previousResult,
+          Posts: [...previousResult.Posts, ...fetchMoreResult.Posts],
+        }),
+      })
+    },
+  }),
+
   branch(({ id }) => (id ? true : false), withCount),
 )

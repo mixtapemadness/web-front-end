@@ -5,6 +5,7 @@
 /* eslint prefer-const: 0 */
 /* eslint implicit-arrow-linebreak: 0 */
 /* eslint no-unused-vars: 0 */
+/* eslint indent: 0 */
 
 import React from 'react'
 import styled from 'styled-components'
@@ -125,15 +126,18 @@ const Blog = ({
         </PostsContainer>
       </div>
       <ShowMoreContainer>
-        {data && !data.loading ? (
-          <ShowMore isMoreData={isMoreData} onClick={handleLoadMore}>
-            More {match.params.filter} {isMoreData ? '+' : '-'}
-          </ShowMore>
-        ) : (
+        {(!data || data.loading) && (
           <SpinnerContainer>
-            <Spinner />
+            <Spinner name="ball-beat" />
           </SpinnerContainer>
         )}
+
+        {data &&
+          !data.loading && (
+            <ShowMore isMoreData={isMoreData} onClick={handleLoadMore}>
+              More {match.params.filter} {isMoreData ? '+' : '-'}
+            </ShowMore>
+          )}
       </ShowMoreContainer>
     </NewsContainer>
   )

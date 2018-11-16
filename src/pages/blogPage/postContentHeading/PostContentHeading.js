@@ -27,6 +27,7 @@ import {
   GooglePlusIcon,
   LinkedinIcon,
 } from 'react-share'
+import window from 'global/window'
 
 // import AuthorName from 'components/AuthorName'
 import { dateStringify } from 'helpers/'
@@ -86,12 +87,13 @@ const IconWrapper = styled.div`
   cursor: pointer;
 `
 
-const PostContentHeading = ({ date, userName, userSlug, match }) => {
+const PostContentHeading = ({ date, userName, location, userSlug, match }) => {
+  console.log('location', location)
   const { category, slug } = match.params
   // const url = `${config.apiUrl}api/v1/blog/${
   //   match.params.category
   // }/${slug}/share`
-  const url = window.location.pathname
+  const url = window.location.href
   return (
     <Container>
       <ContainerTop>

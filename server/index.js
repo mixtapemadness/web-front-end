@@ -98,6 +98,8 @@ app.get('*', (req, res) => {
         <Html content={content} client={client} styleTags={styleTags} />
       )
       res.send(`<!doctype html>\n${ReactDOMServer.renderToStaticMarkup(html)}`)
+      // const renderHtml = ReactDOMServer.renderToStaticMarkup(html)
+      // res.send(`<!doctype html>\n${Helmet.renderStatic(renderHtml)}`)
       res.end()
     })
     .catch(e => {

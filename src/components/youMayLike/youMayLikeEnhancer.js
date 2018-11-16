@@ -1,10 +1,18 @@
-import { compose, withStateHandlers, lifecycle } from 'recompose'
+/* eslint operator-linebreak: 0 */
+import {
+  compose,
+  withStateHandlers,
+  lifecycle,
+  branch,
+  withProps,
+} from 'recompose'
 import { withRouter } from 'react-router-dom'
 import window from 'global/window'
 import { REFETCH_USER } from '../../eventTypes'
 import { loadDataAsync, refetchOn } from '../../hocs'
 import getEventEmitter from '../../eventEmitter'
 import getPosts from '../../graphql/getPosts.graphql'
+import getPostsByTags from '../../graphql/getPostsByTags.graphql'
 
 export default compose(
   withRouter,
@@ -20,6 +28,21 @@ export default compose(
       }),
     },
   }),
+
+  branch(
+    props => !!props.tags,
+    loadDataAsync({
+      name: 'postsWithTags',
+      query: getPostsByTags,
+      config: {
+        options: props => ({
+          variables: {
+            tags: props.tags,
+          },
+        }),
+      },
+    }),
+  ),
   refetchOn(REFETCH_USER),
   withStateHandlers(
     () => ({
@@ -39,5 +62,17 @@ export default compose(
     componentWillUnmount() {
       window.removeEventListener('resize', this.props.updateWidth)
     },
+  }),
+  withProps(props => {
+    const postsFromTags =
+      props.postsWithTags &&
+      props.postsWithTags.Posts &&
+      props.postsWithTags.Posts
+    const postsFromTagsLoading =
+      props.postsWithTags &&
+      props.postsWithTags.loading &&
+      props.postsWithTags.loading
+
+    return { postsFromTags, postsFromTagsLoading }
   }),
 )

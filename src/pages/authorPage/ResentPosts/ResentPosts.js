@@ -164,8 +164,6 @@ const ResentPosts = ({
             <ShowMore onClick={handleLoadMore}>
               Show More{' '}
               {posts && perPage < parseInt(countValue, 10) ? '+' : '-'}
-              {countValue &&
-                console.log('countValue', parseInt(countValue, 10))}
             </ShowMore>
           </ShowMoreContainer>
         ))}

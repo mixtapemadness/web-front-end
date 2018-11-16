@@ -71,11 +71,11 @@ const BackArrow = styled(Link)`
   margin-right: 20px;
   transition: 0.3s;
   pointer-events: ${props =>
-      props.index === 0 || props.isDisabled ? 'none' : 'inherit'}
+      props.index === 0 || props.isdisabled ? 'none' : 'inherit'}
     svg {
     transition: 0.3s;
     fill: ${props =>
-      props.index === 0 || props.isDisabled ? '#ccc' : '#666666'};
+      props.index === 0 || props.isdisabled ? '#ccc' : '#666666'};
   }
   &:hover {
     color: #ffa019;
@@ -296,7 +296,6 @@ const pathname = window.location ? window.location.pathname : ''
 const BlogPage = ({
   width,
   data,
-
   user,
   match,
   nextRoute,
@@ -312,6 +311,7 @@ const BlogPage = ({
     categories && categories.filter(item => parseInt(item, 10) === 15)
   const isVideo = isVideoArr && isVideoArr.length > 0 ? true : false
   const PostDate = data && data.Post && data.Post.date && data.Post.date
+  const tags = data && data.Post && data.Post.tags && data.Post.tags
 
   const Content =
     isVideo &&
@@ -344,7 +344,7 @@ const BlogPage = ({
         <Heading>
           <PagingArrows>
             <BackArrow
-              isDisabled={disablePrev}
+              isdisabled={disablePrev}
               to={{
                 pathname: `/blog/${match.params.category}/${prevRoute &&
                   prevRoute}`,
@@ -424,7 +424,7 @@ const BlogPage = ({
             url={window.location ? window.location.href : ''}
           />
         </DisqusContainer>
-        <YouMayLike />
+        <YouMayLike tags={tags} />
       </Container>
     </React.Fragment>
   )

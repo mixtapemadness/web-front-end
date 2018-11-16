@@ -2,6 +2,7 @@
 /* eslint indent: 0 */
 /* eslint operator-linebreak: 0 */
 /* eslint implicit-arrow-linebreak: 0 */
+/* eslint no-unused-vars: 0 */
 
 import React from 'react'
 import styled from 'styled-components'
@@ -9,6 +10,7 @@ import Advertisement from 'components/advertisement'
 import PostItem from 'components/postItem'
 // import MobileComponent from 'components/mobileComponent'
 import { Link } from 'react-router-dom'
+import { CardLoader } from 'components/loaders'
 import youMayLikeEnhancer from './youMayLikeEnhancer'
 
 const MayLikeContainer = styled.div`
@@ -27,7 +29,7 @@ const Div = styled.div`
   display: flex;
   max-width: 1200px;
   margin: auto;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   flex-wrap: wrap;
   @media only screen and (max-width: 1150px) {
     flex-direction: column;
@@ -59,11 +61,21 @@ const AlsoLikeHeaderContainer = styled.div`
   color: #000000;
 `
 
-const YouMayLike = ({ width, data, match }) => {
+const YouMayLike = ({
+  width,
+  data,
+  match,
+  postsFromTags,
+  postsFromTagsLoading,
+}) => {
   const Posts =
     data &&
     data.Posts &&
     data.Posts.filter(item => item.slug !== match.params.slug)
+
+  const postsWithSameTag =
+    postsFromTags &&
+    postsFromTags.filter(item => item.slug !== match.params.slug)
   return (
     <MayLikeContainer>
       <AlsoLikeHeaderContainer>
@@ -76,6 +88,14 @@ const YouMayLike = ({ width, data, match }) => {
         </AdvertisementContainer>
         {Posts &&
           Posts.map(
+            (item, index) =>
+              index < 5 && <PostItem key={item.id} data={item} />,
+          )}
+        {postsFromTagsLoading && [...Array(9)].map(i => <CardLoader />)}
+
+        {!postsFromTagsLoading &&
+          postsWithSameTag &&
+          postsWithSameTag.map(
             (item, index) =>
               index < 5 && <PostItem key={item.id} data={item} />,
           )}

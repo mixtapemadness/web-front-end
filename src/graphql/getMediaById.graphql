@@ -1,7 +1,7 @@
-query getMediaById($id:ID){
-img:getMediaById(id:$id){
-      featured_image
-      full
-      id
+query getMediaById($id: ID) {
+  img: getMediaById(id: $id) {
+    featured_image
+    full
+    id
   }
 }

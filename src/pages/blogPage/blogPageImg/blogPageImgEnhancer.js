@@ -6,10 +6,11 @@ import { loadDataAsync } from 'hocs'
 export default compose(
   loadDataAsync({
     query: getMediaById,
+    skip: props => !props.id,
     config: {
       options: props => ({
         variables: {
-          id: props.id,
+          id: props.id && props.id,
         },
       }),
     },

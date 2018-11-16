@@ -11,7 +11,7 @@ export default compose(
     config: {
       options: props => ({
         variables: {
-          id: props.id,
+          id: props.id && props.id,
         },
       }),
     },

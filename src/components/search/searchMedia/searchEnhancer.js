@@ -25,7 +25,7 @@ export default compose(
     config: {
       options: props => ({
         variables: {
-          id: parseInt(props.id, 10),
+          id: props.id && parseInt(props.id, 10),
         },
       }),
     },

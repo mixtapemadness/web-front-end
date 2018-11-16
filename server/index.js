@@ -12,7 +12,7 @@ import { InMemoryCache } from 'apollo-cache-inmemory'
 import { createHttpLink } from 'apollo-link-http'
 import { onError } from 'apollo-link-error'
 import { ServerStyleSheet } from 'styled-components'
-import { Helmet } from 'react-helmet'
+// import { Helmet } from 'react-helmet'
 import config from '../config'
 import App from '../src/App'
 
@@ -66,7 +66,6 @@ app.get('*', (req, res) => {
         <meta name="robots" content="index,follow" />
         <meta name="googlebot" content="index,follow" />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />$
-        {Helmet.title.toString()}
         <title>Mixtape</title>
         <link
           href="https://fonts.googleapis.com/css?family=Montserrat:300,400"

@@ -33,7 +33,7 @@ module.exports = {
   },
   output: {
     filename: 'bundle.js',
-    path: path.join(__dirname, '../../dist/client'),
+    path: path.join(__dirname, '../../dist/csr'),
     publicPath: '/',
     chunkFilename: '[name].[chunkhash:8].chunk.js',
   },

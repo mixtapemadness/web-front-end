@@ -12,6 +12,7 @@ import { InMemoryCache } from 'apollo-cache-inmemory'
 import { createHttpLink } from 'apollo-link-http'
 import { onError } from 'apollo-link-error'
 import { ServerStyleSheet } from 'styled-components'
+import { Helmet } from 'react-helmet'
 import config from '../config'
 import App from '../src/App'
 
@@ -64,14 +65,14 @@ app.get('*', (req, res) => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="robots" content="index,follow" />
         <meta name="googlebot" content="index,follow" />
-        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />$
+        {Helmet.title.toString()}
         <title>Mixtape</title>
         <link
           href="https://fonts.googleapis.com/css?family=Montserrat:300,400"
           rel="stylesheet"
         />
         <link href="/bundle.css" rel="stylesheet" />
-
         {styleTags}
       </head>
       <body>
@@ -96,7 +97,9 @@ app.get('*', (req, res) => {
       const html = (
         <Html content={content} client={client} styleTags={styleTags} />
       )
-      res.send(`<!doctype html>\n${ReactDOMServer.renderToStaticMarkup(html)}`)
+      const renderHtml = ReactDOMServer.renderToStaticMarkup(html)
+
+      res.send(`<!doctype html>\n${Helmet.renderStatic(renderHtml)}`)
       res.end()
     })
     .catch(e => {

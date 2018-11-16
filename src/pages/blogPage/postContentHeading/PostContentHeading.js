@@ -28,8 +28,6 @@ import {
   LinkedinIcon,
 } from 'react-share'
 import window from 'global/window'
-
-// import AuthorName from 'components/AuthorName'
 import { dateStringify } from 'helpers/'
 import config from '../../../../config'
 import blogPageImgEnhancer from './postContentHeadingEnhancer'

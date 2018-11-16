@@ -1,7 +1,8 @@
 /* eslint import/no-extraneous-dependencies: 0 */
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+// const ExtractCssChunks = require('extract-css-chunks-webpack-plugin')
 
-const devMode = process.env.NODE_ENV !== 'production'
+// const devMode = process.env.NODE_ENV !== 'production'
 
 module.exports = [
   {
@@ -13,16 +14,28 @@ module.exports = [
   {
     test: /\.css$/,
     loaders: [
-      devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
-      'css-loader?importLoaders=1',
+      // devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
+      // 'style-loader',
+      // ExtractCssChunks.loader,
+      // 'css-loader?importLoaders=1',
+
+      MiniCssExtractPlugin.loader,
+      'css-loader',
     ],
     exclude: ['node_modules'],
   },
   {
     test: /\.scss$/,
     loaders: [
-      devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
-      'css-loader?importLoaders=1',
+      // devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
+      // 'style-loader',
+      // ExtractCssChunks.loader,
+      // 'css-loader?importLoaders=1',
+      // 'sass-loader',
+      // 'postcss-loader',
+
+      MiniCssExtractPlugin.loader,
+      'css-loader',
       'sass-loader',
       'postcss-loader',
     ],

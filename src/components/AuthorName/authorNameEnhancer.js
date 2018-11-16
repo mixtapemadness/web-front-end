@@ -1,4 +1,5 @@
 import { compose, withStateHandlers, lifecycle } from 'recompose'
+import window from 'global/window'
 
 import { loadDataAsync } from 'hocs'
 import getAuthorById from 'graphql/getAuthorById.graphql'

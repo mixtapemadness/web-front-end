@@ -5,16 +5,14 @@ import bodyParser from 'body-parser'
 import React from 'react'
 import ReactDOMServer from 'react-dom/server'
 import { StaticRouter } from 'react-router'
-// import { Helmet } from 'react-helmet'
-// import fetch from 'node-fetch'
 import { ApolloProvider, renderToStringWithData } from 'react-apollo'
 import { ApolloLink } from 'apollo-link'
 import { ApolloClient } from 'apollo-client'
 import { InMemoryCache } from 'apollo-cache-inmemory'
 import { createHttpLink } from 'apollo-link-http'
 import { onError } from 'apollo-link-error'
+import { ServerStyleSheet } from 'styled-components'
 import config from '../config'
-// import { errorLink } from '../src/apollo/links'
 import App from '../src/App'
 
 const app = express()
@@ -39,8 +37,6 @@ app.get('*', (req, res) => {
   })
   const httpLink = createHttpLink({
     uri: config.apiGraphqlUrl,
-    // uri: 'http://localhost:8001/graphql',
-    // fetch,
   })
 
   const client = new ApolloClient({
@@ -51,6 +47,8 @@ app.get('*', (req, res) => {
 
   const context = {}
 
+  const sheet = new ServerStyleSheet()
+
   const component = (
     <ApolloProvider client={client}>
       <StaticRouter location={req.url} context={context}>
@@ -59,9 +57,7 @@ app.get('*', (req, res) => {
     </ApolloProvider>
   )
 
-  // const helmet = Helmet.renderStatic()
-
-  const Html = ({ content, client: { cache } }) => (
+  const Html = ({ content, styleTags, client: { cache } }) => (
     <html lang="en">
       <head>
         <meta charSet="UTF-8" />
@@ -70,12 +66,16 @@ app.get('*', (req, res) => {
         <meta name="googlebot" content="index,follow" />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         <title>Mixtape</title>
-        {/* {helmet.meta.toString()}
-        {helmet.title.toString()} */}
+        <link
+          href="https://fonts.googleapis.com/css?family=Montserrat:300,400"
+          rel="stylesheet"
+        />
+        <link href="/bundle.css" rel="stylesheet" />
+
+        {styleTags}
       </head>
       <body>
         <div id="root" dangerouslySetInnerHTML={{ __html: content }} />
-        {/* {content} */}
         <script
           charSet="UTF-8"
           dangerouslySetInnerHTML={{
@@ -84,15 +84,18 @@ app.get('*', (req, res) => {
             )};`,
           }}
         />
-        <script src="bundle.js" charSet="UTF-8" />
+        <script src="/bundle.js" charSet="UTF-8" />
       </body>
     </html>
   )
 
-  renderToStringWithData(component)
+  renderToStringWithData(sheet.collectStyles(component))
     .then(content => {
+      const styleTags = sheet.getStyleElement()
       res.status(200)
-      const html = <Html content={content} client={client} />
+      const html = (
+        <Html content={content} client={client} styleTags={styleTags} />
+      )
       res.send(`<!doctype html>\n${ReactDOMServer.renderToStaticMarkup(html)}`)
       res.end()
     })

@@ -6,6 +6,7 @@ import { withRouter } from 'react-router-dom'
 import getPosts from 'graphql/getPosts.graphql'
 import getPostsByAuthorId from 'graphql/getPostsByAuthorId.graphql'
 import { loadDataAsync } from 'hocs'
+import window from 'global/window'
 
 export default compose(
   withStateHandlers(

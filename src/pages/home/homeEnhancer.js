@@ -1,5 +1,6 @@
 import { compose, withStateHandlers, lifecycle } from 'recompose'
 import { withMainSlider } from 'hocs'
+import window from 'global/window'
 
 export default compose(
   withStateHandlers(

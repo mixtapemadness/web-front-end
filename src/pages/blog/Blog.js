@@ -13,7 +13,7 @@ import PostItem from 'components/postItem'
 import Subscribe from 'components/subscribe'
 // import MobileComponent from 'components/mobileComponent'
 import { CardLoader } from 'components/loaders'
-import Spinner from 'react-spinkit'
+// import Spinner from 'react-spinkit'
 import TopVideoPosts from './TopVideoPosts'
 import BlogSlider from './BlogSlider'
 import BlogFilter from './BlogFilter'
@@ -125,18 +125,13 @@ const Blog = ({
         </PostsContainer>
       </div>
       <ShowMoreContainer>
-        {(!data || data.loading) && (
-          <SpinnerContainer>
-            <Spinner name="ball-beat" />
-          </SpinnerContainer>
+        {data && !data.loading ? (
+          <ShowMore isMoreData={isMoreData} onClick={handleLoadMore}>
+            More {match.params.filter} {isMoreData ? '+' : '-'}
+          </ShowMore>
+        ) : (
+          <SpinnerContainer>{/* <Spinner /> */}</SpinnerContainer>
         )}
-
-        {data &&
-          !data.loading && (
-            <ShowMore isMoreData={isMoreData} onClick={handleLoadMore}>
-              More {match.params.filter} {isMoreData ? '+' : '-'}
-            </ShowMore>
-          )}
       </ShowMoreContainer>
     </NewsContainer>
   )

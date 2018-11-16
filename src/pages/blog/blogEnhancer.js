@@ -12,6 +12,7 @@ import { loadDataAsync, refetchOn } from 'hocs'
 import getPosts from 'graphql/getPosts.graphql'
 import getPostsCount from 'graphql/getPostsCount.graphql'
 import { CLOSE_MEGAMENU } from 'constants'
+import window from 'global/window'
 import getEmitter from '../../eventEmitter'
 
 const eventEmitter = getEmitter()

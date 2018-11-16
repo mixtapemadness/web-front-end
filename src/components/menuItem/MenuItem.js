@@ -5,6 +5,7 @@
 
 import React from 'react'
 import styled from 'styled-components'
+import window from 'global/window'
 
 import { Link } from 'react-router-dom'
 import SignalBarsIcon from 'resources/assets/svgComponents/SignalBars'
@@ -144,7 +145,7 @@ const MenuItem = ({ data, media, category, tags }) => {
         to={{
           pathname: `/blog/${categorySlug && categorySlug}/${data.slug}`,
           state: {
-            prevPath: window.location.pathname,
+            prevPath: window.location && window.location.pathname,
           },
         }}
         onClick={() => eventEmitter.emit(CLOSE_MEGAMENU)}

@@ -1,5 +1,6 @@
 import { compose, withStateHandlers, lifecycle } from 'recompose'
 
+import window from 'global/window'
 import { loadDataAsync } from '../../../hocs'
 import getMediaById from '../../../graphql/getMediaById.graphql'
 

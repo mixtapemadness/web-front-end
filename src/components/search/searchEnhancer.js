@@ -1,6 +1,7 @@
 /* eslint object-curly-newline: 0 */
 import { compose, withStateHandlers, lifecycle, withProps } from 'recompose'
 import searchQuery from 'graphql/searchQuery.graphql'
+import document from 'global/document'
 import { loadDataAsync } from '../../hocs'
 
 export default compose(

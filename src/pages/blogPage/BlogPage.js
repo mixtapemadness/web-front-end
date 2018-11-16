@@ -14,6 +14,7 @@ import Forward from 'resources/assets/svgComponents/Forward'
 import Back from 'resources/assets/svgComponents/Back'
 import { Link } from 'react-router-dom'
 import window from 'global/window'
+import { Helmet } from 'react-helmet'
 import blogPageEnhancer from './blogPageEnhancer'
 import BlogPageImg from './blogPageImg'
 import PostContentHeading from './postContentHeading'
@@ -340,6 +341,13 @@ const BlogPage = ({
   const disablePrev = !prevRoute
   return (
     <React.Fragment>
+      <Helmet>
+        <title>Turbo Todo</title>
+        <meta property="og:image:width" content="400" />
+        <meta property="og:image:height" content="300" />
+        <meta property="og:url" content={window.location.href} />
+      </Helmet>
+
       <Container>
         <Heading>
           <PagingArrows>

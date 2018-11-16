@@ -1,4 +1,6 @@
 /* eslint react/no-danger: 0 */
+/* eslint object-curly-newline: 0 */
+
 import 'isomorphic-fetch'
 import express from 'express'
 import bodyParser from 'body-parser'
@@ -12,7 +14,7 @@ import { InMemoryCache } from 'apollo-cache-inmemory'
 import { createHttpLink } from 'apollo-link-http'
 import { onError } from 'apollo-link-error'
 import { ServerStyleSheet } from 'styled-components'
-// import { Helmet } from 'react-helmet'
+import { Helmet } from 'react-helmet'
 import config from '../config'
 import App from '../src/App'
 
@@ -58,7 +60,7 @@ app.get('*', (req, res) => {
     </ApolloProvider>
   )
 
-  const Html = ({ content, styleTags, client: { cache } }) => (
+  const Html = ({ content, helmet, styleTags, client: { cache } }) => (
     <html lang="en">
       <head>
         <meta charSet="UTF-8" />
@@ -66,6 +68,7 @@ app.get('*', (req, res) => {
         <meta name="robots" content="index,follow" />
         <meta name="googlebot" content="index,follow" />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />$
+        {helmet.title.toString()}${helmet.meta.toString()}
         <title>Mixtape</title>
         <link
           href="https://fonts.googleapis.com/css?family=Montserrat:300,400"
@@ -93,10 +96,18 @@ app.get('*', (req, res) => {
     .then(content => {
       const styleTags = sheet.getStyleElement()
       res.status(200)
+      const helmet = Helmet.renderStatic()
       const html = (
-        <Html content={content} client={client} styleTags={styleTags} />
+        <Html
+          content={content}
+          helmet={helmet}
+          client={client}
+          styleTags={styleTags}
+        />
       )
-      res.send(`<!doctype html>\n${ReactDOMServer.renderToStaticMarkup(html)}`)
+      const renderedHtml = ReactDOMServer.renderToStaticMarkup(html)
+
+      res.send(`<!doctype html>\n${renderedHtml}`)
       // const renderHtml = ReactDOMServer.renderToStaticMarkup(html)
       // res.send(`<!doctype html>\n${Helmet.renderStatic(renderHtml)}`)
       res.end()

@@ -17,6 +17,7 @@ const Container = styled.div`
   flex-direction: column;
   max-width: 100%;
   flex: 1 0 357px;
+  min-width: 357px;
   height: 465px;
   background-color: #ffffff;
   /* border-radius: 5px; */

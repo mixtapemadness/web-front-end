@@ -88,9 +88,10 @@ const IconWrapper = styled.div`
 
 const PostContentHeading = ({ date, userName, userSlug, match }) => {
   const { category, slug } = match.params
-  const url = `${config.apiUrl}api/v1/blog/${
-    match.params.category
-  }/${slug}/share`
+  // const url = `${config.apiUrl}api/v1/blog/${
+  //   match.params.category
+  // }/${slug}/share`
+  const url = window.location.pathname
   return (
     <Container>
       <ContainerTop>

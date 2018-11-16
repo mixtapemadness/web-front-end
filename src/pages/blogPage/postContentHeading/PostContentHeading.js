@@ -27,7 +27,7 @@ import {
   GooglePlusIcon,
   LinkedinIcon,
 } from 'react-share'
-import window from 'global/window'
+// import window from 'global/window'
 import { dateStringify } from 'helpers/'
 import config from '../../../../config'
 import blogPageImgEnhancer from './postContentHeadingEnhancer'
@@ -96,7 +96,7 @@ const PostContentHeading = ({ date, userName, location, userSlug, match }) => {
     <Container>
       <ContainerTop>
         <Links>
-          <FacebookShareButton iconBgStyle={'cursor:pointer'} url={url}>
+          <FacebookShareButton url={url} iconBgStyle={'cursor:pointer'}>
             <IconWrapper>
               <Facebook width={20} height={20} color={'#666666'} />
             </IconWrapper>

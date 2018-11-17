@@ -25,11 +25,11 @@ import placeholderImg from '../../resources/assets/img/placeholderImg.jpg'
 
 const PostItemContainer = styled.div`
   flex: 1 0 357px;
-  height: 465px;
+  height: 440px;
   max-width: 386px;
   display: flex;
   flex-direction: column;
-  margin: 7px;
+  margin: 20px 10px;
   @media only screen and (max-width: 1150px) {
     flex: 1 0 auto;
   }
@@ -82,7 +82,7 @@ const Media = styled(Link)`
 const PostTitle = styled(Link)`
   width: 100%;
   font-weight: 800;
-  font-size: ${p => (p.fontSize ? p.fontSize : '15px')};
+  font-size: ${p => (p.fontSize ? p.fontSize : '16px')};
   line-height: 1.3;
   transition: 0.4s;
   color: ${p => (p.color ? p.color : '#111111')};

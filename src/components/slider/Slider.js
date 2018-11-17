@@ -26,7 +26,7 @@ const NextArrow = (
 ) => <Img right={-1} src={Next} onClick={onClick} />
 
 const Container = styled.div`
-  min-height: 543px;
+  min-height: 600px;
   .slick-slider {
     position: relative;
     display: block;
@@ -342,7 +342,7 @@ const Override = styled.div`
   .slick-current {
     justify-content: flex-start !important;
     > div {
-      width: 100%;
+      width: 60%;
     }
   }
 `

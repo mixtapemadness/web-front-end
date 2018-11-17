@@ -3,7 +3,7 @@
 /* eslint operator-linebreak: 0 */
 /* eslint indent: 0 */
 
-import React from 'react'
+import React, { Fragment } from 'react'
 import styled from 'styled-components'
 import LazyLoad from 'react-lazyload'
 
@@ -55,35 +55,37 @@ const SectionSubHeader = styled.span`
 const mainSliderData = [SliderPhoto, SliderPhotoSecond]
 
 const Home = ({ sliderData }) => (
-  <Container>
+  <Fragment>
     {sliderData &&
       sliderData.Posts && (
         <LazyLoad once offsetVertical={0}>
           <MainSlider data={sliderData.Posts} />
         </LazyLoad>
       )}
-    <Posts />
-    <LazyLoad once offset={0}>
-      <Interviews />
-    </LazyLoad>
-    <LazyLoad once offset={0}>
-      <Download />
-    </LazyLoad>
-    <LazyLoad once offset={50}>
-      <WhatsOn />
-    </LazyLoad>
-    <LazyLoad once offset={50}>
-      <SubscribeContainer>
-        <Subscribe />
-      </SubscribeContainer>
-    </LazyLoad>
-    <LazyLoad once offset={50}>
-      <Reviews />
-    </LazyLoad>
-    <LazyLoad once offset={50}>
-      <Videos />
-    </LazyLoad>
-  </Container>
+    <Container>
+      <Posts />
+      <LazyLoad once offset={0}>
+        <Interviews />
+      </LazyLoad>
+      <LazyLoad once offset={0}>
+        <Download />
+      </LazyLoad>
+      <LazyLoad once offset={50}>
+        <WhatsOn />
+      </LazyLoad>
+      <LazyLoad once offset={50}>
+        <SubscribeContainer>
+          <Subscribe />
+        </SubscribeContainer>
+      </LazyLoad>
+      <LazyLoad once offset={50}>
+        <Reviews />
+      </LazyLoad>
+      <LazyLoad once offset={50}>
+        <Videos />
+      </LazyLoad>
+    </Container>
+  </Fragment>
 )
 
 export default homeEnhancer(Home)

@@ -14,7 +14,7 @@ import mainSliderEnhancer from './sliderContentEnhancer'
 import placeholderImg from '../../../resources/assets/img/placeholderImg.jpg'
 
 const SliderContent = styled.div`
-  height: 540px;
+  height: 800px;
   background-image: url(${p => p.SliderPhoto});
   background-repeat: no-repeat;
   background-size: cover;
@@ -33,12 +33,28 @@ const SliderWrapper = styled.span`
   position: absolute;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.4);
   left: 0;
+  background: -moz-linear-gradient(
+    top,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.65) 100%
+  );
+  background: -webkit-linear-gradient(
+    top,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.65) 100%
+  );
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.65) 100%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#a6000000',GradientType=0 );
 `
 
 const Header = styled.span`
-  font-size: 40px;
+  font-size: 30px;
+  line-height: 40px;
   font-weight: bold;
   color: white;
   position: relative;
@@ -88,19 +104,27 @@ const LatestSingles = styled(Link)`
   position: relative;
 `
 
+const CategoryTitle = styled(Link)`
+  font-size: 14px;
+  color: #ffa019;
+`
+
 const FlexDiv = styled.div`
-  width: 100%;
+  width: 60%;
+  position: relative;
   align-items: center;
   text-align: center;
+  margin: auto;
   height: 100%;
-  justify-content: center;
+  justify-content: flex-end;
   display: flex;
   flex-direction: column;
+  padding-bottom: 100px;
 `
 
 const MainSlider = ({ tags, media, category, data }) => {
   const Image = media && media.img && media.img.full && media.img.full
-  const CategoriesData = category && category.category && category.category
+  const CategoriesData = category && category.category
   const tagsData = tags && tags.tags && tags.tags
   return (
     <React.Fragment>
@@ -114,11 +138,13 @@ const MainSlider = ({ tags, media, category, data }) => {
         {data &&
           CategoriesData && (
             <FlexDiv>
+              <CategoryTitle to={`blog/category/${CategoriesData[0].slug}`}>
+                {CategoriesData[0].name}
+              </CategoryTitle>
               <Header dangerouslySetInnerHTML={{ __html: data.title }} />
               <LatestSingles to={`blog/${CategoriesData[0].slug}/${data.slug}`}>
                 Read More
               </LatestSingles>
-              )
             </FlexDiv>
           )}
       </SliderContent>

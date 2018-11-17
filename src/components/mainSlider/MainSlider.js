@@ -38,7 +38,7 @@ const NextArrow = (
 ) => <Img src={MainNext} onClick={onClick} />
 
 const Container = styled.div`
-  min-height: 800px;
+  min-height: 100vh;
   .slick-slider {
     position: relative;
 

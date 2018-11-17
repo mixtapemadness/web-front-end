@@ -14,7 +14,7 @@ import mainSliderEnhancer from './sliderContentEnhancer'
 import placeholderImg from '../../../resources/assets/img/placeholderImg.jpg'
 
 const SliderContent = styled.div`
-  height: 800px;
+  height: 100vh;
   background-image: url(${p => p.SliderPhoto});
   background-repeat: no-repeat;
   background-size: cover;

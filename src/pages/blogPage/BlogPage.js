@@ -346,25 +346,28 @@ const BlogPage = ({
   const disablePrev = !prevRoute
   return (
     <React.Fragment>
-      <Helmet>
-        <title>Turbo Todo</title>
-        {/* <meta property="og:image" content="<%=img%>"> */}
-        <meta property="og:image:width" content="400" />
-        <meta property="og:image:height" content="300" />
-        <meta property="og:url" content={window.location.href} />
-        <meta property="og:title" content={`${userSlug}`} />
-        <meta property="og:description" content={`${Description}`} />
-        <meta property="og:type" content="article" />
-        <meta name="twitter:description" content={`${Description}`} />
-        {/* <meta property="og:image:width" content="400">
-        <meta property="og:image:height" content="300">
-        <meta name="twitter:image" content="<%=img%>">
-        <meta name="twitter:card" content="summary_large_image">
-        <meta name="twitter:title" content="<%=title%>">
-        */}
-      </Helmet>
-
       <Container>
+        <Helmet>
+          <title>Turbo Todo</title>
+          <meta property="og:image:width" content="400" />
+          <meta property="og:image:height" content="300" />
+          <meta
+            property="og:url"
+            content={window.location ? window.location.href : ''}
+          />
+          <meta property="og:title" content={`${userSlug && userSlug}`} />
+          <meta
+            property="og:description"
+            content={`${Description && Description}`}
+          />
+          <meta property="og:type" content="article" />
+          <meta
+            name="twitter:description"
+            content={`${Description && Description}`}
+          />
+          <meta name="twitter:title" content={`${userSlug && userSlug}`} />
+          <meta name="twitter:card" content="summary_large_image" />
+        </Helmet>
         <Heading>
           <PagingArrows>
             <BackArrow

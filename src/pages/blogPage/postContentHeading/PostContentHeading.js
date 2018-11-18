@@ -29,6 +29,7 @@ import {
 } from 'react-share'
 // import window from 'global/window'
 import { dateStringify } from 'helpers/'
+import window from 'global/window'
 import config from '../../../../config'
 import blogPageImgEnhancer from './postContentHeadingEnhancer'
 
@@ -91,7 +92,7 @@ const PostContentHeading = ({ date, userName, location, userSlug, match }) => {
   // const url = `${config.apiUrl}api/v1/blog/${
   //   match.params.category
   // }/${slug}/share`
-  const url = window.location.href
+  const url = window.location ? window.location.href : ''
   return (
     <Container>
       <ContainerTop>

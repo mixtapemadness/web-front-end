@@ -358,12 +358,6 @@ const BlogPage = ({
             property="og:description"
             content={`${Description && Description}`}
           />
-          <meta property="og:image:width" content="400" />
-          <meta property="og:image:height" content="300" />
-          <meta
-            property="og:image:url"
-            content="http://s3-eu-west-1.amazonaws.com/blog.mixtapemadness.com/wp-content/uploads/20180425131933/SANKOFA.jpg"
-          />
           <meta property="og:type" content="article" />
           <meta name="twitter:title" content={`${userSlug && userSlug}`} />
           <meta
@@ -371,10 +365,6 @@ const BlogPage = ({
             content={`${Description && Description}`}
           />
           <meta name="twitter:card" content="summary_large_image" />
-          <meta
-            name="twitter:image:url"
-            content="http://s3-eu-west-1.amazonaws.com/blog.mixtapemadness.com/wp-content/uploads/20180425131933/SANKOFA.jpg"
-          />
         </Helmet>
         <Heading>
           <PagingArrows>

@@ -184,9 +184,10 @@ export default compose(
       window.scrollTo(0, 0)
       window.addEventListener('resize', this.props.updateWidth)
     },
-    componentDidUpdate(prevProps, prevState) {
-      console.log('prevProps', prevProps)
-      window.scrollTo(0, 0)
+    componentWillReceiveProps(nextProps) {
+      if (nextProps.location.pathname !== this.props.location.pathname) {
+        window.scrollTo(0, 0)
+      }
     },
     componentWillUnmount() {
       window.removeEventListener('resize', this.props.updateWidth)

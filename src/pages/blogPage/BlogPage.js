@@ -358,19 +358,19 @@ const BlogPage = ({
             property="og:description"
             content={`${Description && Description}`}
           />
-          <meta property="og:type" content="article" />
-          <meta
-            name="twitter:description"
-            content={`${Description && Description}`}
-          />
-          <meta name="twitter:title" content={`${userSlug && userSlug}`} />
-          <meta name="twitter:card" content="summary_large_image" />
+          <meta property="og:image:width" content="400" />
+          <meta property="og:image:height" content="300" />
           <meta
             property="og:image"
             content="http://s3-eu-west-1.amazonaws.com/blog.mixtapemadness.com/wp-content/uploads/20180425131933/SANKOFA.jpg"
           />
-          <meta property="og:image:width" content="400" />
-          <meta property="og:image:height" content="300" />
+          <meta property="og:type" content="article" />
+          <meta name="twitter:title" content={`${userSlug && userSlug}`} />
+          <meta
+            name="twitter:description"
+            content={`${Description && Description}`}
+          />
+          <meta name="twitter:card" content="summary_large_image" />
           <meta
             name="twitter:image"
             content="http://s3-eu-west-1.amazonaws.com/blog.mixtapemadness.com/wp-content/uploads/20180425131933/SANKOFA.jpg"

@@ -25,25 +25,24 @@ const Container = styled.div`
 const BlogPageImg = ({ data }) => {
   const fullImage = data && data.img && data.img.full
   return (
-    <Container>
-      <Helmet>
-        <meta property="og:image" content={`${fullImage && fullImage}`} />
-        <meta property="og:image:width" content="400" />
-        <meta property="og:image:height" content="300" />
-        <meta property="og:image:url" content={`${fullImage && fullImage}`} />
-        <meta
-          property="og:og:image:secure_url"
-          content={`${fullImage && fullImage}`}
+    fullImage && (
+      <Container>
+        <Helmet>
+          <meta property="og:image" content={`${fullImage}`} />
+          <meta property="og:image:width" content="400" />
+          <meta property="og:image:height" content="300" />
+          <meta property="og:image:url" content={`${fullImage}`} />
+          <meta property="og:image:secure_url" content={`${fullImage}`} />
+          <meta name="twitter:image" content={`${fullImage}`} />
+          <meta name="twitter:secure_url" content={`${fullImage}`} />
+        </Helmet>
+        <ReactImageFallback
+          src={fullImage && fullImage}
+          fallbackImage={placeholderImg}
+          initialImage={placeholderImg}
         />
-        <meta name="twitter:image" content={`${fullImage && fullImage}`} />
-        <meta name="twitter:secure_url" content={`${fullImage && fullImage}`} />
-      </Helmet>
-      <ReactImageFallback
-        src={fullImage && fullImage}
-        fallbackImage={placeholderImg}
-        initialImage={placeholderImg}
-      />
-    </Container>
+      </Container>
+    )
   )
 }
 

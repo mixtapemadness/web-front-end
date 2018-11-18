@@ -306,6 +306,12 @@ const BlogPage = ({
   const userName = user && user.user && user.user.name && user.user.name
   const userSlug = user && user.user && user.user.slug && user.user.slug
   const postData = data && data.Post ? data.Post : {}
+  const noHTML = /(<([^>]+)>)/gi
+  const Description =
+    data &&
+    data.Post &&
+    data.Post.excerpt &&
+    data.Post.excerpt.replace(noHTML, '')
   const categories =
     data && data.Post && data.Post.categories && data.Post.categories
   const isVideoArr =
@@ -313,7 +319,6 @@ const BlogPage = ({
   const isVideo = isVideoArr && isVideoArr.length > 0 ? true : false
   const PostDate = data && data.Post && data.Post.date && data.Post.date
   const tags = data && data.Post && data.Post.tags && data.Post.tags
-
   const Content =
     isVideo &&
     postData &&
@@ -343,9 +348,20 @@ const BlogPage = ({
     <React.Fragment>
       <Helmet>
         <title>Turbo Todo</title>
+        {/* <meta property="og:image" content="<%=img%>"> */}
         <meta property="og:image:width" content="400" />
         <meta property="og:image:height" content="300" />
         <meta property="og:url" content={window.location.href} />
+        <meta property="og:title" content={`${userSlug}`} />
+        <meta property="og:description" content={`${Description}`} />
+        <meta property="og:type" content="article" />
+        <meta name="twitter:description" content={`${Description}`} />
+        {/* <meta property="og:image:width" content="400">
+        <meta property="og:image:height" content="300">
+        <meta name="twitter:image" content="<%=img%>">
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="<%=title%>">
+        */}
       </Helmet>
 
       <Container>

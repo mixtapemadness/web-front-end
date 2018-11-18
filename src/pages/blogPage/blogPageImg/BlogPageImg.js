@@ -4,6 +4,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import ReactImageFallback from 'react-image-fallback'
+import { Helmet } from 'react-helmet'
 import blogPageImgEnhancer from './blogPageImgEnhancer'
 import placeholderImg from '../../../resources/assets/img/placeholderImg.jpg'
 
@@ -26,6 +27,12 @@ const BlogPageImg = ({ data }) => {
   console.log('fullImage', fullImage)
   return (
     <Container>
+      <Helmet>
+        <meta property="og:image" content={`${fullImage}`} />
+        <meta property="og:image:width" content="400" />
+        <meta property="og:image:height" content="300" />
+        <meta name="twitter:image" content={`${fullImage}`} />
+      </Helmet>
       <ReactImageFallback
         src={fullImage && fullImage}
         fallbackImage={placeholderImg}

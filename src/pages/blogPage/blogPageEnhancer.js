@@ -13,7 +13,7 @@ import {
 } from 'recompose'
 import { withRouter } from 'react-router-dom'
 import getPostBySlug from 'graphql/getPostBySlug.graphql'
-import { loadDataAsync, withAuthor } from 'hocs'
+import { loadDataAsync, withAuthor, withMedia } from 'hocs'
 import getNextPost from 'graphql/getNextPost.graphql'
 import getPreviousPost from 'graphql/getPreviousPost.graphql'
 import getPrevPostByAuthorId from 'graphql/getPrevPostByAuthorId.graphql'
@@ -32,6 +32,12 @@ export default compose(
       }),
     },
   }),
+  branch(
+    ({ data }) =>
+      data && data.Post && data.Post.featured_media ? true : false,
+    withMedia,
+  ),
+  withProps(props => console.log('propsebiieee', props)),
   withStateHandlers(
     () => ({
       width: window.innerWidth,
@@ -179,6 +185,7 @@ export default compose(
       window.addEventListener('resize', this.props.updateWidth)
     },
     componentDidUpdate(prevProps, prevState) {
+      console.log('prevProps', prevProps)
       window.scrollTo(0, 0)
     },
     componentWillUnmount() {

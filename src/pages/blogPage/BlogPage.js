@@ -349,8 +349,6 @@ const BlogPage = ({
       <Container>
         <Helmet>
           <title>Turbo Todo</title>
-          <meta property="og:image:width" content="400" />
-          <meta property="og:image:height" content="300" />
           <meta
             property="og:url"
             content={window.location ? window.location.href : ''}
@@ -367,6 +365,16 @@ const BlogPage = ({
           />
           <meta name="twitter:title" content={`${userSlug && userSlug}`} />
           <meta name="twitter:card" content="summary_large_image" />
+          <meta
+            property="og:image"
+            content="http://s3-eu-west-1.amazonaws.com/blog.mixtapemadness.com/wp-content/uploads/20180425131933/SANKOFA.jpg"
+          />
+          <meta property="og:image:width" content="400" />
+          <meta property="og:image:height" content="300" />
+          <meta
+            name="twitter:image"
+            content="http://s3-eu-west-1.amazonaws.com/blog.mixtapemadness.com/wp-content/uploads/20180425131933/SANKOFA.jpg"
+          />
         </Helmet>
         <Heading>
           <PagingArrows>

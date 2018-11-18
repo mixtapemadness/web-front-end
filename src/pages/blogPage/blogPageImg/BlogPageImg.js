@@ -28,10 +28,10 @@ const BlogPageImg = ({ data }) => {
   return (
     <Container>
       <Helmet>
-        <meta property="og:image" content={`${fullImage}`} />
+        {/* <meta property="og:image" content={`${fullImage && fullImage}`} />
         <meta property="og:image:width" content="400" />
         <meta property="og:image:height" content="300" />
-        <meta name="twitter:image" content={`${fullImage}`} />
+        <meta name="twitter:image" content={`${fullImage && fullImage}`} /> */}
       </Helmet>
       <ReactImageFallback
         src={fullImage && fullImage}

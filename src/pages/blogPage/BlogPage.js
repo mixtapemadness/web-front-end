@@ -308,6 +308,12 @@ const BlogPage = ({
   const userName = user && user.user && user.user.name && user.user.name
   const userSlug = user && user.user && user.user.slug && user.user.slug
   const postData = data && data.Post ? data.Post : {}
+  const noHTML = /(<([^>]+)>)/gi
+  const Description =
+    data &&
+    data.Post &&
+    data.Post.excerpt &&
+    data.Post.excerpt.replace(noHTML, '')
   const categories =
     data && data.Post && data.Post.categories && data.Post.categories
   const isVideoArr =
@@ -315,7 +321,6 @@ const BlogPage = ({
   const isVideo = isVideoArr && isVideoArr.length > 0 ? true : false
   const PostDate = data && data.Post && data.Post.date && data.Post.date
   const tags = data && data.Post && data.Post.tags && data.Post.tags
-
   const Content =
     isVideo &&
     postData &&
@@ -343,14 +348,35 @@ const BlogPage = ({
   const disablePrev = !prevRoute
   return (
     <React.Fragment>
-      <Helmet>
-        <title>Turbo Todo</title>
-        <meta property="og:image:width" content="400" />
-        <meta property="og:image:height" content="300" />
-        <meta property="og:url" content={window.location.href} />
-      </Helmet>
-
       <Container>
+        <Helmet>
+          <title>Turbo Todo</title>
+          <meta
+            property="og:url"
+            content={window.location ? window.location.href : ''}
+          />
+          <meta property="og:title" content={`${userSlug && userSlug}`} />
+          <meta
+            property="og:description"
+            content={`${Description && Description}`}
+          />
+          <meta property="og:type" content="article" />
+          <meta name="twitter:title" content={`${userSlug && userSlug}`} />
+          <meta property="og:type" content="website" />
+          <meta
+            name="twitter:description"
+            content={`${Description && Description}`}
+          />
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:site" content="@mixtapemadness" />
+          <meta name="twitter:creator" content="@twitter-username" />
+          <meta name="twitter:title" content={`${userSlug && userSlug}`} />
+          <meta
+            name="twitter:description"
+            content={`${Description && Description}`}
+          />
+        </Helmet>
         <Heading>
           <PagingArrows>
             <BackArrow

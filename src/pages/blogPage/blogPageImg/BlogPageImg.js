@@ -4,6 +4,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import ReactImageFallback from 'react-image-fallback'
+import { Helmet } from 'react-helmet'
 import blogPageImgEnhancer from './blogPageImgEnhancer'
 import placeholderImg from '../../../resources/assets/img/placeholderImg.jpg'
 
@@ -23,9 +24,21 @@ const Container = styled.div`
 
 const BlogPageImg = ({ data }) => {
   const fullImage = data && data.img && data.img.full
-  console.log('fullImage', fullImage)
   return (
     <Container>
+      <Helmet>
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image" content={`${fullImage}`} />
+        <meta property="og:image:url" content={`${fullImage}`} />
+        <meta property="og:image:secure_url" content={`${fullImage}`} />
+        <meta
+          property="og:image:alt"
+          content="3 books on ReduxJS. A sequel that takes you from beginner to pro."
+        />
+        <meta name="twitter:image" content={`${fullImage}`} />
+      </Helmet>
       <ReactImageFallback
         src={fullImage && fullImage}
         fallbackImage={placeholderImg}

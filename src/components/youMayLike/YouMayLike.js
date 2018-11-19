@@ -8,9 +8,9 @@ import React from 'react'
 import styled from 'styled-components'
 import Advertisement from 'components/advertisement'
 import PostItem from 'components/postItem'
-// import MobileComponent from 'components/mobileComponent'
 import { Link } from 'react-router-dom'
 import { CardLoader } from 'components/loaders'
+import shuffle from 'shuffle-array'
 import youMayLikeEnhancer from './youMayLikeEnhancer'
 
 const MayLikeContainer = styled.div`
@@ -72,10 +72,12 @@ const YouMayLike = ({
     data &&
     data.Posts &&
     data.Posts.filter(item => item.slug !== match.params.slug)
-
+  const shuffledPosts = Posts && shuffle(Posts)
   const postsWithSameTag =
     postsFromTags &&
     postsFromTags.filter(item => item.slug !== match.params.slug)
+  const shuffledPostsWithSameTag = postsWithSameTag && shuffle(postsWithSameTag)
+
   return (
     <MayLikeContainer>
       <AlsoLikeHeaderContainer>
@@ -86,16 +88,15 @@ const YouMayLike = ({
         <AdvertisementContainer to="/contact">
           <Advertisement />
         </AdvertisementContainer>
-        {Posts &&
-          Posts.map(
+        {shuffledPosts &&
+          shuffledPosts.map(
             (item, index) =>
               index < 5 && <PostItem key={item.id} data={item} />,
           )}
         {postsFromTagsLoading && [...Array(9)].map(i => <CardLoader />)}
-
         {!postsFromTagsLoading &&
-          postsWithSameTag &&
-          postsWithSameTag.map(
+          shuffledPostsWithSameTag &&
+          shuffledPostsWithSameTag.map(
             (item, index) =>
               index < 5 && <PostItem key={item.id} data={item} />,
           )}

@@ -306,6 +306,7 @@ const BlogPage = ({
   const userName = user && user.user && user.user.name && user.user.name
   const userSlug = user && user.user && user.user.slug && user.user.slug
   const postData = data && data.Post ? data.Post : {}
+  const postTitle = postData && postData.title
   const noHTML = /(<([^>]+)>)/gi
   const Description =
     data &&
@@ -354,14 +355,14 @@ const BlogPage = ({
             property="og:url"
             content={window.location ? window.location.href : ''}
           />
-          <meta property="og:title" content={`${userSlug && userSlug}`} />
+          <meta property="og:title" content={`${postTitle && postTitle}`} />
           <meta
             property="og:description"
             content={`${Description && Description}`}
           />
           <meta property="og:type" content="website" />
 
-          <meta name="twitter:title" content={`${userSlug && userSlug}`} />
+          <meta name="twitter:title" content={`${postTitle && postTitle}`} />
           <meta name="twitter:card" content="summary_large_image" />
           <meta name="twitter:site" content="@mixtapemadness" />
           <meta
@@ -419,7 +420,6 @@ const BlogPage = ({
               dangerouslySetInnerHTML={{ __html: postData.excerpt }}
             />
             <MobileAuthorContainer />
-            renderVideo
           </TitleContainer>
         </Heading>
         {renderVideo && (

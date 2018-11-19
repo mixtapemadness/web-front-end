@@ -27,9 +27,9 @@ const BlogPageImg = ({ data }) => {
   return (
     <Container>
       <Helmet>
-        <meta property="og:image" content={`${fullImage}`} />
-        <meta property="og:image:width" content="400" />
         <meta property="og:image:width" content="300" />
+        <meta property="og:image:width" content="300" />
+        <meta property="og:image" content={`${fullImage}`} />
         <meta property="og:image:url" content={`${fullImage}`} />
         <meta property="og:image:secure_url" content={`${fullImage}`} />
         <meta name="twitter:image" content={`${fullImage}`} />

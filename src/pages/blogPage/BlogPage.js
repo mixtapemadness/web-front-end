@@ -365,6 +365,14 @@ const BlogPage = ({
             content={`${Description && Description}`}
           />
           <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:site" content="@mixtapemadness" />
+          <meta name="twitter:creator" content="@twitter-username" />
+          <meta name="twitter:title" content={`${userSlug && userSlug}`} />
+          <meta
+            name="twitter:description"
+            content={`${Description && Description}`}
+          />
         </Helmet>
         <Heading>
           <PagingArrows>

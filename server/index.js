@@ -69,7 +69,6 @@ app.get('*', (req, res) => {
         <meta name="robots" content="index,follow" />
         <meta name="googlebot" content="index,follow" />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-        {console.log('helmet.meta', helmet.meta)}
         <title>Mixtape</title>
         <link
           href="https://fonts.googleapis.com/css?family=Montserrat:300,400"

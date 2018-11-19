@@ -153,7 +153,7 @@ const BackgroundPicture = styled.div`
 `
 
 const BlogContent = styled.div`
-  width: 90%;
+  max-width: 760px;
   margin: auto;
   @media only screen and (max-width: 1150px) {
     text-align: center;
@@ -273,6 +273,7 @@ const DisqusContainer = styled.div`
   max-width: 1200px;
   margin: auto;
   width: 90%;
+  margin-top: 20px;
 `
 
 const BlogArticleContent = styled.div`
@@ -280,6 +281,7 @@ const BlogArticleContent = styled.div`
     margin-top: 20px;
     display: flex;
     flex-direction: column;
+    line-height: 40px;
     img {
       margin: 5px 0;
     }

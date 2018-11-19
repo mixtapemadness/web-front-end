@@ -27,11 +27,16 @@ const BlogPageImg = ({ data }) => {
   return (
     <Container>
       <Helmet>
-        <meta property="og:image:width" content="300" />
-        <meta property="og:image:height" content="300" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:type" content="image/png" />
         <meta property="og:image" content={`${fullImage}`} />
         <meta property="og:image:url" content={`${fullImage}`} />
         <meta property="og:image:secure_url" content={`${fullImage}`} />
+        <meta
+          property="og:image:alt"
+          content="3 books on ReduxJS. A sequel that takes you from beginner to pro."
+        />
         <meta name="twitter:image" content={`${fullImage}`} />
       </Helmet>
       <ReactImageFallback

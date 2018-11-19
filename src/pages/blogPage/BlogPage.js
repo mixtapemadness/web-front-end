@@ -360,6 +360,7 @@ const BlogPage = ({
           />
           <meta property="og:type" content="article" />
           <meta name="twitter:title" content={`${userSlug && userSlug}`} />
+          <meta property="og:type" content="website" />
           <meta
             name="twitter:description"
             content={`${Description && Description}`}

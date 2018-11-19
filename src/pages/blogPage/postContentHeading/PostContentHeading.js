@@ -102,7 +102,7 @@ const PostContentHeading = ({ date, userName, location, userSlug, match }) => {
               <Facebook width={20} height={20} color={'#666666'} />
             </IconWrapper>
           </FacebookShareButton>
-          <TwitterShareButton url={url} title={'twitter'}>
+          <TwitterShareButton url={url} iconBgStyle={'cursor:pointer'}>
             <IconWrapper>
               <Twitter width={20} height={20} color={'#666666'} />
             </IconWrapper>

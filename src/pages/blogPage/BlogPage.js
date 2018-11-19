@@ -345,7 +345,6 @@ const BlogPage = ({
   // cons HasVideo = Video.
   const disablePrev = !prevRoute
   const renderVideo = data && !data.loading && isVideo && Video ? true : false
-  console.log('renderVideo', renderVideo)
   return (
     <React.Fragment>
       <Container>

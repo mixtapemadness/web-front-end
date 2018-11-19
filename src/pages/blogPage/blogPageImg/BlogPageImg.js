@@ -33,7 +33,8 @@ const BlogPageImg = ({ data, renderVideo }) => {
         <meta property="og:image" content={`${fullImage}`} />
         <meta property="og:image:url" content={`${fullImage}`} />
         <meta property="og:image:secure_url" content={`${fullImage}`} />
-        <meta name="twitter:image" content={`${fullImage}`} />
+        <meta name="twitter:image:width" content="600" />
+        <meta name="twitter:image:height" content="600" />
         <meta name="twitter:image" content={`${fullImage}`} />
       </Helmet>
       {!renderVideo && (

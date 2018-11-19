@@ -10,7 +10,7 @@ import Advertisement from 'components/advertisement'
 import PostItem from 'components/postItem'
 import { Link } from 'react-router-dom'
 import { CardLoader } from 'components/loaders'
-import shuffle from 'shuffle-array'
+import shuffle from 'helpers/shuffle'
 import youMayLikeEnhancer from './youMayLikeEnhancer'
 
 const MayLikeContainer = styled.div`

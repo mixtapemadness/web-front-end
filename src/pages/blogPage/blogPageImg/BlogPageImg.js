@@ -33,7 +33,6 @@ const BlogPageImg = ({ data }) => {
         <meta property="og:image:url" content={`${fullImage}`} />
         <meta property="og:image:secure_url" content={`${fullImage}`} />
         <meta name="twitter:image" content={`${fullImage}`} />
-        <meta name="twitter:secure_url" content={`${fullImage}`} />
       </Helmet>
       <ReactImageFallback
         src={fullImage && fullImage}

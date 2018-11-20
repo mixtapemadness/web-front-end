@@ -308,6 +308,7 @@ const BlogPage = ({
   const userName = user && user.user && user.user.name && user.user.name
   const userSlug = user && user.user && user.user.slug && user.user.slug
   const postData = data && data.Post ? data.Post : {}
+  const postTitle = postData && postData.title
   const noHTML = /(<([^>]+)>)/gi
   const Description =
     data &&
@@ -346,6 +347,7 @@ const BlogPage = ({
       .replace('iframe', 'embed')
   // cons HasVideo = Video.
   const disablePrev = !prevRoute
+  const renderVideo = data && !data.loading && isVideo && Video ? true : false
   return (
     <React.Fragment>
       <Container>
@@ -355,27 +357,21 @@ const BlogPage = ({
             property="og:url"
             content={window.location ? window.location.href : ''}
           />
-          <meta property="og:title" content={`${userSlug && userSlug}`} />
+          <meta property="og:title" content={`${postTitle && postTitle}`} />
           <meta
             property="og:description"
             content={`${Description && Description}`}
           />
-          <meta property="og:type" content="article" />
-          <meta name="twitter:title" content={`${userSlug && userSlug}`} />
           <meta property="og:type" content="website" />
-          <meta
-            name="twitter:description"
-            content={`${Description && Description}`}
-          />
-          <meta name="twitter:card" content="summary_large_image" />
+
+          <meta name="twitter:title" content={`${postTitle && postTitle}`} />
           <meta name="twitter:card" content="summary_large_image" />
           <meta name="twitter:site" content="@mixtapemadness" />
-          <meta name="twitter:creator" content="@twitter-username" />
-          <meta name="twitter:title" content={`${userSlug && userSlug}`} />
           <meta
             name="twitter:description"
             content={`${Description && Description}`}
           />
+          <meta name="twitter:creator" content="@twitter-username" />
         </Helmet>
         <Heading>
           <PagingArrows>
@@ -428,12 +424,10 @@ const BlogPage = ({
             <MobileAuthorContainer />
           </TitleContainer>
         </Heading>
-
-        {data && !data.loading && isVideo && Video ? (
+        {renderVideo && (
           <BlogPageVideo dangerouslySetInnerHTML={{ __html: Video && Video }} />
-        ) : (
-          <BlogPageImg id={postData.featured_media} />
         )}
+        {<BlogPageImg renderVideo={renderVideo} id={postData.featured_media} />}
         <BlogContent>
           <PostContentHeading
             date={postData.date}

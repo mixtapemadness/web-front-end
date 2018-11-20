@@ -10,7 +10,7 @@ import placeholderImg from '../../../resources/assets/img/placeholderImg.jpg'
 
 const Container = styled.div`
   width: 100%;
-  height: 60vh;
+  height: ${props => (!props.renderVideo ? '60vh' : '0vh')};
   background-image: url(${props => props.src});
   background-position: center center;
   background-size: contain;
@@ -22,10 +22,10 @@ const Container = styled.div`
   }
 `
 
-const BlogPageImg = ({ data }) => {
+const BlogPageImg = ({ data, renderVideo }) => {
   const fullImage = data && data.img && data.img.full
   return (
-    <Container>
+    <Container renderVideo={renderVideo}>
       <Helmet>
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
@@ -33,17 +33,17 @@ const BlogPageImg = ({ data }) => {
         <meta property="og:image" content={`${fullImage}`} />
         <meta property="og:image:url" content={`${fullImage}`} />
         <meta property="og:image:secure_url" content={`${fullImage}`} />
-        <meta
-          property="og:image:alt"
-          content="3 books on ReduxJS. A sequel that takes you from beginner to pro."
-        />
+        <meta name="twitter:image:width" content="600" />
+        <meta name="twitter:image:height" content="600" />
         <meta name="twitter:image" content={`${fullImage}`} />
       </Helmet>
-      <ReactImageFallback
-        src={fullImage && fullImage}
-        fallbackImage={placeholderImg}
-        initialImage={placeholderImg}
-      />
+      {!renderVideo && (
+        <ReactImageFallback
+          src={fullImage && fullImage}
+          fallbackImage={placeholderImg}
+          initialImage={placeholderImg}
+        />
+      )}
     </Container>
   )
 }

@@ -306,6 +306,7 @@ const BlogPage = ({
   const userName = user && user.user && user.user.name && user.user.name
   const userSlug = user && user.user && user.user.slug && user.user.slug
   const postData = data && data.Post ? data.Post : {}
+  const Excerpt = data && data.Post && data.Post.excerpt
   const postTitle = postData && postData.title
   const noHTML = /(<([^>]+)>)/gi
   const Description =
@@ -416,9 +417,11 @@ const BlogPage = ({
 
           <TitleContainer>
             <BlogTitle dangerouslySetInnerHTML={{ __html: postData.title }} />
-            <BlogSubTitle
-              dangerouslySetInnerHTML={{ __html: postData.excerpt }}
-            />
+            {/* <BlogSubTitle dangerouslySetInnerHTML={{ __html: Excerpt && Excerpt.replace('[&Hellip', ' ') }} /> */}
+            <BlogSubTitle>
+              {Excerpt &&
+                Excerpt.replace(noHTML, '').replace('[&#038;hellip', ' ')}
+            </BlogSubTitle>
             <MobileAuthorContainer />
           </TitleContainer>
         </Heading>

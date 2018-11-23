@@ -1,0 +1,10 @@
+query getNextPost(
+  $date: String
+  $filter: filterPostInput
+  $page: ID
+  $perPage: ID
+) {
+  getNextPost(date: $date, filter: $filter, page: $page, perPage: $perPage) {
+    slug
+  }
+}

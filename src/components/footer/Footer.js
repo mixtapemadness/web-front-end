@@ -1,60 +1,84 @@
+/* eslint jsx-quotes: 0 */
+/* eslint react/jsx-first-prop-new-line: 0 */
+/* eslint react/jsx-closing-tag-location: 0 */
+/* eslint no-unused-vars: 0 */
+
 import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
 import AppStoreIcon from 'resources/assets/img/appstore.png'
 import GooglePlayIcon from 'resources/assets/img/googleplay.png'
-import SoundCloudIcon from 'resources/assets/svg/soundcloud-logo.svg'
-import TwitterIcon from 'resources/assets/svg/twitter-black.svg'
-import FacebookIcon from 'resources/assets/svg/facebook-black.svg'
-import CircleIcon from 'resources/assets/svg/filled-circle.svg'
+import FacebookIcon from 'resources/assets/svgComponents/Facebook'
+import TwitterIcon from 'resources/assets/svgComponents/Twitter'
+import InstagramIcon from 'resources/assets/svgComponents/Instagram'
+import YoutubeIcon from 'resources/assets/svgComponents/Youtube'
+import CircleIcon from 'resources/assets/svgComponents/Circle'
+import SoundCloudIcon from 'resources/assets/svgComponents/SoundCloud'
+
+import { CLOSE_MEGAMENU } from 'constants'
+import footerEnhancer from './footerEnhancer'
+import MobileFooter from './MobileFooter'
+import eventEmitter from '../../eventEmitter'
 
 const FooterContainer = styled.footer`
   width: 100%;
   bottom: 0;
   left: 0;
   right: 0;
-  ${p => p.backgroundColor && `background-color: ${p.backgroundColor}`};
+  background-color: ${p => (p.menuOpened ? 'transparent' : '#efefef')};
+  margin-top: 50px;
 `
+
 const ContentContainer = styled.div`
-  padding: 40px 0px;
+  padding: 40px 20px;
   max-width: 1200px;
   margin: auto;
 `
+
 const FlexDiv = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
 `
+
 const ListContainer = styled.div`
   ${props => props.mr && `margin-right: ${props.mr}px`};
 `
+
 const ContentHeader = styled.span`
-  color: black;
-  font-size: 20px;
+  font-size: 16.5px;
+  letter-spacing: 1px;
+  color: ${p => (p.menuOpened ? '#ffffff' : '#000000')};
+  font-weight: 600;
 `
+
 const List = styled.ul`
   margin: 0;
   padding: 0;
   margin-top: 20px;
-  color: #979797;
-  font-size: 15px;
-  font-weight: 600;
-  list-style: none;
+  color: ${p => (p.menuOpened ? '#ffffff' : 'rgba(0, 0, 0, 0.5)')};
+  opacity: ${p => (p.menuOpened ? '1' : '0.5')};
 `
+
 const ListItem = styled.li`
   text-transform: uppercase;
   margin-bottom: 15px;
   letter-spacing: 1px;
+  font-weight: 600;
+  list-style: none;
+  letter-spacing: 0.8px;
+  font-size: 13px;
 `
+
 const UploadContainer = styled.div`
   display: flex;
   flex-direction: column;
 `
+
 const UploadButton = styled.button`
-  border: 1px solid black;
-  width: 220px;
-  height: 46px;
+  border: 1px solid ${p => (p.menuOpened ? '#ffffff' : '#000000')};
+  color: ${p => (p.menuOpened ? '#ffffff' : '#000000')};
   background-color: transparent;
   text-transform: uppercase;
   outline: none;
@@ -63,34 +87,60 @@ const UploadButton = styled.button`
   font-size: 16px;
   letter-spacing: 2px;
   margin-top: 20px;
+  width: 219px;
+  height: 47px;
 `
+
 const SocialContainer = styled.div`
   display: flex;
   margin-top: 20px;
   margin-bottom: 17px;
   align-items: center;
 `
+
 const SignUpContainer = styled.div`
   margin-top: 20px;
   margin-bottom: 20px;
   display: flex;
   align-items: center;
 `
+
 const Input = styled.input`
-  height: 44px;
+  height: 45px;
   width: 160px;
-  border: 1px solid black;
+  border: 1px solid ${p => (p.menuOpened ? '#ffffff' : '#000000')};
   padding-left: 15px;
   border-right: 0;
   outline: none;
   background-color: transparent;
+  font-size: 12px;
   box-sizing: content-box;
+  ::-webkit-input-placeholder {
+    font-size: 10.5px;
+    color: ${p => (p.menuOpened ? '#ffffff' : 'rgba(0, 0, 0, 0.8)')};
+    font-weight: 600;
+  }
+  ::-moz-placeholder {
+    font-size: 10.5px;
+    color: ${p => (p.menuOpened ? '#ffffff' : 'rgba(0, 0, 0, 0.8)')};
+    font-weight: 600;
+  }
+  :-ms-input-placeholder {
+    font-size: 10.5px;
+    color: ${p => (p.menuOpened ? '#ffffff' : 'rgba(0, 0, 0, 0.8)')};
+    font-weight: 600;
+  }
+  :-moz-placeholder {
+    font-size: 10.5px;
+    color: ${p => (p.menuOpened ? '#ffffff' : 'rgba(0, 0, 0, 0.8)')};
+    font-weight: 600;
+  }
 `
 const SignUpButton = styled.button`
-  height: 46px;
+  height: 47px;
   width: 100px;
-  background-color: black;
-  color: #ffffff;
+  background-color: ${p => (p.menuOpened ? '#ffffff' : '#000000')};
+  color: ${p => (p.menuOpened ? '#ff9600' : '#ffffff')};
   border: 1px solid black;
   border-left: none;
   font-weight: bold;
@@ -104,7 +154,7 @@ const SignUpButton = styled.button`
 const Line = styled.div`
   width: 100%;
   height: 2px;
-  background-color: #979797;
+  background-color: ${p => (p.menuOpened ? '#ffffff' : '#979797')};
   ${props => props.mr && `margin-right: ${props.mr}px;`}
   ${props => props.ml && `margin-left: ${props.ml}px;`}
   ${props => props.mt && `margin-top: ${props.mt}px;`}
@@ -122,6 +172,7 @@ const Flex = styled.div`
   display: flex;
 `
 const Span = styled.span`
+  font-weight: 600;
   ${props => props.fsize && `font-size: ${props.fsize}px`};
   ${props => props.color && `color: ${props.color}`};
   ${props => props.mr && `margin-right: ${props.mr}px;`}
@@ -133,94 +184,187 @@ const Anchor = styled.a`
   outline: none;
   text-decoration: none;
 `
-const SocialIcon = styled.img`
+const SocialIcon = styled.a`
   margin-right: 10px;
   cursor: pointer;
-  ${p => p.hg && `height: ${p.hg}px`};
 `
 
-const Footer = () => (
-  <FooterContainer backgroundColor="#eeeeee">
-    <ContentContainer>
-      <FlexDiv>
-        <ListContainer>
-          <ContentHeader>Music</ContentHeader>
-          <List>
-            <ListItem>Artists</ListItem>
-            <ListItem>Mixtapes</ListItem>
-            <ListItem>Singles</ListItem>
-            <ListItem>Hip Hop</ListItem>
-            <ListItem>Drill</ListItem>
-            <ListItem>Rap</ListItem>
-            <ListItem>Trap</ListItem>
-            <ListItem>Grime</ListItem>
-            <ListItem>All Genres</ListItem>
-          </List>
-        </ListContainer>
-        <ListContainer>
-          <ContentHeader>Mixtape Madness</ContentHeader>
-          <List>
-            <ListItem>
-              <Link to="/aboutus">About</Link>
-            </ListItem>
-            <ListItem>Company</ListItem>
-            <ListItem>Help</ListItem>
-            <ListItem>Contact</ListItem>
-            <ListItem>Press</ListItem>
-            <ListItem>FAQ</ListItem>
-          </List>
-        </ListContainer>
-        <UploadContainer>
-          <ContentHeader>For Artists</ContentHeader>
-          <UploadButton>Upload to mm</UploadButton>
-        </UploadContainer>
-        <div style={{ maxWidth: '280px' }}>
-          <ContentHeader>Sign up for our newsletter</ContentHeader>
-          <SignUpContainer>
-            <Input placeholder="email@example.com" />
-            <SignUpButton>SIGN UP</SignUpButton>
-          </SignUpContainer>
-          <ContentHeader>Connect with Mixtape Madness</ContentHeader>
-          <SocialContainer>
-            <SocialIcon hg={20} src={TwitterIcon} alt="soc" />
-            <SocialIcon hg={17} src={FacebookIcon} alt="soc" />
-            <SocialIcon hg={17} src={CircleIcon} alt="soc" />
-            <SocialIcon hg={35} src={SoundCloudIcon} alt="soc" />
-            <SocialIcon hg={20} alt="soc" />
-            <SocialIcon hg={20} alt="soc" />
-          </SocialContainer>
-          <Line mb={10} />
+const Footer = ({ width, menuOpened }) => (
+  <div>
+    {width > 900 && (
+      <FooterContainer menuOpened={menuOpened}>
+        <ContentContainer>
           <FlexDiv>
-            <Anchor href="/">
-              <AppStore src={AppStoreIcon} />
-            </Anchor>
-            <Anchor href="/">
-              <GooglePlay src={GooglePlayIcon} />
-            </Anchor>
+            <ListContainer>
+              <ContentHeader menuOpened={menuOpened}>Music</ContentHeader>
+              <List menuOpened={menuOpened}>
+                {/* <ListItem>Artists</ListItem> */}
+                {/* <ListItem>Mixtapes</ListItem> */}
+                {/* <ListItem>Singles</ListItem> */}
+                {/* <ListItem>Hip Hop</ListItem> */}
+                {/* <ListItem>Drill</ListItem> */}
+                {/* <ListItem>Rap</ListItem> */}
+                {/* <ListItem>Trap</ListItem> */}
+                {/* <ListItem>Grime</ListItem> */}
+                {/* <ListItem>All Genres</ListItem> */}
+              </List>
+            </ListContainer>
+            <ListContainer>
+              <ContentHeader menuOpened={menuOpened}>Blog</ContentHeader>
+              <List menuOpened={menuOpened}>
+                <ListItem>
+                  <Link to="/aboutus">About</Link>
+                </ListItem>
+                <ListItem>
+                  <Link to="/blog/category/videos">Videos</Link>
+                </ListItem>
+                <ListItem>
+                  <Link to="/blog/category/articles">Articles</Link>
+                </ListItem>
+                <ListItem>
+                  <Link to="/blog/category/events">Events</Link>
+                </ListItem>
+                <ListItem>
+                  <Link to="/blog/category/reviews">Reviews </Link>
+                </ListItem>
+                <ListItem>
+                  <Link to="/blog/category/news">News</Link>
+                </ListItem>
+                <ListItem>
+                  <Link to="/blog/category/interviews">Interviews</Link>
+                </ListItem>
+              </List>
+            </ListContainer>
+            <UploadContainer>
+              <ContentHeader menuOpened={menuOpened}>For Artists</ContentHeader>
+              {/* <UploadButton menuOpened={menuOpened}>Upload to mm</UploadButton> */}
+            </UploadContainer>
+            <div>
+              <ContentHeader menuOpened={menuOpened}>
+                Sign up for our newsletter
+              </ContentHeader>
+              <SignUpContainer>
+                <Input
+                  placeholder="email@example.com"
+                  menuOpened={menuOpened}
+                />
+                <SignUpButton menuOpened={menuOpened}>SIGN UP</SignUpButton>
+              </SignUpContainer>
+              <ContentHeader menuOpened={menuOpened}>
+                Connect with Mixtape Madness
+              </ContentHeader>
+              <SocialContainer>
+                <SocialIcon
+                  target="_blank"
+                  href="https://twitter.com/mixtapemadness"
+                >
+                  <TwitterIcon
+                    height="20px"
+                    color={menuOpened ? '#ffffff' : '#666666'}
+                  />
+                </SocialIcon>
+                <SocialIcon
+                  target="_blank"
+                  href="https://www.facebook.com/MixtapeMadnessUK/"
+                >
+                  <FacebookIcon
+                    height="17px"
+                    color={menuOpened ? '#ffffff' : '#666666'}
+                  />
+                </SocialIcon>
+                <SocialIcon>
+                  <CircleIcon
+                    height="17px"
+                    color={menuOpened ? '#ffffff' : '#666666'}
+                  />
+                </SocialIcon>
+                <SocialIcon
+                  target="_blank"
+                  href="https://soundcloud.com/mixtapemadnessuk"
+                >
+                  <SoundCloudIcon
+                    height="35px"
+                    color={menuOpened ? '#ffffff' : '#666666'}
+                  />
+                </SocialIcon>
+                <SocialIcon
+                  target="_blank"
+                  href="https://www.youtube.com/user/madaboutmixtapes"
+                >
+                  <YoutubeIcon
+                    height="23px"
+                    color={menuOpened ? '#ffffff' : '#666666'}
+                  />
+                </SocialIcon>
+                <SocialIcon
+                  target="_blank"
+                  href="https://www.instagram.com/mixtapemadness/"
+                >
+                  <InstagramIcon
+                    height="19px"
+                    color={menuOpened ? '#ffffff' : '#666666'}
+                  />
+                </SocialIcon>
+              </SocialContainer>
+              <Line mb={10} menuOpened={menuOpened} />
+              <FlexDiv>
+                {/* <Anchor
+                  target="_blank"
+                  href="https://itunes.apple.com/us/app/mixtape-madness-latest-uk-mixtapes-singles/id1090862433?mt=8&ign-mpt=uo%3D4"
+                >
+                  <AppStore src={AppStoreIcon} />
+                </Anchor>
+                <Anchor
+                  target="_blank"
+                  href="https://play.google.com/store/apps/details?id=com.mixtape.madness"
+                >
+                  <GooglePlay src={GooglePlayIcon} />
+                </Anchor> */}
+              </FlexDiv>
+            </div>
           </FlexDiv>
-        </div>
-      </FlexDiv>
-      <Line mt={20} mb={20} />
-      <FlexDiv>
-        <div>
-          <Span fsize={15} color="black">
-            Mixtape Madness
-          </Span>
-        </div>
-        <Flex>
-          <Span fsize={15} color="black">
-            Help
-          </Span>
-          <Span fsize={15} color="black" ml={10}>
-            Terms
-          </Span>
-          <Span fsize={15} color="black" ml={10}>
-            Privacy
-          </Span>
-        </Flex>
-      </FlexDiv>
-    </ContentContainer>
-  </FooterContainer>
+          <Line mt={20} mb={20} menuOpened={menuOpened} />
+          <FlexDiv>
+            <div>
+              <Span fsize={13} color={menuOpened ? '#ffffff' : '#000000'}>
+                Mixtape Madness
+              </Span>
+            </div>
+            <Flex>
+              <Span fsize={13} color={menuOpened ? '#ffffff' : '#000000'}>
+                Help
+              </Span>
+              <Span
+                fsize={13}
+                color={menuOpened ? '#ffffff' : '#000000'}
+                ml={10}
+              >
+                <Link
+                  to="/termsconditions"
+                  onClick={() => eventEmitter.emit(CLOSE_MEGAMENU)}
+                >
+                  Terms{' '}
+                </Link>
+              </Span>
+              <Span
+                fsize={13}
+                color={menuOpened ? '#ffffff' : '#000000'}
+                ml={10}
+              >
+                <Link
+                  to="/privacy"
+                  onClick={() => eventEmitter.emit(CLOSE_MEGAMENU)}
+                >
+                  Privacy{' '}
+                </Link>
+              </Span>
+            </Flex>
+          </FlexDiv>
+        </ContentContainer>
+      </FooterContainer>
+    )}
+    {width <= 900 && <MobileFooter menuOpened={menuOpened} />}
+  </div>
 )
 
-export default Footer
+export default footerEnhancer(Footer)

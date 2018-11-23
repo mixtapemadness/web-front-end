@@ -1,0 +1,12 @@
+query getPostsByTags($tags: [ID]) {
+  Posts: getPostsByTags(tags: $tags) {
+    id
+    categories
+    featured_media
+    author
+    title
+    content
+    slug
+    excerpt
+  }
+}

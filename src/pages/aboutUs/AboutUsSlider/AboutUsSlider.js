@@ -17,19 +17,41 @@ const SliderContainer = styled.div`
   background-image: url(${props => props.image});
   background-position: center center;
   background-size: cover;
+  position: relative;
+  @media only screen and (max-width: 760px) {
+    height: 50vh;
+  }
+`
+const SliderContainerWrapper = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 100%;
 `
 
-const SliderHeader = styled.h1`
-  width: 70%;
+const SliderHeader = styled.div`
   color: #fff;
-  font-size: 48px;
   text-align: center;
+  font-size: 36px;
+  font-weight: 800;
+  letter-spacing: 3.4px;
+  line-height: 1.2;
+  @media only screen and (max-width: 1024px) {
+    font-size: 26px;
+  }
+  @media only screen and (max-width: 760px) {
+    font-size: 20px;
+  }
 `
 
 const AboutUsSlider = () => (
   <SliderContainer image={imgUrl}>
+    <SliderContainerWrapper />
     <SliderHeader>
-      Join Music Music Madness To Have Your Music Played Around The World
+      <span>Join Mixtape Madness</span>
+      <br />
+      <span>to have your music played around</span>
+      <br />
+      the world.
     </SliderHeader>
     <JoinNowBtn />
   </SliderContainer>

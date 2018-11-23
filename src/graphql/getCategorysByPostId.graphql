@@ -1,0 +1,7 @@
+query getCategoriesByPostId($id:ID){
+ category:getCategoriesByPostId(id:$id){
+    name
+    slug
+    id
+  }
+}

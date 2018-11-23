@@ -1,44 +1,70 @@
+/* eslint object-curly-newline: 0 */
+/* eslint implicit-arrow-linebreak: 0 */
+/* eslint indent: 0 */
+/* eslint jsx-quotes: 0 */
+
 import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
-import SearchIcon from 'resources/assets/svg/search.svg'
-import DotsIcon from 'resources/assets/svg/ellipsis.svg'
-import TwitterIcon from 'resources/assets/svg/twitter-logo.svg'
-import FacebookIcon from 'resources/assets/svg/facebook-app-logo.svg'
-import InstagramIcon from 'resources/assets/svg/instagram-logo.svg'
-import YoutubeIcon from 'resources/assets/svg/youtube.svg'
-import BurgerIcon from 'resources/assets/svg/burger.svg'
+import FacebookIcon from 'resources/assets/svgComponents/Facebook'
+import TwitterIcon from 'resources/assets/svgComponents/Twitter'
+import InstagramIcon from 'resources/assets/svgComponents/Instagram'
+import YoutubeIcon from 'resources/assets/svgComponents/Youtube'
+import DotsIcon from 'resources/assets/svgComponents/Dots'
+import SearchIcon from 'resources/assets/svgComponents/Search'
+import MixtapeLogo from 'resources/assets/img/mixtape-logo.png'
 
 import headerEnhancer from './headerEnhancer'
 
 const HeaderContainer = styled.div`
   width: 100%;
-  height: 120px;
+  height: 70px;
   background-color: #ffffff;
   font-size: 16px;
-  ${p => p.bottomBorder && 'border-bottom: 1px solid #E7E7E7'};
+  padding: 0 10px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  ${p => p.menuOpened && 'background-color: #ff9600'};
+  box-shadow: 0 3px 5px -4px rgba(0, 0, 0, 0.46);
+  @media only screen and (max-width: 850px) {
+    height: 80px;
+  }
 `
+
 const ContentContainer = styled.div`
   max-width: 1200px;
   height: 100%;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
+  position: relative;
+  font-size: 13px;
+  @media only screen and (max-width: 1050px) {
+    justify-content: center;
+  }
 `
 const LeftSide = styled.div`
   display: flex;
-  align-items: flex-end;
+  @media only screen and (max-width: 1050px) {
+    width: 100%;
+    justify-content: center;
+  }
+  @media only screen and (max-width: 475px) {
+    justify-content: space-between;
+    padding: 0 20px;
+  }
 `
 
 const RightSide = styled.div`
   display: flex;
-  align-items: flex-end;
+  align-items: center;
 `
 
 const NavBar = styled.nav`
   display: flex;
-  align-items: flex-end;
 `
 const Ul = styled.ul`
   padding: 0;
@@ -46,53 +72,66 @@ const Ul = styled.ul`
   text-decoration: none;
   list-style: none;
   display: flex;
+  color: ${props => (props.menuOpened ? '#ffffff' : '#666666')};
+  transition: unset;
+  margin-right: 10px;
+  @media only screen and (max-width: 475px) {
+    display: none;
+  }
 `
 const Li = styled.li`
-  padding-bottom: 35px;
-  color: grey;
-  cursor: pointer;
   font-weight: 600;
   letter-spacing: 1.5px;
-  border-bottom: ${props => (props.active ? '2px solid orange' : null)};
+  display: flex;
+  align-items: center;
+  height: 100%;
+  border-bottom: ${props =>
+    props.isActive ? '2px solid #ff9600' : '2px solid transparent'};
   :not(:last-child) {
     padding-right: 10px;
+  }
+  @media only screen and (max-width: 450px) {
+    font-size: 13px;
   }
 `
 const OrangeContainer = styled.div`
   display: flex;
-  margin-bottom: 37px;
+  color: ${p => (p.menuOpened ? '#ffffff' : '#ffa019')};
 `
-const Span = styled.span`
-  color: orange;
-  font-weight: 600;
-  margin-left: 20px;
-  letter-spacing: 1.5px;
-  cursor: pointer;
-`
+
+// const Span = styled.span`
+//   font-weight: 600;
+//   margin-left: 20px;
+//   letter-spacing: 1.5px;
+//   cursor: pointer;
+// `
+
 const Logo = styled.img`
-  height: 50px;
-  padding-bottom: 20px;
-  margin-right: 20px;
+  height: 70px;
   box-sizing: content-box;
+  @media only screen and (max-width: 450px) {
+    height: 52px;
+  }
 `
-const Search = styled.img`
+
+const Search = styled.div`
   width: 20px;
-  margin-bottom: 36px;
   cursor: pointer;
+  display: flex;
+  align-items: center;
 `
-const Dots = styled.img`
+const Dots = styled.div`
   width: 10px;
-  margin-bottom: 35px;
   margin-left: 30px;
   margin-right: 10px;
   cursor: pointer;
 `
 const ContactUsContainer = styled.div`
-  border: 1px solid orange;
+  border: 1px solid ${p => (p.menuOpened ? '#ffffff' : '#ffa019')};
   border-radius: 15px;
   margin-left: 20px;
   padding: 0px 5px;
-  color: orange;
+  color: ${p => (p.menuOpened ? '#ffffff' : '#ffa019')};
   font-weight: 600;
   letter-spacing: 1.5px;
   cursor: pointer;
@@ -101,21 +140,73 @@ const ContactUsContainer = styled.div`
 const SocialIconsContainer = styled.div`
   display: flex;
   align-items: center;
-  margin-bottom: 34px;
-  margin-left: 10px;
 `
-const SocialIcon = styled.img`
-  height: 20px;
+const SocialIcon = styled.a`
   margin-left: 20px;
-  ${props => props.facebook && 'height: 17px'};
-  ${props => props.youtube && 'height: 22px'};
   cursor: pointer;
 `
-const Burger = styled.img`
-  width: 19px;
-  margin-bottom: 36px;
-  margin-right: 40px;
+
+const BurgerIcon = styled.div`
+  width: 23px;
+  height: 16px;
+  position: relative;
+  @media only screen and (max-width: 450px) {
+  }
+  @media only screen and (max-width: 350px) {
+  }
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: 0.5s ease-in-out;
+  -moz-transition: 0.5s ease-in-out;
+  -o-transition: 0.5s ease-in-out;
+  transition: 0.5s ease-in-out;
   cursor: pointer;
+  span {
+    display: block;
+    position: absolute;
+    height: 3px;
+    width: 100%;
+    background-color: ${p => (p.menuOpened === true ? '#ffffff' : '#666666')};
+    border-radius: 9px;
+    opacity: 1;
+    left: 0;
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+    -webkit-transition: 0.25s ease-in-out;
+    -moz-transition: 0.25s ease-in-out;
+    -o-transition: 0.25s ease-in-out;
+    transition: 0.25s ease-in-out;
+  }
+  span:nth-child(1) {
+    top: 0;
+    ${p => p.menuOpened && 'top: 18px'};
+    ${p => p.menuOpened && 'width: 0%'};
+    ${p => p.menuOpened && 'left: 50%'};
+  }
+  span:nth-child(2) {
+    top: 6px;
+    ${p => p.menuOpened && '-webkit-transform: rotate(45deg)'};
+    ${p => p.menuOpened && '-moz-transform: rotate(45deg)'};
+    ${p => p.menuOpened && '-o-transform: rotate(45deg)'};
+    ${p => p.menuOpened && 'transform: rotate(45deg)'};
+  }
+  span:nth-child(3) {
+    top: 6px;
+    ${p => p.menuOpened && '-webkit-transform: rotate(-45deg)'};
+    ${p => p.menuOpened && '-moz-transform: rotate(-45deg)'};
+    ${p => p.menuOpened && '-o-transform: rotate(-45deg)'};
+    ${p => p.menuOpened && 'transform: rotate(-45deg)'};
+  }
+  span:nth-child(4) {
+    top: 12px;
+    ${p => p.menuOpened && 'top: 18px'};
+    ${p => p.menuOpened && 'width: 0%'};
+    ${p => p.menuOpened && 'left: 50%'};
+  }
 `
 
 const DropDown = styled.div`
@@ -123,18 +214,19 @@ const DropDown = styled.div`
   div {
     display: none;
   }
-  &:hover {
+  /* &:hover {
     div {
       display: flex;
-    }
+    } */
   }
 `
+
 const DropDownContent = styled.div`
   z-index: 1;
   position: absolute;
   background-color: #ffffff;
-  top: 62px;
-  padding: 20px;
+  top: 120px;
+  padding: 18px 20px;
   border: 1px solid #e7e7e7;
   justify-content: space-between;
   width: 310px;
@@ -157,137 +249,213 @@ const Join = styled.div`
   cursor: pointer;
   background: transparent;
   padding: 0px 12px;
+  justify-content: center;
+  font-size: 13px;
+  letter-spacing: 0.8px;
+  color: #000000;
 `
 const DotsDropDown = styled.div`
   position: relative;
 `
-const DotsDropDownContent = styled.div`
-  z-index: 1;
-  position: absolute;
-  background-color: #ffffff;
-  border: 1px solid #e7e7e7;
-  top: 53px;
-  width: 208px;
-  min-height: 278px;
-  display: ${p => (p.dotsMenu === true ? 'block' : 'none')};
-  ul {
-    list-style: none;
-    font-size: 14px;
-    color: #333333;
-    padding: 20px 0px;
-  }
-  li {
-    padding: 3px 20px;
-    :hover {
-      background-color: #f5f5f5;
-    }
-  }
-`
-const Line = styled.div`
-  height: 1px;
-  margin: 9px 0;
-  overflow: hidden;
-  background-color: #e5e5e5;
+// const DotsDropDownContent = styled.div`
+//   z-index: 1;
+//   position: absolute;
+//   background-color: #ffffff;
+//   border: 1px solid #e7e7e7;
+//   top: 53px;
+//   width: 208px;
+//   min-height: 278px;
+//   display: ${p => (p.dotsMenu === true ? 'block' : 'none')};
+
+//   ul {
+//     list-style: none;
+//     font-size: 14px;
+//     color: #333333;
+//     padding: 20px 0px;
+//   }
+//   li {
+//     padding: 3px 20px;
+//     :hover {
+//       background-color: #f5f5f5;
+//     }
+//   }
+//   `
+// const Line = styled.div`
+//   height: 1px;
+//   margin: 9px 0;
+//   overflow: hidden;
+//   background-color: #e5e5e5;
+// `
+/*
+  <DotsDropDownContent dotsMenu={dotsMenu}>
+    <ul>
+      <li>
+        <Link to="/aboutus">About Us</Link>
+      </li>
+      <li>Legal</li>
+      <li>Copyright</li>
+      <li>Terms & Contitions</li>
+      <Line />
+      <li>Advertising</li>
+      <li>Press</li>
+      <li>
+        <a href="https://itunes.apple.com/us/app/mixtape-madness-latest-uk-mixtapes-singles/id1090862433?mt=8&ign-mpt=uo%3D4">
+          Download our IOS app
+        </a>
+      </li>
+      <li>Download our Android app</li>
+      <Line />
+      <li>Contact Us</li>
+    </ul>
+  </DotsDropDownContent>
+*/
+
+const Div = styled.div`
+  display: flex;
+  align-items: center;
 `
 
-const Header = ({ bottomBorder, dotsMenu, toggleDotsMenu }) => (
-  <HeaderContainer bottomBorder={bottomBorder}>
+const DropDownItem = styled.span`
+  font-size: 13px;
+  letter-spacing: 0.8px;
+  color: #000000;
+`
+
+const Header = ({
+  // dotsMenu,
+  toggleDotsMenu,
+  width,
+  toggleSearch,
+  toggleMenu,
+  menuOpened,
+  location,
+}) => (
+  <HeaderContainer menuOpened={menuOpened}>
     <ContentContainer>
       <LeftSide>
-        <Burger src={BurgerIcon} alt="burger" />
-        <Link to="/">
-          <Logo
-            src="http://www.mixtapemadness.com/assets/images/logo-full.png"
-            alt="logo"
-          />
-        </Link>
+        <Div>
+          <BurgerIcon menuOpened={menuOpened} onClick={() => toggleMenu()}>
+            <span />
+            <span />
+            <span />
+            <span />
+          </BurgerIcon>
+          <Link to="/">
+            <Logo src={MixtapeLogo} alt="logo" />
+          </Link>
+        </Div>
         <NavBar>
-          <Ul>
+          <Ul menuOpened={menuOpened}>
             <DropDown>
-              <Li active>Music</Li>
+              {/* <Li isActive={location.pathname === '/music'}>
+                  <Link to="/music">Music</Link>
+                </Li> */}
               <DropDownContent>
                 <div>
-                  <span>Top 100</span>
-                  <span>Top 30</span>
-                  <span>Hottest</span>
-                  <span>Latest</span>
+                  <DropDownItem>Top 100</DropDownItem>
+                  <DropDownItem>Top 30</DropDownItem>
+                  <DropDownItem>Hottest</DropDownItem>
+                  <DropDownItem>Latest</DropDownItem>
                 </div>
                 <div>
-                  <span>Trending</span>
-                  <span>Hottest</span>
-                  <span>Singles</span>
-                  <span>Mixtapes</span>
+                  <DropDownItem>Trending</DropDownItem>
+                  <DropDownItem>Hottest</DropDownItem>
+                  <DropDownItem>Singles</DropDownItem>
+                  <DropDownItem>Mixtapes</DropDownItem>
                 </div>
                 <div>
-                  <span>Videos</span>
-                  <span>Browse</span>
-                  <span>Albums</span>
+                  <DropDownItem>Videos</DropDownItem>
+                  <DropDownItem>Browse</DropDownItem>
+                  <DropDownItem>Albums</DropDownItem>
                   <Join>Join MM</Join>
                 </div>
               </DropDownContent>
             </DropDown>
-            <DropDown>
-              <Li>News</Li>
-              <DropDownContent>Content</DropDownContent>
-            </DropDown>
-            <DropDown>
-              <Li>Events</Li>
-              <DropDownContent>Content</DropDownContent>
-            </DropDown>
-            <DropDown>
-              <Li>Video</Li>
-              <DropDownContent>Content</DropDownContent>
-            </DropDown>
+            <Li isActive={location.pathname === '/blog/category/news'}>
+              <Link to="/blog/category/news">News</Link>
+            </Li>
+            <Li isActive={location.pathname === '/blog/category/events'}>
+              <Link to="/blog/category/events">Events</Link>
+            </Li>
+            <Li isActive={location.pathname === '/blog/category/videos'}>
+              <Link to="/blog/category/videos">Video</Link>
+            </Li>
           </Ul>
+          <Search onClick={() => toggleSearch()}>
+            <SearchIcon
+              width="20px"
+              color={menuOpened ? '#ffffff' : '#666666'}
+            />
+          </Search>
         </NavBar>
-        <DotsDropDown>
-          <Dots src={DotsIcon} alt="dots" onClick={() => toggleDotsMenu()} />
-          <DotsDropDownContent dotsMenu={dotsMenu}>
-            <ul>
-              <li>
-                <Link to="aboutus">About Us</Link>
-              </li>
-              <li>Legal</li>
-              <li>Copyright</li>
-              <li>Terms & Contitions</li>
-              <Line />
-              <li>Advertising</li>
-              <li>Press</li>
-              <li>
-                <a href="https://itunes.apple.com/us/app/mixtape-madness-latest-uk-mixtapes-singles/id1090862433?mt=8&ign-mpt=uo%3D4">
-                  Download our IOS app
-                </a>
-              </li>
-              <li>Download our Android app</li>
-              <Line />
-              <li>Contact Us</li>
-            </ul>
-          </DotsDropDownContent>
-        </DotsDropDown>
-        <Search src={SearchIcon} alt="search" />
+
+        {width > 1050 && (
+          <Div>
+            <DotsDropDown>
+              <Dots onClick={() => toggleDotsMenu()}>
+                <DotsIcon
+                  width="10px"
+                  color={menuOpened ? '#ffffff' : '#666666'}
+                />
+              </Dots>
+            </DotsDropDown>
+          </Div>
+        )}
       </LeftSide>
-      <RightSide>
-        <OrangeContainer>
-          <Span>Upload</Span>
-          <Span>Register</Span>
-          <Span>Log In</Span>
-          <ContactUsContainer>Contact Us</ContactUsContainer>
-        </OrangeContainer>
-        <SocialIconsContainer>
-          <a href="https://twitter.com/mixtapemadness">
-            <SocialIcon src={TwitterIcon} alt="twitter" />
-          </a>
-          <a href="https://www.facebook.com/MixtapeMadnessUK/">
-            <SocialIcon src={FacebookIcon} facebook alt="facebook" />
-          </a>
-          <a href="https://www.instagram.com/mixtapemadness/">
-            <SocialIcon src={InstagramIcon} facebook alt="insta" />
-          </a>
-          <a href="https://www.youtube.com/user/madaboutmixtapes">
-            <SocialIcon src={YoutubeIcon} youtube alt="youtube" />
-          </a>
-        </SocialIconsContainer>
-      </RightSide>
+      {width > 1050 && (
+        <RightSide>
+          <OrangeContainer menuOpened={menuOpened}>
+            {/* <Span>Upload</Span> */}
+            {/* <Span>
+                <Link to="/register">Register</Link>
+              </Span>
+              <Span>
+                <Link to="/login">Log In</Link>
+              </Span> */}
+            <ContactUsContainer menuOpened={menuOpened}>
+              Contact Us
+            </ContactUsContainer>
+          </OrangeContainer>
+          <SocialIconsContainer>
+            <SocialIcon
+              target="_blank"
+              href="https://twitter.com/mixtapemadness"
+            >
+              <TwitterIcon
+                height="20px"
+                color={menuOpened ? '#ffffff' : '#666666'}
+              />
+            </SocialIcon>
+            <SocialIcon
+              target="_blank"
+              href="https://www.facebook.com/MixtapeMadnessUK/"
+            >
+              <FacebookIcon
+                height="17px"
+                color={menuOpened ? '#ffffff' : '#666666'}
+              />
+            </SocialIcon>
+            <SocialIcon
+              target="_blank"
+              href="https://www.instagram.com/mixtapemadness/"
+            >
+              <InstagramIcon
+                height="17px"
+                color={menuOpened ? '#ffffff' : '#666666'}
+              />
+            </SocialIcon>
+            <SocialIcon
+              target="_blank"
+              href="https://www.youtube.com/user/madaboutmixtapes"
+            >
+              <YoutubeIcon
+                height="22px"
+                color={menuOpened ? '#ffffff' : '#666666'}
+              />
+            </SocialIcon>
+          </SocialIconsContainer>
+        </RightSide>
+      )}
     </ContentContainer>
   </HeaderContainer>
 )

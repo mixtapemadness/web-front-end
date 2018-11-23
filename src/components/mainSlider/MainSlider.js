@@ -1,12 +1,17 @@
 /* eslint react/no-array-index-key: 0 */
+/* eslint object-curly-newline: 0 */
+/* eslint operator-linebreak: 0 */
 
 import React from 'react'
 import styled from 'styled-components'
 
 import Slider from 'react-slick'
 
-import Prev from 'resources/assets/svg/prev.svg'
-import Next from 'resources/assets/svg/next.svg'
+import MainPrev from 'resources/assets/svg/mainprev.svg'
+import MainNext from 'resources/assets/svg/mainnext.svg'
+import { CardLoader } from 'components/loaders'
+import SliderContent from './sliderContent'
+import mainSliderEnhancer from './mainSliderEnhancer'
 
 const Img = styled.img`
   display: block;
@@ -14,18 +19,26 @@ const Img = styled.img`
   z-index: 1;
   margin-top: 210px;
   height: 150px;
+  @media only screen and (max-width: 850px) {
+    height: 100px;
+    margin-top: 250px;
+  }
+  @media only screen and (max-width: 450px) {
+    height: 50px;
+    margin-top: 260px;
+  }
 `
 
 const PrevArrow = (
   { onClick }, // eslint-disable-line
-) => <Img src={Prev} onClick={onClick} />
+) => <Img src={MainPrev} onClick={onClick} />
 
 const NextArrow = (
   { onClick }, // eslint-disable-line
-) => <Img src={Next} onClick={onClick} />
+) => <Img src={MainNext} onClick={onClick} />
 
 const Container = styled.div`
-  min-height: 543px;
+  min-height: 100vh;
   .slick-slider {
     position: relative;
 
@@ -323,51 +336,6 @@ const Override = styled.div`
   }
 `
 
-const SliderContent = styled.div`
-  height: 540px
-  background-image: url(${p => p.SliderPhoto});
-  background-repeat: no-repeat;
-  background-size: cover;
-  text-align: center;
-`
-const Header = styled.span`
-  font-size: 40px;
-  font-weight: bold;
-  color: white;
-  @media only screen and (max-width: 950px) {
-    font-size: 30px;
-  }
-`
-const Span = styled.span`
-  font-size: 70px;
-  font-weight: bold;
-  color: white;
-  @media only screen and (max-width: 950px) {
-    font-size: 60px;
-  }
-`
-const LatestSingles = styled.button`
-  border: 1px solid #ff9d00;
-  background: transparent;
-  border-radius: 15px;
-  color: white;
-  font-weight: bold;
-  outline: none;
-  padding: 10px 5px;
-  width: 150px;
-  cursor: pointer;
-  margin-top: 30px;
-  box-sizing: content-box;
-`
-const FlexDiv = styled.div`
-  width: 100%;
-  align-items: center;
-  text-align: center;
-  height: 100%;
-  justify-content: center;
-  display: flex;
-  flex-direction: column;
-`
 const settings = {
   dots: false,
   infinite: true,
@@ -377,25 +345,23 @@ const settings = {
   prevArrow: <PrevArrow />,
 }
 
-const MainSlider = ({ data }) => (
-  <Container>
-    <Override>
-      <Slider {...settings}>
-        {data.map((item, index) => (
-          <SliderContent SliderPhoto={item} key={index}>
-            <FlexDiv>
-              <Header>
-                Check Out The Latest Music And News On
-                <br />
-                <Span>Mixtape Madness</Span>
-              </Header>
-              <LatestSingles>View Latest Singles</LatestSingles>
-            </FlexDiv>
-          </SliderContent>
-        ))}
-      </Slider>
-    </Override>
-  </Container>
-)
+const MainSlider = ({ data }) => {
+  const loading = data && data.loading && data.loading
+  const Posts = data && data.Posts && data.Posts
+  return (
+    <Container>
+      <Override>
+        <Slider {...settings}>
+          {loading && <CardLoader />}
+          {!loading &&
+            Posts &&
+            Posts.map(item => (
+              <SliderContent loading={loading} key={item.id} data={item} />
+            ))}
+        </Slider>
+      </Override>
+    </Container>
+  )
+}
 
-export default MainSlider
+export default mainSliderEnhancer(MainSlider)

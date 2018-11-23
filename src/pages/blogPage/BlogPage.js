@@ -1,81 +1,210 @@
+/* eslint react/jsx-one-expression-per-line: 0 */
+/* eslint operator-linebreak: 0 */
+/* eslint no-unused-vars: 0 */
+/* eslint indent: 0 */
+/* eslint object-curly-newline: 0 */
+/* eslint no-unneeded-ternary: 0 */
+/* eslint implicit-arrow-linebreak: 0 */
+
 import React from 'react'
 import styled from 'styled-components'
+import ReactDisqusComments from 'react-disqus-comments'
+import YouMayLike from 'components/youMayLike'
+import Forward from 'resources/assets/svgComponents/Forward'
+import Back from 'resources/assets/svgComponents/Back'
 import { Link } from 'react-router-dom'
-
-import Header from 'components/header'
-import BlogPost from 'components/blogPost'
-import YouTubeVideo from 'components/youTubeVideo'
-import TrendingItem from 'components/trendingItem'
-import Footer from 'components/footer'
-import Advertisement from 'components/advertisement'
-
-import Musician from 'resources/assets/img/musician1.png'
-import Musician1 from 'resources/assets/img/2pac.jpg'
-import Musician2 from 'resources/assets/img/eminem.jpg'
-import backgroundImage from 'resources/assets/img/background.png'
-
+import window from 'global/window'
+import { Helmet } from 'react-helmet'
 import blogPageEnhancer from './blogPageEnhancer'
+import BlogPageImg from './blogPageImg'
+import PostContentHeading from './postContentHeading'
+import Tag from './Tag'
+
+const Container = styled.div`
+  width: 100%;
+  display: flex;
+  max-width: 1200px;
+  margin: auto;
+  flex-direction: column;
+`
 
 const Heading = styled.div`
   max-width: 1200px;
   margin: auto;
   display: flex;
   justify-content: center;
+  flex-direction: column;
+  align-items: center;
   margin-top: 40px;
 `
+
+const PagingArrows = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  @media only screen and (max-width: 850px) {
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+`
+
+const ForwardArrow = styled(Link)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  svg {
+    transition: 0.3s;
+  }
+  &:hover {
+    color: #ffa019;
+    svg {
+      fill: #ffa019;
+    }
+  }
+`
+
+const BackArrow = styled(Link)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin-right: 20px;
+  transition: 0.3s;
+  pointer-events: ${props =>
+      props.index === 0 || props.isdisabled ? 'none' : 'inherit'}
+    svg {
+    transition: 0.3s;
+    fill: ${props =>
+      props.index === 0 || props.isdisabled ? '#ccc' : '#666666'};
+  }
+  &:hover {
+    color: #ffa019;
+    svg {
+      fill: #ffa019;
+    }
+  }
+`
+
+const ArrowText = styled.div`
+  margin: 0 10px;
+  font-size: 14px;
+`
+
 const TitleContainer = styled.div`
   width: 76%;
   text-align: center;
   text-transform: capitalize;
   display: flex;
   flex-direction: column;
+  @media only screen and (max-width: 450px) {
+    width: 90%;
+  }
 `
-const BlogTitle = styled.span`
-  font-size: 60px;
-  font-weight: bold;
-  letter-spacing: 1px;
-  color: #000000;
+
+const BlogTitle = styled.h1`
+  font-size: 46px;
+  letter-spacing: 3.2px;
+  color: #010101;
+  font-weight: 800;
+  margin-bottom: 20px;
+  @media only screen and (max-width: 700px) {
+    font-size: 26px;
+  }
+  @media only screen and (max-width: 450px) {
+    font-size: 18px;
+    letter-spacing: normal;
+  }
 `
-const BlogSubTitle = styled.span`
-  font-size: 27px;
-  letter-spacing: 1px;
+
+const BlogSubTitle = styled.h3`
   color: #666666;
+  letter-spacing: 1.6px;
+  margin-bottom: 20px;
+  @media only screen and (max-width: 450px) {
+    font-size: 12px;
+    letter-spacing: normal;
+  }
 `
+
+const BlogPageVideo = styled.div`
+  width: 100%;
+  height: 60vh;
+  background-image: url(${props => props.src});
+  background-position: center center;
+  background-size: cover;
+  embed {
+    width: 100%;
+    height: 100%;
+  }
+`
+
 const BackgroundPicture = styled.div`
   width: 100%;
-  height: 500px;
-  background-image: url(${backgroundImage});
+  height: 730px;
+  background-image: url(${props => props.src});
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
   margin: 60px 0;
+  @media only screen and (max-width: 450px) {
+    height: 300px;
+  }
 `
+
+const BlogContent = styled.div`
+  width: 90%;
+  margin: auto;
+  @media only screen and (max-width: 1150px) {
+    text-align: center;
+  }
+`
+
+const BlogArticle = styled.div`
+  width: 100%;
+  margin: auto;
+  margin-top: 40px;
+`
+
 const VideoContainer = styled.div`
   width: 78%;
   margin: auto;
   margin-top: 80px;
   margin-bottom: 60px;
 `
+
 const TagsContainer = styled.div`
   display: flex;
+  flex-wrap: wrap;
   width: 100%;
   max-width: 1200px;
   justify-content: center;
   margin: auto;
-`
-const Tag = styled.button`
-  border: 1px solid #c9c9c9;
-  color: #666666;
-  padding: 3px 10px;
-  background: transparent;
-  border-radius: 15px;
-  font-weight: bold;
-  cursor: pointer;
-  color: #c9c9c9;
-  :not(:last-child) {
-    margin-right: 20px;
+  @media only screen and (max-width: 450px) {
+    margin-top: 20px;
   }
 `
+// const Tag = styled.button`
+//   border: 1px solid #c9c9c9;
+//   color: #666666;
+//   padding: 3px 10px;
+//   background: transparent;
+//   border-radius: 15px;
+//   font-weight: bold;
+//   cursor: pointer;
+//   color: #c9c9c9;
+//   :not(:last-child) {
+//     margin-right: 20px;
+//   }
+//   @media only screen and (max-width: 530px) {
+//     font-size: 11px;
+//     padding: 3px 5px;
+//     :not(:last-child) {
+//       margin-right: 5px;
+//     }
+//   }
+// `
+
 const AlsoLikeHeaderContainer = styled.div`
   max-width: 1200px;
   margin: 40px auto;
@@ -90,6 +219,7 @@ const AlsoLikeHeaderContainer = styled.div`
   font-size: 30px;
   color: #000000;
 `
+
 const MayLikeContainer = styled.div`
   display: flex;
   max-width: 1200px;
@@ -102,116 +232,233 @@ const MayLikeContainer = styled.div`
   }
 `
 
-const StyledLink = styled(Link)`
-  margin-bottom: 60px;
-  @media only screen and (max-width: 1150px) {
+// const StyledLink = styled(Link)`
+//   margin-bottom: 60px;
+//   @media only screen and (max-width: 1150px) {
+//     display: flex;
+//     justify-content: center;
+//   }
+// `
+const MobileAuthorContainer = styled.div`
+  display: none;
+  color: #666666;
+  justify-content: center;
+  margin-top: 20px;
+  @media only screen and (max-width: 450px) {
     display: flex;
-    justify-content: center;
   }
 `
 
-const blogPostData = {
-  views: '3000',
-  raiting: '5/5',
-  date: 'August 23rd 2018',
-  author: 'Mohammed Patel',
-  text:
-    "Georgia (Georgian: საქართველო, translit.: sakartvelo, IPA: [sɑkʰɑrtʰvɛlɔ] (About this sound listen)) is a country in the Caucasus region of Eurasia. Located at the crossroads of Western Asia and Eastern Europe, it is bounded to the west by the Black Sea, to the north by Russia, to the south by Turkey and Armenia, and to the southeast by Azerbaijan. The capital and largest city is Tbilisi. Georgia covers a territory of 69,700 square kilometres (26,911 sq mi), and its 2017 population is about 3.718 million. Georgia is a unitary semi-presidential republic, with the government elected through a representative democracy.During the classical era, several independent kingdoms became established in what is now Georgia, such as Colchis, later known as Lazica and Iberia. The Georgians adopted Christianity in the early 4th century. The common belief had an enormous importance for spiritual and political unification of early Georgian states. A unified Kingdom of Georgia reached its Golden Age during the reign of King David IV and Queen Tamar in the 12th and early 13th centuries. Thereafter,the kingdom declined and eventually disintegrated under hegemony of various regional powers, including the Mongols, the Ottoman Empire, and successive dynasties of Iran. In the late 18th century, the eastern Georgian Kingdom of Kartli-Kakheti forged an alliance with the Russian Empire, which directly annexed the kingdom in 1801 and conquered the western Kingdom of Imereti in 1810. Russian rule over Georgia was eventually acknowledged in various peace treaties with Iran and the Ottomans and the remaining Georgian territories were absorbed by the Russian Empire in a piecemeal fashion in the course of the 19th century. During the Civil War following the Russian Revolution in 1917, Georgia briefly became part of the Transcaucasian Federation and then emerged as an independent republic before the Red Army invasion in 1921 which established a government of workers' and peasants' soviets. Soviet Georgia would be incorporated into a new Transcaucasian Federation which in 1922 would be a founding republic of the Soviet Union. In 1936, the Transcaucasian Federation was dissolved and Georgia emerged as a Union Republic. During the Great Patriotic War, almost 700,000 Georgians fought in the Red Army against the German invaders. After Soviet leader Joseph Stalin, a native Georgian, died in 1953, a wave of protest spread against Nikita Khrushchev and his de-Stalinization reforms, leading to the death of nearly one hundred students in 1956. From that time on, Georgia would become marred with blatant corruption and increased alienation of the government from the people.", //eslint-disable-line
-}
+const Author = styled.span`
+  color: #ff9d00;
+`
+const Div = styled.div`
+  display: flex;
+  max-width: 1200px;
+  margin: auto;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  @media only screen and (max-width: 1150px) {
+    flex-direction: column;
+    align-items: center;
+  }
+`
 
-const blogPageData = {
-  blogPostData,
-  video: 'https://www.youtube.com/watch?v=lt-udg9zQSE',
-  tags: ['AJ Tracey', 'Music Video', 'Grime', 'UK Rap', 'London'],
-  mayLike: [
-    {
-      picture: Musician,
-      type: 'News',
-      header: 'C36 Drops "Guten Tag" Video exclusively on mixtape madness',
-      text:
-        'Lorem ipsum dolor sit amet. consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et',
-      author: 'Mohhammed Patel',
-      views: '10,000',
-      id: 12,
-    },
-    {
-      picture: Musician1,
-      type: 'News',
-      header:
-        'Balistik releases the video for "who is next", on mixtape madness',
-      text:
-        'Lorem ipsum dolor sit amet. consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et',
-      author: 'Mohhammed Patel',
-      views: '10,000',
-      id: 15,
-    },
-    {
-      picture: Musician2,
-      type: 'News',
-      header: 'WSTRN drops their new single "Sharna"',
-      text:
-        'Lorem ipsum dolor sit amet. consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et',
-      author: 'Mohhammed Patel',
-      views: '10,000',
-      id: 7,
-    },
-    {
-      picture: Musician,
-      type: 'News',
-      header: 'Mo stack covers puma RS-O event in london',
-      text:
-        'Lorem ipsum dolor sit amet. consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et',
-      author: 'Mohhammed Patel',
-      views: '10,000',
-      id: 20,
-    },
-    {
-      picture: Musician1,
-      type: 'News',
-      header: 'Lady Leshurr Drops Her New Freestyle',
-      text:
-        'Lorem ipsum dolor sit amet. consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et',
-      author: 'Mohhammed Patel',
-      views: '10,000',
-      id: 30,
-    },
-  ],
-}
+const AdvertisementContainer = styled.div`
+  width: 357px;
+  height: 627px;
+`
 
-const BlogPage = () => (
-  <div>
-    <Header bottomBorder />
-    <Heading>
-      <TitleContainer>
-        <BlogTitle>AJ Tracey Drops A New Visual For Mimi</BlogTitle>
-        <BlogSubTitle>
-          AJ also talks about his upcoming album and tour
-        </BlogSubTitle>
-      </TitleContainer>
-    </Heading>
-    <BackgroundPicture />
-    <BlogPost data={blogPageData.blogPostData} />
-    <VideoContainer>
-      <YouTubeVideo url={blogPageData.video} />
-    </VideoContainer>
-    <TagsContainer>
-      {blogPageData.tags.map(item => (
-        <Tag key={item}>{item}</Tag>
-      ))}
-    </TagsContainer>
-    <AlsoLikeHeaderContainer>
-      <span>You May also like</span>
-    </AlsoLikeHeaderContainer>
-    <MayLikeContainer>
-      <Advertisement />
-      {blogPageData.mayLike.map(item => (
-        <StyledLink to={`/blog/${item.type}/${item.id}`} key={item.id}>
-          <TrendingItem data={item} height="true" />
-        </StyledLink>
-      ))}
-    </MayLikeContainer>
-    <Footer />
-  </div>
-)
+const DisqusContainer = styled.div`
+  max-width: 1200px;
+  margin: auto;
+  width: 90%;
+`
+
+const BlogArticleContent = styled.div`
+  p {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    img {
+      margin: 5px 0;
+    }
+    @media only screen and (max-width: 575px) {
+      embed {
+        width: 90%;
+        height: 250px;
+      }
+    }
+  }
+`
+
+const pathname = window.location ? window.location.pathname : ''
+
+const BlogPage = ({
+  width,
+  data,
+  user,
+  match,
+  nextRoute,
+  prevRoute,
+  location,
+}) => {
+  const userName = user && user.user && user.user.name && user.user.name
+  const userSlug = user && user.user && user.user.slug && user.user.slug
+  const postData = data && data.Post ? data.Post : {}
+  const Excerpt = data && data.Post && data.Post.excerpt
+  const postTitle = postData && postData.title
+  const noHTML = /(<([^>]+)>)/gi
+  const Description =
+    data &&
+    data.Post &&
+    data.Post.excerpt &&
+    data.Post.excerpt.replace(noHTML, '')
+  const categories =
+    data && data.Post && data.Post.categories && data.Post.categories
+  const isVideoArr =
+    categories && categories.filter(item => parseInt(item, 10) === 15)
+  const isVideo = isVideoArr && isVideoArr.length > 0 ? true : false
+  const PostDate = data && data.Post && data.Post.date && data.Post.date
+  const tags = data && data.Post && data.Post.tags && data.Post.tags
+  const Content =
+    isVideo &&
+    postData &&
+    postData.content &&
+    postData.content.replace(
+      /(?:<iframe[^>]*)(?:(?:\/>)|(?:>.*?<\/iframe>))/,
+      '',
+    )
+  const Video =
+    isVideo &&
+    postData &&
+    postData.content &&
+    postData.content.match(
+      /(?:<iframe[^>]*)(?:(?:\/>)|(?:>.*?<\/iframe>))/,
+      '',
+    ) &&
+    isVideo &&
+    postData &&
+    postData.content &&
+    postData.content
+      .match(/(?:<iframe[^>]*)(?:(?:\/>)|(?:>.*?<\/iframe>))/, '')
+      .toString()
+      .replace('iframe', 'embed')
+  // cons HasVideo = Video.
+  const disablePrev = !prevRoute
+  const renderVideo = data && !data.loading && isVideo && Video ? true : false
+  return (
+    <React.Fragment>
+      <Container>
+        <Helmet>
+          <title>Turbo Todo</title>
+          <meta
+            property="og:url"
+            content={window.location ? window.location.href : ''}
+          />
+          <meta property="og:title" content={`${postTitle && postTitle}`} />
+          <meta
+            property="og:description"
+            content={`${Description && Description}`}
+          />
+          <meta property="og:type" content="website" />
+
+          <meta name="twitter:title" content={`${postTitle && postTitle}`} />
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:site" content="@mixtapemadness" />
+          <meta
+            name="twitter:description"
+            content={`${Description && Description}`}
+          />
+          <meta name="twitter:creator" content="@twitter-username" />
+        </Helmet>
+        <Heading>
+          <PagingArrows>
+            <BackArrow
+              isdisabled={disablePrev}
+              to={{
+                pathname: `/blog/${match.params.category}/${prevRoute &&
+                  prevRoute}`,
+                state: {
+                  prevPath:
+                    location.state && location.state.prevPath
+                      ? location.state.prevPath
+                      : pathname,
+                  authorId:
+                    location.state && location.state.authorId
+                      ? location.state.authorId
+                      : pathname,
+                },
+              }}
+            >
+              <Back fill="#666666" width={20} height={20} />
+              <ArrowText>Previous Post</ArrowText>
+            </BackArrow>
+            <ForwardArrow
+              to={{
+                pathname: `/blog/${match.params.category}/${nextRoute &&
+                  nextRoute}`,
+                state: {
+                  prevPath:
+                    location.state && location.state.prevPath
+                      ? location.state.prevPath
+                      : pathname,
+                  authorId:
+                    location.state &&
+                    location.state.authorId &&
+                    location.state.authorId,
+                },
+              }}
+            >
+              <ArrowText> Next Post</ArrowText>
+              <Forward fill="#666666" width={20} height={20} />
+            </ForwardArrow>
+          </PagingArrows>
+
+          <TitleContainer>
+            <BlogTitle dangerouslySetInnerHTML={{ __html: postData.title }} />
+            {/* <BlogSubTitle dangerouslySetInnerHTML={{ __html: Excerpt && Excerpt.replace('[&Hellip', ' ') }} /> */}
+            <BlogSubTitle>
+              {Excerpt &&
+                Excerpt.replace(noHTML, '').replace('[&#038;hellip', ' ')}
+            </BlogSubTitle>
+            <MobileAuthorContainer />
+          </TitleContainer>
+        </Heading>
+        {renderVideo && (
+          <BlogPageVideo dangerouslySetInnerHTML={{ __html: Video && Video }} />
+        )}
+        {<BlogPageImg renderVideo={renderVideo} id={postData.featured_media} />}
+        <BlogContent>
+          <PostContentHeading
+            date={postData.date}
+            userName={userName}
+            userSlug={userSlug}
+          />
+          {!isVideo && Video ? (
+            <BlogArticleContent
+              dangerouslySetInnerHTML={{ __html: Content && Content }}
+            />
+          ) : (
+            <BlogArticleContent
+              dangerouslySetInnerHTML={{ __html: postData.content }}
+            />
+          )}
+        </BlogContent>
+        <TagsContainer>
+          {postData.tags && postData.tags.map(id => <Tag key={id} id={id} />)}
+        </TagsContainer>
+        <DisqusContainer>
+          <ReactDisqusComments
+            shortname="//mixtapemadnessuk.disqus.com/embed.js"
+            identifier={pathname}
+            url={window.location ? window.location.href : ''}
+          />
+        </DisqusContainer>
+        <YouMayLike tags={tags} />
+      </Container>
+    </React.Fragment>
+  )
+}
 
 export default blogPageEnhancer(BlogPage)

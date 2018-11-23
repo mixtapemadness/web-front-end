@@ -1,16 +1,33 @@
 /* eslint import/no-extraneous-dependencies: 0 */
 const path = require('path')
-// const webpack = require('webpack')
-// const HtmlWebpackPlugin = require('html-webpack-plugin')
-// const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 const loaders = require('../loaders')
 
 process.env.NODE_ENV = process.env.NODE_ENV || 'development'
 
+const plugins = [
+  new MiniCssExtractPlugin({
+    filename: '[name].css',
+  }),
+]
+
+if (!process.env.SSR_MODE) {
+  plugins.push(
+    new HtmlWebpackPlugin({
+      template: path.resolve(__dirname, '../../src/index.html'),
+      files: {
+        css: ['client/bundle.css'],
+        js: ['client/bundle.js'],
+      },
+    }),
+  )
+}
+
 module.exports = {
   name: 'client',
   target: 'web',
-  mode: 'development',
+  mode: 'production',
   devtool: 'cheap-module-inline-source-map',
   entry: {
     bundle: ['@babel/polyfill', path.resolve(__dirname, '../../src/index.js')],
@@ -24,14 +41,5 @@ module.exports = {
   module: {
     rules: loaders,
   },
-  // plugins: [
-  //   // new BundleAnalyzerPlugin(),
-  //   new HtmlWebpackPlugin({
-  //     template: path.resolve(__dirname, '../../src/index.html'),
-  //     files: {
-  //       // css: ['style.css'],
-  //       js: ['bundle.js'],
-  //     },
-  //   }),
-  // ],
+  plugins,
 }

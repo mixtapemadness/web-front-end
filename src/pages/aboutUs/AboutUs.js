@@ -1,22 +1,14 @@
 import React from 'react'
 import styled from 'styled-components'
-
-import Header from 'components/header'
-import Footer from 'components/footer'
+import aboutUsEnhancer from './aboutUsEnhancer'
 import AboutUsSlider from './AboutUsSlider'
 import Grid from './Grid'
 
 const AboutUsContainer = styled.div`
-  max-width: 1200px;
   display: flex;
   align-items: center;
   flex-direction: column;
   margin: auto;
-`
-
-const FooterContainer = styled.div`
-  margin-top: 100px;
-  width: 100%;
 `
 
 const girdData = [
@@ -47,14 +39,11 @@ const girdData = [
   },
 ]
 
-export default () => (
+const AboutUs = () => (
   <AboutUsContainer>
-    About Us
-    <Header />
     <AboutUsSlider />
     <Grid data={girdData} />
-    <FooterContainer>
-      <Footer />
-    </FooterContainer>
   </AboutUsContainer>
 )
+
+export default aboutUsEnhancer(AboutUs)

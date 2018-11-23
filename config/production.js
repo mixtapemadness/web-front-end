@@ -1,6 +1,6 @@
 module.exports = {
-  apiUrl: 'https://api.bookingbravo.com/',
-  apiSocketUrl: 'https://ws.bookingbravo.com',
-  apiGraphqlUrl: 'https://api.bookingbravo.com/graphql',
-  avatarsUrl: 'https://api.bookingbravo.com/avatars',
+  apiUrl: 'http://mixtapeapi.vobi.io/',
+  apiSocketUrl: 'http://mixtapeapi.vobi.io:8006',
+  apiGraphqlUrl: 'http://mixtapeapi.vobi.io/graphql',
+  avatarsUrl: 'http://mixtapeapi.vobi.io/avatars',
 }

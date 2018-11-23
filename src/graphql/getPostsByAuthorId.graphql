@@ -1,0 +1,14 @@
+query getPostsByAuthorId($id: ID, $page: ID, $perPage: ID) {
+  Posts: getPostsByAuthorId(id: $id, page: $page, perPage: $perPage) {
+    id
+    date
+    title
+    content
+    excerpt
+    featured_media
+    author
+    tags
+    categories
+    slug
+  }
+}

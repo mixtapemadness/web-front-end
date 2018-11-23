@@ -1,20 +1,21 @@
 /* eslint react/no-danger: 0 */
+/* eslint object-curly-newline: 0 */
+
 import 'isomorphic-fetch'
 import express from 'express'
 import bodyParser from 'body-parser'
 import React from 'react'
 import ReactDOMServer from 'react-dom/server'
 import { StaticRouter } from 'react-router'
-// import { Helmet } from 'react-helmet'
-// import fetch from 'node-fetch'
 import { ApolloProvider, renderToStringWithData } from 'react-apollo'
 import { ApolloLink } from 'apollo-link'
 import { ApolloClient } from 'apollo-client'
 import { InMemoryCache } from 'apollo-cache-inmemory'
 import { createHttpLink } from 'apollo-link-http'
 import { onError } from 'apollo-link-error'
+import { ServerStyleSheet } from 'styled-components'
+import { Helmet } from 'react-helmet'
 import config from '../config'
-// import { errorLink } from '../src/apollo/links'
 import App from '../src/App'
 
 const app = express()
@@ -39,8 +40,6 @@ app.get('*', (req, res) => {
   })
   const httpLink = createHttpLink({
     uri: config.apiGraphqlUrl,
-    // uri: 'http://localhost:8001/graphql',
-    // fetch,
   })
 
   const client = new ApolloClient({
@@ -51,6 +50,8 @@ app.get('*', (req, res) => {
 
   const context = {}
 
+  const sheet = new ServerStyleSheet()
+
   const component = (
     <ApolloProvider client={client}>
       <StaticRouter location={req.url} context={context}>
@@ -59,23 +60,25 @@ app.get('*', (req, res) => {
     </ApolloProvider>
   )
 
-  // const helmet = Helmet.renderStatic()
-
-  const Html = ({ content, client: { cache } }) => (
+  const Html = ({ content, helmet, styleTags, client: { cache } }) => (
     <html lang="en">
       <head>
+        {helmet.meta.toComponent()}
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="robots" content="index,follow" />
         <meta name="googlebot" content="index,follow" />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         <title>Mixtape</title>
-        {/* {helmet.meta.toString()}
-        {helmet.title.toString()} */}
+        <link
+          href="https://fonts.googleapis.com/css?family=Montserrat:300,400"
+          rel="stylesheet"
+        />
+        <link href="/bundle.css" rel="stylesheet" />
+        {styleTags}
       </head>
       <body>
         <div id="root" dangerouslySetInnerHTML={{ __html: content }} />
-        {/* {content} */}
         <script
           charSet="UTF-8"
           dangerouslySetInnerHTML={{
@@ -84,16 +87,29 @@ app.get('*', (req, res) => {
             )};`,
           }}
         />
-        <script src="bundle.js" charSet="UTF-8" />
+        <script src="/bundle.js" charSet="UTF-8" />
       </body>
     </html>
   )
 
-  renderToStringWithData(component)
+  renderToStringWithData(sheet.collectStyles(component))
     .then(content => {
+      const styleTags = sheet.getStyleElement()
       res.status(200)
-      const html = <Html content={content} client={client} />
-      res.send(`<!doctype html>\n${ReactDOMServer.renderToStaticMarkup(html)}`)
+      const helmet = Helmet.renderStatic()
+      const html = (
+        <Html
+          content={content}
+          helmet={helmet}
+          client={client}
+          styleTags={styleTags}
+        />
+      )
+      const renderedHtml = ReactDOMServer.renderToStaticMarkup(html)
+
+      res.send(`<!doctype html>\n${renderedHtml}`)
+      // const renderHtml = ReactDOMServer.renderToStaticMarkup(html)
+      // res.send(`<!doctype html>\n${Helmet.renderStatic(renderHtml)}`)
       res.end()
     })
     .catch(e => {

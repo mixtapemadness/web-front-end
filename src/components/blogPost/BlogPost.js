@@ -19,6 +19,9 @@ const Heading = styled.div`
   display: flex;
   justify-content: space-between;
   margin-bottom: 40px;
+  @media only screen and (max-width: 450px) {
+    display: none;
+  }
 `
 const LeftSide = styled.div`
   display: flex;
@@ -48,9 +51,18 @@ const Post = styled.div`
   font-size: 20px;
 `
 const Span = styled.span`
-  font-size: 16px;
+  font-size: 14.5px;
+  letter-spacing: 0.9px;
   ${p => p.color && `color: ${p.color}`};
   ${p => p.mb && `margin-bottom: ${p.mb}px`};
+`
+const Paragraph = styled.p`
+  font-size: 19px;
+  letter-spacing: 1.1px;
+  color: #000000;
+  @media only screen and (max-width: 450px) {
+    font-size: 16px;
+  }
 `
 const BlogPost = ({ data }) => (
   <PostContainer>
@@ -64,12 +76,12 @@ const BlogPost = ({ data }) => (
         </Social>
         <Span mb={10}>-</Span>
         <Span mb={10}>
-          {data.views}
-          {' Views'} : {data.raiting}
+          {/* {data.views} */}
+          {/* {' Views'} : {data.raiting} */}
         </Span>
         <Span mb={10}>{data.date}</Span>
         <Span>
-          By <Span color="#FF9D00">{data.author}</Span>
+          By <Span color="#FF9D00">{data.author.name}</Span>
         </Span>
       </LeftSide>
       <RightSide>
@@ -77,7 +89,7 @@ const BlogPost = ({ data }) => (
       </RightSide>
     </Heading>
     <Post>
-      <p>{data.text}</p>
+      <Paragraph>{data.content}</Paragraph>
     </Post>
   </PostContainer>
 )

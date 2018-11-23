@@ -1,0 +1,7 @@
+query getCategoryByID($id:ID){
+ category:getCategoryByID(id:$id){
+    name
+    slug
+    id
+  }
+}

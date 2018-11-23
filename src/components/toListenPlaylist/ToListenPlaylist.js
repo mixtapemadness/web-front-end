@@ -14,14 +14,17 @@ const Icon = styled.img`
 `
 
 const Container = styled.div`
-  width: 575px;
+  margin: 7px;
   @media only screen and (max-width: 1170px) {
     width: 61.458%;
     margin: auto;
   }
+  @media only screen and (max-width: 650px) {
+    width: 90%;
+  }
 `
 const PhotoContainer = styled.div`
-  width: 100%
+  width: 100%;
   height: 300px;
   background: url(${props => props.picture});
   background-repeat: no-repeat;
@@ -34,16 +37,22 @@ const ContentContainer = styled.div`
   width: calc(100% - 30px);
   padding: 20px 15px;
   display: flex;
-  height: 107px;
   box-sizing: content-box;
   @media only screen and (max-width: 1170px) {
     height: auto;
+  }
+  @media only screen and (max-width: 450px) {
+    flex-direction: column;
+    text-align: center;
   }
 `
 const LeftSide = styled.div`
   width: calc(40% - 15px);
   display: flex;
   flex-direction: column;
+  @media only screen and (max-width: 450px) {
+    width: 100%;
+  }
 `
 const Type = styled.span`
   color: #ff9d00;
@@ -64,6 +73,9 @@ const RightSide = styled.div`
   display: flex;
   flex-direction: column;
   width: calc(60% - 15px);
+  @media only screen and (max-width: 450px) {
+    width: 100%;
+  }
 `
 const Text = styled.span`
   color: #666666;
@@ -87,6 +99,14 @@ const Span = styled.span`
   margin-left: 10px;
   margin-top: 2px;
 `
+
+const IconsContainer = styled.div`
+  display: flex;
+  margin-top: 18px;
+  @media only screen and (max-width: 450px) {
+    justify-content: space-between;
+  }
+`
 const ToListenPlaylist = ({ data }) => (
   <Container>
     <PhotoContainer picture={data.picture}>
@@ -100,7 +120,7 @@ const ToListenPlaylist = ({ data }) => (
       <Line />
       <RightSide>
         <Text>{data.text}</Text>
-        <FlexDiv mt={18}>
+        <IconsContainer>
           <FlexDiv mr={20}>
             <LittleIcon src={PlayListIcon} height={20} pointer />
             <Span>
@@ -115,7 +135,7 @@ const ToListenPlaylist = ({ data }) => (
               {' Followers'}
             </Span>
           </FlexDiv>
-        </FlexDiv>
+        </IconsContainer>
       </RightSide>
     </ContentContainer>
   </Container>

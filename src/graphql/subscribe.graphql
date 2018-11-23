@@ -1,0 +1,6 @@
+mutation subscribeToMailchimp($email_address:String){
+  	subscribeToMailchimp(email_address:$email_address){
+      email_address
+       status
+  }
+}

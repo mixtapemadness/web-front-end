@@ -1,0 +1,7 @@
+query getTagById($id:ID) {
+tag: getTagById(id:$id) {
+    id
+    name
+    slug
+  }
+}

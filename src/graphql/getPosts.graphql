@@ -1,0 +1,12 @@
+query getPosts($filter: filterPostInput, $page: ID, $perPage: ID) {
+  Posts: getPosts(filter: $filter, page: $page, perPage: $perPage) {
+    id
+    categories
+    featured_media
+    author
+    title
+    content
+    slug
+    excerpt
+  }
+}

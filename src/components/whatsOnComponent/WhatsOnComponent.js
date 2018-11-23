@@ -1,33 +1,72 @@
+/* eslint no-unused-vars: 0 */
+/* eslint arrow-body-style: 0 */
+/* eslint react/jsx-wrap-multilines: 0 */
+/* eslint indent: 0 */
+/* eslint operator-linebreak: 0 */
+
 import React from 'react'
 import styled from 'styled-components'
-
-import PlayIcon from 'resources/assets/svg/Play.svg'
-import ViewsIcon from 'resources/assets/svg/eye.svg'
-import SignalBarsIcon from 'resources/assets/svg/signal-bars.svg'
+import { Link } from 'react-router-dom'
+import ReactImageFallback from 'react-image-fallback'
+import whatsOnComponentEnhancer from './whatsOnComponentEnhancer'
+import placeholderImg from '../../resources/assets/img/placeholderImg.jpg'
 
 const Container = styled.div`
-  width: 575px;
+  flex: 1 0 575px;
+  margin: 7px;
+  display: flex;
+  flex-direction: column;
   @media only screen and (max-width: 1190px) {
-    :nth-child(even) {
-      margin-left: 20px;
-    }
+    align-items: center;
+    margin: 10px;
+    flex: 0 1 475px;
   }
   @media only screen and (max-width: 850px) {
-    width: 61.458%;
-    margin-top: 20px;
-    :nth-child(even) {
-      margin-left: 0px;
-    }
+    /* flex: 0 1 375px; */
   }
+  /* @media only screen and (max-width: 450px) {
+    flex: 0 1 300px;
+  } */
 `
 
-const PhotoContainer = styled.div`
-  width: 100%
-  height: 300px;
-  background: url(${props => props.picture});
+// width: 100%;
+// height: 200px;
+// width: 100%;
+// height: 200px;
+// background: url(${props => props.img});
+// background-repeat: no-repeat;
+// background-size: cover;
+// background-position: center;
+// @media only screen and (max-width: 1150px) {
+//   height: 300px;
+// }
+
+const PhotoContainer = styled(Link)`
+  width: 100%;
+  height: 200px;
+  width: 100%;
+  height: 200px;
+  background: url(${props => props.img});
   background-repeat: no-repeat;
   background-size: cover;
-  position: relative;
+  background-position: center;
+  transition: 0.8s;
+  cursor: pointer;
+  &:hover {
+    /* background-size: 140%; */
+  }
+  @media only screen and (max-width: 1150px) {
+    height: 300px;
+    background-size: cover;
+    &:hover {
+      background-size: cover;
+    }
+  }
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 `
 
 const ContentContainer = styled.div`
@@ -35,7 +74,8 @@ const ContentContainer = styled.div`
   width: calc(100% - 30px);
   padding: 20px 15px;
   display: flex;
-  height: 107px;
+  flex-direction: column;
+  flex: 1;
   box-sizing: content-box;
   @media only screen and (max-width: 850px) {
     height: auto;
@@ -55,14 +95,39 @@ const LeftSide = styled.div`
   display: flex;
   flex-direction: column;
 `
-const Type = styled.span`
-  color: #ff9d00;
-  font-size: 13px;
-  font-weight: bold;
+
+const Category = styled(Link)`
+  color: #ff9600;
+  margin: 0 5px;
+  cursor: pointer;
 `
-const Name = styled.span`
-  font-size: 30px;
+
+const CategoryContainer = styled.div`
+  width: 100%;
+  color: #000;
+  display: flex;
+  flex-wrap: wrap;
+  font-weight: 800;
+  font-size: 12px;
+  margin-bottom: 10px;
+`
+
+const BottomContent = styled.span`
+  display: flex;
+`
+
+const Name = styled(Link)`
+  font-size: 18px;
   color: black;
+  font-weight: 800;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  height: 5ch;
+  overflow: hidden;
+  transition: 0.4s;
+  &:hover {
+    text-decoration-color: #111111;
+  }
 `
 const Line = styled.div`
   height: 100%;
@@ -76,6 +141,8 @@ const RightSide = styled.div`
   width: calc(60% - 15px);
 `
 const Text = styled.span`
+  height: 5ch;
+  overflow: hidden;
   color: #666666;
   font-size: 14px;
   word-break: break-word;
@@ -100,34 +167,93 @@ const Img = styled.img`
   ${p => p.height && `height: ${p.height}px`};
 `
 
-const WhatsOnComponent = ({ data }) => (
-  <Container>
-    <PhotoContainer picture={data.picture}>
-      {data.type === 'Video' && <Icon src={PlayIcon} alt="play-icon" />}
-    </PhotoContainer>
-    <ContentContainer>
-      <LeftSide>
-        <Type>{data.type}</Type>
-        <Name>{data.name}</Name>
-      </LeftSide>
-      <Line />
-      <RightSide>
-        <Text>{data.text}</Text>
-        <FlexDiv mt={18}>
-          <FlexDiv jc="space-between" width="100%">
-            <FlexDiv>
-              <Img src={ViewsIcon} alt="view" height={20} />
-              <Span mt={2} ml={10}>
-                {data.views}
-                {' Views'}
-              </Span>
-            </FlexDiv>
-            <Img src={SignalBarsIcon} alt="bars" height={18} />
-          </FlexDiv>
-        </FlexDiv>
-      </RightSide>
-    </ContentContainer>
-  </Container>
-)
+// const Categories = ({ data }) => {
+//   let newData
+//   data && data.length > 0
+//     ? (newData = data.map((item, index) => {
+//       if (index > 0) {
+//         return (
+//           <React.Fragment>
+//             ,<Category to={`/blog/category/${item.slug}`}>{item.name}</Category>
+//           </React.Fragment>
+//         )
+//       }
+//       return <Category to={`/blog/category/${item.slug}`}>{item.name}</Category>
+//     }))
+//     : (newData = null)
+//   return newData
+// }
 
-export default WhatsOnComponent
+const WhatsOnComponent = ({ media, data, category }) => {
+  const Image =
+    media && media.img && media.img.featured_image && media.img.featured_image
+  const CategoriesData = category && category.category && category.category
+
+  return (
+    <Container>
+      <PhotoContainer
+        img={Image}
+        to={{
+          pathname:
+            data &&
+            CategoriesData &&
+            `/blog/${CategoriesData[0].slug}/${data.slug}`,
+        }}
+      >
+        <ReactImageFallback
+          src={Image && Image}
+          fallbackImage={placeholderImg}
+          initialImage={placeholderImg}
+        />
+      </PhotoContainer>
+      {/* {CategoriesData &&
+        data && (
+        )} */}
+      <ContentContainer>
+        <CategoryContainer>
+          {CategoriesData &&
+            CategoriesData.filter(item => item.name === 'Events').map(item => (
+              <Category key={item.id} to={`/blog/category/${item.slug}`}>
+                {item.name}
+              </Category>
+            ))}
+        </CategoryContainer>
+        <BottomContent>
+          <LeftSide>
+            {CategoriesData &&
+              data && (
+                <Name
+                  dangerouslySetInnerHTML={{ __html: data.title }}
+                  to={`/blog/${CategoriesData[0].slug}/${data.slug}`}
+                />
+              )}
+          </LeftSide>
+          <Line />
+          <RightSide>
+            {CategoriesData &&
+              data && (
+                <Text
+                  to={`/blog/${CategoriesData[0].slug}/${data.slug}`}
+                  dangerouslySetInnerHTML={{ __html: data.excerpt }}
+                />
+              )}
+            {/* <FlexDiv mt={18}>
+            <FlexDiv jc="space-between" width="100%">
+              <FlexDiv>
+                <Img src={ViewsIcon} alt="view" height={20} />
+                <Span mt={2} ml={10}>
+                  {data.views}
+                  {' Views'}
+                </Span>
+              </FlexDiv>
+              <Img src={SignalBarsIcon} alt="bars" height={18} />
+            </FlexDiv>
+          </FlexDiv> */}
+          </RightSide>
+        </BottomContent>
+      </ContentContainer>
+    </Container>
+  )
+}
+
+export default whatsOnComponentEnhancer(WhatsOnComponent)

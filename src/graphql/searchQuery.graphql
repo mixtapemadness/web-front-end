@@ -1,0 +1,10 @@
+query searchPosts($filter: filterPostInput, $page: ID, $perPage: ID) {
+  searchedData: searchPosts(filter: $filter, page: $page, perPage: $perPage) {
+    title
+    date
+    featured_media
+    slug
+    id
+    categories
+  }
+}

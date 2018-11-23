@@ -1,0 +1,24 @@
+query getPosts($filter:filterPostInput) {
+  getPosts(filter:$filter) {
+		id
+    title
+    content
+    slug
+    excerpt
+    date
+    category{
+      name
+    }
+    author{
+      name
+    }
+    media{
+      imgs{
+        full
+      }
+    }
+    tags{
+      name
+    }
+  }
+}

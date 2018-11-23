@@ -1,0 +1,6 @@
+query getNextPostByAuthorId($id: ID, $date: String, $page: ID, $perPage: ID) {
+  getNextPostByAuthorId(id: $id, date: $date, page: $page, perPage: $perPage) {
+    id
+    slug
+  }
+}

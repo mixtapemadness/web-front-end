@@ -351,7 +351,6 @@ const BlogPage = ({
     <React.Fragment>
       <Container>
         <Helmet>
-          <title>Turbo Todo</title>
           <meta
             property="og:url"
             content={window.location ? window.location.href : ''}

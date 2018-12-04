@@ -7,6 +7,7 @@ import window from 'global/window'
 
 import Header from 'components/header'
 import { CLOSE_MEGAMENU } from 'constants'
+import { Helmet } from 'react-helmet'
 import ReactGA from 'react-ga'
 import AppContent from './AppContent'
 import getEmitter from './eventEmitter'
@@ -15,6 +16,9 @@ const eventEmitter = getEmitter()
 
 const App = ({ toggleSearch, searchOpened, menuOpened, toggleMenu }) => (
   <div style={{ width: '100%' }}>
+    <Helmet>
+      <title>Mixtape Madness</title>
+    </Helmet>
     <Header
       toggleSearch={toggleSearch}
       menuOpened={menuOpened}

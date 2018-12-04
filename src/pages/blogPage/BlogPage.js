@@ -352,8 +352,9 @@ const BlogPage = ({
     <React.Fragment>
       <Container>
         <Helmet>
-          <title>{`Mixtape Madness | ${postTitle &&
-            postTitle.replace(noHTML, '')}`}</title>
+          <title>{`Mixtape Madness ${
+            postTitle !== undefined ? `| ${postTitle.replace(noHTML, '')} ` : ''
+          }`}</title>
           <meta
             property="og:url"
             content={window.location ? window.location.href : ''}

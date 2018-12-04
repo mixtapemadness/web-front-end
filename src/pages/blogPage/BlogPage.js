@@ -5,6 +5,7 @@
 /* eslint object-curly-newline: 0 */
 /* eslint no-unneeded-ternary: 0 */
 /* eslint implicit-arrow-linebreak: 0 */
+/* eslint react/jsx-closing-tag-location: 0 */
 
 import React from 'react'
 import styled from 'styled-components'
@@ -351,12 +352,16 @@ const BlogPage = ({
     <React.Fragment>
       <Container>
         <Helmet>
-          <title>{`Mixtape Madness | ${postTitle && postTitle}`}</title>
+          <title>{`Mixtape Madness | ${postTitle &&
+            postTitle.replace(noHTML, '')}`}</title>
           <meta
             property="og:url"
             content={window.location ? window.location.href : ''}
           />
-          <meta property="og:title" content={`${postTitle && postTitle}`} />
+          <meta
+            property="og:title"
+            content={`${postTitle && postTitle.replace(noHTML, '')}`}
+          />
           <meta
             property="og:description"
             content={`${Description && Description}`}

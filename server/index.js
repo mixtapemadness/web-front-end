@@ -64,7 +64,6 @@ app.get('*', (req, res) => {
     <html lang="en">
       <head>
         {helmet.meta.toComponent()}
-        {helmet.title.toString()}
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="robots" content="index,follow" />

@@ -351,6 +351,7 @@ const BlogPage = ({
     <React.Fragment>
       <Container>
         <Helmet>
+          <title>{`Mixtape Madness | ${postTitle && postTitle}`}</title>
           <meta
             property="og:url"
             content={window.location ? window.location.href : ''}
@@ -361,7 +362,6 @@ const BlogPage = ({
             content={`${Description && Description}`}
           />
           <meta property="og:type" content="website" />
-
           <meta name="twitter:title" content={`${postTitle && postTitle}`} />
           <meta name="twitter:card" content="summary_large_image" />
           <meta name="twitter:site" content="@mixtapemadness" />

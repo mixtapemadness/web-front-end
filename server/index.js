@@ -64,12 +64,12 @@ app.get('*', (req, res) => {
     <html lang="en">
       <head>
         {helmet.meta.toComponent()}
+        {helmet.title.toString()}
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="robots" content="index,follow" />
         <meta name="googlebot" content="index,follow" />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-        <title>Mixtape</title>
         <link
           href="https://fonts.googleapis.com/css?family=Montserrat:300,400"
           rel="stylesheet"

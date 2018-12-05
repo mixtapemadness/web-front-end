@@ -2,10 +2,11 @@
 /* eslint no-unused-vars: 0 */
 /* eslint operator-linebreak: 0 */
 /* eslint indent: 0 */
-
+/* eslint quotes: 0 */
 import React, { Fragment } from 'react'
 import styled from 'styled-components'
 import LazyLoad from 'react-lazyload'
+import { Helmet } from 'react-helmet'
 
 import MainSlider from 'components/mainSlider'
 import Footer from 'components/footer'
@@ -56,6 +57,12 @@ const mainSliderData = [SliderPhoto, SliderPhotoSecond]
 
 const Home = ({ sliderData }) => (
   <Fragment>
+    <Helmet>
+      <meta
+        name="description"
+        content={`as "We showcase the best of British urban music by presenting Music videos, Mixtape premieres, Audios & freestyle shows such as 'Mad About Bars' & 'Next Up', We are proud to have featured many great artists such as J Hus, Abra Cadabra, Potter Payper, M Huncho, Jay Silva and many more."`}
+      />
+    </Helmet>
     {sliderData &&
       sliderData.Posts && (
         <LazyLoad once offsetVertical={0}>
@@ -63,7 +70,9 @@ const Home = ({ sliderData }) => (
         </LazyLoad>
       )}
     <Container>
-      <Posts />
+      <LazyLoad once offset={0}>
+        <Posts />
+      </LazyLoad>
       <LazyLoad once offset={0}>
         <Interviews />
       </LazyLoad>

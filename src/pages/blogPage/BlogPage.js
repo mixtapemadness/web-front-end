@@ -423,10 +423,13 @@ const BlogPage = ({
           <TitleContainer>
             <BlogTitle dangerouslySetInnerHTML={{ __html: postData.title }} />
             {/* <BlogSubTitle dangerouslySetInnerHTML={{ __html: Excerpt && Excerpt.replace('[&Hellip', ' ') }} /> */}
-            <BlogSubTitle>
-              {Excerpt &&
-                Excerpt.replace(noHTML, '').replace('[&#038;hellip', ' ')}
-            </BlogSubTitle>
+            <BlogSubTitle
+              dangerouslySetInnerHTML={{
+                __html:
+                  Excerpt &&
+                  Excerpt.replace(noHTML, '').replace('[&#038;hellip', ' '),
+              }}
+            />
             <MobileAuthorContainer />
           </TitleContainer>
         </Heading>

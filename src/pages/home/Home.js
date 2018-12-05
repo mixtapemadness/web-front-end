@@ -8,7 +8,6 @@ import styled from 'styled-components'
 import LazyLoad from 'react-lazyload'
 
 import MainSlider from 'components/mainSlider'
-import Footer from 'components/footer'
 import Download from 'components/download'
 import Subscribe from 'components/subscribe'
 import Videos from 'components/videos'
@@ -56,13 +55,13 @@ const mainSliderData = [SliderPhoto, SliderPhotoSecond]
 
 const Home = ({ sliderData }) => (
   <Fragment>
-    {sliderData &&
-      sliderData.Posts && (
-        <LazyLoad once offsetVertical={0}>
-          <MainSlider data={sliderData.Posts} />
-        </LazyLoad>
-      )}
     <Container>
+      {sliderData &&
+        sliderData.Posts && (
+          <LazyLoad once offsetVertical={0}>
+            <MainSlider data={sliderData.Posts} />
+          </LazyLoad>
+        )}
       <Posts />
       <LazyLoad once offset={0}>
         <Interviews />

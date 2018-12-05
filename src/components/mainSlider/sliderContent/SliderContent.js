@@ -12,9 +12,13 @@ import CardLoader from 'components/loaders'
 import ReactImageFallback from 'react-image-fallback'
 import mainSliderEnhancer from './sliderContentEnhancer'
 import placeholderImg from '../../../resources/assets/img/placeholderImg.jpg'
+import { RESPONSIVE_BREAKPOINTS } from '../../../constants'
 
 const SliderContent = styled.div`
-  height: 100vh;
+  height: 400px;
+  @media only screen and (min-width: ${RESPONSIVE_BREAKPOINTS.tablet}) {
+    height: 600px;
+  }
   background-image: url(${p => p.SliderPhoto});
   background-repeat: no-repeat;
   background-size: cover;

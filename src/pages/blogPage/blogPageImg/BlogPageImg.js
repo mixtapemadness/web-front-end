@@ -27,14 +27,11 @@ const BlogPageImg = ({ data, renderVideo }) => {
   return (
     <Container renderVideo={renderVideo}>
       <Helmet>
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
+        <meta name="twitter:card" content="summary_large_image" />
         <meta property="og:image:type" content="image/png" />
         <meta property="og:image" content={`${fullImage}`} />
         <meta property="og:image:url" content={`${fullImage}`} />
         <meta property="og:image:secure_url" content={`${fullImage}`} />
-        <meta name="twitter:image:width" content="600" />
-        <meta name="twitter:image:height" content="600" />
         <meta name="twitter:image" content={`${fullImage}`} />
       </Helmet>
       {!renderVideo && (

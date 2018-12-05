@@ -20,6 +20,7 @@ import blogPageEnhancer from './blogPageEnhancer'
 import BlogPageImg from './blogPageImg'
 import PostContentHeading from './postContentHeading'
 import Tag from './Tag'
+import { TWITTER_HANDLE } from '../../constants'
 
 const Container = styled.div`
   width: 100%;
@@ -372,12 +373,12 @@ const BlogPage = ({
           <meta property="og:type" content="website" />
           <meta name="twitter:title" content={`${postTitle && postTitle}`} />
           <meta name="twitter:card" content="summary_large_image" />
-          <meta name="twitter:site" content="@mixtapemadness" />
+          <meta name="twitter:site" content={`${TWITTER_HANDLE}`} />
           <meta
             name="twitter:description"
             content={`${Description && Description}`}
           />
-          <meta name="twitter:creator" content="@twitter-username" />
+          <meta name="twitter:creator" content={`${TWITTER_HANDLE}`} />
         </Helmet>
         <Heading>
           <PagingArrows>

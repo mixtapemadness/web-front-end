@@ -23,12 +23,9 @@ import Footer from 'components/footer'
 import GA from 'components/googleAnalytics'
 
 const Container = styled.div`
-  margin-top: 70px;
+  margin-top: 60px;
   height: ${p => (p.searchOpened || p.menuOpened ? '80vh' : 'auto')};
   overflow: ${p => (p.searchOpened || p.menuOpened ? 'hidden' : 'visible')};
-  @media (max-width: 850px) {
-    margin-top: 80px;
-  }
 `
 
 const AppContent = ({ searchOpened, toggleSearch, menuOpened }) => (

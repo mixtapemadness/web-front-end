@@ -6,7 +6,7 @@ import { compose, withStateHandlers, lifecycle, withHandlers } from 'recompose'
 import window from 'global/window'
 
 import Header from 'components/header'
-import { CLOSE_MEGAMENU } from 'constants'
+import { CLOSE_MEGAMENU, GA_TRACKING_CODE } from 'constants'
 import { Helmet } from 'react-helmet'
 import ReactGA from 'react-ga'
 import AppContent from './AppContent'
@@ -54,7 +54,7 @@ export default compose(
   ),
   lifecycle({
     componentDidMount() {
-      ReactGA.initialize('UA-75737603-1')
+      ReactGA.initialize(GA_TRACKING_CODE)
       ReactGA.pageview(
         window.location
           ? window.location.pathname + window.location.search

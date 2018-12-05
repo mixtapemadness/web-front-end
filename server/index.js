@@ -64,12 +64,44 @@ app.get('*', (req, res) => {
     <html lang="en">
       <head>
         {helmet.meta.toComponent()}
+        <title>Mixtape Madness</title>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="robots" content="index,follow" />
         <meta name="googlebot" content="index,follow" />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-        <title>Mixtape</title>
+
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="resources/assets/favicons/apple-touch-icon.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="resources/assets/favicons/favicon-32x32.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="16x16"
+          href="resources/assets/favicons/favicon-16x16.png"
+        />
+        <link rel="manifest" href="/site.webmanifest" />
+        <link
+          rel="mask-icon"
+          href="resources/assets/favicons/safari-pinned-tab.svg"
+          color="#5bbad5"
+        />
+        <meta name="msapplication-TileColor" content="#da532c" />
+        <meta name="theme-color" content="#ffffff" />
+        <link
+          rel="shortcut icon"
+          type="image/png"
+          href="http://www.mixtapemadness.com/assets/images/favicon.png"
+        />
+
         <link
           href="https://fonts.googleapis.com/css?family=Montserrat:300,400"
           rel="stylesheet"

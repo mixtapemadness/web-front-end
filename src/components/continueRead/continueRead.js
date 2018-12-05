@@ -20,7 +20,7 @@ const Container = styled(Link)`
   &:after {
     width: 100%;
     height: 10px;
-    background: #ff9600;
+    /* background: #ff9600; */
   }
 `
 

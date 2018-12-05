@@ -20,7 +20,6 @@ import placeholderImg from '../../resources/assets/img/placeholderImg.jpg'
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-
   @media only screen and (max-width: 850px) {
     margin-top: 10px;
   }

@@ -13,26 +13,28 @@ import menuEnhancer from './menuEnhancer'
 // import Musician2 from 'resources/assets/img/eminem.jpg'
 const Container = styled.div`
   position: fixed;
-  top: 70px;
+  top: 0px;
   width: 100%;
-  background-color: #ff9600;
   height: 100%;
-  z-index: 2;
+  background-color: #ff9600;
+  z-index: 1;
   padding-bottom: 100px;
   overflow-y: auto;
   padding: 0 20px;
+  -webkit-overflow-scrolling: touch;
   ::-webkit-scrollbar-track {
     -webkit-box-shadow: inset 0 0 6px #e68600;
   }
   ::-webkit-scrollbar-thumb {
-    background-color: #e68600;
-    outline: 1px solid slategrey;
+    background-color: #e0d9d9;
+    outline: 1px solid #dad7d3;
+    border-radius: 5px;
   }
   ::-webkit-scrollbar {
-    width: 5px;
+    width: 6px;
   }
   @media only screen and (max-width: 850px) {
-    top: 80px;
+    /* top: 80px; */
     border-top: 0;
   }
 `
@@ -42,17 +44,17 @@ const ContentContainer = styled.div`
   margin: 0 auto;
 `
 
-const Line = styled.div`
-  height: 3px;
-  background-color: #ffffff;
-  width: 100%;
-`
+// const Line = styled.div`
+//   height: 3px;
+//   background-color: #ffffff;
+//   width: 100%;
+// `
 
 const ListContainer = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
-  margin-top: 65px;
+  margin-top: 100px;
   @media only screen and (max-width: 1050px) {
     justify-content: center;
   }
@@ -173,7 +175,7 @@ const Menu = ({ data, toggleMenu }) => {
               </FlexDiv>
             ))}
         </ItemContainer>
-        <Line />
+        {/* <Line /> */}
         {/* <Footer menuOpened /> */}
       </ContentContainer>
     </Container>

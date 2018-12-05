@@ -5,6 +5,7 @@
 /* eslint object-curly-newline: 0 */
 /* eslint no-unneeded-ternary: 0 */
 /* eslint implicit-arrow-linebreak: 0 */
+/* eslint react/jsx-closing-tag-location: 0 */
 
 import React from 'react'
 import styled from 'styled-components'
@@ -308,6 +309,7 @@ const BlogPage = ({
   const userName = user && user.user && user.user.name && user.user.name
   const userSlug = user && user.user && user.user.slug && user.user.slug
   const postData = data && data.Post ? data.Post : {}
+  const Excerpt = data && data.Post && data.Post.excerpt
   const postTitle = postData && postData.title
   const noHTML = /(<([^>]+)>)/gi
   const Description =
@@ -352,18 +354,22 @@ const BlogPage = ({
     <React.Fragment>
       <Container>
         <Helmet>
-          <title>Turbo Todo</title>
+          <title>{`Mixtape Madness ${
+            postTitle !== undefined ? `| ${postTitle.replace(noHTML, '')} ` : ''
+          }`}</title>
           <meta
             property="og:url"
             content={window.location ? window.location.href : ''}
           />
-          <meta property="og:title" content={`${postTitle && postTitle}`} />
+          <meta
+            property="og:title"
+            content={`${postTitle && postTitle.replace(noHTML, '')}`}
+          />
           <meta
             property="og:description"
             content={`${Description && Description}`}
           />
           <meta property="og:type" content="website" />
-
           <meta name="twitter:title" content={`${postTitle && postTitle}`} />
           <meta name="twitter:card" content="summary_large_image" />
           <meta name="twitter:site" content="@mixtapemadness" />
@@ -418,9 +424,11 @@ const BlogPage = ({
 
           <TitleContainer>
             <BlogTitle dangerouslySetInnerHTML={{ __html: postData.title }} />
-            <BlogSubTitle
-              dangerouslySetInnerHTML={{ __html: postData.excerpt }}
-            />
+            {/* <BlogSubTitle dangerouslySetInnerHTML={{ __html: Excerpt && Excerpt.replace('[&Hellip', ' ') }} /> */}
+            <BlogSubTitle>
+              {Excerpt &&
+                Excerpt.replace(noHTML, '').replace('[&#038;hellip', ' ')}
+            </BlogSubTitle>
             <MobileAuthorContainer />
           </TitleContainer>
         </Heading>

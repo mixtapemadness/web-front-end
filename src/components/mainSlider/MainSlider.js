@@ -344,18 +344,21 @@ const Override = styled.div`
 const settings = {
   dots: true,
   infinite: true,
-  slidesToShow: 1,
-  slidesToScroll: 1,
+  slidesToShow: 2,
+  slidesToScroll: 2,
   mobileFirst: true,
   centerMode: false,
   nextArrow: <NextArrow />,
   prevArrow: <PrevArrow />,
   responsive: [
     {
-      breakpoint: RESPONSIVE_BREAKPOINTS.mobile,
+      breakpoint: RESPONSIVE_BREAKPOINTS.tablet,
       settings: {
         infinite: true,
-        arrows: false,
+        dots: false,
+        autoplay: true,
+        autoplaySpeed: 7000,
+        arrows: true,
         centerMode: false,
         slidesToShow: 1,
         slidesToScroll: 1,
@@ -367,13 +370,15 @@ const settings = {
 const MainSlider = ({ data }) => {
   const loading = data && data.loading && data.loading
   const Posts = data && data.Posts && data.Posts
+
+  if (loading) {
+    return <CardLoader />
+  }
   return (
     <Container>
       <Override>
         <Slider {...settings}>
-          {loading && <CardLoader />}
-          {!loading &&
-            Posts &&
+          {Posts &&
             Posts.map(item => (
               <SliderContent loading={loading} key={item.id} data={item} />
             ))}

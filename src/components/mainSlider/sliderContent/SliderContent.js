@@ -130,30 +130,32 @@ const MainSlider = ({ tags, media, category, data }) => {
   const Image = media && media.img && media.img.full && media.img.full
   const CategoriesData = category && category.category
   const tagsData = tags && tags.tags && tags.tags
-  return (
-    <React.Fragment>
-      <SliderContent>
-        <ReactImageFallback
-          src={Image && Image}
-          fallbackImage={placeholderImg}
-          initialImage={placeholderImg}
-        />
-        <SliderWrapper />
-        {data &&
-          CategoriesData && (
-            <FlexDiv>
-              <CategoryTitle to={`blog/category/${CategoriesData[0].slug}`}>
-                {CategoriesData[0].name}
-              </CategoryTitle>
-              <Header dangerouslySetInnerHTML={{ __html: data.title }} />
-              <LatestSingles to={`blog/${CategoriesData[0].slug}/${data.slug}`}>
-                Read More
-              </LatestSingles>
-            </FlexDiv>
-          )}
-      </SliderContent>
-    </React.Fragment>
-  )
+  const postLink =
+    CategoriesData && `blog/${CategoriesData[0].slug}/${data.slug}`
+
+  if (data && CategoriesData) {
+    return (
+      <Link to={postLink}>
+        <SliderContent>
+          <ReactImageFallback
+            src={Image && Image}
+            fallbackImage={placeholderImg}
+            initialImage={placeholderImg}
+          />
+          <SliderWrapper />
+          <FlexDiv>
+            <CategoryTitle to={`blog/category/${CategoriesData[0].slug}`}>
+              {CategoriesData[0].name}
+            </CategoryTitle>
+            <Header dangerouslySetInnerHTML={{ __html: data.title }} />
+            <LatestSingles to={postLink}>Read More</LatestSingles>
+          </FlexDiv>
+        </SliderContent>
+      </Link>
+    )
+  }
+
+  return null
 }
 
 export default mainSliderEnhancer(MainSlider)

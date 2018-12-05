@@ -20,6 +20,7 @@ import blogPageEnhancer from './blogPageEnhancer'
 import BlogPageImg from './blogPageImg'
 import PostContentHeading from './postContentHeading'
 import Tag from './Tag'
+import { TWITTER_HANDLE } from '../../constants'
 
 const Container = styled.div`
   width: 100%;
@@ -154,7 +155,7 @@ const BackgroundPicture = styled.div`
 `
 
 const BlogContent = styled.div`
-  width: 90%;
+  max-width: 760px;
   margin: auto;
   @media only screen and (max-width: 1150px) {
     text-align: center;
@@ -274,6 +275,7 @@ const DisqusContainer = styled.div`
   max-width: 1200px;
   margin: auto;
   width: 90%;
+  margin-top: 20px;
 `
 
 const BlogArticleContent = styled.div`
@@ -281,6 +283,7 @@ const BlogArticleContent = styled.div`
     margin-top: 20px;
     display: flex;
     flex-direction: column;
+    line-height: 40px;
     img {
       margin: 5px 0;
     }
@@ -370,12 +373,12 @@ const BlogPage = ({
           <meta property="og:type" content="website" />
           <meta name="twitter:title" content={`${postTitle && postTitle}`} />
           <meta name="twitter:card" content="summary_large_image" />
-          <meta name="twitter:site" content="@mixtapemadness" />
+          <meta name="twitter:site" content={`${TWITTER_HANDLE}`} />
           <meta
             name="twitter:description"
             content={`${Description && Description}`}
           />
-          <meta name="twitter:creator" content="@twitter-username" />
+          <meta name="twitter:creator" content={`${TWITTER_HANDLE}`} />
         </Helmet>
         <Heading>
           <PagingArrows>

@@ -11,15 +11,15 @@ import FacebookIcon from 'resources/assets/svgComponents/Facebook'
 import TwitterIcon from 'resources/assets/svgComponents/Twitter'
 import InstagramIcon from 'resources/assets/svgComponents/Instagram'
 import YoutubeIcon from 'resources/assets/svgComponents/Youtube'
-import DotsIcon from 'resources/assets/svgComponents/Dots'
 import SearchIcon from 'resources/assets/svgComponents/Search'
 import MixtapeLogo from 'resources/assets/img/mixtape-logo.png'
 
 import headerEnhancer from './headerEnhancer'
+import { RESPONSIVE_BREAKPOINTS } from '../../constants'
 
 const HeaderContainer = styled.div`
   width: 100%;
-  height: 70px;
+  height: 60px;
   background-color: #ffffff;
   font-size: 16px;
   padding: 0 10px;
@@ -29,8 +29,8 @@ const HeaderContainer = styled.div`
   z-index: 2;
   ${p => p.menuOpened && 'background-color: #ff9600'};
   box-shadow: 0 3px 5px -4px rgba(0, 0, 0, 0.46);
-  @media only screen and (max-width: 850px) {
-    height: 80px;
+  @media only screen and (min-width: ${RESPONSIVE_BREAKPOINTS.tablet}) {
+    height: 70px;
   }
 `
 
@@ -48,6 +48,7 @@ const ContentContainer = styled.div`
 `
 const LeftSide = styled.div`
   display: flex;
+  align-items: center;
   @media only screen and (max-width: 1050px) {
     width: 100%;
     justify-content: center;
@@ -120,14 +121,7 @@ const Search = styled.div`
   display: flex;
   align-items: center;
 `
-const Dots = styled.div`
-  width: 10px;
-  margin-left: 30px;
-  margin-right: 10px;
-  cursor: pointer;
-`
 const ContactUsContainer = styled.div`
-  border: 1px solid ${p => (p.menuOpened ? '#ffffff' : '#ffa019')};
   border-radius: 15px;
   margin-left: 20px;
   padding: 0px 5px;
@@ -254,9 +248,6 @@ const Join = styled.div`
   letter-spacing: 0.8px;
   color: #000000;
 `
-const DotsDropDown = styled.div`
-  position: relative;
-`
 // const DotsDropDownContent = styled.div`
 //   z-index: 1;
 //   position: absolute;
@@ -323,7 +314,6 @@ const DropDownItem = styled.span`
 
 const Header = ({
   // dotsMenu,
-  toggleDotsMenu,
   width,
   toggleSearch,
   toggleMenu,
@@ -340,10 +330,10 @@ const Header = ({
             <span />
             <span />
           </BurgerIcon>
-          <Link to="/">
-            <Logo src={MixtapeLogo} alt="logo" />
-          </Link>
         </Div>
+        <Link to="/">
+          <Logo src={MixtapeLogo} alt="logo" />
+        </Link>
         <NavBar>
           <Ul menuOpened={menuOpened}>
             <DropDown>
@@ -388,19 +378,6 @@ const Header = ({
             />
           </Search>
         </NavBar>
-
-        {width > 1050 && (
-          <Div>
-            <DotsDropDown>
-              <Dots onClick={() => toggleDotsMenu()}>
-                <DotsIcon
-                  width="10px"
-                  color={menuOpened ? '#ffffff' : '#666666'}
-                />
-              </Dots>
-            </DotsDropDown>
-          </Div>
-        )}
       </LeftSide>
       {width > 1050 && (
         <RightSide>

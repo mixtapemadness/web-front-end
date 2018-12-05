@@ -12,6 +12,7 @@ import MainNext from 'resources/assets/svg/mainnext.svg'
 import { CardLoader } from 'components/loaders'
 import SliderContent from './sliderContent'
 import mainSliderEnhancer from './mainSliderEnhancer'
+import { RESPONSIVE_BREAKPOINTS } from '../../constants'
 
 const Img = styled.img`
   display: block;
@@ -38,7 +39,10 @@ const NextArrow = (
 ) => <Img src={MainNext} onClick={onClick} />
 
 const Container = styled.div`
-  min-height: 100vh;
+  height: 400px;
+  @media only screen and (min-width: ${RESPONSIVE_BREAKPOINTS.tablet}) {
+    height: 600px;
+  }
   .slick-slider {
     position: relative;
 
@@ -310,6 +314,7 @@ const Container = styled.div`
 `
 
 const Override = styled.div`
+  height: 400px;
   .slick-slider {
     display: flex;
     justify-content: space-between;
@@ -337,12 +342,26 @@ const Override = styled.div`
 `
 
 const settings = {
-  dots: false,
+  dots: true,
   infinite: true,
   slidesToShow: 1,
   slidesToScroll: 1,
+  mobileFirst: true,
+  centerMode: false,
   nextArrow: <NextArrow />,
   prevArrow: <PrevArrow />,
+  responsive: [
+    {
+      breakpoint: RESPONSIVE_BREAKPOINTS.mobile,
+      settings: {
+        infinite: true,
+        arrows: false,
+        centerMode: false,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+      },
+    },
+  ],
 }
 
 const MainSlider = ({ data }) => {

@@ -9,7 +9,6 @@ import LazyLoad from 'react-lazyload'
 import { Helmet } from 'react-helmet'
 
 import MainSlider from 'components/mainSlider'
-import Footer from 'components/footer'
 import Download from 'components/download'
 import Subscribe from 'components/subscribe'
 import Videos from 'components/videos'

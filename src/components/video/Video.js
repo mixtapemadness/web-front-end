@@ -149,28 +149,7 @@ const Video = ({ data, media, tags, category }) => {
                 to={`/blog/${categoriesData[0].slug}/${data.slug}`}
               />
             )}
-          <TagsContainer>
-            {tagsData &&
-              tagsData.map(item => (
-                <Text
-                  key={item.id}
-                  dangerouslySetInnerHTML={{ __html: item.name }}
-                />
-              ))}
-          </TagsContainer>
         </LeftSide>
-        <RightSide>
-          {/* <FlexDiv>
-            <Img src={ViewsIcon} alt="view" height={20} />
-            <Views>
-              {data.views}
-              {' Views'}
-            </Views>
-          </FlexDiv> */}
-          {/* <FlexDiv jc="flex-end" height="100%" align="flex-end">
-            <Img src={SignalBarsIcon} alt="bars" height={18} />
-          </FlexDiv> */}
-        </RightSide>
       </ContentContainer>
     </Container>
   )

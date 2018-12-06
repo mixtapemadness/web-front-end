@@ -3,6 +3,7 @@
 /* eslint no-unused-vars: 0 */
 
 import React from 'react'
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import Video from 'components/video'
 import SliderComponent from 'components/slider'
@@ -35,7 +36,6 @@ const SectionSubHeader = styled.span`
 
 const VideoItems = styled.div`
   display: flex;
-  justify-content: space-between;
   @media only screen and (max-width: 1150px) {
     flex-direction: column;
     align-items: center;
@@ -85,10 +85,10 @@ const Videos = ({ data }) => {
   return (
     <VideosContainer>
       <HeaderContainer mb={0}>
-        <SectionHeader>Videos</SectionHeader>
-        <SectionSubHeader>
-          Mixtape Madness Share Their Top Videos This Week
-        </SectionSubHeader>
+        <SectionHeader>
+          <Link to="/blog/videos">Videos</Link>
+        </SectionHeader>
+        <SectionSubHeader>This weeks latest videos</SectionSubHeader>
       </HeaderContainer>
       <VideoItems>
         <SliderComponent settings={settings}>

@@ -131,11 +131,22 @@ const BlogSubTitle = styled.h3`
 
 const BlogPageVideo = styled.div`
   width: 100%;
-  height: 60vh;
+  height: auto
   background-image: url(${props => props.src});
   background-position: center center;
   background-size: cover;
-  embed {
+
+`
+const BlogImageWrapper = styled.div`
+  position: relative;
+  padding-bottom: 56.25%;
+  padding-top: 25px;
+  height: 0;
+  embed,
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
   }
@@ -436,10 +447,14 @@ const BlogPage = ({
             <MobileAuthorContainer />
           </TitleContainer>
         </Heading>
-        {renderVideo && (
-          <BlogPageVideo dangerouslySetInnerHTML={{ __html: Video && Video }} />
-        )}
-        {<BlogPageImg renderVideo={renderVideo} id={postData.featured_media} />}
+        <BlogImageWrapper>
+          {renderVideo && (
+            <BlogPageVideo
+              dangerouslySetInnerHTML={{ __html: Video && Video }}
+            />
+          )}
+          <BlogPageImg renderVideo={renderVideo} id={postData.featured_media} />
+        </BlogImageWrapper>
         <BlogContent>
           <PostContentHeading
             date={postData.date}

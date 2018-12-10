@@ -7,21 +7,17 @@ import FacebookIcon from 'resources/assets/svgComponents/Facebook'
 import TwitterIcon from 'resources/assets/svgComponents/Twitter'
 import CircleIcon from 'resources/assets/svgComponents/Circle'
 import SoundCloudIcon from 'resources/assets/svgComponents/SoundCloud'
+import { Link } from 'react-router-dom'
 
 const MobileFooterContainer = styled.div`
   max-width: 310px;
   margin: 20px auto;
-  padding-bottom: 20px;
-  @media only screen and (max-width: 1050px) {
-    height: 120px;
-  }
 `
 
 const MobileContentContainer = styled.div`
   display: flex;
   justify-content: center;
-  justify-content: ${p => p.jc && 'space-between'};
-  color: ${p => (p.menuOpened ? '#ffffff' : '#000000')};
+  color: '#000000';
 `
 
 const SocialIcon = styled.a`
@@ -36,25 +32,32 @@ const SocialContainer = styled.div`
   align-items: center;
   justify-content: space-between;
 `
-const Span = styled.span`
-  font-weight: bold;
-  margin-right: ${p => p.mr && '10px'};
+const List = styled.ul`
+  margin: 0;
+  padding: 0;
+  margin-bottom: 20px;
+`
+
+const ListItem = styled.li`
+  margin-bottom: 15px;
+  font-weight: 600;
+  list-style: none;
+  font-size: 14px;
+  margin-right: 20px;
+  display: inline-block;
 `
 
 const MobileFooter = ({ menuOpened }) => (
   <MobileFooterContainer>
     <SocialContainer>
       <SocialIcon target="_blank" href="https://twitter.com/mixtapemadness">
-        <TwitterIcon height="20px" color={menuOpened ? '#ffffff' : '#666666'} />
+        <TwitterIcon height="20px" color="#666666" />
       </SocialIcon>
       <SocialIcon
         target="_blank"
         href="https://www.facebook.com/MixtapeMadnessUK/"
       >
-        <FacebookIcon
-          height="17px"
-          color={menuOpened ? '#ffffff' : '#666666'}
-        />
+        <FacebookIcon height="17px" color="#666666" />
       </SocialIcon>
       <SocialIcon>
         <CircleIcon height="17px" color={menuOpened ? '#ffffff' : '#666666'} />
@@ -72,27 +75,39 @@ const MobileFooter = ({ menuOpened }) => (
         target="_blank"
         href="https://www.youtube.com/user/madaboutmixtapes"
       >
-        <YoutubeIcon height="23px" color={menuOpened ? '#ffffff' : '#666666'} />
+        <YoutubeIcon height="23px" color="#666666" />
       </SocialIcon>
       <SocialIcon
         target="_blank"
         href="https://www.instagram.com/mixtapemadness/"
       >
-        <InstagramIcon
-          height="19px"
-          color={menuOpened ? '#ffffff' : '#666666'}
-        />
+        <InstagramIcon height="19px" color="#666666" />
       </SocialIcon>
     </SocialContainer>
     <MobileContentContainer jc menuOpened={menuOpened}>
-      <Span>About</Span>
-      <Span>Careers</Span>
-      <Span>Contact</Span>
-      <Span>Advertise</Span>
-    </MobileContentContainer>
-    <MobileContentContainer menuOpened={menuOpened}>
-      <Span mr>Privacy Policy</Span>
-      <Span>Terms</Span>
+      <List menuOpened={menuOpened}>
+        <ListItem>
+          <Link to="/aboutus">About</Link>
+        </ListItem>
+        <ListItem>
+          <Link to="/blog/category/videos">Videos</Link>
+        </ListItem>
+        <ListItem>
+          <Link to="/blog/category/articles">Articles</Link>
+        </ListItem>
+        <ListItem>
+          <Link to="/blog/category/events">Events</Link>
+        </ListItem>
+        <ListItem>
+          <Link to="/blog/category/reviews">Reviews </Link>
+        </ListItem>
+        <ListItem>
+          <Link to="/blog/category/news">News</Link>
+        </ListItem>
+        <ListItem>
+          <Link to="/blog/category/interviews">Interviews</Link>
+        </ListItem>
+      </List>
     </MobileContentContainer>
   </MobileFooterContainer>
 )

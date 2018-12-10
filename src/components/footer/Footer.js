@@ -15,6 +15,7 @@ import InstagramIcon from 'resources/assets/svgComponents/Instagram'
 import YoutubeIcon from 'resources/assets/svgComponents/Youtube'
 import CircleIcon from 'resources/assets/svgComponents/Circle'
 import SoundCloudIcon from 'resources/assets/svgComponents/SoundCloud'
+import MixtapeLogo from 'resources/assets/img/mixtape-logo.png'
 
 import { CLOSE_MEGAMENU } from 'constants'
 import footerEnhancer from './footerEnhancer'
@@ -39,6 +40,7 @@ const ContentContainer = styled.div`
 const FlexDiv = styled.div`
   display: flex;
   justify-content: space-between;
+  flex-direction: column;
   width: 100%;
 `
 
@@ -56,19 +58,19 @@ const ContentHeader = styled.span`
 const List = styled.ul`
   margin: 0;
   padding: 0;
-  margin-top: 20px;
-  color: ${p => (p.menuOpened ? '#ffffff' : 'rgba(0, 0, 0, 0.5)')};
-  opacity: ${p => (p.menuOpened ? '1' : '0.5')};
+  color: #666;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-bottom: 20px;
 `
 
 const ListItem = styled.li`
-  text-transform: uppercase;
   margin-bottom: 15px;
-  letter-spacing: 1px;
   font-weight: 600;
   list-style: none;
-  letter-spacing: 0.8px;
-  font-size: 13px;
+  font-size: 14px;
+  display: inline-block;
 `
 
 const UploadContainer = styled.div`
@@ -188,6 +190,12 @@ const SocialIcon = styled.a`
   margin-right: 10px;
   cursor: pointer;
 `
+const NewsletterContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`
 
 const Footer = ({ width, menuOpened }) => (
   <div>
@@ -196,21 +204,6 @@ const Footer = ({ width, menuOpened }) => (
         <ContentContainer>
           <FlexDiv>
             <ListContainer>
-              <ContentHeader menuOpened={menuOpened}>Music</ContentHeader>
-              <List menuOpened={menuOpened}>
-                {/* <ListItem>Artists</ListItem> */}
-                {/* <ListItem>Mixtapes</ListItem> */}
-                {/* <ListItem>Singles</ListItem> */}
-                {/* <ListItem>Hip Hop</ListItem> */}
-                {/* <ListItem>Drill</ListItem> */}
-                {/* <ListItem>Rap</ListItem> */}
-                {/* <ListItem>Trap</ListItem> */}
-                {/* <ListItem>Grime</ListItem> */}
-                {/* <ListItem>All Genres</ListItem> */}
-              </List>
-            </ListContainer>
-            <ListContainer>
-              <ContentHeader menuOpened={menuOpened}>Blog</ContentHeader>
               <List menuOpened={menuOpened}>
                 <ListItem>
                   <Link to="/aboutus">About</Link>
@@ -235,11 +228,7 @@ const Footer = ({ width, menuOpened }) => (
                 </ListItem>
               </List>
             </ListContainer>
-            <UploadContainer>
-              <ContentHeader menuOpened={menuOpened}>For Artists</ContentHeader>
-              {/* <UploadButton menuOpened={menuOpened}>Upload to mm</UploadButton> */}
-            </UploadContainer>
-            <div>
+            <NewsletterContainer>
               <ContentHeader menuOpened={menuOpened}>
                 Sign up for our newsletter
               </ContentHeader>
@@ -258,52 +247,34 @@ const Footer = ({ width, menuOpened }) => (
                   target="_blank"
                   href="https://twitter.com/mixtapemadness"
                 >
-                  <TwitterIcon
-                    height="20px"
-                    color={menuOpened ? '#ffffff' : '#666666'}
-                  />
+                  <TwitterIcon height="20px" color="#666666" />
                 </SocialIcon>
                 <SocialIcon
                   target="_blank"
                   href="https://www.facebook.com/MixtapeMadnessUK/"
                 >
-                  <FacebookIcon
-                    height="17px"
-                    color={menuOpened ? '#ffffff' : '#666666'}
-                  />
+                  <FacebookIcon height="17px" color="#666666" />
                 </SocialIcon>
                 <SocialIcon>
-                  <CircleIcon
-                    height="17px"
-                    color={menuOpened ? '#ffffff' : '#666666'}
-                  />
+                  <CircleIcon height="17px" color="#666666" />
                 </SocialIcon>
                 <SocialIcon
                   target="_blank"
                   href="https://soundcloud.com/mixtapemadnessuk"
                 >
-                  <SoundCloudIcon
-                    height="35px"
-                    color={menuOpened ? '#ffffff' : '#666666'}
-                  />
+                  <SoundCloudIcon height="35px" color="#666666" />
                 </SocialIcon>
                 <SocialIcon
                   target="_blank"
                   href="https://www.youtube.com/user/madaboutmixtapes"
                 >
-                  <YoutubeIcon
-                    height="23px"
-                    color={menuOpened ? '#ffffff' : '#666666'}
-                  />
+                  <YoutubeIcon height="23px" color="#666666" />
                 </SocialIcon>
                 <SocialIcon
                   target="_blank"
                   href="https://www.instagram.com/mixtapemadness/"
                 >
-                  <InstagramIcon
-                    height="19px"
-                    color={menuOpened ? '#ffffff' : '#666666'}
-                  />
+                  <InstagramIcon height="19px" color="#666666" />
                 </SocialIcon>
               </SocialContainer>
               <Line mb={10} menuOpened={menuOpened} />
@@ -321,42 +292,20 @@ const Footer = ({ width, menuOpened }) => (
                   <GooglePlay src={GooglePlayIcon} />
                 </Anchor> */}
               </FlexDiv>
-            </div>
+            </NewsletterContainer>
           </FlexDiv>
-          <Line mt={20} mb={20} menuOpened={menuOpened} />
           <FlexDiv>
             <div>
-              <Span fsize={13} color={menuOpened ? '#ffffff' : '#000000'}>
+              <Span fsize={13} color="#000000">
                 Mixtape Madness
               </Span>
             </div>
             <Flex>
-              <Span fsize={13} color={menuOpened ? '#ffffff' : '#000000'}>
-                Help
+              <Span fsize={13} color="#000000">
+                <Link to="/termsconditions">Terms </Link>
               </Span>
-              <Span
-                fsize={13}
-                color={menuOpened ? '#ffffff' : '#000000'}
-                ml={10}
-              >
-                <Link
-                  to="/termsconditions"
-                  onClick={() => eventEmitter.emit(CLOSE_MEGAMENU)}
-                >
-                  Terms{' '}
-                </Link>
-              </Span>
-              <Span
-                fsize={13}
-                color={menuOpened ? '#ffffff' : '#000000'}
-                ml={10}
-              >
-                <Link
-                  to="/privacy"
-                  onClick={() => eventEmitter.emit(CLOSE_MEGAMENU)}
-                >
-                  Privacy{' '}
-                </Link>
+              <Span fsize={13} color="#000000" ml={10}>
+                <Link to="/privacy">Privacy </Link>
               </Span>
             </Flex>
           </FlexDiv>

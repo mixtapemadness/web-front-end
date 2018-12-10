@@ -29,7 +29,6 @@ const Container = styled.div`
 
 const ContainerBottom = styled.div`
   width: 100%;
-  color: #666666;
   text-align: center;
   padding-bottom: 10px;
   font-weight: bold;

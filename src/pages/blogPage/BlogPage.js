@@ -157,11 +157,16 @@ const BackgroundPicture = styled.div`
 `
 
 const BlogContent = styled.div`
-  max-width: 760px;
+  max-width: 100%;
   padding 0 20px;
   margin: 40px auto;
+  iframe {
+    width: auto;
+  }
   @media only screen and (min-width: ${RESPONSIVE_BREAKPOINTS.tablet}) {
+    width: 900px;
     padding: 0;
+    
   }
 `
 

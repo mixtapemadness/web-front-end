@@ -1,8 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const newsSliderImg = //eslint-disable-line
-  'https://static1.squarespace.com/static/52c723b4e4b0b6f0473fa0c7/52c73e8ee4b0b674fecbb8d6/5ab0190303ce6497ede69670/1521490244848/music_Autonomics_coBandcamp_4344.jpg?format=1000w' //eslint-disable-line
 const NewsSlliderContainer = styled.div`
   width: 100%;
   flex-direction: column;
@@ -40,13 +38,9 @@ const SliderText = styled.h1`
 
 export default () => (
   <NewsSlliderContainer>
-    <SlliderImg src={newsSliderImg}>
+    <SlliderImg>
       <NewsSlliderWrapper>
-        <SliderText>
-          Browse The Latest News
-          <br />
-          On MixTape Madness
-        </SliderText>
+        <SliderText>Latest news on Mixtape Madness</SliderText>
       </NewsSlliderWrapper>
     </SlliderImg>
   </NewsSlliderContainer>

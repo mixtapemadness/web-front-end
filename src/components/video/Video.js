@@ -5,13 +5,14 @@
 
 import React from 'react'
 import styled from 'styled-components'
-
 import { Link } from 'react-router-dom'
 import videoEnhancer from './videoEnhancer'
+import truncate from '../../helpers/textHelpers'
 
 const Container = styled.div`
   margin: 7px;
   flex: 1;
+  max-width: 386px;
 `
 
 const PhotoContainer = styled(Link)`
@@ -25,16 +26,10 @@ const PhotoContainer = styled(Link)`
   position: relative;
   cursor: pointer;
   background-size: cover;
-  transition: 0.8s;
-  &:hover {
-    /* background-size: 140%; */
-  }
+
   @media only screen and (max-width: 1150px) {
     height: 300px;
     background-size: cover;
-    &:hover {
-      background-size: cover;
-    }
   }
 `
 
@@ -67,12 +62,7 @@ const Dots = styled.img`
   height: 22px;
 `
 
-const LeftSide = styled.div`
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  justify-content: space-between;
-`
+const LeftSide = styled.div``
 
 const RightSide = styled.div`
   display: flex;
@@ -93,17 +83,8 @@ const Img = styled.img`
 
 const Name = styled(Link)`
   font-weight: 600;
-  font-size: 19.5px;
-  letter-spacing: 1.2px;
-  line-height: 1.08;
+  font-size: 16px;
   margin-bottom: 16px;
-  text-decoration: underline;
-  text-decoration-color: transparent;
-  transition: 0.4s;
-  cursor: pointer;
-  &:hover {
-    text-decoration-color: #111111;
-  }
 `
 const Text = styled.span`
   color: #666666;
@@ -123,6 +104,24 @@ const Views = styled.span`
 
 const TagsContainer = styled.span`
   display: flex;
+`
+
+const Excerpt = styled.span`
+  color: #666;
+  margin-top: 20px;
+  p {
+    line-height: 26px;
+  }
+  overflow: hidden;
+  font-size: 12px;
+`
+const WatchMore = styled(Link)`
+  color: #ff9600;
+  cursor: pointer;
+  font-weight: 800;
+  font-size: 12px;
+  margin-top: 10px;
+  position: relative;
 `
 
 const Video = ({ data, media, tags, category }) => {
@@ -149,6 +148,20 @@ const Video = ({ data, media, tags, category }) => {
                 to={`/blog/${categoriesData[0].slug}/${data.slug}`}
               />
             )}
+          {
+            <Excerpt
+              dangerouslySetInnerHTML={{ __html: truncate(data.excerpt, 115) }}
+            />
+          }
+          {categoriesData && (
+            <WatchMore
+              to={{
+                pathname: `/blog/${categoriesData[0].slug}/${data.slug}`,
+              }}
+            >
+              Watch Video
+            </WatchMore>
+          )}
         </LeftSide>
       </ContentContainer>
     </Container>

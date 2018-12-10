@@ -184,11 +184,10 @@ const ContinueReadContainer = styled.div`
 `
 
 const ContinueRead = styled(Link)`
-  color: ${p => (p.color ? p.color : '#ff9600')};
+  color: #ff9600;
   cursor: pointer;
   font-weight: 800;
   font-size: 12px;
-  transition: 0.4s;
   margin-top: 10px;
   position: relative;
 `

@@ -5,6 +5,7 @@
 
 import React from 'react'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 import PostItem from 'components/postItem'
 import Subscribe from 'components/subscribe'
 import SliderComponent from 'components/slider'
@@ -114,7 +115,9 @@ const Reviews = ({ width, data }) => {
   return (
     <ReviewContainer>
       <TitleContainer>
-        <Title>Reviews</Title>
+        <Title>
+          <Link to="/blog/category/reviews">Reviews</Link>
+        </Title>
         <SubTitle>Check Out The Latest Reviews</SubTitle>
       </TitleContainer>
       <SliderComponent settings={settings}>

@@ -86,7 +86,7 @@ const Videos = ({ data }) => {
     <VideosContainer>
       <HeaderContainer mb={0}>
         <SectionHeader>
-          <Link to="/blog/videos">Videos</Link>
+          <Link to="/blog/category/videos">Videos</Link>
         </SectionHeader>
         <SectionSubHeader>This weeks latest videos</SectionSubHeader>
       </HeaderContainer>

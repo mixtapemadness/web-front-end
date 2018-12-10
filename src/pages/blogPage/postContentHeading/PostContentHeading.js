@@ -61,16 +61,11 @@ const IconWrapper = styled.div`
 `
 
 const Date = styled.span`
-  cursor: pointer;
   border-right: 1px solid #ccc;
   padding-right: 10px;
 `
 
 const PostContentHeading = ({ date, userName, location, userSlug, match }) => {
-  const { category, slug } = match.params
-  // const url = `${config.apiUrl}api/v1/blog/${
-  //   match.params.category
-  // }/${slug}/share`
   return (
     <Container>
       <ContainerBottom>

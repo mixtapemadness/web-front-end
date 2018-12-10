@@ -5,6 +5,7 @@
 
 import React from 'react'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 import WhatsOnComponent from 'components/whatsOnComponent'
 import SliderComponent from 'components/slider'
 import { CardLoader } from 'components/loaders'
@@ -69,7 +70,9 @@ const WhatsOn = ({ width, data }) => {
   return (
     <Container>
       <HeaderContainer mb={0}>
-        <SectionHeader>What&apos;s On</SectionHeader>
+        <SectionHeader>
+          <Link to="/blog/category/events">Events</Link>
+        </SectionHeader>
         <SectionSubHeader>
           {' '}
           Check Out The Latest Music This Week

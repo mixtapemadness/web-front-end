@@ -96,7 +96,7 @@ const ArrowText = styled.div`
 
 const TitleContainer = styled.div`
   text-align: center;
-  padding: 0 20px;
+  padding: 10px 20px;
 `
 
 const BlogTitle = styled.h1`
@@ -159,7 +159,7 @@ const BackgroundPicture = styled.div`
 const BlogContent = styled.div`
   max-width: 760px;
   padding 0 20px;
-  margin: auto;
+  margin: 40px auto;
   @media only screen and (min-width: ${RESPONSIVE_BREAKPOINTS.tablet}) {
     padding: 0;
   }
@@ -244,15 +244,6 @@ const MayLikeContainer = styled.div`
 //     justify-content: center;
 //   }
 // `
-const MobileAuthorContainer = styled.div`
-  display: none;
-  color: #666666;
-  justify-content: center;
-  margin-top: 20px;
-  @media only screen and (max-width: 450px) {
-    display: flex;
-  }
-`
 
 const Author = styled.span`
   color: #ff9d00;
@@ -432,7 +423,12 @@ const BlogPage = ({
                   Excerpt.replace(noHTML, '').replace('[&#038;hellip', ' '),
               }}
             />
-            <MobileAuthorContainer />
+            <PostContentHeading
+              date={postData.date}
+              userName={userName}
+              userSlug={userSlug}
+            />
+            <div className="addthis_inline_share_toolbox" />
           </TitleContainer>
         </Heading>
         <BlogImageWrapper>
@@ -444,11 +440,6 @@ const BlogPage = ({
           <BlogPageImg renderVideo={renderVideo} id={postData.featured_media} />
         </BlogImageWrapper>
         <BlogContent>
-          <PostContentHeading
-            date={postData.date}
-            userName={userName}
-            userSlug={userSlug}
-          />
           {!isVideo && Video ? (
             <BlogArticleContent
               dangerouslySetInnerHTML={{ __html: Content && Content }}

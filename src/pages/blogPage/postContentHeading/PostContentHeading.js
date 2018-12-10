@@ -38,6 +38,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   margin: 20px 0;
+  text-align: center;
 `
 
 const ContainerTop = styled.div`

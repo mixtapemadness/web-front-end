@@ -20,7 +20,8 @@ import blogPageEnhancer from './blogPageEnhancer'
 import BlogPageImg from './blogPageImg'
 import PostContentHeading from './postContentHeading'
 import Tag from './Tag'
-import { TWITTER_HANDLE } from '../../constants'
+import { RESPONSIVE_BREAKPOINTS, TWITTER_HANDLE } from '../../constants'
+import truncate from '../../helpers/textHelpers'
 
 const Container = styled.div`
   width: 100%;
@@ -94,38 +95,28 @@ const ArrowText = styled.div`
 `
 
 const TitleContainer = styled.div`
-  width: 76%;
   text-align: center;
-  text-transform: capitalize;
-  display: flex;
-  flex-direction: column;
-  @media only screen and (max-width: 450px) {
-    width: 90%;
-  }
+  padding: 0 20px;
 `
 
 const BlogTitle = styled.h1`
-  font-size: 46px;
-  letter-spacing: 3.2px;
+  font-size: 26px;
   color: #010101;
   font-weight: 800;
   margin-bottom: 20px;
-  @media only screen and (max-width: 700px) {
-    font-size: 26px;
-  }
-  @media only screen and (max-width: 450px) {
-    font-size: 18px;
-    letter-spacing: normal;
+  @media only screen and (min-width: ${RESPONSIVE_BREAKPOINTS.tablet}) {
+    font-size: 36px;
   }
 `
 
 const BlogSubTitle = styled.h3`
   color: #666666;
-  letter-spacing: 1.6px;
+  font-size: 14px;
   margin-bottom: 20px;
-  @media only screen and (max-width: 450px) {
-    font-size: 12px;
-    letter-spacing: normal;
+  font-weight: 500;
+  line-height: 32px;
+  @media only screen and (min-width: ${RESPONSIVE_BREAKPOINTS.tablet}) {
+    font-size: 18px;
   }
 `
 
@@ -167,9 +158,10 @@ const BackgroundPicture = styled.div`
 
 const BlogContent = styled.div`
   max-width: 760px;
+  padding 0 20px;
   margin: auto;
-  @media only screen and (max-width: 1150px) {
-    text-align: center;
+  @media only screen and (min-width: ${RESPONSIVE_BREAKPOINTS.tablet}) {
+    padding: 0;
   }
 `
 
@@ -291,10 +283,6 @@ const DisqusContainer = styled.div`
 
 const BlogArticleContent = styled.div`
   p {
-    margin-top: 20px;
-    display: flex;
-    flex-direction: column;
-    line-height: 40px;
     img {
       margin: 5px 0;
     }
@@ -321,7 +309,7 @@ const BlogPage = ({
   const userName = user && user.user && user.user.name && user.user.name
   const userSlug = user && user.user && user.user.slug && user.user.slug
   const postData = data && data.Post ? data.Post : {}
-  const Excerpt = data && data.Post && data.Post.excerpt
+  const Excerpt = data && data.Post && truncate(data.Post.excerpt, 180)
   const postTitle = postData && postData.title
   const noHTML = /(<([^>]+)>)/gi
   const Description =

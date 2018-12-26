@@ -21,9 +21,13 @@ import TermsAndConditions from 'pages/termsAndConditions'
 import styled from 'styled-components'
 import Footer from 'components/footer'
 import GA from 'components/googleAnalytics'
+import { RESPONSIVE_BREAKPOINTS } from './constants'
 
 const Container = styled.div`
-  margin-top: 70px;
+  margin-top: 60px;
+  @media only screen and (min-width: ${RESPONSIVE_BREAKPOINTS.tablet}) {
+    margin-top: 70px;
+  }
   height: ${p => (p.searchOpened || p.menuOpened ? '80vh' : 'auto')};
   overflow: ${p => (p.searchOpened || p.menuOpened ? 'hidden' : 'visible')};
 `

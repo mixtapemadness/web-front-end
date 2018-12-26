@@ -1,13 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import InstagramIcon from 'resources/assets/svgComponents/Instagram'
-import YoutubeIcon from 'resources/assets/svgComponents/Youtube'
-import FacebookIcon from 'resources/assets/svgComponents/Facebook'
-import TwitterIcon from 'resources/assets/svgComponents/Twitter'
-import CircleIcon from 'resources/assets/svgComponents/Circle'
-import SoundCloudIcon from 'resources/assets/svgComponents/SoundCloud'
 import { Link } from 'react-router-dom'
+import SocialIcons from 'components/SocialIcons/'
 
 const MobileFooterContainer = styled.div`
   max-width: 310px;
@@ -18,19 +13,6 @@ const MobileContentContainer = styled.div`
   display: flex;
   justify-content: center;
   color: '#000000';
-`
-
-const SocialIcon = styled.a`
-  margin-right: 10px;
-  cursor: pointer;
-  ${p => p.hg && `height: ${p.hg}px`};
-`
-const SocialContainer = styled.div`
-  display: flex;
-  margin-top: 20px;
-  margin-bottom: 17px;
-  align-items: center;
-  justify-content: space-between;
 `
 const List = styled.ul`
   margin: 0;
@@ -49,41 +31,7 @@ const ListItem = styled.li`
 
 const MobileFooter = ({ menuOpened }) => (
   <MobileFooterContainer>
-    <SocialContainer>
-      <SocialIcon target="_blank" href="https://twitter.com/mixtapemadness">
-        <TwitterIcon height="20px" color="#666666" />
-      </SocialIcon>
-      <SocialIcon
-        target="_blank"
-        href="https://www.facebook.com/MixtapeMadnessUK/"
-      >
-        <FacebookIcon height="17px" color="#666666" />
-      </SocialIcon>
-      <SocialIcon>
-        <CircleIcon height="17px" color={menuOpened ? '#ffffff' : '#666666'} />
-      </SocialIcon>
-      <SocialIcon
-        target="_blank"
-        href="https://soundcloud.com/mixtapemadnessuk"
-      >
-        <SoundCloudIcon
-          height="35px"
-          color={menuOpened ? '#ffffff' : '#666666'}
-        />
-      </SocialIcon>
-      <SocialIcon
-        target="_blank"
-        href="https://www.youtube.com/user/madaboutmixtapes"
-      >
-        <YoutubeIcon height="23px" color="#666666" />
-      </SocialIcon>
-      <SocialIcon
-        target="_blank"
-        href="https://www.instagram.com/mixtapemadness/"
-      >
-        <InstagramIcon height="19px" color="#666666" />
-      </SocialIcon>
-    </SocialContainer>
+    <SocialIcons menuOpened={menuOpened} />
     <MobileContentContainer jc menuOpened={menuOpened}>
       <List menuOpened={menuOpened}>
         <ListItem>

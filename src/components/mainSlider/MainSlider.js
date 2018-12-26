@@ -320,29 +320,13 @@ const Override = styled.div`
     justify-content: space-between;
     align-items: flex-start;
   }
-
-  .slick-slide {
-    display: flex !important;
-  }
-
-  .slick-current ~ .slick-slide {
-    justify-content: center;
-  }
-
-  .slick-current ~ .slick-slide ~ .slick-slide {
-    justify-content: flex-end;
-  }
-
-  .slick-current {
-    justify-content: flex-start !important;
-    > div {
-      width: 100%;
-    }
+  .slick-slide > div {
+    width: 100%;
   }
 `
 
 const settings = {
-  dots: true,
+  dots: false,
   infinite: true,
   slidesToShow: 2,
   slidesToScroll: 2,

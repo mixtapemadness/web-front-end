@@ -28,7 +28,6 @@ const SliderContent = styled.div`
   img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
     position: absolute;
   }
 `
@@ -92,7 +91,6 @@ const Span = styled.span`
 `
 
 const LatestSingles = styled(Link)`
-  font-size: 15.5px;
   letter-spacing: 0.9px;
   width: 189px;
   height: 40px;
@@ -136,12 +134,7 @@ const MainSlider = ({ tags, media, category, data }) => {
   if (data && CategoriesData) {
     return (
       <Link to={postLink}>
-        <SliderContent>
-          <ReactImageFallback
-            src={Image && Image}
-            fallbackImage={placeholderImg}
-            initialImage={placeholderImg}
-          />
+        <SliderContent SliderPhoto={Image}>
           <SliderWrapper />
           <FlexDiv>
             <CategoryTitle to={`blog/category/${CategoriesData[0].slug}`}>

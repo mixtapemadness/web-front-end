@@ -23,7 +23,7 @@ import Footer from 'components/footer'
 import GA from 'components/googleAnalytics'
 
 const Container = styled.div`
-  margin-top: 60px;
+  margin-top: 70px;
   height: ${p => (p.searchOpened || p.menuOpened ? '80vh' : 'auto')};
   overflow: ${p => (p.searchOpened || p.menuOpened ? 'hidden' : 'visible')};
 `

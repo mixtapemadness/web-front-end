@@ -7,17 +7,10 @@ import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
-import AppStoreIcon from 'resources/assets/img/appstore.png'
-import GooglePlayIcon from 'resources/assets/img/googleplay.png'
-import FacebookIcon from 'resources/assets/svgComponents/Facebook'
-import TwitterIcon from 'resources/assets/svgComponents/Twitter'
-import InstagramIcon from 'resources/assets/svgComponents/Instagram'
-import YoutubeIcon from 'resources/assets/svgComponents/Youtube'
-import CircleIcon from 'resources/assets/svgComponents/Circle'
-import SoundCloudIcon from 'resources/assets/svgComponents/SoundCloud'
 import MixtapeLogo from 'resources/assets/img/mixtape-logo.png'
 
-import { CLOSE_MEGAMENU } from 'constants'
+import SocialIcons from 'components/SocialIcons'
+import { CLOSE_MEGAMENU, SOCIAL_MEDIA } from 'constants'
 import footerEnhancer from './footerEnhancer'
 import MobileFooter from './MobileFooter'
 import eventEmitter from '../../eventEmitter'
@@ -93,13 +86,6 @@ const UploadButton = styled.button`
   height: 47px;
 `
 
-const SocialContainer = styled.div`
-  display: flex;
-  margin-top: 20px;
-  margin-bottom: 17px;
-  align-items: center;
-`
-
 const SignUpContainer = styled.div`
   margin-top: 20px;
   margin-bottom: 20px;
@@ -157,14 +143,6 @@ const Line = styled.div`
   width: 100%;
   height: 1px;
   background-color: '#979797';
-`
-const AppStore = styled.img`
-  width: auto;
-  height: 38px;
-`
-const GooglePlay = styled.img`
-  width: auto;
-  height: 38px;
 `
 const Flex = styled.div`
   display: flex;
@@ -238,53 +216,8 @@ const Footer = ({ width, menuOpened }) => (
               <ContentHeader menuOpened={menuOpened}>
                 Connect with Mixtape Madness
               </ContentHeader>
-              <SocialContainer>
-                <SocialIcon
-                  target="_blank"
-                  href="https://twitter.com/mixtapemadness"
-                >
-                  <TwitterIcon height="20px" color="#666666" />
-                </SocialIcon>
-                <SocialIcon
-                  target="_blank"
-                  href="https://www.facebook.com/MixtapeMadnessUK/"
-                >
-                  <FacebookIcon height="17px" color="#666666" />
-                </SocialIcon>
-                <SocialIcon
-                  target="_blank"
-                  href="https://soundcloud.com/mixtapemadnessuk"
-                >
-                  <SoundCloudIcon height="35px" color="#666666" />
-                </SocialIcon>
-                <SocialIcon
-                  target="_blank"
-                  href="https://www.youtube.com/user/madaboutmixtapes"
-                >
-                  <YoutubeIcon height="23px" color="#666666" />
-                </SocialIcon>
-                <SocialIcon
-                  target="_blank"
-                  href="https://www.instagram.com/mixtapemadness/"
-                >
-                  <InstagramIcon height="19px" color="#666666" />
-                </SocialIcon>
-              </SocialContainer>
+              <SocialIcons menuOpened={menuOpened} />
               <Line mb={10} menuOpened={menuOpened} />
-              <FlexDiv>
-                {/* <Anchor
-                  target="_blank"
-                  href="https://itunes.apple.com/us/app/mixtape-madness-latest-uk-mixtapes-singles/id1090862433?mt=8&ign-mpt=uo%3D4"
-                >
-                  <AppStore src={AppStoreIcon} />
-                </Anchor>
-                <Anchor
-                  target="_blank"
-                  href="https://play.google.com/store/apps/details?id=com.mixtape.madness"
-                >
-                  <GooglePlay src={GooglePlayIcon} />
-                </Anchor> */}
-              </FlexDiv>
             </NewsletterContainer>
           </FlexDiv>
           <FlexDiv>
@@ -295,10 +228,10 @@ const Footer = ({ width, menuOpened }) => (
             </div>
             <Flex>
               <Span fsize={13} color="#000000">
-                <Link to="/termsconditions">Terms </Link>
+                <Link to="/termsconditions">Terms & Conditions</Link>
               </Span>
               <Span fsize={13} color="#000000" ml={10}>
-                <Link to="/privacy">Privacy </Link>
+                <Link to="/privacy">Privacy Policy</Link>
               </Span>
             </Flex>
           </FlexDiv>

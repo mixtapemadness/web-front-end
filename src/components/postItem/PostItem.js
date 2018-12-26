@@ -279,18 +279,6 @@ const PostItem = ({ media, category, user, data }) => {
               />
             )}
           </Span>
-
-          {/* ---View--- */}
-          {/* <FlexDiv jc="space-between">
-            <FlexDiv>
-              <Img src={ViewsIcon} alt="view" height={20} />
-              <Views>
-                {data.views}
-                {' Views'}
-              </Views>
-            </FlexDiv>
-            <Img src={SignalBarsIcon} alt="bars" height={18} />
-          </FlexDiv> */}
           {data &&
             CategoriesData && (
               <ContinueReadContainer>

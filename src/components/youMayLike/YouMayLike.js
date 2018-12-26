@@ -19,44 +19,30 @@ const MayLikeContainer = styled.div`
   margin: auto;
   justify-content: space-between;
   flex-wrap: wrap;
-  @media only screen and (max-width: 1150px) {
-    flex-direction: column;
-    align-items: center;
-  }
 `
 
 const Div = styled.div`
   display: flex;
   max-width: 1200px;
   margin: auto;
-  /* justify-content: space-between; */
   flex-wrap: wrap;
-  @media only screen and (max-width: 1150px) {
-    flex-direction: column;
-    align-items: center;
-  }
 `
 
 const AdvertisementContainer = styled(Link)`
-  flex: 1 0 357px;
   height: 480px;
+  width: 100%;
   margin: 5px;
-  @media only screen and (max-width: 450px) {
-    width: 90%;
-  }
 `
 
 const AlsoLikeHeaderContainer = styled.div`
   width: 100%;
   margin: 40px auto;
-  height: 100px;
+  padding: 20px 0;
   border-top: 1px solid #c9c9c9;
   border-bottom: 1px solid #c9c9c9;
-  text-transform: capitalize;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  text-align: center;
   font-weight: bold;
+
   font-size: 30px;
   color: #000000;
 `
@@ -81,8 +67,7 @@ const YouMayLike = ({
   return (
     <MayLikeContainer>
       <AlsoLikeHeaderContainer>
-        {width > 450 && <span>You May also like</span>}
-        {width <= 450 && <span>What To Read Next</span>}
+        <span>You may also like</span>
       </AlsoLikeHeaderContainer>
       <Div>
         <AdvertisementContainer to="/contact">

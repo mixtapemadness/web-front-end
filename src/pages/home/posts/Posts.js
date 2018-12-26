@@ -113,7 +113,6 @@ const settings = {
 }
 
 const Posts = ({ width, data }) => {
-  console.log('data', data)
   const posts = data && data.Posts && data.Posts
   return (
     <TrendingContainer>

@@ -155,12 +155,8 @@ const SignUpButton = styled.button`
 `
 const Line = styled.div`
   width: 100%;
-  height: 2px;
-  background-color: ${p => (p.menuOpened ? '#ffffff' : '#979797')};
-  ${props => props.mr && `margin-right: ${props.mr}px;`}
-  ${props => props.ml && `margin-left: ${props.ml}px;`}
-  ${props => props.mt && `margin-top: ${props.mt}px;`}
-  ${props => props.mb && `margin-bottom: ${props.mb}px;`}
+  height: 1px;
+  background-color: '#979797';
 `
 const AppStore = styled.img`
   width: auto;
@@ -254,9 +250,6 @@ const Footer = ({ width, menuOpened }) => (
                   href="https://www.facebook.com/MixtapeMadnessUK/"
                 >
                   <FacebookIcon height="17px" color="#666666" />
-                </SocialIcon>
-                <SocialIcon>
-                  <CircleIcon height="17px" color="#666666" />
                 </SocialIcon>
                 <SocialIcon
                   target="_blank"

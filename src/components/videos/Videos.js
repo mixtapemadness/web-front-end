@@ -15,6 +15,7 @@ const VideosContainer = styled.div`
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
+  margin-top: 50px;
 `
 
 const HeaderContainer = styled.div`

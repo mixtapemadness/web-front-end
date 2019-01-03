@@ -13,7 +13,7 @@ const SocialIconsContainer = styled.div`
 `
 
 const SocialIcon = styled.a`
-  margin-right: 10px;
+  margin: 0 20px;
   cursor: pointer;
   :hover {
     color: #ff9600;

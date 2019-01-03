@@ -34,13 +34,12 @@ const MoreVideos = styled(Link)`
 
 const TopVideos = ({ data }) => (
   <TopVideosContainer>
-    <Header>Top Music Videos</Header>
-    {data.loading && [...Array(8)].map(i => <TopVideoLoader />)}
+    <Header>Recent Music Videos</Header>
+    {data.loading && [...Array(8)].map(i => <TopVideoLoader key={i} />)}
     {!data.loading &&
       data &&
       data.Posts &&
       data.Posts.map(item => <TopVideo key={item.id} data={item} />)}
-    <MoreVideos to="/blog/category/videos">More Videos +</MoreVideos>
   </TopVideosContainer>
 )
 

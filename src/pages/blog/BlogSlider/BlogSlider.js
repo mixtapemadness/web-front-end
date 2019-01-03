@@ -8,7 +8,6 @@ const NewsSlliderContainer = styled.div`
 
 const SlliderImg = styled.div`
   width: 100%;
-  height: 500px;
   background-image: url(${props => props.src});
   background-size: cover;
   background-position: center center;
@@ -27,21 +26,10 @@ const NewsSlliderWrapper = styled.div`
   font-size: 26px;
   text-align: center;
 `
-
-const SliderText = styled.h1`
-  width: 80%;
-  color: #fff;
-  @media only screen and (max-width: 450px) {
-    font-size: 22px;
-  }
-`
-
-export default () => (
+export default ({ img, text }) => (
   <NewsSlliderContainer>
-    <SlliderImg>
-      <NewsSlliderWrapper>
-        <SliderText>Latest news on Mixtape Madness</SliderText>
-      </NewsSlliderWrapper>
+    <SlliderImg src={img}>
+      <NewsSlliderWrapper>{text}</NewsSlliderWrapper>
     </SlliderImg>
   </NewsSlliderContainer>
 )

@@ -70,15 +70,12 @@ const YouMayLike = ({
         <span>You may also like</span>
       </AlsoLikeHeaderContainer>
       <Div>
-        <AdvertisementContainer to="/contact">
-          <Advertisement />
-        </AdvertisementContainer>
         {shuffledPosts &&
           shuffledPosts.map(
             (item, index) =>
               index < 5 && <PostItem key={item.id} data={item} />,
           )}
-        {postsFromTagsLoading && [...Array(9)].map(i => <CardLoader />)}
+        {postsFromTagsLoading && [...Array(9)].map(i => <CardLoader key={i} />)}
         {!postsFromTagsLoading &&
           shuffledPostsWithSameTag &&
           shuffledPostsWithSameTag.map(

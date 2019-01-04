@@ -13,20 +13,6 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
-import Facebook from 'resources/assets/svgComponents/Facebook'
-import Twitter from 'resources/assets/svgComponents/Twitter'
-import SoundCloud from 'resources/assets/svgComponents/SoundCloud'
-import Dots from 'resources/assets/svgComponents/Dots'
-import {
-  TwitterShareButton,
-  FacebookShareButton,
-  GooglePlusShareButton,
-  LinkedinShareButton,
-  FacebookIcon,
-  TwitterIcon,
-  GooglePlusIcon,
-  LinkedinIcon,
-} from 'react-share'
 // import window from 'global/window'
 import { dateStringify } from 'helpers/'
 import window from 'global/window'
@@ -38,27 +24,20 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   margin: 20px 0;
-`
-
-const ContainerTop = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  text-align: center;
 `
 
 const ContainerBottom = styled.div`
   width: 100%;
+  text-align: center;
+  padding-bottom: 10px;
+  font-weight: bold;
   font-size: 14px;
-  font-weight: 800;
-  color: #666666;
-  text-align: left;
 `
 const AuthorName = styled(Link)`
   color: #ff9600;
   margin: 0 5px;
   cursor: pointer;
-  font-weight: 800;
 `
 
 const Links = styled.div`
@@ -71,51 +50,26 @@ const Credit = styled.div`
   color: #666666;
   font-weight: 800;
 `
-const Views = styled.div``
-
-const Date = styled.div`
-  margin: 5px 0;
-`
 
 const Author = styled.div`
   display: flex;
-  font-weight: 800;
 `
 
 const IconWrapper = styled.div`
   cursor: pointer;
 `
 
+const Date = styled.span`
+  border-right: 1px solid #ccc;
+  padding-right: 10px;
+`
+
 const PostContentHeading = ({ date, userName, location, userSlug, match }) => {
-  console.log('location', location)
-  const { category, slug } = match.params
-  // const url = `${config.apiUrl}api/v1/blog/${
-  //   match.params.category
-  // }/${slug}/share`
-  const url = window.location ? window.location.href : ''
   return (
     <Container>
-      <ContainerTop>
-        <Links>
-          <FacebookShareButton url={url} iconBgStyle={'cursor:pointer'}>
-            <IconWrapper>
-              <Facebook width={20} height={20} color={'#666666'} />
-            </IconWrapper>
-          </FacebookShareButton>
-          <TwitterShareButton url={url} iconBgStyle={'cursor:pointer'}>
-            <IconWrapper>
-              <Twitter width={20} height={20} color={'#666666'} />
-            </IconWrapper>
-          </TwitterShareButton>
-        </Links>
-        {/* <Credit>Credit:ParkLife</Credit> */}
-      </ContainerTop>
       <ContainerBottom>
-        {/* <Views>3000 views: 5/5</Views> */}
-        <Date>{dateStringify(date, false, true)}</Date>
-        <Author>
-          By :<AuthorName to={`/author/${userSlug}`}>{userName}</AuthorName>
-        </Author>
+        <Date>{dateStringify(date, false, true)}</Date>{' '}
+        <AuthorName to={`/author/${userSlug}`}>{userName}</AuthorName>
       </ContainerBottom>
     </Container>
   )

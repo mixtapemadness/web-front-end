@@ -59,19 +59,23 @@ const Home = ({ sliderData }) => (
     <Helmet>
       <meta
         name="description"
-        content={`as "We showcase the best of British urban music by presenting Music videos, Mixtape premieres, Audios & freestyle shows such as 'Mad About Bars' & 'Next Up', We are proud to have featured many great artists such as J Hus, Abra Cadabra, Potter Payper, M Huncho, Jay Silva and many more."`}
+        content={`We showcase the best of British urban music by presenting Music videos, Mixtape premieres, Audios & freestyle shows such as 'Mad About Bars' & 'Next Up', We are proud to have featured many great artists such as J Hus, Abra Cadabra, Potter Payper, M Huncho, Jay Silva and many more.`}
       />
     </Helmet>
-    {sliderData &&
-      sliderData.Posts && (
-        <LazyLoad once offsetVertical={0}>
-          <MainSlider data={sliderData.Posts} />
-        </LazyLoad>
-      )}
     <Container>
+      {sliderData &&
+        sliderData.Posts && (
+          <LazyLoad once offsetVertical={0}>
+            <MainSlider data={sliderData.Posts} />
+          </LazyLoad>
+        )}
+      <LazyLoad once offset={0}>
+        <Videos />
+      </LazyLoad>
       <LazyLoad once offset={0}>
         <Posts />
       </LazyLoad>
+
       <LazyLoad once offset={0}>
         <Interviews />
       </LazyLoad>
@@ -88,9 +92,6 @@ const Home = ({ sliderData }) => (
       </LazyLoad>
       <LazyLoad once offset={50}>
         <Reviews />
-      </LazyLoad>
-      <LazyLoad once offset={50}>
-        <Videos />
       </LazyLoad>
     </Container>
   </Fragment>

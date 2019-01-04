@@ -34,11 +34,11 @@ export default (date, day, month) => {
   const numeralYear = new Date(date).getFullYear()
 
   if (day && month) {
-    return `${months[numeralMonth]}-${days[numeralDay]}-${numeralYear}`
+    return `${days[numeralDay]} ${months[numeralMonth]}  ${numeralYear}`
   } else if (day) {
-    return `${months[numeralMonth]}-${numeralDay}-${numeralYear}`
+    return `${numeralDay} ${months[numeralMonth]}  ${numeralYear}`
   } else if (month) {
-    return `${months[numeralMonth]}-${numeralDay}-${numeralYear}`
+    return `${numeralDay} ${months[numeralMonth]} ${numeralYear}`
   } else
     return Error(
       'make sure you are passing correct parameters, sequance is date[Type Date], day[boolean], month[boolean] ',

@@ -116,7 +116,7 @@ const Blog = ({
   return (
     <NewsContainer>
       <div>
-        <BlogSlider />
+        {/* <BlogSlider /> */}
         <BlogFilter match={match} />
         <PostsContainer>
           {data.loading && [...Array(9)].map(i => <CardLoader />)}

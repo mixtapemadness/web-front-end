@@ -80,7 +80,10 @@ const WhatsOn = ({ width, data }) => {
       </HeaderContainer>
       <WhatsOnItemsContainer>
         <SliderComponent settings={settings}>
-          {data.loading && [...Array(8)].map(i => <CardLoader />)}
+          {data.loading &&
+            [...Array(8)].map(i => (
+              <CardLoader key={`${i}-interview-loader`} />
+            ))}
           {!data.loading &&
             Posts &&
             Posts.map(item => <WhatsOnComponent data={item} key={item.id} />)}

@@ -69,41 +69,21 @@ const PostItemT = (item, index) => {
       </React.Fragment>
     )
   }
-  return <PostItem data={item} />
+  return <PostItem key={index} data={item} />
 }
 
 const PostItems = ({ items }) =>
-  items.map((item, index) => PostItemT(item, index))
+  items.map((item, index) => <PostItemT item={item} index={index} />)
 
 const Posts = ({ width, data }) => {
   const posts = data && data.posts
   return (
     <PostsContainer>
       {width > 450 && (
-        <PostsContainer>
-          {posts && <PostItems items={posts} />}
-
-          {/* {PostsFirstPart &&
-            PostsFirstPart.map(item => (
-              <ItemContainer>
-                <PostItem data={item} />
-              </ItemContainer>
-            ))} */}
-          {/* <SubscribeContainer>
-            <Subscribe />
-          </SubscribeContainer> */}
-          {/* {PostsSecondPart &&
-            PostsSecondPart.map(item => (
-              <ItemContainer>
-                <PostItem data={item} />
-              </ItemContainer>
-            ))} */}
-        </PostsContainer>
+        <PostsContainer>{posts && <PostItems items={posts} />}</PostsContainer>
       )}
       {width <= 450 && (
         <PostsContainer>
-          {/* {PostsSecondPart &&
-            PostsSecondPart.map(item => <PostItem data={item} />)} */}
           <ButtonContainer>
             <PreviousButton>Previous</PreviousButton>
             <NextButton>Next</NextButton>

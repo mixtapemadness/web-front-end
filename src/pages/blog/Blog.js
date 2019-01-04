@@ -6,6 +6,7 @@
 /* eslint implicit-arrow-linebreak: 0 */
 /* eslint no-unused-vars: 0 */
 /* eslint indent: 0 */
+/* eslint no-plusplus: 0 */
 
 import React from 'react'
 import styled from 'styled-components'
@@ -99,14 +100,18 @@ const PostItems = ({ items }) =>
 
 const Blog = ({ data, page, handleLoadMore, match, isMoreData }) => {
   const Data = data.Posts && data.Posts.length > 0 && data.Posts
-  console.log(data)
+  let index = 0
+  // const Data = data
   return (
     <NewsContainer>
       <div>
         <BlogSlider />
         {/* <BlogFilter match={match} /> */}
         <PostsContainer>
-          {data.loading && [...Array(9)].map(i => <CardLoader />)}
+          {data.loading &&
+            [...Array(8)].map(i => (
+              <CardLoader key={`${index++}-blog-loader`} />
+            ))}
           {!data.loading && (Data && <PostItems items={Data} />)}
         </PostsContainer>
       </div>

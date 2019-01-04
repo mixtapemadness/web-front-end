@@ -93,7 +93,8 @@ const Videos = ({ data }) => {
       </HeaderContainer>
       <VideoItems>
         <SliderComponent settings={settings}>
-          {data.loading && [...Array(8)].map(i => <CardLoader />)}
+          {data.loading &&
+            [...Array(8)].map(i => <CardLoader key={`${i}-videos-loader`} />)}
           {!data.loading &&
             Posts &&
             Posts.map(item => <Video key={item.id} data={item} />)}

@@ -79,11 +79,11 @@ const BackArrow = styled(Link)`
   margin-right: 20px;
   transition: 0.3s;
   pointer-events: ${props =>
-      props.index === 0 || props.isdisabled ? 'none' : 'inherit'}
+      props.index === 0 || props.isdisabled === 'true' ? 'none' : 'inherit'}
     svg {
     transition: 0.3s;
     fill: ${props =>
-      props.index === 0 || props.isdisabled ? '#ccc' : '#666666'};
+      props.index === 0 || props.isdisabled === 'true' ? '#ccc' : '#666666'};
   }
   &:hover {
     color: #ffa019;
@@ -198,26 +198,6 @@ const TagsContainer = styled.div`
     margin-top: 20px;
   }
 `
-// const Tag = styled.button`
-//   border: 1px solid #c9c9c9;
-//   color: #666666;
-//   padding: 3px 10px;
-//   background: transparent;
-//   border-radius: 15px;
-//   font-weight: bold;
-//   cursor: pointer;
-//   color: #c9c9c9;
-//   :not(:last-child) {
-//     margin-right: 20px;
-//   }
-//   @media only screen and (max-width: 530px) {
-//     font-size: 11px;
-//     padding: 3px 5px;
-//     :not(:last-child) {
-//       margin-right: 5px;
-//     }
-//   }
-// `
 
 const AlsoLikeHeaderContainer = styled.div`
   max-width: 1200px;
@@ -246,13 +226,15 @@ const MayLikeContainer = styled.div`
   }
 `
 
-// const StyledLink = styled(Link)`
-//   margin-bottom: 60px;
-//   @media only screen and (max-width: 1150px) {
-//     display: flex;
-//     justify-content: center;
-//   }
-// `
+const MobileAuthorContainer = styled.div`
+  display: none;
+  color: #666666;
+  justify-content: center;
+  margin-top: 20px;
+  @media only screen and (max-width: 450px) {
+    display: flex;
+  }
+`
 
 const Author = styled.span`
   color: #ff9d00;
@@ -382,7 +364,7 @@ const BlogPage = ({
         <Heading>
           <PagingArrows>
             <BackArrow
-              isdisabled={disablePrev}
+              isdisabled={disablePrev.toString()}
               to={{
                 pathname: `/blog/${match.params.category}/${prevRoute &&
                   prevRoute}`,

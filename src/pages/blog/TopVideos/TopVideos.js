@@ -1,5 +1,6 @@
 /* eslint operator-linebreak: 0 */
 /* eslint no-unused-vars: 0 */
+/* eslint no-plusplus: 0 */
 
 import React from 'react'
 import styled from 'styled-components'
@@ -32,15 +33,19 @@ const MoreVideos = styled(Link)`
   font-weight: 800;
 `
 
-const TopVideos = ({ data }) => (
-  <TopVideosContainer>
-    <Header>Recent Music Videos</Header>
-    {data.loading && [...Array(8)].map(i => <TopVideoLoader key={i} />)}
-    {!data.loading &&
-      data &&
-      data.Posts &&
-      data.Posts.map(item => <TopVideo key={item.id} data={item} />)}
-  </TopVideosContainer>
-)
+const TopVideos = ({ data }) => {
+  let index = 0
+  return (
+    <TopVideosContainer>
+      <Header>Recent Music Videos</Header>
+      {data.loading &&
+        [...Array(8)].map(i => <TopVideoLoader key={`${index++}-top-video`} />)}
+      {!data.loading &&
+        data &&
+        data.Posts &&
+        data.Posts.map(item => <TopVideo key={item.id} data={item} />)}
+    </TopVideosContainer>
+  )
+}
 
 export default topVideosEnhancer(TopVideos)

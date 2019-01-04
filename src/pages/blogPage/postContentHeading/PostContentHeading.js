@@ -87,7 +87,6 @@ const IconWrapper = styled.div`
 `
 
 const PostContentHeading = ({ date, userName, location, userSlug, match }) => {
-  console.log('location', location)
   const { category, slug } = match.params
   // const url = `${config.apiUrl}api/v1/blog/${
   //   match.params.category

@@ -93,7 +93,7 @@ const YouMayLike = ({
             (item, index) =>
               index < 5 && <PostItem key={item.id} data={item} />,
           )}
-        {postsFromTagsLoading && [...Array(9)].map(i => <CardLoader />)}
+        {/* {postsFromTagsLoading && [...Array(9)].map(index =>return <CardLoader key={`${index}-youmaylike-loader`} />)} */}
         {!postsFromTagsLoading &&
           shuffledPostsWithSameTag &&
           shuffledPostsWithSameTag.map(

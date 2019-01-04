@@ -1,4 +1,5 @@
 /* eslint array-callback-return: 0 */
+/* eslint no-unused-vars: 0 */
 
 import { compose, lifecycle } from 'recompose'
 import getEmitter from '../eventEmitter'
@@ -16,7 +17,6 @@ const refetchOn = (names, key = 'data') => {
         arrayfy(names).map(name => {
           listener.push(
             eventEmitter.addListener(name, (...args) => {
-              console.log(`event emitted - ${name}: ${args}`)
               this.props[key].refetch()
             }),
           )

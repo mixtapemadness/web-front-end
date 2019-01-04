@@ -10,7 +10,7 @@ import placeholderImg from '../../../resources/assets/img/placeholderImg.jpg'
 
 const Container = styled.div`
   width: 100%;
-  height: ${props => (!props.renderVideo ? '60vh' : '0vh')};
+  height: auto;
   background-image: url(${props => props.src});
   background-position: center center;
   background-size: contain;

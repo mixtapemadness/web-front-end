@@ -5,6 +5,7 @@
 
 import React from 'react'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 import PostItem from 'components/postItem'
 import Subscribe from 'components/subscribe'
 // import MobileSubscribe from 'components/mobileSubscribe'
@@ -33,6 +34,8 @@ const TrendingContainer = styled.div`
 `
 
 const TitleContainer = styled.div`
+  font-weight: 800;
+  font-size: 38px;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -40,11 +43,6 @@ const TitleContainer = styled.div`
   @media only screen and (max-width: 751px) {
     text-align: center;
   }
-`
-
-const Title = styled.h1`
-  font-weight: 800;
-  font-size: 38px;
 `
 
 const SubTitle = styled.h2`
@@ -115,12 +113,11 @@ const settings = {
 }
 
 const Posts = ({ width, data }) => {
-  console.log('data', data)
   const posts = data && data.Posts && data.Posts
   return (
     <TrendingContainer>
       <TitleContainer>
-        <Title>News</Title>
+        <Link to="/blog/category/news">News</Link>
         <SubTitle>Check Out The Latest Music And News This Week</SubTitle>
       </TitleContainer>
       <SliderComponent settings={settings}>

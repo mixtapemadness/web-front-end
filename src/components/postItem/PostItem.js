@@ -18,6 +18,7 @@ import ReactImageFallback from 'react-image-fallback'
 import imageExists from 'image-exists'
 import postItemEnhancer from './postItemEnhancer'
 import placeholderImg from '../../resources/assets/img/placeholderImg.jpg'
+import truncate from '../../helpers/textHelpers'
 
 // View
 // import ViewsIcon from 'resources/assets/svg/eye.svg'
@@ -116,7 +117,6 @@ const Span = styled.span`
   display: flex;
   font-weight: 800;
   margin-top: 10px;
-  /* margin-top: 3px; */
 `
 
 // const AuthorLink = styled(Link)`
@@ -128,11 +128,13 @@ const Span = styled.span`
 // `
 
 const DataContentContainer = styled.span`
-  ${p => p.color && `color: ${p.color}`};
-  height: 7ch;
+  color: #666;
   overflow: hidden;
   font-size: 12px;
-  letter-spacing: 0.7px;
+
+  p {
+    line-height: 24px;
+  }
   position:relative &:before {
     content: '...';
     position: absolute;
@@ -182,28 +184,12 @@ const ContinueReadContainer = styled.div`
 `
 
 const ContinueRead = styled(Link)`
-  color: ${p => (p.color ? p.color : '#ff9600')};
+  color: #ff9600;
   cursor: pointer;
   font-weight: 800;
   font-size: 12px;
-  transition: 0.4s;
   margin-top: 10px;
   position: relative;
-  &:after {
-    content: '';
-    width: 0%;
-    height: 2px;
-    position: absolute;
-    background: ${p => (p.color ? p.color : '#ff9600')};
-    bottom: 0;
-    left: 0;
-    transition: 0.4s;
-  }
-  &:hover {
-    &:after {
-      width: 100%;
-    }
-  }
 `
 
 const Categories = ({ data }) => {
@@ -282,8 +268,7 @@ const PostItem = ({ media, category, user, data }) => {
         </ContentContainerTop>
         <ContentContainerBottom>
           <DataContentContainer
-            color="#666666"
-            dangerouslySetInnerHTML={{ __html: data.excerpt }}
+            dangerouslySetInnerHTML={{ __html: truncate(data.excerpt, 112) }}
           />
           <Span color="#000000">
             By{' '}
@@ -294,18 +279,6 @@ const PostItem = ({ media, category, user, data }) => {
               />
             )}
           </Span>
-
-          {/* ---View--- */}
-          {/* <FlexDiv jc="space-between">
-            <FlexDiv>
-              <Img src={ViewsIcon} alt="view" height={20} />
-              <Views>
-                {data.views}
-                {' Views'}
-              </Views>
-            </FlexDiv>
-            <Img src={SignalBarsIcon} alt="bars" height={18} />
-          </FlexDiv> */}
           {data &&
             CategoriesData && (
               <ContinueReadContainer>
@@ -318,7 +291,7 @@ const PostItem = ({ media, category, user, data }) => {
                     },
                   }}
                 >
-                  Continue Reading
+                  Read More
                 </ContinueRead>
               </ContinueReadContainer>
             )}

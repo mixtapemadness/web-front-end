@@ -37,7 +37,6 @@ export default compose(
       data && data.Post && data.Post.featured_media ? true : false,
     withMedia,
   ),
-  withProps(props => console.log('propsebiieee', props)),
   withStateHandlers(
     () => ({
       width: window.innerWidth,
@@ -80,6 +79,7 @@ export default compose(
         }),
       },
     }),
+    withProps(props => console.log('props', props)),
     loadDataAsync({
       query: getNextPost,
       name: 'getNextPost',

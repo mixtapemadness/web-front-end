@@ -6,6 +6,7 @@
 /* eslint implicit-arrow-linebreak: 0 */
 /* eslint no-unused-vars: 0 */
 /* eslint indent: 0 */
+/* eslint no-plusplus: 0 */
 
 import React from 'react'
 import styled from 'styled-components'
@@ -112,6 +113,7 @@ const Blog = ({
 }) => {
   const postCount = count && count.count && count.count.count
   const Data = data.Posts && data.Posts.length > 0 && data.Posts
+  let index = 0
   // const Data = data
   return (
     <NewsContainer>
@@ -119,7 +121,10 @@ const Blog = ({
         {/* <BlogSlider /> */}
         <BlogFilter match={match} />
         <PostsContainer>
-          {data.loading && [...Array(9)].map(i => <CardLoader />)}
+          {data.loading &&
+            [...Array(8)].map(i => (
+              <CardLoader key={`${index++}-blog-loader`} />
+            ))}
           {/* {data.loading && [...Array(3)].map(i => <CardLoader />)} */}
           {!data.loading && (Data && <PostItems items={Data} />)}
         </PostsContainer>

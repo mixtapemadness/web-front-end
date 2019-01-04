@@ -69,11 +69,11 @@ const PostItemT = (item, index) => {
       </React.Fragment>
     )
   }
-  return <PostItem data={item} />
+  return <PostItem key={index} data={item} />
 }
 
 const PostItems = ({ items }) =>
-  items.map((item, index) => PostItemT(item, index))
+  items.map((item, index) => <PostItemT item={item} index={index} />)
 
 const Posts = ({ width, data }) => {
   const posts = data && data.posts

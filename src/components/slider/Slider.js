@@ -342,8 +342,8 @@ const Override = styled.div`
   .slick-current {
     justify-content: flex-start !important;
     /* > div {
-      width: 100%;
-    } */
+        width: 100%;
+      } */
   }
 `
 

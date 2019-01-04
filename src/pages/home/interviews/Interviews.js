@@ -117,7 +117,8 @@ const Interviews = ({ width, data }) => {
         <SubTitle>Check Out The Latest Interviews</SubTitle>
       </TitleContainer>
       <SliderComponent settings={settings}>
-        {data.loading && [...Array(8)].map(i => <CardLoader />)}
+        {data.loading &&
+          [...Array(8)].map(i => <CardLoader key={`${i}-interview-loader`} />)}
         {!data.loading &&
           posts &&
           posts.map(item => <PostItem key={item.id} data={item} />)}

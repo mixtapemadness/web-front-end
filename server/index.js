@@ -1,5 +1,6 @@
 /* eslint react/no-danger: 0 */
 /* eslint object-curly-newline: 0 */
+/* eslint react/self-closing-comp: 0 */
 
 import 'isomorphic-fetch'
 import express from 'express'

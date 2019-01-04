@@ -124,7 +124,10 @@ const Posts = ({ width, data }) => {
         <SubTitle>Check Out The Latest Music And News This Week</SubTitle>
       </TitleContainer>
       <SliderComponent settings={settings}>
-        {data.loading && [...Array(8)].map(i => <CardLoader />)}
+        {data.loading &&
+          [...Array(8)].map(index => (
+            <CardLoader key={`${index}-post-loader`} />
+          ))}
         {!data.loading &&
           posts &&
           posts.map(item => <PostItem key={item.id} data={item} />)}

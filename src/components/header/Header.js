@@ -6,11 +6,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
-
-import FacebookIcon from 'resources/assets/svgComponents/Facebook'
-import TwitterIcon from 'resources/assets/svgComponents/Twitter'
-import InstagramIcon from 'resources/assets/svgComponents/Instagram'
-import YoutubeIcon from 'resources/assets/svgComponents/Youtube'
+import SocialIcons from 'components/SocialIcons'
 import SearchIcon from 'resources/assets/svgComponents/Search'
 import MixtapeLogo from 'resources/assets/img/mixtape-logo.png'
 
@@ -95,11 +91,6 @@ const Li = styled.li`
     font-size: 13px;
   }
 `
-const OrangeContainer = styled.div`
-  display: flex;
-  color: ${p => (p.menuOpened ? '#ffffff' : '#ffa019')};
-`
-
 // const Span = styled.span`
 //   font-weight: 600;
 //   margin-left: 20px;
@@ -121,33 +112,11 @@ const Search = styled.div`
   display: flex;
   align-items: center;
 `
-const ContactUsContainer = styled.div`
-  border-radius: 15px;
-  margin-left: 20px;
-  padding: 0px 5px;
-  color: ${p => (p.menuOpened ? '#ffffff' : '#ffa019')};
-  font-weight: 600;
-  letter-spacing: 1.5px;
-  cursor: pointer;
-`
-
-const SocialIconsContainer = styled.div`
-  display: flex;
-  align-items: center;
-`
-const SocialIcon = styled.a`
-  margin-left: 20px;
-  cursor: pointer;
-`
 
 const BurgerIcon = styled.div`
   width: 23px;
   height: 16px;
   position: relative;
-  @media only screen and (max-width: 450px) {
-  }
-  @media only screen and (max-width: 350px) {
-  }
   -webkit-transform: rotate(0deg);
   -moz-transform: rotate(0deg);
   -o-transform: rotate(0deg);
@@ -203,113 +172,9 @@ const BurgerIcon = styled.div`
   }
 `
 
-const DropDown = styled.div`
-  position: relative;
-  div {
-    display: none;
-  }
-  /* &:hover {
-    div {
-      display: flex;
-    } */
-  }
-`
-
-const DropDownContent = styled.div`
-  z-index: 1;
-  position: absolute;
-  background-color: #ffffff;
-  top: 120px;
-  padding: 18px 20px;
-  border: 1px solid #e7e7e7;
-  justify-content: space-between;
-  width: 310px;
-  height: 124px;
-  div {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    font-size: 13px;
-    span {
-      cursor: pointer;
-      font-size: 14px;
-      color: #333333;
-    }
-  }
-`
-const Join = styled.div`
-  border: 1px solid #ff9d00;
-  border-radius: 15px;
-  cursor: pointer;
-  background: transparent;
-  padding: 0px 12px;
-  justify-content: center;
-  font-size: 13px;
-  letter-spacing: 0.8px;
-  color: #000000;
-`
-// const DotsDropDownContent = styled.div`
-//   z-index: 1;
-//   position: absolute;
-//   background-color: #ffffff;
-//   border: 1px solid #e7e7e7;
-//   top: 53px;
-//   width: 208px;
-//   min-height: 278px;
-//   display: ${p => (p.dotsMenu === true ? 'block' : 'none')};
-
-//   ul {
-//     list-style: none;
-//     font-size: 14px;
-//     color: #333333;
-//     padding: 20px 0px;
-//   }
-//   li {
-//     padding: 3px 20px;
-//     :hover {
-//       background-color: #f5f5f5;
-//     }
-//   }
-//   `
-// const Line = styled.div`
-//   height: 1px;
-//   margin: 9px 0;
-//   overflow: hidden;
-//   background-color: #e5e5e5;
-// `
-/*
-  <DotsDropDownContent dotsMenu={dotsMenu}>
-    <ul>
-      <li>
-        <Link to="/aboutus">About Us</Link>
-      </li>
-      <li>Legal</li>
-      <li>Copyright</li>
-      <li>Terms & Contitions</li>
-      <Line />
-      <li>Advertising</li>
-      <li>Press</li>
-      <li>
-        <a href="https://itunes.apple.com/us/app/mixtape-madness-latest-uk-mixtapes-singles/id1090862433?mt=8&ign-mpt=uo%3D4">
-          Download our IOS app
-        </a>
-      </li>
-      <li>Download our Android app</li>
-      <Line />
-      <li>Contact Us</li>
-    </ul>
-  </DotsDropDownContent>
-*/
-
 const Div = styled.div`
   display: flex;
   align-items: center;
-`
-
-const DropDownItem = styled.span`
-  font-size: 13px;
-  letter-spacing: 0.8px;
-  color: #000000;
 `
 
 const Header = ({
@@ -336,31 +201,6 @@ const Header = ({
         </Link>
         <NavBar>
           <Ul menuOpened={menuOpened}>
-            <DropDown>
-              {/* <Li isActive={location.pathname === '/music'}>
-                  <Link to="/music">Music</Link>
-                </Li> */}
-              <DropDownContent>
-                <div>
-                  <DropDownItem>Top 100</DropDownItem>
-                  <DropDownItem>Top 30</DropDownItem>
-                  <DropDownItem>Hottest</DropDownItem>
-                  <DropDownItem>Latest</DropDownItem>
-                </div>
-                <div>
-                  <DropDownItem>Trending</DropDownItem>
-                  <DropDownItem>Hottest</DropDownItem>
-                  <DropDownItem>Singles</DropDownItem>
-                  <DropDownItem>Mixtapes</DropDownItem>
-                </div>
-                <div>
-                  <DropDownItem>Videos</DropDownItem>
-                  <DropDownItem>Browse</DropDownItem>
-                  <DropDownItem>Albums</DropDownItem>
-                  <Join>Join MM</Join>
-                </div>
-              </DropDownContent>
-            </DropDown>
             <Li isActive={location.pathname === '/blog/category/news'}>
               <Link to="/blog/category/news">News</Link>
             </Li>
@@ -381,56 +221,7 @@ const Header = ({
       </LeftSide>
       {width > 1050 && (
         <RightSide>
-          <OrangeContainer menuOpened={menuOpened}>
-            {/* <Span>Upload</Span> */}
-            {/* <Span>
-                <Link to="/register">Register</Link>
-              </Span>
-              <Span>
-                <Link to="/login">Log In</Link>
-              </Span> */}
-            <ContactUsContainer menuOpened={menuOpened}>
-              Contact Us
-            </ContactUsContainer>
-          </OrangeContainer>
-          <SocialIconsContainer>
-            <SocialIcon
-              target="_blank"
-              href="https://twitter.com/mixtapemadness"
-            >
-              <TwitterIcon
-                height="20px"
-                color={menuOpened ? '#ffffff' : '#666666'}
-              />
-            </SocialIcon>
-            <SocialIcon
-              target="_blank"
-              href="https://www.facebook.com/MixtapeMadnessUK/"
-            >
-              <FacebookIcon
-                height="17px"
-                color={menuOpened ? '#ffffff' : '#666666'}
-              />
-            </SocialIcon>
-            <SocialIcon
-              target="_blank"
-              href="https://www.instagram.com/mixtapemadness/"
-            >
-              <InstagramIcon
-                height="17px"
-                color={menuOpened ? '#ffffff' : '#666666'}
-              />
-            </SocialIcon>
-            <SocialIcon
-              target="_blank"
-              href="https://www.youtube.com/user/madaboutmixtapes"
-            >
-              <YoutubeIcon
-                height="22px"
-                color={menuOpened ? '#ffffff' : '#666666'}
-              />
-            </SocialIcon>
-          </SocialIconsContainer>
+          <SocialIcons menuOpened={menuOpened} />
         </RightSide>
       )}
     </ContentContainer>

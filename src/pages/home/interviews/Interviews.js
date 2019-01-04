@@ -4,6 +4,7 @@
 /* eslint no-unused-vars: 0 */
 
 import React from 'react'
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import PostItem from 'components/postItem'
 import Subscribe from 'components/subscribe'
@@ -27,6 +28,8 @@ const InterviewContainer = styled.div`
 `
 
 const TitleContainer = styled.div`
+  font-weight: 800;
+  font-size: 38px;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -113,7 +116,7 @@ const Interviews = ({ width, data }) => {
   return (
     <InterviewContainer>
       <TitleContainer>
-        <Title>Interviews</Title>
+        <Link to="/blog/category/interviews">Interviews</Link>
         <SubTitle>Check Out The Latest Interviews</SubTitle>
       </TitleContainer>
       <SliderComponent settings={settings}>

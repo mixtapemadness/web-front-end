@@ -118,7 +118,7 @@ const Blog = ({
   return (
     <NewsContainer>
       <div>
-        <BlogSlider />
+        {/* <BlogSlider /> */}
         <BlogFilter match={match} />
         <PostsContainer>
           {data.loading &&

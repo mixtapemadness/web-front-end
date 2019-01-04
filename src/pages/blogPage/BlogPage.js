@@ -20,7 +20,8 @@ import blogPageEnhancer from './blogPageEnhancer'
 import BlogPageImg from './blogPageImg'
 import PostContentHeading from './postContentHeading'
 import Tag from './Tag'
-import { TWITTER_HANDLE } from '../../constants'
+import { RESPONSIVE_BREAKPOINTS, TWITTER_HANDLE } from '../../constants'
+import truncate from '../../helpers/textHelpers'
 
 const Container = styled.div`
   width: 100%;
@@ -94,48 +95,49 @@ const ArrowText = styled.div`
 `
 
 const TitleContainer = styled.div`
-  width: 76%;
   text-align: center;
-  text-transform: capitalize;
-  display: flex;
-  flex-direction: column;
-  @media only screen and (max-width: 450px) {
-    width: 90%;
-  }
+  padding: 10px 20px;
 `
 
 const BlogTitle = styled.h1`
-  font-size: 46px;
-  letter-spacing: 3.2px;
+  font-size: 26px;
   color: #010101;
   font-weight: 800;
   margin-bottom: 20px;
-  @media only screen and (max-width: 700px) {
-    font-size: 26px;
-  }
-  @media only screen and (max-width: 450px) {
-    font-size: 18px;
-    letter-spacing: normal;
+  @media only screen and (min-width: ${RESPONSIVE_BREAKPOINTS.tablet}) {
+    font-size: 36px;
   }
 `
 
 const BlogSubTitle = styled.h3`
   color: #666666;
-  letter-spacing: 1.6px;
+  font-size: 14px;
   margin-bottom: 20px;
-  @media only screen and (max-width: 450px) {
-    font-size: 12px;
-    letter-spacing: normal;
+  font-weight: 500;
+  line-height: 32px;
+  @media only screen and (min-width: ${RESPONSIVE_BREAKPOINTS.tablet}) {
+    font-size: 18px;
   }
 `
 
 const BlogPageVideo = styled.div`
   width: 100%;
-  height: 60vh;
+  height: auto
   background-image: url(${props => props.src});
   background-position: center center;
   background-size: cover;
-  embed {
+
+`
+const BlogImageWrapper = styled.div`
+  position: relative;
+  padding-bottom: 56.25%;
+  padding-top: 25px;
+  height: 0;
+  embed,
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
   }
@@ -155,10 +157,16 @@ const BackgroundPicture = styled.div`
 `
 
 const BlogContent = styled.div`
-  max-width: 760px;
-  margin: auto;
-  @media only screen and (max-width: 1150px) {
-    text-align: center;
+  max-width: 100%;
+  padding 0 20px;
+  margin: 40px auto;
+  iframe {
+    width: auto;
+  }
+  @media only screen and (min-width: ${RESPONSIVE_BREAKPOINTS.tablet}) {
+    width: 900px;
+    padding: 0;
+    
   }
 `
 
@@ -253,10 +261,6 @@ const DisqusContainer = styled.div`
 
 const BlogArticleContent = styled.div`
   p {
-    margin-top: 20px;
-    display: flex;
-    flex-direction: column;
-    line-height: 40px;
     img {
       margin: 5px 0;
     }
@@ -283,7 +287,7 @@ const BlogPage = ({
   const userName = user && user.user && user.user.name && user.user.name
   const userSlug = user && user.user && user.user.slug && user.user.slug
   const postData = data && data.Post ? data.Post : {}
-  const Excerpt = data && data.Post && data.Post.excerpt
+  const Excerpt = data && data.Post && truncate(data.Post.excerpt, 180)
   const postTitle = postData && postData.title
   const noHTML = /(<([^>]+)>)/gi
   const Description =
@@ -406,19 +410,23 @@ const BlogPage = ({
                   Excerpt.replace(noHTML, '').replace('[&#038;hellip', ' '),
               }}
             />
-            <MobileAuthorContainer />
+            <PostContentHeading
+              date={postData.date}
+              userName={userName}
+              userSlug={userSlug}
+            />
+            <div className="addthis_inline_share_toolbox" />
           </TitleContainer>
         </Heading>
-        {renderVideo && (
-          <BlogPageVideo dangerouslySetInnerHTML={{ __html: Video && Video }} />
-        )}
-        {<BlogPageImg renderVideo={renderVideo} id={postData.featured_media} />}
+        <BlogImageWrapper>
+          {renderVideo && (
+            <BlogPageVideo
+              dangerouslySetInnerHTML={{ __html: Video && Video }}
+            />
+          )}
+          <BlogPageImg renderVideo={renderVideo} id={postData.featured_media} />
+        </BlogImageWrapper>
         <BlogContent>
-          <PostContentHeading
-            date={postData.date}
-            userName={userName}
-            userSlug={userSlug}
-          />
           {!isVideo && Video ? (
             <BlogArticleContent
               dangerouslySetInnerHTML={{ __html: Content && Content }}

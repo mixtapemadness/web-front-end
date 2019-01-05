@@ -87,22 +87,17 @@ const Li = styled.li`
   display: flex;
   align-items: center;
   height: 100%;
-  margin: 0 20px;
+  margin: 0 12px;
   font-size: 16px;
+  text-transform: capitalize;
   color: ${p => p.isActive && `${BRAND_COLOURS.orange}`};
   border-bottom: ${p => p.isActive && `2px solid ${BRAND_COLOURS.orange}`};
 `
-// const Span = styled.span`
-//   font-weight: 600;
-//   margin-left: 20px;
-//   letter-spacing: 1.5px;
-//   cursor: pointer;
-// `
 
 const Logo = styled.img`
   width: 60px;
   box-sizing: content-box;
-  margin-left: 20px;
+  margin: 0 12px 0 20px;
 `
 
 const Search = styled.div`
@@ -201,7 +196,7 @@ const Header = ({
           <Ul menuOpened={menuOpened}>
             {Object.keys(ROUTES.categories).map(i => (
               <Li isActive={location.pathname === ROUTES.categories[i]}>
-                <Link to={ROUTES.categories[i]}>{i.toUpperCase()}</Link>
+                <Link to={ROUTES.categories[i]}>{i}</Link>
               </Li>
             ))}
           </Ul>

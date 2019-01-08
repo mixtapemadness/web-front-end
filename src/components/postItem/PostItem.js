@@ -13,16 +13,11 @@ import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import window from 'global/window'
-import LazyLoad from 'react-lazy-load'
 import ReactImageFallback from 'react-image-fallback'
 import imageExists from 'image-exists'
 import postItemEnhancer from './postItemEnhancer'
 import placeholderImg from '../../resources/assets/img/placeholderImg.jpg'
 import truncate from '../../helpers/textHelpers'
-
-// View
-// import ViewsIcon from 'resources/assets/svg/eye.svg'
-// import SignalBarsIcon from 'resources/assets/svg/signal-bars.svg'
 
 const PostItemContainer = styled.div`
   flex: 1 0 357px;
@@ -221,11 +216,8 @@ const pathname = window.location ? window.location.pathname : ''
 const PostItem = ({ media, category, user, data }) => {
   const Image =
     media && media.img && media.img.featured_image && media.img.featured_image
-  const FullImage = media && media.img && media.img.full && media.img.full
-
   const CategoriesData = category && category.category && category.category
   const User = user && user.user && user.user
-
   return (
     <PostItemContainer>
       <Media

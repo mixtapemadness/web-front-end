@@ -12,9 +12,8 @@ import React from 'react'
 import styled from 'styled-components'
 import PostItem from 'components/postItem'
 import Subscribe from 'components/subscribe'
-// import MobileComponent from 'components/mobileComponent'
 import { CardLoader } from 'components/loaders'
-// import Spinner from 'react-spinkit'
+import Spinner from 'components/Spinner'
 import TopVideoPosts from './TopVideoPosts'
 import BlogSlider from './BlogSlider'
 import BlogFilter from './BlogFilter'
@@ -45,27 +44,23 @@ const SubscribeContainer = styled.div`
   width: 100%;
   margin: 40px 0;
 `
-// const Div = styled.div`
-//   margin-top: 20px;
-//   justify-content: center;
-//   display: flex;
-// `
-
 const ShowMoreContainer = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
 `
-const ShowMore = styled.div`
+const ShowMore = styled.button`
   cursor: pointer;
   font-weight: 800;
-  color: #111;
+  border: 2px solid black;
+  padding: 10px 30px;
+  text-decoration: uppercase;
   position: relative;
   margin-top: 50px;
+  text-transform: uppercase;
   transition: 0.4s;
   pointer-events:${props => (props.isMoreData ? 'inherit' : 'none')}
   &:after {
-    content: '';
     width: 0%;
     height: 2px;
     position: absolute;
@@ -75,7 +70,8 @@ const ShowMore = styled.div`
     transition: 0.4s;
   }
   &:hover {
-    color: #656464;
+  background: #000;
+  color:#fff;
     &:after {
       width: 100%;
     }
@@ -102,40 +98,30 @@ const PostItemT = (item, index) => {
 const PostItems = ({ items }) =>
   items.map((item, index) => PostItemT(item, index))
 
-const Blog = ({
-  Posts,
-  data,
-  page,
-  handleLoadMore,
-  match,
-  count,
-  isMoreData,
-}) => {
-  const postCount = count && count.count && count.count.count
+const Blog = ({ data, page, handleLoadMore, match, isMoreData }) => {
   const Data = data.Posts && data.Posts.length > 0 && data.Posts
   let index = 0
   // const Data = data
   return (
     <NewsContainer>
       <div>
-        {/* <BlogSlider /> */}
-        <BlogFilter match={match} />
+        <BlogSlider />
+        {/* <BlogFilter match={match} /> */}
         <PostsContainer>
           {data.loading &&
             [...Array(8)].map(i => (
               <CardLoader key={`${index++}-blog-loader`} />
             ))}
-          {/* {data.loading && [...Array(3)].map(i => <CardLoader />)} */}
           {!data.loading && (Data && <PostItems items={Data} />)}
         </PostsContainer>
       </div>
       <ShowMoreContainer>
-        {data && !data.loading ? (
+        {!data.loading ? (
           <ShowMore isMoreData={isMoreData} onClick={handleLoadMore}>
-            More {match.params.filter} {isMoreData ? '+' : '-'}
+            {`See More ${match.params.filter}`}
           </ShowMore>
         ) : (
-          <SpinnerContainer>{/* <Spinner /> */}</SpinnerContainer>
+          <Spinner />
         )}
       </ShowMoreContainer>
     </NewsContainer>

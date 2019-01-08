@@ -11,7 +11,7 @@ import SearchIcon from 'resources/assets/svgComponents/Search'
 import MixtapeLogo from 'resources/assets/img/mixtape-logo.png'
 
 import headerEnhancer from './headerEnhancer'
-import { RESPONSIVE_BREAKPOINTS } from '../../constants'
+import { BRAND_COLOURS, RESPONSIVE_BREAKPOINTS, ROUTES } from '../../constants'
 
 const HeaderContainer = styled.div`
   width: 100%;
@@ -20,6 +20,7 @@ const HeaderContainer = styled.div`
   font-size: 16px;
   padding: 0 10px;
   position: fixed;
+
   top: 0;
   left: 0;
   z-index: 2;
@@ -35,9 +36,9 @@ const ContentContainer = styled.div`
   height: 100%;
   margin: 0 auto;
   display: flex;
+  align-items: center;
   justify-content: space-between;
   position: relative;
-  font-size: 13px;
   @media only screen and (max-width: 1050px) {
     justify-content: center;
   }
@@ -58,6 +59,11 @@ const LeftSide = styled.div`
 const RightSide = styled.div`
   display: flex;
   align-items: center;
+  display: none;
+
+  @media only screen and (min-width: ${RESPONSIVE_BREAKPOINTS.tablet}) {
+    display: block;
+  }
 `
 
 const NavBar = styled.nav`
@@ -71,39 +77,27 @@ const Ul = styled.ul`
   display: flex;
   color: ${props => (props.menuOpened ? '#ffffff' : '#666666')};
   transition: unset;
-  margin-right: 10px;
+  margin-right: 20px;
   @media only screen and (max-width: 475px) {
     display: none;
   }
 `
 const Li = styled.li`
-  font-weight: 600;
-  letter-spacing: 1.5px;
+  font-weight: bold;
   display: flex;
   align-items: center;
   height: 100%;
-  border-bottom: ${props =>
-    props.isActive ? '2px solid #ff9600' : '2px solid transparent'};
-  :not(:last-child) {
-    padding-right: 10px;
-  }
-  @media only screen and (max-width: 450px) {
-    font-size: 13px;
-  }
+  margin: 0 12px;
+  font-size: 16px;
+  text-transform: capitalize;
+  color: ${p => p.isActive && `${BRAND_COLOURS.orange}`};
+  border-bottom: ${p => p.isActive && `2px solid ${BRAND_COLOURS.orange}`};
 `
-// const Span = styled.span`
-//   font-weight: 600;
-//   margin-left: 20px;
-//   letter-spacing: 1.5px;
-//   cursor: pointer;
-// `
 
 const Logo = styled.img`
-  height: 70px;
+  width: 60px;
   box-sizing: content-box;
-  @media only screen and (max-width: 450px) {
-    height: 52px;
-  }
+  margin: 0 12px 0 20px;
 `
 
 const Search = styled.div`
@@ -179,7 +173,6 @@ const Div = styled.div`
 
 const Header = ({
   // dotsMenu,
-  width,
   toggleSearch,
   toggleMenu,
   menuOpened,
@@ -201,15 +194,11 @@ const Header = ({
         </Link>
         <NavBar>
           <Ul menuOpened={menuOpened}>
-            <Li isActive={location.pathname === '/blog/category/news'}>
-              <Link to="/blog/category/news">News</Link>
-            </Li>
-            <Li isActive={location.pathname === '/blog/category/events'}>
-              <Link to="/blog/category/events">Events</Link>
-            </Li>
-            <Li isActive={location.pathname === '/blog/category/videos'}>
-              <Link to="/blog/category/videos">Video</Link>
-            </Li>
+            {Object.keys(ROUTES.categories).map(i => (
+              <Li isActive={location.pathname === ROUTES.categories[i]}>
+                <Link to={ROUTES.categories[i]}>{i}</Link>
+              </Li>
+            ))}
           </Ul>
           <Search onClick={() => toggleSearch()}>
             <SearchIcon
@@ -219,11 +208,10 @@ const Header = ({
           </Search>
         </NavBar>
       </LeftSide>
-      {width > 1050 && (
-        <RightSide>
-          <SocialIcons menuOpened={menuOpened} />
-        </RightSide>
-      )}
+
+      <RightSide>
+        <SocialIcons menuOpened={menuOpened} />
+      </RightSide>
     </ContentContainer>
   </HeaderContainer>
 )

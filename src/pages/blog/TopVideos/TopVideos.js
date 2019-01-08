@@ -37,14 +37,13 @@ const TopVideos = ({ data }) => {
   let index = 0
   return (
     <TopVideosContainer>
-      <Header>Top Music Videos</Header>
+      <Header>Recent Music Videos</Header>
       {data.loading &&
         [...Array(8)].map(i => <TopVideoLoader key={`${index++}-top-video`} />)}
       {!data.loading &&
         data &&
         data.Posts &&
         data.Posts.map(item => <TopVideo key={item.id} data={item} />)}
-      <MoreVideos to="/blog/category/videos">More Videos +</MoreVideos>
     </TopVideosContainer>
   )
 }

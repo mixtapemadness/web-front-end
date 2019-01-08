@@ -12,7 +12,6 @@ import PostItem from 'components/postItem'
 import Subscribe from 'components/subscribe'
 import MobileSubscribe from 'components/mobileSubscribe'
 import { CardLoader } from 'components/loaders'
-// import Spinner from 'react-spinkit'
 import resentPostsEnhancer from './resentPostsEnhancer'
 
 const ResentPostsContainer = styled.div`

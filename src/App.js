@@ -1,6 +1,7 @@
 /* eslint object-curly-newline: 0 */
 /* eslint implicit-arrow-linebreak: 0 */
 /* eslint function-paren-newline: 0 */
+/* eslint operator-linebreak: 0 */
 import React from 'react'
 import { compose, withStateHandlers, lifecycle, withHandlers } from 'recompose'
 import window from 'global/window'
@@ -14,23 +15,38 @@ import getEmitter from './eventEmitter'
 
 const eventEmitter = getEmitter()
 
-const App = ({ toggleSearch, searchOpened, menuOpened, toggleMenu }) => (
-  <div style={{ width: '100%' }}>
-    <Helmet>
-      <title>Mixtape Madness</title>
-    </Helmet>
-    <Header
-      toggleSearch={toggleSearch}
-      menuOpened={menuOpened}
-      toggleMenu={toggleMenu}
-    />
-    <AppContent
-      searchOpened={searchOpened}
-      toggleSearch={toggleSearch}
-      menuOpened={menuOpened}
-    />
-  </div>
-)
+class App extends React.Component {
+  componentDidMount() {
+    const script = document.createElement('script')
+
+    script.src =
+      '//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5c0e4bff29290756'
+    script.async = true
+
+    document.body.appendChild(script)
+  }
+
+  render() {
+    const { toggleSearch, searchOpened, menuOpened, toggleMenu } = this.props
+    return (
+      <div style={{ width: '100%' }}>
+        <Helmet>
+          <title>Mixtape Madness</title>
+        </Helmet>
+        <Header
+          toggleSearch={toggleSearch}
+          menuOpened={menuOpened}
+          toggleMenu={toggleMenu}
+        />
+        <AppContent
+          searchOpened={searchOpened}
+          toggleSearch={toggleSearch}
+          menuOpened={menuOpened}
+        />
+      </div>
+    )
+  }
+}
 
 export default compose(
   withStateHandlers(

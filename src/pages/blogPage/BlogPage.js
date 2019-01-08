@@ -20,7 +20,11 @@ import blogPageEnhancer from './blogPageEnhancer'
 import BlogPageImg from './blogPageImg'
 import PostContentHeading from './postContentHeading'
 import Tag from './Tag'
-import { RESPONSIVE_BREAKPOINTS, TWITTER_HANDLE } from '../../constants'
+import {
+  DISQUS_SHORTNAME,
+  RESPONSIVE_BREAKPOINTS,
+  TWITTER_HANDLE,
+} from '../../constants'
 import truncate from '../../helpers/textHelpers'
 
 const Container = styled.div`
@@ -299,7 +303,7 @@ const BlogPage = ({
     data && data.Post && data.Post.categories && data.Post.categories
   const isVideoArr =
     categories && categories.filter(item => parseInt(item, 10) === 15)
-  const isVideo = isVideoArr && isVideoArr.length > 0 ? true : false
+  const isVideo = isVideoArr && isVideoArr.length > 0
   const PostDate = data && data.Post && data.Post.date && data.Post.date
   const tags = data && data.Post && data.Post.tags && data.Post.tags
   const Content =
@@ -442,7 +446,7 @@ const BlogPage = ({
         </TagsContainer>
         <DisqusContainer>
           <ReactDisqusComments
-            shortname="//mixtapemadnessuk.disqus.com/embed.js"
+            shortname={DISQUS_SHORTNAME}
             identifier={pathname}
             url={window.location ? window.location.href : ''}
           />

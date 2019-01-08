@@ -1,7 +1,4 @@
-/* eslint object-curly-newline: 0 */
 /* eslint implicit-arrow-linebreak: 0 */
-/* eslint indent: 0 */
-/* eslint jsx-quotes: 0 */
 
 import React from 'react'
 import styled from 'styled-components'

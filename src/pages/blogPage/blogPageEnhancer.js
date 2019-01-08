@@ -79,7 +79,6 @@ export default compose(
         }),
       },
     }),
-    withProps(props => console.log('props', props)),
     loadDataAsync({
       query: getNextPost,
       name: 'getNextPost',

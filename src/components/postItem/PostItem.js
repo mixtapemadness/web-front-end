@@ -18,16 +18,18 @@ import imageExists from 'image-exists'
 import postItemEnhancer from './postItemEnhancer'
 import placeholderImg from '../../resources/assets/img/placeholderImg.jpg'
 import truncate from '../../helpers/textHelpers'
+import { RESPONSIVE_BREAKPOINTS } from '../../constants'
 
 const PostItemContainer = styled.div`
-  flex: 1 0 357px;
   height: 440px;
-  max-width: 386px;
   display: flex;
   flex-direction: column;
-  margin: 20px 10px;
-  @media only screen and (max-width: 1150px) {
-    flex: 1 0 auto;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+  @media only screen and (min-width: ${RESPONSIVE_BREAKPOINTS.tablet}) {
+    width: 33.3%;
+    padding: 0px 10px;
+    flex: none;
   }
 `
 
@@ -56,12 +58,6 @@ const Media = styled(Link)`
   background-size: cover;
   background-position: center;
   transition: 0.8s;
-  /* img {
-    width: 100%;
-  } */
-  &:hover {
-    /* background-size: 120%; */
-  }
   @media only screen and (max-width: 1150px) {
     background-size: cover;
     &:hover {
@@ -82,13 +78,7 @@ const PostTitle = styled(Link)`
   line-height: 1.3;
   transition: 0.4s;
   color: ${p => (p.color ? p.color : '#111111')};
-  text-decoration: underline;
-  text-decoration-color: transparent;
   transition: 0.4s;
-
-  &:hover {
-    text-decoration-color: #111111;
-  }
 `
 
 const Category = styled(Link)`
@@ -113,14 +103,6 @@ const Span = styled.span`
   font-weight: 800;
   margin-top: 10px;
 `
-
-// const AuthorLink = styled(Link)`
-//   color: 'FF9D00';
-//   cursor: pointer;
-//   font-size: 12px;
-//   letter-spacing: 0.7px;
-//   margin: 15px 0;
-// `
 
 const DataContentContainer = styled.span`
   color: #666;
@@ -219,7 +201,7 @@ const PostItem = ({ media, category, user, data }) => {
   const CategoriesData = category && category.category && category.category
   const User = user && user.user && user.user
   return (
-    <PostItemContainer>
+    <PostItemContainer className="post-item">
       <Media
         to={{
           pathname:

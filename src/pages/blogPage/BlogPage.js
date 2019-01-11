@@ -24,6 +24,7 @@ import {
   DISQUS_SHORTNAME,
   RESPONSIVE_BREAKPOINTS,
   TWITTER_HANDLE,
+  ROUTES,
 } from '../../constants'
 import truncate from '../../helpers/textHelpers'
 
@@ -277,6 +278,12 @@ const BlogArticleContent = styled.div`
   }
 `
 
+const CategoryLink = styled(Link)`
+  color: #ff9600;
+  font-weight: bold;
+  text-transform: capitalize;
+`
+
 const pathname = window.location ? window.location.pathname : ''
 
 const BlogPage = ({
@@ -330,9 +337,9 @@ const BlogPage = ({
       .match(/(?:<iframe[^>]*)(?:(?:\/>)|(?:>.*?<\/iframe>))/, '')
       .toString()
       .replace('iframe', 'embed')
-  // cons HasVideo = Video.
   const disablePrev = !prevRoute
   const renderVideo = data && !data.loading && isVideo && Video ? true : false
+
   return (
     <React.Fragment>
       <Container>
@@ -406,6 +413,9 @@ const BlogPage = ({
           </PagingArrows>
 
           <TitleContainer>
+            <CategoryLink to={ROUTES.categories[match.params.category]}>
+              {match.params.category}
+            </CategoryLink>
             <BlogTitle dangerouslySetInnerHTML={{ __html: postData.title }} />
             {/* <BlogSubTitle dangerouslySetInnerHTML={{ __html: Excerpt && Excerpt.replace('[&Hellip', ' ') }} /> */}
             <BlogSubTitle

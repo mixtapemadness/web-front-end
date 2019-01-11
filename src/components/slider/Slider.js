@@ -1,32 +1,36 @@
 /* eslint operator-linebreak: 0 */
+/* eslint no-return-assign: 0 */
 
-import React from 'react'
+import React, { Component } from 'react'
 import styled from 'styled-components'
 import Slider from 'react-slick'
 
 import Prev from 'resources/assets/svg/prev.svg'
 import Next from 'resources/assets/svg/next.svg'
+import { RESPONSIVE_BREAKPOINTS } from '../../constants'
 
 const Img = styled.img`
-  display: block;
+  display: inline-block;
   cursor: pointer;
   z-index: 1;
-  height: 30px;
-  position: absolute;
+  height: 40px;
   margin-top: 20px;
-  ${p => p.right && `right: ${p.right}px`};
 `
 
 const PrevArrow = (
   { onClick }, // eslint-disable-line
-) => <Img right={15} src={Prev} onClick={onClick} />
+) => <Img src={Prev} onClick={onClick} />
 
 const NextArrow = (
   { onClick }, // eslint-disable-line
-) => <Img right={-1} src={Next} onClick={onClick} />
+) => <Img src={Next} onClick={onClick} />
+
+const ArrowsContainer = styled.div`
+  display: flex;
+  justify-content: flex-end;
+`
 
 const Container = styled.div`
-  min-height: 600px;
   .slick-slider {
     position: relative;
     display: block;
@@ -45,9 +49,7 @@ const Container = styled.div`
   }
 
   .slick-list {
-    /* max-width: 1100px; */
-    margin: auto;
-    margin-top: 64.2px;
+    margin-top: 20px;
     display: flex;
     overflow: hidden;
     padding: 0;
@@ -97,10 +99,19 @@ const Container = styled.div`
     height: 100%;
     min-height: 1px;
   }
-  /* .slick-slide > div{
-    display:flex;f
-    flex-direction:column;
-  } */
+
+  .slick-slide .post-item {
+    width: auto;
+  }
+
+  @media only screen and (min-width: ${RESPONSIVE_BREAKPOINTS.tablet}) {
+    .slick-slide > div {
+      display: flex;
+      flex-direction: column;
+      width: calc(100% / 3);
+    }
+  }
+
   [dir='rtl'] .slick-slide {
     float: right;
   }
@@ -329,7 +340,6 @@ const Override = styled.div`
   }
 
   .slick-initialized .slick-slide {
-    max-width: 1200px !important;
   }
   .slick-current ~ .slick-slide {
     justify-content: center;
@@ -340,36 +350,62 @@ const Override = styled.div`
   }
 
   .slick-current {
-    justify-content: flex-start !important;
     /* > div {
         width: 100%;
       } */
   }
 `
 
-const SliderComponent = ({ children, settings }) => {
-  const innerSettings = {
-    dots: settings.dots,
-    infinite: settings.infinite,
-    slidesToShow: settings.slidesToShow,
-    slidesToScroll: settings.slidesToScroll,
-    rows: settings.rows,
-    centerMode: true,
-    slidesPerRow: settings.slidesPerRow,
-    centerPadding: settings.centerPadding,
-    nextArrow: <NextArrow />,
-    prevArrow: <PrevArrow />,
-    responsive: [...settings.responsive],
+class SliderComponent extends Component {
+  constructor(props) {
+    super(props)
+    this.next = this.next.bind(this)
+    this.prev = this.prev.bind(this)
   }
 
-  return (
-    <Container>
-      <Override>
-        {innerSettings &&
-          children && <Slider {...innerSettings}>{children}</Slider>}
-      </Override>
-    </Container>
-  )
+  next() {
+    this.slider.slickNext()
+  }
+
+  prev() {
+    this.slider.slickPrev()
+  }
+
+  render() {
+    const { settings, children } = this.props
+
+    const innerSettings = {
+      dots: settings.dots,
+      infinite: settings.infinite,
+      slidesToShow: settings.slidesToShow,
+      slidesToScroll: settings.slidesToScroll,
+      rows: settings.rows,
+      centerMode: true,
+      slidesPerRow: settings.slidesPerRow,
+      centerPadding: settings.centerPadding,
+      responsive: [...settings.responsive],
+    }
+    return (
+      <Container>
+        <Override>
+          <ArrowsContainer>
+            <PrevArrow onClick={this.prev} />
+            <NextArrow onClick={this.next} />
+          </ArrowsContainer>
+          {children && (
+            <Slider
+              ref={slider => {
+                this.slider = slider
+              }}
+              {...innerSettings}
+            >
+              {children}
+            </Slider>
+          )}
+        </Override>
+      </Container>
+    )
+  }
 }
 
 export default SliderComponent

@@ -5,7 +5,6 @@ module.exports = {
   avatarsUrl: 'http://blog.mixtapemadness.com:8001/graphql/avatars',
 }
 
-
 // module.exports = {
 //   apiUrl: 'http://mixtapeapi.vobi.io/',
 //   apiSocketUrl: 'http://mixtapeapi.vobi.io:8006',

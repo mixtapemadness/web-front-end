@@ -1,8 +1,8 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from 'react';
+import styled from 'styled-components';
 
-import Advertisement from 'components/advertisement'
-import TopVideos from '../TopVideos'
+import Advertisement from 'components/advertisement';
+import TopVideos from '../TopVideos';
 
 const Container = styled.div`
   width: 100%;
@@ -10,7 +10,7 @@ const Container = styled.div`
   @media only screen and (max-width: 700px) {
     flex-direction: column;
   }
-`
+`;
 
 const AdvertisementContainer = styled.div`
   width: 64.75%;
@@ -22,7 +22,7 @@ const AdvertisementContainer = styled.div`
   @media only screen and (max-width: 700px) {
     width: 100%;
   }
-`
+`;
 
 const TopVideoPosts = () => (
   <Container>
@@ -31,6 +31,6 @@ const TopVideoPosts = () => (
     </AdvertisementContainer>
     <TopVideos />
   </Container>
-)
+);
 
-export default TopVideoPosts
+export default TopVideoPosts;

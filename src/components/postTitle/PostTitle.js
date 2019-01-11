@@ -1,13 +1,13 @@
 /* eslint operator-linebreak: 0 */
 /* eslint object-curly-newline: 0 */
 /* eslint react/jsx-curly-brace-presence: 0 */
-import React from 'react'
-import styled from 'styled-components'
-import { Link } from 'react-router-dom'
-import { CLOSE_MEGAMENU } from 'constants'
-import postTitleEnhancer from './postTitleEnhancer'
+import React from 'react';
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import { CLOSE_MEGAMENU } from 'constants';
+import postTitleEnhancer from './postTitleEnhancer';
 
-import eventEmitter from '../../eventEmitter'
+import eventEmitter from '../../eventEmitter';
 
 const Container = styled(Link)`
   width: 100%;
@@ -19,10 +19,10 @@ const Container = styled(Link)`
   &:hover {
     text-decoration: underline;
   }
-`
+`;
 
 const PostTitle = ({ data, PostSlug, title, color, fontSize }) => {
-  const categorySlug = data.category ? data.category.slug : ''
+  const categorySlug = data.category ? data.category.slug : '';
   return (
     <Container
       fontSize={fontSize}
@@ -31,7 +31,7 @@ const PostTitle = ({ data, PostSlug, title, color, fontSize }) => {
       dangerouslySetInnerHTML={{ __html: title }}
       onClick={() => eventEmitter.emit(CLOSE_MEGAMENU)}
     />
-  )
-}
+  );
+};
 
-export default postTitleEnhancer(PostTitle)
+export default postTitleEnhancer(PostTitle);

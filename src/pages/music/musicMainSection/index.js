@@ -1,1 +1,1 @@
-export { default } from './MusicMainSection'
+export { default } from './MusicMainSection';

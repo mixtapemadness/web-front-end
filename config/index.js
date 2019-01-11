@@ -1,8 +1,8 @@
 /* eslint import/no-dynamic-require: 0 */
-const env = process.env.NODE_ENV || 'development'
+const env = process.env.NODE_ENV || 'development';
 
 const envConfig = process.env.CONFIG
   ? require(`./${process.env.CONFIG}`)
-  : require(`./${env}`)
+  : require(`./${env}`);
 
-module.exports = envConfig
+module.exports = envConfig;

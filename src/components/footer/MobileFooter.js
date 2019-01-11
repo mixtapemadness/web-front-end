@@ -1,24 +1,24 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from 'react';
+import styled from 'styled-components';
 
-import { Link } from 'react-router-dom'
-import SocialIcons from 'components/SocialIcons/'
+import { Link } from 'react-router-dom';
+import SocialIcons from 'components/SocialIcons/';
 
 const MobileFooterContainer = styled.div`
   max-width: 310px;
   margin: 20px auto;
-`
+`;
 
 const MobileContentContainer = styled.div`
   display: flex;
   justify-content: center;
   color: '#000000';
-`
+`;
 const List = styled.ul`
   margin: 0;
   padding: 0;
   margin-bottom: 20px;
-`
+`;
 
 const ListItem = styled.li`
   margin-bottom: 15px;
@@ -27,7 +27,7 @@ const ListItem = styled.li`
   font-size: 14px;
   margin-right: 20px;
   display: inline-block;
-`
+`;
 
 const MobileFooter = ({ menuOpened }) => (
   <MobileFooterContainer>
@@ -58,6 +58,6 @@ const MobileFooter = ({ menuOpened }) => (
       </List>
     </MobileContentContainer>
   </MobileFooterContainer>
-)
+);
 
-export default MobileFooter
+export default MobileFooter;

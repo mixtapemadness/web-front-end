@@ -3,55 +3,55 @@
 /* eslint operator-linebreak: 0 */
 /* eslint indent: 0 */
 /* eslint quotes: 0 */
-import React, { Fragment } from 'react'
-import styled from 'styled-components'
-import LazyLoad from 'react-lazyload'
-import { Helmet } from 'react-helmet'
+import React, { Fragment } from 'react';
+import styled from 'styled-components';
+import LazyLoad from 'react-lazyload';
+import { Helmet } from 'react-helmet';
 
-import MainSlider from 'components/mainSlider'
-import Download from 'components/download'
-import Subscribe from 'components/subscribe'
-import Videos from 'components/videos'
-import SliderPhoto from 'resources/assets/img/Live-Music.jpg'
-import SliderPhotoSecond from 'resources/assets/img/music.jpg'
-import WhatsOn from './whatsOn'
-import Interviews from './interviews'
-import Posts from './posts'
-import homeEnhancer from './homeEnhancer'
-import Reviews from './reviews'
+import MainSlider from 'components/mainSlider';
+import Download from 'components/download';
+import Subscribe from 'components/subscribe';
+import Videos from 'components/videos';
+import SliderPhoto from 'resources/assets/img/Live-Music.jpg';
+import SliderPhotoSecond from 'resources/assets/img/music.jpg';
+import WhatsOn from './whatsOn';
+import Interviews from './interviews';
+import Posts from './posts';
+import homeEnhancer from './homeEnhancer';
+import Reviews from './reviews';
 
 const Container = styled.div`
   margin: auto;
-`
+`;
 
 const HaveToListenContainer = styled.div`
   max-width: 1200px;
   margin: 40px auto;
-`
+`;
 
 const SubscribeContainer = styled.div`
   margin: 40px;
-`
+`;
 
 const HeaderContainer = styled.div`
   display: flex;
   flex-direction: column;
   text-align: center;
   ${p => p.mb && `margin-bottom: ${p.mb}px`};
-`
+`;
 
 const SectionHeader = styled.span`
   font-weight: 600;
   font-size: 28px;
-`
+`;
 
 const SectionSubHeader = styled.span`
   font-size: 17.5px;
   letter-spacing: 1.1px;
   font-weight: 600;
-`
+`;
 
-const mainSliderData = [SliderPhoto, SliderPhotoSecond]
+const mainSliderData = [SliderPhoto, SliderPhotoSecond];
 
 const Home = ({ sliderData }) => (
   <Fragment>
@@ -94,6 +94,6 @@ const Home = ({ sliderData }) => (
       </LazyLoad>
     </Container>
   </Fragment>
-)
+);
 
-export default homeEnhancer(Home)
+export default homeEnhancer(Home);

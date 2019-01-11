@@ -1,6 +1,6 @@
-import { compose } from 'recompose'
-import getPosts from 'graphql/getPosts.graphql'
-import loadDataAsync from './loadDataAsync'
+import { compose } from 'recompose';
+import getPosts from 'graphql/getPosts.graphql';
+import loadDataAsync from './loadDataAsync';
 
 const withMainSlider = compose(
   loadDataAsync({
@@ -15,6 +15,6 @@ const withMainSlider = compose(
       },
     },
   }),
-)
+);
 
-export default withMainSlider
+export default withMainSlider;

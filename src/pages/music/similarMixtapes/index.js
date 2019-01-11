@@ -1,1 +1,1 @@
-export { default } from './SimilarMixtapes'
+export { default } from './SimilarMixtapes';

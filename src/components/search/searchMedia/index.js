@@ -1,1 +1,1 @@
-export { default } from './searchMedia'
+export { default } from './searchMedia';

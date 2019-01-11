@@ -1,5 +1,5 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from 'react';
+import styled from 'styled-components';
 
 const FormContainer = styled.div`
   color: #ffffff;
@@ -10,11 +10,11 @@ const FormContainer = styled.div`
   @media only screen and (max-width: 925px) {
     align-items: center;
   }
-`
+`;
 const Title = styled.span`
   font-size: 26.5px;
   letter-spacing: 1.6px;
-`
+`;
 const Input = styled.input`
   color: #ffffff;
   font-size: 15.5px;
@@ -49,7 +49,7 @@ const Input = styled.input`
     font-size: 15.5px;
     letter-spacing: 0.9px;
   }
-`
+`;
 const Button = styled.button`
   border: 2px solid #ffffff;
   background: transparent;
@@ -63,11 +63,11 @@ const Button = styled.button`
   font-weight: 600;
   ${p => p.mt && `margin-top: ${p.mt}px`};
   ${p => p.mr && `margin-right: ${p.mr}px`};
-`
+`;
 const FlexDiv = styled.div`
   display: flex;
   margin-top: 17px;
-`
+`;
 
 const Register = () => (
   <FormContainer>
@@ -82,6 +82,6 @@ const Register = () => (
     <Input placeholder="Confirm Password" type="password" mt={21} />
     <Button mt={17}>Register</Button>
   </FormContainer>
-)
+);
 
-export default Register
+export default Register;

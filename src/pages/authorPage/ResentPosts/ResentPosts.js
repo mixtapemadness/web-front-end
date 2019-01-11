@@ -6,20 +6,20 @@
 /* eslint no-plusplus: 0 */
 /* eslint comma-dangle: 0 */
 
-import React from 'react'
-import styled from 'styled-components'
-import PostItem from 'components/postItem'
-import Subscribe from 'components/subscribe'
-import MobileSubscribe from 'components/mobileSubscribe'
-import { CardLoader } from 'components/loaders'
-import resentPostsEnhancer from './resentPostsEnhancer'
+import React from 'react';
+import styled from 'styled-components';
+import PostItem from 'components/postItem';
+import Subscribe from 'components/subscribe';
+import MobileSubscribe from 'components/mobileSubscribe';
+import { CardLoader } from 'components/loaders';
+import resentPostsEnhancer from './resentPostsEnhancer';
 
 const ResentPostsContainer = styled.div`
   width: 100%;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
-`
+`;
 
 const PostsContainer = styled.div`
   width: 100%;
@@ -31,7 +31,7 @@ const PostsContainer = styled.div`
     flex-direction: column;
     align-items: center;
   }
-`
+`;
 
 const ButtonContainer = styled.div`
   display: flex;
@@ -39,7 +39,7 @@ const ButtonContainer = styled.div`
   padding: 0 20px;
   justify-content: space-between;
   width: 100%;
-`
+`;
 
 const NextButton = styled.button`
   background-color: #efefef;
@@ -50,7 +50,7 @@ const NextButton = styled.button`
   height: 50px;
   cursor: pointer;
   font-weight: bold;
-`
+`;
 
 const PreviousButton = styled.button`
   background: ${p => (p.Mobilepage > 1 ? '#efefef' : 'none')};
@@ -60,18 +60,18 @@ const PreviousButton = styled.button`
   cursor: pointer;
   font-weight: bold;
   width: 100px;
-`
+`;
 
 const SubscribeContainer = styled.div`
   margin: 40px 0;
   width: 100%;
-`
+`;
 
 const ShowMoreContainer = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
-`
+`;
 
 const ShowMore = styled.div`
   cursor: pointer;
@@ -95,11 +95,11 @@ const ShowMore = styled.div`
       width: 100%;
     }
   }
-`
+`;
 
 const SpinnerContainer = styled.div`
   margin-top: 20px;
-`
+`;
 
 const PostItemT = (item, index) => {
   if (index === 5) {
@@ -110,13 +110,13 @@ const PostItemT = (item, index) => {
           <Subscribe />
         </SubscribeContainer>
       </React.Fragment>
-    )
+    );
   }
-  return <PostItem data={item} />
-}
+  return <PostItem data={item} />;
+};
 
 const PostItems = ({ items }) =>
-  items.map((item, index) => PostItemT(item, index))
+  items.map((item, index) => PostItemT(item, index));
 
 const ResentPosts = ({
   width,
@@ -129,20 +129,20 @@ const ResentPosts = ({
   perPage,
   loading,
 }) => {
-  const countValue = count && count.count && count.count && count.count.count
-  const posts = data && data.Posts
-  let indexKey = 0
+  const countValue = count && count.count && count.count && count.count.count;
+  const posts = data && data.Posts;
+  let indexKey = 0;
   return (
     <ResentPostsContainer>
       {width > 550 && (
         <PostsContainer>
           {data.loading
             ? [...Array(9)].map(i => (
-                <CardLoader key={`${indexKey++}-resent-posts`} />
-              ))
+              <CardLoader key={`${indexKey++}-resent-posts`} />
+            ))
             : posts && (
-                <PostItems items={posts} key={`${indexKey++}-resent-post`} />
-              )}
+              <PostItems items={posts} key={`${indexKey++}-resent-post`} />
+            )}
         </PostsContainer>
       )}
       {width <= 550 && (
@@ -174,7 +174,7 @@ const ResentPosts = ({
           </ShowMoreContainer>
         ))}
     </ResentPostsContainer>
-  )
-}
+  );
+};
 
-export default resentPostsEnhancer(ResentPosts)
+export default resentPostsEnhancer(ResentPosts);

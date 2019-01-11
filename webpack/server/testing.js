@@ -1,10 +1,10 @@
 /* eslint import/no-extraneous-dependencies: 0 */
-const path = require('path')
-const webpackNodeExternals = require('webpack-node-externals')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const loaders = require('../loaders')
+const path = require('path');
+const webpackNodeExternals = require('webpack-node-externals');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const loaders = require('../loaders');
 
-process.env.NODE_ENV = process.env.NODE_ENV || 'development'
+process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
 module.exports = {
   name: 'server',
@@ -31,4 +31,4 @@ module.exports = {
     }),
   ],
   externals: [webpackNodeExternals()],
-}
+};

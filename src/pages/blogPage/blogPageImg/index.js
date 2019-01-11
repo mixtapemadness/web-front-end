@@ -1,1 +1,1 @@
-export { default } from './BlogPageImg'
+export { default } from './BlogPageImg';

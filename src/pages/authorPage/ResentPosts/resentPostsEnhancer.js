@@ -9,11 +9,11 @@ import {
   withHandlers,
   lifecycle,
   branch,
-} from 'recompose'
-import { withRouter } from 'react-router-dom'
-import getPostsByAuthorId from 'graphql/getPostsByAuthorId.graphql'
-import { loadDataAsync, withCount } from 'hocs'
-import window from 'global/window'
+} from 'recompose';
+import { withRouter } from 'react-router-dom';
+import getPostsByAuthorId from 'graphql/getPostsByAuthorId.graphql';
+import { loadDataAsync, withCount } from 'hocs';
+import window from 'global/window';
 
 export default compose(
   withStateHandlers(
@@ -39,16 +39,16 @@ export default compose(
   ),
   lifecycle({
     componentDidMount() {
-      window.addEventListener('resize', this.props.updateWidth)
-      window.scrollTo(0, 0)
+      window.addEventListener('resize', this.props.updateWidth);
+      window.scrollTo(0, 0);
     },
     componentDidUpdate(prevProps, prevState) {
       if (prevProps.page === this.props.page) {
-        window.scrollTo(0, 0)
+        window.scrollTo(0, 0);
       }
     },
     componentWillUnmount() {
-      window.removeEventListener('resize', this.props.updateWidth)
+      window.removeEventListener('resize', this.props.updateWidth);
     },
   }),
   withRouter,
@@ -67,7 +67,7 @@ export default compose(
   }),
   withHandlers({
     handleLoadMore: props => () => {
-      props.handleSetPage()
+      props.handleSetPage();
       props.data.fetchMore({
         variables: {
           page: props.page + 1,
@@ -76,9 +76,9 @@ export default compose(
           ...previousResult,
           Posts: [...previousResult.Posts, ...fetchMoreResult.Posts],
         }),
-      })
+      });
     },
   }),
 
   branch(({ id }) => (id ? true : false), withCount),
-)
+);

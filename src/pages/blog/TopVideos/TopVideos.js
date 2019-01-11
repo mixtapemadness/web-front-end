@@ -2,12 +2,12 @@
 /* eslint no-unused-vars: 0 */
 /* eslint no-plusplus: 0 */
 
-import React from 'react'
-import styled from 'styled-components'
-import TopVideo from 'components/topVideo'
-import { Link } from 'react-router-dom'
-import { TopVideoLoader } from 'components/loaders'
-import topVideosEnhancer from './topVideosEnhancer'
+import React from 'react';
+import styled from 'styled-components';
+import TopVideo from 'components/topVideo';
+import { Link } from 'react-router-dom';
+import { TopVideoLoader } from 'components/loaders';
+import topVideosEnhancer from './topVideosEnhancer';
 
 const TopVideosContainer = styled.div`
   flex: 1;
@@ -18,23 +18,23 @@ const TopVideosContainer = styled.div`
   @media only screen and (max-width: 1130px) {
     justify-content: normal;
   }
-`
+`;
 
 const Header = styled.h1`
   width: 100%;
   color: #111;
   margin: 0;
-`
+`;
 
 const MoreVideos = styled(Link)`
   width: 100%;
   color: #111;
   cursor: pointer;
   font-weight: 800;
-`
+`;
 
 const TopVideos = ({ data }) => {
-  let index = 0
+  let index = 0;
   return (
     <TopVideosContainer>
       <Header>Recent Music Videos</Header>
@@ -45,7 +45,7 @@ const TopVideos = ({ data }) => {
         data.Posts &&
         data.Posts.map(item => <TopVideo key={item.id} data={item} />)}
     </TopVideosContainer>
-  )
-}
+  );
+};
 
-export default topVideosEnhancer(TopVideos)
+export default topVideosEnhancer(TopVideos);

@@ -1,14 +1,14 @@
 /* eslint array-callback-return: 0 */
 
-import { split } from 'apollo-link'
-import { createHttpLink } from 'apollo-link-http'
-import { setContext } from 'apollo-link-context'
-import { createUploadLink } from 'apollo-upload-client'
-import { getMainDefinition } from 'apollo-utilities'
-import { onError } from 'apollo-link-error'
+import { split } from 'apollo-link';
+import { createHttpLink } from 'apollo-link-http';
+import { setContext } from 'apollo-link-context';
+import { createUploadLink } from 'apollo-upload-client';
+import { getMainDefinition } from 'apollo-utilities';
+import { onError } from 'apollo-link-error';
 
-import config from 'config'
-import { getToken, clearToken } from '../services/auth'
+import config from 'config';
+import { getToken, clearToken } from '../services/auth';
 
 export const errorLink = onError(
   ({ operation, graphQLErrors, networkError }) => {
@@ -19,49 +19,49 @@ export const errorLink = onError(
     if (graphQLErrors) {
       graphQLErrors.map(({ message, locations, path }) => {
         if (message === 'User not authorized') {
-          clearToken()
+          clearToken();
         }
         console.log(
           `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`,
-        )
-      })
+        );
+      });
     }
 
     if (networkError) {
-      console.log(`[Network error]: ${networkError}`)
+      console.log(`[Network error]: ${networkError}`);
       if (networkError.statusCode === 401) {
-        clearToken()
+        clearToken();
       }
     }
   },
-)
+);
 
 export const httpLink = createHttpLink({
   uri: config.apiGraphqlUrl,
   // fetch,
-})
+});
 
 const authLink = setContext((_, { headers }) => ({
   headers: {
     ...headers,
     authorization: getToken() || '',
   },
-}))
+}));
 
-export const httpLinkWithAuth = authLink.concat(httpLink)
+export const httpLinkWithAuth = authLink.concat(httpLink);
 
 const uploadLink = createUploadLink({
   uri: config.apiGraphqlUrl,
   // fetch,
-})
+});
 
-export const uploadLinkWithAuth = authLink.concat(uploadLink)
+export const uploadLinkWithAuth = authLink.concat(uploadLink);
 
 export const terminatingLink = split(
   ({ query }) => {
-    const { name, operation } = getMainDefinition(query)
-    return name.value === 'upload' && operation === 'mutation'
+    const { name, operation } = getMainDefinition(query);
+    return name.value === 'upload' && operation === 'mutation';
   },
   uploadLinkWithAuth,
   httpLinkWithAuth,
-)
+);

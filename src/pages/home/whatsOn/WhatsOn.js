@@ -3,35 +3,35 @@
 /* eslint arrow-body-style: 0 */
 /* eslint no-unused-vars: 0 */
 
-import React from 'react'
-import styled from 'styled-components'
-import { Link } from 'react-router-dom'
-import WhatsOnComponent from 'components/whatsOnComponent'
-import SliderComponent from 'components/slider'
-import { CardLoader } from 'components/loaders'
-import whatsOnEnhancer from './whatsOnEnhancer'
+import React from 'react';
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import WhatsOnComponent from 'components/whatsOnComponent';
+import SliderComponent from 'components/slider';
+import { CardLoader } from 'components/loaders';
+import whatsOnEnhancer from './whatsOnEnhancer';
 
 const Container = styled.div`
   width: 100%;
   margin: 40px auto;
-`
+`;
 
 const HeaderContainer = styled.div`
   display: flex;
   flex-direction: column;
   text-align: center;
   ${p => p.mb && `margin-bottom: ${p.mb}px`};
-`
+`;
 
 const SectionHeader = styled.span`
   font-weight: 800;
   font-size: 38px;
-`
+`;
 
 const SectionSubHeader = styled.span`
   font-weight: 800;
   font-size: 18px;
-`
+`;
 
 const WhatsOnItemsContainer = styled.div`
   display: flex;
@@ -41,7 +41,7 @@ const WhatsOnItemsContainer = styled.div`
     align-items: center;
     justify-content: center;
   }
-`
+`;
 
 const settings = {
   // dots: false,
@@ -62,10 +62,10 @@ const settings = {
       },
     },
   ],
-}
+};
 
 const WhatsOn = ({ width, data }) => {
-  const Posts = data && data.Posts && data.Posts
+  const Posts = data && data.Posts && data.Posts;
   // const posts = data && data.Posts && data.Posts
   return (
     <Container>
@@ -100,7 +100,7 @@ const WhatsOn = ({ width, data }) => {
         ))}
       </FlexDiv> */}
     </Container>
-  )
-}
+  );
+};
 
-export default whatsOnEnhancer(WhatsOn)
+export default whatsOnEnhancer(WhatsOn);

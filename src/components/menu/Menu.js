@@ -1,12 +1,12 @@
 /* eslint operator-linebreak: 0 */
 /* eslint react/jsx-curly-brace-presence: 0 */
 
-import React from 'react'
-import styled from 'styled-components'
+import React from 'react';
+import styled from 'styled-components';
 
-import MenuItem from 'components/menuItem'
-import { Link } from 'react-router-dom'
-import menuEnhancer from './menuEnhancer'
+import MenuItem from 'components/menuItem';
+import { Link } from 'react-router-dom';
+import menuEnhancer from './menuEnhancer';
 
 // import Musician from 'resources/assets/img/musician1.png'
 // import Musician1 from 'resources/assets/img/2pac.jpg'
@@ -37,12 +37,12 @@ const Container = styled.div`
     /* top: 80px; */
     border-top: 0;
   }
-`
+`;
 
 const ContentContainer = styled.div`
   max-width: 1200px;
   margin: 0 auto;
-`
+`;
 
 // const Line = styled.div`
 //   height: 3px;
@@ -58,7 +58,7 @@ const ListContainer = styled.div`
   @media only screen and (max-width: 1050px) {
     justify-content: center;
   }
-`
+`;
 
 const List = styled.ul`
   font-size: 29.5px;
@@ -82,7 +82,7 @@ const List = styled.ul`
     margin-bottom: 20px;
     text-align: center;
   }
-`
+`;
 
 const ItemContainer = styled.div`
   width: 100%;
@@ -92,7 +92,7 @@ const ItemContainer = styled.div`
     flex-direction: column;
     align-items: center;
   }
-`
+`;
 
 const Divider = styled.div`
   width: 1px;
@@ -102,7 +102,7 @@ const Divider = styled.div`
     height: 1px;
     width: 100%;
   }
-`
+`;
 
 const FlexDiv = styled.div`
   display: flex;
@@ -112,7 +112,7 @@ const FlexDiv = styled.div`
     flex-direction: column;
     align-items: center;
   }
-`
+`;
 
 const Title = styled.div`
   font-size: 29.5px;
@@ -124,10 +124,10 @@ const Title = styled.div`
     text-align: center;
     margin: 20px 0;
   }
-`
+`;
 
 const Menu = ({ data, toggleMenu }) => {
-  const Posts = data && data.Posts && data.Posts
+  const Posts = data && data.Posts && data.Posts;
   return (
     <Container>
       <ContentContainer>
@@ -179,6 +179,6 @@ const Menu = ({ data, toggleMenu }) => {
         {/* <Footer menuOpened /> */}
       </ContentContainer>
     </Container>
-  )
-}
-export default menuEnhancer(Menu)
+  );
+};
+export default menuEnhancer(Menu);

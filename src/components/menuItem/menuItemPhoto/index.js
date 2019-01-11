@@ -1,1 +1,1 @@
-export { default } from './menuItemPhoto'
+export { default } from './menuItemPhoto';

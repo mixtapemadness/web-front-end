@@ -1,5 +1,5 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from 'react';
+import styled from 'styled-components';
 
 const FormContainer = styled.div`
   color: #ffffff;
@@ -10,11 +10,11 @@ const FormContainer = styled.div`
   @media only screen and (max-width: 925px) {
     align-items: center;
   }
-`
+`;
 const Title = styled.span`
   font-size: 26.5px;
   letter-spacing: 1.6px;
-`
+`;
 const Input = styled.input`
   color: #ffffff;
   font-size: 15.5px;
@@ -49,7 +49,7 @@ const Input = styled.input`
     font-size: 15.5px;
     letter-spacing: 0.9px;
   }
-`
+`;
 const Button = styled.button`
   border: 2px solid #ffffff;
   background: transparent;
@@ -61,7 +61,7 @@ const Button = styled.button`
   outline: none;
   cursor: pointer;
   font-weight: 600;
-`
+`;
 
 const LogIn = () => (
   <FormContainer>
@@ -70,6 +70,6 @@ const LogIn = () => (
     <Input placeholder="Password" type="password" mt={17} />
     <Button>Log in</Button>
   </FormContainer>
-)
+);
 
-export default LogIn
+export default LogIn;

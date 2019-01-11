@@ -1,9 +1,9 @@
 /* eslint object-curly-newline: 0 */
 
-import { compose, withStateHandlers, lifecycle, withHandlers } from 'recompose'
-import { mutation } from 'hocs'
-import subscribeMutation from 'graphql/subscribe.graphql'
-import window from 'global/window'
+import { compose, withStateHandlers, lifecycle, withHandlers } from 'recompose';
+import { mutation } from 'hocs';
+import subscribeMutation from 'graphql/subscribe.graphql';
+import window from 'global/window';
 
 export default compose(
   mutation(subscribeMutation),
@@ -21,10 +21,10 @@ export default compose(
   ),
   lifecycle({
     componentDidMount() {
-      window.addEventListener('resize', this.props.updateWidth)
+      window.addEventListener('resize', this.props.updateWidth);
     },
     componentWillUnmount() {
-      window.removeEventListener('resize', this.props.updateWidth)
+      window.removeEventListener('resize', this.props.updateWidth);
     },
   }),
 
@@ -35,10 +35,10 @@ export default compose(
       email,
     }) => async () => {
       // event.preventDefault()
-      const res = await subscribeToMailchimp({ email_address: email })
+      const res = await subscribeToMailchimp({ email_address: email });
       // const res = { email_address: email }
 
-      handleRes(res)
+      handleRes(res);
     },
   }),
-)
+);

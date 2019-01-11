@@ -1,15 +1,15 @@
 /* eslint react/jsx-one-expression-per-line: 0 */
 
-import React from 'react'
-import styled from 'styled-components'
-import { Link } from 'react-router-dom'
+import React from 'react';
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const FilterContainer = styled.div`
   width: 100%;
   display: flex;
   border-bottom: 2px solid #f5f5f5;
   flex-wrap: wrap;
-`
+`;
 
 const FilterItem = styled(Link)`
   flex: 1;
@@ -27,7 +27,7 @@ const FilterItem = styled(Link)`
   @media only screen and (max-width: 850px) {
     font-size: 20px;
   }
-`
+`;
 
 export default ({ match }) => (
   <FilterContainer>
@@ -69,4 +69,4 @@ export default ({ match }) => (
       Interviews
     </FilterItem>
   </FilterContainer>
-)
+);

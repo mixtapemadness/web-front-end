@@ -1,10 +1,10 @@
 /* eslint no-unneeded-ternary: 0 */
 
-import { compose, withStateHandlers, lifecycle } from 'recompose'
-import { withRouter } from 'react-router-dom'
-import getMediaById from 'graphql/getMediaById.graphql'
-import { loadDataAsync } from 'hocs'
-import window from 'global/window'
+import { compose, withStateHandlers, lifecycle } from 'recompose';
+import { withRouter } from 'react-router-dom';
+import getMediaById from 'graphql/getMediaById.graphql';
+import { loadDataAsync } from 'hocs';
+import window from 'global/window';
 
 export default compose(
   loadDataAsync({
@@ -28,10 +28,10 @@ export default compose(
   ),
   lifecycle({
     componentDidMount() {
-      window.addEventListener('resize', this.props.updateWidth)
+      window.addEventListener('resize', this.props.updateWidth);
     },
     componentWillUnmount() {
-      window.removeEventListener('resize', this.props.updateWidth)
+      window.removeEventListener('resize', this.props.updateWidth);
     },
   }),
-)
+);

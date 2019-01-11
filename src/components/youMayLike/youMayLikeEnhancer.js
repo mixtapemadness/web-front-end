@@ -5,14 +5,14 @@ import {
   lifecycle,
   branch,
   withProps,
-} from 'recompose'
-import { withRouter } from 'react-router-dom'
-import window from 'global/window'
-import { REFETCH_USER } from '../../eventTypes'
-import { loadDataAsync, refetchOn } from '../../hocs'
-import getEventEmitter from '../../eventEmitter'
-import getPosts from '../../graphql/getPosts.graphql'
-import getPostsByTags from '../../graphql/getPostsByTags.graphql'
+} from 'recompose';
+import { withRouter } from 'react-router-dom';
+import window from 'global/window';
+import { REFETCH_USER } from '../../eventTypes';
+import { loadDataAsync, refetchOn } from '../../hocs';
+import getEventEmitter from '../../eventEmitter';
+import getPosts from '../../graphql/getPosts.graphql';
+import getPostsByTags from '../../graphql/getPostsByTags.graphql';
 
 export default compose(
   withRouter,
@@ -51,28 +51,28 @@ export default compose(
     {
       updateWidth: () => () => ({ width: window.innerWidth }),
       handleRefetch: () => () => {
-        getEventEmitter.emit(REFETCH_USER)
+        getEventEmitter.emit(REFETCH_USER);
       },
     },
   ),
   lifecycle({
     componentDidMount() {
-      window.addEventListener('resize', this.props.updateWidth)
+      window.addEventListener('resize', this.props.updateWidth);
     },
     componentWillUnmount() {
-      window.removeEventListener('resize', this.props.updateWidth)
+      window.removeEventListener('resize', this.props.updateWidth);
     },
   }),
   withProps(props => {
     const postsFromTags =
       props.postsWithTags &&
       props.postsWithTags.Posts &&
-      props.postsWithTags.Posts
+      props.postsWithTags.Posts;
     const postsFromTagsLoading =
       props.postsWithTags &&
       props.postsWithTags.loading &&
-      props.postsWithTags.loading
+      props.postsWithTags.loading;
 
-    return { postsFromTags, postsFromTagsLoading }
+    return { postsFromTags, postsFromTagsLoading };
   }),
-)
+);

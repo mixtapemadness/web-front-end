@@ -1,14 +1,14 @@
 /* eslint react/jsx-one-expression-per-line: 0 */
 
-import React from 'react'
-import styled from 'styled-components'
-import { Link } from 'react-router-dom'
+import React from 'react';
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const FilterContainer = styled.div`
   width: 100%;
   display: flex;
   border-bottom: 2px solid #f5f5f5;
-`
+`;
 
 const FilterItem = styled(Link)`
   flex: 1;
@@ -23,7 +23,7 @@ const FilterItem = styled(Link)`
   &:hover {
     color: #ff9600;
   }
-`
+`;
 
 export default () => (
   <FilterContainer>
@@ -35,4 +35,4 @@ export default () => (
     <FilterItem to="/music-profile/singles">Singles</FilterItem>
     <FilterItem to="/music-profile/profile">Profile</FilterItem>
   </FilterContainer>
-)
+);

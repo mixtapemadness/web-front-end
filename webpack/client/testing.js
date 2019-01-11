@@ -1,16 +1,16 @@
 /* eslint import/no-extraneous-dependencies: 0 */
-const path = require('path')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const loaders = require('../loaders')
+const path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const loaders = require('../loaders');
 
-process.env.NODE_ENV = process.env.NODE_ENV || 'development'
+process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
 const plugins = [
   new MiniCssExtractPlugin({
     filename: '[name].css',
   }),
-]
+];
 
 if (!process.env.SSR_MODE) {
   plugins.push(
@@ -21,7 +21,7 @@ if (!process.env.SSR_MODE) {
         js: ['client/bundle.js'],
       },
     }),
-  )
+  );
 }
 
 module.exports = {
@@ -42,4 +42,4 @@ module.exports = {
     rules: loaders,
   },
   plugins,
-}
+};

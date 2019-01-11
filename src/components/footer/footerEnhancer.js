@@ -1,5 +1,5 @@
-import { compose, withStateHandlers, lifecycle } from 'recompose'
-import window from 'global/window'
+import { compose, withStateHandlers, lifecycle } from 'recompose';
+import window from 'global/window';
 
 export default compose(
   withStateHandlers(
@@ -12,10 +12,10 @@ export default compose(
   ),
   lifecycle({
     componentDidMount() {
-      window.addEventListener('resize', this.props.updateWidth)
+      window.addEventListener('resize', this.props.updateWidth);
     },
     componentWillUnmount() {
-      window.removeEventListener('resize', this.props.updateWidth)
+      window.removeEventListener('resize', this.props.updateWidth);
     },
   }),
-)
+);

@@ -9,10 +9,10 @@ import {
   lifecycle,
   branch,
   withProps,
-} from 'recompose'
-import window from 'global/window'
-import { loadDataAsync, withMedia, withCategory } from 'hocs'
-import getMediaById from 'graphql/getMediaById.graphql'
+} from 'recompose';
+import window from 'global/window';
+import { loadDataAsync, withMedia, withCategory } from 'hocs';
+import getMediaById from 'graphql/getMediaById.graphql';
 
 export default compose(
   withStateHandlers(
@@ -25,10 +25,10 @@ export default compose(
   ),
   lifecycle({
     componentDidMount() {
-      window.addEventListener('resize', this.props.updateWidth)
+      window.addEventListener('resize', this.props.updateWidth);
     },
     componentWillUnmount() {
-      window.removeEventListener('resize', this.props.updateWidth)
+      window.removeEventListener('resize', this.props.updateWidth);
     },
   }),
   branch(
@@ -36,4 +36,4 @@ export default compose(
     withCategory,
   ),
   branch(({ data }) => (data ? true : false), withMedia),
-)
+);

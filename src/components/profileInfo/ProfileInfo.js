@@ -1,12 +1,12 @@
 /* eslint react/jsx-one-expression-per-line: 0 */
 /* eslint no-unused-vars: 0 */
 
-import React from 'react'
+import React from 'react';
 
-import styled from 'styled-components'
-import TwitterIcon from 'resources/assets/svg/twitter-logo.svg'
-import InstagramIcon from 'resources/assets/svg/instagram-logo.svg'
-import profileInfoEnhancer from './profileInfoEnhancer'
+import styled from 'styled-components';
+import TwitterIcon from 'resources/assets/svg/twitter-logo.svg';
+import InstagramIcon from 'resources/assets/svg/instagram-logo.svg';
+import profileInfoEnhancer from './profileInfoEnhancer';
 
 const ProfileContainer = styled.div`
   width: 100%;
@@ -19,7 +19,7 @@ const ProfileContainer = styled.div`
     width: 90%;
     margin: 30px auto 0px auto;
   }
-`
+`;
 
 const ProfileImg = styled.div`
   flex: 1;
@@ -27,7 +27,7 @@ const ProfileImg = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-`
+`;
 
 const Image = styled.div`
   height: 152px;
@@ -36,7 +36,7 @@ const Image = styled.div`
   background-position: ${p => (p.fromTeam ? 'center' : '66%')};
   background-image: url(${props => props.src});
   background-size: cover;
-`
+`;
 
 const EditProfile = styled.div`
   font-weight: 800;
@@ -45,7 +45,7 @@ const EditProfile = styled.div`
   letter-spacing: 0.7px;
   font-size: 12px;
   color: #000000;
-`
+`;
 
 const ProfileDesc = styled.div`
   flex: 3;
@@ -56,7 +56,7 @@ const ProfileDesc = styled.div`
     align-items: center;
     text-align: center;
   }
-`
+`;
 
 const ProfileDescTitle = styled.div`
   display: flex;
@@ -65,7 +65,7 @@ const ProfileDescTitle = styled.div`
   @media only screen and (max-width: 1024px) {
     display: none;
   }
-`
+`;
 
 const MobileProfileDescTitle = styled.div`
   display: none;
@@ -73,31 +73,31 @@ const MobileProfileDescTitle = styled.div`
     display: flex;
     flex-direction: column;
   }
-`
+`;
 
 const MobileProfileBottom = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-`
+`;
 
 const ProfileInfo = styled.div`
   display: flex;
   flex-direction: column;
-`
+`;
 
 const ProfileDescName = styled.h1`
   letter-spacing: 1.4px;
   font-size: 22.5px;
   margin: 0;
-`
+`;
 
 const ProfileDescOcupation = styled.h3`
   margin: 3px 0 0 0;
   font-weight: 800;
   letter-spacing: 0.9px;
   font-size: 15px;
-`
+`;
 
 const ProfileDescIcons = styled.div`
   @media only screen and (max-width: 1024px) {
@@ -105,13 +105,13 @@ const ProfileDescIcons = styled.div`
     text-align: center;
     display: none;
   }
-`
+`;
 
 const ProfileDescIcon = styled.img`
   width: 20px;
   margin-left: 10px;
   ${props => props.TwitterIcon && 'height: 17px;'};
-`
+`;
 
 const ProfileDescContent = styled.div`
   margin-top: 15px;
@@ -119,7 +119,7 @@ const ProfileDescContent = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: space-between;
-`
+`;
 
 const ProfileDescTxt = styled.span`
   color: #666666;
@@ -129,7 +129,7 @@ const ProfileDescTxt = styled.span`
   max-height: ${props => (props.showAuthorBio ? '10ch' : '2ch')};
   overflow: hidden;
   transition: 0.3s;
-`
+`;
 
 const ShowMore = styled.div`
   font-size: 12px;
@@ -137,12 +137,12 @@ const ShowMore = styled.div`
   color: #949494;
   cursor: pointer;
   margin-top: 3px;
-`
+`;
 
 const ProfileInformation = ({ data, showAuthorBio, handleShowAuthorBio }) => {
-  const img = data && data.avatar2
-  const name = data && data.name
-  const description = data && data.description
+  const img = data && data.avatar2;
+  const name = data && data.name;
+  const description = data && data.description;
 
   return (
     <ProfileContainer>
@@ -184,7 +184,7 @@ const ProfileInformation = ({ data, showAuthorBio, handleShowAuthorBio }) => {
         </ProfileDescContent>
       </ProfileDesc>
     </ProfileContainer>
-  )
-}
+  );
+};
 
-export default profileInfoEnhancer(ProfileInformation)
+export default profileInfoEnhancer(ProfileInformation);

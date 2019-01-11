@@ -1,1 +1,1 @@
-export { default } from './TermsAndConditions'
+export { default } from './TermsAndConditions';

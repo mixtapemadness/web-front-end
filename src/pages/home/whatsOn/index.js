@@ -1,1 +1,1 @@
-export { default } from './WhatsOn'
+export { default } from './WhatsOn';

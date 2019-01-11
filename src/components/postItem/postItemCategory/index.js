@@ -1,1 +1,1 @@
-export { default } from './PostItemCategory'
+export { default } from './PostItemCategory';

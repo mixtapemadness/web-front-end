@@ -1,6 +1,6 @@
 /* eslint react/no-unescaped-entities: 0 */
-import React from 'react'
-import styled from 'styled-components'
+import React from 'react';
+import styled from 'styled-components';
 
 const Container = styled.div`
   width: 1200px;
@@ -12,28 +12,28 @@ const Container = styled.div`
   @media only screen and (max-width: 1020px) {
     width: 80%;
   }
-`
+`;
 
 const Heading = styled.h1`
   font-weight: 800;
   margin-bottom: 20px;
-`
+`;
 
 const Headingh2 = styled.h2`
   font-weight: 800;
   margin-top: 22px;
-`
+`;
 
 const Headingh3 = styled.h3`
   font-weight: 800;
   margin-top: 10px;
   text-align: justify;
-`
+`;
 
 const Content = styled.p`
   font-weight: 400;
   text-align: justify;
-`
+`;
 
 const PrivacyAndPolicy = () => (
   <Container>
@@ -310,6 +310,6 @@ const PrivacyAndPolicy = () => (
     </Content>
     <Content> By email: admin@mixtapemadness.com</Content>
   </Container>
-)
+);
 
-export default PrivacyAndPolicy
+export default PrivacyAndPolicy;

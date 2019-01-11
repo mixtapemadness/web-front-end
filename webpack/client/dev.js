@@ -1,15 +1,15 @@
 /* eslint import/no-extraneous-dependencies: 0 */
-const path = require('path')
-const webpack = require('webpack')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const path = require('path');
+const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-const loaders = require('../loaders')
+const loaders = require('../loaders');
 
-const HOST = process.env.HOST || 'localhost'
-const PORT = process.env.PORT || '9000'
+const HOST = process.env.HOST || 'localhost';
+const PORT = process.env.PORT || '9000';
 
-process.env.NODE_ENV = process.env.NODE_ENV || 'development'
+process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
 module.exports = {
   name: 'client',
@@ -57,4 +57,4 @@ module.exports = {
       },
     }),
   ],
-}
+};

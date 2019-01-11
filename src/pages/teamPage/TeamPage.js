@@ -1,17 +1,17 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from 'react';
+import styled from 'styled-components';
 
-import ProfileInfo from 'components/profileInfo'
-import Image from 'resources/assets/img/mixtape-logo.png'
+import ProfileInfo from 'components/profileInfo';
+import Image from 'resources/assets/img/mixtape-logo.png';
 
 const Container = styled.div`
   max-width: 1200px;
   margin: auto;
   padding-top: 20px;
-`
+`;
 const ItemContainer = styled.div`
   margin-top: 20px;
-`
+`;
 
 const dummyData = [
   {
@@ -46,7 +46,7 @@ const dummyData = [
     description:
       'Jon Jones is a Content Creator for Mixtape Madness. With a strong background in journalism and Grime/UK Rap, he is able to create the best content for Mixtape Madness.',
   },
-]
+];
 
 const TeamPage = () => (
   <Container>
@@ -56,6 +56,6 @@ const TeamPage = () => (
       </ItemContainer>
     ))}
   </Container>
-)
+);
 
-export default TeamPage
+export default TeamPage;

@@ -1,19 +1,19 @@
 /* eslint operator-linebreak: 0 */
 /* eslint implicit-arrow-linebreak: 0 */
 
-import React from 'react'
-import styled from 'styled-components'
-import PostItem from 'components/postItem'
-import Subscribe from 'components/subscribe'
-import MobileSubscribe from 'components/mobileSubscribe'
+import React from 'react';
+import styled from 'styled-components';
+import PostItem from 'components/postItem';
+import Subscribe from 'components/subscribe';
+import MobileSubscribe from 'components/mobileSubscribe';
 
-import postsEnhancer from './postsEnhancer'
+import postsEnhancer from './postsEnhancer';
 
 const PostsContainer = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-`
+`;
 
 // const PostsContainer = styled.div`
 //   width: 100%;
@@ -28,7 +28,7 @@ const ButtonContainer = styled.div`
   margin: 40px 0;
   justify-content: space-between;
   width: 100%;
-`
+`;
 const NextButton = styled.button`
   background-color: #efefef;
   color: #000000;
@@ -38,7 +38,7 @@ const NextButton = styled.button`
   height: 50px;
   cursor: pointer;
   font-weight: bold;
-`
+`;
 const PreviousButton = styled.button`
   background: none;
   color: #ccc;
@@ -46,7 +46,7 @@ const PreviousButton = styled.button`
   cursor: pointer;
   font-weight: bold;
   width: 100px;
-`
+`;
 
 // const ItemContainer = styled.div`
 //   margin-top: 28px;
@@ -56,7 +56,7 @@ const PreviousButton = styled.button`
 const SubscribeContainer = styled.div`
   margin: 40px 0;
   max-width: 1100px;
-`
+`;
 
 const PostItemT = (item, index) => {
   if (index === 5) {
@@ -67,16 +67,16 @@ const PostItemT = (item, index) => {
           <Subscribe />
         </SubscribeContainer>
       </React.Fragment>
-    )
+    );
   }
-  return <PostItem key={index} data={item} />
-}
+  return <PostItem key={index} data={item} />;
+};
 
 const PostItems = ({ items }) =>
-  items.map((item, index) => <PostItemT item={item} index={index} />)
+  items.map((item, index) => <PostItemT item={item} index={index} />);
 
 const Posts = ({ width, data }) => {
-  const posts = data && data.posts
+  const posts = data && data.posts;
   return (
     <PostsContainer>
       {width > 450 && (
@@ -92,7 +92,7 @@ const Posts = ({ width, data }) => {
         </PostsContainer>
       )}
     </PostsContainer>
-  )
-}
+  );
+};
 
-export default postsEnhancer(Posts)
+export default postsEnhancer(Posts);

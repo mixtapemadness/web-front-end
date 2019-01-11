@@ -1,12 +1,12 @@
 /* eslint no-unused-vars: 0 */
 /* eslint indent: 0 */
 
-import { compose, withStateHandlers, lifecycle } from 'recompose'
-import { withRouter } from 'react-router-dom'
-import getPosts from 'graphql/getPosts.graphql'
-import getPostsByAuthorId from 'graphql/getPostsByAuthorId.graphql'
-import { loadDataAsync } from 'hocs'
-import window from 'global/window'
+import { compose, withStateHandlers, lifecycle } from 'recompose';
+import { withRouter } from 'react-router-dom';
+import getPosts from 'graphql/getPosts.graphql';
+import getPostsByAuthorId from 'graphql/getPostsByAuthorId.graphql';
+import { loadDataAsync } from 'hocs';
+import window from 'global/window';
 
 export default compose(
   withStateHandlers(
@@ -19,10 +19,10 @@ export default compose(
   ),
   lifecycle({
     componentDidMount() {
-      window.addEventListener('resize', this.props.updateWidth)
+      window.addEventListener('resize', this.props.updateWidth);
     },
     componentWillUnmount() {
-      window.removeEventListener('resize', this.props.updateWidth)
+      window.removeEventListener('resize', this.props.updateWidth);
     },
   }),
   withRouter,
@@ -39,4 +39,4 @@ export default compose(
       }),
     },
   }),
-)
+);

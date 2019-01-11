@@ -1,16 +1,16 @@
-import React from 'react'
-import styled from 'styled-components'
-import InstagramIcon from 'resources/assets/svgComponents/Instagram'
-import YoutubeIcon from 'resources/assets/svgComponents/Youtube'
-import FacebookIcon from 'resources/assets/svgComponents/Facebook'
-import TwitterIcon from 'resources/assets/svgComponents/Twitter'
-import SoundCloudIcon from 'resources/assets/svgComponents/SoundCloud'
-import { SOCIAL_MEDIA } from '../../constants'
+import React from 'react';
+import styled from 'styled-components';
+import InstagramIcon from 'resources/assets/svgComponents/Instagram';
+import YoutubeIcon from 'resources/assets/svgComponents/Youtube';
+import FacebookIcon from 'resources/assets/svgComponents/Facebook';
+import TwitterIcon from 'resources/assets/svgComponents/Twitter';
+import SoundCloudIcon from 'resources/assets/svgComponents/SoundCloud';
+import { SOCIAL_MEDIA } from '../../constants';
 
 const SocialIconsContainer = styled.div`
   display: flex;
   align-items: center;
-`
+`;
 
 const SocialIcon = styled.a`
   margin: 0 20px;
@@ -18,7 +18,7 @@ const SocialIcon = styled.a`
   :hover {
     color: #ff9600;
   }
-`
+`;
 const SocialIcons = ({ menuOpened }) => (
   <SocialIconsContainer>
     <SocialIcon target="_blank" href={SOCIAL_MEDIA.twitter}>
@@ -37,5 +37,5 @@ const SocialIcons = ({ menuOpened }) => (
       <YoutubeIcon height="22px" color={menuOpened ? '#ffffff' : '#666666'} />
     </SocialIcon>
   </SocialIconsContainer>
-)
-export default SocialIcons
+);
+export default SocialIcons;

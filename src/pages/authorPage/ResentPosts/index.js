@@ -1,1 +1,1 @@
-export { default } from './ResentPosts'
+export { default } from './ResentPosts';

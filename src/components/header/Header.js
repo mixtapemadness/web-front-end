@@ -1,23 +1,21 @@
 /* eslint implicit-arrow-linebreak: 0 */
 
-import React from 'react'
-import styled from 'styled-components'
-import { Link } from 'react-router-dom'
-import SocialIcons from 'components/SocialIcons'
-import SearchIcon from 'resources/assets/svgComponents/Search'
-import MixtapeLogo from 'resources/assets/img/mixtape-logo.png'
+import React from 'react';
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import SocialIcons from 'components/SocialIcons';
+import SearchIcon from 'resources/assets/svgComponents/Search';
+import MixtapeLogo from 'resources/assets/img/mixtape-logo.png';
 
-import headerEnhancer from './headerEnhancer'
-import { BRAND_COLOURS, RESPONSIVE_BREAKPOINTS, ROUTES } from '../../constants'
+import headerEnhancer from './headerEnhancer';
+import { BRAND_COLOURS, RESPONSIVE_BREAKPOINTS, ROUTES } from '../../constants';
 
 const HeaderContainer = styled.div`
-  width: 100%;
+  width: 100vw;
   height: 60px;
   background-color: #ffffff;
   font-size: 16px;
-  padding: 0 10px;
   position: fixed;
-
   top: 0;
   left: 0;
   z-index: 2;
@@ -26,7 +24,7 @@ const HeaderContainer = styled.div`
   @media only screen and (min-width: ${RESPONSIVE_BREAKPOINTS.tablet}) {
     height: 70px;
   }
-`
+`;
 
 const ContentContainer = styled.div`
   max-width: 1200px;
@@ -36,10 +34,7 @@ const ContentContainer = styled.div`
   align-items: center;
   justify-content: space-between;
   position: relative;
-  @media only screen and (max-width: 1050px) {
-    justify-content: center;
-  }
-`
+`;
 const LeftSide = styled.div`
   display: flex;
   align-items: center;
@@ -51,21 +46,24 @@ const LeftSide = styled.div`
     justify-content: space-between;
     padding: 0 20px;
   }
-`
+`;
 
 const RightSide = styled.div`
   display: flex;
   align-items: center;
   display: none;
 
-  @media only screen and (min-width: ${RESPONSIVE_BREAKPOINTS.tablet}) {
+  @media only screen and (min-width: ${RESPONSIVE_BREAKPOINTS.desktop}) {
     display: block;
   }
-`
+`;
 
 const NavBar = styled.nav`
-  display: flex;
-`
+  display: none;
+  @media only screen and (min-width: ${RESPONSIVE_BREAKPOINTS.desktop}) {
+    display: flex;
+  }
+`;
 const Ul = styled.ul`
   padding: 0;
   margin: 0;
@@ -78,7 +76,7 @@ const Ul = styled.ul`
   @media only screen and (max-width: 475px) {
     display: none;
   }
-`
+`;
 const Li = styled.li`
   font-weight: bold;
   display: flex;
@@ -89,20 +87,23 @@ const Li = styled.li`
   text-transform: capitalize;
   color: ${p => p.isActive && `${BRAND_COLOURS.orange}`};
   border-bottom: ${p => p.isActive && `2px solid ${BRAND_COLOURS.orange}`};
-`
+`;
 
 const Logo = styled.img`
   width: 60px;
   box-sizing: content-box;
-  margin: 0 12px 0 20px;
-`
+  margin: 0 20px;
+  @media only screen and (min-width: ${RESPONSIVE_BREAKPOINTS.desktop}) {
+    margin: 0 12px 0 20px;
+  }
+`;
 
 const Search = styled.div`
   width: 20px;
   cursor: pointer;
   display: flex;
   align-items: center;
-`
+`;
 
 const BurgerIcon = styled.div`
   width: 23px;
@@ -161,12 +162,12 @@ const BurgerIcon = styled.div`
     ${p => p.menuOpened && 'width: 0%'};
     ${p => p.menuOpened && 'left: 50%'};
   }
-`
+`;
 
 const Div = styled.div`
   display: flex;
   align-items: center;
-`
+`;
 
 const Header = ({
   // dotsMenu,
@@ -192,25 +193,24 @@ const Header = ({
         <NavBar>
           <Ul menuOpened={menuOpened}>
             {Object.keys(ROUTES.categories).map(i => (
-              <Li isActive={location.pathname === ROUTES.categories[i]}>
+              <Li
+                key={ROUTES.categories[i]}
+                isActive={location.pathname === ROUTES.categories[i]}
+              >
                 <Link to={ROUTES.categories[i]}>{i}</Link>
               </Li>
             ))}
           </Ul>
-          <Search onClick={() => toggleSearch()}>
-            <SearchIcon
-              width="20px"
-              color={menuOpened ? '#ffffff' : '#666666'}
-            />
-          </Search>
         </NavBar>
+        <Search onClick={() => toggleSearch()}>
+          <SearchIcon width="20px" color={menuOpened ? '#ffffff' : '#666666'} />
+        </Search>
       </LeftSide>
-
       <RightSide>
         <SocialIcons menuOpened={menuOpened} />
       </RightSide>
     </ContentContainer>
   </HeaderContainer>
-)
+);
 
-export default headerEnhancer(Header)
+export default headerEnhancer(Header);

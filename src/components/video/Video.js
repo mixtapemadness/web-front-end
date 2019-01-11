@@ -3,17 +3,17 @@
 /* eslint indent: 0 */
 /* eslint operator-linebreak: 0 */
 
-import React from 'react'
-import styled from 'styled-components'
-import { Link } from 'react-router-dom'
-import videoEnhancer from './videoEnhancer'
-import truncate from '../../helpers/textHelpers'
+import React from 'react';
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import videoEnhancer from './videoEnhancer';
+import truncate from '../../helpers/textHelpers';
 
 const Container = styled.div`
   margin: 7px;
   flex: 1;
   max-width: 386px;
-`
+`;
 
 const PhotoContainer = styled(Link)`
   display: block;
@@ -31,7 +31,7 @@ const PhotoContainer = styled(Link)`
     height: 300px;
     background-size: cover;
   }
-`
+`;
 
 const ContentContainer = styled.div`
   background-color: #eeeeef;
@@ -42,7 +42,7 @@ const ContentContainer = styled.div`
   flex-direction: column;
   justify-content: space-between;
   box-sizing: content-box;
-`
+`;
 
 const Icon = styled.img`
   display: block;
@@ -51,7 +51,7 @@ const Icon = styled.img`
   top: 50%;
   left: 50%;
   height: 30px;
-`
+`;
 
 const Dots = styled.img`
   display: block;
@@ -60,32 +60,21 @@ const Dots = styled.img`
   bottom: 10px;
   right: 10px;
   height: 22px;
-`
+`;
 
-const LeftSide = styled.div``
-
-const RightSide = styled.div`
+const LeftSide = styled.div`
   display: flex;
   flex-direction: column;
-`
-
-const FlexDiv = styled.div`
-  display: flex;
-  width: 100%;
-  ${p => p.jc && `justify-content: ${p.jc}`};
-  ${p => p.align && `align-items: ${p.align}`};
-  ${p => p.height && `height: ${p.height}`};
-`
-
-const Img = styled.img`
-  ${p => p.height && `height: ${p.height}px`};
-`
+  height: 100%;
+  justify-content: space-between;
+`;
 
 const Name = styled(Link)`
   font-weight: 600;
   font-size: 16px;
   margin-bottom: 16px;
-`
+  display: block;
+`;
 const Text = styled.span`
   color: #666666;
   word-break: break-word;
@@ -93,18 +82,18 @@ const Text = styled.span`
   line-height: 1.45;
   letter-spacing: 0.9px;
   margin-right: 10px;
-`
+`;
 
 const Views = styled.span`
   font-size: 12.5px;
   letter-spacing: 0.8px;
   color: #666666;
   margin-left: 7px;
-`
+`;
 
 const TagsContainer = styled.span`
   display: flex;
-`
+`;
 
 const Excerpt = styled.span`
   color: #666;
@@ -114,7 +103,7 @@ const Excerpt = styled.span`
   }
   overflow: hidden;
   font-size: 12px;
-`
+`;
 const WatchMore = styled(Link)`
   color: #ff9600;
   cursor: pointer;
@@ -122,13 +111,14 @@ const WatchMore = styled(Link)`
   font-size: 12px;
   margin-top: 10px;
   position: relative;
-`
+  display: block;
+`;
 
 const Video = ({ data, media, tags, category }) => {
-  const categoriesData = category && category.category && category.category
-  const tagsData = tags && tags.tags && tags.tags
+  const categoriesData = category && category.category && category.category;
+  const tagsData = tags && tags.tags && tags.tags;
   const Image =
-    media && media.img && media.img.featured_image && media.img.featured_image
+    media && media.img && media.img.featured_image && media.img.featured_image;
   // const CategoriesData = category && category.category && category.category
   return (
     <Container>
@@ -148,11 +138,6 @@ const Video = ({ data, media, tags, category }) => {
                 to={`/blog/${categoriesData[0].slug}/${data.slug}`}
               />
             )}
-          {
-            <Excerpt
-              dangerouslySetInnerHTML={{ __html: truncate(data.excerpt, 115) }}
-            />
-          }
           {categoriesData && (
             <WatchMore
               to={{
@@ -165,7 +150,7 @@ const Video = ({ data, media, tags, category }) => {
         </LeftSide>
       </ContentContainer>
     </Container>
-  )
-}
+  );
+};
 
-export default videoEnhancer(Video)
+export default videoEnhancer(Video);

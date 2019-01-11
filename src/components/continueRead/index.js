@@ -1,1 +1,1 @@
-export { default } from './continueRead'
+export { default } from './continueRead';

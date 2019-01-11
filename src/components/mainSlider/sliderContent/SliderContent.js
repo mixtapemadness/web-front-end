@@ -5,14 +5,14 @@
 /* eslint indent: 0 */
 /* eslint no-unused-vars: 0 */
 
-import React from 'react'
-import styled from 'styled-components'
-import { Link } from 'react-router-dom'
-import CardLoader from 'components/loaders'
-import ReactImageFallback from 'react-image-fallback'
-import mainSliderEnhancer from './sliderContentEnhancer'
-import placeholderImg from '../../../resources/assets/img/placeholderImg.jpg'
-import { RESPONSIVE_BREAKPOINTS } from '../../../constants'
+import React from 'react';
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import CardLoader from 'components/loaders';
+import ReactImageFallback from 'react-image-fallback';
+import mainSliderEnhancer from './sliderContentEnhancer';
+import placeholderImg from '../../../resources/assets/img/placeholderImg.jpg';
+import { RESPONSIVE_BREAKPOINTS } from '../../../constants';
 
 const SliderContent = styled.div`
   height: 400px;
@@ -30,7 +30,7 @@ const SliderContent = styled.div`
     height: 100%;
     position: absolute;
   }
-`
+`;
 
 const SliderWrapper = styled.span`
   position: absolute;
@@ -53,7 +53,7 @@ const SliderWrapper = styled.span`
     rgba(0, 0, 0, 0.65) 100%
   );
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#a6000000',GradientType=0 );
-`
+`;
 
 const Header = styled.span`
   font-size: 30px;
@@ -70,7 +70,7 @@ const Header = styled.span`
   @media only screen and (max-width: 450px) {
     font-size: 14px;
   }
-`
+`;
 
 const Span = styled.span`
   font-size: 70px;
@@ -88,7 +88,7 @@ const Span = styled.span`
   @media only screen and (max-width: 450px) {
     font-size: 16px;
   }
-`
+`;
 
 const LatestSingles = styled(Link)`
   letter-spacing: 0.9px;
@@ -104,12 +104,12 @@ const LatestSingles = styled(Link)`
   justify-content: center;
   align-items: center;
   position: relative;
-`
+`;
 
 const CategoryTitle = styled(Link)`
   font-size: 14px;
   color: #ffa019;
-`
+`;
 
 const FlexDiv = styled.div`
   width: 60%;
@@ -122,14 +122,14 @@ const FlexDiv = styled.div`
   display: flex;
   flex-direction: column;
   padding-bottom: 100px;
-`
+`;
 
 const MainSlider = ({ tags, media, category, data }) => {
-  const Image = media && media.img && media.img.full && media.img.full
-  const CategoriesData = category && category.category
-  const tagsData = tags && tags.tags && tags.tags
+  const Image = media && media.img && media.img.full && media.img.full;
+  const CategoriesData = category && category.category;
+  const tagsData = tags && tags.tags && tags.tags;
   const postLink =
-    CategoriesData && `blog/${CategoriesData[0].slug}/${data.slug}`
+    CategoriesData && `blog/${CategoriesData[0].slug}/${data.slug}`;
 
   if (data && CategoriesData) {
     return (
@@ -145,10 +145,10 @@ const MainSlider = ({ tags, media, category, data }) => {
           </FlexDiv>
         </SliderContent>
       </Link>
-    )
+    );
   }
 
-  return null
-}
+  return null;
+};
 
-export default mainSliderEnhancer(MainSlider)
+export default mainSliderEnhancer(MainSlider);

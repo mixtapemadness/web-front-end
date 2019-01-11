@@ -1,1 +1,1 @@
-export { default } from './YouMayLike'
+export { default } from './YouMayLike';

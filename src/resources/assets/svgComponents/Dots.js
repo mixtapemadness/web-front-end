@@ -1,6 +1,6 @@
 /* eslint space-infix-ops: 0 */
 
-import React from 'react'
+import React from 'react';
 
 export default ({ width, color, height = '20px' }) => (
   <svg
@@ -23,4 +23,4 @@ export default ({ width, color, height = '20px' }) => (
       </g>
     </g>
   </svg>
-)
+);

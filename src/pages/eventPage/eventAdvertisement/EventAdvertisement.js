@@ -1,7 +1,7 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from 'react';
+import styled from 'styled-components';
 
-import BackgroundImage from 'resources/assets/img/music.jpg'
+import BackgroundImage from 'resources/assets/img/music.jpg';
 
 const Container = styled.div`
   width: 100%;
@@ -15,23 +15,23 @@ const Container = styled.div`
   margin-top: 40px;
   justify-content: center;
   align-items: center;
-`
+`;
 const Span = styled.span`
   font-size: 37.5px;
   font-weight: 600;
   color: #ffffff;
-`
+`;
 const Mixtape = styled.span`
   font-size: 56.5px;
   letter-spacing: -1.7px;
   color: #ffffff;
   font-weight: 600;
-`
+`;
 const ContactUs = styled.span`
   font-size: 25px;
   color: #ffffff;
   font-weight: 600;
-`
+`;
 
 const EventAdvertisement = () => (
   <Container>
@@ -39,6 +39,6 @@ const EventAdvertisement = () => (
     <Mixtape>Mixtape Madness?</Mixtape>
     <ContactUs>Click To Contact Us And Find Out More</ContactUs>
   </Container>
-)
+);
 
-export default EventAdvertisement
+export default EventAdvertisement;

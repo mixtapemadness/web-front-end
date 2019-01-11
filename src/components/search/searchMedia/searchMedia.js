@@ -1,7 +1,7 @@
 /* eslint react/jsx-one-expression-per-line: 0 */
-import React from 'react'
-import styled from 'styled-components'
-import searchMediaEnhancer from './searchEnhancer'
+import React from 'react';
+import styled from 'styled-components';
+import searchMediaEnhancer from './searchEnhancer';
 
 const Container = styled.div`
   width: 50%;
@@ -10,11 +10,11 @@ const Container = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-`
+`;
 
 const searchMedia = ({ data }) => {
-  const image = data.img ? data.img.featured_image : ''
-  return <Container img={image} />
-}
+  const image = data.img ? data.img.featured_image : '';
+  return <Container img={image} />;
+};
 
-export default searchMediaEnhancer(searchMedia)
+export default searchMediaEnhancer(searchMedia);

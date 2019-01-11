@@ -1,8 +1,8 @@
-import { compose, withStateHandlers, lifecycle } from 'recompose'
-import { withRouter } from 'react-router-dom'
-import window from 'global/window'
-import { loadDataAsync } from '../../hocs'
-import getBlogPage from '../../graphql/getBlogPage.graphql'
+import { compose, withStateHandlers, lifecycle } from 'recompose';
+import { withRouter } from 'react-router-dom';
+import window from 'global/window';
+import { loadDataAsync } from '../../hocs';
+import getBlogPage from '../../graphql/getBlogPage.graphql';
 
 export default compose(
   loadDataAsync({
@@ -26,10 +26,10 @@ export default compose(
   ),
   lifecycle({
     componentDidMount() {
-      window.addEventListener('resize', this.props.updateWidth)
+      window.addEventListener('resize', this.props.updateWidth);
     },
     componentWillUnmount() {
-      window.removeEventListener('resize', this.props.updateWidth)
+      window.removeEventListener('resize', this.props.updateWidth);
     },
   }),
-)
+);

@@ -1,1 +1,1 @@
-export { default } from './MostPlayedSongs'
+export { default } from './MostPlayedSongs';

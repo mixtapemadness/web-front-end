@@ -4,12 +4,12 @@
 /* eslint indent: 0 */
 /* eslint operator-linebreak: 0 */
 
-import React from 'react'
-import styled from 'styled-components'
-import { Link } from 'react-router-dom'
-import ReactImageFallback from 'react-image-fallback'
-import whatsOnComponentEnhancer from './whatsOnComponentEnhancer'
-import placeholderImg from '../../resources/assets/img/placeholderImg.jpg'
+import React from 'react';
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import ReactImageFallback from 'react-image-fallback';
+import whatsOnComponentEnhancer from './whatsOnComponentEnhancer';
+import placeholderImg from '../../resources/assets/img/placeholderImg.jpg';
 
 const Container = styled.div`
   flex: 1 0 575px;
@@ -27,7 +27,7 @@ const Container = styled.div`
   /* @media only screen and (max-width: 450px) {
     flex: 0 1 300px;
   } */
-`
+`;
 
 // width: 100%;
 // height: 200px;
@@ -67,7 +67,7 @@ const PhotoContainer = styled(Link)`
     height: 100%;
     object-fit: cover;
   }
-`
+`;
 
 const ContentContainer = styled.div`
   background-color: #eeeeef;
@@ -80,7 +80,7 @@ const ContentContainer = styled.div`
   @media only screen and (max-width: 850px) {
     height: auto;
   }
-`
+`;
 
 const Icon = styled.img`
   display: block;
@@ -88,19 +88,19 @@ const Icon = styled.img`
   cursor: pointer;
   top: 50%;
   left: 50%;
-`
+`;
 
 const LeftSide = styled.div`
   width: calc(40% - 15px);
   display: flex;
   flex-direction: column;
-`
+`;
 
 const Category = styled(Link)`
   color: #ff9600;
   margin: 0 5px;
   cursor: pointer;
-`
+`;
 
 const CategoryContainer = styled.div`
   width: 100%;
@@ -110,11 +110,11 @@ const CategoryContainer = styled.div`
   font-weight: 800;
   font-size: 12px;
   margin-bottom: 10px;
-`
+`;
 
 const BottomContent = styled.span`
   display: flex;
-`
+`;
 
 const Name = styled(Link)`
   font-size: 18px;
@@ -128,25 +128,25 @@ const Name = styled(Link)`
   &:hover {
     text-decoration-color: #111111;
   }
-`
+`;
 const Line = styled.div`
   height: 100%;
   width: 1px;
   background-color: #e7e7e7;
   margin: 0px 15px;
-`
+`;
 const RightSide = styled.div`
   display: flex;
   flex-direction: column;
   width: calc(60% - 15px);
-`
+`;
 const Text = styled.span`
   height: 5ch;
   overflow: hidden;
   color: #666666;
   font-size: 14px;
   word-break: break-word;
-`
+`;
 const FlexDiv = styled.div`
   display: flex;
   ${p => p.mb && `margin-bottom: ${p.mb}px`};
@@ -155,17 +155,17 @@ const FlexDiv = styled.div`
   ${p => p.mr && `margin-right: ${p.mr}px`};
   ${p => p.jc && `justify-content: ${p.jc}`};
   ${p => p.width && `width: ${p.width}`};
-`
+`;
 
 const Span = styled.span`
   color: #666666;
   font-size: 13px;
   margin-left: 10px;
   margin-top: 2px;
-`
+`;
 const Img = styled.img`
   ${p => p.height && `height: ${p.height}px`};
-`
+`;
 
 // const Categories = ({ data }) => {
 //   let newData
@@ -186,8 +186,8 @@ const Img = styled.img`
 
 const WhatsOnComponent = ({ media, data, category }) => {
   const Image =
-    media && media.img && media.img.featured_image && media.img.featured_image
-  const CategoriesData = category && category.category && category.category
+    media && media.img && media.img.featured_image && media.img.featured_image;
+  const CategoriesData = category && category.category && category.category;
 
   return (
     <Container>
@@ -253,7 +253,7 @@ const WhatsOnComponent = ({ media, data, category }) => {
         </BottomContent>
       </ContentContainer>
     </Container>
-  )
-}
+  );
+};
 
-export default whatsOnComponentEnhancer(WhatsOnComponent)
+export default whatsOnComponentEnhancer(WhatsOnComponent);

@@ -1,8 +1,8 @@
 /* eslint operator-linebreak: 0 */
 
-import { compose } from 'recompose'
-import getMediaById from 'graphql/getMediaById.graphql'
-import loadDataAsync from './loadDataAsync'
+import { compose } from 'recompose';
+import getMediaById from 'graphql/getMediaById.graphql';
+import loadDataAsync from './loadDataAsync';
 
 const withMedia = compose(
   loadDataAsync({
@@ -20,6 +20,6 @@ const withMedia = compose(
       }),
     },
   }),
-)
+);
 
-export default withMedia
+export default withMedia;

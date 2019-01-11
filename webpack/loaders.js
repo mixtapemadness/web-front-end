@@ -1,5 +1,5 @@
 /* eslint import/no-extraneous-dependencies: 0 */
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 // const ExtractCssChunks = require('extract-css-chunks-webpack-plugin')
 
 // const devMode = process.env.NODE_ENV !== 'production'
@@ -86,4 +86,4 @@ module.exports = [
     exclude: /(node_modules|bower_components)/,
     loader: 'url-loader?limit=50000&mimetype=image/png',
   },
-]
+];

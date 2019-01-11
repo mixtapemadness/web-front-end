@@ -1,1 +1,1 @@
-export { default } from './TopVideos'
+export { default } from './TopVideos';

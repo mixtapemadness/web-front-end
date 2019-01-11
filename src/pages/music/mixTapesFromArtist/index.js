@@ -1,1 +1,1 @@
-export { default } from './MixTapesFromArtist'
+export { default } from './MixTapesFromArtist';

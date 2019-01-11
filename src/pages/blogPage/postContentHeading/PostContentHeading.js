@@ -10,14 +10,14 @@
 /* eslint react/jsx-boolean-value: 0 */
 /* eslint object-curly-newline: 0 */
 
-import React from 'react'
-import styled from 'styled-components'
-import { Link } from 'react-router-dom'
+import React from 'react';
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 // import window from 'global/window'
-import { dateStringify } from 'helpers/'
-import window from 'global/window'
-import config from '../../../../config'
-import blogPageImgEnhancer from './postContentHeadingEnhancer'
+import { dateStringify } from 'helpers/';
+import window from 'global/window';
+import config from '../../../../config';
+import blogPageImgEnhancer from './postContentHeadingEnhancer';
 
 const Container = styled.div`
   width: 100%;
@@ -25,7 +25,7 @@ const Container = styled.div`
   flex-direction: column;
   margin: 20px 0;
   text-align: center;
-`
+`;
 
 const ContainerBottom = styled.div`
   width: 100%;
@@ -33,43 +33,43 @@ const ContainerBottom = styled.div`
   padding-bottom: 10px;
   font-weight: bold;
   font-size: 14px;
-`
+`;
 const AuthorName = styled(Link)`
   color: #ff9600;
   margin: 0 5px;
   cursor: pointer;
-`
+`;
 
 const Links = styled.div`
   display: flex;
   width: 50px;
   justify-content: space-between;
-`
+`;
 
 const Credit = styled.div`
   color: #666666;
   font-weight: 800;
-`
+`;
 
 const Author = styled.div`
   display: flex;
-`
+`;
 
 const IconWrapper = styled.div`
   cursor: pointer;
-`
+`;
 
 const Date = styled.span`
   border-right: 1px solid #ccc;
   padding-right: 10px;
-`
+`;
 
 const PostContentHeading = ({ date, userName, location, userSlug, match }) => {
-  const { category, slug } = match.params
+  const { category, slug } = match.params;
   // const url = `${config.apiUrl}api/v1/blog/${
   //   match.params.category
   // }/${slug}/share`
-  const url = window.location ? window.location.href : ''
+  const url = window.location ? window.location.href : '';
   return (
     <Container>
       <ContainerBottom>
@@ -77,7 +77,7 @@ const PostContentHeading = ({ date, userName, location, userSlug, match }) => {
         <AuthorName to={`/author/${userSlug}`}>{userName}</AuthorName>
       </ContainerBottom>
     </Container>
-  )
-}
+  );
+};
 
-export default blogPageImgEnhancer(PostContentHeading)
+export default blogPageImgEnhancer(PostContentHeading);

@@ -1,1 +1,1 @@
-export { default } from './SimilarArtists'
+export { default } from './SimilarArtists';

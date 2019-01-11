@@ -10,15 +10,15 @@ import {
   lifecycle,
   branch,
   withProps,
-} from 'recompose'
-import { withRouter } from 'react-router-dom'
-import getPostBySlug from 'graphql/getPostBySlug.graphql'
-import { loadDataAsync, withAuthor, withMedia } from 'hocs'
-import getNextPost from 'graphql/getNextPost.graphql'
-import getPreviousPost from 'graphql/getPreviousPost.graphql'
-import getPrevPostByAuthorId from 'graphql/getPrevPostByAuthorId.graphql'
-import getNextPostByAuthorId from 'graphql/getNextPostByAuthorId.graphql'
-import window from 'global/window'
+} from 'recompose';
+import { withRouter } from 'react-router-dom';
+import getPostBySlug from 'graphql/getPostBySlug.graphql';
+import { loadDataAsync, withAuthor, withMedia } from 'hocs';
+import getNextPost from 'graphql/getNextPost.graphql';
+import getPreviousPost from 'graphql/getPreviousPost.graphql';
+import getPrevPostByAuthorId from 'graphql/getPrevPostByAuthorId.graphql';
+import getNextPostByAuthorId from 'graphql/getNextPostByAuthorId.graphql';
+import window from 'global/window';
 
 export default compose(
   withRouter,
@@ -180,20 +180,20 @@ export default compose(
 
   lifecycle({
     componentDidMount() {
-      window.scrollTo(0, 0)
-      window.addEventListener('resize', this.props.updateWidth)
+      window.scrollTo(0, 0);
+      window.addEventListener('resize', this.props.updateWidth);
     },
     componentWillReceiveProps(nextProps) {
       if (nextProps.location.pathname !== this.props.location.pathname) {
-        window.scrollTo(0, 0)
+        window.scrollTo(0, 0);
       }
     },
     componentWillUnmount() {
-      window.removeEventListener('resize', this.props.updateWidth)
+      window.removeEventListener('resize', this.props.updateWidth);
     },
   }),
   branch(
     ({ data }) => (data && data.Post && data.Post.author ? true : false),
     withAuthor,
   ),
-)
+);

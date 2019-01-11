@@ -3,17 +3,17 @@
 /* eslint react/jsx-closing-tag-location: 0 */
 /* eslint no-unused-vars: 0 */
 
-import React from 'react'
-import styled from 'styled-components'
-import { Link } from 'react-router-dom'
+import React from 'react';
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
-import MixtapeLogo from 'resources/assets/img/mixtape-logo.png'
+import MixtapeLogo from 'resources/assets/img/mixtape-logo.png';
 
-import SocialIcons from 'components/SocialIcons'
-import { CLOSE_MEGAMENU, SOCIAL_MEDIA } from 'constants'
-import footerEnhancer from './footerEnhancer'
-import MobileFooter from './MobileFooter'
-import eventEmitter from '../../eventEmitter'
+import SocialIcons from 'components/SocialIcons';
+import { CLOSE_MEGAMENU, SOCIAL_MEDIA } from 'constants';
+import footerEnhancer from './footerEnhancer';
+import MobileFooter from './MobileFooter';
+import eventEmitter from '../../eventEmitter';
 
 const FooterContainer = styled.footer`
   width: 100%;
@@ -22,31 +22,31 @@ const FooterContainer = styled.footer`
   right: 0;
   background-color: ${p => (p.menuOpened ? 'transparent' : '#efefef')};
   margin-top: 50px;
-`
+`;
 
 const ContentContainer = styled.div`
   padding: 40px 20px;
   max-width: 1200px;
   margin: auto;
-`
+`;
 
 const FlexDiv = styled.div`
   display: flex;
   justify-content: space-between;
   flex-direction: column;
   width: 100%;
-`
+`;
 
 const ListContainer = styled.div`
   ${props => props.mr && `margin-right: ${props.mr}px`};
-`
+`;
 
 const ContentHeader = styled.span`
   font-size: 16.5px;
   letter-spacing: 1px;
   color: ${p => (p.menuOpened ? '#ffffff' : '#000000')};
   font-weight: 600;
-`
+`;
 
 const List = styled.ul`
   margin: 0;
@@ -56,7 +56,7 @@ const List = styled.ul`
   align-items: center;
   justify-content: space-around;
   margin-bottom: 20px;
-`
+`;
 
 const ListItem = styled.li`
   margin-bottom: 15px;
@@ -64,12 +64,12 @@ const ListItem = styled.li`
   list-style: none;
   font-size: 14px;
   display: inline-block;
-`
+`;
 
 const UploadContainer = styled.div`
   display: flex;
   flex-direction: column;
-`
+`;
 
 const UploadButton = styled.button`
   border: 1px solid ${p => (p.menuOpened ? '#ffffff' : '#000000')};
@@ -84,14 +84,14 @@ const UploadButton = styled.button`
   margin-top: 20px;
   width: 219px;
   height: 47px;
-`
+`;
 
 const SignUpContainer = styled.div`
   margin-top: 20px;
   margin-bottom: 20px;
   display: flex;
   align-items: center;
-`
+`;
 
 const Input = styled.input`
   height: 45px;
@@ -123,7 +123,7 @@ const Input = styled.input`
     color: ${p => (p.menuOpened ? '#ffffff' : 'rgba(0, 0, 0, 0.8)')};
     font-weight: 600;
   }
-`
+`;
 const SignUpButton = styled.button`
   height: 47px;
   width: 100px;
@@ -138,15 +138,15 @@ const SignUpButton = styled.button`
   cursor: pointer;
   box-sizing: content-box;
   border: 0;
-`
+`;
 const Line = styled.div`
   width: 100%;
   height: 1px;
   background-color: '#979797';
-`
+`;
 const Flex = styled.div`
   display: flex;
-`
+`;
 const Span = styled.span`
   font-weight: 600;
   ${props => props.fsize && `font-size: ${props.fsize}px`};
@@ -155,21 +155,21 @@ const Span = styled.span`
   ${props => props.ml && `margin-left: ${props.ml}px;`}
   ${props => props.mt && `margin-top: ${props.mt}px;`}
   ${props => props.mb && `margin-bottom: ${props.mb}px;`}
-`
+`;
 const Anchor = styled.a`
   outline: none;
   text-decoration: none;
-`
+`;
 const SocialIcon = styled.a`
   margin-right: 10px;
   cursor: pointer;
-`
+`;
 const NewsletterContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-`
+`;
 
 const Footer = ({ width, menuOpened }) => (
   <div>
@@ -240,6 +240,6 @@ const Footer = ({ width, menuOpened }) => (
     )}
     {width <= 900 && <MobileFooter menuOpened={menuOpened} />}
   </div>
-)
+);
 
-export default footerEnhancer(Footer)
+export default footerEnhancer(Footer);

@@ -1,6 +1,6 @@
-import { compose } from 'recompose'
-import getCategorysByPostId from 'graphql/getCategorysByPostId.graphql'
-import loadDataAsync from './loadDataAsync'
+import { compose } from 'recompose';
+import getCategorysByPostId from 'graphql/getCategorysByPostId.graphql';
+import loadDataAsync from './loadDataAsync';
 
 const withCategory = compose(
   loadDataAsync({
@@ -14,6 +14,6 @@ const withCategory = compose(
       }),
     },
   }),
-)
+);
 
-export default withCategory
+export default withCategory;

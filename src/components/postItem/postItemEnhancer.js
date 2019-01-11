@@ -2,9 +2,9 @@
 /* eslint no-unneeded-ternary: 0 */
 /* eslint object-curly-newline: 0 */
 
-import { compose, withStateHandlers, lifecycle, branch } from 'recompose'
-import window from 'global/window'
-import { withCategory, withMedia, withAuthor } from 'hocs'
+import { compose, withStateHandlers, lifecycle, branch } from 'recompose';
+import window from 'global/window';
+import { withCategory, withMedia, withAuthor } from 'hocs';
 // import getCategoryById from 'graphql/getCategoryById.graphql'
 
 export default compose(
@@ -18,10 +18,10 @@ export default compose(
   ),
   lifecycle({
     componentDidMount() {
-      window.addEventListener('resize', this.props.updateWidth)
+      window.addEventListener('resize', this.props.updateWidth);
     },
     componentWillUnmount() {
-      window.removeEventListener('resize', this.props.updateWidth)
+      window.removeEventListener('resize', this.props.updateWidth);
     },
   }),
   branch(
@@ -37,4 +37,4 @@ export default compose(
   // withCategory,
   // withCategory,
   // withProps(props => console.log('propssssssssssss', props)),
-)
+);

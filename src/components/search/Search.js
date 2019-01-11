@@ -4,11 +4,11 @@
 /* eslint curly:0 */
 /* eslint indent:0 */
 
-import React from 'react'
-import styled from 'styled-components'
-import { Link } from 'react-router-dom'
-import SearchedItem from 'components/searchedItem'
-import searchEnhancer from './searchEnhancer'
+import React from 'react';
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import SearchedItem from 'components/searchedItem';
+import searchEnhancer from './searchEnhancer';
 
 const Container = styled.div`
   position: fixed;
@@ -20,7 +20,7 @@ const Container = styled.div`
   overflow-y: auto;
   padding-bottom: 40px;
   flex-direction: column;
-`
+`;
 
 const Content = styled.div`
   width: 80%;
@@ -35,7 +35,7 @@ const Content = styled.div`
   @media only screen and (max-width: 680px) {
     width: 100%;
   }
-`
+`;
 
 const Input = styled.input`
   width: 100%;
@@ -67,7 +67,7 @@ const Input = styled.input`
     font-size: 62px;
     font-weight: 600;
   }
-`
+`;
 
 const InputContainer = styled.div`
   margin-top: 100px;
@@ -75,7 +75,7 @@ const InputContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-`
+`;
 const Close = styled.span`
   position: absolute;
   right: 0;
@@ -85,13 +85,13 @@ const Close = styled.span`
   font-size: 25px;
   cursor: pointer;
   color: #ffffff;
-`
+`;
 const DataContainer = styled.div`
   width: 100%;
   margin: 40px auto;
   display: flex;
   flex-direction: column;
-`
+`;
 
 const ShowMore = styled(Link)`
   color: #ffffff;
@@ -101,20 +101,20 @@ const ShowMore = styled(Link)`
   display: flex;
   justify-content: center;
   cursor: pointer;
-`
+`;
 
 const Span = styled.div`
   color: #ffffff;
   font-weight: 600;
   font-size: 17px;
   text-align: center;
-`
+`;
 
 const Search = ({ toggleSearch, handleSubmit, data, value }) => {
   const searchResult =
     data && data.searchedData && data.searchedData.length > 0
       ? data.searchedData
-      : null
+      : null;
   return (
     <Container>
       <Close onClick={() => toggleSearch()}>X</Close>
@@ -146,7 +146,7 @@ const Search = ({ toggleSearch, handleSubmit, data, value }) => {
           value !== '' && <Span>No results found for {value}</Span>}
       </Content>
     </Container>
-  )
-}
+  );
+};
 
-export default searchEnhancer(Search)
+export default searchEnhancer(Search);

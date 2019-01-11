@@ -1,6 +1,6 @@
 /* eslint react/no-unescaped-entities: 0 */
-import React from 'react'
-import styled from 'styled-components'
+import React from 'react';
+import styled from 'styled-components';
 
 const Container = styled.div`
   width: 1200px;
@@ -12,13 +12,13 @@ const Container = styled.div`
   @media only screen and (max-width: 1020px) {
     width: 80%;
   }
-`
+`;
 
 const Heading = styled.h1`
   font-weight: 800;
   text-align: left;
   margin-bottom: 15px;
-`
+`;
 
 // const Headingh2 = styled.h2`
 //   font-weight: 800;
@@ -31,14 +31,14 @@ const Headingh3 = styled.h3`
   margin-top: 10px;
   margin-bottom: 5px;
   text-align: justify;
-`
+`;
 
 const Content = styled.p`
   font-weight: 400;
   text-align: left;
   margin-bottom: 20px;
   text-align: justify;
-`
+`;
 
 const TermsAndConditions = () => (
   <Container>
@@ -271,6 +271,6 @@ const TermsAndConditions = () => (
       damage of any nature.
     </Content>
   </Container>
-)
+);
 
-export default TermsAndConditions
+export default TermsAndConditions;

@@ -21,7 +21,6 @@ import homeEnhancer from './homeEnhancer'
 import Reviews from './reviews'
 
 const Container = styled.div`
-  max-width: 1200px;
   margin: auto;
 `
 

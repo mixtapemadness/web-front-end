@@ -24,6 +24,9 @@ import GA from 'components/googleAnalytics'
 import { RESPONSIVE_BREAKPOINTS } from './constants'
 
 const Container = styled.div`
+  max-width: 1200px;
+  padding: 0 10px;
+  margin: auto auto;
   margin-top: 60px;
   @media only screen and (min-width: ${RESPONSIVE_BREAKPOINTS.tablet}) {
     margin-top: 70px;
@@ -57,8 +60,9 @@ const AppContent = ({ searchOpened, toggleSearch, menuOpened }) => (
         />
       </Switch>
       {menuOpened && <Menu />}
-      <Footer />
     </Container>
+    <Footer />
+
     {searchOpened && (
       <Search toggleSearch={toggleSearch} searchOpened={searchOpened} />
     )}

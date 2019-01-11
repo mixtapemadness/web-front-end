@@ -21,7 +21,6 @@ import BlogFilter from './BlogFilter'
 import blogsEnhancer from './blogEnhancer'
 
 const NewsContainer = styled.div`
-  max-width: 1200px;
   display: flex;
   margin: auto;
   flex-direction: column;
@@ -33,11 +32,7 @@ const PostsContainer = styled.div`
   justify-content: center;
   flex-wrap: wrap;
   margin-top: 20px;
-  justify-content: space-between;
-  @media only screen and (max-width: 1150px) {
-    flex-direction: column;
-    align-items: center;
-  }
+  // justify-content: space-between;
 `
 
 const SubscribeContainer = styled.div`

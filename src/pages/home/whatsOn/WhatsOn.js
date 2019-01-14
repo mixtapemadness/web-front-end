@@ -37,7 +37,6 @@ const WhatsOnItemsContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   @media only screen and (max-width: 1190px) {
-    /* flex-direction:column; */
     align-items: center;
     justify-content: center;
   }

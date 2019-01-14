@@ -328,7 +328,7 @@ const Override = styled.div`
     }
 
     @media screen and (max-width: 500px) {
-      width: 350px;
+      width: 330px;
     }
   }
 

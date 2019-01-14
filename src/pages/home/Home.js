@@ -74,7 +74,6 @@ const Home = ({ sliderData }) => (
       <LazyLoad once offset={0}>
         <Posts />
       </LazyLoad>
-
       <LazyLoad once offset={0}>
         <Interviews />
       </LazyLoad>

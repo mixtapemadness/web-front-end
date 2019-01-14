@@ -165,9 +165,9 @@ const BlogContent = styled.div`
   max-width: 100%;
   padding 0 20px;
   margin: 40px auto;
-  iframe {
-    width: auto;
-  }
+ iframe {
+  max-width: 100%;
+ }
   @media only screen and (min-width: ${RESPONSIVE_BREAKPOINTS.tablet}) {
     width: 900px;
     padding: 0;
@@ -265,6 +265,9 @@ const DisqusContainer = styled.div`
 `
 
 const BlogArticleContent = styled.div`
+  a {
+    color: #ff9600;
+  }
   p {
     img {
       margin: 5px 0;

@@ -56,19 +56,17 @@ const SliderWrapper = styled.span`
 `
 
 const Header = styled.span`
-  font-size: 30px;
-  line-height: 40px;
+  font-size: 14px;
+  line-height: 26px;
   font-weight: bold;
   color: white;
   position: relative;
-  @media only screen and (max-width: 950px) {
-    font-size: 30px;
-  }
-  @media only screen and (max-width: 850px) {
+  @media only screen and (min-width: ${RESPONSIVE_BREAKPOINTS.tablet}) {
     font-size: 20px;
   }
-  @media only screen and (max-width: 450px) {
-    font-size: 14px;
+  @media only screen and (min-width: ${RESPONSIVE_BREAKPOINTS.desktop}) {
+    font-size: 30px;
+    line-height: 38px;
   }
 `
 

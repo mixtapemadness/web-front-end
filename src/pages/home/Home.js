@@ -62,7 +62,6 @@ const Home = ({ sliderData }) => (
       />
     </Helmet>
     <Container>
-      testing 123
       {sliderData &&
         sliderData.Posts && (
           <LazyLoad once offsetVertical={0}>

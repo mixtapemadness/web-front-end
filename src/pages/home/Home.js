@@ -77,9 +77,9 @@ const Home = ({ sliderData }) => (
       <LazyLoad once offset={0}>
         <Interviews />
       </LazyLoad>
-      <LazyLoad once offset={0}>
-        <Download />
-      </LazyLoad>
+      {/* <LazyLoad once offset={0}> */}
+      {/* <Download /> */}
+      {/* </LazyLoad> */}
       <LazyLoad once offset={50}>
         <WhatsOn />
       </LazyLoad>

@@ -32,6 +32,7 @@ const ArrowsContainer = styled.div`
 
 const Container = styled.div`
   .slick-slider {
+    overflow: hidden;
     position: relative;
     display: block;
     box-sizing: border-box;
@@ -328,7 +329,7 @@ const Override = styled.div`
     }
 
     @media screen and (max-width: 500px) {
-      width: 350px;
+      width: 330px;
     }
   }
 

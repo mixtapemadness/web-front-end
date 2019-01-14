@@ -24,13 +24,6 @@ const TrendingContainer = styled.div`
   max-width: 1200px;
   margin: 50px auto;
   justify-content: space-around;
-  @media only screen and (max-width: 1150px) {
-    flex-direction: column;
-    align-items: center;
-  }
-  @media only screen and (max-width: 500px) {
-    margin: 15px;
-  }
 `
 
 const TitleContainer = styled.div`

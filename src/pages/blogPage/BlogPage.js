@@ -453,7 +453,7 @@ const BlogPage = ({
           )}
         </BlogContent>
         <TagsContainer>
-          {postData.tags && postData.tags.map(id => <Tag key={id} id={id} />)}
+          {/* {postData.tags && postData.tags.map(id => <Tag key={id} id={id} />)} */}
         </TagsContainer>
         <DisqusContainer>
           <ReactDisqusComments

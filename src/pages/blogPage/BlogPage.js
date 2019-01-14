@@ -295,7 +295,6 @@ const BlogPage = ({
   prevRoute,
   location,
 }) => {
-  console.log('​nextRoute', nextRoute)
   const userName = user && user.user && user.user.name && user.user.name
   const userSlug = user && user.user && user.user.slug && user.user.slug
   const postData = data && data.Post ? data.Post : {}
@@ -453,7 +452,7 @@ const BlogPage = ({
           )}
         </BlogContent>
         <TagsContainer>
-          {/* {postData.tags && postData.tags.map(id => <Tag key={id} id={id} />)} */}
+          {postData.tags && postData.tags.map(id => <Tag key={id} id={id} />)}
         </TagsContainer>
         <DisqusContainer>
           <ReactDisqusComments

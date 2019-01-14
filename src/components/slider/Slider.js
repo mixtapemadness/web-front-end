@@ -32,6 +32,7 @@ const ArrowsContainer = styled.div`
 
 const Container = styled.div`
   .slick-slider {
+    overflow: hidden;
     position: relative;
     display: block;
     box-sizing: border-box;

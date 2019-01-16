@@ -9,14 +9,6 @@ import Prev from 'resources/assets/svg/prev.svg';
 import Next from 'resources/assets/svg/next.svg';
 import { RESPONSIVE_BREAKPOINTS } from '../../constants';
 
-const Img = styled.img`
-  display: inline-block;
-  cursor: pointer;
-  z-index: 1;
-  height: 40px;
-  margin-top: 20px;
-`;
-
 const PrevArrow = (
   { onClick }, // eslint-disable-line
 ) => <Img src={Prev} onClick={onClick} />;
@@ -30,8 +22,18 @@ const ArrowsContainer = styled.div`
   justify-content: flex-end;
 `;
 
+const Img = styled.img`
+  display: inline-block;
+  cursor: pointer;
+  z-index: 1;
+  height: 40px;
+  margin-top: 20px;
+`;
+
+
 const Container = styled.div`
   .slick-slider {
+    overflow: hidden;
     position: relative;
     display: block;
     box-sizing: border-box;
@@ -328,7 +330,7 @@ const Override = styled.div`
     }
 
     @media screen and (max-width: 500px) {
-      width: 350px;
+      width: 330px;
     }
   }
 
@@ -372,7 +374,7 @@ class SliderComponent extends Component {
   }
 
   render() {
-    const { settings, children } = this.props;
+    const { settings, children, titleText } = this.props;
 
     const innerSettings = {
       dots: settings.dots,
@@ -388,10 +390,13 @@ class SliderComponent extends Component {
     return (
       <Container>
         <Override>
-          <ArrowsContainer>
-            <PrevArrow onClick={this.prev} />
-            <NextArrow onClick={this.next} />
-          </ArrowsContainer>
+          <div>
+            <span>{titleText}</span>
+            <ArrowsContainer>
+              <PrevArrow onClick={this.prev} />
+              <NextArrow onClick={this.next} />
+            </ArrowsContainer>
+          </div>
           {children && (
             <Slider
               ref={slider => {

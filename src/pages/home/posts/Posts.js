@@ -8,15 +8,9 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import PostItem from 'components/postItem';
 import Subscribe from 'components/subscribe';
-// import MobileSubscribe from 'components/mobileSubscribe'
 import SliderComponent from 'components/slider';
 import { CardLoader } from 'components/loaders';
 import postsEnhancer from './postsEnhancer';
-
-// const PostItemContainer = styled.div`
-//   display: flex;
-//   justify-content: center;
-// `
 
 const TrendingContainer = styled.div`
   display: flex;
@@ -24,13 +18,6 @@ const TrendingContainer = styled.div`
   max-width: 1200px;
   margin: 50px auto;
   justify-content: space-around;
-  @media only screen and (max-width: 1150px) {
-    flex-direction: column;
-    align-items: center;
-  }
-  @media only screen and (max-width: 500px) {
-    margin: 15px;
-  }
 `;
 
 const TitleContainer = styled.div`

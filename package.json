@@ -19,7 +19,7 @@
     "build:testing": "NODE_ENV=testing webpack --mode development --config webpack/client/testing.js --progress --profile --colors",
     "build:prod": "NODE_ENV=production webpack --mode production --config webpack/client/production.js --progress --profile --colors",
     "start:dist": "node ./www.js",
-    "build:ssr:testing": "NODE_ENV=testing SSR_MODE=true webpack --mode development --config webpack/client/testing.js --progress --profile --colors && NODE_ENV=testing webpack --mode production --config webpack/server/testing.js --progress --profile --colors",
+    "build:ssr:testing": "NODE_ENV=testing SSR_MODE=true webpack --mode development --config webpack/client/testing.js --progress --profile --colors && NODE_ENV=development_local webpack --mode production --config webpack/server/testing.js --progress --profile --colors",
     "build:ssr:prod": "NODE_ENV=production SSR_MODE=true webpack --mode production --config webpack/client/production.js --progress --profile --colors && NODE_ENV=production webpack --mode production --config webpack/server/production.js --progress --profile --colors",
     "start:ssr:dist": "node ./dist/index.js",
     "pm2_ssr_testing": "NODE_ENV=testing DEBUG=* CONFIG=testing pm2 start ./dist/index.js --name mixtape_front_ssr_8003",

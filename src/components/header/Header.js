@@ -69,12 +69,12 @@ const Ul = styled.ul`
   margin: 0;
   text-decoration: none;
   list-style: none;
-  display: flex;
+  display: none;
   color: ${props => (props.menuOpened ? '#ffffff' : '#666666')};
   transition: unset;
   margin-right: 20px;
-  @media only screen and (max-width: 475px) {
-    display: none;
+  @media only screen and (min-width: ${RESPONSIVE_BREAKPOINTS.tablet}) {
+    display: flex;
   }
 `;
 const Li = styled.li`

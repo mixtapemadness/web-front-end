@@ -8,11 +8,14 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import videoEnhancer from './videoEnhancer';
 import truncate from '../../helpers/textHelpers';
+import { RESPONSIVE_BREAKPOINTS } from '../../constants';
 
 const Container = styled.div`
-  margin: 7px;
   flex: 1;
-  max-width: 386px;
+  @media only screen and (min-width: ${RESPONSIVE_BREAKPOINTS.tablet}) {
+    margin: 7px;
+    max-width: 386px;
+  }
 `;
 
 const PhotoContainer = styled(Link)`

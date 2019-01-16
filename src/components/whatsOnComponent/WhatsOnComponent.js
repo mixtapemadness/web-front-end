@@ -12,49 +12,22 @@ import whatsOnComponentEnhancer from './whatsOnComponentEnhancer';
 import placeholderImg from '../../resources/assets/img/placeholderImg.jpg';
 
 const Container = styled.div`
-  flex: 1 0 575px;
   margin: 7px;
   display: flex;
   flex-direction: column;
-  @media only screen and (max-width: 1190px) {
-    align-items: center;
-    margin: 10px;
-    flex: 0 1 475px;
-  }
-  @media only screen and (max-width: 850px) {
-    /* flex: 0 1 375px; */
-  }
-  /* @media only screen and (max-width: 450px) {
-    flex: 0 1 300px;
-  } */
 `;
-
-// width: 100%;
-// height: 200px;
-// width: 100%;
-// height: 200px;
-// background: url(${props => props.img});
-// background-repeat: no-repeat;
-// background-size: cover;
-// background-position: center;
-// @media only screen and (max-width: 1150px) {
-//   height: 300px;
-// }
 
 const PhotoContainer = styled(Link)`
   width: 100%;
   height: 200px;
   width: 100%;
-  height: 200px;
   background: url(${props => props.img});
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
   transition: 0.8s;
   cursor: pointer;
-  &:hover {
-    /* background-size: 140%; */
-  }
+
   @media only screen and (max-width: 1150px) {
     height: 300px;
     background-size: cover;
@@ -71,15 +44,10 @@ const PhotoContainer = styled(Link)`
 
 const ContentContainer = styled.div`
   background-color: #eeeeef;
-  width: calc(100% - 30px);
+  width: 100%;
   padding: 20px 15px;
   display: flex;
   flex-direction: column;
-  flex: 1;
-  box-sizing: content-box;
-  @media only screen and (max-width: 850px) {
-    height: auto;
-  }
 `;
 
 const Icon = styled.img`
@@ -91,9 +59,7 @@ const Icon = styled.img`
 `;
 
 const LeftSide = styled.div`
-  width: calc(40% - 15px);
-  display: flex;
-  flex-direction: column;
+  display: block;
 `;
 
 const Category = styled(Link)`
@@ -114,6 +80,7 @@ const CategoryContainer = styled.div`
 
 const BottomContent = styled.span`
   display: flex;
+  flex-direction: column;
 `;
 
 const Name = styled(Link)`
@@ -129,16 +96,7 @@ const Name = styled(Link)`
     text-decoration-color: #111111;
   }
 `;
-const Line = styled.div`
-  height: 100%;
-  width: 1px;
-  background-color: #e7e7e7;
-  margin: 0px 15px;
-`;
 const RightSide = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: calc(60% - 15px);
 `;
 const Text = styled.span`
   height: 5ch;
@@ -166,29 +124,10 @@ const Span = styled.span`
 const Img = styled.img`
   ${p => p.height && `height: ${p.height}px`};
 `;
-
-// const Categories = ({ data }) => {
-//   let newData
-//   data && data.length > 0
-//     ? (newData = data.map((item, index) => {
-//       if (index > 0) {
-//         return (
-//           <React.Fragment>
-//             ,<Category to={`/blog/category/${item.slug}`}>{item.name}</Category>
-//           </React.Fragment>
-//         )
-//       }
-//       return <Category to={`/blog/category/${item.slug}`}>{item.name}</Category>
-//     }))
-//     : (newData = null)
-//   return newData
-// }
-
 const WhatsOnComponent = ({ media, data, category }) => {
   const Image =
     media && media.img && media.img.featured_image && media.img.featured_image;
   const CategoriesData = category && category.category && category.category;
-
   return (
     <Container>
       <PhotoContainer
@@ -206,9 +145,6 @@ const WhatsOnComponent = ({ media, data, category }) => {
           initialImage={placeholderImg}
         />
       </PhotoContainer>
-      {/* {CategoriesData &&
-        data && (
-        )} */}
       <ContentContainer>
         <CategoryContainer>
           {CategoriesData &&
@@ -228,7 +164,6 @@ const WhatsOnComponent = ({ media, data, category }) => {
                 />
               )}
           </LeftSide>
-          <Line />
           <RightSide>
             {CategoriesData &&
               data && (
@@ -237,18 +172,6 @@ const WhatsOnComponent = ({ media, data, category }) => {
                   dangerouslySetInnerHTML={{ __html: data.excerpt }}
                 />
               )}
-            {/* <FlexDiv mt={18}>
-            <FlexDiv jc="space-between" width="100%">
-              <FlexDiv>
-                <Img src={ViewsIcon} alt="view" height={20} />
-                <Span mt={2} ml={10}>
-                  {data.views}
-                  {' Views'}
-                </Span>
-              </FlexDiv>
-              <Img src={SignalBarsIcon} alt="bars" height={18} />
-            </FlexDiv>
-          </FlexDiv> */}
           </RightSide>
         </BottomContent>
       </ContentContainer>

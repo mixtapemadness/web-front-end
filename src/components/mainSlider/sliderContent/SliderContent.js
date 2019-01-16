@@ -88,7 +88,7 @@ const Span = styled.span`
   }
 `;
 
-const LatestSingles = styled(Link)`
+const ReadMoreLink = styled.button`
   letter-spacing: 0.9px;
   width: 189px;
   height: 40px;
@@ -102,9 +102,10 @@ const LatestSingles = styled(Link)`
   justify-content: center;
   align-items: center;
   position: relative;
+  border: 0;
 `;
 
-const CategoryTitle = styled(Link)`
+const CategoryTitle = styled.span`
   font-size: 14px;
   color: #ffa019;
 `;
@@ -135,11 +136,11 @@ const MainSlider = ({ tags, media, category, data }) => {
         <SliderContent SliderPhoto={Image}>
           <SliderWrapper />
           <FlexDiv>
-            <CategoryTitle to={`blog/category/${CategoriesData[0].slug}`}>
+            <CategoryTitle>
               {CategoriesData[0].name}
             </CategoryTitle>
             <Header dangerouslySetInnerHTML={{ __html: data.title }} />
-            <LatestSingles to={postLink}>Read More</LatestSingles>
+            <ReadMoreLink>Read More</ReadMoreLink>
           </FlexDiv>
         </SliderContent>
       </Link>

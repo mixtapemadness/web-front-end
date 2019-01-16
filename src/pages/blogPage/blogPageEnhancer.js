@@ -39,7 +39,6 @@ export default compose(
   ),
   withStateHandlers(
     () => ({
-      width: window.innerWidth,
       fetchPrev: false,
       fetchNext: false,
       date: '',
@@ -181,15 +180,11 @@ export default compose(
   lifecycle({
     componentDidMount() {
       window.scrollTo(0, 0);
-      window.addEventListener('resize', this.props.updateWidth);
     },
     componentWillReceiveProps(nextProps) {
       if (nextProps.location.pathname !== this.props.location.pathname) {
         window.scrollTo(0, 0);
       }
-    },
-    componentWillUnmount() {
-      window.removeEventListener('resize', this.props.updateWidth);
     },
   }),
   branch(

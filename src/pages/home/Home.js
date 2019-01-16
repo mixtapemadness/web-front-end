@@ -12,8 +12,6 @@ import MainSlider from 'components/mainSlider';
 import Download from 'components/download';
 import Subscribe from 'components/subscribe';
 import Videos from 'components/videos';
-import SliderPhoto from 'resources/assets/img/Live-Music.jpg';
-import SliderPhotoSecond from 'resources/assets/img/music.jpg';
 import WhatsOn from './whatsOn';
 import Interviews from './interviews';
 import Posts from './posts';
@@ -33,26 +31,6 @@ const SubscribeContainer = styled.div`
   margin: 40px;
 `;
 
-const HeaderContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  ${p => p.mb && `margin-bottom: ${p.mb}px`};
-`;
-
-const SectionHeader = styled.span`
-  font-weight: 600;
-  font-size: 28px;
-`;
-
-const SectionSubHeader = styled.span`
-  font-size: 17.5px;
-  letter-spacing: 1.1px;
-  font-weight: 600;
-`;
-
-const mainSliderData = [SliderPhoto, SliderPhotoSecond];
-
 const Home = ({ sliderData }) => (
   <Fragment>
     <Helmet>
@@ -64,31 +42,31 @@ const Home = ({ sliderData }) => (
     <Container>
       {sliderData &&
         sliderData.Posts && (
-          <LazyLoad once offsetVertical={0}>
+          <LazyLoad height={400} once offsetVertical={0}>
             <MainSlider data={sliderData.Posts} />
           </LazyLoad>
         )}
-      <LazyLoad once offset={0}>
+      <LazyLoad height={400} once offset={0}>
         <Videos />
       </LazyLoad>
-      <LazyLoad once offset={0}>
+      <LazyLoad height={400} once offset={0}>
         <Posts />
       </LazyLoad>
-      <LazyLoad once offset={0}>
+      <LazyLoad height={400} once offset={0}>
         <Interviews />
       </LazyLoad>
       {/* <LazyLoad once offset={0}> */}
       {/* <Download /> */}
       {/* </LazyLoad> */}
-      <LazyLoad once offset={50}>
+      <LazyLoad height={400} once offset={50}>
         <WhatsOn />
       </LazyLoad>
-      <LazyLoad once offset={50}>
+      <LazyLoad height={400} once offset={50}>
         <SubscribeContainer>
           <Subscribe />
         </SubscribeContainer>
       </LazyLoad>
-      <LazyLoad once offset={50}>
+      <LazyLoad height={400} once offset={50}>
         <Reviews />
       </LazyLoad>
     </Container>

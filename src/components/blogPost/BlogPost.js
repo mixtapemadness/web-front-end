@@ -75,10 +75,7 @@ const BlogPost = ({ data }) => (
           <Icon height="26px" alt="dots" src={DotsIcon} />
         </Social>
         <Span mb={10}>-</Span>
-        <Span mb={10}>
-          {/* {data.views} */}
-          {/* {' Views'} : {data.raiting} */}
-        </Span>
+        <Span mb={10} />
         <Span mb={10}>{data.date}</Span>
         <Span>
           By <Span color="#FF9D00">{data.author.name}</Span>

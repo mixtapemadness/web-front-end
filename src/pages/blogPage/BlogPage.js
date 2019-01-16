@@ -419,7 +419,6 @@ const BlogPage = ({
               {match.params.category}
             </CategoryLink>
             <BlogTitle dangerouslySetInnerHTML={{ __html: postData.title }} />
-            {/* <BlogSubTitle dangerouslySetInnerHTML={{ __html: Excerpt && Excerpt.replace('[&Hellip', ' ') }} /> */}
             <BlogSubTitle
               dangerouslySetInnerHTML={{
                 __html:

@@ -14,7 +14,6 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import window from 'global/window';
 import ReactImageFallback from 'react-image-fallback';
-import imageExists from 'image-exists';
 import postItemEnhancer from './postItemEnhancer';
 import placeholderImg from '../../resources/assets/img/placeholderImg.jpg';
 import truncate from '../../helpers/textHelpers';
@@ -200,20 +199,17 @@ const PostItem = ({ media, category, user, data }) => {
     media && media.img && media.img.featured_image && media.img.featured_image;
   const CategoriesData = category && category.category && category.category;
   const User = user && user.user && user.user;
+  const postUrl = CategoriesData && `/blog/${CategoriesData[0].slug}/${data.slug}`;
   return (
     <PostItemContainer className="post-item">
       <Media
         to={{
-          pathname:
-            data &&
-            CategoriesData &&
-            `/blog/${CategoriesData[0].slug}/${data.slug}`,
+          pathname: postUrl,
           state: {
             prevPath: pathname,
             authorId: User && User.id,
           },
         }}
-        // img={imageExists(Image, (exists) => !!exists) ? Image : placeholderImg}
       >
         <ReactImageFallback
           src={Image && Image}
@@ -231,7 +227,7 @@ const PostItem = ({ media, category, user, data }) => {
               <PostTitle
                 dangerouslySetInnerHTML={{ __html: data.title }}
                 to={{
-                  pathname: `/blog/${CategoriesData[0].slug}/${data.slug}`,
+                  pathname: postUrl,
                   state: {
                     prevPath: pathname,
                     authorId: User && User.id,
@@ -258,7 +254,7 @@ const PostItem = ({ media, category, user, data }) => {
               <ContinueReadContainer>
                 <ContinueRead
                   to={{
-                    pathname: `/blog/${CategoriesData[0].slug}/${data.slug}`,
+                    pathname: postUrl,
                     state: {
                       prevPath: pathname,
                       authorId: User && User.id,

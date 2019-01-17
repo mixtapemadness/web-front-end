@@ -147,14 +147,13 @@ const Subscribe = ({ handleSubscribe, handleInput, res }) => {
         <SubscribeForm isSubscribed={isSubscribed && isSubscribed}>
           <Span>
             Subscribe to Mixtape Madness for the
-            <br />
             latest on news, music, and upcoming releases
           </Span>
           <Form onSubmit={e => e.preventDefault()}>
             <Input
               onKeyPress={e => handleKeypress(e, handleSubscribe)}
               onChange={handleInput}
-              placeholder="Type Email Here..."
+              placeholder="email address here..."
             />
             <Button onClick={handleSubscribe}>Subscribe</Button>
           </Form>

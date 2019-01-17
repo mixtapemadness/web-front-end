@@ -10,22 +10,6 @@ import { loadDataAsync, withMedia, withTags, withCategory } from 'hocs';
 import window from 'global/window';
 
 export default compose(
-  withStateHandlers(
-    () => ({
-      width: window.innerWidth,
-    }),
-    {
-      updateWidth: () => () => ({ width: window.innerWidth }),
-    },
-  ),
-  lifecycle({
-    componentDidMount() {
-      window.addEventListener('resize', this.props.updateWidth);
-    },
-    componentWillUnmount() {
-      window.removeEventListener('resize', this.props.updateWidth);
-    },
-  }),
   withRouter,
   branch(({ data }) => (data ? true : false), withMedia),
   branch(({ data }) => (data ? true : false), withTags),

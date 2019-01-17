@@ -22,11 +22,6 @@ const Container = styled.div`
   margin: auto;
 `;
 
-const HaveToListenContainer = styled.div`
-  max-width: 1200px;
-  margin: 40px auto;
-`;
-
 const SubscribeContainer = styled.div`
   margin: 40px;
 `;

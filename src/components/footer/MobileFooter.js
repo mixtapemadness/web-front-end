@@ -3,16 +3,21 @@ import styled from 'styled-components';
 
 import { Link } from 'react-router-dom';
 import SocialIcons from 'components/SocialIcons/';
+import { RESPONSIVE_BREAKPOINTS } from '../../constants';
 
 const MobileFooterContainer = styled.div`
-  max-width: 310px;
   margin: 20px auto;
+  display: block;
+  @media only screen and (min-width: ${RESPONSIVE_BREAKPOINTS.tablet}) {
+    display: none;
+  }
 `;
 
 const MobileContentContainer = styled.div`
   display: flex;
   justify-content: center;
-  color: '#000000';
+  color: #000000;
+  text-align: center;
 `;
 const List = styled.ul`
   margin: 0;

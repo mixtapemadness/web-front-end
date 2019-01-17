@@ -96,7 +96,6 @@ const PostItems = ({ items }) =>
 const Blog = ({ data, page, handleLoadMore, match, isMoreData }) => {
   const Data = data.Posts && data.Posts.length > 0 && data.Posts;
   let index = 0;
-  // const Data = data
   return (
     <NewsContainer>
       <div>

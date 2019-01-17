@@ -10,6 +10,7 @@ import { SOCIAL_MEDIA } from '../../constants';
 const SocialIconsContainer = styled.div`
   display: flex;
   align-items: center;
+      justify-content: center;
 `;
 
 const SocialIcon = styled.a`

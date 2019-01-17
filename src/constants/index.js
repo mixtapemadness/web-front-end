@@ -13,9 +13,9 @@ export const RESPONSIVE_BREAKPOINTS = {
 };
 
 export const ROUTES = {
-  about: 'aboutus',
+  about: 'about',
   termsAndConditions: 'terms',
-  blog: 'blog',
+  blog: 'blog/category/',
   categories: {
     news: '/blog/category/news',
     events: '/blog/category/events',

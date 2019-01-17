@@ -1,8 +1,7 @@
-import { compose, withStateHandlers } from 'recompose';
+import { compose } from 'recompose';
 import { withRouter } from 'react-router-dom';
 import getMediaById from 'graphql/getMediaById.graphql';
 import { loadDataAsync } from 'hocs';
-import window from 'global/window';
 
 export default compose(
   loadDataAsync({
@@ -16,9 +15,4 @@ export default compose(
     },
   }),
   withRouter,
-  withStateHandlers(
-    () => ({
-      width: window.innerWidth,
-    }),
-  ),
 );

@@ -28,11 +28,6 @@ const SectionHeader = styled.span`
   font-size: 38px;
 `;
 
-const SectionSubHeader = styled.span`
-  font-weight: 800;
-  font-size: 18px;
-`;
-
 const WhatsOnItemsContainer = styled.div`
   display: flex;
   flex-wrap: wrap;

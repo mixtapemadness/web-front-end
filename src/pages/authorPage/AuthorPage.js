@@ -3,7 +3,6 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import Footer from 'components/footer';
 import ProfileInfo from 'components/profileInfo';
 
 import ResentPosts from './ResentPosts';

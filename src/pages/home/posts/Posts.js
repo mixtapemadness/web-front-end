@@ -99,7 +99,7 @@ const settings = {
   ],
 };
 
-const Posts = ({ width, data }) => {
+const Posts = ({ data }) => {
   const posts = data && data.Posts && data.Posts;
   return (
     <TrendingContainer>
@@ -108,13 +108,7 @@ const Posts = ({ width, data }) => {
         <SubTitle>Check Out The Latest Music And News This Week</SubTitle>
       </TitleContainer>
       <SliderComponent settings={settings}>
-        {data.loading &&
-          [...Array(8)].map(index => (
-            <CardLoader key={`${index}-post-loader`} />
-          ))}
-        {!data.loading &&
-          posts &&
-          posts.map(item => <PostItem key={item.id} data={item} />)}
+        {posts && posts.map(item => <PostItem key={item.id} data={item} />)}
       </SliderComponent>
     </TrendingContainer>
   );

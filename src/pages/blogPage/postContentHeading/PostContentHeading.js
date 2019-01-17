@@ -13,10 +13,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-// import window from 'global/window'
 import { dateStringify } from 'helpers/';
-import window from 'global/window';
-import config from '../../../../config';
 import blogPageImgEnhancer from './postContentHeadingEnhancer';
 
 const Container = styled.div`
@@ -40,36 +37,12 @@ const AuthorName = styled(Link)`
   cursor: pointer;
 `;
 
-const Links = styled.div`
-  display: flex;
-  width: 50px;
-  justify-content: space-between;
-`;
-
-const Credit = styled.div`
-  color: #666666;
-  font-weight: 800;
-`;
-
-const Author = styled.div`
-  display: flex;
-`;
-
-const IconWrapper = styled.div`
-  cursor: pointer;
-`;
-
 const Date = styled.span`
   border-right: 1px solid #ccc;
   padding-right: 10px;
 `;
 
-const PostContentHeading = ({ date, userName, location, userSlug, match }) => {
-  const { category, slug } = match.params;
-  // const url = `${config.apiUrl}api/v1/blog/${
-  //   match.params.category
-  // }/${slug}/share`
-  const url = window.location ? window.location.href : '';
+const PostContentHeading = ({ date, userName, location, userSlug }) => {
   return (
     <Container>
       <ContainerBottom>

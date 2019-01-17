@@ -107,7 +107,6 @@ const Video = ({ data, media, tags, category }) => {
   const categoriesData = category && category.category && category.category;
   const Image =
     media && media.img && media.img.featured_image && media.img.featured_image;
-  console.log(data);
   if (!data || !categoriesData) {
     return <CardLoader />;
   }

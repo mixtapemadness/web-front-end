@@ -79,14 +79,9 @@ export default compose(
     componentDidMount() {
       eventEmitter.emit(CLOSE_MEGAMENU);
       window.scrollTo(0, 0);
-      window.addEventListener('resize', this.props.updateWidth);
-    },
-    componentWillUnmount() {
-      window.removeEventListener('resize', this.props.updateWidth);
     },
   }),
   withProps(({ count, data }) => {
-    const isMoreData = true;
     const postCount = count && count.count && count.count.count;
     const Data = data.Posts && postCount && data.Posts.length > 0 && data.Posts;
     if (Data && postCount <= Data.length + 1) {

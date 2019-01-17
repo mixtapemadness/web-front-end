@@ -7,10 +7,6 @@
 
 import React from 'react';
 import styled from 'styled-components';
-import EyeIcon from 'resources/assets/svg/eye.svg';
-import ClockIcon from 'resources/assets/svg/clock.svg';
-import SignalBars from 'resources/assets/svg/signal-bars.svg';
-import PlayIcon from 'resources/assets/svg/Play.svg';
 import { Link } from 'react-router-dom';
 import topVideoEnhancer from './topVideoEnhancer';
 
@@ -111,9 +107,7 @@ const TopVideo = ({ data, media, category, tags }) => {
           CategoriesData[0] &&
           CategoriesData[0].slug}/${data.slug}`}
         src={Image}
-      >
-        {/* <Icon src={PlayIcon} play /> */}
-      </Video>
+      />
       <VideoDesc>
         <VideoDescTop>
           <VideoDescTitle>
@@ -125,23 +119,12 @@ const TopVideo = ({ data, media, category, tags }) => {
                   dangerouslySetInnerHTML={{ __html: data.title }}
                 />
               )}
-            {/* <VideoDescDuration>
-              <Icon src={ClockIcon} />
-              {data.duration}
-            </VideoDescDuration> */}
           </VideoDescTitle>
           {tagsData &&
             tagsData.length && (
               <VideoDescArtist>{tagsData[0].name}</VideoDescArtist>
             )}
         </VideoDescTop>
-        <VideoDescBottom>
-          <VideoDescView>
-            {/* <Icon src={EyeIcon} />
-            {data.comments} Views */}
-          </VideoDescView>
-          {/* <Icon src={SignalBars} /> */}
-        </VideoDescBottom>
       </VideoDesc>
     </TopVideoContainer>
   );

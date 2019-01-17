@@ -2,39 +2,17 @@
 /* eslint no-unneeded-ternary: 0 */
 /* eslint object-curly-newline: 0 */
 
-import { compose, withStateHandlers, lifecycle, branch } from 'recompose';
-import window from 'global/window';
+import { compose, branch } from 'recompose';
 import { withCategory, withMedia, withAuthor } from 'hocs';
-// import getCategoryById from 'graphql/getCategoryById.graphql'
 
 export default compose(
-  withStateHandlers(
-    () => ({
-      width: window.innerWidth,
-    }),
-    {
-      updateWidth: () => () => ({ width: window.innerWidth }),
-    },
-  ),
-  lifecycle({
-    componentDidMount() {
-      window.addEventListener('resize', this.props.updateWidth);
-    },
-    componentWillUnmount() {
-      window.removeEventListener('resize', this.props.updateWidth);
-    },
-  }),
   branch(
-    ({ data: { categories } }) => (categories ? true : false),
+    ({ data: { categories } }) => (!!categories),
     withCategory,
   ),
   branch(
-    ({ data: { featured_media } }) => (featured_media ? true : false),
+    ({ data: { featured_media } }) => (!!featured_media),
     withMedia,
   ),
-  branch(({ data }) => (data ? true : false), withAuthor),
-
-  // withCategory,
-  // withCategory,
-  // withProps(props => console.log('propssssssssssss', props)),
+  branch(({ data }) => (!!data), withAuthor),
 );

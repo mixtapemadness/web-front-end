@@ -18,7 +18,6 @@ import window from 'global/window';
 export default compose(
   withStateHandlers(
     () => ({
-      width: window.innerWidth,
       perPage: 9,
       page: 1,
       perPageMobile: 4,
@@ -39,16 +38,12 @@ export default compose(
   ),
   lifecycle({
     componentDidMount() {
-      window.addEventListener('resize', this.props.updateWidth);
       window.scrollTo(0, 0);
     },
     componentDidUpdate(prevProps, prevState) {
       if (prevProps.page === this.props.page) {
         window.scrollTo(0, 0);
       }
-    },
-    componentWillUnmount() {
-      window.removeEventListener('resize', this.props.updateWidth);
     },
   }),
   withRouter,

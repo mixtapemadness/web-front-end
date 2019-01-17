@@ -110,7 +110,7 @@ const settings = {
   ],
 };
 
-const Reviews = ({ width, data }) => {
+const Reviews = ({ data }) => {
   const posts = data && data.Posts && data.Posts;
   return (
     <ReviewContainer>

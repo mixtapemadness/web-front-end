@@ -157,10 +157,6 @@ const searchedItem = ({ toggleSearch, data, category, tags, media, color }) => {
             />
           )}
         <ContentContainerBottom>
-          <TimeContainer>
-            <ClockIcon height="20px" color={color} />
-            <Time color={color}>{dateStringify(data.date, false, true)}</Time>
-          </TimeContainer>
           {categoriesData &&
             categoriesData.length &&
             data && (

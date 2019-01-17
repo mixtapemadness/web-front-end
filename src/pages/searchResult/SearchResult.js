@@ -62,6 +62,7 @@ const Filter = styled.div`
   border-bottom: 1px solid #ccc;
   color: #000000;
   font-weight: 600;
+  width: 100%;
   @media only screen and (max-width: 1050px) {
     justify-content: center;
   }
@@ -150,7 +151,6 @@ const SearchResult = ({
         </Category>
       </CategoryContainer>
     </Filter>
-    {/* {renderData(data.searchedData)} */}
     {data &&
       data.searchedData &&
       data.searchedData.map(item => <SearchedItem key={item.id} data={item} />)}

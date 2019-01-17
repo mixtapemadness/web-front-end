@@ -3,12 +3,13 @@
 /* eslint indent: 0 */
 /* eslint operator-linebreak: 0 */
 
-import React from 'react';
+import React, { Fragment } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import videoEnhancer from './videoEnhancer';
 import truncate from '../../helpers/textHelpers';
 import { RESPONSIVE_BREAKPOINTS } from '../../constants';
+import CardLoader from '../loaders/CardLoader';
 
 const Container = styled.div`
   flex: 1;
@@ -68,8 +69,8 @@ const Dots = styled.img`
 const LeftSide = styled.div`
   display: flex;
   flex-direction: column;
-  height: 100%;
   justify-content: space-between;
+  height: 100%;
 `;
 
 const Name = styled(Link)`
@@ -78,34 +79,19 @@ const Name = styled(Link)`
   margin-bottom: 16px;
   display: block;
 `;
-const Text = styled.span`
-  color: #666666;
-  word-break: break-word;
-  font-size: 14.5px;
-  line-height: 1.45;
-  letter-spacing: 0.9px;
-  margin-right: 10px;
-`;
-
-const Views = styled.span`
-  font-size: 12.5px;
-  letter-spacing: 0.8px;
-  color: #666666;
-  margin-left: 7px;
-`;
-
-const TagsContainer = styled.span`
-  display: flex;
-`;
 
 const Excerpt = styled.span`
-  color: #666;
-  margin-top: 20px;
-  p {
-    line-height: 26px;
-  }
+    color: #666;
   overflow: hidden;
   font-size: 12px;
+
+  p {
+    line-height: 24px;
+  }
+  position:relative &:before {
+    content: '...';
+    position: absolute;
+  }
 `;
 const WatchMore = styled(Link)`
   color: #ff9600;
@@ -119,37 +105,31 @@ const WatchMore = styled(Link)`
 
 const Video = ({ data, media, tags, category }) => {
   const categoriesData = category && category.category && category.category;
-  const tagsData = tags && tags.tags && tags.tags;
   const Image =
     media && media.img && media.img.featured_image && media.img.featured_image;
-  // const CategoriesData = category && category.category && category.category
+  if (!data || !categoriesData) {
+    return <CardLoader />;
+  }
   return (
     <Container>
-      {categoriesData &&
-        data && (
-          <PhotoContainer
-            picture={Image && Image}
-            to={`/blog/${categoriesData[0].slug}/${data.slug}`}
-          />
-        )}
+      <PhotoContainer
+        picture={Image && Image}
+        to={`/blog/${categoriesData[0].slug}/${data.slug}`}
+      />
       <ContentContainer>
         <LeftSide>
-          {data &&
-            categoriesData && (
-              <Name
-                dangerouslySetInnerHTML={{ __html: data.title }}
-                to={`/blog/${categoriesData[0].slug}/${data.slug}`}
-              />
-            )}
-          {categoriesData && (
-            <WatchMore
-              to={{
-                pathname: `/blog/${categoriesData[0].slug}/${data.slug}`,
-              }}
-            >
+          <Fragment>
+            <Name
+              dangerouslySetInnerHTML={{ __html: data.title }}
+              to={`/blog/${categoriesData[0].slug}/${data.slug}`}
+            />
+            <Excerpt
+              dangerouslySetInnerHTML={{ __html: truncate(data.excerpt, 112) }}
+            />
+            <WatchMore to={`/blog/${categoriesData[0].slug}/${data.slug}`}>
               Watch Video
             </WatchMore>
-          )}
+          </Fragment>
         </LeftSide>
       </ContentContainer>
     </Container>

@@ -111,7 +111,7 @@ const settings = {
   ],
 };
 
-const Interviews = ({ width, data }) => {
+const Interviews = ({ data }) => {
   const posts = data && data.Posts && data.Posts;
   return (
     <InterviewContainer>

@@ -21,7 +21,7 @@ import TermsAndConditions from 'pages/termsAndConditions';
 import styled from 'styled-components';
 import Footer from 'components/footer';
 import GA from 'components/googleAnalytics';
-import { RESPONSIVE_BREAKPOINTS } from './constants';
+import { RESPONSIVE_BREAKPOINTS, ROUTES } from './constants';
 
 const Container = styled.div`
   max-width: 1200px;
@@ -42,7 +42,7 @@ const AppContent = ({ searchOpened, toggleSearch, menuOpened }) => (
         <Route exact path="/" component={Home} />
         <Route exact path="/blog/category/:filter" component={Blog} />
         <Route path="/blog/:category/:slug" component={BlogPage} />
-        <Route path="/aboutus" component={AboutUs} />
+        <Route path={ROUTES.about} component={AboutUs} />
         <Route path="/author/:slug" component={AuthorPage} />
         <Route path="/events" component={EventPage} />
         <Route path="/music" component={Music} />

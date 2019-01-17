@@ -15,22 +15,6 @@ import { loadDataAsync, withMedia, withCategory } from 'hocs';
 import getMediaById from 'graphql/getMediaById.graphql';
 
 export default compose(
-  withStateHandlers(
-    () => ({
-      width: window.innerWidth,
-    }),
-    {
-      updateWidth: () => () => ({ width: window.innerWidth }),
-    },
-  ),
-  lifecycle({
-    componentDidMount() {
-      window.addEventListener('resize', this.props.updateWidth);
-    },
-    componentWillUnmount() {
-      window.removeEventListener('resize', this.props.updateWidth);
-    },
-  }),
   branch(
     ({ data: { categories } }) => (categories ? true : false),
     withCategory,

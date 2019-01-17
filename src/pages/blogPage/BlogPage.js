@@ -27,6 +27,9 @@ import {
   ROUTES,
 } from '../../constants';
 import truncate from '../../helpers/textHelpers';
+import CardLoader from '../../components/loaders/CardLoader';
+import Spinner from '../../components/Spinner/Spinner';
+import Shimmer from '../../components/loaders/shimmer/Shimmer';
 
 const Container = styled.div`
   width: 100%;
@@ -78,7 +81,6 @@ const BackArrow = styled(Link)`
   justify-content: center;
   cursor: pointer;
   margin-right: 20px;
-  transition: 0.3s;
   pointer-events: ${props =>
       props.index === 0 || props.isdisabled === 'true' ? 'none' : 'inherit'}
     svg {
@@ -272,12 +274,6 @@ const BlogArticleContent = styled.div`
     img {
       margin: 5px 0;
     }
-    @media only screen and (max-width: 575px) {
-      embed {
-        width: 90%;
-        height: 250px;
-      }
-    }
   }
 `;
 
@@ -297,6 +293,7 @@ const BlogPage = ({
   nextRoute,
   prevRoute,
   location,
+  showSpinner,
 }) => {
   const userName = user && user.user && user.user.name && user.user.name;
   const userSlug = user && user.user && user.user.slug && user.user.slug;
@@ -341,6 +338,26 @@ const BlogPage = ({
       .replace('iframe', 'embed');
   const disablePrev = !prevRoute;
   const renderVideo = data && !data.loading && isVideo && Video ? true : false;
+
+  if (showSpinner || !data || !Description || !categories || !postData) {
+    return (
+      <React.Fragment>
+        <Container>
+          <TitleContainer>
+            <Shimmer mt={12} size={14} fullWidth />
+            <Shimmer mt={12} size={12} fullWidth />
+            <Shimmer size={400} mt={15} fullWidth />
+            <Shimmer mt={12} size={14} fullWidth />
+            <Shimmer mt={12} size={12} fullWidth />
+            <Shimmer mt={12} size={14} fullWidth />
+            <Shimmer mt={12} size={12} fullWidth />
+            <Shimmer mt={12} size={14} fullWidth />
+            <Shimmer mt={12} size={12} fullWidth />
+          </TitleContainer>
+        </Container>
+      </React.Fragment>
+    );
+  }
 
   return (
     <React.Fragment>
@@ -419,7 +436,6 @@ const BlogPage = ({
               {match.params.category}
             </CategoryLink>
             <BlogTitle dangerouslySetInnerHTML={{ __html: postData.title }} />
-            {/* <BlogSubTitle dangerouslySetInnerHTML={{ __html: Excerpt && Excerpt.replace('[&Hellip', ' ') }} /> */}
             <BlogSubTitle
               dangerouslySetInnerHTML={{
                 __html:
@@ -428,7 +444,7 @@ const BlogPage = ({
               }}
             />
             <PostContentHeading
-              date={postData.date}
+              date={PostDate}
               userName={userName}
               userSlug={userSlug}
             />
@@ -444,15 +460,9 @@ const BlogPage = ({
           <BlogPageImg renderVideo={renderVideo} id={postData.featured_media} />
         </BlogImageWrapper>
         <BlogContent>
-          {!isVideo && Video ? (
-            <BlogArticleContent
-              dangerouslySetInnerHTML={{ __html: Content && Content }}
-            />
-          ) : (
-            <BlogArticleContent
-              dangerouslySetInnerHTML={{ __html: postData.content }}
-            />
-          )}
+          <BlogArticleContent
+            dangerouslySetInnerHTML={{ __html: postData.content }}
+          />
         </BlogContent>
         <TagsContainer>
           {postData.tags && postData.tags.map(id => <Tag key={id} id={id} />)}

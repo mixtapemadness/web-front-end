@@ -14,11 +14,11 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import window from 'global/window';
 import ReactImageFallback from 'react-image-fallback';
-import imageExists from 'image-exists';
 import postItemEnhancer from './postItemEnhancer';
 import placeholderImg from '../../resources/assets/img/placeholderImg.jpg';
 import truncate from '../../helpers/textHelpers';
-import { RESPONSIVE_BREAKPOINTS } from '../../constants';
+import { RESPONSIVE_BREAKPOINTS, ROUTES } from '../../constants';
+import CardLoader from '../loaders/CardLoader';
 
 const PostItemContainer = styled.div`
   height: 440px;
@@ -177,14 +177,14 @@ const Categories = ({ data }) => {
           return (
             <React.Fragment key={item.id}>
               ,
-              <Category to={`/blog/category/${item.slug}`}>
+              <Category to={`${ROUTES.blog}/${item.slug}`}>
                 {item.name}
               </Category>
             </React.Fragment>
           );
         }
         return (
-          <Category key={item.id} to={`/blog/category/${item.slug}`}>
+          <Category key={item.id} to={`${ROUTES.blog}/${item.slug}`}>
             {item.name}
           </Category>
         );
@@ -200,20 +200,22 @@ const PostItem = ({ media, category, user, data }) => {
     media && media.img && media.img.featured_image && media.img.featured_image;
   const CategoriesData = category && category.category && category.category;
   const User = user && user.user && user.user;
+  const postUrl = CategoriesData && `/blog/${CategoriesData[0].slug}/${data.slug}`;
+
+  if (!data || !CategoriesData) {
+    return <CardLoader />;
+  }
+
   return (
     <PostItemContainer className="post-item">
       <Media
         to={{
-          pathname:
-            data &&
-            CategoriesData &&
-            `/blog/${CategoriesData[0].slug}/${data.slug}`,
+          pathname: postUrl,
           state: {
             prevPath: pathname,
             authorId: User && User.id,
           },
         }}
-        // img={imageExists(Image, (exists) => !!exists) ? Image : placeholderImg}
       >
         <ReactImageFallback
           src={Image && Image}
@@ -224,21 +226,18 @@ const PostItem = ({ media, category, user, data }) => {
       <ContentContainer>
         <ContentContainerTop>
           <CategoryContainer>
-            {CategoriesData && <Categories data={CategoriesData} />}
+            <Categories data={CategoriesData} />
           </CategoryContainer>
-          {CategoriesData &&
-            data && (
-              <PostTitle
-                dangerouslySetInnerHTML={{ __html: data.title }}
-                to={{
-                  pathname: `/blog/${CategoriesData[0].slug}/${data.slug}`,
-                  state: {
-                    prevPath: pathname,
-                    authorId: User && User.id,
-                  },
-                }}
-              />
-            )}
+          <PostTitle
+            dangerouslySetInnerHTML={{ __html: data.title }}
+            to={{
+              pathname: postUrl,
+              state: {
+                prevPath: pathname,
+                authorId: User && User.id,
+              },
+            }}
+          />
         </ContentContainerTop>
         <ContentContainerBottom>
           <DataContentContainer
@@ -253,22 +252,19 @@ const PostItem = ({ media, category, user, data }) => {
               />
             )}
           </Span>
-          {data &&
-            CategoriesData && (
-              <ContinueReadContainer>
-                <ContinueRead
-                  to={{
-                    pathname: `/blog/${CategoriesData[0].slug}/${data.slug}`,
-                    state: {
-                      prevPath: pathname,
-                      authorId: User && User.id,
-                    },
-                  }}
-                >
-                  Read More
-                </ContinueRead>
-              </ContinueReadContainer>
-            )}
+          <ContinueReadContainer>
+            <ContinueRead
+              to={{
+                pathname: postUrl,
+                state: {
+                  prevPath: pathname,
+                  authorId: User && User.id,
+                },
+              }}
+            >
+              Read More
+            </ContinueRead>
+          </ContinueReadContainer>
         </ContentContainerBottom>
       </ContentContainer>
     </PostItemContainer>

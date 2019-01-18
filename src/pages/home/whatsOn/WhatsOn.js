@@ -4,38 +4,11 @@
 /* eslint no-unused-vars: 0 */
 
 import React from 'react';
-import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import PostItem from 'components/postItem';
 import SliderComponent from 'components/slider';
 import { CardLoader } from 'components/loaders';
 import whatsOnEnhancer from './whatsOnEnhancer';
-
-const Container = styled.div`
-  width: 100%;
-  margin: 40px auto;
-`;
-
-const HeaderContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  ${p => p.mb && `margin-bottom: ${p.mb}px`};
-`;
-
-const SectionHeader = styled.span`
-  font-weight: 800;
-  font-size: 38px;
-`;
-
-const WhatsOnItemsContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  @media only screen and (max-width: 1190px) {
-    align-items: center;
-    justify-content: center;
-  }
-`;
 
 const settings = {
   infinite: true,
@@ -61,24 +34,20 @@ const WhatsOn = ({ data }) => {
   const Posts = data && data.Posts && data.Posts;
 
   return (
-    <Container>
-      <HeaderContainer mb={0}>
-        <SectionHeader>
-          <Link to="/blog/category/events">Events</Link>
-        </SectionHeader>
-      </HeaderContainer>
-      <WhatsOnItemsContainer>
-        <SliderComponent settings={settings}>
-          {data.loading &&
-            [...Array(8)].map(i => (
-              <CardLoader key={`${i}-interview-loader`} />
-            ))}
-          {!data.loading &&
-            Posts &&
-            Posts.map(item => <PostItem key={item.id} data={item} />)}
-        </SliderComponent>
-      </WhatsOnItemsContainer>
-    </Container>
+    <SliderComponent
+      title={<Link to="/blog/category/events">Events</Link>
+      }
+      subTitle="Looking for something to do?"
+      settings={settings}
+    >
+      {data.loading &&
+      [...Array(8)].map(i => (
+        <CardLoader key={`${i}-interview-loader`} />
+      ))}
+      {!data.loading &&
+      Posts &&
+      Posts.map(item => <PostItem key={item.id} data={item} />)}
+    </SliderComponent>
   );
 };
 

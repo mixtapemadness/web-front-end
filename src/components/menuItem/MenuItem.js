@@ -16,6 +16,7 @@ import ReactImageFallback from 'react-image-fallback';
 import menuItemEnhancer from './menuItemEnhancer';
 import eventEmitter from '../../eventEmitter';
 import placeholderImg from '../../resources/assets/img/placeholderImg.jpg';
+import CardLoader from '../loaders/CardLoader';
 
 const Container = styled.div`
   display: flex;
@@ -39,7 +40,8 @@ const MenuItemPhoto = styled(Link)`
 `;
 
 const Category = styled(Link)`
-  color: #ff9600;
+  color: #000;
+  text-align: center;
   cursor: pointer;
   color: ${props => (props.color ? props.color : '#e68600')};
   font-weight: 800;
@@ -49,10 +51,8 @@ const Category = styled(Link)`
 
 const PostTitle = styled(Link)`
   width: 100%;
-  font-weight: 800;
   font-size: 16px;
   line-height: 1.3;
-  text-decoration: underline;
   text-decoration-color: transparent;
   color: #ffffff;
   transition: 0.4s;
@@ -67,7 +67,7 @@ const ContentContainer = styled.div`
   justify-content: space-between;
   width: 260px;
   flex: 1;
-  margin: 10px 0;
+  margin: 20px 0;
   @media only screen and (max-width: 1050px) {
     text-align: center;
   }
@@ -124,10 +124,7 @@ const ContinueRead = styled(Link)`
 `;
 
 const MenuItem = ({ data, media, category, tags }) => {
-  // const data = Posts && Posts.data
-
   const Image = media && media.img && media.img.full && media.img.full;
-
   const categorySlug =
     category &&
     category.category &&
@@ -136,8 +133,9 @@ const MenuItem = ({ data, media, category, tags }) => {
     category.category[0].id &&
     category.category[0].name;
 
-  const tagsData = tags && tags.tags && tags.tags;
-
+  if (!Image) {
+    return <CardLoader />;
+  }
   return (
     <Container>
       <MenuItemPhoto
@@ -159,15 +157,6 @@ const MenuItem = ({ data, media, category, tags }) => {
 
       <ContentContainer>
         <ContentContainerTop>
-          {/* {categories &&
-            categories.map(item => (
-              <GetCategory
-                color={'#4f4f4f'}
-                // key={data.categories}
-                id={data.categories}
-              />
-
-            ))} */}
           <Category
             to={`/blog/${categorySlug && categorySlug}/${data.slug}`}
             color={'#4f4f4f'}
@@ -180,17 +169,6 @@ const MenuItem = ({ data, media, category, tags }) => {
             onClick={() => eventEmitter.emit(CLOSE_MEGAMENU)}
             dangerouslySetInnerHTML={{ __html: data.title }}
           />
-          {/* <Title dangerouslySetInnerHTML={{ __html: data.title }} /> */}
-          {/* <FlexDiv>
-        <ViewsContainer>
-          <ViewsIcon color="#ffffff" height="20px" />
-          <Span>
-            {data.views}
-            {' Views'}
-          </Span>
-        </ViewsContainer>
-        <SignalBarsIcon color="#ffffff" height="13px" />
-      </FlexDiv> */}
         </ContentContainerTop>
         <ContinueRead
           color={'#ffffff'}

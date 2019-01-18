@@ -4,72 +4,12 @@
 /* eslint no-unused-vars: 0 */
 
 import React from 'react';
-import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import PostItem from 'components/postItem';
-import Subscribe from 'components/subscribe';
 import SliderComponent from 'components/slider';
 import { CardLoader } from 'components/loaders';
 
 import reviewsEnhancer from './reviewsEnhancer';
-
-const ReviewContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  max-width: 1200px;
-  margin: 50px auto;
-  justify-content: space-around;
-  @media only screen and (max-width: 1150px) {
-    flex-direction: column;
-    align-items: center;
-  }
-  @media only screen and (max-width: 500px) {
-    margin: 15px;
-  }
-`;
-
-const TitleContainer = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  @media only screen and (max-width: 751px) {
-    text-align: center;
-  }
-`;
-
-const Title = styled.h1`
-  font-weight: 800;
-  font-size: 38px;
-`;
-
-const SubTitle = styled.h2`
-  font-weight: 800;
-  font-size: 18px;
-`;
-
-const SubscribeContainer = styled.div`
-  margin: 40px 0;
-  max-width: 1100px;
-`;
-
-const PostItemT = (item, index) => {
-  if (index === 5) {
-    return (
-      <React.Fragment>
-        <PostItem key={item.id} data={item} />
-        <SubscribeContainer>
-          <Subscribe />
-        </SubscribeContainer>
-      </React.Fragment>
-    );
-  }
-  return <PostItem key={item.id} data={item} />;
-};
-
-const PostItems = ({ items }) => {
-  return items.map((item, index) => PostItemT(item, index));
-};
 
 const settings = {
   dots: false,
@@ -113,21 +53,19 @@ const settings = {
 const Reviews = ({ data }) => {
   const posts = data && data.Posts && data.Posts;
   return (
-    <ReviewContainer>
-      <TitleContainer>
-        <Title>
-          <Link to="/blog/category/reviews">Reviews</Link>
-        </Title>
-        <SubTitle>Check Out The Latest Reviews</SubTitle>
-      </TitleContainer>
-      <SliderComponent settings={settings}>
-        {data.loading &&
-          [...Array(8)].map(i => <CardLoader key={`${i}-reviews-loader`} />)}
-        {!data.loading &&
-          posts &&
-          posts.map(item => <PostItem key={item.id} data={item} />)}
-      </SliderComponent>
-    </ReviewContainer>
+    <SliderComponent
+      title={
+        <Link to="/blog/category/reviews">Reviews</Link>
+      }
+      subTitle="Albums, Videos, EPs and more"
+      settings={settings}
+    >
+      {data.loading &&
+      [...Array(8)].map(i => <CardLoader key={`${i}-reviews-loader`} />)}
+      {!data.loading &&
+      posts &&
+      posts.map(item => <PostItem key={item.id} data={item} />)}
+    </SliderComponent>
   );
 };
 

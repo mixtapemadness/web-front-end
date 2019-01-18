@@ -4,11 +4,12 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import SocialIcons from 'components/SocialIcons';
-import SearchIcon from 'resources/assets/svgComponents/Search';
+
 import MixtapeLogo from 'resources/assets/img/mixtape-logo.png';
 
 import headerEnhancer from './headerEnhancer';
 import { BRAND_COLOURS, RESPONSIVE_BREAKPOINTS, ROUTES } from '../../constants';
+import IconButton from '../IconButton';
 
 const HeaderContainer = styled.div`
   width: 100vw;
@@ -99,10 +100,12 @@ const Logo = styled.img`
 `;
 
 const Search = styled.div`
-  width: 20px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
+  font-size: 20px;
+  &:hover {
+  i {
+      color: ${BRAND_COLOURS.orange};
+    }
+  }
 `;
 
 const BurgerIcon = styled.div`
@@ -170,7 +173,6 @@ const Div = styled.div`
 `;
 
 const Header = ({
-  // dotsMenu,
   toggleSearch,
   toggleMenu,
   menuOpened,
@@ -188,7 +190,7 @@ const Header = ({
           </BurgerIcon>
         </Div>
         <Link to="/">
-          <Logo src={MixtapeLogo} alt="logo" />
+          <Logo src={MixtapeLogo} alt="Mixtape Madness logo" />
         </Link>
         <NavBar>
           <Ul menuOpened={menuOpened}>
@@ -203,7 +205,7 @@ const Header = ({
           </Ul>
         </NavBar>
         <Search onClick={() => toggleSearch()}>
-          <SearchIcon width="20px" color={menuOpened ? '#ffffff' : '#666666'} />
+          <IconButton iconClassName="fas fa-search" />
         </Search>
       </LeftSide>
       <RightSide>

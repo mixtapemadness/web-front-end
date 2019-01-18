@@ -11,8 +11,7 @@ import React from 'react';
 import styled from 'styled-components';
 import ReactDisqusComments from 'react-disqus-comments';
 import YouMayLike from 'components/youMayLike';
-import Forward from 'resources/assets/svgComponents/Forward';
-import Back from 'resources/assets/svgComponents/Back';
+
 import { Link } from 'react-router-dom';
 import window from 'global/window';
 import { Helmet } from 'react-helmet';
@@ -27,9 +26,8 @@ import {
   ROUTES,
 } from '../../constants';
 import truncate from '../../helpers/textHelpers';
-import CardLoader from '../../components/loaders/CardLoader';
-import Spinner from '../../components/Spinner/Spinner';
 import Shimmer from '../../components/loaders/shimmer/Shimmer';
+import IconButton from '../../components/IconButton';
 
 const Container = styled.div`
   width: 100%;
@@ -64,14 +62,8 @@ const ForwardArrow = styled(Link)`
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  svg {
-    transition: 0.3s;
-  }
   &:hover {
     color: #ffa019;
-    svg {
-      fill: #ffa019;
-    }
   }
 `;
 
@@ -81,18 +73,8 @@ const BackArrow = styled(Link)`
   justify-content: center;
   cursor: pointer;
   margin-right: 20px;
-  pointer-events: ${props =>
-      props.index === 0 || props.isdisabled === 'true' ? 'none' : 'inherit'}
-    svg {
-    transition: 0.3s;
-    fill: ${props =>
-      props.index === 0 || props.isdisabled === 'true' ? '#ccc' : '#666666'};
-  }
   &:hover {
     color: #ffa019;
-    svg {
-      fill: #ffa019;
-    }
   }
 `;
 
@@ -150,19 +132,6 @@ const BlogImageWrapper = styled.div`
   }
 `;
 
-const BackgroundPicture = styled.div`
-  width: 100%;
-  height: 730px;
-  background-image: url(${props => props.src});
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  margin: 60px 0;
-  @media only screen and (max-width: 450px) {
-    height: 300px;
-  }
-`;
-
 const BlogContent = styled.div`
   max-width: 100%;
   padding 0 20px;
@@ -177,19 +146,6 @@ const BlogContent = styled.div`
   }
 `;
 
-const BlogArticle = styled.div`
-  width: 100%;
-  margin: auto;
-  margin-top: 40px;
-`;
-
-const VideoContainer = styled.div`
-  width: 78%;
-  margin: auto;
-  margin-top: 80px;
-  margin-bottom: 60px;
-`;
-
 const TagsContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -202,74 +158,14 @@ const TagsContainer = styled.div`
   }
 `;
 
-const AlsoLikeHeaderContainer = styled.div`
-  max-width: 1200px;
-  margin: 40px auto;
-  height: 100px;
-  border-top: 1px solid #c9c9c9;
-  border-bottom: 1px solid #c9c9c9;
-  text-transform: capitalize;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-weight: bold;
-  font-size: 30px;
-  color: #000000;
-`;
-
-const MayLikeContainer = styled.div`
-  display: flex;
-  max-width: 1200px;
-  margin: auto;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  @media only screen and (max-width: 1150px) {
-    flex-direction: column;
-    align-items: center;
-  }
-`;
-
-const MobileAuthorContainer = styled.div`
-  display: none;
-  color: #666666;
-  justify-content: center;
-  margin-top: 20px;
-  @media only screen and (max-width: 450px) {
-    display: flex;
-  }
-`;
-
-const Author = styled.span`
-  color: #ff9d00;
-`;
-const Div = styled.div`
-  display: flex;
-  max-width: 1200px;
-  margin: auto;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  @media only screen and (max-width: 1150px) {
-    flex-direction: column;
-    align-items: center;
-  }
-`;
-
-const AdvertisementContainer = styled.div`
-  width: 357px;
-  height: 627px;
-`;
-
 const DisqusContainer = styled.div`
-  max-width: 1200px;
   margin: auto;
-  width: 90%;
-  margin-top: 20px;
+  width: 100%;
+  margin-top: 40px;
 `;
 
 const BlogArticleContent = styled.div`
-  a {
-    color: #ff9600;
-  }
+  font-size: 18px;
   p {
     img {
       margin: 5px 0;
@@ -407,7 +303,7 @@ const BlogPage = ({
                 },
               }}
             >
-              <Back fill="#666666" width={20} height={20} />
+              <IconButton iconClassName="fas fa-chevron-left" />
               <ArrowText>Previous Post</ArrowText>
             </BackArrow>
             <ForwardArrow
@@ -427,7 +323,7 @@ const BlogPage = ({
               }}
             >
               <ArrowText> Next Post</ArrowText>
-              <Forward fill="#666666" width={20} height={20} />
+              <IconButton iconClassName="fas fa-chevron-right" />
             </ForwardArrow>
           </PagingArrows>
 

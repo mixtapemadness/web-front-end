@@ -34,7 +34,7 @@ const PostItemContainer = styled.div`
 `;
 
 const ContentContainer = styled.div`
-  background-color: #eeeeef;
+  background-color: #f1f3f5;
   width: 100%;
   padding: 15px 10px;
   box-sizing: border-box;
@@ -42,13 +42,11 @@ const ContentContainer = styled.div`
   flex-direction: column;
   justify-content: space-between;
   flex: 1;
-  ${p => p.blog === true && 'height: 373px'};
+  height: 400px;
   @media only screen and (max-width: 1150px) {
     height: auto;
   }
 `;
-
-const ContentContainerTop = styled.div``;
 
 const Media = styled(Link)`
   width: 100%;
@@ -74,99 +72,37 @@ const Media = styled(Link)`
 const PostTitle = styled(Link)`
   width: 100%;
   font-weight: 800;
-  font-size: ${p => (p.fontSize ? p.fontSize : '16px')};
-  line-height: 1.3;
-  transition: 0.4s;
-  color: ${p => (p.color ? p.color : '#111111')};
-  transition: 0.4s;
+  margin-bottom: 10px;
+  font-size: 16px;
+      display: block;
 `;
 
-const Category = styled(Link)`
+const HoverLink = styled(Link)`
   color: #ff9600;
-  margin: 0 5px;
+  margin: 0;
   cursor: pointer;
+  font-size: 12px;
+  &:hover{
+  text-decoration: underline;
+  }
 `;
-
 const ContentContainerBottom = styled.div`
   display: flex;
   flex-direction: column;
   margin-top: 20px;
-`;
-
-const Span = styled.span`
-  ${p => p.color && `color: ${p.color}`};
-  ${p => p.mb && `margin-bottom: ${p.mb}px`};
-  ${p => p.maxHeight && `max-height: ${p.maxHeight}`};
-  font-size: 12px;
-  letter-spacing: 0.7px;
-  display: flex;
-  font-weight: 800;
-  margin-top: 10px;
+  color: #333;
 `;
 
 const DataContentContainer = styled.span`
-  color: #666;
-  overflow: hidden;
-  font-size: 12px;
-
-  p {
-    line-height: 24px;
-  }
-  position:relative &:before {
-    content: '...';
-    position: absolute;
-  }
-`;
-
-const AuthorName = styled(Link)`
-  color: #ff9600;
-  margin: 0 5px;
-  cursor: pointer;
-  font-weight: 800;
-`;
-
-const FlexDiv = styled.div`
-  display: flex;
-  ${p => p.jc && `justify-content: ${p.jc}`};
-  margin: 3px 0;
-`;
-const Img = styled.img`
-  ${p => p.height && `height: ${p.height}px`};
-`;
-
-const Views = styled.span`
-  margin-left: 10px;
-  color: #666666;
-  font-size: 12px;
-  letter-spacing: 0.7px;
+  color: #333333;
+  font-size: 14px;
+  line-height: 26px;
 `;
 
 const CategoryContainer = styled.div`
   width: 100%;
   color: #000;
-  display: flex;
-  flex-wrap: wrap;
-  font-weight: 800;
-  font-size: 12px;
   margin-bottom: 10px;
-`;
-
-const ContinueReadContainer = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: flex-start;
-  @media only screen and (max-width: 1150px) {
-    justify-content: flex-start;
-  }
-`;
-
-const ContinueRead = styled(Link)`
-  color: #ff9600;
-  cursor: pointer;
-  font-weight: 800;
-  font-size: 12px;
-  margin-top: 10px;
-  position: relative;
 `;
 
 const Categories = ({ data }) => {
@@ -176,17 +112,16 @@ const Categories = ({ data }) => {
         if (index > 0) {
           return (
             <React.Fragment key={item.id}>
-              ,
-              <Category to={`${ROUTES.blog}/${item.slug}`}>
+              , <HoverLink to={`${ROUTES.blog}/${item.slug}`}>
                 {item.name}
-              </Category>
+              </HoverLink>
             </React.Fragment>
           );
         }
         return (
-          <Category key={item.id} to={`${ROUTES.blog}/${item.slug}`}>
+          <HoverLink key={item.id} to={`${ROUTES.blog}/${item.slug}`}>
             {item.name}
-          </Category>
+          </HoverLink>
         );
       }))
     : (newData = null);
@@ -224,12 +159,12 @@ const PostItem = ({ media, category, user, data }) => {
         />
       </Media>
       <ContentContainer>
-        <ContentContainerTop>
+        <div>
           <CategoryContainer>
             <Categories data={CategoriesData} />
           </CategoryContainer>
           <PostTitle
-            dangerouslySetInnerHTML={{ __html: data.title }}
+            dangerouslySetInnerHTML={{ __html: truncate(data.title, 60) }}
             to={{
               pathname: postUrl,
               state: {
@@ -238,33 +173,17 @@ const PostItem = ({ media, category, user, data }) => {
               },
             }}
           />
-        </ContentContainerTop>
-        <ContentContainerBottom>
           <DataContentContainer
-            dangerouslySetInnerHTML={{ __html: truncate(data.excerpt, 112) }}
+            dangerouslySetInnerHTML={{ __html: truncate(data.excerpt, 90) }}
           />
-          <Span color="#000000">
-            By{' '}
-            {User && (
-              <AuthorName
-                to={`/author/${User.slug}`}
-                dangerouslySetInnerHTML={{ __html: User.name }}
-              />
-            )}
-          </Span>
-          <ContinueReadContainer>
-            <ContinueRead
-              to={{
-                pathname: postUrl,
-                state: {
-                  prevPath: pathname,
-                  authorId: User && User.id,
-                },
-              }}
-            >
-              Read More
-            </ContinueRead>
-          </ContinueReadContainer>
+        </div>
+        <ContentContainerBottom>
+          {User && (
+            <HoverLink
+              to={`/author/${User.slug}`}
+            >{User.name}
+            </HoverLink>
+          )}
         </ContentContainerBottom>
       </ContentContainer>
     </PostItemContainer>

@@ -8,10 +8,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import CardLoader from 'components/loaders';
-import ReactImageFallback from 'react-image-fallback';
+import { CardLoader } from 'components/loaders';
 import mainSliderEnhancer from './sliderContentEnhancer';
-import placeholderImg from '../../../resources/assets/img/placeholderImg.jpg';
 import { RESPONSIVE_BREAKPOINTS } from '../../../constants';
 
 const SliderContent = styled.div`
@@ -61,6 +59,10 @@ const Header = styled.span`
   font-weight: bold;
   color: white;
   position: relative;
+  
+  &:hover{
+   text-decoration: underline;
+  }
   @media only screen and (min-width: ${RESPONSIVE_BREAKPOINTS.tablet}) {
     font-size: 20px;
   }
@@ -69,45 +71,12 @@ const Header = styled.span`
     line-height: 38px;
   }
 `;
-
-const Span = styled.span`
-  font-size: 70px;
-  font-weight: bold;
-  color: white;
-  @media only screen and (max-width: 950px) {
-    font-size: 60px;
-  }
-  @media only screen and (max-width: 740px) {
-    font-size: 45px;
-  }
-  @media only screen and (max-width: 850px) {
-    font-size: 30px;
-  }
-  @media only screen and (max-width: 450px) {
-    font-size: 16px;
-  }
-`;
-
-const ReadMoreLink = styled.button`
-  letter-spacing: 0.9px;
-  width: 189px;
-  height: 40px;
-  margin-top: 40px;
-  background: #ffa019;
-  color: #ffffff;
-  font-weight: 600;
-  border-radius: 25px;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  border: 0;
-`;
-
 const CategoryTitle = styled.span`
   font-size: 14px;
   color: #ffa019;
+  &:hover{
+   text-decoration: underline;
+  }
 `;
 
 const FlexDiv = styled.div`
@@ -126,9 +95,11 @@ const FlexDiv = styled.div`
 const MainSlider = ({ tags, media, category, data }) => {
   const Image = media && media.img && media.img.full && media.img.full;
   const CategoriesData = category && category.category;
-  const tagsData = tags && tags.tags && tags.tags;
   const postLink =
     CategoriesData && `blog/${CategoriesData[0].slug}/${data.slug}`;
+  if (!Image) {
+    return <CardLoader />;
+  }
 
   if (data && CategoriesData) {
     return (
@@ -140,7 +111,6 @@ const MainSlider = ({ tags, media, category, data }) => {
               {CategoriesData[0].name}
             </CategoryTitle>
             <Header dangerouslySetInnerHTML={{ __html: data.title }} />
-            <ReadMoreLink>Read More</ReadMoreLink>
           </FlexDiv>
         </SliderContent>
       </Link>

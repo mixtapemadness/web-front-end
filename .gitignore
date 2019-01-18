@@ -42,3 +42,7 @@ jspm_packages
 .vscode
 firebase-debug.log
 _notes
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml

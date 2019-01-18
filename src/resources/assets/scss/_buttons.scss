@@ -1,0 +1,9 @@
+.icon-button {
+  border: 0;
+  text-transform: none;
+  background: transparent;
+  cursor: pointer;
+  &:focus, &:hover{
+    outline: none;
+  }
+}

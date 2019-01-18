@@ -1,0 +1,25 @@
+@import "../../resources/assets/scss/helpers/variables";
+
+.video-thumbnail {
+  &__image {
+    position: relative;
+  }
+  &__image-pic {
+    display: block;
+    width: 100%;
+    height: 200px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    cursor: pointer;
+  }
+  &__image-icon {
+    position: absolute;
+    bottom: 0;
+    background-color: rgba(#000, 0.6);
+    padding: 12px;
+    color: #fff;
+    font-size: 12px;
+  }
+}

@@ -1,0 +1,14 @@
+.slider__nav-wrapper {
+  display: flex;
+  justify-content: space-around;
+  width: 80px;
+}
+
+.slider__nav {
+  font-size: 30px;
+  &:hover {
+    color: $base-orange;
+  }
+  &--prev {}
+  &--next {}
+}

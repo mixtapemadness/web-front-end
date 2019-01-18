@@ -1,51 +1,12 @@
-/* eslint react/no-array-index-key: 0 */
-/* eslint object-curly-newline: 0 */
-/* eslint operator-linebreak: 0 */
+@import "../../resources/assets/scss/helpers/variables";
+@import "../../resources/assets/scss/helpers/breakpoints";
+@import "SliderNav";
+.slider {
+  margin: 40px 0;
 
-import React from 'react';
-import styled from 'styled-components';
-
-import Slider from 'react-slick';
-
-import MainPrev from 'resources/assets/svg/mainprev.svg';
-import MainNext from 'resources/assets/svg/mainnext.svg';
-import { CardLoader } from 'components/loaders';
-import SliderContent from './sliderContent';
-import mainSliderEnhancer from './mainSliderEnhancer';
-import { RESPONSIVE_BREAKPOINTS } from '../../constants';
-
-const Img = styled.img`
-  display: block;
-  cursor: pointer;
-  z-index: 1;
-  margin-top: 210px;
-  height: 150px;
-  @media only screen and (max-width: 850px) {
-    height: 100px;
-    margin-top: 250px;
-  }
-  @media only screen and (max-width: 450px) {
-    height: 50px;
-    margin-top: 260px;
-  }
-`;
-
-const PrevArrow = (
-  { onClick }, // eslint-disable-line
-) => <Img src={MainPrev} onClick={onClick} />;
-
-const NextArrow = (
-  { onClick }, // eslint-disable-line
-) => <Img src={MainNext} onClick={onClick} />;
-
-const Container = styled.div`
-  height: 400px;
-  @media only screen and (min-width: ${RESPONSIVE_BREAKPOINTS.tablet}) {
-    height: 600px;
-  }
   .slick-slider {
+    overflow: hidden;
     position: relative;
-
     display: block;
     box-sizing: border-box;
 
@@ -62,13 +23,9 @@ const Container = styled.div`
   }
 
   .slick-list {
-    width: 100%;
-    position: absolute;
-
-    display: block;
+    margin-top: 20px;
+    display: flex;
     overflow: hidden;
-
-    margin: 0;
     padding: 0;
   }
   .slick-list:focus {
@@ -92,16 +49,16 @@ const Container = styled.div`
     position: relative;
     top: 0;
     left: 0;
-
-    display: block;
+    display: flex;
     margin-left: auto;
     margin-right: auto;
+    max-height: 950px !important;
   }
   .slick-track:before,
   .slick-track:after {
     display: table;
 
-    content: '';
+    content: "";
   }
   .slick-track:after {
     clear: both;
@@ -113,11 +70,23 @@ const Container = styled.div`
   .slick-slide {
     display: none;
     float: left;
-
     height: 100%;
     min-height: 1px;
   }
-  [dir='rtl'] .slick-slide {
+
+  .slick-slide .post-item {
+    width: auto;
+  }
+
+  @include desktop {
+    .slick-slide > div {
+      display: flex;
+      flex-direction: column;
+      width: calc(100% / 3);
+    }
+  }
+
+  [dir="rtl"] .slick-slide {
     float: right;
   }
   .slick-slide img {
@@ -191,7 +160,7 @@ const Container = styled.div`
 
   .slick-prev:before,
   .slick-next:before {
-    font-family: 'slick';
+    font-family: "slick";
     font-size: 20px;
     line-height: 1;
 
@@ -205,29 +174,29 @@ const Container = styled.div`
   .slick-prev {
     left: -25px;
   }
-  [dir='rtl'] .slick-prev {
+  [dir="rtl"] .slick-prev {
     right: -25px;
     left: auto;
   }
   .slick-prev:before {
-    content: '←';
+    content: "←";
   }
-  [dir='rtl'] .slick-prev:before {
-    content: '→';
+  [dir="rtl"] .slick-prev:before {
+    content: "→";
   }
 
   .slick-next {
     right: -25px;
   }
-  [dir='rtl'] .slick-next {
+  [dir="rtl"] .slick-next {
     right: auto;
     left: -25px;
   }
   .slick-next:before {
-    content: '→';
+    content: "→";
   }
-  [dir='rtl'] .slick-next:before {
-    content: '←';
+  [dir="rtl"] .slick-next:before {
+    content: "←";
   }
 
   /* Dots */
@@ -287,7 +256,7 @@ const Container = styled.div`
     opacity: 1;
   }
   .slick-dots li button:before {
-    font-family: 'slick';
+    font-family: "slick";
     font-size: 6px;
     line-height: 20px;
 
@@ -298,7 +267,7 @@ const Container = styled.div`
     width: 20px;
     height: 20px;
 
-    content: '•';
+    content: "•";
     text-align: center;
 
     opacity: 0.25;
@@ -311,63 +280,64 @@ const Container = styled.div`
     opacity: 0.75;
     color: black;
   }
-`;
+}
 
-const Override = styled.div`
-  height: 400px;
-  .slick-slider {
-    display: flex;
+.slider__header {
+  display: flex;
+
+  @include desktop {
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: center;
   }
-  .slick-slide > div {
-    width: 100%;
+
+  .slider__title {
+    font-size: 30px;
+    font-weight: bold;
   }
-`;
-
-const settings = {
-  dots: false,
-  infinite: true,
-  slidesToShow: 2,
-  slidesToScroll: 2,
-  mobileFirst: true,
-  centerMode: false,
-  nextArrow: <NextArrow />,
-  prevArrow: <PrevArrow />,
-  responsive: [
-    {
-      breakpoint: RESPONSIVE_BREAKPOINTS.tablet,
-      settings: {
-        infinite: true,
-        dots: false,
-        autoplay: true,
-        autoplaySpeed: 7000,
-        arrows: true,
-        centerMode: false,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-      },
-    },
-  ],
-};
-
-const MainSlider = ({ data }) => {
-  const loading = data && data.loading && data.loading;
-  const Posts = data && data.Posts && data.Posts;
-  if (loading || !Posts) {
-    return <CardLoader />;
+  .slider__subtitle {
+    color: $paragraph-text;
+    font-size: 22px;
+    margin-bottom: 0;
+    font-weight: normal;
   }
-  return (
-    <Container>
-      <Override>
-        <Slider {...settings}>
-          {Posts.map(item => (
-            <SliderContent loading={loading} key={item.id} data={item} />
-          ))}
-        </Slider>
-      </Override>
-    </Container>
-  );
-};
+}
 
-export default mainSliderEnhancer(MainSlider);
+.slick-slider {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin: auto;
+  max-width: 1200px;
+  @media screen and (max-width: 1154px) {
+    width: 1000px;
+  }
+
+  @media screen and (max-width: 1050px) {
+    width: 700px;
+  }
+
+  @media screen and (max-width: 751px) {
+    width: 400px;
+  }
+
+  @media screen and (max-width: 500px) {
+    width: 330px;
+  }
+}
+
+.slick-slide {
+  display: flex !important;
+  @media screen and (max-width: 1154px) {
+    justify-content: center;
+  }
+}
+
+.slick-initialized .slick-slide {
+}
+.slick-current ~ .slick-slide {
+  justify-content: center;
+}
+
+.slick-current ~ .slick-slide ~ .slick-slide {
+  justify-content: flex-end;
+}

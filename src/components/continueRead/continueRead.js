@@ -1,10 +1,10 @@
 /* eslint react/jsx-one-expression-per-line: 0 */
-import React from 'react'
-import styled from 'styled-components'
-import { Link } from 'react-router-dom'
-import { CLOSE_MEGAMENU } from 'constants'
-import continueReadEnhancer from './continueReadEnhancer'
-import eventEmitter from '../../eventEmitter'
+import React from 'react';
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import { CLOSE_MEGAMENU } from 'constants';
+import continueReadEnhancer from './continueReadEnhancer';
+import eventEmitter from '../../eventEmitter';
 
 const Container = styled(Link)`
   width: auto;
@@ -22,10 +22,10 @@ const Container = styled(Link)`
     height: 10px;
     /* background: #ff9600; */
   }
-`
+`;
 
 const continueRead = ({ data, PostSlug, color }) => {
-  const categorySlug = data.category ? data.category.slug : ''
+  const categorySlug = data.category ? data.category.slug : '';
   return (
     <Container
       onClick={() => eventEmitter.emit(CLOSE_MEGAMENU)}
@@ -34,7 +34,7 @@ const continueRead = ({ data, PostSlug, color }) => {
     >
       Continue Reading
     </Container>
-  )
-}
+  );
+};
 
-export default continueReadEnhancer(continueRead)
+export default continueReadEnhancer(continueRead);

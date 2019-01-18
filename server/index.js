@@ -2,28 +2,28 @@
 /* eslint object-curly-newline: 0 */
 /* eslint react/self-closing-comp: 0 */
 
-import 'isomorphic-fetch'
-import express from 'express'
-import bodyParser from 'body-parser'
-import React from 'react'
-import ReactDOMServer from 'react-dom/server'
-import { StaticRouter } from 'react-router'
-import { ApolloProvider, renderToStringWithData } from 'react-apollo'
-import { ApolloLink } from 'apollo-link'
-import { ApolloClient } from 'apollo-client'
-import { InMemoryCache } from 'apollo-cache-inmemory'
-import { createHttpLink } from 'apollo-link-http'
-import { onError } from 'apollo-link-error'
-import { ServerStyleSheet } from 'styled-components'
-import { Helmet } from 'react-helmet'
-import config from '../config'
-import App from '../src/App'
+import 'isomorphic-fetch';
+import express from 'express';
+import bodyParser from 'body-parser';
+import React from 'react';
+import ReactDOMServer from 'react-dom/server';
+import { StaticRouter } from 'react-router';
+import { ApolloProvider, renderToStringWithData } from 'react-apollo';
+import { ApolloLink } from 'apollo-link';
+import { ApolloClient } from 'apollo-client';
+import { InMemoryCache } from 'apollo-cache-inmemory';
+import { createHttpLink } from 'apollo-link-http';
+import { onError } from 'apollo-link-error';
+import { ServerStyleSheet } from 'styled-components';
+import { Helmet } from 'react-helmet';
+import config from '../config';
+import App from '../src/App';
 
-const app = express()
-const PORT = process.env.PORT || 8003
+const app = express();
+const PORT = process.env.PORT || 8003;
 
-app.use(bodyParser.json())
-app.use(express.static('dist/client'))
+app.use(bodyParser.json());
+app.use(express.static('dist/client'));
 
 app.get('*', (req, res) => {
   const errorLink = onError(({ graphQLErrors, networkError }) => {
@@ -31,27 +31,27 @@ app.get('*', (req, res) => {
       graphQLErrors.forEach(({ message, locations, path }) => {
         console.log(
           `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`,
-        )
-      })
+        );
+      });
     }
 
     if (networkError) {
-      console.log(`[Network error]: ${networkError}`)
+      console.log(`[Network error]: ${networkError}`);
     }
-  })
+  });
   const httpLink = createHttpLink({
     uri: config.apiGraphqlUrl,
-  })
+  });
 
   const client = new ApolloClient({
     ssrMode: true,
     link: ApolloLink.from([errorLink, httpLink]),
     cache: new InMemoryCache(),
-  })
+  });
 
-  const context = {}
+  const context = {};
 
-  const sheet = new ServerStyleSheet()
+  const sheet = new ServerStyleSheet();
 
   const component = (
     <ApolloProvider client={client}>
@@ -59,7 +59,7 @@ app.get('*', (req, res) => {
         <App />
       </StaticRouter>
     </ApolloProvider>
-  )
+  );
 
   const Html = ({ content, helmet, styleTags, client: { cache } }) => (
     <html lang="en">
@@ -123,13 +123,13 @@ app.get('*', (req, res) => {
         <script src="/bundle.js" charSet="UTF-8" />
       </body>
     </html>
-  )
+  );
 
   renderToStringWithData(sheet.collectStyles(component))
     .then(content => {
-      const styleTags = sheet.getStyleElement()
-      res.status(200)
-      const helmet = Helmet.renderStatic()
+      const styleTags = sheet.getStyleElement();
+      res.status(200);
+      const helmet = Helmet.renderStatic();
       const html = (
         <Html
           content={content}
@@ -137,21 +137,21 @@ app.get('*', (req, res) => {
           client={client}
           styleTags={styleTags}
         />
-      )
-      const renderedHtml = ReactDOMServer.renderToStaticMarkup(html)
+      );
+      const renderedHtml = ReactDOMServer.renderToStaticMarkup(html);
 
-      res.send(`<!doctype html>\n${renderedHtml}`)
+      res.send(`<!doctype html>\n${renderedHtml}`);
       // const renderHtml = ReactDOMServer.renderToStaticMarkup(html)
       // res.send(`<!doctype html>\n${Helmet.renderStatic(renderHtml)}`)
-      res.end()
+      res.end();
     })
     .catch(e => {
-      console.error('RENDERING ERROR:', e) // eslint-disable-line no-console
-      res.status(500)
-      res.end(`An error occurred. Stack trace:\n\n${e.stack}`)
-    })
-})
+      console.error('RENDERING ERROR:', e); // eslint-disable-line no-console
+      res.status(500);
+      res.end(`An error occurred. Stack trace:\n\n${e.stack}`);
+    });
+});
 
 app.listen(PORT, () => {
-  console.log(`App running ${PORT}`)
-})
+  console.log(`App running ${PORT}`);
+});

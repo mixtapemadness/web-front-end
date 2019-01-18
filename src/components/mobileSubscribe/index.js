@@ -1,1 +1,1 @@
-export { default } from './MobileSubscribe'
+export { default } from './MobileSubscribe';

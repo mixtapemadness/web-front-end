@@ -1,6 +1,6 @@
-import { compose } from 'recompose'
-import getPostsCount from 'graphql/getPostsCount.graphql'
-import loadDataAsync from './loadDataAsync'
+import { compose } from 'recompose';
+import getPostsCount from 'graphql/getPostsCount.graphql';
+import loadDataAsync from './loadDataAsync';
 
 const withCount = compose(
   loadDataAsync({
@@ -14,6 +14,6 @@ const withCount = compose(
       }),
     },
   }),
-)
+);
 
-export default withCount
+export default withCount;

@@ -1,8 +1,8 @@
 /* eslint implicit-arrow-linebreak: 0 */
 /* eslint operator-linebreak: 0 */
 
-import React from 'react'
-import styled, { keyframes, css } from 'styled-components'
+import React from 'react';
+import styled, { keyframes, css } from 'styled-components';
 
 const shine = keyframes`
   0% {
@@ -12,7 +12,7 @@ const shine = keyframes`
   100% {
     background-position: 468px 0; 
   }
-`
+`;
 
 const Placeholder = styled.div`
   background: #f6f7f8;
@@ -72,8 +72,8 @@ const Placeholder = styled.div`
   ${p => p.mt && `margin-top: ${p.mt}px`};
   ${p => p.mb && `margin-bottom: ${p.mb}px`};
   ${p => p.nom && 'margin: 0'};
-`
+`;
 
-const Shimmer = props => <Placeholder {...props} />
+const Shimmer = props => <Placeholder {...props} />;
 
-export default Shimmer
+export default Shimmer;

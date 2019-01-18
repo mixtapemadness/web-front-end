@@ -1,7 +1,7 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from 'react';
+import styled from 'styled-components';
 
-import Background from 'resources/assets/img/subscribeBack.jpg'
+import Background from 'resources/assets/img/subscribeBack.jpg';
 
 const Container = styled.div`
   background-image: url(${Background});
@@ -19,7 +19,7 @@ const Container = styled.div`
   transition: 0.4s;
   transition-delay: 1s;
   display: none;
-`
+`;
 
 const Input = styled.input`
   padding-left: 10px;
@@ -53,7 +53,7 @@ const Input = styled.input`
     letter-spacing: 1.5;
     font-weight: 100;
   }
-`
+`;
 const Button = styled.button`
   text-transform: uppercase;
   cursor: pointer;
@@ -64,18 +64,18 @@ const Button = styled.button`
   border: none;
   width: 40%;
   font-size: 13px;
-`
+`;
 const FlexDiv = styled.div`
   display: flex;
   margin: 20px 0;
   justify-content: space-between;
-`
+`;
 const Title = styled.span`
   color: #ffffff;
   font-size: 16px;
   word-break: break-word;
   font-weight: bold;
-`
+`;
 
 const MobileSubscribe = ({ isSubscribed }) => (
   <Container isSubscribed={isSubscribed}>
@@ -88,6 +88,6 @@ const MobileSubscribe = ({ isSubscribed }) => (
       <Button>Subscribe</Button>
     </FlexDiv>
   </Container>
-)
+);
 
-export default MobileSubscribe
+export default MobileSubscribe;

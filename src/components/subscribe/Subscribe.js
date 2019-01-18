@@ -1,9 +1,9 @@
 /* eslint react/jsx-indent: 0 */
 
-import React from 'react'
-import styled from 'styled-components'
+import React from 'react';
+import styled from 'styled-components';
 
-import subscribeEnhancer from './subscribeEnhancer'
+import subscribeEnhancer from './subscribeEnhancer';
 
 const SubscribeContainer = styled.div`
   max-width: 1200px;
@@ -16,7 +16,7 @@ const SubscribeContainer = styled.div`
     flex-direction: column;
     text-align: center;
   }
-`
+`;
 const SubscribeThakYou = styled.div`
   max-height: ${p => (p.isSubscribed ? '400px' : '0px')};
   overflow: hidden;
@@ -25,11 +25,11 @@ const SubscribeThakYou = styled.div`
   font-weight: 800;
   font-size: 18px;
   text-align: center;
-`
+`;
 
 const Mixtape = styled.div`
   color: #ff9d00;
-`
+`;
 
 const SubscribeForm = styled.div`
   max-height: ${p => (!p.isSubscribed ? '400px' : '0px')};
@@ -44,7 +44,7 @@ const SubscribeForm = styled.div`
     flex-direction: column;
     text-align: center;
   }
-`
+`;
 
 const Span = styled.span`
   font-weight: 600;
@@ -55,7 +55,7 @@ const Span = styled.span`
   @media only screen and (max-width: 1035px) {
     font-size: 18px;
   }
-`
+`;
 const Form = styled.form`
   display: flex;
   @media only screen and (max-width: 1020px) {
@@ -67,7 +67,7 @@ const Form = styled.form`
     justify-content: center;
     align-items: center;
   }
-`
+`;
 const Input = styled.input`
   padding-left: 10px;
   border: none;
@@ -104,7 +104,7 @@ const Input = styled.input`
     width: 100%;
     margin: 15px 0 0 0;
   }
-`
+`;
 
 const Button = styled.div`
   display: flex;
@@ -127,16 +127,16 @@ const Button = styled.div`
   @media only screen and (max-width: 1035px) {
     margin: 15px 0 0 0;
   }
-`
+`;
 
 const handleKeypress = (e, handleSubscribe) => {
   if (e.key === 'Enter') {
-    handleSubscribe()
+    handleSubscribe();
   }
-}
+};
 
 const Subscribe = ({ handleSubscribe, handleInput, res }) => {
-  const isSubscribed = !!res
+  const isSubscribed = !!res;
   return (
     <React.Fragment>
       <SubscribeContainer>
@@ -147,21 +147,20 @@ const Subscribe = ({ handleSubscribe, handleInput, res }) => {
         <SubscribeForm isSubscribed={isSubscribed && isSubscribed}>
           <Span>
             Subscribe to Mixtape Madness for the
-            <br />
             latest on news, music, and upcoming releases
           </Span>
           <Form onSubmit={e => e.preventDefault()}>
             <Input
               onKeyPress={e => handleKeypress(e, handleSubscribe)}
               onChange={handleInput}
-              placeholder="Type Email Here..."
+              placeholder="email address here..."
             />
             <Button onClick={handleSubscribe}>Subscribe</Button>
           </Form>
         </SubscribeForm>
       </SubscribeContainer>
     </React.Fragment>
-  )
-}
+  );
+};
 
-export default subscribeEnhancer(Subscribe)
+export default subscribeEnhancer(Subscribe);

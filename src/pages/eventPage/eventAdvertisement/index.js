@@ -1,1 +1,1 @@
-export { default } from './EventAdvertisement'
+export { default } from './EventAdvertisement';

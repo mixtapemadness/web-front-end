@@ -1,1 +1,1 @@
-export { default } from './apollo'
+export { default } from './apollo';

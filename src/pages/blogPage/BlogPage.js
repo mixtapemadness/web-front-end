@@ -7,26 +7,29 @@
 /* eslint implicit-arrow-linebreak: 0 */
 /* eslint react/jsx-closing-tag-location: 0 */
 
-import React from 'react'
-import styled from 'styled-components'
-import ReactDisqusComments from 'react-disqus-comments'
-import YouMayLike from 'components/youMayLike'
-import Forward from 'resources/assets/svgComponents/Forward'
-import Back from 'resources/assets/svgComponents/Back'
-import { Link } from 'react-router-dom'
-import window from 'global/window'
-import { Helmet } from 'react-helmet'
-import blogPageEnhancer from './blogPageEnhancer'
-import BlogPageImg from './blogPageImg'
-import PostContentHeading from './postContentHeading'
-import Tag from './Tag'
+import React from 'react';
+import styled from 'styled-components';
+import ReactDisqusComments from 'react-disqus-comments';
+import YouMayLike from 'components/youMayLike';
+import Forward from 'resources/assets/svgComponents/Forward';
+import Back from 'resources/assets/svgComponents/Back';
+import { Link } from 'react-router-dom';
+import window from 'global/window';
+import { Helmet } from 'react-helmet';
+import blogPageEnhancer from './blogPageEnhancer';
+import BlogPageImg from './blogPageImg';
+import PostContentHeading from './postContentHeading';
+import Tag from './Tag';
 import {
   DISQUS_SHORTNAME,
   RESPONSIVE_BREAKPOINTS,
   TWITTER_HANDLE,
   ROUTES,
-} from '../../constants'
-import truncate from '../../helpers/textHelpers'
+} from '../../constants';
+import truncate from '../../helpers/textHelpers';
+import CardLoader from '../../components/loaders/CardLoader';
+import Spinner from '../../components/Spinner/Spinner';
+import Shimmer from '../../components/loaders/shimmer/Shimmer';
 
 const Container = styled.div`
   width: 100%;
@@ -34,7 +37,7 @@ const Container = styled.div`
   max-width: 1200px;
   margin: auto;
   flex-direction: column;
-`
+`;
 
 const Heading = styled.div`
   max-width: 1200px;
@@ -44,7 +47,7 @@ const Heading = styled.div`
   flex-direction: column;
   align-items: center;
   margin-top: 40px;
-`
+`;
 
 const PagingArrows = styled.div`
   width: 100%;
@@ -54,7 +57,7 @@ const PagingArrows = styled.div`
     justify-content: center;
     margin-bottom: 20px;
   }
-`
+`;
 
 const ForwardArrow = styled(Link)`
   display: flex;
@@ -70,7 +73,7 @@ const ForwardArrow = styled(Link)`
       fill: #ffa019;
     }
   }
-`
+`;
 
 const BackArrow = styled(Link)`
   display: flex;
@@ -78,7 +81,6 @@ const BackArrow = styled(Link)`
   justify-content: center;
   cursor: pointer;
   margin-right: 20px;
-  transition: 0.3s;
   pointer-events: ${props =>
       props.index === 0 || props.isdisabled === 'true' ? 'none' : 'inherit'}
     svg {
@@ -92,17 +94,17 @@ const BackArrow = styled(Link)`
       fill: #ffa019;
     }
   }
-`
+`;
 
 const ArrowText = styled.div`
   margin: 0 10px;
   font-size: 14px;
-`
+`;
 
 const TitleContainer = styled.div`
   text-align: center;
   padding: 10px 20px;
-`
+`;
 
 const BlogTitle = styled.h1`
   font-size: 26px;
@@ -112,7 +114,7 @@ const BlogTitle = styled.h1`
   @media only screen and (min-width: ${RESPONSIVE_BREAKPOINTS.tablet}) {
     font-size: 36px;
   }
-`
+`;
 
 const BlogSubTitle = styled.h3`
   color: #666666;
@@ -123,7 +125,7 @@ const BlogSubTitle = styled.h3`
   @media only screen and (min-width: ${RESPONSIVE_BREAKPOINTS.tablet}) {
     font-size: 18px;
   }
-`
+`;
 
 const BlogPageVideo = styled.div`
   width: 100%;
@@ -132,7 +134,7 @@ const BlogPageVideo = styled.div`
   background-position: center center;
   background-size: cover;
 
-`
+`;
 const BlogImageWrapper = styled.div`
   position: relative;
   padding-bottom: 56.25%;
@@ -146,7 +148,7 @@ const BlogImageWrapper = styled.div`
     width: 100%;
     height: 100%;
   }
-`
+`;
 
 const BackgroundPicture = styled.div`
   width: 100%;
@@ -159,7 +161,7 @@ const BackgroundPicture = styled.div`
   @media only screen and (max-width: 450px) {
     height: 300px;
   }
-`
+`;
 
 const BlogContent = styled.div`
   max-width: 100%;
@@ -173,20 +175,20 @@ const BlogContent = styled.div`
     padding: 0;
     
   }
-`
+`;
 
 const BlogArticle = styled.div`
   width: 100%;
   margin: auto;
   margin-top: 40px;
-`
+`;
 
 const VideoContainer = styled.div`
   width: 78%;
   margin: auto;
   margin-top: 80px;
   margin-bottom: 60px;
-`
+`;
 
 const TagsContainer = styled.div`
   display: flex;
@@ -198,7 +200,7 @@ const TagsContainer = styled.div`
   @media only screen and (max-width: 450px) {
     margin-top: 20px;
   }
-`
+`;
 
 const AlsoLikeHeaderContainer = styled.div`
   max-width: 1200px;
@@ -213,7 +215,7 @@ const AlsoLikeHeaderContainer = styled.div`
   font-weight: bold;
   font-size: 30px;
   color: #000000;
-`
+`;
 
 const MayLikeContainer = styled.div`
   display: flex;
@@ -225,7 +227,7 @@ const MayLikeContainer = styled.div`
     flex-direction: column;
     align-items: center;
   }
-`
+`;
 
 const MobileAuthorContainer = styled.div`
   display: none;
@@ -235,11 +237,11 @@ const MobileAuthorContainer = styled.div`
   @media only screen and (max-width: 450px) {
     display: flex;
   }
-`
+`;
 
 const Author = styled.span`
   color: #ff9d00;
-`
+`;
 const Div = styled.div`
   display: flex;
   max-width: 1200px;
@@ -250,19 +252,19 @@ const Div = styled.div`
     flex-direction: column;
     align-items: center;
   }
-`
+`;
 
 const AdvertisementContainer = styled.div`
   width: 357px;
   height: 627px;
-`
+`;
 
 const DisqusContainer = styled.div`
   max-width: 1200px;
   margin: auto;
   width: 90%;
   margin-top: 20px;
-`
+`;
 
 const BlogArticleContent = styled.div`
   a {
@@ -272,22 +274,16 @@ const BlogArticleContent = styled.div`
     img {
       margin: 5px 0;
     }
-    @media only screen and (max-width: 575px) {
-      embed {
-        width: 90%;
-        height: 250px;
-      }
-    }
   }
-`
+`;
 
 const CategoryLink = styled(Link)`
   color: #ff9600;
   font-weight: bold;
   text-transform: capitalize;
-`
+`;
 
-const pathname = window.location ? window.location.pathname : ''
+const pathname = window.location ? window.location.pathname : '';
 
 const BlogPage = ({
   width,
@@ -297,25 +293,26 @@ const BlogPage = ({
   nextRoute,
   prevRoute,
   location,
+  showSpinner,
 }) => {
-  const userName = user && user.user && user.user.name && user.user.name
-  const userSlug = user && user.user && user.user.slug && user.user.slug
-  const postData = data && data.Post ? data.Post : {}
-  const Excerpt = data && data.Post && truncate(data.Post.excerpt, 180)
-  const postTitle = postData && postData.title
-  const noHTML = /(<([^>]+)>)/gi
+  const userName = user && user.user && user.user.name && user.user.name;
+  const userSlug = user && user.user && user.user.slug && user.user.slug;
+  const postData = data && data.Post ? data.Post : {};
+  const Excerpt = data && data.Post && truncate(data.Post.excerpt, 180);
+  const postTitle = postData && postData.title;
+  const noHTML = /(<([^>]+)>)/gi;
   const Description =
     data &&
     data.Post &&
     data.Post.excerpt &&
-    data.Post.excerpt.replace(noHTML, '')
+    data.Post.excerpt.replace(noHTML, '');
   const categories =
-    data && data.Post && data.Post.categories && data.Post.categories
+    data && data.Post && data.Post.categories && data.Post.categories;
   const isVideoArr =
-    categories && categories.filter(item => parseInt(item, 10) === 15)
-  const isVideo = isVideoArr && isVideoArr.length > 0
-  const PostDate = data && data.Post && data.Post.date && data.Post.date
-  const tags = data && data.Post && data.Post.tags && data.Post.tags
+    categories && categories.filter(item => parseInt(item, 10) === 15);
+  const isVideo = isVideoArr && isVideoArr.length > 0;
+  const PostDate = data && data.Post && data.Post.date && data.Post.date;
+  const tags = data && data.Post && data.Post.tags && data.Post.tags;
   const Content =
     isVideo &&
     postData &&
@@ -323,7 +320,7 @@ const BlogPage = ({
     postData.content.replace(
       /(?:<iframe[^>]*)(?:(?:\/>)|(?:>.*?<\/iframe>))/,
       '',
-    )
+    );
   const Video =
     isVideo &&
     postData &&
@@ -338,9 +335,29 @@ const BlogPage = ({
     postData.content
       .match(/(?:<iframe[^>]*)(?:(?:\/>)|(?:>.*?<\/iframe>))/, '')
       .toString()
-      .replace('iframe', 'embed')
-  const disablePrev = !prevRoute
-  const renderVideo = data && !data.loading && isVideo && Video ? true : false
+      .replace('iframe', 'embed');
+  const disablePrev = !prevRoute;
+  const renderVideo = data && !data.loading && isVideo && Video ? true : false;
+
+  if (showSpinner || !data || !Description || !categories || !postData) {
+    return (
+      <React.Fragment>
+        <Container>
+          <TitleContainer>
+            <Shimmer mt={12} size={14} fullWidth />
+            <Shimmer mt={12} size={12} fullWidth />
+            <Shimmer size={400} mt={15} fullWidth />
+            <Shimmer mt={12} size={14} fullWidth />
+            <Shimmer mt={12} size={12} fullWidth />
+            <Shimmer mt={12} size={14} fullWidth />
+            <Shimmer mt={12} size={12} fullWidth />
+            <Shimmer mt={12} size={14} fullWidth />
+            <Shimmer mt={12} size={12} fullWidth />
+          </TitleContainer>
+        </Container>
+      </React.Fragment>
+    );
+  }
 
   return (
     <React.Fragment>
@@ -419,7 +436,6 @@ const BlogPage = ({
               {match.params.category}
             </CategoryLink>
             <BlogTitle dangerouslySetInnerHTML={{ __html: postData.title }} />
-            {/* <BlogSubTitle dangerouslySetInnerHTML={{ __html: Excerpt && Excerpt.replace('[&Hellip', ' ') }} /> */}
             <BlogSubTitle
               dangerouslySetInnerHTML={{
                 __html:
@@ -428,7 +444,7 @@ const BlogPage = ({
               }}
             />
             <PostContentHeading
-              date={postData.date}
+              date={PostDate}
               userName={userName}
               userSlug={userSlug}
             />
@@ -444,15 +460,9 @@ const BlogPage = ({
           <BlogPageImg renderVideo={renderVideo} id={postData.featured_media} />
         </BlogImageWrapper>
         <BlogContent>
-          {!isVideo && Video ? (
-            <BlogArticleContent
-              dangerouslySetInnerHTML={{ __html: Content && Content }}
-            />
-          ) : (
-            <BlogArticleContent
-              dangerouslySetInnerHTML={{ __html: postData.content }}
-            />
-          )}
+          <BlogArticleContent
+            dangerouslySetInnerHTML={{ __html: postData.content }}
+          />
         </BlogContent>
         <TagsContainer>
           {postData.tags && postData.tags.map(id => <Tag key={id} id={id} />)}
@@ -467,7 +477,7 @@ const BlogPage = ({
         <YouMayLike tags={tags} />
       </Container>
     </React.Fragment>
-  )
-}
+  );
+};
 
-export default blogPageEnhancer(BlogPage)
+export default blogPageEnhancer(BlogPage);

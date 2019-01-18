@@ -16,7 +16,7 @@ export default (date, day, month) => {
     'October',
     'November',
     'December',
-  ]
+  ];
 
   const days = [
     '',
@@ -27,20 +27,20 @@ export default (date, day, month) => {
     'Thursday',
     'Friday',
     'Saturday',
-  ]
+  ];
 
-  const numeralDay = new Date(date).getDay() + 1
-  const numeralMonth = new Date(date).getMonth()
-  const numeralYear = new Date(date).getFullYear()
+  const numeralDay = new Date(date).getDay() + 1;
+  const numeralMonth = new Date(date).getMonth();
+  const numeralYear = new Date(date).getFullYear();
 
   if (day && month) {
-    return `${days[numeralDay]} ${months[numeralMonth]}  ${numeralYear}`
+    return `${days[numeralDay]} ${months[numeralMonth]}  ${numeralYear}`;
   } else if (day) {
-    return `${numeralDay} ${months[numeralMonth]}  ${numeralYear}`
+    return `${numeralDay} ${months[numeralMonth]}  ${numeralYear}`;
   } else if (month) {
-    return `${numeralDay} ${months[numeralMonth]} ${numeralYear}`
+    return `${numeralDay} ${months[numeralMonth]} ${numeralYear}`;
   } else
     return Error(
       'make sure you are passing correct parameters, sequance is date[Type Date], day[boolean], month[boolean] ',
-    )
-}
+    );
+};

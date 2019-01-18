@@ -1,8 +1,8 @@
 /*  eslint operator-linebreak: 0 */
 
-import { compose } from 'recompose'
-import getAuthorById from 'graphql/getAuthorById.graphql'
-import loadDataAsync from './loadDataAsync'
+import { compose } from 'recompose';
+import getAuthorById from 'graphql/getAuthorById.graphql';
+import loadDataAsync from './loadDataAsync';
 
 const withAuthor = compose(
   loadDataAsync({
@@ -18,6 +18,6 @@ const withAuthor = compose(
       }),
     },
   }),
-)
+);
 
-export default withAuthor
+export default withAuthor;

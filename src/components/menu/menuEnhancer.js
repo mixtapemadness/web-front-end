@@ -1,14 +1,14 @@
 /* eslint no-unused-vars: 0 */
-import { compose, withStateHandlers, lifecycle } from 'recompose'
-import window from 'global/window'
+import { compose, withStateHandlers, lifecycle } from 'recompose';
+import window from 'global/window';
 
-import { loadDataAsync } from 'hocs'
-import getPosts from 'graphql/getPosts.graphql'
-import { withRouter } from 'react-router-dom'
-import { CLOSE_MEGAMENU } from 'constants'
-import getEmitter from '../../eventEmitter'
+import { loadDataAsync } from 'hocs';
+import getPosts from 'graphql/getPosts.graphql';
+import { withRouter } from 'react-router-dom';
+import { CLOSE_MEGAMENU } from 'constants';
+import getEmitter from '../../eventEmitter';
 
-const eventEmitter = getEmitter()
+const eventEmitter = getEmitter();
 
 export default compose(
   withRouter,
@@ -22,13 +22,13 @@ export default compose(
   ),
   lifecycle({
     componentDidMount() {
-      window.addEventListener('resize', this.props.updateWidth)
+      window.addEventListener('resize', this.props.updateWidth);
     },
     componentDidUpdate(prevProps, prevState) {
-      eventEmitter.emit(CLOSE_MEGAMENU)
+      eventEmitter.emit(CLOSE_MEGAMENU);
     },
     componentWillUnmount() {
-      window.removeEventListener('resize', this.props.updateWidth)
+      window.removeEventListener('resize', this.props.updateWidth);
     },
   }),
   loadDataAsync({
@@ -42,4 +42,4 @@ export default compose(
       }),
     },
   }),
-)
+);

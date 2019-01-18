@@ -6,10 +6,10 @@
 /* eslint react/jsx-closing-tag-location: 0 */
 /* eslint operator-linebreak: 0 */
 
-import React from 'react'
-import styled from 'styled-components'
-import SearchedItem from 'components/searchedItem'
-import searchResultEnhance from './searchResultEnhancer'
+import React from 'react';
+import styled from 'styled-components';
+import SearchedItem from 'components/searchedItem';
+import searchResultEnhance from './searchResultEnhancer';
 
 const Container = styled.div`
   max-width: 1200px;
@@ -18,12 +18,12 @@ const Container = styled.div`
   padding: 0 50px;
   display: flex;
   flex-wrap: wrap;
-`
+`;
 
 const InputContainer = styled.div`
   width: 100%;
   margin-bottom: 25px;
-`
+`;
 
 const Input = styled.input`
   width: 100%;
@@ -55,20 +55,21 @@ const Input = styled.input`
     font-size: 62px;
     font-weight: 600;
   }
-`
+`;
 
 const Filter = styled.div`
   display: flex;
   border-bottom: 1px solid #ccc;
   color: #000000;
   font-weight: 600;
+  width: 100%;
   @media only screen and (max-width: 1050px) {
     justify-content: center;
   }
   @media only screen and (max-width: 750px) {
     flex-direction: column;
   }
-`
+`;
 
 const CategoryContainer = styled.ul`
   display: flex;
@@ -76,7 +77,7 @@ const CategoryContainer = styled.ul`
   @media only screen and (max-width: 750px) {
     flex-direction: column;
   }
-`
+`;
 
 const Category = styled.li`
   margin-left: 20px;
@@ -86,7 +87,7 @@ const Category = styled.li`
   @media only screen and (max-width: 750px) {
     margin: 0;
   }
-`
+`;
 
 const SearchResult = ({
   data,
@@ -150,11 +151,10 @@ const SearchResult = ({
         </Category>
       </CategoryContainer>
     </Filter>
-    {/* {renderData(data.searchedData)} */}
     {data &&
       data.searchedData &&
       data.searchedData.map(item => <SearchedItem key={item.id} data={item} />)}
   </Container>
-)
+);
 
-export default searchResultEnhance(SearchResult)
+export default searchResultEnhance(SearchResult);

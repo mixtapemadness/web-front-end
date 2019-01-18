@@ -1,7 +1,7 @@
-import { compose, withStateHandlers } from 'recompose'
-import searchQuery from 'graphql/searchQuery.graphql'
-import { loadDataAsync } from 'hocs'
-import { withRouter } from 'react-router-dom'
+import { compose, withStateHandlers } from 'recompose';
+import searchQuery from 'graphql/searchQuery.graphql';
+import { loadDataAsync } from 'hocs';
+import { withRouter } from 'react-router-dom';
 
 export default compose(
   withRouter,
@@ -14,19 +14,19 @@ export default compose(
       chooseCategory: (state, props) => newCategory => {
         props.history.push(
           `/searchresult/${newCategory}/${props.match.params.key}`,
-        )
-        return { category: newCategory }
+        );
+        return { category: newCategory };
       },
       handleSubmit: (state, props) => e => {
         if (e.key === 'Enter') {
           props.history.push(
             `/searchresult/${state.category}/${e.target.value}`,
-          )
+          );
           return {
             value: e.target.value,
-          }
+          };
         }
-        return true
+        return true;
       },
     },
   ),
@@ -47,4 +47,4 @@ export default compose(
       }),
     },
   }),
-)
+);

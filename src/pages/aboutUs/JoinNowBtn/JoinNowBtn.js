@@ -1,5 +1,5 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from 'react';
+import styled from 'styled-components';
 
 const JoinNowBtnContainer = styled.div`
   color: #ffffff;
@@ -20,6 +20,6 @@ const JoinNowBtnContainer = styled.div`
     height: 40px;
     font-size: 18.5px;
   }
-`
+`;
 
-export default () => <JoinNowBtnContainer>Join Now</JoinNowBtnContainer>
+export default () => <JoinNowBtnContainer>Join Now</JoinNowBtnContainer>;

@@ -1,5 +1,5 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from 'react';
+import styled from 'styled-components';
 
 const FormContainer = styled.div`
   color: #ffffff;
@@ -8,12 +8,12 @@ const FormContainer = styled.div`
   flex-direction: column;
   z-index: 1;
   width: 340px;
-`
+`;
 
 const Title = styled.span`
   font-size: 15.5px;
   letter-spacing: 1.6px;
-`
+`;
 
 const Input = styled.input`
   color: #ffffff;
@@ -49,7 +49,7 @@ const Input = styled.input`
     font-size: 15.5px;
     letter-spacing: 0.9px;
   }
-`
+`;
 
 const NewsLetter = () => (
   <FormContainer>
@@ -59,6 +59,6 @@ const NewsLetter = () => (
     </Title>
     <Input placeholder="email@example.com" mt={25} />
   </FormContainer>
-)
+);
 
-export default NewsLetter
+export default NewsLetter;

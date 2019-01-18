@@ -3,17 +3,21 @@
 /* eslint indent: 0 */
 /* eslint operator-linebreak: 0 */
 
-import React from 'react'
-import styled from 'styled-components'
-import { Link } from 'react-router-dom'
-import videoEnhancer from './videoEnhancer'
-import truncate from '../../helpers/textHelpers'
+import React, { Fragment } from 'react';
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import videoEnhancer from './videoEnhancer';
+import truncate from '../../helpers/textHelpers';
+import { RESPONSIVE_BREAKPOINTS } from '../../constants';
+import CardLoader from '../loaders/CardLoader';
 
 const Container = styled.div`
-  margin: 7px;
   flex: 1;
-  max-width: 386px;
-`
+  @media only screen and (min-width: ${RESPONSIVE_BREAKPOINTS.tablet}) {
+    margin: 7px;
+    max-width: 386px;
+  }
+`;
 
 const PhotoContainer = styled(Link)`
   display: block;
@@ -31,7 +35,7 @@ const PhotoContainer = styled(Link)`
     height: 300px;
     background-size: cover;
   }
-`
+`;
 
 const ContentContainer = styled.div`
   background-color: #eeeeef;
@@ -42,7 +46,7 @@ const ContentContainer = styled.div`
   flex-direction: column;
   justify-content: space-between;
   box-sizing: content-box;
-`
+`;
 
 const Icon = styled.img`
   display: block;
@@ -51,7 +55,7 @@ const Icon = styled.img`
   top: 50%;
   left: 50%;
   height: 30px;
-`
+`;
 
 const Dots = styled.img`
   display: block;
@@ -60,61 +64,35 @@ const Dots = styled.img`
   bottom: 10px;
   right: 10px;
   height: 22px;
-`
+`;
 
-const LeftSide = styled.div``
-
-const RightSide = styled.div`
+const LeftSide = styled.div`
   display: flex;
   flex-direction: column;
-`
-
-const FlexDiv = styled.div`
-  display: flex;
-  width: 100%;
-  ${p => p.jc && `justify-content: ${p.jc}`};
-  ${p => p.align && `align-items: ${p.align}`};
-  ${p => p.height && `height: ${p.height}`};
-`
-
-const Img = styled.img`
-  ${p => p.height && `height: ${p.height}px`};
-`
+  justify-content: space-between;
+  height: 100%;
+`;
 
 const Name = styled(Link)`
   font-weight: 600;
   font-size: 16px;
   margin-bottom: 16px;
-`
-const Text = styled.span`
-  color: #666666;
-  word-break: break-word;
-  font-size: 14.5px;
-  line-height: 1.45;
-  letter-spacing: 0.9px;
-  margin-right: 10px;
-`
-
-const Views = styled.span`
-  font-size: 12.5px;
-  letter-spacing: 0.8px;
-  color: #666666;
-  margin-left: 7px;
-`
-
-const TagsContainer = styled.span`
-  display: flex;
-`
+  display: block;
+`;
 
 const Excerpt = styled.span`
-  color: #666;
-  margin-top: 20px;
-  p {
-    line-height: 26px;
-  }
+    color: #666;
   overflow: hidden;
   font-size: 12px;
-`
+
+  p {
+    line-height: 24px;
+  }
+  position:relative &:before {
+    content: '...';
+    position: absolute;
+  }
+`;
 const WatchMore = styled(Link)`
   color: #ff9600;
   cursor: pointer;
@@ -122,50 +100,40 @@ const WatchMore = styled(Link)`
   font-size: 12px;
   margin-top: 10px;
   position: relative;
-`
+  display: block;
+`;
 
 const Video = ({ data, media, tags, category }) => {
-  const categoriesData = category && category.category && category.category
-  const tagsData = tags && tags.tags && tags.tags
+  const categoriesData = category && category.category && category.category;
   const Image =
-    media && media.img && media.img.featured_image && media.img.featured_image
-  // const CategoriesData = category && category.category && category.category
+    media && media.img && media.img.featured_image && media.img.featured_image;
+  if (!data || !categoriesData) {
+    return <CardLoader />;
+  }
   return (
     <Container>
-      {categoriesData &&
-        data && (
-          <PhotoContainer
-            picture={Image && Image}
-            to={`/blog/${categoriesData[0].slug}/${data.slug}`}
-          />
-        )}
+      <PhotoContainer
+        picture={Image && Image}
+        to={`/blog/${categoriesData[0].slug}/${data.slug}`}
+      />
       <ContentContainer>
         <LeftSide>
-          {data &&
-            categoriesData && (
-              <Name
-                dangerouslySetInnerHTML={{ __html: data.title }}
-                to={`/blog/${categoriesData[0].slug}/${data.slug}`}
-              />
-            )}
-          {
-            <Excerpt
-              dangerouslySetInnerHTML={{ __html: truncate(data.excerpt, 115) }}
+          <Fragment>
+            <Name
+              dangerouslySetInnerHTML={{ __html: data.title }}
+              to={`/blog/${categoriesData[0].slug}/${data.slug}`}
             />
-          }
-          {categoriesData && (
-            <WatchMore
-              to={{
-                pathname: `/blog/${categoriesData[0].slug}/${data.slug}`,
-              }}
-            >
+            <Excerpt
+              dangerouslySetInnerHTML={{ __html: truncate(data.excerpt, 112) }}
+            />
+            <WatchMore to={`/blog/${categoriesData[0].slug}/${data.slug}`}>
               Watch Video
             </WatchMore>
-          )}
+          </Fragment>
         </LeftSide>
       </ContentContainer>
     </Container>
-  )
-}
+  );
+};
 
-export default videoEnhancer(Video)
+export default videoEnhancer(Video);

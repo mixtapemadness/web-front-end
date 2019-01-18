@@ -1,31 +1,30 @@
 /* eslint object-curly-newline: 0 */
-import React from 'react'
-import { Switch, Route } from 'react-router-dom'
+import React from 'react';
+import { Switch, Route } from 'react-router-dom';
 
-import Menu from 'components/menu'
-import Home from 'pages/home'
-import BlogPage from 'pages/blogPage'
-import AboutUs from 'pages/aboutUs'
-import AuthorPage from 'pages/authorPage'
-import Blog from 'pages/blog'
-import EventPage from 'pages/eventPage'
-import Search from 'components/search'
-import Music from 'pages/music'
-import MusicProfilePage from 'pages/musicProfilePage'
-import TeamPage from 'pages/teamPage'
-import SearchResult from 'pages/searchResult/SearchResult'
-import SignForm from 'components/signForm/SignForm'
-import MoreMenu from 'components/moreMenu'
-import PrivacyAndPolicy from 'pages/privacyAndPolicy'
-import TermsAndConditions from 'pages/termsAndConditions'
-import styled from 'styled-components'
-import Footer from 'components/footer'
-import GA from 'components/googleAnalytics'
-import { RESPONSIVE_BREAKPOINTS } from './constants'
+import Menu from 'components/menu';
+import Home from 'pages/home';
+import BlogPage from 'pages/blogPage';
+import AboutUs from 'pages/aboutUs';
+import AuthorPage from 'pages/authorPage';
+import Blog from 'pages/blog';
+import EventPage from 'pages/eventPage';
+import Search from 'components/search';
+import Music from 'pages/music';
+import MusicProfilePage from 'pages/musicProfilePage';
+import TeamPage from 'pages/teamPage';
+import SearchResult from 'pages/searchResult/SearchResult';
+import SignForm from 'components/signForm/SignForm';
+import MoreMenu from 'components/moreMenu';
+import PrivacyAndPolicy from 'pages/privacyAndPolicy';
+import TermsAndConditions from 'pages/termsAndConditions';
+import styled from 'styled-components';
+import Footer from 'components/footer';
+import GA from 'components/googleAnalytics';
+import { RESPONSIVE_BREAKPOINTS, ROUTES } from './constants';
 
 const Container = styled.div`
   max-width: 1200px;
-  padding: 0 10px;
   margin: auto auto;
   margin-top: 60px;
   @media only screen and (min-width: ${RESPONSIVE_BREAKPOINTS.tablet}) {
@@ -33,7 +32,7 @@ const Container = styled.div`
   }
   height: ${p => (p.searchOpened || p.menuOpened ? '80vh' : 'auto')};
   overflow: ${p => (p.searchOpened || p.menuOpened ? 'hidden' : 'visible')};
-`
+`;
 
 const AppContent = ({ searchOpened, toggleSearch, menuOpened }) => (
   <React.Fragment>
@@ -43,7 +42,7 @@ const AppContent = ({ searchOpened, toggleSearch, menuOpened }) => (
         <Route exact path="/" component={Home} />
         <Route exact path="/blog/category/:filter" component={Blog} />
         <Route path="/blog/:category/:slug" component={BlogPage} />
-        <Route path="/aboutus" component={AboutUs} />
+        <Route path={ROUTES.about} component={AboutUs} />
         <Route path="/author/:slug" component={AuthorPage} />
         <Route path="/events" component={EventPage} />
         <Route path="/music" component={Music} />
@@ -67,6 +66,6 @@ const AppContent = ({ searchOpened, toggleSearch, menuOpened }) => (
       <Search toggleSearch={toggleSearch} searchOpened={searchOpened} />
     )}
   </React.Fragment>
-)
+);
 
-export default AppContent
+export default AppContent;

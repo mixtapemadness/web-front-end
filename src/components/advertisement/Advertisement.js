@@ -1,7 +1,7 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from 'react';
+import styled from 'styled-components';
 
-import BackgroundImage from 'resources/assets/img/music.jpg'
+import BackgroundImage from 'resources/assets/img/music.jpg';
 
 const Container = styled.div`
   width: 100%;
@@ -16,7 +16,7 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   text-align: center;
-`
+`;
 
 const Upload = styled.span`
   font-size: 51px;
@@ -26,7 +26,7 @@ const Upload = styled.span`
   @media only screen and (max-width: 450px) {
     font-size: 40px;
   }
-`
+`;
 const MixTape = styled.span`
   font-size: 76.5px;
   letter-spacing: -2.3px;
@@ -37,13 +37,13 @@ const MixTape = styled.span`
   @media only screen and (max-width: 450px) {
     font-size: 60px;
   }
-`
+`;
 const ContactUs = styled.span`
   font-size: 17.5px;
   font-weight: 600;
   text-transform: capitalize;
   color: #ffffff;
-`
+`;
 
 const Advertisement = ({ news }) => (
   <Container fromNews={news}>
@@ -56,6 +56,6 @@ const Advertisement = ({ news }) => (
       and Find More
     </ContactUs>
   </Container>
-)
+);
 
-export default Advertisement
+export default Advertisement;

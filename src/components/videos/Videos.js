@@ -2,13 +2,13 @@
 /* eslint implicit-arrow-linebreak: 0 */
 /* eslint no-unused-vars: 0 */
 
-import React from 'react'
-import { Link } from 'react-router-dom'
-import styled from 'styled-components'
-import Video from 'components/video'
-import SliderComponent from 'components/slider'
-import { CardLoader } from 'components/loaders'
-import videosEnhancer from './videosEnhancer'
+import React from 'react';
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+import Video from 'components/video';
+import SliderComponent from 'components/slider';
+import { CardLoader } from 'components/loaders';
+import videosEnhancer from './videosEnhancer';
 
 const VideosContainer = styled.div`
   width: 100%;
@@ -16,24 +16,24 @@ const VideosContainer = styled.div`
   flex-direction: column;
   flex-wrap: wrap;
   margin-top: 50px;
-`
+`;
 
 const HeaderContainer = styled.div`
   display: flex;
   flex-direction: column;
   text-align: center;
   ${p => p.mb && `margin-bottom: ${p.mb}px`};
-`
+`;
 
 const SectionHeader = styled.span`
   font-weight: 800;
   font-size: 38px;
-`
+`;
 
 const SectionSubHeader = styled.span`
   font-weight: 800;
   font-size: 18px;
-`
+`;
 
 const VideoItems = styled.div`
   display: flex;
@@ -41,7 +41,7 @@ const VideoItems = styled.div`
     flex-direction: column;
     align-items: center;
   }
-`
+`;
 
 const settings = {
   dots: false,
@@ -80,9 +80,9 @@ const settings = {
       },
     },
   ],
-}
+};
 const Videos = ({ data }) => {
-  const Posts = data && data.Posts && data.Posts
+  const Posts = data && data.Posts && data.Posts;
   return (
     <VideosContainer>
       <HeaderContainer mb={0}>
@@ -101,7 +101,7 @@ const Videos = ({ data }) => {
         </SliderComponent>
       </VideoItems>
     </VideosContainer>
-  )
-}
+  );
+};
 
-export default videosEnhancer(Videos)
+export default videosEnhancer(Videos);

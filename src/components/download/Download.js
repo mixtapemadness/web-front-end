@@ -1,10 +1,10 @@
 /* eslint react/jsx-one-expression-per-line: 0 */
-import React from 'react'
-import styled from 'styled-components'
+import React from 'react';
+import styled from 'styled-components';
 
-import PhoneImage from 'resources/assets/img/phone.jpg'
-import AppStoreIcon from 'resources/assets/img/appstore.png'
-import GooglePlayIcon from 'resources/assets/img/googleplay.png'
+import PhoneImage from 'resources/assets/img/phone.jpg';
+import AppStoreIcon from 'resources/assets/img/appstore.png';
+import GooglePlayIcon from 'resources/assets/img/googleplay.png';
 
 const DownloadContainer = styled.div`
   max-width: 1200px;
@@ -14,7 +14,7 @@ const DownloadContainer = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-`
+`;
 const ContentContainer = styled.div`
   padding: 100px 50px;
   width: 60%;
@@ -22,7 +22,7 @@ const ContentContainer = styled.div`
     width: 90%;
     padding: 20px 10px;
   }
-`
+`;
 const Header = styled.span`
   font-size: 26px;
   line-height: 1;
@@ -32,7 +32,7 @@ const Header = styled.span`
   @media only screen and (max-width: 450px) {
     font-size: 20px;
   }
-`
+`;
 const SubHeader = styled.span`
   font-size: 19px;
   font-weight: 300;
@@ -43,7 +43,7 @@ const SubHeader = styled.span`
   @media only screen and (max-width: 450px) {
     font-size: 16px;
   }
-`
+`;
 const DownloadButton = styled.button`
   background: transparent;
   width: 300px;
@@ -54,20 +54,20 @@ const DownloadButton = styled.button`
   margin-top: 40px;
   height: 45px;
   cursor: pointer;
-`
+`;
 const FlexDiv = styled.div`
   display: flex;
   margin-top: 40px;
-`
+`;
 const Icon = styled.img`
   width: auto;
   height: 38px;
   margin-right: 10px;
-`
+`;
 const Div = styled.div`
   display: flex;
   flex-direction: column;
-`
+`;
 
 const Download = () => (
   <DownloadContainer>
@@ -91,6 +91,6 @@ const Download = () => (
       </FlexDiv>
     </ContentContainer>
   </DownloadContainer>
-)
+);
 
-export default Download
+export default Download;

@@ -1,8 +1,8 @@
 const truncate = (string, length) => {
   if (string.length > length) {
-    return `${string.substring(0, length)} ...`
+    return `${string.substring(0, length)} ...`;
   }
-  return string
-}
+  return string;
+};
 
-export default truncate
+export default truncate;

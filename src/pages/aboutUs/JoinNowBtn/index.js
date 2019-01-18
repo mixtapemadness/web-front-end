@@ -1,1 +1,1 @@
-export { default } from './JoinNowBtn'
+export { default } from './JoinNowBtn';

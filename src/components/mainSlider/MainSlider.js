@@ -2,17 +2,17 @@
 /* eslint object-curly-newline: 0 */
 /* eslint operator-linebreak: 0 */
 
-import React from 'react'
-import styled from 'styled-components'
+import React from 'react';
+import styled from 'styled-components';
 
-import Slider from 'react-slick'
+import Slider from 'react-slick';
 
-import MainPrev from 'resources/assets/svg/mainprev.svg'
-import MainNext from 'resources/assets/svg/mainnext.svg'
-import { CardLoader } from 'components/loaders'
-import SliderContent from './sliderContent'
-import mainSliderEnhancer from './mainSliderEnhancer'
-import { RESPONSIVE_BREAKPOINTS } from '../../constants'
+import MainPrev from 'resources/assets/svg/mainprev.svg';
+import MainNext from 'resources/assets/svg/mainnext.svg';
+import { CardLoader } from 'components/loaders';
+import SliderContent from './sliderContent';
+import mainSliderEnhancer from './mainSliderEnhancer';
+import { RESPONSIVE_BREAKPOINTS } from '../../constants';
 
 const Img = styled.img`
   display: block;
@@ -28,15 +28,15 @@ const Img = styled.img`
     height: 50px;
     margin-top: 260px;
   }
-`
+`;
 
 const PrevArrow = (
   { onClick }, // eslint-disable-line
-) => <Img src={MainPrev} onClick={onClick} />
+) => <Img src={MainPrev} onClick={onClick} />;
 
 const NextArrow = (
   { onClick }, // eslint-disable-line
-) => <Img src={MainNext} onClick={onClick} />
+) => <Img src={MainNext} onClick={onClick} />;
 
 const Container = styled.div`
   height: 400px;
@@ -311,7 +311,7 @@ const Container = styled.div`
     opacity: 0.75;
     color: black;
   }
-`
+`;
 
 const Override = styled.div`
   height: 400px;
@@ -323,7 +323,7 @@ const Override = styled.div`
   .slick-slide > div {
     width: 100%;
   }
-`
+`;
 
 const settings = {
   dots: false,
@@ -349,14 +349,14 @@ const settings = {
       },
     },
   ],
-}
+};
 
 const MainSlider = ({ data }) => {
-  const loading = data && data.loading && data.loading
-  const Posts = data && data.Posts && data.Posts
+  const loading = data && data.loading && data.loading;
+  const Posts = data && data.Posts && data.Posts;
 
   if (loading) {
-    return <CardLoader />
+    return <CardLoader />;
   }
   return (
     <Container>
@@ -369,7 +369,7 @@ const MainSlider = ({ data }) => {
         </Slider>
       </Override>
     </Container>
-  )
-}
+  );
+};
 
-export default mainSliderEnhancer(MainSlider)
+export default mainSliderEnhancer(MainSlider);

@@ -1,1 +1,1 @@
-export { default } from './PrivacyAndPolicy'
+export { default } from './PrivacyAndPolicy';

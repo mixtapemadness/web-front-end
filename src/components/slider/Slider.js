@@ -1,13 +1,26 @@
 /* eslint operator-linebreak: 0 */
 /* eslint no-return-assign: 0 */
 
-import React, { Component } from 'react'
-import styled from 'styled-components'
-import Slider from 'react-slick'
+import React, { Component } from 'react';
+import styled from 'styled-components';
+import Slider from 'react-slick';
 
-import Prev from 'resources/assets/svg/prev.svg'
-import Next from 'resources/assets/svg/next.svg'
-import { RESPONSIVE_BREAKPOINTS } from '../../constants'
+import Prev from 'resources/assets/svg/prev.svg';
+import Next from 'resources/assets/svg/next.svg';
+import { RESPONSIVE_BREAKPOINTS } from '../../constants';
+
+const PrevArrow = (
+  { onClick }, // eslint-disable-line
+) => <Img src={Prev} onClick={onClick} />;
+
+const NextArrow = (
+  { onClick }, // eslint-disable-line
+) => <Img src={Next} onClick={onClick} />;
+
+const ArrowsContainer = styled.div`
+  display: flex;
+  justify-content: flex-end;
+`;
 
 const Img = styled.img`
   display: inline-block;
@@ -15,20 +28,8 @@ const Img = styled.img`
   z-index: 1;
   height: 40px;
   margin-top: 20px;
-`
+`;
 
-const PrevArrow = (
-  { onClick }, // eslint-disable-line
-) => <Img src={Prev} onClick={onClick} />
-
-const NextArrow = (
-  { onClick }, // eslint-disable-line
-) => <Img src={Next} onClick={onClick} />
-
-const ArrowsContainer = styled.div`
-  display: flex;
-  justify-content: flex-end;
-`
 
 const Container = styled.div`
   .slick-slider {
@@ -307,7 +308,7 @@ const Container = styled.div`
     opacity: 0.75;
     color: black;
   }
-`
+`;
 
 const Override = styled.div`
   .slick-slider {
@@ -355,25 +356,25 @@ const Override = styled.div`
         width: 100%;
       } */
   }
-`
+`;
 
 class SliderComponent extends Component {
   constructor(props) {
-    super(props)
-    this.next = this.next.bind(this)
-    this.prev = this.prev.bind(this)
+    super(props);
+    this.next = this.next.bind(this);
+    this.prev = this.prev.bind(this);
   }
 
   next() {
-    this.slider.slickNext()
+    this.slider.slickNext();
   }
 
   prev() {
-    this.slider.slickPrev()
+    this.slider.slickPrev();
   }
 
   render() {
-    const { settings, children } = this.props
+    const { settings, children, titleText } = this.props;
 
     const innerSettings = {
       dots: settings.dots,
@@ -385,18 +386,21 @@ class SliderComponent extends Component {
       slidesPerRow: settings.slidesPerRow,
       centerPadding: settings.centerPadding,
       responsive: [...settings.responsive],
-    }
+    };
     return (
       <Container>
         <Override>
-          <ArrowsContainer>
-            <PrevArrow onClick={this.prev} />
-            <NextArrow onClick={this.next} />
-          </ArrowsContainer>
+          <div>
+            <span>{titleText}</span>
+            <ArrowsContainer>
+              <PrevArrow onClick={this.prev} />
+              <NextArrow onClick={this.next} />
+            </ArrowsContainer>
+          </div>
           {children && (
             <Slider
               ref={slider => {
-                this.slider = slider
+                this.slider = slider;
               }}
               {...innerSettings}
             >
@@ -405,8 +409,8 @@ class SliderComponent extends Component {
           )}
         </Override>
       </Container>
-    )
+    );
   }
 }
 
-export default SliderComponent
+export default SliderComponent;

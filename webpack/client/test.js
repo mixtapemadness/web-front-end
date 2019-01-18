@@ -1,25 +1,25 @@
 /* eslint import/no-extraneous-dependencies: 0 */
 /* eslint import/no-dynamic-require: 0 */
 /* eslint prefer-destructuring: 0 */
-const webpack = require('webpack')
-const path = require('path')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const WebpackCleanupPlugin = require('webpack-cleanup-plugin')
+const webpack = require('webpack');
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const WebpackCleanupPlugin = require('webpack-cleanup-plugin');
 // const ExtractTextPlugin = require('extract-text-webpack-plugin')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
-const loaders = require('../loaders')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const loaders = require('../loaders');
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
-process.env.NODE_ENV = 'testing'
+process.env.NODE_ENV = 'testing';
 
 // const devMode = false
 
-const apiConfig = require('../../config/testing')
+const apiConfig = require('../../config/testing');
 
-const apiUrl = apiConfig.apiUrl
-const apiSocketUrl = apiConfig.apiSocketUrl
-const apiGraphqlUrl = apiConfig.apiGraphqlUrl
+const apiUrl = apiConfig.apiUrl;
+const apiSocketUrl = apiConfig.apiSocketUrl;
+const apiGraphqlUrl = apiConfig.apiGraphqlUrl;
 
 // loaders.push({
 //   test: /\.scss$/,
@@ -115,4 +115,4 @@ module.exports = {
       },
     }),
   ],
-}
+};

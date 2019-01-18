@@ -1,5 +1,5 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from 'react';
+import styled from 'styled-components';
 // import DotsIcon from '../../../../assets/svg/MixTape/ellipsis.svg'
 
 const GridContainer = styled.div`
@@ -9,7 +9,7 @@ const GridContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-`
+`;
 
 const GridTitle = styled.div`
   color: #000000;
@@ -24,7 +24,7 @@ const GridTitle = styled.div`
   @media only screen and (max-width: 760px) {
     font-size: 26px;
   }
-`
+`;
 
 const GridItems = styled.div`
   width: 100%;
@@ -34,7 +34,7 @@ const GridItems = styled.div`
   @media only screen and (max-width: 1000px) {
     flex-direction: column;
   }
-`
+`;
 
 const GridItem = styled.div`
   margin: 10px;
@@ -42,7 +42,7 @@ const GridItem = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-`
+`;
 
 const GridItemIcon = styled.div`
   min-width: 226px;
@@ -60,7 +60,7 @@ const GridItemIcon = styled.div`
     min-width: 120px;
     min-height: 120px;
   }
-`
+`;
 
 const Icon = styled.div`
   width: 80px;
@@ -76,7 +76,7 @@ const Icon = styled.div`
     width: 40px;
     height: 40px;
   }
-`
+`;
 
 const GridItemTxt = styled.div`
   width: 100%;
@@ -86,7 +86,7 @@ const GridItemTxt = styled.div`
   box-sizing: border-box;
   font-size: 22px;
   margin-top: 20px;
-`
+`;
 
 const GridItemText = styled.span`
   font-size: 24.5px;
@@ -99,10 +99,10 @@ const GridItemText = styled.span`
   @media only screen and (max-width: 760px) {
     font-size: 16px;
   }
-`
+`;
 
 export default props => {
-  const { data } = props
+  const { data } = props;
   return (
     <GridContainer>
       <GridTitle>Why Join Mixtape Madness</GridTitle>
@@ -120,5 +120,5 @@ export default props => {
         ))}
       </GridItems>
     </GridContainer>
-  )
-}
+  );
+};

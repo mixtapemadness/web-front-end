@@ -1,7 +1,7 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from 'react';
+import styled from 'styled-components';
 
-import JoinNowBtn from '../JoinNowBtn'
+import JoinNowBtn from '../JoinNowBtn';
 
 const imgUrl = //eslint-disable-line
   'https://images.pexels.com/photos/846741/pexels-photo-846741.jpeg?cs=srgb&dl=adult-blur-brick-walls-846741.jpg&fm=jpg' //eslint-disable-line
@@ -21,12 +21,12 @@ const SliderContainer = styled.div`
   @media only screen and (max-width: 760px) {
     height: 50vh;
   }
-`
+`;
 const SliderContainerWrapper = styled.div`
   position: absolute;
   width: 100%;
   height: 100%;
-`
+`;
 
 const SliderHeader = styled.div`
   color: #fff;
@@ -41,7 +41,7 @@ const SliderHeader = styled.div`
   @media only screen and (max-width: 760px) {
     font-size: 20px;
   }
-`
+`;
 
 const AboutUsSlider = () => (
   <SliderContainer image={imgUrl}>
@@ -55,6 +55,6 @@ const AboutUsSlider = () => (
     </SliderHeader>
     <JoinNowBtn />
   </SliderContainer>
-)
+);
 
-export default AboutUsSlider
+export default AboutUsSlider;

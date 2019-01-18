@@ -1,10 +1,10 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from 'react';
+import styled from 'styled-components';
 
 const NewsSlliderContainer = styled.div`
   width: 100%;
   flex-direction: column;
-`
+`;
 
 const SlliderImg = styled.div`
   width: 100%;
@@ -13,7 +13,7 @@ const SlliderImg = styled.div`
   background-position: center center;
   background-repeat: no-repeat;
   position: relative;
-`
+`;
 
 const NewsSlliderWrapper = styled.div`
   width: 100%;
@@ -25,11 +25,11 @@ const NewsSlliderWrapper = styled.div`
   align-items: center;
   font-size: 26px;
   text-align: center;
-`
+`;
 export default ({ img, text }) => (
   <NewsSlliderContainer>
     <SlliderImg src={img}>
       <NewsSlliderWrapper>{text}</NewsSlliderWrapper>
     </SlliderImg>
   </NewsSlliderContainer>
-)
+);

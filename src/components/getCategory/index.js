@@ -1,1 +1,1 @@
-export { default } from './GetCategory'
+export { default } from './GetCategory';

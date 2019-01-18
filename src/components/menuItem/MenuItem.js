@@ -3,19 +3,19 @@
 /* eslint operator-linebreak: 0 */
 /* eslint object-curly-newline: 0 */
 
-import React from 'react'
-import styled from 'styled-components'
-import window from 'global/window'
+import React from 'react';
+import styled from 'styled-components';
+import window from 'global/window';
 
-import { Link } from 'react-router-dom'
-import SignalBarsIcon from 'resources/assets/svgComponents/SignalBars'
-import ViewsIcon from 'resources/assets/svgComponents/Views'
-import GetCategory from 'components/getCategory'
-import { CLOSE_MEGAMENU } from 'constants'
-import ReactImageFallback from 'react-image-fallback'
-import menuItemEnhancer from './menuItemEnhancer'
-import eventEmitter from '../../eventEmitter'
-import placeholderImg from '../../resources/assets/img/placeholderImg.jpg'
+import { Link } from 'react-router-dom';
+import SignalBarsIcon from 'resources/assets/svgComponents/SignalBars';
+import ViewsIcon from 'resources/assets/svgComponents/Views';
+import GetCategory from 'components/getCategory';
+import { CLOSE_MEGAMENU } from 'constants';
+import ReactImageFallback from 'react-image-fallback';
+import menuItemEnhancer from './menuItemEnhancer';
+import eventEmitter from '../../eventEmitter';
+import placeholderImg from '../../resources/assets/img/placeholderImg.jpg';
 
 const Container = styled.div`
   display: flex;
@@ -26,7 +26,7 @@ const Container = styled.div`
   @media only screen and (max-width: 1050px) {
     text-align: center;
   }
-`
+`;
 
 const MenuItemPhoto = styled(Link)`
   width: 260px;
@@ -36,7 +36,7 @@ const MenuItemPhoto = styled(Link)`
     height: 100%;
     object-fit: cover;
   }
-`
+`;
 
 const Category = styled(Link)`
   color: #ff9600;
@@ -45,7 +45,7 @@ const Category = styled(Link)`
   font-weight: 800;
   text-align: left;
   width: 100%;
-`
+`;
 
 const PostTitle = styled(Link)`
   width: 100%;
@@ -59,7 +59,7 @@ const PostTitle = styled(Link)`
   &:hover {
     text-decoration-color: #ffffff;
   }
-`
+`;
 
 const ContentContainer = styled.div`
   display: flex;
@@ -71,39 +71,39 @@ const ContentContainer = styled.div`
   @media only screen and (max-width: 1050px) {
     text-align: center;
   }
-`
+`;
 const ContentContainerTop = styled.div`
   display: flex;
   flex-direction: column;
-`
+`;
 const Type = styled.span`
   font-size: 9.5px;
   letter-spacing: 0.6px;
   color: #ffffff;
-`
+`;
 const Title = styled.span`
   font-size: 20px;
   letter-spacing: 1.2px;
   font-weight: 600;
   color: #ffffff;
   height: 120px;
-`
+`;
 
 const FlexDiv = styled.div`
   display: flex;
   justify-content: space-between;
-`
+`;
 const ViewsContainer = styled.div`
   display: flex;
   color: #ffffff;
   align-items: center;
-`
+`;
 
 const Span = styled.span`
   color: #ffffff;
   font-size: 8.5px;
   margin-left: 7px;
-`
+`;
 
 const ContinueRead = styled(Link)`
   width: auto;
@@ -121,12 +121,12 @@ const ContinueRead = styled(Link)`
     height: 10px;
     background: #ff9600;
   }
-`
+`;
 
 const MenuItem = ({ data, media, category, tags }) => {
   // const data = Posts && Posts.data
 
-  const Image = media && media.img && media.img.full && media.img.full
+  const Image = media && media.img && media.img.full && media.img.full;
 
   const categorySlug =
     category &&
@@ -134,9 +134,9 @@ const MenuItem = ({ data, media, category, tags }) => {
     category.category &&
     category.category[0] &&
     category.category[0].id &&
-    category.category[0].name
+    category.category[0].name;
 
-  const tagsData = tags && tags.tags && tags.tags
+  const tagsData = tags && tags.tags && tags.tags;
 
   return (
     <Container>
@@ -201,6 +201,6 @@ const MenuItem = ({ data, media, category, tags }) => {
         </ContinueRead>
       </ContentContainer>
     </Container>
-  )
-}
-export default menuItemEnhancer(MenuItem)
+  );
+};
+export default menuItemEnhancer(MenuItem);

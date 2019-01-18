@@ -1,5 +1,5 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from 'react';
+import styled from 'styled-components';
 
 const SpinnerContainer = styled.div`
   .loader,
@@ -45,11 +45,11 @@ const SpinnerContainer = styled.div`
       transform: rotate(360deg);
     }
   }
-`
+`;
 const Spinner = () => (
   <SpinnerContainer>
     <div className="loader">Loading...</div>
   </SpinnerContainer>
-)
+);
 
-export default Spinner
+export default Spinner;

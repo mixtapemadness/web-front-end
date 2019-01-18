@@ -1,6 +1,6 @@
-import React from 'react'
-import styled, { keyframes } from 'styled-components'
-import Shimmer from './shimmer'
+import React from 'react';
+import styled, { keyframes } from 'styled-components';
+import Shimmer from './shimmer';
 
 const shine = keyframes`
   0% {
@@ -10,7 +10,7 @@ const shine = keyframes`
   100% {
     background-position: 468px 0; 
   }
-`
+`;
 
 const Container = styled.div`
   display: flex;
@@ -24,13 +24,13 @@ const Container = styled.div`
   box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.3);
   position: relative;
   margin: 7px;
-`
+`;
 
 const Info = styled.div`
   display: flex;
   flex-direction: column;
   padding: 14px 13px 18px;
-`
+`;
 
 const Avatar = styled(Shimmer)`
   width: 100%;
@@ -52,7 +52,7 @@ const Avatar = styled(Shimmer)`
   animation-iteration-count: infinite;
   animation-name: ${shine};
   animation-timing-function: linear;
-`
+`;
 
 const TopVideoLoader = () => (
   <Container>
@@ -65,6 +65,6 @@ const TopVideoLoader = () => (
       <Shimmer size={30} mt={15} fullWidth />
     </Info>
   </Container>
-)
+);
 
-export default TopVideoLoader
+export default TopVideoLoader;

@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 const Clock = ({ width, height, color }) => (
   <svg
@@ -25,6 +25,6 @@ const Clock = ({ width, height, color }) => (
       </g>
     </g>
   </svg>
-)
+);
 
-export default Clock
+export default Clock;

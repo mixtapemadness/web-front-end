@@ -1,19 +1,19 @@
 /* eslint indent: 0 */
 /* eslint operator-linebreak: 0 */
-import React from 'react'
-import styled from 'styled-components'
+import React from 'react';
+import styled from 'styled-components';
 
-import BackgroundImage from 'resources/assets/img/music.jpg'
+import BackgroundImage from 'resources/assets/img/music.jpg';
 
-import LogIn from './LogIn'
-import Register from './Register'
-import NewsLetter from './NewsLetter'
+import LogIn from './LogIn';
+import Register from './Register';
+import NewsLetter from './NewsLetter';
 
 const Div = styled.div`
   max-width: 1200px;
   margin: auto;
   margin-top: 140px;
-`
+`;
 const Container = styled.div`
   display: flex;
   width: 100%;
@@ -31,7 +31,7 @@ const Container = styled.div`
     display: flex;
     align-items: flex-end;
   }
-`
+`;
 
 const FormContainer = styled.div`
   color: #ffffff;
@@ -39,12 +39,12 @@ const FormContainer = styled.div`
   display: flex;
   flex-direction: column;
   z-index: 1;
-`
+`;
 
 const Title = styled.span`
   font-size: 26.5px;
   letter-spacing: 1.6px;
-`
+`;
 
 const ContentContainer = styled.div`
   width: 40%;
@@ -80,7 +80,7 @@ const ContentContainer = styled.div`
       display: none;
     }
   }
-`
+`;
 
 const Footer = styled.div`
   position: absolute;
@@ -98,7 +98,7 @@ const Footer = styled.div`
     text-align: center;
     right: 0;
   }
-`
+`;
 
 const SignForm = ({ type }) => (
   <Div>
@@ -120,6 +120,6 @@ const SignForm = ({ type }) => (
       </ContentContainer>
     </Container>
   </Div>
-)
+);
 
-export default SignForm
+export default SignForm;

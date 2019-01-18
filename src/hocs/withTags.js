@@ -1,6 +1,6 @@
-import { compose } from 'recompose'
-import getTagsByPostId from 'graphql/getTagsByPostId.graphql'
-import loadDataAsync from './loadDataAsync'
+import { compose } from 'recompose';
+import getTagsByPostId from 'graphql/getTagsByPostId.graphql';
+import loadDataAsync from './loadDataAsync';
 
 const withMedia = compose(
   loadDataAsync({
@@ -14,6 +14,6 @@ const withMedia = compose(
       }),
     },
   }),
-)
+);
 
-export default withMedia
+export default withMedia;

@@ -2,15 +2,15 @@
 /* eslint operator-linebreak: 0 */
 /* eslint no-unused-vars: 0 */
 
-import React from 'react'
-import styled from 'styled-components'
+import React from 'react';
+import styled from 'styled-components';
 // import { Link } from 'react-router-dom'
-import Share from '../../resources/assets/svgComponents/Share'
-import Dots from '../../resources/assets/svgComponents/Dots'
-import albumCover from '../../resources/assets/img/albumCover.png'
+import Share from '../../resources/assets/svgComponents/Share';
+import Dots from '../../resources/assets/svgComponents/Dots';
+import albumCover from '../../resources/assets/img/albumCover.png';
 
 const musicSliderImg =
-  'https://static1.squarespace.com/static/52c723b4e4b0b6f0473fa0c7/52c73e8ee4b0b674fecbb8d6/5ab0190303ce6497ede69670/1521490244848/music_Autonomics_coBandcamp_4344.jpg?format=1000w'
+  'https://static1.squarespace.com/static/52c723b4e4b0b6f0473fa0c7/52c73e8ee4b0b674fecbb8d6/5ab0190303ce6497ede69670/1521490244848/music_Autonomics_coBandcamp_4344.jpg?format=1000w';
 
 const SongItemContainer = styled.div`
   flex: 1 0 550px;
@@ -24,11 +24,11 @@ const SongItemContainer = styled.div`
   :nth-child(5n + 1) {
     border: 0;
   }
-`
+`;
 
 const SongItemLeft = styled.div`
   display: flex;
-`
+`;
 
 const SongIndex = styled.div`
   width: 15px;
@@ -38,7 +38,7 @@ const SongIndex = styled.div`
   align-items: center;
   justify-content: center;
   margin-right: 10px;
-`
+`;
 
 const AlbumImg = styled.div`
   width: 120px;
@@ -47,7 +47,7 @@ const AlbumImg = styled.div`
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
-`
+`;
 
 const SongItemRight = styled.div`
   display: flex;
@@ -55,7 +55,7 @@ const SongItemRight = styled.div`
   flex: 1;
   align-items: center;
   margin: 0 10px;
-`
+`;
 
 const SongItemRightCol = styled.div`
   display: flex;
@@ -64,30 +64,30 @@ const SongItemRightCol = styled.div`
   &:nth-child(3) {
     flex-direction: row;
   }
-`
+`;
 
-const SongDescTitle = styled.h4``
+const SongDescTitle = styled.h4``;
 
 const SongDescArtist = styled.span`
   color: #666666;
   font-weight: 800;
-`
+`;
 
-const SongDescYear = styled.h4``
+const SongDescYear = styled.h4``;
 // const SongPlays = styled.h4`
 
 // `
 
 const SongPlaysQuantity = styled.h4`
   font-weight: 400;
-`
-const SongPlaysTxt = styled.h4``
+`;
+const SongPlaysTxt = styled.h4``;
 
 const SongItemIcons = styled.div`
   min-width: 60px;
   display: flex;
   justify-content: space-between;
-`
+`;
 
 const SongItem = ({ data, blog }) => (
   <SongItemContainer>
@@ -113,6 +113,6 @@ const SongItem = ({ data, blog }) => (
       </SongItemRightCol>
     </SongItemRight>
   </SongItemContainer>
-)
+);
 
-export default SongItem
+export default SongItem;

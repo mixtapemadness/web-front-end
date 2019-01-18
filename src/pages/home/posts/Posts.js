@@ -3,20 +3,14 @@
 /* eslint arrow-body-style: 0 */
 /* eslint no-unused-vars: 0 */
 
-import React from 'react'
-import styled from 'styled-components'
-import { Link } from 'react-router-dom'
-import PostItem from 'components/postItem'
-import Subscribe from 'components/subscribe'
-// import MobileSubscribe from 'components/mobileSubscribe'
-import SliderComponent from 'components/slider'
-import { CardLoader } from 'components/loaders'
-import postsEnhancer from './postsEnhancer'
-
-// const PostItemContainer = styled.div`
-//   display: flex;
-//   justify-content: center;
-// `
+import React from 'react';
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import PostItem from 'components/postItem';
+import Subscribe from 'components/subscribe';
+import SliderComponent from 'components/slider';
+import { CardLoader } from 'components/loaders';
+import postsEnhancer from './postsEnhancer';
 
 const TrendingContainer = styled.div`
   display: flex;
@@ -24,7 +18,7 @@ const TrendingContainer = styled.div`
   max-width: 1200px;
   margin: 50px auto;
   justify-content: space-around;
-`
+`;
 
 const TitleContainer = styled.div`
   font-weight: 800;
@@ -36,17 +30,17 @@ const TitleContainer = styled.div`
   @media only screen and (max-width: 751px) {
     text-align: center;
   }
-`
+`;
 
 const SubTitle = styled.h2`
   font-weight: 800;
   font-size: 18px;
-`
+`;
 
 const SubscribeContainer = styled.div`
   margin: 40px 0;
   max-width: 1100px;
-`
+`;
 
 const PostItemT = (item, index) => {
   if (index === 5) {
@@ -57,14 +51,14 @@ const PostItemT = (item, index) => {
           <Subscribe />
         </SubscribeContainer>
       </React.Fragment>
-    )
+    );
   }
-  return <PostItem key={item.id} data={item} />
-}
+  return <PostItem key={item.id} data={item} />;
+};
 
 const PostItems = ({ items }) => {
-  return items.map((item, index) => PostItemT(item, index))
-}
+  return items.map((item, index) => PostItemT(item, index));
+};
 
 const settings = {
   dots: false,
@@ -103,10 +97,10 @@ const settings = {
       },
     },
   ],
-}
+};
 
-const Posts = ({ width, data }) => {
-  const posts = data && data.Posts && data.Posts
+const Posts = ({ data }) => {
+  const posts = data && data.Posts && data.Posts;
   return (
     <TrendingContainer>
       <TitleContainer>
@@ -114,16 +108,10 @@ const Posts = ({ width, data }) => {
         <SubTitle>Check Out The Latest Music And News This Week</SubTitle>
       </TitleContainer>
       <SliderComponent settings={settings}>
-        {data.loading &&
-          [...Array(8)].map(index => (
-            <CardLoader key={`${index}-post-loader`} />
-          ))}
-        {!data.loading &&
-          posts &&
-          posts.map(item => <PostItem key={item.id} data={item} />)}
+        {posts && posts.map(item => <PostItem key={item.id} data={item} />)}
       </SliderComponent>
     </TrendingContainer>
-  )
-}
+  );
+};
 
-export default postsEnhancer(Posts)
+export default postsEnhancer(Posts);

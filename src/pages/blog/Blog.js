@@ -8,23 +8,23 @@
 /* eslint indent: 0 */
 /* eslint no-plusplus: 0 */
 
-import React from 'react'
-import styled from 'styled-components'
-import PostItem from 'components/postItem'
-import Subscribe from 'components/subscribe'
-import { CardLoader } from 'components/loaders'
-import Spinner from 'components/Spinner'
-import TopVideoPosts from './TopVideoPosts'
-import BlogSlider from './BlogSlider'
-import BlogFilter from './BlogFilter'
+import React from 'react';
+import styled from 'styled-components';
+import PostItem from 'components/postItem';
+import Subscribe from 'components/subscribe';
+import { CardLoader } from 'components/loaders';
+import Spinner from 'components/Spinner';
+import TopVideoPosts from './TopVideoPosts';
+import BlogSlider from './BlogSlider';
+import BlogFilter from './BlogFilter';
 
-import blogsEnhancer from './blogEnhancer'
+import blogsEnhancer from './blogEnhancer';
 
 const NewsContainer = styled.div`
   display: flex;
   margin: auto;
   flex-direction: column;
-`
+`;
 
 const PostsContainer = styled.div`
   width: 100%;
@@ -33,17 +33,17 @@ const PostsContainer = styled.div`
   flex-wrap: wrap;
   margin-top: 20px;
   // justify-content: space-between;
-`
+`;
 
 const SubscribeContainer = styled.div`
   width: 100%;
   margin: 40px 0;
-`
+`;
 const ShowMoreContainer = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
-`
+`;
 const ShowMore = styled.button`
   cursor: pointer;
   font-weight: 800;
@@ -71,10 +71,10 @@ const ShowMore = styled.button`
       width: 100%;
     }
   }
-`
+`;
 const SpinnerContainer = styled.div`
   margin-top: 20px;
-`
+`;
 
 const PostItemT = (item, index) => {
   if (index === 5) {
@@ -86,17 +86,16 @@ const PostItemT = (item, index) => {
           <Subscribe />
         </SubscribeContainer>
       </React.Fragment>
-    )
+    );
   }
-  return <PostItem key={item.id} data={item} />
-}
+  return <PostItem key={item.id} data={item} />;
+};
 const PostItems = ({ items }) =>
-  items.map((item, index) => PostItemT(item, index))
+  items.map((item, index) => PostItemT(item, index));
 
 const Blog = ({ data, page, handleLoadMore, match, isMoreData }) => {
-  const Data = data.Posts && data.Posts.length > 0 && data.Posts
-  let index = 0
-  // const Data = data
+  const Data = data.Posts && data.Posts.length > 0 && data.Posts;
+  let index = 0;
   return (
     <NewsContainer>
       <div>
@@ -120,7 +119,7 @@ const Blog = ({ data, page, handleLoadMore, match, isMoreData }) => {
         )}
       </ShowMoreContainer>
     </NewsContainer>
-  )
-}
+  );
+};
 
-export default blogsEnhancer(Blog)
+export default blogsEnhancer(Blog);

@@ -1,9 +1,9 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from 'react';
+import styled from 'styled-components';
 
-import PlayIcon from 'resources/assets/svg/Play.svg'
-import PlayListIcon from 'resources/assets/svg/playlist.svg'
-import FollowersIcon from 'resources/assets/svg/followers.svg'
+import PlayIcon from 'resources/assets/svg/Play.svg';
+import PlayListIcon from 'resources/assets/svg/playlist.svg';
+import FollowersIcon from 'resources/assets/svg/followers.svg';
 
 const Icon = styled.img`
   display: block;
@@ -11,7 +11,7 @@ const Icon = styled.img`
   cursor: pointer;
   top: 50%;
   left: 50%;
-`
+`;
 
 const Container = styled.div`
   margin: 7px;
@@ -22,7 +22,7 @@ const Container = styled.div`
   @media only screen and (max-width: 650px) {
     width: 90%;
   }
-`
+`;
 const PhotoContainer = styled.div`
   width: 100%;
   height: 300px;
@@ -31,7 +31,7 @@ const PhotoContainer = styled.div`
   background-size: cover;
   background-position: center;
   position: relative;
-`
+`;
 const ContentContainer = styled.div`
   background-color: #eeeeef;
   width: calc(100% - 30px);
@@ -45,7 +45,7 @@ const ContentContainer = styled.div`
     flex-direction: column;
     text-align: center;
   }
-`
+`;
 const LeftSide = styled.div`
   width: calc(40% - 15px);
   display: flex;
@@ -53,22 +53,22 @@ const LeftSide = styled.div`
   @media only screen and (max-width: 450px) {
     width: 100%;
   }
-`
+`;
 const Type = styled.span`
   color: #ff9d00;
   font-size: 13px;
   font-weight: bold;
-`
+`;
 const Name = styled.span`
   font-size: 30px;
   color: black;
-`
+`;
 const Line = styled.div`
   height: 100%;
   width: 1px;
   background-color: #e7e7e7;
   margin: 0px 15px;
-`
+`;
 const RightSide = styled.div`
   display: flex;
   flex-direction: column;
@@ -76,29 +76,29 @@ const RightSide = styled.div`
   @media only screen and (max-width: 450px) {
     width: 100%;
   }
-`
+`;
 const Text = styled.span`
   color: #666666;
   font-size: 14px;
   word-break: break-word;
-`
+`;
 const FlexDiv = styled.div`
   display: flex;
   ${p => p.mb && `margin-bottom: ${p.mb}px`};
   ${p => p.mt && `margin-top: ${p.mt}px`};
   ${p => p.ml && `margin-left: ${p.ml}px`};
   ${p => p.mr && `margin-right: ${p.mr}px`};
-`
+`;
 const LittleIcon = styled.img`
   ${p => p.height && `height: ${p.height}px`};
   ${p => p.pointer && 'cursor: pointer'};
-`
+`;
 const Span = styled.span`
   color: #666666;
   font-size: 13px;
   margin-left: 10px;
   margin-top: 2px;
-`
+`;
 
 const IconsContainer = styled.div`
   display: flex;
@@ -106,7 +106,7 @@ const IconsContainer = styled.div`
   @media only screen and (max-width: 450px) {
     justify-content: space-between;
   }
-`
+`;
 const ToListenPlaylist = ({ data }) => (
   <Container>
     <PhotoContainer picture={data.picture}>
@@ -139,6 +139,6 @@ const ToListenPlaylist = ({ data }) => (
       </RightSide>
     </ContentContainer>
   </Container>
-)
+);
 
-export default ToListenPlaylist
+export default ToListenPlaylist;

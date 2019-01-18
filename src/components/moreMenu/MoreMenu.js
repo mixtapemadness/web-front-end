@@ -1,22 +1,22 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from 'react';
+import styled from 'styled-components';
 
-import Musician from 'resources/assets/img/musician1.png'
-import Musician1 from 'resources/assets/img/2pac.jpg'
-import Musician2 from 'resources/assets/img/eminem.jpg'
+import Musician from 'resources/assets/img/musician1.png';
+import Musician1 from 'resources/assets/img/2pac.jpg';
+import Musician2 from 'resources/assets/img/eminem.jpg';
 
-import MoreMenuItem from './MoreMenuItem'
+import MoreMenuItem from './MoreMenuItem';
 
 const Container = styled.div`
   max-width: 1200px;
   margin: auto;
   padding-top: 42px;
-`
+`;
 const ItemContainer = styled.div`
   display: flex;
   width: 100%;
   justify-content: space-between;
-`
+`;
 const Search = styled.input`
   width: 100%;
   text-align: center;
@@ -54,21 +54,21 @@ const Search = styled.input`
     opacity: 0.8;
     text-align: center;
   }
-`
+`;
 
 const FlexDiv = styled.div`
   display: flex;
   justify-content: space-between;
   ${p => p.mt && `margin-top: ${p.mt}px`};
   ${p => p.width && 'width: 111px'};
-`
+`;
 const Span = styled.span`
   letter-spacing: 0.5px;
   color: #000000;
   font-weight: 600;
   font-size: 8px;
   cursor: pointer;
-`
+`;
 
 const dummyData = [
   {
@@ -96,7 +96,7 @@ const dummyData = [
     title: 'Singles',
     subTitle: 'Latest Singles',
   },
-]
+];
 
 const MoreMenu = () => (
   <Container>
@@ -115,6 +115,6 @@ const MoreMenu = () => (
       </FlexDiv>
     </FlexDiv>
   </Container>
-)
+);
 
-export default MoreMenu
+export default MoreMenu;

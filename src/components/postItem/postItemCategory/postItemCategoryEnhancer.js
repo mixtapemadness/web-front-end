@@ -1,26 +1,8 @@
-import { compose, withStateHandlers, lifecycle } from 'recompose'
-import window from 'global/window'
-
-import { loadDataAsync } from 'hocs'
-import getCategoryById from 'graphql/getCategoryById.graphql'
+import { compose } from 'recompose';
+import { loadDataAsync } from 'hocs';
+import getCategoryById from 'graphql/getCategoryById.graphql';
 
 export default compose(
-  withStateHandlers(
-    () => ({
-      width: window.innerWidth,
-    }),
-    {
-      updateWidth: () => () => ({ width: window.innerWidth }),
-    },
-  ),
-  lifecycle({
-    componentDidMount() {
-      window.addEventListener('resize', this.props.updateWidth)
-    },
-    componentWillUnmount() {
-      window.removeEventListener('resize', this.props.updateWidth)
-    },
-  }),
   loadDataAsync({
     query: getCategoryById,
     config: {
@@ -31,4 +13,4 @@ export default compose(
       }),
     },
   }),
-)
+);

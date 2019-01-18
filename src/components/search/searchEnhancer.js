@@ -1,8 +1,8 @@
 /* eslint object-curly-newline: 0 */
-import { compose, withStateHandlers, lifecycle, withProps } from 'recompose'
-import searchQuery from 'graphql/searchQuery.graphql'
-import document from 'global/document'
-import { loadDataAsync } from '../../hocs'
+import { compose, withStateHandlers, lifecycle, withProps } from 'recompose';
+import searchQuery from 'graphql/searchQuery.graphql';
+import document from 'global/document';
+import { loadDataAsync } from '../../hocs';
 
 export default compose(
   withStateHandlers(
@@ -14,13 +14,13 @@ export default compose(
         if (e.key === 'Enter') {
           return {
             value: e.target.value,
-          }
+          };
         }
-        return true
+        return true;
       },
       toggle: () => (e, toggleSearch) => {
         if (e.key === 'Escape') {
-          toggleSearch()
+          toggleSearch();
         }
       },
     },
@@ -43,10 +43,10 @@ export default compose(
   })),
   lifecycle({
     componentDidMount() {
-      document.addEventListener('keydown', this.props.escape)
+      document.addEventListener('keydown', this.props.escape);
     },
     componentWillUnmount() {
-      document.removeEventListener('keydown', this.props.escape)
+      document.removeEventListener('keydown', this.props.escape);
     },
   }),
-)
+);

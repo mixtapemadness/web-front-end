@@ -1,15 +1,15 @@
-import React from 'react'
-import styled from 'styled-components'
-import aboutUsEnhancer from './aboutUsEnhancer'
-import AboutUsSlider from './AboutUsSlider'
-import Grid from './Grid'
+import React from 'react';
+import styled from 'styled-components';
+import aboutUsEnhancer from './aboutUsEnhancer';
+import AboutUsSlider from './AboutUsSlider';
+import Grid from './Grid';
 
 const AboutUsContainer = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
   margin: auto;
-`
+`;
 
 const girdData = [
   {
@@ -37,13 +37,13 @@ const girdData = [
     title: 'Unlimited Skips',
     helperTxt: 'Wherever, Whenever',
   },
-]
+];
 
 const AboutUs = () => (
   <AboutUsContainer>
     <AboutUsSlider />
     <Grid data={girdData} />
   </AboutUsContainer>
-)
+);
 
-export default aboutUsEnhancer(AboutUs)
+export default aboutUsEnhancer(AboutUs);

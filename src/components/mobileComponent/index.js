@@ -1,1 +1,1 @@
-export { default } from './MobileComponent'
+export { default } from './MobileComponent';

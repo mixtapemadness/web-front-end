@@ -1,1 +1,1 @@
-export { default } from './WhatsOnComponent'
+export { default } from './WhatsOnComponent';

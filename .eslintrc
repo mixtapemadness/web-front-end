@@ -12,7 +12,7 @@
     "indent": ["warn", 2],
     "react/jsx-indent": ["warn", 2],
     "react/forbid-prop-types": 0,
-    "semi": [2, "never"],
+    "semi": [2, "always"],
     "react/jsx-filename-extension": [
       1,
       {

@@ -1,12 +1,12 @@
-import { EventEmitter } from 'fbemitter'
+import { EventEmitter } from 'fbemitter';
 
-let emitter = null
+let emitter = null;
 
 const getEmitter = () => {
   if (!emitter) {
-    emitter = new EventEmitter()
+    emitter = new EventEmitter();
   }
-  return emitter
-}
+  return emitter;
+};
 
-export default getEmitter
+export default getEmitter;

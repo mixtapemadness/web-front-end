@@ -1,25 +1,25 @@
 /* eslint react/jsx-one-expression-per-line: 0 */
-import React from 'react'
-import styled from 'styled-components'
+import React from 'react';
+import styled from 'styled-components';
 
-import PostItem from 'components/postItem'
-import Footer from 'components/footer'
-import Subscribe from 'components/subscribe'
-import EventAdvertisement from './eventAdvertisement'
+import PostItem from 'components/postItem';
+import Footer from 'components/footer';
+import Subscribe from 'components/subscribe';
+import EventAdvertisement from './eventAdvertisement';
 
 const NewsContainer = styled.div`
   max-width: 1200px;
   display: flex;
   margin: auto;
   flex-direction: column;
-`
+`;
 
 const newsSliderImg = //eslint-disable-line
   'https://static1.squarespace.com/static/52c723b4e4b0b6f0473fa0c7/52c73e8ee4b0b674fecbb8d6/5ab0190303ce6497ede69670/1521490244848/music_Autonomics_coBandcamp_4344.jpg?format=1000w' //eslint-disable-line
 const NewsSlliderContainer = styled.div`
   width: 100%;
   flex-direction: column;
-`
+`;
 
 const SlliderImg = styled.div`
   width: 100%;
@@ -29,7 +29,7 @@ const SlliderImg = styled.div`
   background-position: center center;
   background-repeat: no-repeat;
   position: relative;
-`
+`;
 
 const NewsSlliderWrapper = styled.div`
   width: 100%;
@@ -41,12 +41,12 @@ const NewsSlliderWrapper = styled.div`
   align-items: center;
   font-size: 26px;
   text-align: center;
-`
+`;
 
 const SliderText = styled.h1`
   width: 80%;
   color: #fff;
-`
+`;
 
 const FilterContainer = styled.div`
   width: 100%;
@@ -55,7 +55,7 @@ const FilterContainer = styled.div`
   @media only screen and (max-width: 750px) {
     flex-direction: column;
   }
-`
+`;
 
 const FilterItem = styled.div`
   flex: 1;
@@ -70,7 +70,7 @@ const FilterItem = styled.div`
   &:hover {
     color: #ff9600;
   }
-`
+`;
 
 const PostsContainer = styled.div`
   width: 100%;
@@ -79,21 +79,21 @@ const PostsContainer = styled.div`
   flex-wrap: wrap;
   margin-top: 20px;
   justify-content: space-between;
-`
+`;
 
 const SubscribeContainer = styled.div`
   margin: 40px 0;
   width: 100%;
-`
+`;
 const Div = styled.div`
   margin-top: 20px;
   justify-content: center;
   display: flex;
-`
+`;
 
 const FooterContainer = styled.div`
   margin-top: 40px;
-`
+`;
 
 const PostsFirstPart = [
   {
@@ -222,7 +222,7 @@ const PostsFirstPart = [
     type: 'Events',
     views: '10,000',
   },
-]
+];
 
 const PostsSecondPart = [
   {
@@ -261,7 +261,7 @@ const PostsSecondPart = [
     shares: 20,
     type: 'Events',
   },
-]
+];
 
 const EventPage = () => (
   <NewsContainer>
@@ -303,6 +303,6 @@ const EventPage = () => (
       <Footer />
     </FooterContainer>
   </NewsContainer>
-)
+);
 
-export default EventPage
+export default EventPage;

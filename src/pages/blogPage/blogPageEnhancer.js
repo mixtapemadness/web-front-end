@@ -10,15 +10,15 @@ import {
   lifecycle,
   branch,
   withProps,
-} from 'recompose'
-import { withRouter } from 'react-router-dom'
-import getPostBySlug from 'graphql/getPostBySlug.graphql'
-import { loadDataAsync, withAuthor, withMedia } from 'hocs'
-import getNextPost from 'graphql/getNextPost.graphql'
-import getPreviousPost from 'graphql/getPreviousPost.graphql'
-import getPrevPostByAuthorId from 'graphql/getPrevPostByAuthorId.graphql'
-import getNextPostByAuthorId from 'graphql/getNextPostByAuthorId.graphql'
-import window from 'global/window'
+} from 'recompose';
+import { withRouter } from 'react-router-dom';
+import getPostBySlug from 'graphql/getPostBySlug.graphql';
+import { loadDataAsync, withAuthor, withMedia } from 'hocs';
+import getNextPost from 'graphql/getNextPost.graphql';
+import getPreviousPost from 'graphql/getPreviousPost.graphql';
+import getPrevPostByAuthorId from 'graphql/getPrevPostByAuthorId.graphql';
+import getNextPostByAuthorId from 'graphql/getNextPostByAuthorId.graphql';
+import window from 'global/window';
 
 export default compose(
   withRouter,
@@ -39,18 +39,34 @@ export default compose(
   ),
   withStateHandlers(
     () => ({
-      width: window.innerWidth,
       fetchPrev: false,
       fetchNext: false,
       date: '',
+      showSpinner: true,
       category: '',
     }),
     {
-      updateWidth: () => () => ({ width: window.innerWidth }),
+      updateSpinner: (props) => (showSpinner) => ({
+        showSpinner,
+      }),
       handlePrev: ({ fetchPrev }) => date => ({ fetchPrev: true, date }),
       handleNext: ({ fetchNext }) => date => ({ fetchNext: true, date }),
     },
   ),
+  lifecycle({
+    componentDidMount() {
+      window.scrollTo(0, 0);
+      this.props.updateSpinner(false);
+    },
+    componentWillMount() {
+      this.props.updateSpinner(true);
+    },
+    componentWillReceiveProps(nextProps, prevProps) {
+      if (nextProps.location.pathname !== this.props.location.pathname) {
+        window.scrollTo(0, 0);
+      }
+    },
+  }),
   branch(
     ({ location }) =>
       location &&
@@ -177,23 +193,8 @@ export default compose(
         props.getPrevPost.getPrevPost[0].slug,
     })),
   ),
-
-  lifecycle({
-    componentDidMount() {
-      window.scrollTo(0, 0)
-      window.addEventListener('resize', this.props.updateWidth)
-    },
-    componentWillReceiveProps(nextProps) {
-      if (nextProps.location.pathname !== this.props.location.pathname) {
-        window.scrollTo(0, 0)
-      }
-    },
-    componentWillUnmount() {
-      window.removeEventListener('resize', this.props.updateWidth)
-    },
-  }),
   branch(
     ({ data }) => (data && data.Post && data.Post.author ? true : false),
     withAuthor,
   ),
-)
+);

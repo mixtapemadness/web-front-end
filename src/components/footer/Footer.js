@@ -9,8 +9,7 @@ import { Link } from 'react-router-dom';
 
 
 import SocialIcons from 'components/SocialIcons';
-import { CLOSE_MEGAMENU, SOCIAL_MEDIA } from 'constants';
-import footerEnhancer from './footerEnhancer';
+import { CLOSE_MEGAMENU, SOCIAL_MEDIA, ROUTES } from 'constants';
 import MobileFooter from './MobileFooter';
 import { RESPONSIVE_BREAKPOINTS } from '../../constants';
 
@@ -19,7 +18,7 @@ const FooterContainer = styled.footer`
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: #efefef;
+  background-color: #f1f3f5;
   margin-top: 50px;
   display:none;
   @media only screen and (min-width: ${RESPONSIVE_BREAKPOINTS.tablet}) {
@@ -34,9 +33,11 @@ const ContentContainer = styled.div`
 `;
 
 const FlexDiv = styled.div`
+margin: 20px 0;
   display: flex;
-  justify-content: space-between;
   flex-direction: column;
+    justify-content: center;
+    text-align:center;
   width: 100%;
 `;
 
@@ -45,9 +46,8 @@ const ListContainer = styled.div`
 `;
 
 const ContentHeader = styled.span`
-  font-size: 16.5px;
-  letter-spacing: 1px;
-  color: ${p => (p.menuOpened ? '#ffffff' : '#000000')};
+  font-size: 16px;
+  color: #000000;
   font-weight: 600;
 `;
 
@@ -57,13 +57,12 @@ const List = styled.ul`
   color: #666;
   display: flex;
   align-items: center;
-  justify-content: space-around;
   margin-bottom: 20px;
+      justify-content: center;
 `;
 
 const ListItem = styled.li`
-  margin-bottom: 15px;
-  font-weight: 600;
+  margin: 0 20px;
   list-style: none;
   font-size: 14px;
   display: inline-block;
@@ -149,70 +148,48 @@ const NewsletterContainer = styled.div`
 
 const Footer = ({ width, menuOpened }) => (
   <div>
-
     <FooterContainer menuOpened={menuOpened}>
       <ContentContainer>
-        <FlexDiv>
-          <ListContainer>
-            <List menuOpened={menuOpened}>
-              <ListItem>
-                <Link to="/aboutus">About</Link>
-              </ListItem>
-              <ListItem>
-                <Link to="/blog/category/videos">Videos</Link>
-              </ListItem>
-              <ListItem>
-                <Link to="/blog/category/articles">Articles</Link>
-              </ListItem>
-              <ListItem>
-                <Link to="/blog/category/events">Events</Link>
-              </ListItem>
-              <ListItem>
-                <Link to="/blog/category/reviews">Reviews </Link>
-              </ListItem>
-              <ListItem>
-                <Link to="/blog/category/news">News</Link>
-              </ListItem>
-              <ListItem>
-                <Link to="/blog/category/interviews">Interviews</Link>
-              </ListItem>
-            </List>
-          </ListContainer>
-          <NewsletterContainer>
-            <ContentHeader menuOpened={menuOpened}>
-              Sign up for our newsletter
-            </ContentHeader>
-            <SignUpContainer>
-              <Input
-                placeholder="email@example.com"
-                menuOpened={menuOpened}
-              />
-              <SignUpButton menuOpened={menuOpened}>SIGN UP</SignUpButton>
-            </SignUpContainer>
-            <ContentHeader menuOpened={menuOpened}>
-              Connect with Mixtape Madness
-            </ContentHeader>
-            <SocialIcons menuOpened={menuOpened} />
-            <Line mb={10} menuOpened={menuOpened} />
-          </NewsletterContainer>
-        </FlexDiv>
-        <FlexDiv>
-          <div>
-              <Span fsize={13} color="#000000">
-                Mixtape Madness
-              </Span>
-          </div>
-          <Flex>
-              <Span fsize={13} color="#000000">
-                <Link to="/termsconditions">Terms & Conditions</Link>
-              </Span>
-            <Span fsize={13} color="#000000" ml={10}>
-                <Link to="/privacy">Privacy Policy</Link>
-              </Span>
-          </Flex>
-        </FlexDiv>
+        <ListContainer>
+          <List menuOpened={menuOpened}>
+            <ListItem>
+              <Link to={ROUTES.about}>About Us</Link>
+            </ListItem>
+            <ListItem>
+              <Link to={ROUTES.termsAndConditions}>Terms & Conditions</Link>
+            </ListItem>
+            <ListItem>
+              <Link to={ROUTES.privacyPolicy}>Privacy Policy</Link>
+            </ListItem>
+            <ListItem>
+              <Link to={ROUTES.faqs}>FAQs</Link>
+            </ListItem>
+            <ListItem>
+              <Link to={ROUTES.contactUs}>Contact Us</Link>
+            </ListItem>
+          </List>
+        </ListContainer>
+        <NewsletterContainer>
+          <ContentHeader menuOpened={menuOpened}>
+            Sign up to our newsletter
+          </ContentHeader>
+          <SignUpContainer>
+            <Input
+              placeholder="email@example.com"
+              menuOpened={menuOpened}
+            />
+            <SignUpButton menuOpened={menuOpened}>SIGN UP</SignUpButton>
+          </SignUpContainer>
+          <SocialIcons menuOpened={menuOpened} />
+          <Line mb={10} menuOpened={menuOpened} />
+        </NewsletterContainer>
       </ContentContainer>
     </FooterContainer>
+    <FlexDiv>
+      <Span fsize={12} color="#000000">
+        Copyright &copy; Mixtape Madness.
+      </Span>
+    </FlexDiv>
     <MobileFooter menuOpened={menuOpened} />
   </div>
 );

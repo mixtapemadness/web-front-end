@@ -13,7 +13,8 @@ import menuEnhancer from './menuEnhancer';
 // import Musician2 from 'resources/assets/img/eminem.jpg'
 const Container = styled.div`
   position: fixed;
-  top: 0px;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   background-color: #ff9600;
@@ -154,18 +155,8 @@ const Menu = ({ data, toggleMenu }) => {
               <li>Interviews</li>
             </Link>
           </List>
-          <List>
-            {/* <li>Playlists</li> */}
-            {/* <li>Interviews</li> */}
-            {/* <li>Reviews</li> */}
-          </List>
-          <List>
-            {/* <li>Exclusives</li> */}
-            {/* <li>Charts</li> */}
-            {/* <li>Blog</li> */}
-          </List>
         </ListContainer>
-        <Title>Today’s Most Read News</Title>
+        <Title>Recent News</Title>
         <ItemContainer>
           {Posts &&
             Posts.map((item, index, arr) => (
@@ -175,8 +166,6 @@ const Menu = ({ data, toggleMenu }) => {
               </FlexDiv>
             ))}
         </ItemContainer>
-        {/* <Line /> */}
-        {/* <Footer menuOpened /> */}
       </ContentContainer>
     </Container>
   );

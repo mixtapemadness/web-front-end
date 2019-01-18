@@ -4,44 +4,10 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import styled from 'styled-components';
 import Video from 'components/video';
 import SliderComponent from 'components/slider';
 import { CardLoader } from 'components/loaders';
 import videosEnhancer from './videosEnhancer';
-
-const VideosContainer = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  margin-top: 50px;
-`;
-
-const HeaderContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  ${p => p.mb && `margin-bottom: ${p.mb}px`};
-`;
-
-const SectionHeader = styled.span`
-  font-weight: 800;
-  font-size: 38px;
-`;
-
-const SectionSubHeader = styled.span`
-  font-weight: 800;
-  font-size: 18px;
-`;
-
-const VideoItems = styled.div`
-  display: flex;
-  @media only screen and (max-width: 1150px) {
-    flex-direction: column;
-    align-items: center;
-  }
-`;
 
 const settings = {
   dots: false,
@@ -84,23 +50,17 @@ const settings = {
 const Videos = ({ data }) => {
   const Posts = data && data.Posts && data.Posts;
   return (
-    <VideosContainer>
-      <HeaderContainer mb={0}>
-        <SectionHeader>
-          <Link to="/blog/category/videos">Videos</Link>
-        </SectionHeader>
-        <SectionSubHeader>This weeks latest videos</SectionSubHeader>
-      </HeaderContainer>
-      <VideoItems>
-        <SliderComponent settings={settings}>
-          {data.loading &&
-            [...Array(8)].map(i => <CardLoader key={`${i}-videos-loader`} />)}
-          {!data.loading &&
-            Posts &&
-            Posts.map(item => <Video key={item.id} data={item} />)}
-        </SliderComponent>
-      </VideoItems>
-    </VideosContainer>
+    <SliderComponent
+      title={<Link to="/blog/category/videos">Latest Videos</Link>}
+      subTitle="Our selection of bangers"
+      settings={settings}
+    >
+      {data.loading &&
+      [...Array(8)].map(i => <CardLoader key={`${i}-videos-loader`} />)}
+      {!data.loading &&
+      Posts &&
+      Posts.map(item => <Video key={item.id} data={item} />)}
+    </SliderComponent>
   );
 };
 

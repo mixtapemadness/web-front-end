@@ -1,0 +1,51 @@
+@import "variables";
+
+/*
+* Media Queries and Breakpoints
+*/
+
+/* doc
+ ---
+ title: Desktop Media Query
+ name: desktop
+ category: media queries
+ ---
+
+Media query for desktop devices (over 768px)
+
+ ```html_example
+  @include desktop {
+    div {
+      display: none;
+    }
+  }
+ ```
+ */
+@mixin desktop {
+  @media only screen and (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+/* doc
+ ---
+ title: Medium Screen Media Query
+ name: medium
+ category: media queries
+ ---
+
+Media query for medium devices (over 401px)
+
+ ```html_example
+  @include medium {
+    div {
+      display: none;
+    }
+  }
+ ```
+ */
+@mixin medium {
+  @media only screen and (min-width: $small-device-width) {
+    @content;
+  }
+}

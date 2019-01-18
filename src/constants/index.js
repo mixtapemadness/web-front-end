@@ -15,6 +15,9 @@ export const RESPONSIVE_BREAKPOINTS = {
 export const ROUTES = {
   about: 'about',
   termsAndConditions: 'terms',
+  privacyPolicy: 'privacy-policy',
+  faqs: 'faqs',
+  contactUs: 'contact-us',
   blog: 'blog/category/',
   categories: {
     news: '/blog/category/news',
@@ -32,8 +35,11 @@ export const SOCIAL_MEDIA = {
   soundcloud: 'https://soundcloud.com/mixtapemadnessuk',
   youtube: 'https://www.youtube.com/user/madaboutmixtapes',
   instagram: 'https://www.instagram.com/mixtapemadness/',
+  spotify: 'https://open.spotify.com/artist/4ocdD0Bi1syVqLs1GiHqQ9',
+  email: 'info@mixtapemadness.com',
 };
 
 export const BRAND_COLOURS = {
   orange: '#ff9600',
+  grey: '#ff9600',
 };

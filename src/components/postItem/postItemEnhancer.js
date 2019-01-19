@@ -1,7 +1,3 @@
-/* eslint camelcase: 0 */
-/* eslint no-unneeded-ternary: 0 */
-/* eslint object-curly-newline: 0 */
-
 import { compose, branch } from 'recompose';
 import { withCategory, withMedia, withAuthor } from 'hocs';
 

@@ -1,8 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,600');
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700');
 @import "helpers/variables";
-@import "buttons";
 @import "helpers/breakpoints";
+@import "buttons";
+@import "layout";
+@import "../../../components/advertisement/Advertisment";
+
+
 *,
 *::before,
 *::after {
@@ -100,6 +104,6 @@ input:required {
 
 p {
   font-family: 'Source Sans Pro', sans-serif;
-  line-height: 30px;
+  line-height: 26px;
   margin-bottom: 18px;
 }

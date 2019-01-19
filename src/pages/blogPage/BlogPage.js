@@ -165,8 +165,9 @@ const DisqusContainer = styled.div`
 `;
 
 const BlogArticleContent = styled.div`
-  font-size: 18px;
   p {
+    font-size: 18px;
+    line-height: 30px;
     img {
       margin: 5px 0;
     }

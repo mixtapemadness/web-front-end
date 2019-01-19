@@ -12,6 +12,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import moment from 'moment';
 import window from 'global/window';
 import ReactImageFallback from 'react-image-fallback';
 import postItemEnhancer from './postItemEnhancer';
@@ -19,6 +20,7 @@ import placeholderImg from '../../resources/assets/img/placeholderImg.jpg';
 import truncate from '../../helpers/textHelpers';
 import { RESPONSIVE_BREAKPOINTS, ROUTES } from '../../constants';
 import CardLoader from '../loaders/CardLoader';
+
 
 const PostItemContainer = styled.div`
   height: 440px;
@@ -130,13 +132,13 @@ const Categories = ({ data }) => {
 
 const pathname = window.location ? window.location.pathname : '';
 
-const PostItem = ({ media, category, user, data }) => {
+const PostItem = (props) => {
+  const { media, category, user, data, postData } = props;
   const Image =
     media && media.img && media.img.featured_image && media.img.featured_image;
   const CategoriesData = category && category.category && category.category;
   const User = user && user.user && user.user;
   const postUrl = CategoriesData && `/blog/${CategoriesData[0].slug}/${data.slug}`;
-
   if (!data || !CategoriesData) {
     return <CardLoader />;
   }

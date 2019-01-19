@@ -1,14 +1,10 @@
-/* eslint operator-linebreak: 0 */
-/* eslint implicit-arrow-linebreak: 0 */
-/* eslint arrow-body-style: 0 */
-/* eslint no-unused-vars: 0 */
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PostItem from 'components/postItem';
 import SliderComponent from 'components/slider';
 import { CardLoader } from 'components/loaders';
 import whatsOnEnhancer from './whatsOnEnhancer';
+import { ROUTES } from '../../../constants';
 
 const settings = {
   infinite: true,
@@ -35,18 +31,19 @@ const WhatsOn = ({ data }) => {
 
   return (
     <SliderComponent
-      title={<Link to="/blog/category/events">Events</Link>
+      title={<Link to={ROUTES.categories.events}>Events</Link>
       }
       subTitle="Looking for something to do?"
+      cta={<Link to={ROUTES.categories.events}>see more</Link>}
       settings={settings}
     >
-      {data.loading &&
-      [...Array(8)].map(i => (
+      {data.loading
+      && [...Array(8)].map(i => (
         <CardLoader key={`${i}-interview-loader`} />
       ))}
-      {!data.loading &&
-      Posts &&
-      Posts.map(item => <PostItem key={item.id} data={item} />)}
+      {!data.loading
+      && Posts
+      && Posts.map(item => <PostItem key={item.id} data={item} />)}
     </SliderComponent>
   );
 };

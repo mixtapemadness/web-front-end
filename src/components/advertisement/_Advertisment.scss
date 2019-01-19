@@ -1,0 +1,13 @@
+.advertisement {
+  border: 1px solid $light-grey;
+
+  img {
+    max-width: 100%;
+  }
+
+  padding: 20px;
+
+  &__text {
+    font-size: 12px;
+  }
+}

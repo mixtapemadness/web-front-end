@@ -1,16 +1,6 @@
-/* eslint operator-linebreak: 0 */
-/* eslint implicit-arrow-linebreak: 0 */
-/* eslint object-curly-newline: 0 */
-/* eslint no-unused-vars: 0 */
-/* eslint react/jsx-indent: 0 */
-/* eslint no-plusplus: 0 */
-/* eslint comma-dangle: 0 */
-
 import React from 'react';
 import styled from 'styled-components';
 import PostItem from 'components/postItem';
-import Subscribe from 'components/subscribe';
-import MobileSubscribe from 'components/mobileSubscribe';
 import { CardLoader } from 'components/loaders';
 import resentPostsEnhancer from './resentPostsEnhancer';
 
@@ -31,40 +21,6 @@ const PostsContainer = styled.div`
     flex-direction: column;
     align-items: center;
   }
-`;
-
-const ButtonContainer = styled.div`
-  display: flex;
-  margin: 40px 0;
-  padding: 0 20px;
-  justify-content: space-between;
-  width: 100%;
-`;
-
-const NextButton = styled.button`
-  background-color: #efefef;
-  color: #000000;
-  outline: none;
-  border: none;
-  width: 100px;
-  height: 50px;
-  cursor: pointer;
-  font-weight: bold;
-`;
-
-const PreviousButton = styled.button`
-  background: ${p => (p.Mobilepage > 1 ? '#efefef' : 'none')};
-  color: ${p => (p.Mobilepage > 1 ? '#000000' : '#ccc')};
-  pointer-events: ${p => (p.Mobilepage > 1 ? 'inherit' : 'none')};
-  border: 1px solid #efefef;
-  cursor: pointer;
-  font-weight: bold;
-  width: 100px;
-`;
-
-const SubscribeContainer = styled.div`
-  margin: 40px 0;
-  width: 100%;
 `;
 
 const ShowMoreContainer = styled.div`
@@ -96,83 +52,32 @@ const ShowMore = styled.div`
     }
   }
 `;
+const PostItemT = (item) => <PostItem data={item} key={item.id} />;
 
-const SpinnerContainer = styled.div`
-  margin-top: 20px;
-`;
-
-const PostItemT = (item, index) => {
-  if (index === 5) {
-    return (
-      <React.Fragment>
-        <PostItem data={item} />
-        <SubscribeContainer>
-          <Subscribe />
-        </SubscribeContainer>
-      </React.Fragment>
-    );
-  }
-  return <PostItem data={item} />;
-};
-
-const PostItems = ({ items }) =>
-  items.map((item, index) => PostItemT(item, index));
+const PostItems = ({ items }) => items.map((item, index) => PostItemT(item, index));
 
 const ResentPosts = ({
-  width,
   data,
-  increacePagination,
-  decreacePagination,
-  Mobilepage,
   handleLoadMore,
-  count,
-  perPage,
   loading,
 }) => {
-  const countValue = count && count.count && count.count && count.count.count;
   const posts = data && data.Posts;
-  let indexKey = 0;
   return (
     <ResentPostsContainer>
-      {width > 550 && (
-        <PostsContainer>
-          {data.loading
-            ? [...Array(9)].map(i => (
-              <CardLoader key={`${indexKey++}-resent-posts`} />
-            ))
-            : posts && (
-              <PostItems items={posts} key={`${indexKey++}-resent-post`} />
-            )}
-        </PostsContainer>
-      )}
-      {width <= 550 && (
-        <PostsContainer>
-          {posts && posts.map(item => <PostItem key={item.id} data={item} />)}
-          <ButtonContainer>
-            <PreviousButton
-              Mobilepage={Mobilepage}
-              onClick={() => decreacePagination()}
-            >
-              Previous
-            </PreviousButton>
-            <NextButton onClick={() => increacePagination()}>Next</NextButton>
-          </ButtonContainer>
-          <MobileSubscribe />
-        </PostsContainer>
-      )}
-      {width > 550 &&
-        (data.loading ? (
-          <SpinnerContainer>
-            {/* <Spinner name="ball-beat" /> */}
-          </SpinnerContainer>
-        ) : (
-          <ShowMoreContainer>
-            <ShowMore onClick={handleLoadMore}>
-              Show More{' '}
-              {posts && perPage < parseInt(countValue, 10) ? '+' : '-'}
-            </ShowMore>
-          </ShowMoreContainer>
-        ))}
+      <PostsContainer>
+        {loading
+          ? [...Array(9)].map(() => (
+            <CardLoader key={`${Math.random()}-recent-posts`} />
+          ))
+          : posts && (
+            <PostItems items={posts} />
+          )}
+      </PostsContainer>
+      <ShowMoreContainer>
+        <ShowMore onClick={handleLoadMore}>
+          Show More
+        </ShowMore>
+      </ShowMoreContainer>
     </ResentPostsContainer>
   );
 };

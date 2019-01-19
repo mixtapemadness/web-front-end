@@ -284,19 +284,22 @@
 
 .slider__header {
   display: flex;
-
+  justify-content: space-between;
+  font-size: 30px;
+  &-text {
+    width: 80%;
+  }
   @include desktop {
-    justify-content: space-between;
     align-items: center;
   }
 
   .slider__title {
-    font-size: 30px;
+    font-size:1em;
     font-weight: bold;
   }
   .slider__subtitle {
     color: $paragraph-text;
-    font-size: 22px;
+    font-size: 0.7em;
     margin-bottom: 0;
     font-weight: normal;
   }

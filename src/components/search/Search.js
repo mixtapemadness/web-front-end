@@ -122,7 +122,6 @@ const Search = ({ toggleSearch, handleSubmit, data, value }) => {
         <InputContainer>
           <Input placeholder="Search" onKeyPress={handleSubmit} />
         </InputContainer>
-        {/* {renderData(searchResult)} */}
         <DataContainer>
           {searchResult &&
             searchResult.length &&

@@ -18,7 +18,7 @@ import window from 'global/window';
 export default compose(
   withStateHandlers(
     () => ({
-      perPage: 9,
+      perPage: 12,
       page: 1,
       perPageMobile: 4,
       Mobilepage: 1,
@@ -54,8 +54,8 @@ export default compose(
       options: props => ({
         variables: {
           id: props.id,
-          page: props.width > 550 ? props.page : props.Mobilepage,
-          perPage: props.width > 550 ? props.perPage : props.perPageMobile,
+          page: props.page,
+          perPage: props.perPage,
         },
       }),
     },

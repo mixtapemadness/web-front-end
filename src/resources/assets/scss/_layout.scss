@@ -1,0 +1,10 @@
+.page {
+
+}
+.page__container {
+  margin: auto;
+  padding: 0 20px;
+  @include desktop {
+    padding: 0;
+  }
+}

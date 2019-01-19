@@ -18,7 +18,7 @@ export default compose(
       options: props => ({
         variables: {
           page: 1,
-          perPage: 11,
+          perPage: 12,
           filter: { categories: props.match.params.category.toUpperCase() },
         },
       }),

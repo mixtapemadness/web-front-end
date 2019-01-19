@@ -1,6 +1,3 @@
-/* eslint operator-linebreak: 0 */
-/* eslint no-return-assign: 0 */
-
 import React, { Component } from 'react';
 import Slider from 'react-slick';
 import PropTypes from 'prop-types';
@@ -25,7 +22,7 @@ class SliderComponent extends Component {
 
   render() {
     const {
-      settings, children, title, subTitle,
+      settings, children, title, subTitle, cta,
     } = this.props;
 
     const innerSettings = {
@@ -45,6 +42,7 @@ class SliderComponent extends Component {
           <header className="slider__header-text">
             <h3 className="slider__title">{title}</h3>
             <p className="slider__subtitle">{subTitle}</p>
+            <div className="slider__cta">{cta}</div>
           </header>
           <div className="slider__nav-wrapper">
             <IconButton className="slider__nav slider__nav--prev" iconClassName="fas fa-chevron-left" onClick={this.prev} />
@@ -69,13 +67,52 @@ class SliderComponent extends Component {
 SliderComponent.defaultProps = {
   title: '',
   subTitle: '',
-  settings: {},
+  settings: {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    rows: 3,
+    slidesPerRow: 2,
+    slidesToScroll: 3,
+    slidesToShowResponsive: 2,
+    slidesToScrollResponsive: 2,
+    centerPadding: '0px',
+    responsive: [
+      {
+        breakpoint: 1154,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 3,
+        },
+      },
+      {
+        breakpoint: 1050,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 2,
+          rows: 2,
+        },
+      },
+      {
+        breakpoint: 751,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          rows: 1,
+          slidesPerRow: 1,
+        },
+      },
+    ],
+  },
+  cta: null,
 };
 
 SliderComponent.propTypes = {
   title: PropTypes.any,
   subTitle: PropTypes.string,
   settings: PropTypes.object,
+  cta: PropTypes.any,
 };
 
 export default SliderComponent;

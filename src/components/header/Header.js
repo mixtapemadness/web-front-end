@@ -1,5 +1,3 @@
-/* eslint implicit-arrow-linebreak: 0 */
-
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
@@ -8,24 +6,10 @@ import SocialIcons from 'components/SocialIcons';
 import MixtapeLogo from 'resources/assets/img/mixtape-logo.png';
 
 import headerEnhancer from './headerEnhancer';
-import { BRAND_COLOURS, RESPONSIVE_BREAKPOINTS, ROUTES } from '../../constants';
+import { RESPONSIVE_BREAKPOINTS } from '../../constants';
 import IconButton from '../IconButton';
-
-const HeaderContainer = styled.div`
-  width: 100vw;
-  height: 60px;
-  background-color: #ffffff;
-  font-size: 16px;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 2;
-  ${p => p.menuOpened && 'background-color: #ff9600'};
-  box-shadow: 0 3px 5px -4px rgba(0, 0, 0, 0.46);
-  @media only screen and (min-width: ${RESPONSIVE_BREAKPOINTS.tablet}) {
-    height: 70px;
-  }
-`;
+import Navigation from '../Navigation';
+import './_Header.scss';
 
 const ContentContainer = styled.div`
   max-width: 1200px;
@@ -59,37 +43,6 @@ const RightSide = styled.div`
   }
 `;
 
-const NavBar = styled.nav`
-  display: none;
-  @media only screen and (min-width: ${RESPONSIVE_BREAKPOINTS.desktop}) {
-    display: flex;
-  }
-`;
-const Ul = styled.ul`
-  padding: 0;
-  margin: 0;
-  text-decoration: none;
-  list-style: none;
-  display: none;
-  color: ${props => (props.menuOpened ? '#ffffff' : '#666666')};
-  transition: unset;
-  margin-right: 20px;
-  @media only screen and (min-width: ${RESPONSIVE_BREAKPOINTS.tablet}) {
-    display: flex;
-  }
-`;
-const Li = styled.li`
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-  height: 100%;
-  margin: 0 12px;
-  font-size: 16px;
-  text-transform: capitalize;
-  color: ${p => p.isActive && `${BRAND_COLOURS.orange}`};
-  border-bottom: ${p => p.isActive && `2px solid ${BRAND_COLOURS.orange}`};
-`;
-
 const Logo = styled.img`
   width: 60px;
   box-sizing: content-box;
@@ -99,14 +52,6 @@ const Logo = styled.img`
   }
 `;
 
-const Search = styled.div`
-  font-size: 20px;
-  &:hover {
-  i {
-      color: ${BRAND_COLOURS.orange};
-    }
-  }
-`;
 
 const BurgerIcon = styled.div`
   width: 23px;
@@ -126,7 +71,7 @@ const BurgerIcon = styled.div`
     position: absolute;
     height: 3px;
     width: 100%;
-    background-color: ${p => (p.menuOpened === true ? '#ffffff' : '#666666')};
+    background-color: ${p => (p.menuOpened ? '#ffffff' : '#666666')};
     border-radius: 9px;
     opacity: 1;
     left: 0;
@@ -178,7 +123,7 @@ const Header = ({
   menuOpened,
   location,
 }) => (
-  <HeaderContainer menuOpened={menuOpened}>
+  <div className={`header ${menuOpened && 'header--is-open'}`}>
     <ContentContainer>
       <LeftSide>
         <Div>
@@ -192,27 +137,14 @@ const Header = ({
         <Link to="/">
           <Logo src={MixtapeLogo} alt="Mixtape Madness logo" />
         </Link>
-        <NavBar>
-          <Ul menuOpened={menuOpened}>
-            {Object.keys(ROUTES.categories).map(i => (
-              <Li
-                key={ROUTES.categories[i]}
-                isActive={location.pathname === ROUTES.categories[i]}
-              >
-                <Link to={ROUTES.categories[i]}>{i}</Link>
-              </Li>
-            ))}
-          </Ul>
-        </NavBar>
-        <Search onClick={() => toggleSearch()}>
-          <IconButton iconClassName="fas fa-search" />
-        </Search>
+        <Navigation location={location} />
+        <IconButton iconClassName="fas fa-search" className="header__search" onClick={toggleSearch} />
       </LeftSide>
       <RightSide>
         <SocialIcons menuOpened={menuOpened} />
       </RightSide>
     </ContentContainer>
-  </HeaderContainer>
+  </div>
 );
 
 export default headerEnhancer(Header);

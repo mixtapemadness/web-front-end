@@ -1,0 +1,66 @@
+@import "../../resources/assets/scss/helpers/variables";
+@import "../../resources/assets/scss/helpers/breakpoints";
+.header {
+  width: 100vw;
+  height: 60px;
+  background-color: #ffffff;
+  font-size: 16px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  box-shadow: 0 3px 5px -4px rgba(0, 0, 0, 0.46);
+  @include desktop {
+    height: 70px;
+  }
+
+  &--is-open{
+    background-color: $base-orange;
+  }
+}
+
+.header__search {
+  font-size: 20px;
+  i {
+    color: $dark-grey;
+    &:hover {
+      color: $base-orange;
+    }
+  }
+
+}
+
+.header__nav {
+  display: none;
+  @include desktop {
+    display: flex;
+  }
+}
+
+
+.navigation {
+  padding: 0;
+  margin: 0 20px 0 0;
+  text-decoration: none;
+  list-style: none;
+  display: none;
+  color: $dark-grey;
+  transition: unset;
+  @include desktop {
+    display: flex;
+  }
+
+  &__item {
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    margin: 0 12px;
+    font-size: 16px;
+    text-transform: capitalize;
+    &--is-active {
+      color: $base-orange;
+      border-bottom: 2px solid $base-orange;
+    }
+  }
+}

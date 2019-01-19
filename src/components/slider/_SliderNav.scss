@@ -1,11 +1,22 @@
 .slider__nav-wrapper {
   display: flex;
   justify-content: space-around;
-  width: 80px;
+  width: 20%;
+  @include desktop {
+    width: 120px;
+  }
 }
 
+.slider__cta {
+  font-size: 14px;
+  color: $dark-grey;
+  margin: 10px 0 0 0;
+}
 .slider__nav {
-  font-size: 30px;
+  font-size: 0.5em;
+  @include desktop {
+    font-size: 0.7em;
+  }
   &:hover {
     color: $base-orange;
   }

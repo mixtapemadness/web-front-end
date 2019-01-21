@@ -1,0 +1,59 @@
+@import "../../resources/assets/scss/helpers/variables";
+@import "../../resources/assets/scss/helpers/breakpoints";
+.post {
+  width: 100%;
+  display: flex;
+  margin: auto;
+  flex-direction: column;
+}
+
+.post__heading {
+  margin: 60px auto auto;
+  @include desktop {
+    padding: 10px 20px;
+    text-align: center;
+  }
+}
+
+.post__title {
+  font-size: 26px;
+  color: $paragraph-text;
+  margin-bottom: 20px;
+  @include desktop {
+    font-size: 36px;
+  }
+}
+
+.post__category-link {
+  color: $base-orange;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+.post__excerpt {
+  color: $dark-grey;
+  font-weight: normal;
+  font-size: 16px;
+  margin-bottom: 20px;
+  line-height: 32px;
+}
+
+.post__content {
+  max-width: 100%;
+  margin: 40px auto;
+  iframe {
+    max-width: 100%;
+  }
+  @include desktop {
+    width: 900px;
+    padding: 0;
+  }
+
+  p {
+    font-size: 18px;
+    line-height: 30px;
+    img {
+      margin: 5px 0;
+    }
+  }
+}

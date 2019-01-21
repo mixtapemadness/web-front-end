@@ -1,0 +1,27 @@
+.post-pagination {
+  width: 100%;
+  position: fixed;
+  padding: 10px 20px;
+  background-color: $base-orange;
+  left: 0;
+  color: #fff;
+  .container {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    &:hover, &:focus {
+      color: #fff;
+      text-decoration: underline;
+    }
+    .icon-button {
+      color: #fff;
+      margin: 0 10px;
+    }
+  }
+  font-size: 14px;
+}

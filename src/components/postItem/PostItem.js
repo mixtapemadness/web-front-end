@@ -114,14 +114,14 @@ const Categories = ({ data }) => {
         if (index > 0) {
           return (
             <React.Fragment key={item.id}>
-              , <HoverLink to={`${ROUTES.blog}/${item.slug}`}>
+              , <HoverLink to={`/${ROUTES.blog}${item.slug}`}>
                 {item.name}
               </HoverLink>
             </React.Fragment>
           );
         }
         return (
-          <HoverLink key={item.id} to={`${ROUTES.blog}/${item.slug}`}>
+          <HoverLink key={item.id} to={`/${ROUTES.blog}${item.slug}`}>
             {item.name}
           </HoverLink>
         );

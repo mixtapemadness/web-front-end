@@ -8,45 +8,29 @@ import window from 'global/window';
 
 import Header from 'components/header';
 import { CLOSE_MEGAMENU, GA_TRACKING_CODE } from 'constants';
-import { Helmet } from 'react-helmet';
 import ReactGA from 'react-ga';
 import AppContent from './AppContent';
 import getEmitter from './eventEmitter';
 
 const eventEmitter = getEmitter();
 
-class App extends React.Component {
-  componentDidMount() {
-    const script = document.createElement('script');
-
-    script.src =
-      '//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5c0e4bff29290756';
-    script.async = true;
-
-    document.body.appendChild(script);
-  }
-
-  render() {
-    const { toggleSearch, searchOpened, menuOpened, toggleMenu } = this.props;
-    return (
-      <div style={{ width: '100%' }}>
-        <Helmet>
-          <title>Mixtape Madness</title>
-        </Helmet>
-        <Header
-          toggleSearch={toggleSearch}
-          menuOpened={menuOpened}
-          toggleMenu={toggleMenu}
-        />
-        <AppContent
-          searchOpened={searchOpened}
-          toggleSearch={toggleSearch}
-          menuOpened={menuOpened}
-        />
-      </div>
-    );
-  }
-}
+const App = (props) => {
+  const { toggleSearch, searchOpened, menuOpened, toggleMenu } = props;
+  return (
+    <div style={{ width: '100%' }}>
+      <Header
+        toggleSearch={toggleSearch}
+        menuOpened={menuOpened}
+        toggleMenu={toggleMenu}
+      />
+      <AppContent
+        searchOpened={searchOpened}
+        toggleSearch={toggleSearch}
+        menuOpened={menuOpened}
+      />
+    </div>
+  );
+};
 
 export default compose(
   withStateHandlers(

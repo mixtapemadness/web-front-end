@@ -24,7 +24,7 @@ import {
   TWITTER_HANDLE,
   ROUTES,
 } from '../../constants';
-import truncate from '../../helpers/textHelpers';
+import truncate, { decodeHtml } from '../../helpers/textHelpers';
 import Shimmer from '../../components/loaders/shimmer/Shimmer';
 import PostPagination from '../../components/PostPagination';
 import './_BlogPage.scss';
@@ -86,14 +86,14 @@ const BlogPage = (props) => {
   const userName = user && user.user && user.user.name && user.user.name;
   const userSlug = user && user.user && user.user.slug && user.user.slug;
   const postData = data && data.Post ? data.Post : {};
-  const Excerpt = data && data.Post && truncate(data.Post.excerpt, 180);
-  const postTitle = postData && postData.title;
+  const Excerpt = data && data.Post && truncate(decodeHtml(data.Post.excerpt), 180);
+  const postTitle = postData && postData.title && decodeHtml(postData.title);
   const noHTML = /(<([^>]+)>)/gi;
   const Description =
     data &&
     data.Post &&
     data.Post.excerpt &&
-    data.Post.excerpt.replace(noHTML, '');
+    decodeHtml(data.Post.excerpt);
   const categories =
     data && data.Post && data.Post.categories && data.Post.categories;
   const isVideoArr =
@@ -149,7 +149,7 @@ const BlogPage = (props) => {
       <div className="post container">
         <Helmet>
           <title>{`Mixtape Madness ${
-            postTitle !== undefined ? `| ${postTitle.replace(noHTML, '')} ` : ''
+            postTitle !== undefined ? `| ${postTitle} ` : ''
             }`}</title>
           <meta
             property="og:url"
@@ -157,14 +157,14 @@ const BlogPage = (props) => {
           />
           <meta
             property="og:title"
-            content={`${postTitle && postTitle.replace(noHTML, '')}`}
+            content={`${postTitle}`}
           />
           <meta
             property="og:description"
             content={`${Description && Description}`}
           />
           <meta property="og:type" content="website" />
-          <meta name="twitter:title" content={`${postTitle && postTitle}`} />
+          <meta name="twitter:title" content={`${postTitle}`} />
           <meta name="twitter:card" content="summary_large_image" />
           <meta name="twitter:site" content={`${TWITTER_HANDLE}`} />
           <meta
@@ -181,12 +181,12 @@ const BlogPage = (props) => {
             className="post__title"
             dangerouslySetInnerHTML={{ __html: postData.title }}
           />
-          <div
+          <h2
             className="post__excerpt"
             dangerouslySetInnerHTML={{
               __html:
                 Excerpt &&
-                Excerpt.replace(noHTML, '').replace('[&#038;hellip', ' '),
+                Excerpt.replace(noHTML, ''),
             }}
           />
           <PostContentHeading

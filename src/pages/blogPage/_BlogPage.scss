@@ -9,8 +9,8 @@
 
 .post__heading {
   margin: 60px auto auto;
-  padding: 10px 20px;
   @include desktop {
+    padding: 10px 20px;
     text-align: center;
   }
 }
@@ -32,9 +32,9 @@
 
 .post__excerpt {
   color: $dark-grey;
+  font-weight: normal;
   font-size: 16px;
   margin-bottom: 20px;
-  font-weight: 500;
   line-height: 32px;
 }
 

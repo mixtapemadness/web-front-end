@@ -126,7 +126,6 @@ const BlogPage = (props) => {
       .replace('iframe', 'embed');
   const disablePrev = !prevRoute;
   const renderVideo = data && !data.loading && isVideo && Video ? true : false;
-
   if (showSpinner || !data || !Description || !categories || !postData) {
     return (
       <div>
@@ -174,7 +173,7 @@ const BlogPage = (props) => {
           <meta name="twitter:creator" content={`${TWITTER_HANDLE}`} />
         </Helmet>
         <header className="post__heading">
-          <Link className="post__category-link" to={ROUTES.categories[match.params.category]}>
+          <Link className="post__category-link" to={`${ROUTES.blog}/${match.params.category}`}>
             {match.params.category}
           </Link>
           <h1

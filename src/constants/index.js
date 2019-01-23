@@ -24,8 +24,11 @@ export const ROUTES = {
     events: '/blog/category/events',
     videos: '/blog/category/videos',
     interviews: '/blog/category/interviews',
-    articles: '/blog/category/articles',
     reviews: '/blog/category/reviews',
+    articles: '/blog/category/articles',
+    community: '/blog/category/community',
+    madaboutbars: '/blog/category/madaboutbars',
+    audio: '/blog/category/audio',
   },
 };
 

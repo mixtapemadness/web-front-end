@@ -144,7 +144,9 @@ const Search = ({ toggleSearch, handleSubmit, data, value }) => {
           </ShowMore>
         )}
         {!searchResult &&
-          value !== '' && <Span>No results found for {value}</Span>}
+          value !== '' &&
+          !data.loading && <Span>No results found for {value}</Span>}
+        {data && data.loading && <Span>Loading...</Span>}
       </Content>
     </Container>
   );

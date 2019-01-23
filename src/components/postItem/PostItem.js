@@ -123,7 +123,7 @@ const Categories = ({ data }) => {
 const pathname = window.location ? window.location.pathname : '';
 
 const PostItem = (props) => {
-  const { media, category, user, data, postData } = props;
+  const { media, category, user, data } = props;
   const Image =
     media && media.img && media.img.featured_image && media.img.featured_image;
   const CategoriesData = category && category.category && category.category;

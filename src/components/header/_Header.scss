@@ -30,6 +30,36 @@
 
 }
 
+.header__content {
+  max-width: 1200px;
+  height: 100%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+.header__left {
+  display: flex;
+  align-items: center;
+  @media only screen and (max-width: 1050px) {
+    width: 100%;
+    justify-content: center;
+  }
+  @media only screen and (max-width: 475px) {
+    justify-content: space-between;
+    padding: 0 20px;
+  }
+}
+.header__right {
+  align-items: center;
+  display: none;
+
+  @include desktop {
+    display: block;
+  }
+}
 .header__nav {
   display: none;
   @include desktop {

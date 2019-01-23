@@ -53,17 +53,7 @@ const ContentContainer = styled.div`
 const Media = styled(Link)`
   width: 100%;
   height: 200px;
-  background: url(${props => props.img});
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
   transition: 0.8s;
-  @media only screen and (max-width: 1150px) {
-    background-size: cover;
-    &:hover {
-      background-size: cover;
-    }
-  }
   img {
     width: 100%;
     height: 100%;

@@ -10,14 +10,9 @@ export default compose(
       value: '',
     }),
     {
-      handleSubmit: () => e => {
-        if (e.key === 'Enter') {
-          return {
-            value: e.target.value,
-          };
-        }
-        return true;
-      },
+      handleSubmit: () => e => ({
+        value: e.target.value,
+      }),
       toggle: () => (e, toggleSearch) => {
         if (e.key === 'Escape') {
           toggleSearch();

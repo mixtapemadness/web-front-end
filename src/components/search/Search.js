@@ -9,6 +9,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import SearchedItem from 'components/searchedItem';
 import searchEnhancer from './searchEnhancer';
+import IconButton from '../IconButton/IconButton';
 
 const Container = styled.div`
   position: fixed;
@@ -117,18 +118,19 @@ const Search = ({ toggleSearch, handleSubmit, data, value }) => {
       : null;
   return (
     <Container>
-      <Close onClick={() => toggleSearch()}>X</Close>
+      <Close onClick={() => toggleSearch()}><IconButton onClick={toggleSearch} iconClassName="fa fa-close" /></Close>
       <Content>
         <InputContainer>
           <Input placeholder="Search" onKeyPress={handleSubmit} />
+          <IconButton iconClassName="fa fa-search" buttonType="submit" />
         </InputContainer>
         <DataContainer>
           {searchResult &&
             searchResult.length &&
             searchResult.map(item => (
               <SearchedItem
+                key={item.id}
                 toggleSearch={toggleSearch}
-                color={'#ffffff'}
                 data={item}
               />
             ))}

@@ -6,19 +6,9 @@ import SocialIcons from 'components/SocialIcons';
 import MixtapeLogo from 'resources/assets/img/mixtape-logo.png';
 
 import headerEnhancer from './headerEnhancer';
-import { RESPONSIVE_BREAKPOINTS } from '../../constants';
 import IconButton from '../IconButton';
 import Navigation from '../Navigation';
 import './_Header.scss';
-
-const Logo = styled.img`
-  width: 60px;
-  box-sizing: content-box;
-  margin: 0 20px;
-  @media only screen and (min-width: ${RESPONSIVE_BREAKPOINTS.desktop}) {
-    margin: 0 12px 0 20px;
-  }
-`;
 
 
 const BurgerIcon = styled.div`
@@ -87,7 +77,7 @@ const Header = ({
   location,
   categories,
 }) => (
-  <header className={`header ${menuOpened && 'header--is-open'}`}>
+  <header className={`header ${menuOpened ? 'header--is-open' : ''}`}>
     <div className="header__content">
       <div className="header__left">
         <BurgerIcon menuOpened={menuOpened} onClick={() => toggleMenu()}>
@@ -97,9 +87,9 @@ const Header = ({
           <span />
         </BurgerIcon>
         <Link to="/">
-          <Logo src={MixtapeLogo} alt="Mixtape Madness logo" />
+          <img className="header__logo" src={MixtapeLogo} alt="Mixtape Madness logo" />
         </Link>
-        <Navigation catrgories={categories} location={location} />
+        <Navigation toggleMenu={toggleMenu} categories={categories.category} location={location} />
         <IconButton iconClassName="fas fa-search" className="header__search" onClick={toggleSearch} />
       </div>
       <div className="header__right">

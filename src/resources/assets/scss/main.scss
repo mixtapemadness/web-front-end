@@ -80,6 +80,25 @@ select {
   text-transform: none;
 }
 
+button {
+  border: 0;
+  background: none;
+  cursor: pointer;
+  &:focus {
+    outline: 0;
+  }
+}
+
+.btn-link {
+  &:hover {
+    color: $base-orange;
+  }
+}
+
+ul {
+  list-style: none;
+}
+
 input[type="radio"],
 input[type="checkbox"] {
   box-sizing: border-box;
@@ -89,6 +108,7 @@ input[type="checkbox"] {
 video {
     outline: 0 !important;
 }
+
 
 
 button::-moz-focus-inner,

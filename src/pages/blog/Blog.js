@@ -19,12 +19,7 @@ import BlogSlider from './BlogSlider';
 import BlogFilter from './BlogFilter';
 
 import blogsEnhancer from './blogEnhancer';
-
-const NewsContainer = styled.div`
-  display: flex;
-  margin: auto;
-  flex-direction: column;
-`;
+import Page from '../Page';
 
 const PostsContainer = styled.div`
   width: 100%;
@@ -72,9 +67,6 @@ const ShowMore = styled.button`
     }
   }
 `;
-const SpinnerContainer = styled.div`
-  margin-top: 20px;
-`;
 
 const PostItemT = (item, index) => {
   if (index === 5) {
@@ -97,28 +89,28 @@ const Blog = ({ data, page, handleLoadMore, match, isMoreData }) => {
   const Data = data.Posts && data.Posts.length > 0 && data.Posts;
   let index = 0;
   return (
-    <NewsContainer>
-      <div>
-        <BlogSlider />
-        {/* <BlogFilter match={match} /> */}
+    <div>
+      <BlogSlider />
+      <Page>
+        <BlogFilter match={match} />
         <PostsContainer>
           {data.loading &&
-            [...Array(8)].map(i => (
-              <CardLoader key={`${index++}-blog-loader`} />
-            ))}
+          [...Array(9)].map(i => (
+            <CardLoader key={`${index++}-blog-loader`} />
+          ))}
           {!data.loading && (Data && <PostItems items={Data} />)}
         </PostsContainer>
-      </div>
-      <ShowMoreContainer>
-        {!data.loading ? (
-          <ShowMore isMoreData={isMoreData} onClick={handleLoadMore}>
-            {`See More ${match.params.filter}`}
-          </ShowMore>
-        ) : (
-          <Spinner />
-        )}
-      </ShowMoreContainer>
-    </NewsContainer>
+        <ShowMoreContainer>
+          {!data.loading ? (
+            <ShowMore isMoreData={isMoreData} onClick={handleLoadMore}>
+              {`See More ${match.params.filter}`}
+            </ShowMore>
+          ) : (
+            <Spinner />
+          )}
+        </ShowMoreContainer>
+      </Page>
+    </div>
   );
 };
 

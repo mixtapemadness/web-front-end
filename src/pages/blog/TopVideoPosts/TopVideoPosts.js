@@ -14,7 +14,6 @@ const Container = styled.div`
 
 const AdvertisementContainer = styled.div`
   width: 64.75%;
-  height: 838px;
   margin-top: 24px;
   @media only screen and (max-width: 1000px) {
     width: 50%;

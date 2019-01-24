@@ -7,6 +7,7 @@ import React, { Fragment } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import ReactImageFallback from 'react-image-fallback';
+import moment from 'moment';
 
 import videoEnhancer from './videoEnhancer';
 import truncate from '../../helpers/textHelpers';
@@ -14,6 +15,7 @@ import { RESPONSIVE_BREAKPOINTS } from '../../constants';
 import CardLoader from '../loaders/CardLoader';
 import './_VideoThumbnail.scss';
 import placeholderImg from '../../resources/assets/img/placeholderImg.jpg';
+import IconButton from '../IconButton/IconButton';
 
 const Container = styled.div`
   flex: 1;
@@ -55,7 +57,7 @@ const Name = styled(Link)`
   display: block;
 `;
 
-const Excerpt = styled.span`
+const Excerpt = styled.div`
   color: #333333;
   font-size: 14px;
   line-height: 26px;
@@ -67,6 +69,8 @@ const Video = ({ data, media, tags, category }) => {
   if (!data || !categoriesData) {
     return <CardLoader />;
   }
+  let postDate = new Date(data.date);
+  postDate = postDate && moment(postDate).startOf('day').fromNow();
   const Image =
     media && media.img && media.img.featured_image && media.img.featured_image;
   const categorySlug = categoriesData && categoriesData.map(({ slug }) => slug)[0];
@@ -97,6 +101,9 @@ const Video = ({ data, media, tags, category }) => {
               dangerouslySetInnerHTML={{ __html: truncate(data.excerpt, 90) }}
             />
           </Fragment>
+          <div className="post-item__meta">
+            <span className="post-item__date"><IconButton iconClassName="far fa-clock" /> {postDate}</span>
+          </div>
         </LeftSide>
       </ContentContainer>
     </Container>

@@ -5,6 +5,8 @@
 /* eslint react/jsx-indent: 0 */
 /* eslint no-plusplus: 0 */
 /* eslint comma-dangle: 0 */
+/* eslint react/no-array-index-key: 0 */
+/* eslint indent: 0 */
 
 import React from 'react'
 import styled from 'styled-components'
@@ -128,21 +130,20 @@ const ResentPosts = ({
   count,
   perPage,
   loading,
+  Posts,
 }) => {
   const countValue = count && count.count && count.count && count.count.count
   const posts = data && data.Posts
-  let indexKey = 0
   return (
     <ResentPostsContainer>
+      {console.log('​Posts', posts)}
       {width > 550 && (
         <PostsContainer>
           {data.loading
-            ? [...Array(9)].map(i => (
-                <CardLoader key={`${indexKey++}-resent-posts`} />
+            ? [...Array(9)].map((item, index) => (
+                <CardLoader key={`${index}-resent-posts`} />
               ))
-            : posts && (
-                <PostItems items={posts} key={`${indexKey++}-resent-post`} />
-              )}
+            : posts && <PostItems items={posts} />}
         </PostsContainer>
       )}
       {width <= 550 && (

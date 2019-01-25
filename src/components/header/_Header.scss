@@ -9,7 +9,7 @@
   top: 0;
   left: 0;
   z-index: 2;
-  box-shadow: 0 3px 5px -4px rgba(0, 0, 0, 0.46);
+  box-shadow: 0 1px 1px rgba(0,0,0,.1);
   @include desktop {
     height: 70px;
   }
@@ -37,12 +37,12 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  position: relative;
 }
 
 .header__left {
   display: flex;
   align-items: center;
+  height: 100%;
   @media only screen and (max-width: 1050px) {
     width: 100%;
     justify-content: center;
@@ -62,8 +62,18 @@
 }
 .header__nav {
   display: none;
+  height: 100%;
   @include desktop {
     display: flex;
+  }
+}
+
+.header__logo {
+  width: 60px;
+  box-sizing: content-box;
+  margin: 0 20px;
+  @include desktop {
+    margin: 0 12px 0 20px;
   }
 }
 
@@ -75,22 +85,60 @@
   list-style: none;
   display: none;
   color: $dark-grey;
-  transition: unset;
+  max-width: $max-page-width;
+
+
   @include desktop {
     display: flex;
   }
 
   &__item {
-    font-weight: bold;
     display: flex;
     align-items: center;
     height: 100%;
     margin: 0 12px;
-    font-size: 16px;
-    text-transform: capitalize;
+    border-bottom: 4px solid transparent;
+
     &--is-active {
       color: $base-orange;
-      border-bottom: 2px solid $base-orange;
+      border-bottom: 4px solid $base-orange;
+    }
+    a, button {
+      color: $dark-grey;
+      background-color: transparent;
+      font-size: 16px;
+      text-transform: capitalize;
+      font-weight: bold;
+      border: 0;
+
     }
   }
+
+}
+
+
+
+.header__nav--secondary {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 70px;
+  display: none;
+  background: $paragraph-text;
+  border-bottom: 4px solid $base-orange;
+  padding: 20px;
+  a {
+    color: #fff;
+  }
+  &--is-active {
+    display: flex;
+  }
+
+
+  .navigation {
+    margin: auto;
+    width: $max-page-width;
+
+  }
+
 }

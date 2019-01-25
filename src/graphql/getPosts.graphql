@@ -4,6 +4,7 @@ query getPosts($filter: filterPostInput, $page: ID, $perPage: ID) {
     categories
     featured_media
     author
+    date
     title
     content
     slug

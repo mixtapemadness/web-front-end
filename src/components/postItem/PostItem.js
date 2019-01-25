@@ -18,22 +18,11 @@ import ReactImageFallback from 'react-image-fallback';
 import postItemEnhancer from './postItemEnhancer';
 import placeholderImg from '../../resources/assets/img/placeholderImg.jpg';
 import truncate from '../../helpers/textHelpers';
-import { RESPONSIVE_BREAKPOINTS, ROUTES } from '../../constants';
+import { ROUTES } from '../../constants';
 import CardLoader from '../loaders/CardLoader';
 
-
-const PostItemContainer = styled.div`
-  height: 440px;
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
-  margin-bottom: 20px;
-  @media only screen and (min-width: ${RESPONSIVE_BREAKPOINTS.tablet}) {
-    width: 33.3%;
-    padding: 0px 10px;
-    flex: none;
-  }
-`;
+import './_PostItem.scss';
+import IconButton from '../IconButton/IconButton';
 
 const ContentContainer = styled.div`
   background-color: #f1f3f5;
@@ -69,26 +58,8 @@ const PostTitle = styled(Link)`
       display: block;
 `;
 
-const HoverLink = styled(Link)`
-  color: #ff9600;
-  margin: 0;
-  cursor: pointer;
-  font-size: 12px;
-  &:hover{
-  text-decoration: underline;
-  }
-`;
-const ContentContainerBottom = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin-top: 20px;
-  color: #333;
-`;
-
 const DataContentContainer = styled.span`
-  color: #333333;
-  font-size: 14px;
-  line-height: 26px;
+
 `;
 
 const CategoryContainer = styled.div`
@@ -104,16 +75,16 @@ const Categories = ({ data }) => {
         if (index > 0) {
           return (
             <React.Fragment key={item.id}>
-              , <HoverLink to={`/${ROUTES.blog}${item.slug}`}>
+              , <Link className="post-item__link" to={`/${ROUTES.blog}${item.slug}`}>
                 {item.name}
-              </HoverLink>
+              </Link>
             </React.Fragment>
           );
         }
         return (
-          <HoverLink key={item.id} to={`/${ROUTES.blog}${item.slug}`}>
+          <Link className="post-item__link" key={item.id} to={`/${ROUTES.blog}${item.slug}`}>
             {item.name}
-          </HoverLink>
+          </Link>
         );
       }))
     : (newData = null);
@@ -132,9 +103,10 @@ const PostItem = (props) => {
   if (!data || !CategoriesData) {
     return <CardLoader />;
   }
-
+  let postDate = new Date(data.date);
+  postDate = postDate && moment(postDate).startOf('day').fromNow();
   return (
-    <PostItemContainer className="post-item">
+    <div className="post-item">
       <Media
         to={{
           pathname: postUrl,
@@ -165,20 +137,22 @@ const PostItem = (props) => {
               },
             }}
           />
-          <DataContentContainer
+          <div
+            className="post-item__excerpt"
             dangerouslySetInnerHTML={{ __html: truncate(data.excerpt, 90) }}
           />
         </div>
-        <ContentContainerBottom>
+        <div className="post-item__meta">
           {User && (
-            <HoverLink
+            <Link
+              className="post-item__link post-item__author"
               to={`/author/${User.slug}`}
             >{User.name}
-            </HoverLink>
-          )}
-        </ContentContainerBottom>
+            </Link>
+          )} <span className="post-item__date"><IconButton iconClassName="far fa-clock" /> {postDate}</span>
+        </div>
       </ContentContainer>
-    </PostItemContainer>
+    </div>
   );
 };
 

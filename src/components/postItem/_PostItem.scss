@@ -1,0 +1,54 @@
+@import "../../resources/assets/scss/helpers/variables";
+@import "../../resources/assets/scss/helpers/breakpoints";
+.post-item {
+  height: 440px;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+  @include desktop {
+    width: 33.3%;
+    padding: 0 10px;
+    flex: none;
+  }
+}
+
+.post-item__excerpt {
+  color: $paragraph-text;
+  line-height: 26px;
+  font-size: 16px;
+}
+
+.post-item__meta {
+  font-family: 'Source Sans Pro', sans-serif;
+  line-height: 10px;
+  font-size: 14px;
+  display: flex;
+  margin-top: 20px;
+  color: $paragraph-text;
+}
+
+
+.post-item__link {
+  font-family: 'Source Sans Pro', sans-serif;
+  color: $base-orange;
+  margin: 0;
+  cursor: pointer;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.post-item__author {
+  border-right: 1px solid $paragraph-text;
+  margin-right: 10px;
+  padding-right: 10px;
+}
+
+.post-item__date {
+  color: $paragraph-text;
+  .icon-button {
+    font-size: 10px;
+  }
+}
+

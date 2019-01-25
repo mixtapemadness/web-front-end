@@ -2,6 +2,8 @@
 /* eslint indent: 0 */
 /* eslint object-curly-newline: 0 */
 /* eslint no-unneeded-ternary: 0 */
+/* eslint implicit-arrow-linebreak: 0 */
+/* eslint arrow-body-style: 0 */
 
 import {
   compose,
@@ -67,15 +69,18 @@ export default compose(
   }),
   withHandlers({
     handleLoadMore: props => () => {
-      props.handleSetPage()
+      // props.handleLoadMore()
       props.data.fetchMore({
         variables: {
-          page: props.page + 1,
+          perPage: props.data.Posts.length + 3,
         },
-        updateQuery: (previousResult, { fetchMoreResult }) => ({
-          ...previousResult,
-          Posts: [...previousResult.Posts, ...fetchMoreResult.Posts],
-        }),
+        updateQuery: (previousResult, { fetchMoreResult }) => {
+          return {
+            // ...previousResult.Posts,
+            Posts: [...fetchMoreResult.Posts],
+            // page: props.page + 1,
+          }
+        },
       })
     },
   }),

@@ -4,13 +4,6 @@ import PostItem from 'components/postItem';
 import { CardLoader } from 'components/loaders';
 import resentPostsEnhancer from './resentPostsEnhancer';
 
-const ResentPostsContainer = styled.div`
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-`;
-
 const PostsContainer = styled.div`
   width: 100%;
   margin: 40px 0;
@@ -54,31 +47,28 @@ const ShowMore = styled.div`
 `;
 const PostItemT = (item) => <PostItem data={item} key={item.id} />;
 
-const PostItems = ({ items }) => items.map((item, index) => PostItemT(item, index));
+const PostItems = ({ items }) => items.map(PostItemT);
 
 const ResentPosts = ({
   data,
   handleLoadMore,
-  loading,
 }) => {
   const posts = data && data.Posts;
   return (
-    <ResentPostsContainer>
+    <div>
       <PostsContainer>
-        {loading
+        {data.loading
           ? [...Array(9)].map(() => (
-            <CardLoader key={`${Math.random()}-recent-posts`} />
+            <CardLoader key={`${Math.random()}-resent-posts`} />
           ))
-          : posts && (
-            <PostItems items={posts} />
-          )}
+          : posts && <PostItems items={posts} />}
       </PostsContainer>
       <ShowMoreContainer>
         <ShowMore onClick={handleLoadMore}>
           Show More
         </ShowMore>
       </ShowMoreContainer>
-    </ResentPostsContainer>
+    </div>
   );
 };
 

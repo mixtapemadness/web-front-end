@@ -62,18 +62,21 @@ export default compose(
   }),
   withHandlers({
     handleLoadMore: props => () => {
-      props.handleSetPage();
+      // props.handleLoadMore();
+      // props.handleSetPage();
+
       props.data.fetchMore({
         variables: {
-          page: props.page + 1,
+          perPage: props.data.Posts.length + 3,
         },
         updateQuery: (previousResult, { fetchMoreResult }) => ({
-          ...previousResult,
-          Posts: [...previousResult.Posts, ...fetchMoreResult.Posts],
-        }),
+            // ...previousResult.Posts,
+            Posts: [...fetchMoreResult.Posts],
+            // page: props.page + 1,
+          }),
       });
     },
   }),
 
-  branch(({ id }) => (id ? true : false), withCount),
+  branch(({ id }) => (!!id), withCount),
 );

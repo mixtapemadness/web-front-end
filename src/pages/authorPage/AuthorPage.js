@@ -27,6 +27,7 @@ const AuthorPage = ({ width, data }) => {
   const userData = data && data.user && data.user;
   const userId = data && data.user && data.user.id;
   const loading = data && data.loading && data.loading;
+  console.log(userId);
   return (
     <AuthorPageContainer>
       <ProfileInfo data={userData} />

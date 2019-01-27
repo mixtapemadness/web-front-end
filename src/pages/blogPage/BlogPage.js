@@ -126,7 +126,6 @@ const BlogPage = (props) => {
       .replace('iframe', 'embed');
   const disablePrev = !prevRoute;
   const renderVideo = data && !data.loading && isVideo && Video ? true : false;
-
   if (showSpinner || !data || !Description || !categories || !postData) {
     return (
       <div>
@@ -146,35 +145,35 @@ const BlogPage = (props) => {
   return (
     <Fragment>
       <PostPagination {...props} />
+      <Helmet>
+        <title>{`Mixtape Madness ${
+          postTitle !== undefined ? `| ${postTitle} ` : ''
+          }`}</title>
+        <meta
+          property="og:url"
+          content={window.location ? window.location.href : ''}
+        />
+        <meta
+          property="og:title"
+          content={`${postTitle}`}
+        />
+        <meta
+          property="og:description"
+          content={`${Description && Description}`}
+        />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:title" content={`${postTitle}`} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content={`${TWITTER_HANDLE}`} />
+        <meta
+          name="twitter:description"
+          content={`${Description && Description}`}
+        />
+        <meta name="twitter:creator" content={`${TWITTER_HANDLE}`} />
+      </Helmet>
       <div className="post container">
-        <Helmet>
-          <title>{`Mixtape Madness ${
-            postTitle !== undefined ? `| ${postTitle} ` : ''
-            }`}</title>
-          <meta
-            property="og:url"
-            content={window.location ? window.location.href : ''}
-          />
-          <meta
-            property="og:title"
-            content={`${postTitle}`}
-          />
-          <meta
-            property="og:description"
-            content={`${Description && Description}`}
-          />
-          <meta property="og:type" content="website" />
-          <meta name="twitter:title" content={`${postTitle}`} />
-          <meta name="twitter:card" content="summary_large_image" />
-          <meta name="twitter:site" content={`${TWITTER_HANDLE}`} />
-          <meta
-            name="twitter:description"
-            content={`${Description && Description}`}
-          />
-          <meta name="twitter:creator" content={`${TWITTER_HANDLE}`} />
-        </Helmet>
         <header className="post__heading">
-          <Link className="post__category-link" to={ROUTES.categories[match.params.category]}>
+          <Link className="post__category-link" to={`${ROUTES.blog}/${match.params.category}`}>
             {match.params.category}
           </Link>
           <h1
@@ -196,14 +195,14 @@ const BlogPage = (props) => {
           />
           <div className="addthis_inline_share_toolbox" />
         </header>
-        <BlogImageWrapper>
+        <div className="post__image">
           {renderVideo && (
             <BlogPageVideo
               dangerouslySetInnerHTML={{ __html: Video && Video }}
             />
           )}
           <BlogPageImg renderVideo={renderVideo} id={postData.featured_media} />
-        </BlogImageWrapper>
+        </div>
         <div
           className="post__content"
           dangerouslySetInnerHTML={{ __html: postData.content }}

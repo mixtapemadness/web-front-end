@@ -1,0 +1,12 @@
+query getCategories{
+  category:getCategories{
+    id
+    count
+    description
+    link
+    name
+    slug
+    taxonomy
+    parent
+  }
+}

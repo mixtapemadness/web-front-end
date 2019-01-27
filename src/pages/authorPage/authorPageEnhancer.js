@@ -8,7 +8,6 @@ import window from 'global/window';
 import { loadDataAsync } from '../../hocs';
 
 export default compose(
-
   lifecycle({
     componentDidMount() {
       window.scrollTo(0, 0);

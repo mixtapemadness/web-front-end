@@ -6,11 +6,16 @@
 import React, { Fragment } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import ReactImageFallback from 'react-image-fallback';
+import moment from 'moment';
+
 import videoEnhancer from './videoEnhancer';
 import truncate from '../../helpers/textHelpers';
 import { RESPONSIVE_BREAKPOINTS } from '../../constants';
 import CardLoader from '../loaders/CardLoader';
 import './_VideoThumbnail.scss';
+import placeholderImg from '../../resources/assets/img/placeholderImg.jpg';
+import IconButton from '../IconButton/IconButton';
 
 const Container = styled.div`
   flex: 1;
@@ -21,7 +26,11 @@ const Container = styled.div`
 `;
 
 const PhotoContainer = styled(Link)`
-  background: url(${props => props.picture});
+   img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 `;
 
 const ContentContainer = styled.div`
@@ -48,7 +57,7 @@ const Name = styled(Link)`
   display: block;
 `;
 
-const Excerpt = styled.span`
+const Excerpt = styled.div`
   color: #333333;
   font-size: 14px;
   line-height: 26px;
@@ -56,19 +65,28 @@ const Excerpt = styled.span`
 
 const Video = ({ data, media, tags, category }) => {
   const categoriesData = category && category.category && category.category;
-  const Image =
-    media && media.img && media.img.featured_image && media.img.featured_image;
+
   if (!data || !categoriesData) {
     return <CardLoader />;
   }
+  let postDate = new Date(data.date);
+  postDate = postDate && moment(postDate).startOf('day').fromNow();
+  const Image =
+    media && media.img && media.img.featured_image && media.img.featured_image;
+  const categorySlug = categoriesData && categoriesData.map(({ slug }) => slug)[0];
+  const postUrl = `blog/${categorySlug}/${data.slug}`;
   return (
     <Container>
       <div className="video-thumbnail__image">
         <PhotoContainer
           className="video-thumbnail__image-pic"
-          picture={Image && Image}
-          to={`/blog/${categoriesData[0].slug}/${data.slug}`}
+          to={postUrl}
         >
+          <ReactImageFallback
+            src={Image}
+            fallbackImage={placeholderImg}
+            initialImage={placeholderImg}
+          />
           <i className="fa fa-play video-thumbnail__image-icon" />
         </PhotoContainer>
       </div>
@@ -77,12 +95,15 @@ const Video = ({ data, media, tags, category }) => {
           <Fragment>
             <Name
               dangerouslySetInnerHTML={{ __html: data.title }}
-              to={`/blog/${categoriesData[0].slug}/${data.slug}`}
+              to={postUrl}
             />
             <Excerpt
               dangerouslySetInnerHTML={{ __html: truncate(data.excerpt, 90) }}
             />
           </Fragment>
+          <div className="post-item__meta">
+            <span className="post-item__date"><IconButton iconClassName="far fa-clock" /> {postDate}</span>
+          </div>
         </LeftSide>
       </ContentContainer>
     </Container>

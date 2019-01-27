@@ -6,51 +6,9 @@ import SocialIcons from 'components/SocialIcons';
 import MixtapeLogo from 'resources/assets/img/mixtape-logo.png';
 
 import headerEnhancer from './headerEnhancer';
-import { RESPONSIVE_BREAKPOINTS } from '../../constants';
 import IconButton from '../IconButton';
 import Navigation from '../Navigation';
 import './_Header.scss';
-
-const ContentContainer = styled.div`
-  max-width: 1200px;
-  height: 100%;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  position: relative;
-`;
-const LeftSide = styled.div`
-  display: flex;
-  align-items: center;
-  @media only screen and (max-width: 1050px) {
-    width: 100%;
-    justify-content: center;
-  }
-  @media only screen and (max-width: 475px) {
-    justify-content: space-between;
-    padding: 0 20px;
-  }
-`;
-
-const RightSide = styled.div`
-  display: flex;
-  align-items: center;
-  display: none;
-
-  @media only screen and (min-width: ${RESPONSIVE_BREAKPOINTS.desktop}) {
-    display: block;
-  }
-`;
-
-const Logo = styled.img`
-  width: 60px;
-  box-sizing: content-box;
-  margin: 0 20px;
-  @media only screen and (min-width: ${RESPONSIVE_BREAKPOINTS.desktop}) {
-    margin: 0 12px 0 20px;
-  }
-`;
 
 
 const BurgerIcon = styled.div`
@@ -112,39 +70,33 @@ const BurgerIcon = styled.div`
   }
 `;
 
-const Div = styled.div`
-  display: flex;
-  align-items: center;
-`;
-
 const Header = ({
   toggleSearch,
   toggleMenu,
   menuOpened,
   location,
+  categories,
 }) => (
-  <div className={`header ${menuOpened && 'header--is-open'}`}>
-    <ContentContainer>
-      <LeftSide>
-        <Div>
-          <BurgerIcon menuOpened={menuOpened} onClick={() => toggleMenu()}>
-            <span />
-            <span />
-            <span />
-            <span />
-          </BurgerIcon>
-        </Div>
+  <header className={`header ${menuOpened ? 'header--is-open' : ''}`}>
+    <div className="header__content">
+      <div className="header__left">
+        <BurgerIcon menuOpened={menuOpened} onClick={() => toggleMenu()}>
+          <span />
+          <span />
+          <span />
+          <span />
+        </BurgerIcon>
         <Link to="/">
-          <Logo src={MixtapeLogo} alt="Mixtape Madness logo" />
+          <img className="header__logo" src={MixtapeLogo} alt="Mixtape Madness logo" />
         </Link>
-        <Navigation location={location} />
+        <Navigation toggleMenu={toggleMenu} categories={categories.category} location={location} />
         <IconButton iconClassName="fas fa-search" className="header__search" onClick={toggleSearch} />
-      </LeftSide>
-      <RightSide>
+      </div>
+      <div className="header__right">
         <SocialIcons menuOpened={menuOpened} />
-      </RightSide>
-    </ContentContainer>
-  </div>
+      </div>
+    </div>
+  </header>
 );
 
 export default headerEnhancer(Header);

@@ -9,6 +9,8 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import SearchedItem from 'components/searchedItem';
 import searchEnhancer from './searchEnhancer';
+import IconButton from '../IconButton/IconButton';
+import Spinner from '../Spinner/Spinner';
 
 const Container = styled.div`
   position: fixed;
@@ -115,20 +117,32 @@ const Search = ({ toggleSearch, handleSubmit, data, value }) => {
     data && data.searchedData && data.searchedData.length > 0
       ? data.searchedData
       : null;
+  const isLoading = data && data.loading;
+
+  if (isLoading) {
+    return (<Spinner />);
+  }
   return (
     <Container>
-      <Close onClick={() => toggleSearch()}>X</Close>
+      <Close onClick={() => toggleSearch()}><IconButton onClick={toggleSearch} iconClassName="fa fa-close" /></Close>
       <Content>
         <InputContainer>
-          <Input placeholder="Search" onKeyPress={handleSubmit} />
+          <form onSubmit={(e) => {
+            handleSubmit(e);
+            return false;
+          }}
+          >
+            <Input placeholder="Search" />
+            <IconButton iconClassName="fa fa-search" buttonType="submit" onClick={handleSubmit} />
+          </form>
         </InputContainer>
         <DataContainer>
           {searchResult &&
             searchResult.length &&
             searchResult.map(item => (
               <SearchedItem
+                key={item.id}
                 toggleSearch={toggleSearch}
-                color={'#ffffff'}
                 data={item}
               />
             ))}
@@ -142,7 +156,9 @@ const Search = ({ toggleSearch, handleSubmit, data, value }) => {
           </ShowMore>
         )}
         {!searchResult &&
-          value !== '' && <Span>No results found for {value}</Span>}
+          value !== '' &&
+          !isLoading && <Span>No results found for {value}</Span>}
+        {isLoading && <Span>Loading...</Span>}
       </Content>
     </Container>
   );

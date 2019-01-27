@@ -28,7 +28,8 @@
     "pm2_delete_ssr_prod": "pm2 delete mixtape_front_ssr_8003",
     "format": "prettier --write \"src/**/*.js\" --single-quote --no-semi --trailing-comma=all",
     "precommit": "lint-staged",
-    "lint": "eslint ./src"
+    "lint": "eslint ./src",
+    "build:full": "npm run build:prod && npm:ssr:prod"
   },
   "lint-staged": {
     "*.js": [

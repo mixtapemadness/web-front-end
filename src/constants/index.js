@@ -20,12 +20,17 @@ export const ROUTES = {
   contactUs: 'contact-us',
   blog: 'blog/category/',
   categories: {
+    articles: '/blog/category/articles',
+    community: '/blog/category/community',
+    'mad-about-bars': '/blog/category/madaboutbars',
+    audio: '/blog/category/audio',
     news: '/blog/category/news',
     events: '/blog/category/events',
     videos: '/blog/category/videos',
     interviews: '/blog/category/interviews',
-    articles: '/blog/category/articles',
     reviews: '/blog/category/reviews',
+    coors: '/blog/category/coors',
+    madaboutmixtapes: '/blog/category/madaboutmixtapes',
   },
 };
 

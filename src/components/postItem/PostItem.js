@@ -149,7 +149,7 @@ const PostItem = (props) => {
               to={`/author/${User.slug}`}
             >{User.name}
             </Link>
-          )} <span className="post-item__date"><IconButton iconClassName="far fa-clock" /> {postDate}</span>
+          )} <span className="post-item__date"><i className="far fa-clock" /> {postDate}</span>
         </div>
       </ContentContainer>
     </div>

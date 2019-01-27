@@ -22,29 +22,8 @@ const ProfileContainer = styled.div`
 `;
 
 const ProfileImg = styled.div`
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-`;
-
-const Image = styled.div`
-  height: 152px;
-  width: 152px;
-  border-radius: 100%;
-  background-position: ${p => (p.fromTeam ? 'center' : '66%')};
-  background-image: url(${props => props.src});
-  background-size: cover;
-`;
-
-const EditProfile = styled.div`
-  font-weight: 800;
-  margin-top: 15px;
-  cursor: pointer;
-  letter-spacing: 0.7px;
-  font-size: 12px;
-  color: #000000;
+font-size: 100px;
+margin-right: 40px;
 `;
 
 const ProfileDesc = styled.div`
@@ -140,33 +119,25 @@ const ShowMore = styled.div`
 `;
 
 const ProfileInformation = ({ data, showAuthorBio, handleShowAuthorBio }) => {
-  const img = data && data.avatar2;
   const name = data && data.name;
   const description = data && data.description;
 
   return (
     <ProfileContainer>
       <ProfileImg>
-        <Image src={img} />
-        {/* <EditProfile>Edit Profile</EditProfile> */}
+        <i className="fas fa-user-circle " />
       </ProfileImg>
 
       <ProfileDesc>
         <ProfileDescTitle>
           <ProfileInfo>
             <ProfileDescName>{name}</ProfileDescName>
-            {/* <ProfileDescOcupation>occupation</ProfileDescOcupation> */}
           </ProfileInfo>
-          <ProfileDescIcons>
-            <ProfileDescIcon src={TwitterIcon} />
-            <ProfileDescIcon src={InstagramIcon} />
-          </ProfileDescIcons>
         </ProfileDescTitle>
 
         <MobileProfileDescTitle>
           <ProfileDescName>{name}</ProfileDescName>
           <MobileProfileBottom>
-            {/* <ProfileDescOcupation>ocupation|</ProfileDescOcupation> */}
             <ProfileDescIcon src={InstagramIcon} />
             <ProfileDescIcon src={TwitterIcon} />
           </MobileProfileBottom>

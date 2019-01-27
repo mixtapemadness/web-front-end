@@ -7,14 +7,8 @@ import ProfileInfo from 'components/profileInfo';
 
 import ResentPosts from './ResentPosts';
 import authorPageEnhancer from './authorPageEnhancer';
+import Page from '../Page/Page';
 
-const AuthorPageContainer = styled.div`
-  max-width: 1200px;
-  margin: auto;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-`;
 
 const LineSeparator = styled.div`
   width: 100%;
@@ -27,13 +21,12 @@ const AuthorPage = ({ width, data }) => {
   const userData = data && data.user && data.user;
   const userId = data && data.user && data.user.id;
   const loading = data && data.loading && data.loading;
-  console.log(userId);
   return (
-    <AuthorPageContainer>
+    <Page>
       <ProfileInfo data={userData} />
       <LineSeparator />
       <ResentPosts loading={loading} id={userId} />
-    </AuthorPageContainer>
+    </Page>
   );
 };
 

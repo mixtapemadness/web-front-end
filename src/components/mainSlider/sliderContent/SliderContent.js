@@ -8,6 +8,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import moment from 'moment';
 import { CardLoader } from 'components/loaders';
 import mainSliderEnhancer from './sliderContentEnhancer';
 import { RESPONSIVE_BREAKPOINTS } from '../../../constants';
@@ -38,23 +39,23 @@ const SliderWrapper = styled.span`
   background: -moz-linear-gradient(
     top,
     rgba(0, 0, 0, 0) 0%,
-    rgba(0, 0, 0, 0.65) 100%
+    rgba(0, 0, 0, 1) 100%
   );
   background: -webkit-linear-gradient(
     top,
     rgba(0, 0, 0, 0) 0%,
-    rgba(0, 0, 0, 0.65) 100%
+    rgba(0, 0, 0, 1) 100%
   );
   background: linear-gradient(
     to bottom,
     rgba(0, 0, 0, 0) 0%,
-    rgba(0, 0, 0, 0.65) 100%
+    rgba(0, 0, 0, 1) 100%
   );
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#a6000000',GradientType=0 );
 `;
 
 const Header = styled.span`
-  font-size: 14px;
+  font-size: 18px;
   line-height: 26px;
   font-weight: bold;
   color: white;
@@ -67,12 +68,15 @@ const Header = styled.span`
     font-size: 20px;
   }
   @media only screen and (min-width: ${RESPONSIVE_BREAKPOINTS.desktop}) {
-    font-size: 30px;
-    line-height: 38px;
+    font-size: 40px;
+    line-height: 48px;
   }
 `;
 const CategoryTitle = styled.span`
   font-size: 14px;
+  @media only screen and (min-width: ${RESPONSIVE_BREAKPOINTS.desktop}) {
+      font-size: 24px;
+  }
   color: #ffa019;
   &:hover{
    text-decoration: underline;
@@ -80,16 +84,20 @@ const CategoryTitle = styled.span`
 `;
 
 const FlexDiv = styled.div`
-  width: 60%;
   position: relative;
   align-items: center;
   text-align: center;
   margin: auto;
+  width: 60%;
   height: 100%;
   justify-content: flex-end;
   display: flex;
   flex-direction: column;
-  padding-bottom: 100px;
+    padding-bottom: 60px;
+        text-shadow: 2px 2px #000;
+  @media only screen and (min-width: ${RESPONSIVE_BREAKPOINTS.tablet}) {
+    padding-bottom: 100px;
+  }
 `;
 
 const MainSlider = ({ tags, media, category, data }) => {
@@ -98,12 +106,15 @@ const MainSlider = ({ tags, media, category, data }) => {
   const postLink =
     CategoriesData && `blog/${CategoriesData[0].slug}/${data.slug}`;
   if (!Image) {
-    return <CardLoader />;
+    return <CardLoader height={600} />;
   }
+
+  let postDate = new Date(data.date);
+  postDate = postDate && moment(postDate).startOf('day').fromNow();
 
   if (data && CategoriesData) {
     return (
-      <Link to={postLink}>
+      <Link className="main-slider__content" to={postLink}>
         <SliderContent SliderPhoto={Image}>
           <SliderWrapper />
           <FlexDiv>
@@ -111,6 +122,7 @@ const MainSlider = ({ tags, media, category, data }) => {
               {CategoriesData[0].name}
             </CategoryTitle>
             <Header dangerouslySetInnerHTML={{ __html: data.title }} />
+            <span className="main-slider__content-date"><i className="far fa-clock" /> {postDate}</span>
           </FlexDiv>
         </SliderContent>
       </Link>

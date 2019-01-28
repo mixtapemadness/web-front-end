@@ -10,6 +10,7 @@ import Interviews from './interviews';
 import Posts from './posts';
 import homeEnhancer from './homeEnhancer';
 import Reviews from './reviews';
+// import FeaturedSlider from '../../components/featuredSlider/FeaturedSlider';
 
 const SubscribeContainer = styled.div`
   margin: 40px;
@@ -21,6 +22,7 @@ const Home = ({ sliderData }) => (
       {sliderData
         && sliderData.Posts && (
         <LazyLoad height={400} once offsetVertical={0}>
+          {/* <FeaturedSlider data={sliderData.Posts} /> */}
           <MainSlider data={sliderData.Posts} />
         </LazyLoad>
       )}

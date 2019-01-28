@@ -10,12 +10,12 @@
   }
 
   &__header {
-    background-color: $lighter-grey;
     padding: 20px 0;
   }
   &__title {
+    font-size: 30px;
     text-transform: capitalize;
-    border-bottom: 2px solid $base-orange;
+    border-bottom: 4px solid $base-orange;
     display: inline-block;
   }
 }

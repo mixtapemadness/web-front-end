@@ -1,12 +1,15 @@
 @import "../../resources/assets/scss/helpers/variables";
 @import "../../resources/assets/scss/helpers/breakpoints";
-@import "SliderNav";
-.slider {
-  margin: 40px 0;
 
+.main-slider {
+  height: 400px;
+
+  @include desktop{
+    height: 600px;
+  }
   .slick-slider {
-    overflow: hidden;
     position: relative;
+
     display: block;
     box-sizing: border-box;
 
@@ -23,9 +26,15 @@
   }
 
   .slick-list {
-    margin-top: 20px;
-    display: flex;
-    overflow: hidden;
+    width: 100%;
+    position: absolute;
+
+    display: block;
+    @include desktop {
+      overflow: hidden;
+    }
+
+    margin: 0;
     padding: 0;
   }
   .slick-list:focus {
@@ -49,16 +58,16 @@
     position: relative;
     top: 0;
     left: 0;
-    display: flex;
+
+    display: block;
     margin-left: auto;
     margin-right: auto;
-    max-height: 950px !important;
   }
   .slick-track:before,
   .slick-track:after {
     display: table;
 
-    content: "";
+    content: '';
   }
   .slick-track:after {
     clear: both;
@@ -70,23 +79,11 @@
   .slick-slide {
     display: none;
     float: left;
+
     height: 100%;
     min-height: 1px;
   }
-
-  .slick-slide .post-item {
-    width: auto;
-  }
-
-  @include desktop {
-    .slick-slide > div {
-      display: flex;
-      flex-direction: column;
-      width: calc(100% / 3);
-    }
-  }
-
-  [dir="rtl"] .slick-slide {
+  [dir='rtl'] .slick-slide {
     float: right;
   }
   .slick-slide img {
@@ -160,7 +157,7 @@
 
   .slick-prev:before,
   .slick-next:before {
-    font-family: "slick";
+    font-family: 'slick';
     font-size: 20px;
     line-height: 1;
 
@@ -174,29 +171,29 @@
   .slick-prev {
     left: -25px;
   }
-  [dir="rtl"] .slick-prev {
+  [dir='rtl'] .slick-prev {
     right: -25px;
     left: auto;
   }
   .slick-prev:before {
-    content: "←";
+    content: '←';
   }
-  [dir="rtl"] .slick-prev:before {
-    content: "→";
+  [dir='rtl'] .slick-prev:before {
+    content: '→';
   }
 
   .slick-next {
     right: -25px;
   }
-  [dir="rtl"] .slick-next {
+  [dir='rtl'] .slick-next {
     right: auto;
     left: -25px;
   }
   .slick-next:before {
-    content: "→";
+    content: '→';
   }
-  [dir="rtl"] .slick-next:before {
-    content: "←";
+  [dir='rtl'] .slick-next:before {
+    content: '←';
   }
 
   /* Dots */
@@ -256,7 +253,7 @@
     opacity: 1;
   }
   .slick-dots li button:before {
-    font-family: "slick";
+    font-family: 'slick';
     font-size: 6px;
     line-height: 20px;
 
@@ -267,7 +264,7 @@
     width: 20px;
     height: 20px;
 
-    content: "•";
+    content: '•';
     text-align: center;
 
     opacity: 0.25;
@@ -281,45 +278,52 @@
     color: black;
   }
 }
-
-.slider__header {
-  display: flex;
-  justify-content: space-between;
-  font-size: 30px;
-  &-text {
-    width: 80%;
+.main-slider__container {
+  height: 400px;
+  @include desktop{
+  height: 600px;
+}
+  .slick-slider {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
   }
+  .slick-slide > div {
+    width: 100%;
+    margin: 0 2px;
+    border-radius: 3px;
+    overflow: hidden;
+  }
+}
+
+.main-slider__nav {
+  display: block;
+  cursor: pointer;
+  z-index: 1;
+  font-size: 40px;
+  color: #fff;
+  margin-top: 220px;
+  padding: 0 5px;
   @include desktop {
-    align-items: center;
-  }
-
-  .slider__title {
-    font-size:1em;
-    font-weight: bold;
-  }
-  .slider__subtitle {
-    color: $paragraph-text;
-    font-size: 0.7em;
-    margin-bottom: 0;
-    font-weight: normal;
+    opacity: 0.8;
+    font-size: 40px;
+    margin-top: 250px;
+    &:hover {
+      opacity: 1;
+      color: $base-orange;
+    }
   }
 }
 
-.slick-slider {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin: auto;
-  max-width: 1200px;
-}
+.main-slider__content {
 
-.slick-slide {
-  display: flex !important;
-}
-.slick-current ~ .slick-slide {
-  justify-content: center;
-}
-
-.slick-current ~ .slick-slide ~ .slick-slide {
-  justify-content: flex-end;
+  &-date {
+    color: #fff;
+    margin-top: 10px;
+    font-size: 12px;
+    @include desktop {
+      margin-top: 10px;
+      font-size: 14px;
+    }
+  }
 }

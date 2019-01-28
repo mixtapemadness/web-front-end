@@ -1,0 +1,13 @@
+@import "resources/assets/scss/helpers/variables";
+@import "resources/assets/scss/helpers/breakpoints";
+.app {
+  margin: 60px auto auto;
+  @include desktop {
+  margin-top: 70px;
+}
+
+  &--menu-open {
+    height: 80vh;
+    overflow: auto;
+  }
+}

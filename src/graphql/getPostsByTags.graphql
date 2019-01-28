@@ -4,6 +4,7 @@ query getPostsByTags($tags: [ID]) {
     categories
     featured_media
     author
+    date
     title
     content
     slug

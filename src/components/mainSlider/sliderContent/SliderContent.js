@@ -8,6 +8,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import moment from 'moment';
 import { CardLoader } from 'components/loaders';
 import mainSliderEnhancer from './sliderContentEnhancer';
 import { RESPONSIVE_BREAKPOINTS } from '../../../constants';
@@ -54,7 +55,7 @@ const SliderWrapper = styled.span`
 `;
 
 const Header = styled.span`
-  font-size: 14px;
+  font-size: 18px;
   line-height: 26px;
   font-weight: bold;
   color: white;
@@ -92,7 +93,11 @@ const FlexDiv = styled.div`
   justify-content: flex-end;
   display: flex;
   flex-direction: column;
-  padding-bottom: 100px;
+    padding-bottom: 60px;
+        text-shadow: 2px 2px #000;
+  @media only screen and (min-width: ${RESPONSIVE_BREAKPOINTS.tablet}) {
+    padding-bottom: 100px;
+  }
 `;
 
 const MainSlider = ({ tags, media, category, data }) => {
@@ -104,9 +109,12 @@ const MainSlider = ({ tags, media, category, data }) => {
     return <CardLoader height={600} />;
   }
 
+  let postDate = new Date(data.date);
+  postDate = postDate && moment(postDate).startOf('day').fromNow();
+
   if (data && CategoriesData) {
     return (
-      <Link to={postLink}>
+      <Link className="main-slider__content" to={postLink}>
         <SliderContent SliderPhoto={Image}>
           <SliderWrapper />
           <FlexDiv>
@@ -114,6 +122,7 @@ const MainSlider = ({ tags, media, category, data }) => {
               {CategoriesData[0].name}
             </CategoryTitle>
             <Header dangerouslySetInnerHTML={{ __html: data.title }} />
+            <span className="main-slider__content-date"><i className="far fa-clock" /> {postDate}</span>
           </FlexDiv>
         </SliderContent>
       </Link>

@@ -1,334 +1,20 @@
-/* eslint react/no-array-index-key: 0 */
-/* eslint object-curly-newline: 0 */
-/* eslint operator-linebreak: 0 */
-
 import React from 'react';
-import styled from 'styled-components';
-
 import Slider from 'react-slick';
-
-import MainPrev from 'resources/assets/svg/mainprev.svg';
-import MainNext from 'resources/assets/svg/mainnext.svg';
 import { CardLoader } from 'components/loaders';
 import SliderContent from './sliderContent';
 import mainSliderEnhancer from './mainSliderEnhancer';
 import { RESPONSIVE_BREAKPOINTS } from '../../constants';
-
-const Img = styled.img`
-  display: block;
-  cursor: pointer;
-  z-index: 1;
-  margin-top: 210px;
-  height: 150px;
-  @media only screen and (max-width: 850px) {
-    height: 100px;
-    margin-top: 250px;
-  }
-  @media only screen and (max-width: 450px) {
-    height: 50px;
-    margin-top: 260px;
-  }
-`;
+import './_MainSlider.scss';
+import IconButton from '../IconButton/IconButton';
 
 const PrevArrow = (
   { onClick }, // eslint-disable-line
-) => <Img src={MainPrev} onClick={onClick} />;
+) => <IconButton className="main-slider__nav" iconClassName="fas fa-chevron-left" onClick={onClick} />;
 
 const NextArrow = (
   { onClick }, // eslint-disable-line
-) => <Img src={MainNext} onClick={onClick} />;
+) => <IconButton className="main-slider__nav" iconClassName="fas fa-chevron-right" onClick={onClick} />;
 
-const Container = styled.div`
-  height: 400px;
-  @media only screen and (min-width: ${RESPONSIVE_BREAKPOINTS.tablet}) {
-    height: 600px;
-  }
-  .slick-slider {
-    position: relative;
-
-    display: block;
-    box-sizing: border-box;
-
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-
-    -webkit-touch-callout: none;
-    -khtml-user-select: none;
-    -ms-touch-action: pan-y;
-    touch-action: pan-y;
-    -webkit-tap-highlight-color: transparent;
-  }
-
-  .slick-list {
-    width: 100%;
-    position: absolute;
-
-    display: block;
-    @media only screen and (min-width: ${RESPONSIVE_BREAKPOINTS.tablet}) {
-      overflow: hidden;
-    }
-
-    margin: 0;
-    padding: 0;
-  }
-  .slick-list:focus {
-    outline: none;
-  }
-  .slick-list.dragging {
-    cursor: pointer;
-    cursor: hand;
-  }
-
-  .slick-slider .slick-track,
-  .slick-slider .slick-list {
-    -webkit-transform: translate3d(0, 0, 0);
-    -moz-transform: translate3d(0, 0, 0);
-    -ms-transform: translate3d(0, 0, 0);
-    -o-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-  }
-
-  .slick-track {
-    position: relative;
-    top: 0;
-    left: 0;
-
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .slick-track:before,
-  .slick-track:after {
-    display: table;
-
-    content: '';
-  }
-  .slick-track:after {
-    clear: both;
-  }
-  .slick-loading .slick-track {
-    visibility: hidden;
-  }
-
-  .slick-slide {
-    display: none;
-    float: left;
-
-    height: 100%;
-    min-height: 1px;
-  }
-  [dir='rtl'] .slick-slide {
-    float: right;
-  }
-  .slick-slide img {
-    display: block;
-  }
-  .slick-slide.slick-loading img {
-    display: none;
-  }
-  .slick-slide.dragging img {
-    pointer-events: none;
-  }
-  .slick-initialized .slick-slide {
-    display: block;
-  }
-  .slick-loading .slick-slide {
-    visibility: hidden;
-  }
-  .slick-vertical .slick-slide {
-    display: block;
-
-    height: auto;
-
-    border: 1px solid transparent;
-  }
-  .slick-arrow.slick-hidden {
-    display: none;
-  }
-
-  .slick-prev,
-  .slick-next {
-    font-size: 0;
-    line-height: 0;
-
-    position: absolute;
-    top: 50%;
-
-    display: block;
-
-    width: 20px;
-    height: 20px;
-    padding: 0;
-    -webkit-transform: translate(0, -50%);
-    -ms-transform: translate(0, -50%);
-    transform: translate(0, -50%);
-
-    cursor: pointer;
-
-    color: transparent;
-    border: none;
-    outline: none;
-    background: transparent;
-  }
-  .slick-prev:hover,
-  .slick-prev:focus,
-  .slick-next:hover,
-  .slick-next:focus {
-    color: transparent;
-    outline: none;
-    background: transparent;
-  }
-  .slick-prev:hover:before,
-  .slick-prev:focus:before,
-  .slick-next:hover:before,
-  .slick-next:focus:before {
-    opacity: 1;
-  }
-  .slick-prev.slick-disabled:before,
-  .slick-next.slick-disabled:before {
-    opacity: 0.25;
-  }
-
-  .slick-prev:before,
-  .slick-next:before {
-    font-family: 'slick';
-    font-size: 20px;
-    line-height: 1;
-
-    opacity: 0.75;
-    color: white;
-
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-
-  .slick-prev {
-    left: -25px;
-  }
-  [dir='rtl'] .slick-prev {
-    right: -25px;
-    left: auto;
-  }
-  .slick-prev:before {
-    content: '←';
-  }
-  [dir='rtl'] .slick-prev:before {
-    content: '→';
-  }
-
-  .slick-next {
-    right: -25px;
-  }
-  [dir='rtl'] .slick-next {
-    right: auto;
-    left: -25px;
-  }
-  .slick-next:before {
-    content: '→';
-  }
-  [dir='rtl'] .slick-next:before {
-    content: '←';
-  }
-
-  /* Dots */
-  .slick-dotted.slick-slider {
-    margin-bottom: 30px;
-  }
-
-  .slick-dots {
-    position: absolute;
-    bottom: -25px;
-
-    display: block;
-
-    width: 100%;
-    padding: 0;
-    margin: 0;
-
-    list-style: none;
-
-    text-align: center;
-  }
-  .slick-dots li {
-    position: relative;
-
-    display: inline-block;
-
-    width: 20px;
-    height: 20px;
-    margin: 0 5px;
-    padding: 0;
-
-    cursor: pointer;
-  }
-  .slick-dots li button {
-    font-size: 0;
-    line-height: 0;
-
-    display: block;
-
-    width: 20px;
-    height: 20px;
-    padding: 5px;
-
-    cursor: pointer;
-
-    color: transparent;
-    border: 0;
-    outline: none;
-    background: transparent;
-  }
-  .slick-dots li button:hover,
-  .slick-dots li button:focus {
-    outline: none;
-  }
-  .slick-dots li button:hover:before,
-  .slick-dots li button:focus:before {
-    opacity: 1;
-  }
-  .slick-dots li button:before {
-    font-family: 'slick';
-    font-size: 6px;
-    line-height: 20px;
-
-    position: absolute;
-    top: 0;
-    left: 0;
-
-    width: 20px;
-    height: 20px;
-
-    content: '•';
-    text-align: center;
-
-    opacity: 0.25;
-    color: black;
-
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-  .slick-dots li.slick-active button:before {
-    opacity: 0.75;
-    color: black;
-  }
-`;
-
-const Override = styled.div`
-  height: 400px;
-  @media only screen and (min-width: ${RESPONSIVE_BREAKPOINTS.tablet}) {
-    height: 600px;
-  }
-  .slick-slider {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-  }
-  .slick-slide > div {
-    width: 100%;
-  }
-`;
 
 const settings = {
   dots: false,
@@ -358,19 +44,20 @@ const settings = {
 const MainSlider = ({ data }) => {
   const loading = data && data.loading && data.loading;
   const Posts = data && data.Posts && data.Posts;
+
   if (loading || !Posts) {
     return <CardLoader height={600} />;
   }
   return (
-    <Container>
-      <Override>
+    <div className="main-slider">
+      <div className="main-slider__container">
         <Slider {...settings}>
           {Posts.map(item => (
             <SliderContent loading={loading} key={item.id} data={item} />
           ))}
         </Slider>
-      </Override>
-    </Container>
+      </div>
+    </div>
   );
 };
 

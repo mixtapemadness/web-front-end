@@ -1,0 +1,21 @@
+@import "../../resources/assets/scss/helpers/variables";
+@import "../../resources/assets/scss/helpers/breakpoints";
+.category-page {
+
+  &__posts{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+  }
+
+  &__header {
+    background-color: $lighter-grey;
+    padding: 20px 0;
+  }
+  &__title {
+    text-transform: capitalize;
+    border-bottom: 2px solid $base-orange;
+    display: inline-block;
+  }
+}

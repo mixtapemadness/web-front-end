@@ -10,7 +10,6 @@ import {
 } from 'recompose';
 import { loadDataAsync, refetchOn } from 'hocs';
 import getPosts from 'graphql/getPosts.graphql';
-import getPostsCount from 'graphql/getPostsCount.graphql';
 import { CLOSE_MEGAMENU } from 'constants';
 import window from 'global/window';
 import getEmitter from '../../eventEmitter';
@@ -41,17 +40,6 @@ export default compose(
           perPage: 9,
           filter: { categories: props.match.params.filter.toUpperCase() },
           sort: props.sort,
-        },
-      }),
-    },
-  }),
-  loadDataAsync({
-    query: getPostsCount,
-    name: 'count',
-    config: {
-      options: props => ({
-        variables: {
-          filter: { categories: props.match.params.filter.toUpperCase() },
         },
       }),
     },

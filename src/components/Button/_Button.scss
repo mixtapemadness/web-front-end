@@ -1,0 +1,26 @@
+.btn {
+  cursor: pointer;
+  font-weight: 800;
+  border: 2px solid black;
+  padding: 10px 30px;
+  position: relative;
+  margin-top: 50px;
+  text-transform: uppercase;
+  transition: 0.4s;
+  &:after {
+    width: 0;
+    height: 2px;
+    position: absolute;
+    background: #656464;
+    bottom: 0;
+    left: 0;
+    transition: 0.4s;
+  }
+  &:hover {
+    background: #000;
+    color:#fff;
+    &:after {
+      width: 100%;
+    }
+  }
+}

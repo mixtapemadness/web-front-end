@@ -20,6 +20,9 @@ import BlogFilter from './BlogFilter';
 
 import blogsEnhancer from './blogEnhancer';
 import Page from '../Page';
+import Button from '../../components/Button/Button';
+
+import './_CategoryPage.scss';
 
 const PostsContainer = styled.div`
   width: 100%;
@@ -27,7 +30,6 @@ const PostsContainer = styled.div`
   justify-content: center;
   flex-wrap: wrap;
   margin-top: 20px;
-  // justify-content: space-between;
 `;
 
 const SubscribeContainer = styled.div`
@@ -38,34 +40,6 @@ const ShowMoreContainer = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
-`;
-const ShowMore = styled.button`
-  cursor: pointer;
-  font-weight: 800;
-  border: 2px solid black;
-  padding: 10px 30px;
-  text-decoration: uppercase;
-  position: relative;
-  margin-top: 50px;
-  text-transform: uppercase;
-  transition: 0.4s;
-  pointer-events:${props => (props.isMoreData ? 'inherit' : 'none')}
-  &:after {
-    width: 0%;
-    height: 2px;
-    position: absolute;
-    background: #656464;
-    bottom: 0;
-    left: 0;
-    transition: 0.4s;
-  }
-  &:hover {
-  background: #000;
-  color:#fff;
-    &:after {
-      width: 100%;
-    }
-  }
 `;
 
 const PostItemT = (item, index) => {
@@ -89,22 +63,27 @@ const Blog = ({ data, page, handleLoadMore, match, isMoreData }) => {
   const Data = data.Posts && data.Posts.length > 0 && data.Posts;
   let index = 0;
   return (
-    <div>
-      <BlogSlider />
+    <div className="category-page">
+      <div className="category-page__header">
+        <div className="container">
+          <h2 className="category-page__title">{match.params.filter}</h2>
+        </div>
+      </div>
+      {/* <BlogSlider /> */}
       <Page>
-        <BlogFilter match={match} />
-        <PostsContainer>
+        {/* <BlogFilter match={match} /> */}
+        <div className="category-page__posts">
           {data.loading &&
           [...Array(9)].map(i => (
             <CardLoader key={`${index++}-blog-loader`} />
           ))}
           {!data.loading && (Data && <PostItems items={Data} />)}
-        </PostsContainer>
+        </div>
         <ShowMoreContainer>
           {!data.loading ? (
-            <ShowMore isMoreData={isMoreData} onClick={handleLoadMore}>
+            <Button onClick={handleLoadMore}>
               {`See More ${match.params.filter}`}
-            </ShowMore>
+            </Button>
           ) : (
             <Spinner />
           )}

@@ -18,25 +18,14 @@ import SignForm from 'components/signForm/SignForm';
 import MoreMenu from 'components/moreMenu';
 import PrivacyAndPolicy from 'pages/privacyAndPolicy';
 import TermsAndConditions from 'pages/termsAndConditions';
-import styled from 'styled-components';
 import Footer from 'components/footer';
 import GA from 'components/googleAnalytics';
-import { RESPONSIVE_BREAKPOINTS, ROUTES } from './constants';
-
-const Container = styled.div`
-  max-width: 1200px;
-  margin: auto auto;
-  margin-top: 60px;
-  @media only screen and (min-width: ${RESPONSIVE_BREAKPOINTS.tablet}) {
-    margin-top: 70px;
-  }
-  height: ${p => (p.searchOpened || p.menuOpened ? '80vh' : 'auto')};
-  overflow: ${p => (p.searchOpened || p.menuOpened ? 'hidden' : 'visible')};
-`;
+import { ROUTES } from './constants';
+import './App.scss';
 
 const AppContent = ({ searchOpened, toggleSearch, menuOpened }) => (
   <React.Fragment>
-    <Container searchOpened={searchOpened} menuOpened={menuOpened}>
+    <div className={`app ${searchOpened || menuOpened ? 'app--menu-open' : ''}`}>
       <GA.RouteTracker />
       <Switch>
         <Route exact path="/" component={Home} />
@@ -59,7 +48,7 @@ const AppContent = ({ searchOpened, toggleSearch, menuOpened }) => (
         />
       </Switch>
       {menuOpened && <Menu />}
-    </Container>
+    </div>
     <Footer />
 
     {searchOpened && (

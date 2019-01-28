@@ -129,7 +129,7 @@ const BlogPage = (props) => {
   console.log(match.params.category, ROUTES.blog);
   if (showSpinner || !data || !Description || !categories || !postData) {
     return (
-      <div>
+      <div className="container">
         <Shimmer mt={12} size={14} fullWidth />
         <Shimmer mt={12} size={12} fullWidth />
         <Shimmer size={400} mt={15} fullWidth />

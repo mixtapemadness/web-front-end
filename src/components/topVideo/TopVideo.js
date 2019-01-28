@@ -68,21 +68,8 @@ const VideoDescSongName = styled(Link)`
   }
 `;
 
-const VideoDescDuration = styled.div`
-  display: flex;
-  align-items: center;
-`;
-
 const VideoDescArtist = styled.div`
   display: flex;
-`;
-
-const VideoDescBottom = styled.div``;
-
-const VideoDescView = styled.div`
-  color: #302d2d;
-  display: flex;
-  align-items: center;
 `;
 
 const Icon = styled.div`

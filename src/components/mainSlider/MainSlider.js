@@ -66,7 +66,9 @@ const Container = styled.div`
     position: absolute;
 
     display: block;
-    overflow: hidden;
+    @media only screen and (min-width: ${RESPONSIVE_BREAKPOINTS.tablet}) {
+      overflow: hidden;
+    }
 
     margin: 0;
     padding: 0;
@@ -315,6 +317,9 @@ const Container = styled.div`
 
 const Override = styled.div`
   height: 400px;
+  @media only screen and (min-width: ${RESPONSIVE_BREAKPOINTS.tablet}) {
+    height: 600px;
+  }
   .slick-slider {
     display: flex;
     justify-content: space-between;
@@ -328,10 +333,10 @@ const Override = styled.div`
 const settings = {
   dots: false,
   infinite: true,
-  slidesToShow: 2,
+  slidesToShow: 1,
   slidesToScroll: 2,
   mobileFirst: true,
-  centerMode: false,
+  centerMode: true,
   nextArrow: <NextArrow />,
   prevArrow: <PrevArrow />,
   responsive: [
@@ -341,7 +346,6 @@ const settings = {
         infinite: true,
         dots: false,
         autoplay: true,
-        autoplaySpeed: 7000,
         arrows: true,
         centerMode: false,
         slidesToShow: 1,
@@ -355,7 +359,7 @@ const MainSlider = ({ data }) => {
   const loading = data && data.loading && data.loading;
   const Posts = data && data.Posts && data.Posts;
   if (loading || !Posts) {
-    return <CardLoader />;
+    return <CardLoader height={600} />;
   }
   return (
     <Container>

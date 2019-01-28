@@ -38,17 +38,17 @@ const SliderWrapper = styled.span`
   background: -moz-linear-gradient(
     top,
     rgba(0, 0, 0, 0) 0%,
-    rgba(0, 0, 0, 0.65) 100%
+    rgba(0, 0, 0, 1) 100%
   );
   background: -webkit-linear-gradient(
     top,
     rgba(0, 0, 0, 0) 0%,
-    rgba(0, 0, 0, 0.65) 100%
+    rgba(0, 0, 0, 1) 100%
   );
   background: linear-gradient(
     to bottom,
     rgba(0, 0, 0, 0) 0%,
-    rgba(0, 0, 0, 0.65) 100%
+    rgba(0, 0, 0, 1) 100%
   );
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#a6000000',GradientType=0 );
 `;
@@ -67,12 +67,15 @@ const Header = styled.span`
     font-size: 20px;
   }
   @media only screen and (min-width: ${RESPONSIVE_BREAKPOINTS.desktop}) {
-    font-size: 30px;
-    line-height: 38px;
+    font-size: 40px;
+    line-height: 48px;
   }
 `;
 const CategoryTitle = styled.span`
   font-size: 14px;
+  @media only screen and (min-width: ${RESPONSIVE_BREAKPOINTS.desktop}) {
+      font-size: 24px;
+  }
   color: #ffa019;
   &:hover{
    text-decoration: underline;
@@ -80,11 +83,11 @@ const CategoryTitle = styled.span`
 `;
 
 const FlexDiv = styled.div`
-  width: 60%;
   position: relative;
   align-items: center;
   text-align: center;
   margin: auto;
+  width: 60%;
   height: 100%;
   justify-content: flex-end;
   display: flex;
@@ -98,7 +101,7 @@ const MainSlider = ({ tags, media, category, data }) => {
   const postLink =
     CategoriesData && `blog/${CategoriesData[0].slug}/${data.slug}`;
   if (!Image) {
-    return <CardLoader />;
+    return <CardLoader height={600} />;
   }
 
   if (data && CategoriesData) {

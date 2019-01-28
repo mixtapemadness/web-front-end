@@ -311,31 +311,10 @@
   align-items: flex-start;
   margin: auto;
   max-width: 1200px;
-  @media screen and (max-width: 1154px) {
-    width: 1000px;
-  }
-
-  @media screen and (max-width: 1050px) {
-    width: 700px;
-  }
-
-  @media screen and (max-width: 751px) {
-    width: 400px;
-  }
-
-  @media screen and (max-width: 500px) {
-    width: 330px;
-  }
 }
 
 .slick-slide {
   display: flex !important;
-  @media screen and (max-width: 1154px) {
-    justify-content: center;
-  }
-}
-
-.slick-initialized .slick-slide {
 }
 .slick-current ~ .slick-slide {
   justify-content: center;

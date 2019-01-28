@@ -16,19 +16,10 @@ export default compose(
     () => ({
       width: window.innerWidth,
     }),
-    {
-      updateWidth: () => () => ({ width: window.innerWidth }),
-    },
   ),
   lifecycle({
-    componentDidMount() {
-      window.addEventListener('resize', this.props.updateWidth);
-    },
     componentDidUpdate(prevProps, prevState) {
       eventEmitter.emit(CLOSE_MEGAMENU);
-    },
-    componentWillUnmount() {
-      window.removeEventListener('resize', this.props.updateWidth);
     },
   }),
   loadDataAsync({

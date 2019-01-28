@@ -125,7 +125,8 @@ const BlogPage = (props) => {
       .toString()
       .replace('iframe', 'embed');
   const disablePrev = !prevRoute;
-  const renderVideo = data && !data.loading && isVideo && Video ? true : false;
+  const renderVideo = !!(data && !data.loading && isVideo && Video);
+  console.log(match.params.category, ROUTES.blog);
   if (showSpinner || !data || !Description || !categories || !postData) {
     return (
       <div>
@@ -173,7 +174,7 @@ const BlogPage = (props) => {
       </Helmet>
       <div className="post container">
         <header className="post__heading">
-          <Link className="post__category-link" to={`${ROUTES.blog}/${match.params.category}`}>
+          <Link className="post__category-link" to={`/${ROUTES.blog}${match.params.category}`}>
             {match.params.category}
           </Link>
           <h1

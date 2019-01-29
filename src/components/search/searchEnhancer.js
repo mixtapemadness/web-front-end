@@ -10,8 +10,8 @@ export default compose(
       value: '',
     }),
     {
-      handleSubmit: () => e => ({
-        value: e.target.value,
+      handleSubmit: () => (value) => ({
+        value,
       }),
       toggle: () => (e, toggleSearch) => {
         if (e.key === 'Escape') {

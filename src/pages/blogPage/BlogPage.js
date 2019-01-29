@@ -7,8 +7,10 @@
 /* eslint implicit-arrow-linebreak: 0 */
 /* eslint react/jsx-closing-tag-location: 0 */
 
-import React, { Fragment } from 'react';
+import React, { Fragment, Component } from 'react';
 import styled from 'styled-components';
+// import AdSense from 'react-adsense';
+
 import ReactDisqusComments from 'react-disqus-comments';
 import YouMayLike from 'components/youMayLike';
 
@@ -72,156 +74,169 @@ const DisqusContainer = styled.div`
 
 const pathname = window.location ? window.location.pathname : '';
 
-const BlogPage = (props) => {
-  const {
-    width,
-    data,
-    user,
-    match,
-    nextRoute,
-    prevRoute,
-    location,
-    showSpinner,
-  } = props;
-  const userName = user && user.user && user.user.name && user.user.name;
-  const userSlug = user && user.user && user.user.slug && user.user.slug;
-  const postData = data && data.Post ? data.Post : {};
-  const Excerpt = data && data.Post && truncate(decodeHtml(data.Post.excerpt), 180);
-  const postTitle = postData && postData.title && decodeHtml(postData.title);
-  const noHTML = /(<([^>]+)>)/gi;
-  const Description =
-    data &&
-    data.Post &&
-    data.Post.excerpt &&
-    decodeHtml(data.Post.excerpt);
-  const categories =
-    data && data.Post && data.Post.categories && data.Post.categories;
-  const isVideoArr =
-    categories && categories.filter(item => parseInt(item, 10) === 15);
-  const isVideo = isVideoArr && isVideoArr.length > 0;
-  const PostDate = data && data.Post && data.Post.date && data.Post.date;
-  const tags = data && data.Post && data.Post.tags && data.Post.tags;
-  const Content =
-    isVideo &&
-    postData &&
-    postData.content &&
-    postData.content.replace(
-      /(?:<iframe[^>]*)(?:(?:\/>)|(?:>.*?<\/iframe>))/,
-      '',
-    );
-  const Video =
-    isVideo &&
-    postData &&
-    postData.content &&
-    postData.content.match(
-      /(?:<iframe[^>]*)(?:(?:\/>)|(?:>.*?<\/iframe>))/,
-      '',
-    ) &&
-    isVideo &&
-    postData &&
-    postData.content &&
-    postData.content
-      .match(/(?:<iframe[^>]*)(?:(?:\/>)|(?:>.*?<\/iframe>))/, '')
-      .toString()
-      .replace('iframe', 'embed');
-  const disablePrev = !prevRoute;
-  const renderVideo = !!(data && !data.loading && isVideo && Video);
-  console.log(match.params.category, ROUTES.blog);
-  if (showSpinner || !data || !Description || !categories || !postData) {
-    return (
-      <div className="container">
-        <Shimmer mt={12} size={14} fullWidth />
-        <Shimmer mt={12} size={12} fullWidth />
-        <Shimmer size={400} mt={15} fullWidth />
-        <Shimmer mt={12} size={14} fullWidth />
-        <Shimmer mt={12} size={12} fullWidth />
-        <Shimmer mt={12} size={14} fullWidth />
-        <Shimmer mt={12} size={12} fullWidth />
-        <Shimmer mt={12} size={14} fullWidth />
-        <Shimmer mt={12} size={12} fullWidth />
-      </div>
-    );
+class BlogPage extends Component {
+  componentDidMount() {
+    (window.adsbygoogle = window.adsbygoogle || []).push({});
   }
 
-  return (
-    <Fragment>
-      <PostPagination {...props} />
-      <Helmet>
-        <title>{`Mixtape Madness ${
-          postTitle !== undefined ? `| ${postTitle} ` : ''
-          }`}</title>
-        <meta
-          property="og:url"
-          content={window.location ? window.location.href : ''}
-        />
-        <meta
-          property="og:title"
-          content={`${postTitle}`}
-        />
-        <meta
-          property="og:description"
-          content={`${Description && Description}`}
-        />
-        <meta property="og:type" content="website" />
-        <meta name="twitter:title" content={`${postTitle}`} />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site" content={`${TWITTER_HANDLE}`} />
-        <meta
-          name="twitter:description"
-          content={`${Description && Description}`}
-        />
-        <meta name="twitter:creator" content={`${TWITTER_HANDLE}`} />
-      </Helmet>
-      <div className="post container">
-        <header className="post__heading">
-          <Link className="post__category-link" to={`/${ROUTES.blog}${match.params.category}`}>
-            {match.params.category}
-          </Link>
-          <h1
-            className="post__title"
-            dangerouslySetInnerHTML={{ __html: postData.title }}
-          />
-          <h2
-            className="post__excerpt"
-            dangerouslySetInnerHTML={{
-              __html:
-                Excerpt &&
-                Excerpt.replace(noHTML, ''),
-            }}
-          />
-          <PostContentHeading
-            date={PostDate}
-            userName={userName}
-            userSlug={userSlug}
-          />
-          <div className="addthis_inline_share_toolbox" />
-        </header>
-        <div className="post__image">
-          {renderVideo && (
-            <BlogPageVideo
-              dangerouslySetInnerHTML={{ __html: Video && Video }}
-            />
-          )}
-          <BlogPageImg renderVideo={renderVideo} id={postData.featured_media} />
+  render() {
+    const {
+      width,
+      data,
+      user,
+      match,
+      nextRoute,
+      prevRoute,
+      location,
+      showSpinner,
+    } = this.props;
+    const userName = user && user.user && user.user.name && user.user.name;
+    const userSlug = user && user.user && user.user.slug && user.user.slug;
+    const postData = data && data.Post ? data.Post : {};
+    const Excerpt = data && data.Post && truncate(decodeHtml(data.Post.excerpt), 180);
+    const postTitle = postData && postData.title && decodeHtml(postData.title);
+    const noHTML = /(<([^>]+)>)/gi;
+    const Description =
+      data &&
+      data.Post &&
+      data.Post.excerpt &&
+      decodeHtml(data.Post.excerpt);
+    const categories =
+      data && data.Post && data.Post.categories && data.Post.categories;
+    const isVideoArr =
+      categories && categories.filter(item => parseInt(item, 10) === 15);
+    const isVideo = isVideoArr && isVideoArr.length > 0;
+    const PostDate = data && data.Post && data.Post.date && data.Post.date;
+    const tags = data && data.Post && data.Post.tags && data.Post.tags;
+    const Content =
+      isVideo &&
+      postData &&
+      postData.content &&
+      postData.content.replace(
+        /(?:<iframe[^>]*)(?:(?:\/>)|(?:>.*?<\/iframe>))/,
+        '',
+      );
+    const Video =
+      isVideo &&
+      postData &&
+      postData.content &&
+      postData.content.match(
+        /(?:<iframe[^>]*)(?:(?:\/>)|(?:>.*?<\/iframe>))/,
+        '',
+      ) &&
+      isVideo &&
+      postData &&
+      postData.content &&
+      postData.content
+        .match(/(?:<iframe[^>]*)(?:(?:\/>)|(?:>.*?<\/iframe>))/, '')
+        .toString()
+        .replace('iframe', 'embed');
+    const disablePrev = !prevRoute;
+    const renderVideo = !!(data && !data.loading && isVideo && Video);
+    if (showSpinner || !data || !Description || !categories || !postData) {
+      return (
+        <div className="container">
+          <Shimmer mt={12} size={14} fullWidth />
+          <Shimmer mt={12} size={12} fullWidth />
+          <Shimmer size={400} mt={15} fullWidth />
+          <Shimmer mt={12} size={14} fullWidth />
+          <Shimmer mt={12} size={12} fullWidth />
+          <Shimmer mt={12} size={14} fullWidth />
+          <Shimmer mt={12} size={12} fullWidth />
+          <Shimmer mt={12} size={14} fullWidth />
+          <Shimmer mt={12} size={12} fullWidth />
         </div>
-        <div
-          className="post__content"
-          dangerouslySetInnerHTML={{ __html: postData.content }}
-        />
-        <TagsContainer>
-          {postData.tags && postData.tags.map(id => <Tag key={id} id={id} />)}
-        </TagsContainer>
-        <DisqusContainer>
-          <ReactDisqusComments
-            shortname={DISQUS_SHORTNAME}
-            identifier={pathname}
-            url={window.location ? window.location.href : ''}
+      );
+    }
+
+    return (
+      <Fragment>
+        <PostPagination {...this.props} />
+        <Helmet>
+          <title>{`Mixtape Madness ${
+            postTitle !== undefined ? `| ${postTitle} ` : ''
+            }`}</title>
+          <meta
+            property="og:url"
+            content={window.location ? window.location.href : ''}
           />
-        </DisqusContainer>
-        <YouMayLike tags={tags} />
-      </div>
-    </Fragment>
-  );
-};
+          <meta
+            property="og:title"
+            content={`${postTitle}`}
+          />
+          <meta
+            property="og:description"
+            content={`${Description && Description}`}
+          />
+          <meta property="og:type" content="website" />
+          <meta name="twitter:title" content={`${postTitle}`} />
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:site" content={`${TWITTER_HANDLE}`} />
+          <meta
+            name="twitter:description"
+            content={`${Description && Description}`}
+          />
+          <meta name="twitter:creator" content={`${TWITTER_HANDLE}`} />
+        </Helmet>
+        <div className="post container">
+          <header className="post__heading">
+            <Link className="post__category-link" to={`/${ROUTES.blog}${match.params.category}`}>
+              {match.params.category}
+            </Link>
+            <h1
+              className="post__title"
+              dangerouslySetInnerHTML={{ __html: postData.title }}
+            />
+            <h2
+              className="post__excerpt"
+              dangerouslySetInnerHTML={{
+                __html:
+                  Excerpt &&
+                  Excerpt.replace(noHTML, ''),
+              }}
+            />
+            <PostContentHeading
+              date={PostDate}
+              userName={userName}
+              userSlug={userSlug}
+            />
+            <div className="addthis_inline_share_toolbox" />
+          </header>
+          <div className="post__image">
+            {renderVideo && (
+              <BlogPageVideo
+                dangerouslySetInnerHTML={{ __html: Video && Video }}
+              />
+            )}
+            <BlogPageImg renderVideo={renderVideo} id={postData.featured_media} />
+          </div>
+          <div
+            className="post__content"
+            dangerouslySetInnerHTML={{ __html: postData.content }}
+          />
+          <ins
+            className="adsbygoogle"
+            style={{ display: 'block', textAlign: 'center' }}
+            data-ad-layout="in-article"
+            data-ad-format="fluid"
+            data-ad-client="ca-pub-9403258914718395"
+            data-ad-slot="5401105923"
+          />
+          <TagsContainer>
+            {postData.tags && postData.tags.map(id => <Tag key={id} id={id} />)}
+          </TagsContainer>
+          <DisqusContainer>
+            <ReactDisqusComments
+              shortname={DISQUS_SHORTNAME}
+              identifier={pathname}
+              url={window.location ? window.location.href : ''}
+            />
+          </DisqusContainer>
+          <YouMayLike tags={tags} />
+        </div>
+      </Fragment>
+    );
+  }
+}
 
 export default blogPageEnhancer(BlogPage);

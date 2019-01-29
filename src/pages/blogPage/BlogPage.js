@@ -76,7 +76,7 @@ const pathname = window.location ? window.location.pathname : '';
 
 class BlogPage extends Component {
   componentDidMount() {
-    (window.adsbygoogle = window.adsbygoogle || []).push({});
+    // (window.adsbygoogle = window.adsbygoogle || []).push({});
   }
 
   render() {

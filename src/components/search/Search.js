@@ -12,8 +12,6 @@ import searchEnhancer from './searchEnhancer';
 import IconButton from '../IconButton/IconButton';
 import Spinner from '../Spinner/Spinner';
 
-import './_Search.scss';
-
 const ShowMore = styled(Link)`
   color: #ffffff;
   font-weight: 600;

@@ -13,7 +13,6 @@ import videoEnhancer from './videoEnhancer';
 import truncate from '../../helpers/textHelpers';
 import { RESPONSIVE_BREAKPOINTS } from '../../constants';
 import CardLoader from '../loaders/CardLoader';
-import './_VideoThumbnail.scss';
 import placeholderImg from '../../resources/assets/img/placeholderImg.jpg';
 import IconButton from '../IconButton/IconButton';
 

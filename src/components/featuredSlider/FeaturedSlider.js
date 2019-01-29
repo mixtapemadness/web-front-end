@@ -8,7 +8,7 @@ import Slider from 'react-animated-slider';
 import { CardLoader } from 'components/loaders';
 import featuredSliderEnhancer from './featuredSliderEnhancer';
 import FeaturedSliderContent from './FeaturedSliderContent';
-import './_FeaturedSlider.scss';
+// import './_FeaturedSlider.scss';
 
 const FeaturedSlider = ({ data }) => {
   const loading = data && data.loading && data.loading;

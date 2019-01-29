@@ -8,7 +8,6 @@ import MenuItem from 'components/menuItem';
 import { Link } from 'react-router-dom';
 import menuEnhancer from './menuEnhancer';
 import { ROUTES } from '../../constants';
-import './_Menu.scss';
 
 const ContentContainer = styled.div`
   max-width: 1200px;

@@ -8,7 +8,7 @@ import client from './apollo';
 import Router from './router';
 import App from './App';
 
-import 'resources/assets/scss/main.scss';
+import './resources/assets/scss/main.scss';
 
 const supportsHistory = 'pushState' in window.history;
 

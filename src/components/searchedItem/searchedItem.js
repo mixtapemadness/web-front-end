@@ -7,7 +7,6 @@
 
 import React from 'react';
 
-import styled from 'styled-components';
 import window from 'global/window';
 
 import { Link } from 'react-router-dom';
@@ -15,8 +14,6 @@ import ReactImageFallback from 'react-image-fallback';
 import searchedItemEnhancer from './searchedItemEnhancer';
 
 import placeholderImg from '../../resources/assets/img/placeholderImg.jpg';
-
-import './_SearchedItem.scss';
 import CardLoader from '../loaders/CardLoader';
 
 const searchedItem = ({ toggleSearch, data, category, tags, media, color }) => {

@@ -1,0 +1,68 @@
+@import "../../resources/assets/scss/helpers/variables";
+@import "../../resources/assets/scss/helpers/breakpoints";
+.searched-item {
+  margin: 20px 0;
+  display: flex;
+  @media only screen and (max-width: 680px) {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  @media only screen and (max-width: 529px) {
+    width: 100%;
+  }
+}
+
+.searched-item__image{
+  display: block;
+  width: 100%;
+  height: 250px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  @include desktop {
+    width: 50%;
+  }
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.searched-item__content {
+  width: 100%;
+  font-size: 14px;
+  font-weight: bold;
+  background: #fff;
+  padding: 20px 10px;
+
+  @include desktop {
+    padding: 0;
+    background: transparent;
+    width: 50%;
+    font-size: 16px;
+    margin-left: 20px;
+
+  }
+
+}
+.searched-item__title {
+  color: $paragraph-text;
+  font-size: 16px;
+  @include desktop {
+    font-size: 18px;
+  }
+  a {
+    &:hover{
+      color: white;
+      text-decoration: underline;
+    }
+  }
+}
+
+.searched-item__category {
+  font-size: 14px;
+  font-weight: normal;
+  color: $base-orange;
+}

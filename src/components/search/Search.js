@@ -4,7 +4,7 @@
 /* eslint curly:0 */
 /* eslint indent:0 */
 
-import React from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import SearchedItem from 'components/searchedItem';
@@ -12,88 +12,7 @@ import searchEnhancer from './searchEnhancer';
 import IconButton from '../IconButton/IconButton';
 import Spinner from '../Spinner/Spinner';
 
-const Container = styled.div`
-  position: fixed;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(247, 148, 29, 0.89);
-  z-index: 3;
-  overflow-y: auto;
-  padding-bottom: 40px;
-  flex-direction: column;
-`;
-
-const Content = styled.div`
-  width: 80%;
-  max-width: 1024px;
-  padding: 20px;
-  box-sizing: border-box;
-  margin: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  @media only screen and (max-width: 680px) {
-    width: 100%;
-  }
-`;
-
-const Input = styled.input`
-  width: 100%;
-  background: transparent;
-  border: none;
-  border-bottom: 12px solid #ffffff;
-  height: 105px;
-  outline: none;
-  color: #ffffff;
-  font-size: 62px;
-  font-weight: 600;
-  ::-webkit-input-placeholder {
-    color: #ffffff;
-    font-size: 62px;
-    font-weight: 600;
-  }
-  ::-moz-placeholder {
-    color: #ffffff;
-    font-size: 62px;
-    font-weight: 600;
-  }
-  :-ms-input-placeholder {
-    color: #ffffff;
-    font-size: 62px;
-    font-weight: 600;
-  }
-  :-moz-placeholder {
-    color: #ffffff;
-    font-size: 62px;
-    font-weight: 600;
-  }
-`;
-
-const InputContainer = styled.div`
-  margin-top: 100px;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-const Close = styled.span`
-  position: absolute;
-  right: 0;
-  margin-right: 40px;
-  margin-top: 20px;
-  font-weight: bold;
-  font-size: 25px;
-  cursor: pointer;
-  color: #ffffff;
-`;
-const DataContainer = styled.div`
-  width: 100%;
-  margin: 40px auto;
-  display: flex;
-  flex-direction: column;
-`;
+import './_Search.scss';
 
 const ShowMore = styled(Link)`
   color: #ffffff;
@@ -108,45 +27,48 @@ const ShowMore = styled(Link)`
 const Span = styled.div`
   color: #ffffff;
   font-weight: 600;
-  font-size: 17px;
+  font-size: 18px;
   text-align: center;
 `;
 
-const Search = ({ toggleSearch, handleSubmit, data, value }) => {
-  const searchResult =
-    data && data.searchedData && data.searchedData.length > 0
-      ? data.searchedData
-      : null;
-  const isLoading = data && data.loading;
-
-  if (isLoading) {
-    return (<Spinner />);
+class Search extends Component {
+  state = {
+    searchValue: null,
   }
-  return (
-    <Container>
-      <Close onClick={() => toggleSearch()}><IconButton onClick={toggleSearch} iconClassName="fa fa-close" /></Close>
-      <Content>
-        <InputContainer>
-          <form onSubmit={(e) => {
-            handleSubmit(e);
-            return false;
-          }}
-          >
-            <Input placeholder="Search" />
-            <IconButton iconClassName="fa fa-search" buttonType="submit" onClick={handleSubmit} />
-          </form>
-        </InputContainer>
-        <DataContainer>
-          {searchResult &&
-            searchResult.length &&
-            searchResult.map(item => (
-              <SearchedItem
-                key={item.id}
-                toggleSearch={toggleSearch}
-                data={item}
-              />
-            ))}
-        </DataContainer>
+
+  componentDidMount() {
+    this.inputRef.focus();
+  }
+
+  handleSubmit = (e) => {
+    const { handleSubmit } = this.props;
+    const { searchValue } = this.state;
+    if (searchValue) handleSubmit(searchValue);
+    e.preventDefault();
+    return false;
+  }
+
+  handleOnChangeInput = (e) => {
+    this.setState({
+      searchValue: e.target.value,
+    });
+  }
+
+  SearchResults = () => {
+    const { toggleSearch, data, value } = this.props;
+    const searchResult =
+      data && data.searchedData && data.searchedData.length > 0
+        ? data.searchedData
+        : null;
+    return (
+      <div>
+        {searchResult && searchResult.length && searchResult.map(item => (
+          <SearchedItem
+            key={item.id}
+            toggleSearch={toggleSearch}
+            data={item}
+          />
+      ))}
         {searchResult && (
           <ShowMore
             to={`/searchresult/all/${value}`}
@@ -155,13 +77,40 @@ const Search = ({ toggleSearch, handleSubmit, data, value }) => {
             View all
           </ShowMore>
         )}
-        {!searchResult &&
-          value !== '' &&
-          !isLoading && <Span>No results found for {value}</Span>}
-        {isLoading && <Span>Loading...</Span>}
-      </Content>
-    </Container>
-  );
-};
+        {!searchResult && value ? <Span>No results found for {value}</Span> : ''}
+      </div>
+    );
+  }
+
+  render() {
+    const { toggleSearch, data } = this.props;
+    const isLoading = data && data.loading;
+    return (
+      <div className="search-overlay">
+        <header className="search-overlay__header">
+          <IconButton onClick={toggleSearch} iconClassName="fas fa-times" className="search-overlay__close" />
+        </header>
+        <div className="search-overlay__content">
+          <form
+            className="search-overlay__form"
+            onSubmit={this.handleSubmit}
+          >
+            <input
+              ref={ref => { this.inputRef = ref; }}
+              type="text"
+              className="search-overlay__input"
+              placeholder="What are you looking for?"
+              onChange={this.handleOnChangeInput}
+            />
+            <IconButton iconClassName="fa fa-search" buttonType="submit" onClick={this.handleSubmit} />
+          </form>
+          <div className="search-overlay__results">
+            {isLoading ? <Spinner isLightColor /> : this.SearchResults()}
+          </div>
+        </div>
+      </div>
+    );
+  }
+}
 
 export default searchEnhancer(Search);

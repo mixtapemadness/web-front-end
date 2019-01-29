@@ -38,17 +38,17 @@ const SliderWrapper = styled.span`
   left: 0;
   background: -moz-linear-gradient(
     top,
-    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0) 70%,
     rgba(0, 0, 0, 1) 100%
   );
   background: -webkit-linear-gradient(
     top,
-    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0) 70%,
     rgba(0, 0, 0, 1) 100%
   );
   background: linear-gradient(
     to bottom,
-    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0) 70%,
     rgba(0, 0, 0, 1) 100%
   );
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#a6000000',GradientType=0 );
@@ -96,7 +96,6 @@ const FlexDiv = styled.div`
     padding-bottom: 60px;
         text-shadow: 2px 2px #000;
   @media only screen and (min-width: ${RESPONSIVE_BREAKPOINTS.tablet}) {
-    padding-bottom: 100px;
   }
 `;
 

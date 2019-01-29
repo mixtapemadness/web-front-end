@@ -21,9 +21,6 @@ import truncate from '../../helpers/textHelpers';
 import { ROUTES } from '../../constants';
 import CardLoader from '../loaders/CardLoader';
 
-import './_PostItem.scss';
-import IconButton from '../IconButton/IconButton';
-
 const ContentContainer = styled.div`
   background-color: #f1f3f5;
   width: 100%;

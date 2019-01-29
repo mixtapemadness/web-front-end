@@ -4,7 +4,7 @@ import { CardLoader } from 'components/loaders';
 import SliderContent from './sliderContent';
 import mainSliderEnhancer from './mainSliderEnhancer';
 import { RESPONSIVE_BREAKPOINTS } from '../../constants';
-import './_MainSlider.scss';
+
 import IconButton from '../IconButton/IconButton';
 
 const PrevArrow = (

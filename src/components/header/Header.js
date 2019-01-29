@@ -7,7 +7,7 @@ import MixtapeLogo from 'resources/assets/img/mixtape-logo.png';
 import headerEnhancer from './headerEnhancer';
 import IconButton from '../IconButton';
 import Navigation from '../Navigation';
-import './_Header.scss';
+// import './_Header.scss';
 
 const Header = ({
   toggleSearch,

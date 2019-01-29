@@ -4,9 +4,24 @@
 @import "helpers/breakpoints";
 @import "buttons";
 @import "layout";
+
 @import "../../../components/advertisement/Advertisment";
 @import "../../../components/PostPagination/PostPagination";
+@import "../../../components/Button/Button";
+@import "../../../components/featuredSlider/FeaturedSlider";
+@import "../../../components/header/Header";
+@import "../../../components/mainSlider/MainSlider";
+@import "../../../components/menu/Menu";
+@import "../../../components/postItem/PostItem";
+@import "../../../components/search/Search";
+@import "../../../components/searchedItem/SearchedItem";
+@import "../../../components/slider/Slider";
+@import "../../../components/slider/SliderNav";
+@import "../../../components/spinner/Spinner";
+@import "../../../components/video/VideoThumbnail";
 
+@import "../../../pages/blog/CategoryPage";
+@import "../../../pages/blogPage/BlogPage";
 
 *,
 *::before,

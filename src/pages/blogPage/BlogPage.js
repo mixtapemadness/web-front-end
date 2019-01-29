@@ -29,7 +29,6 @@ import {
 import truncate, { decodeHtml } from '../../helpers/textHelpers';
 import Shimmer from '../../components/loaders/shimmer/Shimmer';
 import PostPagination from '../../components/PostPagination';
-import './_BlogPage.scss';
 
 const BlogPageVideo = styled.div`
   width: 100%;
@@ -39,21 +38,6 @@ const BlogPageVideo = styled.div`
   background-size: cover;
 
 `;
-const BlogImageWrapper = styled.div`
-  position: relative;
-  padding-bottom: 56.25%;
-  padding-top: 25px;
-  height: 0;
-  embed,
-  img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  }
-`;
-
 const TagsContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -214,14 +198,7 @@ class BlogPage extends Component {
             className="post__content"
             dangerouslySetInnerHTML={{ __html: postData.content }}
           />
-          <ins
-            className="adsbygoogle"
-            style={{ display: 'block', textAlign: 'center' }}
-            data-ad-layout="in-article"
-            data-ad-format="fluid"
-            data-ad-client="ca-pub-9403258914718395"
-            data-ad-slot="5401105923"
-          />
+
           <TagsContainer>
             {postData.tags && postData.tags.map(id => <Tag key={id} id={id} />)}
           </TagsContainer>

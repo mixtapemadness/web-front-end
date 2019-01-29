@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import Slider from 'react-slick';
 import PropTypes from 'prop-types';
-
-import './_Slider.scss';
 import IconButton from '../IconButton';
 
 class SliderComponent extends Component {

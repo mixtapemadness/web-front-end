@@ -22,16 +22,6 @@ import blogsEnhancer from './blogEnhancer';
 import Page from '../Page';
 import Button from '../../components/Button/Button';
 
-import './_CategoryPage.scss';
-
-const PostsContainer = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-top: 20px;
-`;
-
 const SubscribeContainer = styled.div`
   width: 100%;
   margin: 40px 0;

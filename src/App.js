@@ -3,7 +3,7 @@
 /* eslint function-paren-newline: 0 */
 /* eslint operator-linebreak: 0 */
 import React from 'react';
-import { compose, withStateHandlers, lifecycle, withHandlers } from 'recompose';
+import { compose, withStateHandlers, lifecycle } from 'recompose';
 import window from 'global/window';
 
 import Header from 'components/header';
@@ -17,7 +17,7 @@ const eventEmitter = getEmitter();
 const App = (props) => {
   const { toggleSearch, searchOpened, menuOpened, toggleMenu } = props;
   return (
-    <div style={{ width: '100%' }}>
+    <div>
       <Header
         toggleSearch={toggleSearch}
         menuOpened={menuOpened}
@@ -50,7 +50,6 @@ export default compose(
         return { menuOpened: !menuOpened };
       },
     },
-    withHandlers({}),
   ),
   lifecycle({
     componentDidMount() {

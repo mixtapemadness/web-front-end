@@ -51,7 +51,7 @@ export const BRAND_COLOURS = {
 
 
 export const SEO = {
-  title: 'Mixtape Madness | UKs Number 1 For Urban Music & Entertainment',
+  title: 'UKs Number 1 For Urban Music & Entertainment',
   description: 'We showcase the best of british urban music by presenting music videos, mixtape premieres, audios & freestyle shows such as Mad About Bars and Next Up...',
   keywords: 'mixtape madness, uk, urban music, mad about bars, next up, 1take',
 };

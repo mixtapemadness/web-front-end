@@ -109,6 +109,7 @@ app.get('*', (req, res) => {
         />
         <script src="/bundle.js" charSet="UTF-8" />
         <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5c0e4bff29290756" async />
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" />
       </body>
     </html>
   );
@@ -127,7 +128,7 @@ app.get('*', (req, res) => {
         />
       );
       const renderedHtml = ReactDOMServer.renderToStaticMarkup(html);
-      res.send(`<!doctype html>\n${renderedHtml}`);
+      res.send(`<!DOCTYPE html>\n${renderedHtml}`);
       // const renderHtml = ReactDOMServer.renderToStaticMarkup(html)
       // res.send(`<!doctype html>\n${Helmet.renderStatic(renderHtml)}`)
       res.end();

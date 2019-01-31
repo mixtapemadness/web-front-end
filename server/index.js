@@ -64,35 +64,15 @@ app.get('*', (req, res) => {
   const Html = ({ content, helmet, styleTags, client: { cache } }) => (
     <html lang="en">
       <head>
-        {helmet.meta.toComponent()}
         <title>Mixtape Madness | UKs Number 1 For Urban Music & Entertainment</title>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="robots" content="index,follow" />
         <meta name="googlebot" content="index,follow" />
         <meta name="keywords" content="mixtape madness, uk, urban music, mad about bars, next up, 1take" />
-        <meta
-          name="description"
-          content="We showcase the best of British urban music by presenting Music videos, Mixtape premieres, Audios & freestyle shows such as Mad About Bars an Next Up, We are proud to have featured many great artists such as J Hus, Abra Cadabra, Potter Payper, M Huncho, Jay Silva and many more."
-        />
-        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/resources/assets/favicons/apple-touch-icon.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/resources/assets/favicons/favicon-32x32.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/resources/assets/favicons/favicon-16x16.png" />
-        <link rel="apple-touch-icon" sizes="57x57" href="/resources/assets/favicons/apple-icon-57x57.png" />
-        <link rel="apple-touch-icon" sizes="60x60" href="/resources/assets/favicons/apple-icon-60x60.png" />
-        <link rel="apple-touch-icon" sizes="72x72" href="/resources/assets/favicons/apple-icon-72x72.png" />
-        <link rel="apple-touch-icon" sizes="76x76" href="/resources/assets/favicons/apple-icon-76x76.png" />
-        <link rel="apple-touch-icon" sizes="114x114" href="/resources/assets/favicons/apple-icon-114x114.png" />
-        <link rel="apple-touch-icon" sizes="120x120" href="/resources/assets/favicons/apple-icon-120x120.png" />
-        <link rel="apple-touch-icon" sizes="144x144" href="/resources/assets/favicons/apple-icon-144x144.png" />
-        <link rel="apple-touch-icon" sizes="152x152" href="/resources/assets/favicons/apple-icon-152x152.png" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/resources/assets/favicons/apple-icon-180x180.png" />
-        <link rel="icon" type="image/png" sizes="192x192" href="/resources/assets/favicons/android-icon-192x192.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/resources/assets/favicons/favicon-32x32.png" />
-        <link rel="icon" type="image/png" sizes="96x96" href="/resources/assets/favicons/favicon-96x96.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/resources/assets/favicons/favicon-16x16.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/resources/assets/favicons/favicon.ico" />
+        {helmet.meta.toString()}
+        {helmet.link.toString()}
+        {helmet.title.toString()}
         <link href="/bundle.css" rel="stylesheet" async />
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossOrigin="anonymous" />
         {styleTags}
@@ -118,16 +98,16 @@ app.get('*', (req, res) => {
     .then(content => {
       const styleTags = sheet.getStyleElement();
       res.status(200);
-      const helmet = Helmet.renderStatic();
       const html = (
         <Html
           content={content}
-          helmet={helmet}
+          helmet={Helmet}
           client={client}
           styleTags={styleTags}
         />
       );
       const renderedHtml = ReactDOMServer.renderToStaticMarkup(html);
+      Helmet.renderStatic();
       res.send(`<!DOCTYPE html>\n${renderedHtml}`);
       // const renderHtml = ReactDOMServer.renderToStaticMarkup(html);
       // res.send(`<!doctype html>\n${Helmet.renderStatic(renderHtml)}`);

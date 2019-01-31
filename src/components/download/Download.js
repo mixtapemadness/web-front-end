@@ -1,10 +1,12 @@
 /* eslint react/jsx-one-expression-per-line: 0 */
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 import PhoneImage from 'resources/assets/img/phone.jpg';
-import AppStoreIcon from 'resources/assets/img/appstore.png';
-import GooglePlayIcon from 'resources/assets/img/googleplay.png';
+import MixtapeLogo from 'resources/assets/img/mixtape-logo.png';
+
+import { ROUTES } from '../../constants';
 
 const DownloadContainer = styled.div`
   max-width: 1200px;
@@ -24,26 +26,17 @@ const ContentContainer = styled.div`
   }
 `;
 const Header = styled.span`
-  font-size: 26px;
+ line-height: 26px;
   line-height: 1;
-  letter-spacing: 1.6px;
-  font-weight: 600;
   color: #ffffff;
+  img {
+    width: 100px;
+  }
   @media only screen and (max-width: 450px) {
     font-size: 20px;
   }
 `;
-const SubHeader = styled.span`
-  font-size: 19px;
-  font-weight: 300;
-  line-height: 1;
-  letter-spacing: 1.1px;
-  margin-top: 42px;
-  color: #ffffff;
-  @media only screen and (max-width: 450px) {
-    font-size: 16px;
-  }
-`;
+
 const DownloadButton = styled.button`
   background: transparent;
   width: 300px;
@@ -55,15 +48,8 @@ const DownloadButton = styled.button`
   height: 45px;
   cursor: pointer;
 `;
-const FlexDiv = styled.div`
-  display: flex;
-  margin-top: 40px;
-`;
-const Icon = styled.img`
-  width: auto;
-  height: 38px;
-  margin-right: 10px;
-`;
+
+
 const Div = styled.div`
   display: flex;
   flex-direction: column;
@@ -74,21 +60,15 @@ const Download = () => (
     <ContentContainer>
       <Div>
         <Header>
-          Keep Up To Date With The Latest
-          <br />
-          News And Stream Brand New Music
+          <img src={MixtapeLogo} alt="MM Logo" />
+          <h2>
+          Keep up with the latest music & entertainment.
+          </h2>
         </Header>
-        <SubHeader>
-          The UK&apos;s No.1 Platform For Urban Music
-          <br />
-          Download The App Now
-        </SubHeader>
+        <DownloadButton>
+          <Link to={ROUTES.about}>Find Out More</Link>
+        </DownloadButton>
       </Div>
-      <DownloadButton>Download</DownloadButton>
-      <FlexDiv>
-        <Icon src={AppStoreIcon} />
-        <Icon src={GooglePlayIcon} />
-      </FlexDiv>
     </ContentContainer>
   </DownloadContainer>
 );

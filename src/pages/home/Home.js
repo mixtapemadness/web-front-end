@@ -5,6 +5,7 @@ import LazyLoad from 'react-lazyload';
 import MainSlider from 'components/mainSlider';
 import Subscribe from 'components/subscribe';
 import Videos from 'components/videos';
+import Download from 'components/download';
 import WhatsOn from './whatsOn';
 import Interviews from './interviews';
 import Posts from './posts';
@@ -32,9 +33,9 @@ const Home = ({ sliderData }) => (
     <LazyLoad height={400} once offset={0}>
       <Interviews />
     </LazyLoad>
-    {/* <LazyLoad once offset={0}> */}
-    {/* <Download /> */}
-    {/* </LazyLoad> */}
+    <LazyLoad once offset={0}>
+      <Download />
+    </LazyLoad>
     <LazyLoad height={400} once offset={50}>
       <WhatsOn />
     </LazyLoad>

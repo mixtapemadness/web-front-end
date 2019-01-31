@@ -10,26 +10,28 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
+import Helmet, { HelmetProvider } from 'react-helmet-async';
 import window from 'global/window';
 import { StaticRouter } from 'react-router';
-import { ApolloProvider, renderToStringWithData } from 'react-apollo';
+import { ApolloProvider, renderToStringWithData, getDataFromTree } from 'react-apollo';
 import { ApolloLink } from 'apollo-link';
 import { ApolloClient } from 'apollo-client';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { createHttpLink } from 'apollo-link-http';
 import { onError } from 'apollo-link-error';
 import { ServerStyleSheet } from 'styled-components';
-import { Helmet } from 'react-helmet';
 import config from '../config';
 import App from '../src/App';
 
 const app = express();
 const PORT = process.env.PORT || 8003;
 let adsbygoogle = [];
+const helmetContext = {};
+
 app.use(bodyParser.json());
 app.use(express.static('dist/client'));
 
-app.get('*', (req, res) => {
+app.get('*', async (req, res) => {
   const errorLink = onError(({ graphQLErrors, networkError }) => {
     if (graphQLErrors) {
       graphQLErrors.forEach(({ message, locations, path }) => {
@@ -58,24 +60,28 @@ app.get('*', (req, res) => {
   const sheet = new ServerStyleSheet();
 
   const component = (
-    <ApolloProvider client={client}>
-      <StaticRouter location={req.url} context={context}>
-        <App />
-      </StaticRouter>
-    </ApolloProvider>
+    <HelmetProvider context={helmetContext}>
+      <ApolloProvider client={client}>
+        <StaticRouter location={req.url} context={context}>
+          <App />
+        </StaticRouter>
+      </ApolloProvider>
+    </HelmetProvider>
   );
+
+  await getDataFromTree(component);
 
   const Html = ({ content, helmet, styleTags, client: { cache } }) => (
     <html lang="en">
       <head>
-        <title>Mixtape Madness | UKs Number 1 For Urban Music & Entertainment</title>
+        {helmet.meta.toComponent()}
+        {helmet.link.toComponent()}
+        {helmet.title.toComponent()}
+        <title> </title>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="robots" content="index,follow" />
         <meta name="googlebot" content="index,follow" />
-        {helmet.meta.toComponent()}
-        {helmet.link.toComponent()}
-        {helmet.title.toComponent()}
         <link href="/bundle.css" rel="stylesheet" async />
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossOrigin="anonymous" />
         {styleTags}

@@ -76,7 +76,6 @@ app.get('*', (req, res) => {
           content="We showcase the best of British urban music by presenting Music videos, Mixtape premieres, Audios & freestyle shows such as Mad About Bars an Next Up, We are proud to have featured many great artists such as J Hus, Abra Cadabra, Potter Payper, M Huncho, Jay Silva and many more."
         />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-
         <link rel="apple-touch-icon" sizes="180x180" href="/resources/assets/favicons/apple-touch-icon.png" />
         <link rel="icon" type="image/png" sizes="32x32" href="/resources/assets/favicons/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/resources/assets/favicons/favicon-16x16.png" />
@@ -127,14 +126,13 @@ app.get('*', (req, res) => {
         />
       );
       const renderedHtml = ReactDOMServer.renderToStaticMarkup(html);
-
       res.send(`<!doctype html>\n${renderedHtml}`);
       // const renderHtml = ReactDOMServer.renderToStaticMarkup(html)
       // res.send(`<!doctype html>\n${Helmet.renderStatic(renderHtml)}`)
       res.end();
     })
     .catch(e => {
-      console.error('RENDERING ERROR:', e); // eslint-disable-line no-console
+      console.error('RENDERING ERROR:', e);
       res.status(500);
       res.end(`An error occurred. Stack trace:\n\n${e.stack}`);
     });

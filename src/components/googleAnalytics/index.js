@@ -1,15 +1,12 @@
-/* eslint implicit-arrow-linebreak: 0 */
-
 import React, { Component } from 'react';
 import ReactGA from 'react-ga';
 import { Route } from 'react-router-dom';
 import window from 'global/window';
-
-const REACT_APP_GA_TRACKING_ID = 'UA-75737603-1';
+import { GA_TRACKING_CODE } from '../../constants';
 
 class GoogleAnalytics extends Component {
   componentDidMount() {
-    ReactGA.initialize(REACT_APP_GA_TRACKING_ID);
+    ReactGA.initialize(GA_TRACKING_CODE);
     const {
       location: { pathname, search },
     } = this.props;

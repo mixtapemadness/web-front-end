@@ -6,9 +6,7 @@
 
 import React from 'react';
 import styled from 'styled-components';
-import Advertisement from 'components/advertisement';
 import PostItem from 'components/postItem';
-import { Link } from 'react-router-dom';
 import { CardLoader } from 'components/loaders';
 import shuffle from 'helpers/shuffle';
 import youMayLikeEnhancer from './youMayLikeEnhancer';
@@ -26,12 +24,6 @@ const Div = styled.div`
   max-width: 1200px;
   margin: auto;
   flex-wrap: wrap;
-`;
-
-const AdvertisementContainer = styled(Link)`
-  height: 480px;
-  width: 100%;
-  margin: 5px;
 `;
 
 const AlsoLikeHeaderContainer = styled.div`

@@ -9,24 +9,24 @@
 
 import React, { Fragment, Component } from 'react';
 import styled from 'styled-components';
+import window from 'global/window';
+
 
 import ReactDisqusComments from 'react-disqus-comments';
 import YouMayLike from 'components/youMayLike';
 
 import { Link } from 'react-router-dom';
-import window from 'global/window';
-import { Helmet } from 'react-helmet';
 import blogPageEnhancer from './blogPageEnhancer';
 import BlogPageImg from './blogPageImg';
 import PostContentHeading from './postContentHeading';
 import Tag from './Tag';
 import {
   DISQUS_SHORTNAME,
-  TWITTER_HANDLE,
   ROUTES,
 } from '../../constants';
 import truncate, { decodeHtml } from '../../helpers/textHelpers';
 import Shimmer from '../../components/loaders/shimmer/Shimmer';
+import BlogPageMetaTags from './BlogPageMetaTags';
 
 const BlogPageVideo = styled.div`
   width: 100%;
@@ -57,8 +57,7 @@ const DisqusContainer = styled.div`
 const pathname = window.location ? window.location.pathname : '';
 
 class BlogPage extends Component {
-  componentDidMount() {
-  }
+  componentDidMount() {}
 
   render() {
     const {
@@ -127,38 +126,16 @@ class BlogPage extends Component {
       );
     }
 
+    const postUrl = `/${ROUTES.blog}${match.params.category}`;
+
     return (
       <Fragment>
+        <BlogPageMetaTags description={Excerpt.replace(noHTML, '')} postTitle={postTitle} keywords={postData.tags} canonical={postUrl} />
         {/* <PostPagination {...this.props} /> */}
-        <Helmet>
-          <title>{`Mixtape Madness ${
-            postTitle !== undefined ? `| ${postTitle} ` : ''
-            }`}</title>
-          <meta
-            property="og:url"
-            content={window.location ? window.location.href : ''}
-          />
-          <meta
-            property="og:title"
-            content={`${postTitle}`}
-          />
-          <meta
-            property="og:description"
-            content={`${Description && Description}`}
-          />
-          <meta property="og:type" content="website" />
-          <meta name="twitter:title" content={`${postTitle}`} />
-          <meta name="twitter:card" content="summary_large_image" />
-          <meta name="twitter:site" content={`${TWITTER_HANDLE}`} />
-          <meta
-            name="twitter:description"
-            content={`${Description && Description}`}
-          />
-          <meta name="twitter:creator" content={`${TWITTER_HANDLE}`} />
-        </Helmet>
+
         <div className="post container">
           <header className="post__heading">
-            <Link className="post__category-link" to={`/${ROUTES.blog}${match.params.category}`}>
+            <Link className="post__category-link" to={postUrl}>
               {match.params.category}
             </Link>
             <h1

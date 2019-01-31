@@ -93,7 +93,7 @@ app.get('*', (req, res) => {
         <link rel="icon" type="image/png" sizes="96x96" href="/resources/assets/favicons/favicon-96x96.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/resources/assets/favicons/favicon-16x16.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/resources/assets/favicons/favicon.ico" />
-        <link href="/bundle.css" rel="stylesheet" />
+        <link href="/bundle.css" rel="stylesheet" async />
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossOrigin="anonymous" />
         {styleTags}
       </head>
@@ -107,7 +107,7 @@ app.get('*', (req, res) => {
             )};`,
           }}
         />
-        <script src="/bundle.js" charSet="UTF-8" />
+        <script src="/bundle.js" charSet="UTF-8" async />
         <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5c0e4bff29290756" async />
         <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" />
       </body>
@@ -127,10 +127,10 @@ app.get('*', (req, res) => {
           styleTags={styleTags}
         />
       );
-      // const renderedHtml = ReactDOMServer.renderToStaticMarkup(html);
-      // res.send(`<!DOCTYPE html>${renderedHtml}`);
-      const renderHtml = ReactDOMServer.renderToStaticMarkup(html);
-      res.send(`<!doctype html>\n${Helmet.renderStatic(renderHtml)}`);
+      const renderedHtml = ReactDOMServer.renderToStaticMarkup(html);
+      res.send(`<!DOCTYPE html>\n${renderedHtml}`);
+      // const renderHtml = ReactDOMServer.renderToStaticMarkup(html);
+      // res.send(`<!doctype html>\n${Helmet.renderStatic(renderHtml)}`);
       res.end();
     })
     .catch(e => {

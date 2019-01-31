@@ -29,10 +29,11 @@ const BlogPageImg = ({ data, renderVideo }) => {
       <Helmet>
         <meta name="twitter:card" content="summary_large_image" />
         <meta property="og:image:type" content="image/png" />
-        <meta property="og:image" content={`${fullImage}`} />
-        <meta property="og:image:url" content={`${fullImage}`} />
-        <meta property="og:image:secure_url" content={`${fullImage}`} />
-        <meta name="twitter:image" content={`${fullImage}`} />
+        <meta property="og:image" content={fullImage} />
+        <meta property="og:image:url" content={fullImage} />
+        <meta property="og:image:secure_url" content={fullImage} />
+        <meta name="twitter:image" content={fullImage} />
+        <meta name="twitter:image:src" content={fullImage} />
       </Helmet>
       {!renderVideo && (
         <ReactImageFallback

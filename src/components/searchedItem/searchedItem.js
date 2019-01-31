@@ -26,6 +26,7 @@ const searchedItem = ({ toggleSearch, data, category, tags, media }) => {
   return (
     <div className="searched-item">
       <Link
+        onClick={() => toggleSearch()}
         className="searched-item__image"
         to={{
           pathname:
@@ -51,6 +52,7 @@ const searchedItem = ({ toggleSearch, data, category, tags, media }) => {
           data && (
             <h2 className="searched-item__title">
               <Link
+                onClick={() => toggleSearch()}
                 to={`/blog/${categoriesData[0].slug}/${data.slug}`}
                 dangerouslySetInnerHTML={{ __html: data.title }}
               />

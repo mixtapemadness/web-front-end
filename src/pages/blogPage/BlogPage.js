@@ -27,7 +27,7 @@ import {
 } from '../../constants';
 import truncate, { decodeHtml } from '../../helpers/textHelpers';
 import Shimmer from '../../components/loaders/shimmer/Shimmer';
-import PostPagination from '../../components/PostPagination';
+// import PostPagination from '../../components/PostPagination';
 
 const BlogPageVideo = styled.div`
   width: 100%;
@@ -134,7 +134,7 @@ class BlogPage extends Component {
 
     return (
       <Fragment>
-        <PostPagination {...this.props} />
+        {/* <PostPagination {...this.props} /> */}
         <Helmet>
           <title>{`Mixtape Madness ${
             postTitle !== undefined ? `| ${postTitle} ` : ''

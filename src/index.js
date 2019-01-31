@@ -2,7 +2,7 @@ import React from 'react';
 import { render } from 'react-dom';
 import { ApolloProvider } from 'react-apollo';
 import window from 'global/window';
-import document from 'global/document';
+// import document from 'global/document';
 
 import client from './apollo';
 import Router from './router';

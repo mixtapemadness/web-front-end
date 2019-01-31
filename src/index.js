@@ -11,12 +11,13 @@ import App from './App';
 import './resources/assets/scss/main.scss';
 
 const supportsHistory = 'pushState' in window.history;
-
-hydrate(
-  <ApolloProvider client={client}>
-    <Router forceRefresh={!supportsHistory}>
-      <App />
-    </Router>
-  </ApolloProvider>,
-  document.querySelector('#root'),
-);
+if (typeof window !== 'undefined') {
+  hydrate(
+    <ApolloProvider client={client}>
+      <Router forceRefresh={!supportsHistory}>
+        <App />
+      </Router>
+    </ApolloProvider>,
+    document.querySelector('#root'),
+  );
+}

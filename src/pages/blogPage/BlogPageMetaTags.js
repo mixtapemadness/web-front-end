@@ -1,21 +1,21 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import window from 'global';
-import { TWITTER_HANDLE } from '../../constants';
+import { TWITTER_HANDLE, SEO } from '../../constants';
 
 const BlogPageMetaTags = ({
-  description, postTitle, keywords = [],
+  description = SEO.description, postTitle, keywords = [], type = 'website', url,
 }) => (
   <Helmet>
     <title>{`Mixtape Madness ${
       postTitle ? `| ${postTitle} ` : ''
     }`}
     </title>
-    <meta property="og:type" content="article" />
-
+    <meta property="og:type" content={type} />
+    <meta property="og:locale" content="en_UK" />
     <meta
       property="og:url"
-      content={window.location ? window.location.href : ''}
+      content={url || (window.location ? window.location.href : '')}
     />
     <meta
       property="og:title"
@@ -25,8 +25,7 @@ const BlogPageMetaTags = ({
       property="og:description"
       content={`${description}`}
     />
-    <link rel="canonical" href={window.location} />
-    {keywords.map(word => <meta property="article:tag" key={word} content={word} />)}
+    <link rel="canonical" href={url || (window.location ? window.location.href : '')} />
     <meta name="twitter:title" content={postTitle} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content={TWITTER_HANDLE} />

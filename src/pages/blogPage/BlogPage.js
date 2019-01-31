@@ -130,7 +130,7 @@ class BlogPage extends Component {
 
     return (
       <Fragment>
-        <BlogPageMetaTags description={Excerpt.replace(noHTML, '')} postTitle={postTitle} keywords={postData.tags} canonical={postUrl} />
+        <BlogPageMetaTags description={Excerpt.replace(noHTML, '')} postTitle={postTitle} canonical={postUrl} type="article" />
         {/* <PostPagination {...this.props} /> */}
 
         <div className="post container">

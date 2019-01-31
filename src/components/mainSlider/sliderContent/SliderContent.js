@@ -93,10 +93,8 @@ const FlexDiv = styled.div`
   justify-content: flex-end;
   display: flex;
   flex-direction: column;
-    padding-bottom: 60px;
-        text-shadow: 2px 2px #000;
-  @media only screen and (min-width: ${RESPONSIVE_BREAKPOINTS.tablet}) {
-  }
+  padding-bottom: 60px;
+  text-shadow: 1px 1px #000;
 `;
 
 const MainSlider = ({ tags, media, category, data }) => {

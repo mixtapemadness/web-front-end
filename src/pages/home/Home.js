@@ -20,7 +20,6 @@ const Home = ({ sliderData }) => (
     {sliderData
     && sliderData.Posts && (
       <LazyLoad height={400} once offsetVertical={0}>
-
         <MainSlider data={sliderData.Posts} />
       </LazyLoad>
     )}

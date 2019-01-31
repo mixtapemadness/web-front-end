@@ -31,7 +31,7 @@ const settings = {
       settings: {
         infinite: true,
         dots: false,
-        autoplay: true,
+        autoplay: false,
         arrows: true,
         centerMode: false,
         slidesToShow: 1,

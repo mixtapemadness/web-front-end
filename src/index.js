@@ -1,5 +1,5 @@
 import React from 'react';
-import { hydrate } from 'react-dom';
+import { render } from 'react-dom';
 import { ApolloProvider } from 'react-apollo';
 import window from 'global/window';
 import document from 'global/document';
@@ -12,7 +12,7 @@ import './resources/assets/scss/main.scss';
 
 const supportsHistory = 'pushState' in window.history;
 
-hydrate(
+render(
   <ApolloProvider client={client}>
     <Router forceRefresh={!supportsHistory}>
       <App />

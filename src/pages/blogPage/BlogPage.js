@@ -9,7 +9,6 @@
 
 import React, { Fragment, Component } from 'react';
 import styled from 'styled-components';
-// import AdSense from 'react-adsense';
 
 import ReactDisqusComments from 'react-disqus-comments';
 import YouMayLike from 'components/youMayLike';

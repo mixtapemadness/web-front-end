@@ -7,6 +7,10 @@
     "window": true,
     "document": true
   },
+  "env": {
+    "browser": true,
+    "node": true
+  },
   "rules": {
     "react/require-default-props": 0,
     "max-len": ["warn", 500],

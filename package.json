@@ -103,7 +103,6 @@
     "history": "4.7.2",
     "image-exists": "1.1.0",
     "isomorphic-fetch": "2.2.1",
-    "jsdom": "13.2.0",
     "moment": "2.23.0",
     "node-fetch": "2.2.0",
     "node-sass": "4.11.0",

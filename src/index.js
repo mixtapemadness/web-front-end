@@ -11,6 +11,7 @@ import App from './App';
 import './resources/assets/scss/main.scss';
 
 const supportsHistory = 'pushState' in window.history;
+
 hydrate(
   <ApolloProvider client={client}>
     <Router forceRefresh={!supportsHistory}>

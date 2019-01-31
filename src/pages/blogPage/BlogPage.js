@@ -6,6 +6,7 @@
 /* eslint no-unneeded-ternary: 0 */
 /* eslint implicit-arrow-linebreak: 0 */
 /* eslint react/jsx-closing-tag-location: 0 */
+/* @global document */
 
 import React, { Fragment, Component } from 'react';
 import styled from 'styled-components';
@@ -27,7 +28,6 @@ import {
 } from '../../constants';
 import truncate, { decodeHtml } from '../../helpers/textHelpers';
 import Shimmer from '../../components/loaders/shimmer/Shimmer';
-// import PostPagination from '../../components/PostPagination';
 
 const BlogPageVideo = styled.div`
   width: 100%;

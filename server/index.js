@@ -3,6 +3,7 @@
 /* eslint react/self-closing-comp: 0 */
 /* eslint no-undef: 0 */
 /* eslint no-return-assign: 0 */
+/* eslint no-unused-vars: 0 */
 
 import 'isomorphic-fetch';
 import express from 'express';
@@ -24,7 +25,7 @@ import App from '../src/App';
 
 const app = express();
 const PORT = process.env.PORT || 8003;
-
+let adsbygoogle = [];
 app.use(bodyParser.json());
 app.use(express.static('dist/client'));
 

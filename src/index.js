@@ -13,7 +13,6 @@ import 'resources/assets/scss/main.scss';
 const supportsHistory = 'pushState' in window.history;
 
 if (document && typeof document !== 'undefined') {
-  console.log(document);
   hydrate(
     <ApolloProvider client={client}>
       <Router forceRefresh={!supportsHistory}>

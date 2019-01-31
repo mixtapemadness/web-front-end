@@ -6,7 +6,6 @@
 /* eslint no-unneeded-ternary: 0 */
 /* eslint implicit-arrow-linebreak: 0 */
 /* eslint react/jsx-closing-tag-location: 0 */
-/* @global document */
 
 import React, { Fragment, Component } from 'react';
 import styled from 'styled-components';
@@ -59,18 +58,14 @@ const pathname = window.location ? window.location.pathname : '';
 
 class BlogPage extends Component {
   componentDidMount() {
-    // (window.adsbygoogle = window.adsbygoogle || []).push({});
   }
 
   render() {
     const {
-      width,
       data,
       user,
       match,
-      nextRoute,
       prevRoute,
-      location,
       showSpinner,
     } = this.props;
     const userName = user && user.user && user.user.name && user.user.name;

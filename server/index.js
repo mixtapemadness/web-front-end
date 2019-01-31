@@ -127,10 +127,10 @@ app.get('*', (req, res) => {
           styleTags={styleTags}
         />
       );
-      const renderedHtml = ReactDOMServer.renderToStaticMarkup(html);
-      res.send(`<!DOCTYPE html>\n${renderedHtml}`);
-      // const renderHtml = ReactDOMServer.renderToStaticMarkup(html)
-      // res.send(`<!doctype html>\n${Helmet.renderStatic(renderHtml)}`)
+      // const renderedHtml = ReactDOMServer.renderToStaticMarkup(html);
+      // res.send(`<!DOCTYPE html>${renderedHtml}`);
+      const renderHtml = ReactDOMServer.renderToStaticMarkup(html);
+      res.send(`<!doctype html>\n${Helmet.renderStatic(renderHtml)}`);
       res.end();
     })
     .catch(e => {

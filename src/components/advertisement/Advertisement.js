@@ -1,7 +1,4 @@
 import React, { Component } from 'react';
-// import AdSense from 'react-adsense';
-
-// import BackgroundImage from 'resources/assets/img/music.jpg';
 
 class Advertisement extends Component {
   componentDidMount() {

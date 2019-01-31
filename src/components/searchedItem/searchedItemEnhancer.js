@@ -16,8 +16,6 @@ export default compose(
       }),
     },
   ),
-  lifecycle({
-  }),
   branch(({ data }) => (data ? true : false), withMedia),
   branch(({ data }) => (data ? true : false), withTags),
   branch(({ data }) => (data ? true : false), withCategory),

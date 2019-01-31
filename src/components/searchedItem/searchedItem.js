@@ -16,7 +16,7 @@ import searchedItemEnhancer from './searchedItemEnhancer';
 import placeholderImg from '../../resources/assets/img/placeholderImg.jpg';
 import CardLoader from '../loaders/CardLoader';
 
-const searchedItem = ({ toggleSearch, data, category, tags, media, color }) => {
+const searchedItem = ({ toggleSearch, data, category, tags, media }) => {
   const categoriesData = category && category.category && category.category;
   const tagsData = tags && tags.tags && tags.tags;
   const Image = media && media.img && media.img.full && media.img.full;
@@ -36,7 +36,6 @@ const searchedItem = ({ toggleSearch, data, category, tags, media, color }) => {
             prevPath: window.location ? window.location.pathname : '',
           },
         }}
-        onClick={() => toggleSearch()}
       >
         <ReactImageFallback
           src={Image && Image}
@@ -52,10 +51,8 @@ const searchedItem = ({ toggleSearch, data, category, tags, media, color }) => {
           data && (
             <h2 className="searched-item__title">
               <Link
-                color={color}
                 to={`/blog/${categoriesData[0].slug}/${data.slug}`}
                 dangerouslySetInnerHTML={{ __html: data.title }}
-                onClick={() => toggleSearch()}
               />
             </h2>
           )}

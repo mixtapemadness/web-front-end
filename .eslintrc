@@ -9,7 +9,8 @@
   },
   "env": {
     "browser": true,
-    "node": true
+    "node": true,
+    "jasmine": true
   },
   "rules": {
     "react/require-default-props": 0,

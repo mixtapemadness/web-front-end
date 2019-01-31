@@ -18,6 +18,12 @@ import { ServerStyleSheet } from 'styled-components';
 import { Helmet } from 'react-helmet';
 import config from '../config';
 import App from '../src/App';
+import 'global/document';
+
+const jsdom = require('jsdom');
+
+const { JSDOM } = jsdom;
+
 
 const app = express();
 const PORT = process.env.PORT || 8003;
@@ -127,7 +133,7 @@ app.get('*', (req, res) => {
         />
       );
       const renderedHtml = ReactDOMServer.renderToStaticMarkup(html);
-      res.send(`<!doctype html>\n${renderedHtml}`);
+      res.send(new JSDOM(`<!doctype html>\n${renderedHtml}`));
       // const renderHtml = ReactDOMServer.renderToStaticMarkup(html)
       // res.send(`<!doctype html>\n${Helmet.renderStatic(renderHtml)}`)
       res.end();

@@ -1,6 +1,8 @@
 /* eslint react/no-danger: 0 */
 /* eslint object-curly-newline: 0 */
 /* eslint react/self-closing-comp: 0 */
+/* eslint no-undef: 0 */
+/* eslint no-return-assign: 0 */
 
 import 'isomorphic-fetch';
 import express from 'express';
@@ -69,7 +71,6 @@ app.get('*', (req, res) => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="robots" content="index,follow" />
         <meta name="googlebot" content="index,follow" />
-        <meta name="keywords" content="mixtape madness, uk, urban music, mad about bars, next up, 1take" />
         {helmet.meta.toString()}
         {helmet.link.toString()}
         {helmet.title.toString()}
@@ -90,6 +91,15 @@ app.get('*', (req, res) => {
         <script src="/bundle.js" charSet="UTF-8" async />
         <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5c0e4bff29290756" async />
         <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" />
+        <script dangerouslySetInnerHTML={{
+          __html: `${JSON.stringify(
+            (adsbygoogle = window.adsbygoogle || []).push({
+              google_ad_client: 'ca-pub-9403258914718395',
+              enable_page_level_ads: true,
+            }),
+          )};`,
+        }}
+        />
       </body>
     </html>
   );

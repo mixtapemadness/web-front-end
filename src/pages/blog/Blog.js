@@ -8,19 +8,22 @@
 /* eslint indent: 0 */
 /* eslint no-plusplus: 0 */
 
-import React from 'react';
+import React, { Fragment } from 'react';
 import styled from 'styled-components';
+
 import PostItem from 'components/postItem';
 import Subscribe from 'components/subscribe';
 import { CardLoader } from 'components/loaders';
 import Spinner from 'components/Spinner';
 import TopVideoPosts from './TopVideoPosts';
+
 import BlogSlider from './BlogSlider';
 import BlogFilter from './BlogFilter';
 
 import blogsEnhancer from './blogEnhancer';
 import Page from '../Page';
 import Button from '../../components/Button/Button';
+import BlogPageMetaTags from '../blogPage/BlogPageMetaTags';
 
 const SubscribeContainer = styled.div`
   width: 100%;
@@ -53,33 +56,36 @@ const Blog = ({ data, page, handleLoadMore, match, isMoreData }) => {
   const Data = data.Posts && data.Posts.length > 0 && data.Posts;
   let index = 0;
   return (
-    <div className="category-page">
-      <div className="category-page__header">
-        <div className="container">
-          <h2 className="category-page__title">{match.params.filter}</h2>
+    <Fragment>
+      <BlogPageMetaTags postTitle={match.params.filter} description={match.params.filter} />
+      <div className="category-page">
+        <div className="category-page__header">
+          <div className="container">
+            <h2 className="category-page__title">{match.params.filter}</h2>
+          </div>
         </div>
+        {/* <BlogSlider /> */}
+        <Page>
+          {/* <BlogFilter match={match} /> */}
+          <div className="category-page__posts">
+            {data.loading &&
+            [...Array(9)].map(i => (
+              <CardLoader key={`${index++}-blog-loader`} />
+            ))}
+            {!data.loading && (Data && <PostItems items={Data} />)}
+          </div>
+          <ShowMoreContainer>
+            {!data.loading ? (
+              <Button onClick={handleLoadMore}>
+                {`See More ${match.params.filter}`}
+              </Button>
+            ) : (
+              <Spinner />
+            )}
+          </ShowMoreContainer>
+        </Page>
       </div>
-      {/* <BlogSlider /> */}
-      <Page>
-        {/* <BlogFilter match={match} /> */}
-        <div className="category-page__posts">
-          {data.loading &&
-          [...Array(9)].map(i => (
-            <CardLoader key={`${index++}-blog-loader`} />
-          ))}
-          {!data.loading && (Data && <PostItems items={Data} />)}
-        </div>
-        <ShowMoreContainer>
-          {!data.loading ? (
-            <Button onClick={handleLoadMore}>
-              {`See More ${match.params.filter}`}
-            </Button>
-          ) : (
-            <Spinner />
-          )}
-        </ShowMoreContainer>
-      </Page>
-    </div>
+    </Fragment>
   );
 };
 

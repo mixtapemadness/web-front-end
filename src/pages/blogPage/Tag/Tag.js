@@ -7,6 +7,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 import tagEnhancer from './tagEnhancer';
 
 const TagItem = styled(Link)`
@@ -20,7 +21,14 @@ const TagItem = styled(Link)`
 const Tag = ({ data }) => {
   const TagName = data && data.tag && data.tag.name;
   const Slug = data && data.tag && data.tag.slug;
-  return <TagItem to={`/searchresult/all/${Slug}`}>{TagName}</TagItem>;
+  return (
+    <div>
+      <Helmet>
+        {<meta property="article:tag" content={TagName} />}
+      </Helmet>
+      <TagItem to={`/searchresult/all/${Slug}`}>{TagName}</TagItem>
+    </div>
+  );
 };
 
 export default tagEnhancer(Tag);

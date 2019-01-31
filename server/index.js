@@ -116,8 +116,7 @@ app.get('*', async (req, res) => {
     .then(content => {
       const styleTags = sheet.getStyleElement();
       res.status(200);
-      const helmet = Helmet.renderStatic();
-
+      const { helmet } = helmetContext;
       const html = (
         <Html
           content={content}
@@ -127,7 +126,6 @@ app.get('*', async (req, res) => {
         />
       );
       const renderedHtml = ReactDOMServer.renderToStaticMarkup(html);
-      Helmet.renderStatic();
       res.send(`<!DOCTYPE html>\n${renderedHtml}`);
       // const renderHtml = ReactDOMServer.renderToStaticMarkup(html);
       // res.send(`<!doctype html>\n${Helmet.renderStatic(renderHtml)}`);

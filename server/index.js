@@ -108,10 +108,12 @@ app.get('*', (req, res) => {
     .then(content => {
       const styleTags = sheet.getStyleElement();
       res.status(200);
+      const helmet = Helmet.renderStatic();
+
       const html = (
         <Html
           content={content}
-          helmet={Helmet}
+          helmet={helmet}
           client={client}
           styleTags={styleTags}
         />

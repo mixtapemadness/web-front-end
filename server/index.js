@@ -9,6 +9,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
+import window from 'global/window';
 import { StaticRouter } from 'react-router';
 import { ApolloProvider, renderToStringWithData } from 'react-apollo';
 import { ApolloLink } from 'apollo-link';

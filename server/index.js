@@ -9,7 +9,7 @@ import 'isomorphic-fetch';
 import express from 'express';
 import bodyParser from 'body-parser';
 import React from 'react';
-import ReactDOMServer from 'react-dom/server';
+import ReactDOMServer, { renderToString } from 'react-dom/server';
 import Helmet, { HelmetProvider } from 'react-helmet-async';
 import window from 'global/window';
 import { StaticRouter } from 'react-router';
@@ -31,7 +31,7 @@ const helmetContext = {};
 app.use(bodyParser.json());
 app.use(express.static('dist/client'));
 
-app.get('*', async (req, res) => {
+app.get('*', (req, res) => {
   const errorLink = onError(({ graphQLErrors, networkError }) => {
     if (graphQLErrors) {
       graphQLErrors.forEach(({ message, locations, path }) => {
@@ -68,8 +68,6 @@ app.get('*', async (req, res) => {
       </ApolloProvider>
     </HelmetProvider>
   );
-
-  await getDataFromTree(component);
 
   const Html = ({ content, helmet, styleTags, client: { cache } }) => (
     <html lang="en">
@@ -111,21 +109,22 @@ app.get('*', async (req, res) => {
     </html>
   );
 
+
   renderToStringWithData(sheet.collectStyles(component))
     .then(content => {
       const styleTags = sheet.getStyleElement();
-      res.status(200);
+      const updatedContent = ReactDOMServer.renderToString(content);
       const { helmet } = helmetContext;
       const html = (
         <Html
-          content={content}
+          content={updatedContent}
           helmet={helmet}
           client={client}
           styleTags={styleTags}
         />
       );
-      const renderedHtml = ReactDOMServer.renderToStaticMarkup(html);
-      res.send(`<!DOCTYPE html>\n${renderedHtml}`);
+      // const renderedHtml = ReactDOMServer.renderToString(html);
+      res.send(`<!DOCTYPE html>\n${html}`);
       // const renderHtml = ReactDOMServer.renderToStaticMarkup(html);
       // res.send(`<!doctype html>\n${Helmet.renderStatic(renderHtml)}`);
       res.end();

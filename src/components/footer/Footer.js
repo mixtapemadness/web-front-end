@@ -5,12 +5,12 @@
 
 import React from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 
 
 import SocialIcons from 'components/SocialIcons';
 import { CLOSE_MEGAMENU, SOCIAL_MEDIA, ROUTES } from 'constants';
 import MobileFooter from './MobileFooter';
+import FooterLinks from './FooterLinks';
 import { RESPONSIVE_BREAKPOINTS } from '../../constants';
 
 const FooterContainer = styled.footer`
@@ -49,23 +49,6 @@ const ContentHeader = styled.span`
   font-size: 16px;
   color: #000000;
   font-weight: 600;
-`;
-
-const List = styled.ul`
-  margin: 0;
-  padding: 0;
-  color: #666;
-  display: flex;
-  align-items: center;
-  margin-bottom: 20px;
-      justify-content: center;
-`;
-
-const ListItem = styled.li`
-  margin: 0 20px;
-  list-style: none;
-  font-size: 14px;
-  display: inline-block;
 `;
 
 const SignUpContainer = styled.div`
@@ -151,23 +134,7 @@ const Footer = ({ width, menuOpened }) => (
     <FooterContainer menuOpened={menuOpened}>
       <ContentContainer>
         <ListContainer>
-          <List menuOpened={menuOpened}>
-            <ListItem>
-              <Link to={ROUTES.about}>About Us</Link>
-            </ListItem>
-            <ListItem>
-              <Link to={ROUTES.termsAndConditions}>Terms & Conditions</Link>
-            </ListItem>
-            <ListItem>
-              <Link to={ROUTES.privacyPolicy}>Privacy Policy</Link>
-            </ListItem>
-            <ListItem>
-              <Link to={ROUTES.faqs}>FAQs</Link>
-            </ListItem>
-            <ListItem>
-              <Link to={ROUTES.contactUs}>Contact Us</Link>
-            </ListItem>
-          </List>
+          <FooterLinks />
         </ListContainer>
         <NewsletterContainer>
           <ContentHeader menuOpened={menuOpened}>

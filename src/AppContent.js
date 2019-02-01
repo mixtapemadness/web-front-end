@@ -19,6 +19,7 @@ import PrivacyAndPolicy from 'pages/privacyAndPolicy';
 import TermsAndConditions from 'pages/termsAndConditions';
 import Footer from 'components/footer';
 import GA from 'components/googleAnalytics';
+import Contact from './pages/contact';
 import { ROUTES } from './constants';
 import './App.scss';
 
@@ -31,14 +32,15 @@ const AppContent = ({ searchOpened, toggleSearch, menuOpened }) => (
         <Route exact path="/blog/category/:filter" component={Blog} />
         <Route path="/blog/:category/:slug" component={BlogPage} />
         <Route path={ROUTES.about} component={AboutUs} />
+        <Route path={ROUTES.contactUs} component={Contact} />
         <Route path="/author/:slug" component={AuthorPage} />
         <Route path="/events" component={EventPage} />
         <Route path="/music" component={Music} />
         <Route path="/music-profile/:slug" component={MusicProfilePage} />
         <Route path="/team" component={TeamPage} />
         <Route path="/moremenu" component={MoreMenu} />
-        <Route path="/termsconditions" component={TermsAndConditions} />
-        <Route path="/privacy" component={PrivacyAndPolicy} />
+        <Route path={ROUTES.termsAndConditions} component={TermsAndConditions} />
+        <Route path={ROUTES.privacyPolicy} component={PrivacyAndPolicy} />
         <Route path="/searchresult/:category/:key" component={SearchResult} />
         <Route path="/login" component={() => <SignForm type="login" />} />
         <Route

@@ -9,6 +9,8 @@ import 'isomorphic-fetch';
 import express from 'express';
 import bodyParser from 'body-parser';
 import React from 'react';
+import window from 'global/window';
+
 import ReactDOMServer from 'react-dom/server';
 import { StaticRouter } from 'react-router';
 import { ApolloProvider, renderToStringWithData } from 'react-apollo';

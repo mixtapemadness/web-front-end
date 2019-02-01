@@ -69,15 +69,15 @@ app.get('*', async (req, res) => {
     </HelmetProvider>
   );
 
-  const updatedComponent = await getDataFromTree(component);
+  await getDataFromTree(component);
 
   const Html = ({ content, helmet, styleTags, client: { cache } }) => (
     <html lang="en">
       <head>
-        {helmet.meta.toString()}
-        {helmet.link.toString()}
-        {helmet.title.toString()}
-        <title>Mixtape Madness</title>
+        {helmet.meta.toComponent()}
+        {helmet.link.toComponent()}
+        {helmet.title.toComponent()}
+        <title> </title>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="robots" content="index,follow" />
@@ -112,27 +112,26 @@ app.get('*', async (req, res) => {
     </html>
   );
 
-
-  renderToStringWithData(sheet.collectStyles(updatedComponent))
+  renderToStringWithData(sheet.collectStyles(component))
     .then(content => {
       const styleTags = sheet.getStyleElement();
-      const htmlContent = ReactDOMServer.renderToString(content);
+      res.status(200);
       const helmet = Helmet.renderStatic();
-
-      // const { helmet } = helmetContext;
 
       const html = (
         <Html
-          content={htmlContent}
+          content={content}
           helmet={helmet}
           client={client}
           styleTags={styleTags}
         />
       );
-      res.send(`<!DOCTYPE html>\n${html}`);
+      const renderedHtml = ReactDOMServer.renderToStaticMarkup(html);
+      Helmet.renderStatic();
+      res.send(`<!DOCTYPE html>\n${renderedHtml}`);
       // const renderHtml = ReactDOMServer.renderToStaticMarkup(html);
       // res.send(`<!doctype html>\n${Helmet.renderStatic(renderHtml)}`);
-      // res.end();
+      res.end();
     })
     .catch(e => {
       console.error('RENDERING ERROR:', e);

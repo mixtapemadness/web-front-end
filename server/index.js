@@ -74,10 +74,9 @@ app.get('*', async (req, res) => {
   const Html = ({ content, helmet, styleTags, client: { cache } }) => (
     <html lang="en">
       <head>
-        {helmet.meta.toComponent()}
-        {helmet.link.toComponent()}
-        {helmet.title.toComponent()}
-        <title> </title>
+        {helmet.meta.toString()}
+        {helmet.link.toString()}
+        {helmet.title.toString()}
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="robots" content="index,follow" />

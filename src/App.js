@@ -4,10 +4,10 @@ import Helmet, { HelmetProvider } from 'react-helmet-async';
 import { compose, withStateHandlers, lifecycle } from 'recompose';
 
 import Header from 'components/header';
-import { BRAND_COLOURS, CLOSE_MEGAMENU } from 'constants';
+import { BRAND_COLOURS, CLOSE_MEGAMENU, SEO } from 'constants';
 import AppContent from './AppContent';
 import getEmitter from './eventEmitter';
-// import BlogPageMetaTags from './pages/blogPage/BlogPageMetaTags';
+import BlogPageMetaTags from './pages/blogPage/BlogPageMetaTags';
 
 const eventEmitter = getEmitter();
 
@@ -48,7 +48,7 @@ const App = (props) => {
           <link rel="mask-icon" href="/resources/assets/favicons/safari-pinned-tab.svg" color={BRAND_COLOURS.orange} />
         </Helmet>
       </HelmetProvider>
-      {/* <BlogPageMetaTags postTitle={SEO.title} description={SEO.description} keywords={SEO.keywords} /> */}
+       <BlogPageMetaTags postTitle={SEO.title} description={SEO.description} keywords={SEO.keywords} />
       <Header
         toggleSearch={toggleSearch}
         menuOpened={menuOpened}

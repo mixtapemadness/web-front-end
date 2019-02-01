@@ -13,11 +13,11 @@ export const RESPONSIVE_BREAKPOINTS = {
 };
 
 export const ROUTES = {
-  about: 'about',
-  termsAndConditions: 'terms',
-  privacyPolicy: 'privacy-policy',
-  faqs: 'faqs',
-  contactUs: 'contact-us',
+  about: '/about',
+  termsAndConditions: '/terms',
+  privacyPolicy: '/privacy-policy',
+  faqs: '/faqs',
+  contactUs: '/contact-us',
   blog: 'blog/category/',
   categories: {
     articles: '/blog/category/articles',
@@ -34,6 +34,12 @@ export const ROUTES = {
   },
 };
 
+export const CONTACT_DETAILS = {
+  marketingEmail: 'info@mixtapemadness.com',
+  submissionsEmail: 'submissions@mixtapemadness.com',
+  generalEnquires: 'info@mixtapemadness.com',
+  producersEmail: 'beats@mixtapemadness.com',
+};
 export const SOCIAL_MEDIA = {
   twitter: 'https://twitter.com/mixtapemadness',
   facebook: 'https://www.facebook.com/MixtapeMadnessUK',
@@ -41,8 +47,9 @@ export const SOCIAL_MEDIA = {
   youtube: 'https://www.youtube.com/user/madaboutmixtapes',
   instagram: 'https://www.instagram.com/mixtapemadness/',
   spotify: 'https://open.spotify.com/artist/4ocdD0Bi1syVqLs1GiHqQ9',
-  email: 'info@mixtapemadness.com',
+  email: CONTACT_DETAILS.generalEnquires,
 };
+
 
 export const BRAND_COLOURS = {
   orange: '#ff9600',

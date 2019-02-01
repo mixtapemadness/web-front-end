@@ -23,6 +23,7 @@ import { ServerStyleSheet } from 'styled-components';
 import { Helmet } from 'react-helmet';
 import config from '../config';
 import App from '../src/App';
+import { SEO } from '../src/constants';
 
 const app = express();
 const PORT = process.env.PORT || 8003;
@@ -75,6 +76,8 @@ app.get('*', (req, res) => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="robots" content="index,follow" />
         <meta name="googlebot" content="index,follow" />
+        <meta name="description" content={SEO.description} />
+        <meta name="keywords" content={SEO.keywords} />
         {helmet.meta.toComponent()}
         {helmet.link.toComponent()}
         {helmet.title.toComponent()}

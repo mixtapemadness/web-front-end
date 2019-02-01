@@ -73,9 +73,9 @@ app.get('*', (req, res) => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="robots" content="index,follow" />
         <meta name="googlebot" content="index,follow" />
-        {helmet.meta.toString()}
-        {helmet.link.toString()}
-        {helmet.title.toString()}
+        {helmet.meta.toComponent()}
+        {helmet.link.toComponent()}
+        {helmet.title.toComponent()}
         <link href="/bundle.css" rel="stylesheet" async />
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossOrigin="anonymous" />
         {styleTags}

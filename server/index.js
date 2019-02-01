@@ -9,7 +9,7 @@ import 'isomorphic-fetch';
 import express from 'express';
 import bodyParser from 'body-parser';
 import React from 'react';
-import ReactDOMServer, { renderToString } from 'react-dom/server';
+import ReactDOMServer from 'react-dom/server';
 import Helmet, { HelmetProvider } from 'react-helmet-async';
 import window from 'global/window';
 import { StaticRouter } from 'react-router';
@@ -31,7 +31,7 @@ const helmetContext = {};
 app.use(bodyParser.json());
 app.use(express.static('dist/client'));
 
-app.get('*', (req, res) => {
+app.get('*', async (req, res) => {
   const errorLink = onError(({ graphQLErrors, networkError }) => {
     if (graphQLErrors) {
       graphQLErrors.forEach(({ message, locations, path }) => {
@@ -69,12 +69,15 @@ app.get('*', (req, res) => {
     </HelmetProvider>
   );
 
+  const updatedComponent = await getDataFromTree(component);
+
   const Html = ({ content, helmet, styleTags, client: { cache } }) => (
     <html lang="en">
       <head>
         {helmet.meta.toString()}
         {helmet.link.toString()}
         {helmet.title.toString()}
+        <title>Mixtape Madness</title>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="robots" content="index,follow" />
@@ -110,24 +113,26 @@ app.get('*', (req, res) => {
   );
 
 
-  renderToStringWithData(sheet.collectStyles(component))
+  renderToStringWithData(sheet.collectStyles(updatedComponent))
     .then(content => {
       const styleTags = sheet.getStyleElement();
-      const updatedContent = ReactDOMServer.renderToString(content);
-      const { helmet } = helmetContext;
+      const htmlContent = ReactDOMServer.renderToString(content);
+      const helmet = Helmet.renderStatic();
+
+      // const { helmet } = helmetContext;
+
       const html = (
         <Html
-          content={updatedContent}
+          content={htmlContent}
           helmet={helmet}
           client={client}
           styleTags={styleTags}
         />
       );
-      // const renderedHtml = ReactDOMServer.renderToString(html);
       res.send(`<!DOCTYPE html>\n${html}`);
       // const renderHtml = ReactDOMServer.renderToStaticMarkup(html);
       // res.send(`<!doctype html>\n${Helmet.renderStatic(renderHtml)}`);
-      res.end();
+      // res.end();
     })
     .catch(e => {
       console.error('RENDERING ERROR:', e);

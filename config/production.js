@@ -1,6 +1,6 @@
 module.exports = {
-  apiUrl: 'https://mixtapemadness.com:8001',
-  apiSocketUrl: 'https://mixtapemadness.com:8006',
-  apiGraphqlUrl: 'https://mixtapemadness.com/graphql',
-  avatarsUrl: 'https://mixtapemadness.com/graphql/avatars',
+  apiUrl: 'https://www.mixtapemadness.com',
+  apiSocketUrl: 'https://www.mixtapemadness.com:8006',
+  apiGraphqlUrl: 'https://www.mixtapemadness.com/graphql',
+  avatarsUrl: 'https://www.mixtapemadness.com/graphql/avatars',
 };

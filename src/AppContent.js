@@ -31,6 +31,7 @@ const AppContent = ({ searchOpened, toggleSearch, menuOpened }) => (
         <Route exact path="/" component={Home} />
         <Route exact path="/blog/category/:filter" component={Blog} />
         <Route path="/blog/:category/:slug" component={BlogPage} />
+        <Route path="/blog" component={Home} />
         <Route path={ROUTES.about} component={AboutUs} />
         <Route path={ROUTES.contactUs} component={Contact} />
         <Route path="/author/:slug" component={AuthorPage} />

@@ -13,7 +13,7 @@ import window from 'global/window';
 
 import ReactDOMServer from 'react-dom/server';
 import { StaticRouter } from 'react-router';
-import { ApolloProvider, renderToStringWithData } from 'react-apollo';
+import { ApolloProvider, renderToStringWithData, getDataFromTree } from 'react-apollo';
 import { ApolloLink } from 'apollo-link';
 import { ApolloClient } from 'apollo-client';
 import { InMemoryCache } from 'apollo-cache-inmemory';
@@ -32,7 +32,7 @@ let adsbygoogle = [];
 app.use(bodyParser.json());
 app.use(express.static('dist/client'));
 
-app.get('*', (req, res) => {
+app.get('*', async (req, res) => {
   const errorLink = onError(({ graphQLErrors, networkError }) => {
     if (graphQLErrors) {
       graphQLErrors.forEach(({ message, locations, path }) => {
@@ -68,11 +68,15 @@ app.get('*', (req, res) => {
     </ApolloProvider>
   );
 
-  const Html = ({ content, helmet, styleTags, client: { cache } }) => (
+  await getDataFromTree(component);
+
+
+  const Html = ({ content, helmet, styleTags, client: { cache }, state }) => (
     <html lang="en">
       <head>
         <title>Mixtape Madness | UKs Number 1 For Urban Music & Entertainment</title>
         <meta charSet="UTF-8" />
+        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="robots" content="index,follow" />
         <meta name="googlebot" content="index,follow" />
@@ -81,7 +85,7 @@ app.get('*', (req, res) => {
         {helmet.meta.toComponent()}
         {helmet.link.toComponent()}
         {helmet.title.toComponent()}
-        <link href="/bundle.css" rel="stylesheet" async />
+        <link href="/bundle.css" rel="stylesheet" />
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossOrigin="anonymous" />
         {styleTags}
       </head>
@@ -90,12 +94,10 @@ app.get('*', (req, res) => {
         <script
           charSet="UTF-8"
           dangerouslySetInnerHTML={{
-            __html: `window.__APOLLO_STATE__=${JSON.stringify(
-              cache.extract(),
-            )};`,
+            __html: `window.__APOLLO_STATE__=${JSON.stringify(state).replace(/</g, '\\u003c')};`,
           }}
         />
-        <script src="/bundle.js" charSet="UTF-8" async />
+        <script src="/bundle.js" charSet="UTF-8" />
         <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5c0e4bff29290756" async />
         <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" />
         <script dangerouslySetInnerHTML={{
@@ -114,18 +116,21 @@ app.get('*', (req, res) => {
   renderToStringWithData(sheet.collectStyles(component))
     .then(content => {
       const styleTags = sheet.getStyleElement();
-      res.status(200);
       const helmet = Helmet.renderStatic();
+      const initialState = client.extract();
+      console.log(initialState);
       const html = (
         <Html
           content={content}
           helmet={helmet}
           client={client}
+          state={initialState}
           styleTags={styleTags}
         />
       );
+      res.status(200);
+
       const renderedHtml = ReactDOMServer.renderToStaticMarkup(html);
-      Helmet.renderStatic();
       res.send(`<!DOCTYPE html>\n${renderedHtml}`);
       // const renderHtml = ReactDOMServer.renderToStaticMarkup(html);
       // res.send(`<!doctype html>\n${Helmet.renderStatic(renderHtml)}`);

@@ -110,95 +110,79 @@ class BlogPage extends Component {
         .replace('iframe', 'embed');
     const disablePrev = !prevRoute;
     const renderVideo = !!(data && !data.loading && isVideo && Video);
-    const postUrl = `/${ROUTES.blog}${match.params.category}`;
-
-    // if (showSpinner || !data || !Description || !categories || !postData) {
-    //   return (
-    //     <div className="container">
-    //       <Shimmer mt={12} size={14} fullWidth />
-    //       <Shimmer mt={12} size={12} fullWidth />
-    //       <Shimmer size={400} mt={15} fullWidth />
-    //       <Shimmer mt={12} size={14} fullWidth />
-    //       <Shimmer mt={12} size={12} fullWidth />
-    //       <Shimmer mt={12} size={14} fullWidth />
-    //       <Shimmer mt={12} size={12} fullWidth />
-    //       <Shimmer mt={12} size={14} fullWidth />
-    //       <Shimmer mt={12} size={12} fullWidth />
-    //     </div>
-    //   );
-    // }
-
-    if (postData) {
+    if (showSpinner || !data || !Description || !categories || !postData) {
       return (
-        <Fragment>
-          <BlogPageMetaTags description={Excerpt.replace(noHTML, '')} postTitle={postTitle} canonical={postUrl} type="article" />
-          {/* <PostPagination {...this.props} /> */}
-
-          <div className="post container">
-            <header className="post__heading">
-              <Link className="post__category-link" to={postUrl}>
-                {match.params.category}
-              </Link>
-              <h1
-                className="post__title"
-                dangerouslySetInnerHTML={{ __html: postData.title }}
-              />
-              <h2
-                className="post__excerpt"
-                dangerouslySetInnerHTML={{
-                  __html:
-                    Excerpt &&
-                    Excerpt.replace(noHTML, ''),
-                }}
-              />
-              <PostContentHeading
-                date={PostDate}
-                userName={userName}
-                userSlug={userSlug}
-              />
-              <div className="addthis_inline_share_toolbox" />
-            </header>
-            <div className="post__image">
-              {renderVideo && (
-                <BlogPageVideo
-                  dangerouslySetInnerHTML={{ __html: Video && Video }}
-                />
-              )}
-              <BlogPageImg renderVideo={renderVideo} id={postData.featured_media} />
-            </div>
-            <div
-              className="post__content"
-              dangerouslySetInnerHTML={{ __html: postData.content }}
-            />
-
-            <TagsContainer>
-              {postData.tags && postData.tags.map(id => <Tag key={id} id={id} />)}
-            </TagsContainer>
-            <DisqusContainer>
-              <ReactDisqusComments
-                shortname={DISQUS_SHORTNAME}
-                identifier={pathname}
-                url={window.location ? window.location.href : ''}
-              />
-            </DisqusContainer>
-            <YouMayLike tags={tags} />
-          </div>
-        </Fragment>
+        <div className="container">
+          <Shimmer mt={12} size={14} fullWidth />
+          <Shimmer mt={12} size={12} fullWidth />
+          <Shimmer size={400} mt={15} fullWidth />
+          <Shimmer mt={12} size={14} fullWidth />
+          <Shimmer mt={12} size={12} fullWidth />
+          <Shimmer mt={12} size={14} fullWidth />
+          <Shimmer mt={12} size={12} fullWidth />
+          <Shimmer mt={12} size={14} fullWidth />
+          <Shimmer mt={12} size={12} fullWidth />
+        </div>
       );
     }
 
+    const postUrl = `/${ROUTES.blog}${match.params.category}`;
+
     return (
-      <div className="container">
-        <Shimmer mt={12} size={14} fullWidth />
-        <Shimmer mt={12} size={12} fullWidth />
-        <Shimmer size={400} mt={15} fullWidth />
-        <Shimmer mt={12} size={14} fullWidth />
-        <Shimmer mt={12} size={12} fullWidth />
-        <Shimmer mt={12} size={14} fullWidth />
-        <Shimmer mt={12} size={12} fullWidth />
-        <Shimmer mt={12} size={14} fullWidth />
-        <Shimmer mt={12} size={12} fullWidth />
-      </div>
+      <Fragment>
+        <BlogPageMetaTags description={Excerpt.replace(noHTML, '')} postTitle={postTitle} canonical={postUrl} type="article" />
+        {/* <PostPagination {...this.props} /> */}
+
+        <div className="post container">
+          <header className="post__heading">
+            <Link className="post__category-link" to={postUrl}>
+              {match.params.category}
+            </Link>
+            <h1
+              className="post__title"
+              dangerouslySetInnerHTML={{ __html: postData.title }}
+            />
+            <h2
+              className="post__excerpt"
+              dangerouslySetInnerHTML={{
+                __html:
+                  Excerpt &&
+                  Excerpt.replace(noHTML, ''),
+              }}
+            />
+            <PostContentHeading
+              date={PostDate}
+              userName={userName}
+              userSlug={userSlug}
+            />
+            <div className="addthis_inline_share_toolbox" />
+          </header>
+          <div className="post__image">
+            {renderVideo && (
+              <BlogPageVideo
+                dangerouslySetInnerHTML={{ __html: Video && Video }}
+              />
+            )}
+            <BlogPageImg renderVideo={renderVideo} id={postData.featured_media} />
+          </div>
+          <div
+            className="post__content"
+            dangerouslySetInnerHTML={{ __html: postData.content }}
+          />
+
+          <TagsContainer>
+            {postData.tags && postData.tags.map(id => <Tag key={id} id={id} />)}
+          </TagsContainer>
+          <DisqusContainer>
+            <ReactDisqusComments
+              shortname={DISQUS_SHORTNAME}
+              identifier={pathname}
+              url={window.location ? window.location.href : ''}
+            />
+          </DisqusContainer>
+          <YouMayLike tags={tags} />
+        </div>
+      </Fragment>
     );
   }
 }

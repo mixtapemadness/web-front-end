@@ -83,7 +83,7 @@ const Icon = styled.div`
 `;
 
 const TopVideo = ({ data, media, category, tags }) => {
-  const Image = media && media.img && media.img.full && media.img.full;
+  const Image = media && media.img && media.img.thumbnail && media.img.thumbnail;
   const CategoriesData = category && category.category && category.category;
   const tagsData = tags && tags.tags && tags.tags;
 

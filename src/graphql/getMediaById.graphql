@@ -2,6 +2,10 @@ query getMediaById($id: ID) {
   img: getMediaById(id: $id) {
     featured_image
     full
+    medium
+    medium_large
+    large
+    thumbnail
     id
   }
 }

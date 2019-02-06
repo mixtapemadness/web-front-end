@@ -23,20 +23,20 @@ const Container = styled.div`
 `;
 
 const BlogPageImg = ({ data, renderVideo }) => {
-  const fullImage = data && data.img && data.img.full;
-  const featured_image = data && data.img && data.img.featured_image;
+  const fullImage = data && data.img && data.img.large;
+  const thumbnail = data && data.img && data.img.medium;
   return (
     <Container renderVideo={renderVideo}>
       <Helmet>
         <meta name="twitter:card" content="summary_large_image" />
         <meta property="og:image:type" content="image/png" />
-        <meta property="og:image" content={featured_image} />
+        <meta property="og:image" content={thumbnail} />
         <meta property="og:image:width" content="300" />
-        <meta property="og:image:height" content="300" />
-        <meta property="og:image:url" content={featured_image} />
-        <meta property="og:image:secure_url" content={featured_image} />
-        <meta name="twitter:image" content={featured_image} />
-        <meta name="twitter:image:src" content={featured_image} />
+        <meta property="og:image:height" content="200" />
+        <meta property="og:image:url" content={thumbnail} />
+        <meta property="og:image:secure_url" content={thumbnail} />
+        <meta name="twitter:image" content={thumbnail} />
+        <meta name="twitter:image:src" content={thumbnail} />
       </Helmet>
       {!renderVideo && (
         <ReactImageFallback

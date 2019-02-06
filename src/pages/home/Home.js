@@ -12,7 +12,9 @@ import Interviews from './interviews';
 import Posts from './posts';
 import homeEnhancer from './homeEnhancer';
 import Reviews from './reviews';
-import { ROUTES, SEO, TWITTER_HANDLE } from '../../constants';
+import {
+  IMAGES_URL, ROUTES, SEO, TWITTER_HANDLE,
+} from '../../constants';
 
 const SubscribeContainer = styled.div`
   margin: 40px;
@@ -22,7 +24,7 @@ const Home = ({ sliderData }) => (
   <div className="page__container">
     <Helmet>
       <title>{`Mixtape Madness | ${SEO.title}`}</title>
-      <meta property="og:image" content="/resources/assets/favicons/favicon-96x96.png" />
+      <meta property="og:image" content={`${IMAGES_URL}/assets/images/favicons/android-chrome-192x192.png`} />
       <meta property="og:type" content="website" />
       <meta property="og:locale" content="en_UK" />
       <meta
@@ -31,7 +33,7 @@ const Home = ({ sliderData }) => (
       />
       <meta
         property="og:title"
-        content={`Mixtape Madness ${SEO.title}`}
+        content={`Mixtape Madness | ${SEO.title}`}
       />
       <meta
         property="og:description"
@@ -68,7 +70,7 @@ const Home = ({ sliderData }) => (
     <LazyLoad height={400} once offset={0}>
       <Interviews />
     </LazyLoad>
-    <LazyLoad once offset={0}>
+    <LazyLoad height={200} once offset={0}>
       <Download />
     </LazyLoad>
     <LazyLoad height={400} once offset={50}>

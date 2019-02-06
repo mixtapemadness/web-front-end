@@ -19,7 +19,7 @@ import CardLoader from '../loaders/CardLoader';
 const searchedItem = ({ toggleSearch, data, category, tags, media }) => {
   const categoriesData = category && category.category && category.category;
   const tagsData = tags && tags.tags && tags.tags;
-  const Image = media && media.img && media.img.full && media.img.full;
+  const Image = media && media.img && media.img.medium && media.img.medium;
   if (!Image && !categoriesData) {
     return <CardLoader />;
   }

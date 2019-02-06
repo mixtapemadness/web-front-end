@@ -7,6 +7,7 @@ import styled from 'styled-components';
 import TwitterIcon from 'resources/assets/svg/twitter-logo.svg';
 import InstagramIcon from 'resources/assets/svg/instagram-logo.svg';
 import profileInfoEnhancer from './profileInfoEnhancer';
+import BlogPageMetaTags from '../../pages/blogPage/BlogPageMetaTags';
 
 const ProfileContainer = styled.div`
   width: 100%;
@@ -124,6 +125,8 @@ const ProfileInformation = ({ data, showAuthorBio, handleShowAuthorBio }) => {
 
   return (
     <ProfileContainer>
+      <BlogPageMetaTags description={description} postTitle={`${name} | Author`} type="article" />
+
       <ProfileImg>
         <i className="fas fa-user-circle " />
       </ProfileImg>

@@ -9,5 +9,6 @@ query getPostBySlug($slug: String) {
     featured_media
     author
     tags
+    slug
   }
 }

@@ -4,11 +4,11 @@ import window from 'global';
 import { TWITTER_HANDLE, SEO } from '../../constants';
 
 const BlogPageMetaTags = ({
-  description = SEO.description, postTitle, keywords = [], type = 'website', url, image = '',
+  description = SEO.description, postTitle, keywords = '', type = 'website', url, image = '',
 }) => (
   <Helmet>
     <title>{`Mixtape Madness ${
-      postTitle ? `| ${postTitle} ` : ''
+      postTitle ? `| ${postTitle} ` : SEO.title
     }`}
     </title>
     <meta property="og:image" content={image} />

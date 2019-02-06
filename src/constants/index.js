@@ -13,6 +13,7 @@ export const RESPONSIVE_BREAKPOINTS = {
 };
 
 export const ROUTES = {
+  base: 'https://www.mixtapemadness.com',
   about: '/about',
   termsAndConditions: '/terms',
   privacyPolicy: '/privacy-policy',

@@ -64,13 +64,10 @@ class BlogPage extends Component {
       data,
       user,
       match,
-      prevRoute,
-      showSpinner,
     } = this.props;
     const userName = user && user.user && user.user.name && user.user.name;
     const userSlug = user && user.user && user.user.slug && user.user.slug;
     const postData = data && data.Post ? data.Post : null;
-    const Excerpt = data && data.Post && truncate(decodeHtml(data.Post.excerpt), 180);
     const postTitle = postData && postData.title && decodeHtml(postData.title);
     const noHTML = /(<([^>]+)>)/gi;
     const Description =
@@ -108,18 +105,17 @@ class BlogPage extends Component {
         .match(/(?:<iframe[^>]*)(?:(?:\/>)|(?:>.*?<\/iframe>))/, '')
         .toString()
         .replace('iframe', 'embed');
-    const disablePrev = !prevRoute;
     const renderVideo = !!(data && !data.loading && isVideo && Video);
 
-
-    const postUrl = `/${ROUTES.blog}${match.params.category}`;
-
     if (postData) {
+      const Excerpt = truncate(decodeHtml(postData.excerpt), 180);
+      const excerptText = Excerpt ? Excerpt.replace(noHTML, '') : truncate(postData.excerpt, 180).replace(noHTML, '');
+      const postUrl = `/${ROUTES.blog}${match.params.category}`;
+      const postLink = `${ROUTES.base}/blog/${match.params.category}/${postData.slug}`;
+
       return (
         <Fragment>
-          <BlogPageMetaTags description={Description && Description} postTitle={postTitle} canonical={postUrl} type="article" />
-          {/* <PostPagination {...this.props} /> */}
-
+          <BlogPageMetaTags description={excerptText} postTitle={postData.title} url={postLink} type="article" />
           <div className="post container">
             <header className="post__heading">
               <Link className="post__category-link" to={postUrl}>
@@ -127,14 +123,13 @@ class BlogPage extends Component {
               </Link>
               <h1
                 className="post__title"
-                dangerouslySetInnerHTML={{ __html: postTitle }}
+                dangerouslySetInnerHTML={{ __html: postData.title }}
               />
               <h2
                 className="post__excerpt"
                 dangerouslySetInnerHTML={{
                   __html:
-                    Excerpt &&
-                    Excerpt.replace(noHTML, ''),
+                  excerptText,
                 }}
               />
               <PostContentHeading
@@ -154,7 +149,7 @@ class BlogPage extends Component {
             </div>
             <div
               className="post__content"
-              dangerouslySetInnerHTML={{ __html: Content }}
+              dangerouslySetInnerHTML={{ __html: renderVideo ? Content : postData.content }}
             />
 
             <TagsContainer>

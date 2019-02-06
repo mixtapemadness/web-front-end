@@ -33,7 +33,7 @@ const Home = ({ sliderData }) => (
       />
       <meta
         property="og:title"
-        content={`Mixtape Madness ${SEO.title}`}
+        content={`Mixtape Madness | ${SEO.title}`}
       />
       <meta
         property="og:description"

@@ -1,16 +1,17 @@
 import React from 'react';
-import Helmet from 'react-helmet-async';
+import Helmet from 'react-helmet';
 import window from 'global';
 import { TWITTER_HANDLE, SEO } from '../../constants';
 
 const BlogPageMetaTags = ({
-  description = SEO.description, postTitle, keywords = [], type = 'website', url,
+  description = SEO.description, postTitle, keywords = [], type = 'website', url, image = '',
 }) => (
   <Helmet>
     <title>{`Mixtape Madness ${
       postTitle ? `| ${postTitle} ` : ''
     }`}
     </title>
+    <meta property="og:image" content={image} />
     <meta property="og:type" content={type} />
     <meta property="og:locale" content="en_UK" />
     <meta

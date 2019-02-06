@@ -1,5 +1,5 @@
-import React from 'react';
-import Helmet, { HelmetProvider } from 'react-helmet-async';
+import React, { Fragment } from 'react';
+import Helmet from 'react-helmet';
 
 import { compose, withStateHandlers, lifecycle } from 'recompose';
 
@@ -16,7 +16,7 @@ const App = (props) => {
     toggleSearch, searchOpened, menuOpened, toggleMenu,
   } = props;
   return (
-    <HelmetProvider>
+    <Fragment>
       <Helmet>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -46,7 +46,7 @@ const App = (props) => {
         <meta name="theme-color" content="#ffa019" />
         <link rel="mask-icon" href="/resources/assets/favicons/safari-pinned-tab.svg" color={BRAND_COLOURS.orange} />
       </Helmet>
-      <BlogPageMetaTags postTitle={SEO.title} description={SEO.description} keywords={SEO.keywords} />
+      <BlogPageMetaTags postTitle={SEO.title} description={SEO.description} keywords={SEO.keywords} image="/resources/assets/favicons/favicon-96x96.png" />
       <Header
         toggleSearch={toggleSearch}
         menuOpened={menuOpened}
@@ -57,7 +57,7 @@ const App = (props) => {
         toggleSearch={toggleSearch}
         menuOpened={menuOpened}
       />
-    </HelmetProvider>
+    </Fragment>
   );
 };
 

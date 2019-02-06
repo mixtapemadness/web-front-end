@@ -6,7 +6,7 @@ import CardLoader from '../loaders/CardLoader';
 const FeaturedSliderContent = ({
   media, category, data,
 }) => {
-  const Image = media && media.img && media.img.full && media.img.full;
+  const Image = media && media.img && media.img.medium && media.img.medium;
   const CategoriesData = category && category.category;
   const postLink = CategoriesData && `blog/${CategoriesData[0].slug}/${data.slug}`;
   if (!Image && !CategoriesData) {

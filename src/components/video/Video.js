@@ -71,7 +71,7 @@ const Video = ({ data, media, tags, category }) => {
   let postDate = new Date(data.date);
   postDate = postDate && moment(postDate).startOf('day').fromNow();
   const Image =
-    media && media.img && media.img.featured_image && media.img.featured_image;
+    media && media.img && media.img.medium && media.img.medium;
   const categorySlug = categoriesData && categoriesData.map(({ slug }) => slug)[0];
   const postUrl = `blog/${categorySlug}/${data.slug}`;
   return (

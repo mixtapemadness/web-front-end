@@ -98,7 +98,7 @@ const FlexDiv = styled.div`
 `;
 
 const MainSlider = ({ tags, media, category, data }) => {
-  const Image = media && media.img && media.img.full && media.img.full;
+  const Image = media && media.img && media.img.large && media.img.large;
   const CategoriesData = category && category.category;
   const postLink =
     CategoriesData && `blog/${CategoriesData[0].slug}/${data.slug}`;

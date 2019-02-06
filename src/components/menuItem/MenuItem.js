@@ -124,7 +124,7 @@ const ContinueRead = styled(Link)`
 `;
 
 const MenuItem = ({ data, media, category, tags }) => {
-  const Image = media && media.img && media.img.full && media.img.full;
+  const Image = media && media.img && media.img.medium && media.img.medium;
   const categorySlug =
     category &&
     category.category &&

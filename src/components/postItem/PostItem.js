@@ -55,10 +55,6 @@ const PostTitle = styled(Link)`
       display: block;
 `;
 
-const DataContentContainer = styled.span`
-
-`;
-
 const CategoryContainer = styled.div`
   width: 100%;
   color: #000;
@@ -93,11 +89,11 @@ const pathname = window.location ? window.location.pathname : '';
 const PostItem = (props) => {
   const { media, category, user, data } = props;
   const Image =
-    media && media.img && media.img.featured_image && media.img.featured_image;
+    media && media.img && media.img.medium && media.img.medium;
   const CategoriesData = category && category.category && category.category;
   const User = user && user.user && user.user;
   const postUrl = CategoriesData && `/blog/${CategoriesData[0].slug}/${data.slug}`;
-  if (!data || !CategoriesData) {
+  if (!data) {
     return <CardLoader />;
   }
   let postDate = new Date(data.date);

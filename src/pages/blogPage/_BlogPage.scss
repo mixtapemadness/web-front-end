@@ -54,6 +54,12 @@
       margin: 5px 0;
     }
   }
+  a {
+    color: $base-orange;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 }
 
 .post__image {

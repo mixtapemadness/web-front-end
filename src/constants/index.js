@@ -34,6 +34,9 @@ export const ROUTES = {
     reviews: '/blog/category/reviews',
     coors: '/blog/category/coors',
     madaboutmixtapes: '/blog/category/madaboutmixtapes',
+    nextup: '/blog/category/nextup',
+    onetake: '/blog/category/onetake',
+    performance: '/blog/category/performance',
   },
 };
 

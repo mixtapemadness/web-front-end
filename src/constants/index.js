@@ -12,7 +12,7 @@ export const RESPONSIVE_BREAKPOINTS = {
   desktop: '1024px',
 };
 
-export const IMAGES_URL = 'http://images.mixtapemadness.co.uk';
+export const IMAGES_URL = 'https://s3-eu-west-1.amazonaws.com/images.mixtapemadness.co.uk';
 
 export const ROUTES = {
   base: 'https://www.mixtapemadness.com',

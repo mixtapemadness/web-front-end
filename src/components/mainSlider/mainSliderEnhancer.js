@@ -1,12 +1,9 @@
-/* eslint no-unused-vars: 0 */
-/* eslint indent: 0 */
-/* eslint no-unneeded-ternary: 0 */
-/* eslint object-curly-newline: 0 */
-
-import { compose, withStateHandlers, lifecycle, branch } from 'recompose';
+import { compose, branch } from 'recompose';
 import { withRouter } from 'react-router-dom';
 import getPosts from 'graphql/getPosts.graphql';
-import { loadDataAsync, withMedia, withTags, withCategory } from 'hocs';
+import {
+  loadDataAsync, withMedia, withTags, withCategory,
+} from 'hocs';
 
 export default compose(
   withRouter,
@@ -17,13 +14,13 @@ export default compose(
         variables: {
           id: props.id,
           page: 1,
-          perPage: 3,
+          perPage: 4,
         },
       }),
     },
   }),
 
-  branch(({ data }) => (data ? true : false), withMedia),
-  branch(({ data }) => (data ? true : false), withTags),
-  branch(({ data }) => (data ? true : false), withCategory),
+  branch(({ data }) => !!(data), withMedia),
+  branch(({ data }) => !!(data), withTags),
+  branch(({ data }) => !!(data), withCategory),
 );

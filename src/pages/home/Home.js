@@ -10,23 +10,21 @@ import Download from 'components/download';
 import WhatsOn from './whatsOn';
 import Interviews from './interviews';
 import Posts from './posts';
-import homeEnhancer from './homeEnhancer';
 import Reviews from './reviews';
 import {
-  IMAGES_URL, ROUTES, SEO, TWITTER_HANDLE,
+  IMAGES_URL, ROUTES, SEO,
 } from '../../constants';
 
 const SubscribeContainer = styled.div`
   margin: 40px;
 `;
 
-const Home = ({ sliderData }) => (
+const Home = () => (
   <div className="page__container">
     <Helmet>
       <title>{`Mixtape Madness | ${SEO.title}`}</title>
       <meta property="og:image" content={`${IMAGES_URL}/assets/images/favicons/android-chrome-192x192.png`} />
       <meta property="og:type" content="website" />
-      <meta property="og:locale" content="en_UK" />
       <meta
         property="og:url"
         content={ROUTES.base}
@@ -42,8 +40,6 @@ const Home = ({ sliderData }) => (
       <link rel="canonical" href={ROUTES.base} />
       <meta name="twitter:title" content={`Mixtape Madness ${SEO.title}`} />
       <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:site" content={TWITTER_HANDLE} />
-      <meta name="twitter:creator" content={TWITTER_HANDLE} />
       <meta
         name="twitter:description"
         content={`${SEO.description}`}
@@ -53,14 +49,10 @@ const Home = ({ sliderData }) => (
         name="description"
         content={SEO.description}
       />
-      <meta name="twitter:creator" content={`${TWITTER_HANDLE}`} />
     </Helmet>
-    {sliderData
-    && sliderData.Posts && (
-      <LazyLoad height={400} once offsetVertical={0}>
-        <MainSlider data={sliderData.Posts} />
-      </LazyLoad>
-    )}
+    <LazyLoad height={400} once offsetVertical={0}>
+      <MainSlider />
+    </LazyLoad>
     <LazyLoad height={400} once offset={0}>
       <Videos />
     </LazyLoad>
@@ -87,4 +79,4 @@ const Home = ({ sliderData }) => (
   </div>
 );
 
-export default homeEnhancer(Home);
+export default Home;

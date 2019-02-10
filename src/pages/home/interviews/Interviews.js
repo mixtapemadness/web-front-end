@@ -15,10 +15,8 @@ const Interviews = ({ data }) => {
 
     >
       {data.loading
-      && [...Array(8)].map(i => <CardLoader key={`${i}-interview-loader`} />)}
-      {!data.loading
-      && posts
-      && posts.map(item => <PostItem key={item.id} data={item} />)}
+        ? [...Array(6)].map(i => <CardLoader key={`${i}-interview-loader`} />)
+        : posts.map(item => <PostItem key={item.id} data={item} />)}
     </SliderComponent>
   );
 };

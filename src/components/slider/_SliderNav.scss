@@ -2,6 +2,9 @@
   display: flex;
   justify-content: space-around;
   width: 20%;
+  &--hide-desktop {
+    display: none;
+  }
   @include desktop {
     width: 120px;
   }

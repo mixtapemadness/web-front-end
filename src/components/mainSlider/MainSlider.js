@@ -45,17 +45,16 @@ const MainSlider = ({ data }) => {
   const loading = data && data.loading && data.loading;
   const Posts = data && data.Posts && data.Posts;
 
-  if (loading || !Posts) {
-    return <CardLoader height={600} />;
-  }
   return (
     <div className="main-slider">
       <div className="main-slider__container">
-        <Slider {...settings}>
-          {Posts.map(item => (
-            <SliderContent loading={loading} key={item.id} data={item} />
-          ))}
-        </Slider>
+        {(loading || !Posts) ? <CardLoader /> : (
+          <Slider {...settings}>
+            {Posts.map(item => (
+              <SliderContent loading={loading} key={item.id} data={item} />
+            ))}
+          </Slider>
+        )}
       </div>
     </div>
   );

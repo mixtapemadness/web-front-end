@@ -17,7 +17,7 @@ export default compose(
         variables: {
           filter: { categories: 'EVENTS' },
           page: 1,
-          perPage: 12,
+          perPage: 6,
         },
       }),
     },

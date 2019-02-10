@@ -9,6 +9,9 @@ import { REFETCH_USER } from '../../eventTypes';
 import { loadDataAsync, refetchOn } from '../../hocs';
 import getPosts from '../../graphql/getPosts.graphql';
 import getPostsByTags from '../../graphql/getPostsByTags.graphql';
+import {
+  CATEGORY_KEYS,
+} from '../../constants';
 
 export default compose(
   withRouter,
@@ -18,8 +21,8 @@ export default compose(
       options: props => ({
         variables: {
           page: 1,
-          perPage: 12,
-          filter: { categories: props.match.params.category.toUpperCase() },
+          perPage: 3,
+          filter: { categories: CATEGORY_KEYS[props.match.params.category.toUpperCase()] },
         },
       }),
     },
@@ -34,6 +37,7 @@ export default compose(
         options: props => ({
           variables: {
             tags: props.tags,
+            perPage: 5,
           },
         }),
       },

@@ -34,10 +34,27 @@ export const ROUTES = {
     reviews: '/blog/category/reviews',
     coors: '/blog/category/coors',
     madaboutmixtapes: '/blog/category/madaboutmixtapes',
-    nextup: '/blog/category/next-up',
-    onetake: '/blog/category/1-take',
+    nextup: '/blog/category/nextup',
+    onetake: '/blog/category/onetake',
     performance: '/blog/category/performance',
   },
+};
+
+export const CATEGORY_KEYS = {
+  'mad-about-bars': 'madaboutbars',
+  articles: 'articles',
+  community: 'community',
+  audio: 'audio',
+  news: 'news',
+  events: 'events',
+  videos: 'videos',
+  interviews: 'interviews',
+  reviews: 'reviews',
+  coors: 'coors',
+  madaboutmixtapes: 'madaboutmixtapes',
+  nextup: 'nextup',
+  onetake: 'onetake',
+  performance: 'performance',
 };
 
 export const CONTACT_DETAILS = {

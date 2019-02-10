@@ -15,10 +15,8 @@ const Videos = ({ data }) => {
       cta={<Link to={ROUTES.categories.videos}>see more</Link>}
     >
       {data.loading
-      && [...Array(8)].map(i => <CardLoader key={`${i}-videos-loader`} />)}
-      {!data.loading
-      && Posts
-      && Posts.map(item => <Video key={item.id} data={item} />)}
+        ? [...Array(8)].map(i => <CardLoader key={`${i}-videos-loader`} />)
+        : Posts.map(item => <Video key={item.id} data={item} />)}
     </SliderComponent>
   );
 };

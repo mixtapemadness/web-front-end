@@ -1,5 +1,5 @@
 .main-slider {
-  height: 400px;
+  height: 370px;
 
   @include desktop{
     height: 600px;
@@ -276,7 +276,11 @@
   }
 }
 .main-slider__container {
-  height: 400px;
+  overflow: hidden;
+  .card-loader{
+    min-width: auto;
+  }
+  height: 370px;
   @include desktop{
   height: 600px;
 }

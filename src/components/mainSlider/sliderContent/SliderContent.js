@@ -102,9 +102,6 @@ const MainSlider = ({ tags, media, category, data }) => {
   const CategoriesData = category && category.category;
   const postLink =
     CategoriesData && `blog/${CategoriesData[0].slug}/${data.slug}`;
-  if (!Image) {
-    return <CardLoader height={600} />;
-  }
 
   let postDate = new Date(data.date);
   postDate = postDate && moment(postDate).startOf('day').fromNow();

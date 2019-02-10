@@ -39,41 +39,35 @@ const AlsoLikeHeaderContainer = styled.div`
   color: #000000;
 `;
 
+
+function removeDuplicates(myArr, prop) {
+  return myArr.filter((obj, pos, arr) => arr.map(mapObj => mapObj[prop]).indexOf(obj[prop]) === pos);
+}
+
 const YouMayLike = ({
   width,
   data,
   match,
+  id,
   postsFromTags,
-  postsFromTagsLoading,
 }) => {
-  const Posts =
-    data &&
-    data.Posts &&
-    data.Posts.filter(item => item.slug !== match.params.slug);
-  const shuffledPosts = Posts && shuffle(Posts);
-  const postsWithSameTag =
-    postsFromTags &&
-    postsFromTags.filter(item => item.slug !== match.params.slug);
-  const shuffledPostsWithSameTag = postsWithSameTag && shuffle(postsWithSameTag);
-
+  let allPosts = [];
+  const posts = data && data.Posts;
+  const postWithTags = postsFromTags && postsFromTags;
+  if (posts && postWithTags) {
+    allPosts = shuffle([...postWithTags, ...posts]);
+  }
+  const uniquePosts = removeDuplicates(allPosts, 'id').filter(post => post.id !== id);
   return (
     <MayLikeContainer>
       <AlsoLikeHeaderContainer>
         <span>You may also like</span>
       </AlsoLikeHeaderContainer>
       <Div>
-        {shuffledPosts &&
-          shuffledPosts.map(
-            (item, index) =>
-              index < 5 && <PostItem key={item.id} data={item} />,
-          )}
-        {postsFromTagsLoading && [...Array(9)].map(i => <CardLoader key={Math.random()} />)}
-        {!postsFromTagsLoading &&
-          shuffledPostsWithSameTag &&
-          shuffledPostsWithSameTag.map(
-            (item, index) =>
-              index < 5 && <PostItem key={item.id} data={item} />,
-          )}
+        {uniquePosts.length && uniquePosts ?
+          uniquePosts.map((item) => <PostItem key={item.id} data={item} />) :
+          [...Array(6)].map(i => <CardLoader key={`${Math.random()}-ymal-posts`} />)
+        }
       </Div>
     </MayLikeContainer>
   );

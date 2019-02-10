@@ -15,7 +15,7 @@ export default compose(
         variables: {
           id: props.id,
           page: 1,
-          perPage: 18,
+          perPage: 6,
           filter: { categories: 'INTERVIEWS' },
         },
       }),

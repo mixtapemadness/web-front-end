@@ -4,7 +4,7 @@
 /* eslint react/jsx-curly-brace-presence: 0 */
 /* eslint arrow-body-style: 0 */
 
-import React from 'react';
+import React, { Fragment } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
@@ -15,19 +15,19 @@ const TagItem = styled(Link)`
   color: #cacaca;
   border-radius: 15px;
   padding: 5px 10px;
-  margin: 15px 5px;
+  margin: 5px;
 `;
 
 const Tag = ({ data }) => {
   const TagName = data && data.tag && data.tag.name;
   const Slug = data && data.tag && data.tag.slug;
   return (
-    <div>
+    <Fragment>
       <Helmet>
-        {<meta property="article:tag" content={TagName} />}
+        <meta property="article:tag" content={TagName} />
       </Helmet>
       <TagItem to={`/searchresult/all/${Slug}`}>{TagName}</TagItem>
-    </div>
+    </Fragment>
   );
 };
 

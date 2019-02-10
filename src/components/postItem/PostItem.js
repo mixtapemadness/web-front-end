@@ -103,10 +103,6 @@ const PostItem = (props) => {
       <Media
         to={{
           pathname: postUrl,
-          state: {
-            prevPath: pathname,
-            authorId: User && User.id,
-          },
         }}
       >
         <ReactImageFallback
@@ -121,13 +117,9 @@ const PostItem = (props) => {
             <Categories data={CategoriesData} />
           </CategoryContainer>
           <PostTitle
-            dangerouslySetInnerHTML={{ __html: truncate(data.title, 60) }}
+            dangerouslySetInnerHTML={{ __html: truncate(data.title, 50) }}
             to={{
               pathname: postUrl,
-              state: {
-                prevPath: pathname,
-                authorId: User && User.id,
-              },
             }}
           />
           <div

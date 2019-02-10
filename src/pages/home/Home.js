@@ -23,7 +23,7 @@ const Home = () => (
   <div className="page__container">
     <Helmet>
       <title>{`Mixtape Madness | ${SEO.title}`}</title>
-      <meta property="og:image" content={`${IMAGES_URL}/assets/images/favicons/android-chrome-192x192.png`} />
+      <meta property="og:image" content={`${IMAGES_URL}/assets/images/favicons/favicon-96x96.png`} />
       <meta property="og:type" content="website" />
       <meta
         property="og:url"

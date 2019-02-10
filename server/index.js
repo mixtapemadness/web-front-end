@@ -23,7 +23,7 @@ import { ServerStyleSheet } from 'styled-components';
 import { Helmet } from 'react-helmet';
 import config from '../config';
 import App from '../src/App';
-import { IMAGES_URL, SEO } from '../src/constants';
+import { IMAGES_URL, SEO, TWITTER_HANDLE } from '../src/constants';
 
 const app = express();
 const PORT = process.env.PORT || 8003;
@@ -68,7 +68,7 @@ app.get('*', (req, res) => {
     </ApolloProvider>
   );
 
-  const Html = ({ content, helmet, styleTags, client: { cache }, state }) => (
+  const Html = ({ content, helmet, styleTags, client: { cache } }) => (
     <html lang="en">
       <head>
         {helmet.title.toComponent()}
@@ -81,6 +81,9 @@ app.get('*', (req, res) => {
         <meta name="msapplication-TileColor" content="#ffa019" />
         <meta name="msapplication-TileImage" content={`${IMAGES_URL}/assets/images/favicons/ms-icon-144x144.png`} />
         <meta name="theme-color" content="#ffa019" />
+        <meta name="twitter:creator" content={`${TWITTER_HANDLE}`} />
+        <meta name="twitter:site" content={TWITTER_HANDLE} />
+        <meta property="og:locale" content="en_UK" />
         {helmet.meta.toComponent()}
         {helmet.link.toComponent()}
         <link rel="apple-touch-icon" sizes="180x180" href={`${IMAGES_URL}/assets/images/favicons/apple-touch-icon.png`} />
@@ -135,14 +138,12 @@ app.get('*', (req, res) => {
       const styleTags = sheet.getStyleElement();
       res.status(200);
       const helmet = Helmet.renderStatic();
-      const initialState = client.extract();
 
       const html = (
         <Html
           content={content}
           helmet={helmet}
           client={client}
-          state={initialState}
           styleTags={styleTags}
         />
       );

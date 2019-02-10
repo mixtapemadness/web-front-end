@@ -14,6 +14,7 @@ import window from 'global/window';
 
 import ReactDisqusComments from 'react-disqus-comments';
 import YouMayLike from 'components/youMayLike';
+import LazyLoad from 'react-lazyload';
 
 import { Link } from 'react-router-dom';
 import blogPageEnhancer from './blogPageEnhancer';
@@ -43,9 +44,6 @@ const TagsContainer = styled.div`
   max-width: 1200px;
   justify-content: center;
   margin: auto;
-  @media only screen and (max-width: 450px) {
-    margin-top: 20px;
-  }
 `;
 
 const DisqusContainer = styled.div`
@@ -68,20 +66,14 @@ class BlogPage extends Component {
     const userName = user && user.user && user.user.name && user.user.name;
     const userSlug = user && user.user && user.user.slug && user.user.slug;
     const postData = data && data.Post ? data.Post : null;
-    const postTitle = postData && postData.title && decodeHtml(postData.title);
     const noHTML = /(<([^>]+)>)/gi;
-    const Description =
-      data &&
-      data.Post &&
-      data.Post.excerpt &&
-      decodeHtml(data.Post.excerpt);
     const categories =
-      data && data.Post && data.Post.categories && data.Post.categories;
+      postData && postData.categories && postData.categories;
     const isVideoArr =
-      categories && categories.filter(item => parseInt(item, 10) === 15);
+      categories && categories.filter(item => parseInt(item, 10) === 15); // TODO: find a better was to detect if there is a video embed.
     const isVideo = isVideoArr && isVideoArr.length > 0;
-    const PostDate = data && data.Post && data.Post.date && data.Post.date;
-    const tags = data && data.Post && data.Post.tags && data.Post.tags;
+    const PostDate = postData && postData.date && postData.date;
+    const tags = postData && postData.tags && postData.tags;
     const Content =
       isVideo &&
       postData &&
@@ -105,14 +97,13 @@ class BlogPage extends Component {
         .match(/(?:<iframe[^>]*)(?:(?:\/>)|(?:>.*?<\/iframe>))/, '')
         .toString()
         .replace('iframe', 'embed');
-    const renderVideo = !!(data && !data.loading && isVideo && Video);
 
     if (postData) {
       const Excerpt = truncate(decodeHtml(postData.excerpt), 180);
       const excerptText = Excerpt ? Excerpt.replace(noHTML, '') : truncate(postData.excerpt, 180).replace(noHTML, '');
-      const postUrl = `/${ROUTES.blog}${match.params.category}`;
+      const postUrl = `${ROUTES.categories[match.params.category]}`;
       const postLink = `${ROUTES.base}/blog/${match.params.category}/${postData.slug}`;
-
+      const renderVideo = !!(data && !data.loading && isVideo && Video);
       return (
         <Fragment>
           <BlogPageMetaTags description={excerptText} postTitle={postData.title} url={postLink} type="article" />
@@ -162,7 +153,9 @@ class BlogPage extends Component {
                 url={window.location ? window.location.href : ''}
               />
             </DisqusContainer>
-            <YouMayLike tags={tags} />
+            <LazyLoad height={1200} once offset={50}>
+              <YouMayLike tags={tags} id={postData.id} />
+            </LazyLoad>
           </div>
         </Fragment>);
     }

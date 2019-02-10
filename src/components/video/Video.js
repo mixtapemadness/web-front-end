@@ -58,7 +58,6 @@ const Name = styled(Link)`
 
 const Excerpt = styled.div`
   color: #333333;
-  font-size: 14px;
   line-height: 26px;
 `;
 

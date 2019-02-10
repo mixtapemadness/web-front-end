@@ -18,10 +18,8 @@ const Reviews = ({ data }) => {
       cta={<Link to={ROUTES.categories.reviews}>see more</Link>}
     >
       {data.loading
-      && [...Array(8)].map(i => <CardLoader key={`${i}-reviews-loader`} />)}
-      {!data.loading
-      && posts
-      && posts.map(item => <PostItem key={item.id} data={item} />)}
+        ? [...Array(6)].map(i => <CardLoader key={`${i}-reviews-loader`} />)
+        : posts.map(item => <PostItem key={item.id} data={item} />)}
     </SliderComponent>
   );
 };

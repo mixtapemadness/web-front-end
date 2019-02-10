@@ -34,6 +34,7 @@ class SliderComponent extends Component {
       centerPadding: settings.centerPadding,
       responsive: [...settings.responsive],
     };
+    const hideNavOnDesktop = children && children[0].length > (innerSettings.slidesToScroll * innerSettings.slidesPerRow);
     return (
       <section className="slider">
         <div className="slider__header">
@@ -42,7 +43,7 @@ class SliderComponent extends Component {
             <p className="slider__subtitle">{subTitle}</p>
             <div className="slider__cta">{cta}</div>
           </header>
-          <div className="slider__nav-wrapper">
+          <div className={`slider__nav-wrapper ${hideNavOnDesktop ? 'slider__nav-wrapper--hide-desktop' : ''}`}>
             <IconButton className="slider__nav slider__nav--prev" iconClassName="fas fa-chevron-left" onClick={this.prev} />
             <IconButton className="slider__nav slider__nav--next" iconClassName="fas fa-chevron-right" onClick={this.next} />
           </div>

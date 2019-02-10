@@ -1,5 +1,5 @@
-query getPostsByTags($tags: [ID]) {
-  Posts: getPostsByTags(tags: $tags) {
+query getPostsByTags($tags: [ID], $perPage: Int) {
+  Posts: getPostsByTags(tags: $tags, perPage: $perPage) {
     id
     categories
     featured_media

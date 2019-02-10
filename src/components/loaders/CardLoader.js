@@ -18,9 +18,8 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   max-width: 100%;
-  flex: 1 0 357px;
-  min-width: 357px;
-  height: 465px;
+  min-width: 300px;
+  height: auto;
   background-color: #ffffff;
   overflow: hidden;
   box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.3);
@@ -59,8 +58,8 @@ const Avatar = styled(Shimmer)`
   animation-timing-function: linear;
 `;
 
-const CardLoader = () => (
-  <Container>
+const CardLoader = ({ height }) => (
+  <Container height={height} className="card-loader">
     <Avatar />
     <Info>
       <Shimmer size={12} fullWidth />

@@ -1,19 +1,20 @@
 import React from 'react';
 import Slider from 'react-slick';
-import { CardLoader } from 'components/loaders';
 import SliderContent from './sliderContent';
 import mainSliderEnhancer from './mainSliderEnhancer';
+import CardLoader from '../loaders/CardLoader';
+
 import { RESPONSIVE_BREAKPOINTS } from '../../constants';
 
 import IconButton from '../IconButton/IconButton';
 
 const PrevArrow = (
   { onClick }, // eslint-disable-line
-) => <IconButton className="main-slider__nav" iconClassName="fas fa-chevron-left" onClick={onClick} />;
+) => <IconButton className="main-slider__nav main-slider__nav--prev" iconClassName="fas fa-chevron-left" onClick={onClick} />;
 
 const NextArrow = (
   { onClick }, // eslint-disable-line
-) => <IconButton className="main-slider__nav" iconClassName="fas fa-chevron-right" onClick={onClick} />;
+) => <IconButton className="main-slider__nav main-slider__nav--next" iconClassName="fas fa-chevron-right" onClick={onClick} />;
 
 
 const settings = {
@@ -45,14 +46,11 @@ const MainSlider = ({ data }) => {
   const loading = data && data.loading && data.loading;
   const Posts = data && data.Posts && data.Posts;
 
-  if (loading || !Posts) {
-    return <CardLoader height={600} />;
-  }
   return (
     <div className="main-slider">
       <div className="main-slider__container">
         <Slider {...settings}>
-          {Posts.map(item => (
+          {loading ? <CardLoader /> : Posts && Posts.map(item => (
             <SliderContent loading={loading} key={item.id} data={item} />
           ))}
         </Slider>

@@ -40,6 +40,23 @@ export const ROUTES = {
   },
 };
 
+export const CATEGORY_KEYS = {
+  'mad-about-bars': 'madaboutbars',
+  articles: 'articles',
+  community: 'community',
+  audio: 'audio',
+  news: 'news',
+  events: 'events',
+  videos: 'videos',
+  interviews: 'interviews',
+  reviews: 'reviews',
+  coors: 'coors',
+  madaboutmixtapes: 'madaboutmixtapes',
+  nextup: 'nextup',
+  onetake: 'onetake',
+  performance: 'performance',
+};
+
 export const CONTACT_DETAILS = {
   marketingEmail: 'info@mixtapemadness.com',
   submissionsEmail: 'submissions@mixtapemadness.com',

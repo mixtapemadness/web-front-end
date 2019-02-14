@@ -118,7 +118,6 @@ app.get('*', (req, res) => {
           }}
         />
         <script src="/bundle.js" charSet="UTF-8" async />
-        <script async src="//platform-api.sharethis.com/js/sharethis.js#property=5c64bf387056550011c4a0bc&product=inline-share-buttons" />
         <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" />
         <script dangerouslySetInnerHTML={{
           __html: `${JSON.stringify(

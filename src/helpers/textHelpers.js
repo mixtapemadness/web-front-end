@@ -21,4 +21,11 @@ export const decodeHtml = (html) => {
   return txt.value;
 };
 
+export const stripHtml = (html) => {
+  const txt = document.createElement('textarea');
+  txt.innerHTML = html;
+  return txt.value;
+};
+
+
 export default truncate;

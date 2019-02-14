@@ -60,7 +60,7 @@ class BlogPage extends Component {
     if (data && data.Post) {
       const postLink = `${ROUTES.base}/blog/${match.params.category}/${data.Post.slug}`;
       const { title, excerpt } = data;
-      this.updateShareThis(title, excerpt, window.location.href || postLink);
+      this.updateShareThis(decodeHtml(title), excerpt, window.location.href || postLink);
     }
   }
 
@@ -133,7 +133,7 @@ class BlogPage extends Component {
       const renderVideo = !!(data && !data.loading && isVideo && Video);
       return (
         <Fragment>
-          <BlogPageMetaTags description={excerptText} postTitle={postData.title} url={postLink} type="article" />
+          <BlogPageMetaTags description={excerptText} postTitle={decodeHtml(postData.title)} url={postLink} type="article" />
           <div className="post container">
             <header className="post__heading">
               <Link className="post__category-link" to={postUrl}>

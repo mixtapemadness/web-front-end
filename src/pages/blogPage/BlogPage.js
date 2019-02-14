@@ -153,7 +153,7 @@ class BlogPage extends Component {
               <h1 className="post__title" dangerouslySetInnerHTML={{ __html: postData.title }} />
               <h2 className="post__excerpt" dangerouslySetInnerHTML={{ __html: excerptText }} />
               <PostContentHeading date={PostDate} userName={userName} userSlug={userSlug} />
-              <div className="sharethis-inline-share-buttons" />
+              <div className="sharethis-inline-share-buttons" id="share-inline-buttons" />
             </header>
             <div className="post__image">
               {renderVideo && <BlogPageVideo dangerouslySetInnerHTML={{ __html: Video && Video }} />}

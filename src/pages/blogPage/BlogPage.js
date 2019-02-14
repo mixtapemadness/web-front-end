@@ -23,9 +23,9 @@ import PostContentHeading from './postContentHeading';
 import Tag from './Tag';
 import {
   DISQUS_SHORTNAME,
-  ROUTES,
+  ROUTES, TWITTER,
 } from '../../constants';
-import truncate, { decodeHtml } from '../../helpers/textHelpers';
+import truncate, { decodeHtml, stripHtml } from '../../helpers/textHelpers';
 import Shimmer from '../../components/loaders/shimmer/Shimmer';
 import BlogPageMetaTags from './BlogPageMetaTags';
 
@@ -56,6 +56,39 @@ const pathname = window.location ? window.location.pathname : '';
 
 class BlogPage extends Component {
   componentDidMount() {
+  }
+
+  componentDidUpdate() {
+    const { data, match } = this.props;
+
+    if (data && data.Post && window.__sharethis__) {
+      const plainTitle = stripHtml(data.Post.title);
+      const postLink = `${ROUTES.base}/blog/${match.params.category}/${data.Post.slug}`;
+      this.renderShareData(plainTitle, data.Post.excerpt, postLink);
+    }
+  }
+
+  renderShareData = (title, description, url) => {
+    // load the buttons
+    window.__sharethis__.load('inline-share-buttons', {
+      alignment: 'center',
+      id: 'my-inline-buttons',
+      enabled: true,
+      font_size: 11,
+      padding: 8,
+      labels: 'counts',
+      min_count: 0,
+      radius: 0,
+      networks: ['facebook', 'twitter', 'whatsapp', 'sharethis'],
+      size: 40,
+      show_total: true,
+      show_mobile_buttons: true,
+      spacing: 8,
+      url,
+      title,
+      description,
+      username: TWITTER, // custom @username for twitter sharing
+    });
   }
 
   render() {
@@ -129,7 +162,7 @@ class BlogPage extends Component {
                 userName={userName}
                 userSlug={userSlug}
               />
-              <div className="addthis_inline_share_toolbox" />
+              <div id="my-inline-buttons" />
             </header>
             <div className="post__image">
               {renderVideo && (

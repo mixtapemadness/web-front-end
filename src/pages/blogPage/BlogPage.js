@@ -60,7 +60,7 @@ class BlogPage extends Component {
     if (data && data.Post) {
       const postLink = `${ROUTES.base}/blog/${match.params.category}/${data.Post.slug}`;
       const { title, excerpt } = data;
-      this.updateShareThis(decodeHtml(title), excerpt, window.location.href || postLink);
+      this.updateShareThis(decodeHtml(title), excerpt, postLink);
     }
   }
 

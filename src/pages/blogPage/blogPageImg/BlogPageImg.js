@@ -24,7 +24,7 @@ const Container = styled.div`
 
 const BlogPageImg = ({ data, renderVideo }) => {
   const fullImage = data && data.img && data.img.large;
-  const thumbnail = data && data.img && data.img.medium;
+  const thumbnail = data && data.img && data.img.medium_large;
   return (
     <Container renderVideo={renderVideo}>
       <Helmet>

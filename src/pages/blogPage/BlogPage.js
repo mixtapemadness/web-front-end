@@ -23,7 +23,7 @@ import PostContentHeading from './postContentHeading';
 import Tag from './Tag';
 import {
   DISQUS_SHORTNAME,
-  ROUTES,
+  ROUTES, TWITTER,
 } from '../../constants';
 import truncate, { decodeHtml } from '../../helpers/textHelpers';
 import Shimmer from '../../components/loaders/shimmer/Shimmer';
@@ -55,7 +55,34 @@ const DisqusContainer = styled.div`
 const pathname = window.location ? window.location.pathname : '';
 
 class BlogPage extends Component {
-  componentDidMount() {}
+  componentDidUpdate(prevProps) {
+    const { data, match } = this.props;
+    if (data && data.Post) {
+      const postLink = `${ROUTES.base}/blog/${match.params.category}/${data.Post.slug}`;
+      const { title, excerpt } = data;
+      this.updateShareThis(title, excerpt, window.location.href || postLink);
+    }
+  }
+
+  updateShareThis = (title, description, url) => {
+    window.__sharethis__.load('inline-share-buttons', {
+      id: 'share-inline-buttons',
+      enabled: true,
+      show_mobile_buttons: true,
+      networks: ['facebook', 'twitter', 'whatsapp', 'email', 'sharethis'],
+      use_native_counts: true,
+      alignment: 'center',
+      min_count: 0,
+      labels: 'counts',
+      font_size: 18,
+      show_total: true,
+      size: 40,
+      url, // custom url
+      title,
+      description,
+      username: TWITTER,
+    });
+  }
 
   render() {
     const {
@@ -128,7 +155,7 @@ class BlogPage extends Component {
                 userName={userName}
                 userSlug={userSlug}
               />
-              <div className="addthis_inline_share_toolbox" />
+              <div className="sharethis-inline-share-buttons" id="share-inline-buttons" />
             </header>
             <div className="post__image">
               {renderVideo && (
@@ -149,7 +176,7 @@ class BlogPage extends Component {
             <DisqusContainer>
               <ReactDisqusComments
                 shortname={DISQUS_SHORTNAME}
-                identifier={pathname}
+                identifier={window.location.href}
                 url={window.location ? window.location.href : ''}
               />
             </DisqusContainer>

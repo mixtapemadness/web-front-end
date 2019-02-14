@@ -68,7 +68,7 @@ class BlogPage extends Component {
     if (data && data.Post) {
       const { title, excerpt, slug } = data.Post;
       const postLink = `${ROUTES.base}/blog/${match.params.category}/${slug}`;
-      this.updateShareThis(title, excerpt, postLink);
+      this.updateShareThis(decodeHtml(title), excerpt, postLink);
     }
   }
 

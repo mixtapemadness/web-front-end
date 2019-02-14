@@ -139,52 +139,31 @@ class BlogPage extends Component {
               <Link className="post__category-link" to={postUrl}>
                 {match.params.category}
               </Link>
-              <h1
-                className="post__title"
-                dangerouslySetInnerHTML={{ __html: postData.title }}
-              />
-              <h2
-                className="post__excerpt"
-                dangerouslySetInnerHTML={{
-                  __html:
-                  excerptText,
-                }}
-              />
-              <PostContentHeading
-                date={PostDate}
-                userName={userName}
-                userSlug={userSlug}
-              />
+              <h1 className="post__title" dangerouslySetInnerHTML={{ __html: postData.title }} />
+              <h2 className="post__excerpt" dangerouslySetInnerHTML={{ __html: excerptText }} />
+              <PostContentHeading date={PostDate} userName={userName} userSlug={userSlug} />
               <div className="sharethis-inline-share-buttons" id="share-inline-buttons" />
             </header>
             <div className="post__image">
-              {renderVideo && (
-                <BlogPageVideo
-                  dangerouslySetInnerHTML={{ __html: Video && Video }}
-                />
-              )}
+              {renderVideo && <BlogPageVideo dangerouslySetInnerHTML={{ __html: Video && Video }} />}
               <BlogPageImg renderVideo={renderVideo} id={postData && postData.featured_media} />
             </div>
-            <div
-              className="post__content"
-              dangerouslySetInnerHTML={{ __html: renderVideo ? Content : postData.content }}
-            />
+            <div className="post__content" dangerouslySetInnerHTML={{ __html: renderVideo ? Content : postData.content }} />
 
             <TagsContainer>
-              {postData && postData.tags && postData.tags.map(id => <Tag key={id} id={id} />)}
+              {postData &&
+                postData.tags &&
+                postData.tags.map(id => <Tag key={id} id={id} />)}
             </TagsContainer>
             <DisqusContainer>
-              <ReactDisqusComments
-                shortname={DISQUS_SHORTNAME}
-                identifier={window.location.href}
-                url={window.location ? window.location.href : ''}
-              />
+              <ReactDisqusComments shortname={DISQUS_SHORTNAME} identifier={pathname} url={window.location ? window.location.href : ''} />
             </DisqusContainer>
             <LazyLoad height={1200} once offset={50}>
               <YouMayLike tags={tags} id={postData.id} />
             </LazyLoad>
           </div>
-        </Fragment>);
+        </Fragment>
+);
     }
 
     return (

@@ -10,6 +10,7 @@
 import React, { Fragment, Component } from 'react';
 import styled from 'styled-components';
 import window from 'global/window';
+import document from 'global/document';
 
 
 import ReactDisqusComments from 'react-disqus-comments';
@@ -55,33 +56,42 @@ const DisqusContainer = styled.div`
 const pathname = window.location ? window.location.pathname : '';
 
 class BlogPage extends Component {
-  componentDidUpdate(prevProps) {
+  componentWillMount() {
+    const script = document.createElement('script');
+    script.src = '//platform-api.sharethis.com/js/sharethis.js#property=5c64bf387056550011c4a0bc&product=inline-share-buttons';
+    script.async = true;
+    document.body.appendChild(script);
+  }
+
+  componentDidUpdate(prevProps, prevState, snapshot) {
     const { data, match } = this.props;
     if (data && data.Post) {
-      const postLink = `${ROUTES.base}/blog/${match.params.category}/${data.Post.slug}`;
-      const { title, excerpt } = data;
-      this.updateShareThis(decodeHtml(title), excerpt, postLink);
+      const { title, excerpt, slug } = data.Post;
+      const postLink = `${ROUTES.base}/blog/${match.params.category}/${slug}`;
+      this.updateShareThis(title, excerpt, postLink);
     }
   }
 
   updateShareThis = (title, description, url) => {
-    window.__sharethis__.load('inline-share-buttons', {
-      id: 'share-inline-buttons',
-      enabled: true,
-      show_mobile_buttons: true,
-      networks: ['facebook', 'twitter', 'whatsapp', 'email', 'sharethis'],
-      use_native_counts: true,
-      alignment: 'center',
-      min_count: 0,
-      labels: 'counts',
-      font_size: 18,
-      show_total: true,
-      size: 40,
-      url, // custom url
-      title,
-      description,
-      username: TWITTER,
-    });
+    if (window && window.__sharethis__) {
+      window.__sharethis__.load('inline-share-buttons', {
+        id: 'share-inline-buttons',
+        enabled: true,
+        show_mobile_buttons: true,
+        networks: ['facebook', 'twitter', 'whatsapp', 'email', 'sharethis'],
+        use_native_counts: true,
+        alignment: 'center',
+        min_count: 0,
+        labels: 'counts',
+        font_size: 18,
+        show_total: true,
+        size: 40,
+        url,
+        title,
+        description,
+        username: TWITTER,
+      });
+    }
   }
 
   render() {
@@ -131,9 +141,10 @@ class BlogPage extends Component {
       const postUrl = `${ROUTES.categories[match.params.category]}`;
       const postLink = `${ROUTES.base}/blog/${match.params.category}/${postData.slug}`;
       const renderVideo = !!(data && !data.loading && isVideo && Video);
+      const postTitle = decodeHtml(postData.title);
       return (
         <Fragment>
-          <BlogPageMetaTags description={excerptText} postTitle={decodeHtml(postData.title)} url={postLink} type="article" />
+          <BlogPageMetaTags description={excerptText} postTitle={postTitle} url={postLink} type="article" />
           <div className="post container">
             <header className="post__heading">
               <Link className="post__category-link" to={postUrl}>
@@ -142,7 +153,7 @@ class BlogPage extends Component {
               <h1 className="post__title" dangerouslySetInnerHTML={{ __html: postData.title }} />
               <h2 className="post__excerpt" dangerouslySetInnerHTML={{ __html: excerptText }} />
               <PostContentHeading date={PostDate} userName={userName} userSlug={userSlug} />
-              <div className="sharethis-inline-share-buttons" id="share-inline-buttons" />
+              <div className="sharethis-inline-share-buttons" />
             </header>
             <div className="post__image">
               {renderVideo && <BlogPageVideo dangerouslySetInnerHTML={{ __html: Video && Video }} />}

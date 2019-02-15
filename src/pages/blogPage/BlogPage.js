@@ -25,7 +25,7 @@ import {
   DISQUS_SHORTNAME,
   ROUTES, TWITTER,
 } from '../../constants';
-import truncate, { decodeHtml } from '../../helpers/textHelpers';
+import truncate, { decodeHtml, stripHtml } from '../../helpers/textHelpers';
 import Shimmer from '../../components/loaders/shimmer/Shimmer';
 import BlogPageMetaTags from './BlogPageMetaTags';
 
@@ -55,32 +55,39 @@ const DisqusContainer = styled.div`
 const pathname = window.location ? window.location.pathname : '';
 
 class BlogPage extends Component {
-  componentDidUpdate(prevProps) {
+  componentDidMount() {
+  }
+
+  componentDidUpdate() {
     const { data, match } = this.props;
-    if (data && data.Post) {
+
+    if (data && data.Post && window.__sharethis__) {
+      const plainTitle = stripHtml(data.Post.title);
       const postLink = `${ROUTES.base}/blog/${match.params.category}/${data.Post.slug}`;
-      const { title, excerpt } = data;
-      this.updateShareThis(decodeHtml(title), excerpt, postLink);
+      this.renderShareData(plainTitle, data.Post.excerpt, postLink);
     }
   }
 
-  updateShareThis = (title, description, url) => {
+  renderShareData = (title, description, url) => {
+    // load the buttons
     window.__sharethis__.load('inline-share-buttons', {
-      id: 'share-inline-buttons',
-      enabled: true,
-      show_mobile_buttons: true,
-      networks: ['facebook', 'twitter', 'whatsapp', 'email', 'sharethis'],
-      use_native_counts: true,
       alignment: 'center',
-      min_count: 0,
+      id: 'my-inline-buttons',
+      enabled: true,
+      font_size: 11,
+      padding: 8,
       labels: 'counts',
-      font_size: 18,
-      show_total: true,
+      min_count: 0,
+      radius: 0,
+      networks: ['facebook', 'twitter', 'whatsapp', 'email', 'sharethis'],
       size: 40,
-      url, // custom url
+      show_total: true,
+      show_mobile_buttons: false,
+      spacing: 8,
+      url,
       title,
       description,
-      username: TWITTER,
+      username: TWITTER, // custom @username for twitter sharing
     });
   }
 
@@ -133,37 +140,58 @@ class BlogPage extends Component {
       const renderVideo = !!(data && !data.loading && isVideo && Video);
       return (
         <Fragment>
-          <BlogPageMetaTags description={excerptText} postTitle={decodeHtml(postData.title)} url={postLink} type="article" />
+          <BlogPageMetaTags description={excerptText} postTitle={postData.title} url={postLink} type="article" />
           <div className="post container">
             <header className="post__heading">
               <Link className="post__category-link" to={postUrl}>
                 {match.params.category}
               </Link>
-              <h1 className="post__title" dangerouslySetInnerHTML={{ __html: postData.title }} />
-              <h2 className="post__excerpt" dangerouslySetInnerHTML={{ __html: excerptText }} />
-              <PostContentHeading date={PostDate} userName={userName} userSlug={userSlug} />
-              <div className="sharethis-inline-share-buttons" id="share-inline-buttons" />
+              <h1
+                className="post__title"
+                dangerouslySetInnerHTML={{ __html: postData.title }}
+              />
+              <h2
+                className="post__excerpt"
+                dangerouslySetInnerHTML={{
+                  __html:
+                  excerptText,
+                }}
+              />
+              <PostContentHeading
+                date={PostDate}
+                userName={userName}
+                userSlug={userSlug}
+              />
+              <div id="my-inline-buttons" />
             </header>
             <div className="post__image">
-              {renderVideo && <BlogPageVideo dangerouslySetInnerHTML={{ __html: Video && Video }} />}
+              {renderVideo && (
+                <BlogPageVideo
+                  dangerouslySetInnerHTML={{ __html: Video && Video }}
+                />
+              )}
               <BlogPageImg renderVideo={renderVideo} id={postData && postData.featured_media} />
             </div>
-            <div className="post__content" dangerouslySetInnerHTML={{ __html: renderVideo ? Content : postData.content }} />
+            <div
+              className="post__content"
+              dangerouslySetInnerHTML={{ __html: renderVideo ? Content : postData.content }}
+            />
 
             <TagsContainer>
-              {postData &&
-                postData.tags &&
-                postData.tags.map(id => <Tag key={id} id={id} />)}
+              {postData && postData.tags && postData.tags.map(id => <Tag key={id} id={id} />)}
             </TagsContainer>
             <DisqusContainer>
-              <ReactDisqusComments shortname={DISQUS_SHORTNAME} identifier={pathname} url={window.location ? window.location.href : ''} />
+              <ReactDisqusComments
+                shortname={DISQUS_SHORTNAME}
+                identifier={pathname}
+                url={window.location ? window.location.href : ''}
+              />
             </DisqusContainer>
             <LazyLoad height={1200} once offset={50}>
               <YouMayLike tags={tags} id={postData.id} />
             </LazyLoad>
           </div>
-        </Fragment>
-);
+        </Fragment>);
     }
 
     return (

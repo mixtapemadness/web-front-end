@@ -107,6 +107,7 @@ app.get('*', (req, res) => {
         <link rel="mask-icon" href={`${IMAGES_URL}/assets/images/favicons/safari-pinned-tab.svg`} color="#ff9600" />
         <link href="/bundle.css" rel="stylesheet" />
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossOrigin="anonymous" />
+        <script async type="text/javascript" src="//platform-api.sharethis.com/js/sharethis.js#property=5c64bf387056550011c4a0bc&product=inline-share-buttons" />
         {styleTags}
       </head>
       <body>
@@ -118,7 +119,6 @@ app.get('*', (req, res) => {
           }}
         />
         <script src="/bundle.js" charSet="UTF-8" async />
-        <script async src="//platform-api.sharethis.com/js/sharethis.js#property=5c64bf387056550011c4a0bc&product=inline-share-buttons" />
         <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" />
         <script dangerouslySetInnerHTML={{
           __html: `${JSON.stringify(

@@ -11,9 +11,9 @@ import React, { Fragment, Component } from 'react';
 import styled from 'styled-components';
 import window from 'global/window';
 
-
 import ReactDisqusComments from 'react-disqus-comments';
 import YouMayLike from 'components/youMayLike';
+import Advertisement from 'components/advertisement';
 import LazyLoad from 'react-lazyload';
 
 import { Link } from 'react-router-dom';
@@ -55,7 +55,31 @@ const DisqusContainer = styled.div`
 const pathname = window.location ? window.location.pathname : '';
 
 class BlogPage extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isMobile: window.matchMedia('(max-width: 768px)').matches,
+      adUnitSlot: '5406499701',
+      adUnitStyle: {
+        display: 'inline-block',
+        width: '320px',
+        height: '100px',
+      },
+    };
+  }
+
   componentDidMount() {
+    const { isMobile } = this.state;
+    if (!isMobile) {
+      this.setState({
+        adUnitSlot: '7632256105',
+        adUnitStyle: {
+          display: 'inline-block',
+          width: '728px',
+          height: '90px',
+        },
+      });
+    }
   }
 
   componentDidUpdate() {
@@ -97,6 +121,7 @@ class BlogPage extends Component {
       user,
       match,
     } = this.props;
+    const { adUnitSlot, adUnitStyle } = this.state;
     const userName = user && user.user && user.user.name && user.user.name;
     const userSlug = user && user.user && user.user.slug && user.user.slug;
     const postData = data && data.Post ? data.Post : null;
@@ -138,10 +163,16 @@ class BlogPage extends Component {
       const postUrl = `${ROUTES.categories[match.params.category]}`;
       const postLink = `${ROUTES.base}/blog/${match.params.category}/${postData.slug}`;
       const renderVideo = !!(data && !data.loading && isVideo && Video);
+
       return (
         <Fragment>
           <BlogPageMetaTags description={excerptText} postTitle={postData.title} url={postLink} type="article" />
           <div className="post container">
+            <Advertisement
+              slot={adUnitSlot}
+              format="auto"
+              style={adUnitStyle}
+            />
             <header className="post__heading">
               <Link className="post__category-link" to={postUrl}>
                 {match.params.category}

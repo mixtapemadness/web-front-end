@@ -1,27 +1,37 @@
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
+import AdSense from 'react-adsense';
 
-class Advertisement extends Component {
-  componentDidMount() {
-    (window.adsbygoogle = window.adsbygoogle || []).push({});
-  }
+const Advertisement = ({
+  style, slot, client, format, responsive, border,
+}) => (
+  <section className={`advertisement ${border ? 'advertisement--border' : ''}`}>
+    <span className="advertisement__text">Advertisement</span>
+    <AdSense.Google
+      slot={slot}
+      client={client}
+      style={style}
+      format={format}
+      responsive={responsive}
+    />
+  </section>
+);
 
-  render() {
-    return (
-      <section className="advertisement">
-        <span className="advertisement__text">Advertisement</span>
-        <ins
-          className="adsbygoogle"
-          style={{
-            display: 'block',
-          }}
-          data-ad-client="ca-pub-9403258914718395"
-          data-ad-slot="4168162721"
-          data-ad-format="auto"
-          data-full-width-responsive="true"
-        />
-      </section>
-    );
-  }
-}
+Advertisement.propTypes = {
+  style: PropTypes.object,
+  slot: PropTypes.string,
+  client: PropTypes.string,
+  format: PropTypes.string,
+  responsive: PropTypes.string,
+  border: PropTypes.bool,
+};
 
+Advertisement.defaultProps = {
+  format: 'auto',
+  style: {},
+  client: 'ca-pub-9403258914718395',
+  slot: '',
+  responsive: '',
+  border: false,
+};
 export default Advertisement;

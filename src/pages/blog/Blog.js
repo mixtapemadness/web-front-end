@@ -37,15 +37,32 @@ const ShowMoreContainer = styled.div`
 `;
 
 const PostItemT = (item, index) => {
-  if (index === 5) {
+  if (index === 8) {
     return (
       <React.Fragment key={item.id}>
         <PostItem data={item} />
-        <TopVideoPosts />
         <SubscribeContainer>
           <Subscribe />
         </SubscribeContainer>
+        <TopVideoPosts />
       </React.Fragment>
+    );
+  }
+  if (item && item.id === 'adunit') {
+    return (
+      <div key={Math.random()} className="category-page__ad-unit post-item">
+        <Advertisement
+          border
+          slot="4678789705"
+          format="auto"
+          responsive="true"
+          style={{
+            display: 'inline-block',
+            width: '300px',
+            height: '250px',
+          }}
+        />
+      </div>
     );
   }
   return <PostItem key={item.id} data={item} />;
@@ -53,8 +70,21 @@ const PostItemT = (item, index) => {
 const PostItems = ({ items }) =>
   items.map((item, index) => PostItemT(item, index));
 
+
+const randomIntFromInterval = (min, max) => // min and max included
+Math.floor(Math.random() * (max - min + 1) + min);
+
 const Blog = ({ data, page, handleLoadMore, match, isMoreData }) => {
   const Data = data.Posts && data.Posts.length > 0 && data.Posts;
+    let dataWithAds = Data && [...Data];
+    let adUnitIndexes = [];
+  if (dataWithAds) {
+    adUnitIndexes.push(2);
+    adUnitIndexes.forEach((count, index) => {
+      dataWithAds.splice(count, 0, { id: 'adunit' });
+    });
+  }
+
   let index = 0;
   return (
     <Fragment>
@@ -73,7 +103,7 @@ const Blog = ({ data, page, handleLoadMore, match, isMoreData }) => {
             [...Array(9)].map(i => (
               <CardLoader key={`${index++}-blog-loader`} />
             ))}
-            {!data.loading && (Data && <PostItems items={Data} />)}
+            {!data.loading && (dataWithAds && <PostItems items={dataWithAds} />)}
           </div>
           <ShowMoreContainer>
             {!data.loading ? (

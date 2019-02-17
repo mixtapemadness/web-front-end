@@ -7,6 +7,7 @@ import TopVideos from '../TopVideos';
 const Container = styled.div`
   width: 100%;
   display: flex;
+  margin: 20px 0;
   @media only screen and (max-width: 700px) {
     flex-direction: column;
   }

@@ -96,11 +96,10 @@ const Blog = ({ data, page, handleLoadMore, match, isMoreData }) => {
         <Page>
           {/* <BlogFilter match={match} /> */}
           <div className="category-page__posts">
-            {data.loading &&
+            {data.loading ?
             [...Array(9)].map(i => (
               <CardLoader key={`${index++}-blog-loader`} />
-            ))}
-            {!data.loading && (dataWithAds && <PostItems items={dataWithAds} />)}
+            )) : (dataWithAds && <PostItems items={dataWithAds} />)}
           </div>
           <ShowMoreContainer>
             {!data.loading ? (

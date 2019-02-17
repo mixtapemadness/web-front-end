@@ -15,6 +15,7 @@ import PostItem from 'components/postItem';
 import Subscribe from 'components/subscribe';
 import { CardLoader } from 'components/loaders';
 import Spinner from 'components/Spinner';
+import Advertisement from 'components/advertisement';
 import TopVideoPosts from './TopVideoPosts';
 
 import BlogSlider from './BlogSlider';

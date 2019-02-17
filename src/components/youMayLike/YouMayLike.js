@@ -9,6 +9,7 @@ import styled from 'styled-components';
 import PostItem from 'components/postItem';
 import { CardLoader } from 'components/loaders';
 import shuffle from 'helpers/shuffle';
+import Advertisement from 'components/advertisement';
 import youMayLikeEnhancer from './youMayLikeEnhancer';
 
 const MayLikeContainer = styled.div`
@@ -68,6 +69,7 @@ const YouMayLike = ({
           uniquePosts.map((item) => <PostItem key={item.id} data={item} />) :
           [...Array(6)].map(i => <CardLoader key={`${Math.random()}-ymal-posts`} />)
         }
+
       </Div>
     </MayLikeContainer>
   );

@@ -37,7 +37,7 @@ export default compose(
         notifyOnNetworkStatusChange: true,
         variables: {
           page: 1,
-          perPage: 9,
+          perPage: 11,
           filter: { categories: props.match.params.filter.toUpperCase() },
           sort: props.sort,
         },

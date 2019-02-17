@@ -61,11 +61,6 @@ const Blog = ({ data, page, handleLoadMore, match, isMoreData }) => {
       <BlogPageMetaTags postTitle={match.params.filter} description={match.params.filter} />
       <div className="category-page">
         <div className="category-page__header">
-          <Advertisement
-            slot="7632256105"
-            responsive="true"
-            style={{ display: 'inline-block', width: '728px', height: '90px' }}
-          />
           <div className="container">
             <h2 className="category-page__title">{match.params.filter}</h2>
           </div>

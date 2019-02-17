@@ -1,21 +1,31 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+
 import AdSense from 'react-adsense';
 
-const Advertisement = ({
-  style, slot, client, format, responsive, border,
-}) => (
-  <section className={`advertisement ${border ? 'advertisement--border' : ''}`}>
-    <span className="advertisement__text">Advertisement</span>
-    <AdSense.Google
-      slot={slot}
-      client={client}
-      style={style}
-      format={format}
-      responsive={responsive}
-    />
-  </section>
-);
+class Advertisement extends Component {
+  componentDidMount() {
+  }
+
+  render() {
+    const {
+      slot, client, style, format, responsive, border, uniqueKey,
+    } = this.props;
+    return (
+      <section className={`advertisement ${border ? 'advertisement--border' : ''}`}>
+        <span className="advertisement__text">Advertisement</span>
+        <AdSense.Google
+          key={uniqueKey}
+          slot={slot}
+          client={client}
+          style={style}
+          format={format}
+          responsive={responsive}
+        />
+      </section>
+    );
+  }
+}
 
 Advertisement.propTypes = {
   style: PropTypes.object,

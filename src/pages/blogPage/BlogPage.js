@@ -31,11 +31,10 @@ import BlogPageMetaTags from './BlogPageMetaTags';
 
 const BlogPageVideo = styled.div`
   width: 100%;
-  height: auto
+  height: auto;
   background-image: url(${props => props.src});
   background-position: center center;
   background-size: cover;
-
 `;
 const TagsContainer = styled.div`
   display: flex;
@@ -59,27 +58,36 @@ class BlogPage extends Component {
     super(props);
     this.state = {
       isMobile: window && window.matchMedia && window.matchMedia('(max-width: 768px)').matches,
-      adUnitSlot: '5406499701',
+      adUnitSlot: '',
       adUnitStyle: {
-        display: 'inline-block',
-        width: '320px',
-        height: '100px',
+        display: '',
+        width: '',
+        height: '',
       },
     };
   }
 
   componentDidMount() {
     const { isMobile } = this.state;
+    let adUnitSlot = '5406499701';
+    let adUnitStyle = {
+      display: 'inline-block',
+      width: '320px',
+      height: '100px',
+    };
     if (!isMobile) {
-      this.setState({
-        adUnitSlot: '7632256105',
-        adUnitStyle: {
-          display: 'inline-block',
-          width: '728px',
-          height: '90px',
-        },
-      });
+      adUnitSlot = '7632256105';
+      adUnitStyle = {
+        display: 'inline-block',
+        width: '728px',
+        height: '90px',
+      };
     }
+
+    this.setState({
+      adUnitSlot,
+      adUnitStyle,
+    });
   }
 
   componentDidUpdate() {
@@ -168,11 +176,14 @@ class BlogPage extends Component {
         <Fragment>
           <BlogPageMetaTags description={excerptText} postTitle={postData.title} url={postLink} type="article" />
           <div className="post container">
-            <Advertisement
-              slot={adUnitSlot}
-              format="auto"
-              style={adUnitStyle}
-            />
+            {adUnitSlot && (
+              <Advertisement
+                uniqueKey={postData.slug}
+                slot={adUnitSlot}
+                format="auto"
+                style={adUnitStyle}
+              />
+            )}
             <header className="post__heading">
               <Link className="post__category-link" to={postUrl}>
                 {match.params.category}

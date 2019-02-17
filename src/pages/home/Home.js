@@ -26,27 +26,36 @@ class Home extends Component {
     super(props);
     this.state = {
       isMobile: window && window.matchMedia && window.matchMedia('(max-width: 768px)').matches,
-      adUnitSlot: '5406499701',
+      adUnitSlot: '',
       adUnitStyle: {
-        display: 'inline-block',
-        width: '320px',
-        height: '100px',
+        display: '',
+        width: '',
+        height: '',
       },
     };
   }
 
   componentDidMount() {
     const { isMobile } = this.state;
+    let adUnitSlot = '5406499701';
+    let adUnitStyle = {
+      display: 'inline-block',
+      width: '320px',
+      height: '100px',
+    };
     if (!isMobile) {
-      this.setState({
-        adUnitSlot: '7632256105',
-        adUnitStyle: {
-          display: 'inline-block',
-          width: '728px',
-          height: '90px',
-        },
-      });
+      adUnitSlot = '7632256105';
+      adUnitStyle = {
+        display: 'inline-block',
+        width: '728px',
+        height: '90px',
+      };
     }
+
+    this.setState({
+      adUnitSlot,
+      adUnitStyle,
+    });
   }
 
   render() {
@@ -82,11 +91,13 @@ class Home extends Component {
             content={SEO.description}
           />
         </Helmet>
-        <Advertisement
-          slot={adUnitSlot}
-          format="auto"
-          style={adUnitStyle}
-        />
+        {adUnitSlot && (
+          <Advertisement
+            slot={adUnitSlot}
+            format="auto"
+            style={adUnitStyle}
+          />
+        )}
         <LazyLoad height={400} once offsetVertical={0}>
           <MainSlider />
         </LazyLoad>

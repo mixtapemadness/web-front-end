@@ -55,7 +55,6 @@ const PostItemT = (item, index) => {
           border
           slot="4678789705"
           format="auto"
-          responsive="true"
           style={{
             display: 'inline-block',
             width: '300px',

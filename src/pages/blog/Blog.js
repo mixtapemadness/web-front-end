@@ -70,15 +70,12 @@ const PostItemT = (item, index) => {
 const PostItems = ({ items }) =>
   items.map((item, index) => PostItemT(item, index));
 
-
-const randomIntFromInterval = (min, max) => // min and max included
-Math.floor(Math.random() * (max - min + 1) + min);
-
 const Blog = ({ data, page, handleLoadMore, match, isMoreData }) => {
   const Data = data.Posts && data.Posts.length > 0 && data.Posts;
     let dataWithAds = Data && [...Data];
-    let adUnitIndexes = [];
+
   if (dataWithAds) {
+    let adUnitIndexes = [];
     adUnitIndexes.push(2);
     adUnitIndexes.forEach((count, index) => {
       dataWithAds.splice(count, 0, { id: 'adunit' });

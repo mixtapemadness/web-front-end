@@ -58,7 +58,7 @@ class BlogPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isMobile: window.matchMedia('(max-width: 768px)').matches,
+      isMobile: window && window.matchMedia && window.matchMedia('(max-width: 768px)').matches,
       adUnitSlot: '5406499701',
       adUnitStyle: {
         display: 'inline-block',

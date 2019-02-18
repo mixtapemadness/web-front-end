@@ -8,7 +8,6 @@ import MainSlider from 'components/mainSlider';
 import Subscribe from 'components/subscribe';
 import Videos from 'components/videos';
 import Download from 'components/download';
-import window from 'global';
 import WhatsOn from './whatsOn';
 import Interviews from './interviews';
 import Posts from './posts';
@@ -22,44 +21,10 @@ const SubscribeContainer = styled.div`
 `;
 
 class Home extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isMobile: window && window.matchMedia && window.matchMedia('(max-width: 768px)').matches,
-      adUnitSlot: '',
-      adUnitStyle: {
-        display: '',
-        width: '',
-        height: '',
-      },
-    };
-  }
-
   componentDidMount() {
-    const { isMobile } = this.state;
-    let adUnitSlot = '5406499701';
-    let adUnitStyle = {
-      display: 'inline-block',
-      width: '320px',
-      height: '100px',
-    };
-    if (!isMobile) {
-      adUnitSlot = '7632256105';
-      adUnitStyle = {
-        display: 'inline-block',
-        width: '728px',
-        height: '90px',
-      };
-    }
-
-    this.setState({
-      adUnitSlot,
-      adUnitStyle,
-    });
   }
 
   render() {
-    const { adUnitSlot, adUnitStyle } = this.state;
     return (
       <div className="page__container">
         <Helmet>
@@ -91,13 +56,11 @@ class Home extends Component {
             content={SEO.description}
           />
         </Helmet>
-        {adUnitSlot && (
-          <Advertisement
-            slot={adUnitSlot}
-            format="auto"
-            style={adUnitStyle}
-          />
-        )}
+        <Advertisement>
+          <div id="div-gpt-ad-1550497711029-0" className="center">
+            <script dangerouslySetInnerHTML={{ __html: 'googletag.cmd.push(function() { googletag.display(\'div-gpt-ad-1550497711029-0\'); });' }} />
+          </div>
+        </Advertisement>
         <LazyLoad height={400} once offsetVertical={0}>
           <MainSlider />
         </LazyLoad>

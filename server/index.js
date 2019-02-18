@@ -111,6 +111,7 @@ app.get('*', (req, res) => {
         <link rel="mask-icon" href={`${IMAGES_URL}/assets/images/favicons/safari-pinned-tab.svg`} color="#ff9600" />
         <link href="/bundle.css" rel="stylesheet" />
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossOrigin="anonymous" />
+        {styleTags}
         <script async type="text/javascript" src="//platform-api.sharethis.com/js/sharethis.js#property=5c64bf387056550011c4a0bc&product=inline-share-buttons" />
         <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" />
 
@@ -124,26 +125,22 @@ app.get('*', (req, res) => {
     googletag.defineSlot('/29554951/MPU_Homepage', [300, 250], 'div-gpt-ad-1550497747165-0').addService(googletag.pubads());
     googletag.pubads().enableSingleRequest();
     googletag.enableServices();
-  });`,
-        }}
+  });` }}
         />
         <script dangerouslySetInnerHTML={{
           __html: `googletag.cmd.push(function() {
+          var Leaderboard = googletag.sizeMapping()
+          .addSize([768, 0], [728, 90])
+          .addSize([1, 1], [320, 100])
+          .build();
 
-var Leaderboard = googletag.sizeMapping().
-  addSize([768, 0], [728, 90]).
-  addSize([1, 1], [320, 100]).
-
-build();
     googletag.defineSlot('/29554951/Leaderboard_Homepage', [[320, 100], [728, 90]], 'div-gpt-ad-1550497711029-0').defineSizeMapping(Leaderboard)
 .addService(googletag.pubads());
     googletag.pubads().enableSingleRequest();
     googletag.enableServices();
   });
-`,
-        }}
+` }}
         />
-        {styleTags}
       </head>
       <body>
         <div id="root" dangerouslySetInnerHTML={{ __html: content }} />

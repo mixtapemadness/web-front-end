@@ -176,14 +176,11 @@ class BlogPage extends Component {
         <Fragment>
           <BlogPageMetaTags description={excerptText} postTitle={postData.title} url={postLink} type="article" />
           <div className="post container">
-            {adUnitSlot && (
-              <Advertisement
-                uniqueKey={postData.slug}
-                slot={adUnitSlot}
-                format="auto"
-                style={adUnitStyle}
-              />
-            )}
+            <Advertisement>
+              <div id="div-gpt-ad-1550497711029-0" className="center">
+                <script dangerouslySetInnerHTML={{ __html: 'googletag.cmd.push(function() { googletag.display(\'div-gpt-ad-1550497711029-0\'); });' }} />
+              </div>
+            </Advertisement>
             <header className="post__heading">
               <Link className="post__category-link" to={postUrl}>
                 {match.params.category}

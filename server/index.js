@@ -127,6 +127,22 @@ app.get('*', (req, res) => {
   });`,
         }}
         />
+        <script dangerouslySetInnerHTML={{
+          __html: `googletag.cmd.push(function() {
+
+var Leaderboard = googletag.sizeMapping().
+  addSize([768, 0], [728, 90]).
+  addSize([1, 1], [320, 100]).
+
+
+    googletag.defineSlot('/29554951/Leaderboard_Homepage', [[320, 100], [728, 90]], 'div-gpt-ad-1550497711029-0').defineSizeMapping(Leaderboard)
+.addService(googletag.pubads());
+    googletag.pubads().enableSingleRequest();
+    googletag.enableServices();
+  });
+`,
+        }}
+        />
         {styleTags}
       </head>
       <body>

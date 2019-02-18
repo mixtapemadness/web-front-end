@@ -52,9 +52,11 @@ const PostItemT = (item, index) => {
         <Advertisement border>
           <div
             id="div-gpt-ad-1550497747165-0"
+            className="center"
             style={{ height: '250px', width: '300px' }}
-          />
-          <script dangerouslySetInnerHTML={{ __html: 'googletag.cmd.push(function() { googletag.display(\'div-gpt-ad-1550497747165-0\'); });' }} />
+          >
+            <script dangerouslySetInnerHTML={{ __html: 'googletag.cmd.push(function() { googletag.display(\'div-gpt-ad-1550497747165-0\'); });' }} />
+          </div>
         </Advertisement>
       </div>
     );

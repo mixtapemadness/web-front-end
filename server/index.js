@@ -28,6 +28,10 @@ import { IMAGES_URL, SEO, TWITTER_HANDLE } from '../src/constants';
 const app = express();
 const PORT = process.env.PORT || 8003;
 let adsbygoogle = [];
+let googletag = {};
+
+googletag = window.googletag || {};
+googletag.cmd = googletag.cmd || [];
 
 app.use(bodyParser.json());
 app.use(express.static('dist/client'));
@@ -120,6 +124,19 @@ app.get('*', (req, res) => {
         />
         <script src="/bundle.js" charSet="UTF-8" async />
         <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" />
+        <script async src="https://www.googletagservices.com/tag/js/gpt.js" />
+
+        <script dangerouslySetInnerHTML={{
+          __html: `${JSON.stringify(
+            googletag.cmd.push(() => {
+              googletag.defineSlot('/29554951/MPU_Homepage', [300, 250], 'div-gpt-ad-1550448838929-0').addService(googletag.pubads());
+              googletag.pubads().enableSingleRequest();
+              googletag.pubads().collapseEmptyDivs();
+              googletag.enableServices();
+            }),
+          )};`,
+        }}
+        />
         <script dangerouslySetInnerHTML={{
           __html: `${JSON.stringify(
             (adsbygoogle = window.adsbygoogle || []).push({

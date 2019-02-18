@@ -7,6 +7,7 @@
 /* eslint no-unused-vars: 0 */
 /* eslint indent: 0 */
 /* eslint no-plusplus: 0 */
+/* global googletag */
 
 import React, { Fragment } from 'react';
 import styled from 'styled-components';
@@ -16,7 +17,6 @@ import Subscribe from 'components/subscribe';
 import { CardLoader } from 'components/loaders';
 import Spinner from 'components/Spinner';
 import Advertisement from 'components/advertisement';
-import window from 'global';
 import TopVideoPosts from './TopVideoPosts';
 
 import blogsEnhancer from './blogEnhancer';
@@ -47,6 +47,9 @@ const PostItemT = (item, index) => {
     );
   }
   if (item && item.id === 'adunit') {
+    if (googletag) {
+      googletag.cmd.push(() => { googletag.display('div-gpt-ad-1550497747165-0'); });
+    }
     return (
       <div key={Math.random()} className="category-page__ad-unit post-item">
         <Advertisement border>
@@ -54,9 +57,9 @@ const PostItemT = (item, index) => {
             id="div-gpt-ad-1550497747165-0"
             className="center"
             style={{ height: '250px', width: '300px' }}
-          >
-            <script dangerouslySetInnerHTML={{ __html: 'googletag.cmd.push(function() { googletag.display(\'div-gpt-ad-1550497747165-0\'); });' }} />
-          </div>
+          />
+          <script dangerouslySetInnerHTML={{ __html: 'googletag.cmd.push(function() { googletag.display(\'div-gpt-ad-1550497747165-0\'); });' }} />
+
         </Advertisement>
       </div>
     );

@@ -28,10 +28,6 @@ import { IMAGES_URL, SEO, TWITTER_HANDLE } from '../src/constants';
 const app = express();
 const PORT = process.env.PORT || 8003;
 let adsbygoogle = [];
-let googletag = {};
-
-googletag = googletag || {};
-googletag.cmd = googletag.cmd || [];
 
 app.use(bodyParser.json());
 app.use(express.static('dist/client'));

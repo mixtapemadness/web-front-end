@@ -1,3 +1,5 @@
+/* global googletag */
+
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import LazyLoad from 'react-lazyload';
@@ -22,6 +24,22 @@ const SubscribeContainer = styled.div`
 
 class Home extends Component {
   componentDidMount() {
+    if (googletag) {
+      this.pushGoogleTags();
+    }
+  }
+
+  componentDidUpdate() {
+    console.log('here');
+    if (googletag) {
+      this.pushGoogleTags();
+    }
+  }
+
+  pushGoogleTags = () => {
+    if (googletag) {
+      googletag.cmd.push(() => { googletag.display('div-gpt-ad-1550497711029-0'); });
+    }
   }
 
   render() {
@@ -57,9 +75,8 @@ class Home extends Component {
           />
         </Helmet>
         <Advertisement>
-          <div id="div-gpt-ad-1550497711029-0" className="center">
-            <script dangerouslySetInnerHTML={{ __html: 'googletag.cmd.push(function() { googletag.display(\'div-gpt-ad-1550497711029-0\'); });' }} />
-          </div>
+          <div id="div-gpt-ad-1550497711029-0" className="center" />
+          <script dangerouslySetInnerHTML={{ __html: 'googletag.cmd.push(function() { googletag.display(\'div-gpt-ad-1550497711029-0\'); });' }} />
         </Advertisement>
         <LazyLoad height={400} once offsetVertical={0}>
           <MainSlider />

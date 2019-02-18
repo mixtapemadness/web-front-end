@@ -61,10 +61,6 @@ class BlogPage extends Component {
     };
   }
 
-  componentDidMount() {
-    this.pushGoogleTags();
-  }
-
   componentDidUpdate() {
     const { data, match } = this.props;
 
@@ -72,13 +68,6 @@ class BlogPage extends Component {
       const plainTitle = stripHtml(data.Post.title);
       const postLink = `${ROUTES.base}/blog/${match.params.category}/${data.Post.slug}`;
       this.renderShareData(plainTitle, data.Post.excerpt, postLink);
-    }
-    this.pushGoogleTags();
-  }
-
-  pushGoogleTags = () => {
-    if (googletag) {
-      googletag.cmd.push(() => { googletag.display('div-gpt-ad-1550497711029-0'); });
     }
   }
 

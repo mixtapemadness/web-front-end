@@ -1,6 +1,6 @@
 /* eslint no-unused-vars: 0 */
 /* eslint object-curly-newline: 0 */
-
+/* global googletag */
 import {
   compose,
   withStateHandlers,
@@ -15,6 +15,12 @@ import window from 'global/window';
 import getEmitter from '../../eventEmitter';
 
 const eventEmitter = getEmitter();
+
+const handleGoogleTagPush = () => {
+  if (googletag) {
+    googletag.cmd.push(() => { googletag.display('div-gpt-ad-1550497747165-0'); });
+  }
+};
 
 export default compose(
   withStateHandlers(
@@ -62,11 +68,13 @@ export default compose(
     componentWillReceiveProps(nextProps) {
       if (nextProps.location.pathname !== this.props.location.pathname) {
         window.scrollTo(0, 0);
+        handleGoogleTagPush();
       }
     },
     componentDidMount() {
       eventEmitter.emit(CLOSE_MEGAMENU);
       window.scrollTo(0, 0);
+      handleGoogleTagPush();
     },
   }),
   withProps(({ count, data }) => {

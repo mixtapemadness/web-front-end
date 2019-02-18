@@ -24,16 +24,11 @@ const SubscribeContainer = styled.div`
 
 class Home extends Component {
   componentDidMount() {
-    if (googletag) {
-      this.pushGoogleTags();
-    }
+    this.pushGoogleTags();
   }
 
   componentDidUpdate() {
-    console.log('here');
-    if (googletag) {
-      this.pushGoogleTags();
-    }
+    this.pushGoogleTags();
   }
 
   pushGoogleTags = () => {

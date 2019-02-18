@@ -9,19 +9,22 @@ class Advertisement extends Component {
 
   render() {
     const {
-      slot, client, style, format, responsive, border, uniqueKey,
+      slot, client, style, format, responsive, border, uniqueKey, children,
     } = this.props;
     return (
       <section className={`advertisement ${border ? 'advertisement--border' : ''}`}>
         <span className="advertisement__text">Advertisement</span>
-        <AdSense.Google
-          key={uniqueKey}
-          slot={slot}
-          client={client}
-          style={style}
-          format={format}
-          responsive={responsive}
-        />
+        {children || (
+          <AdSense.Google
+            key={uniqueKey}
+            slot={slot}
+            client={client}
+            style={style}
+            format={format}
+            responsive={responsive}
+          />
+        )
+        }
       </section>
     );
   }

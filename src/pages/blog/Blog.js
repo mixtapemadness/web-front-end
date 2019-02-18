@@ -16,6 +16,7 @@ import Subscribe from 'components/subscribe';
 import { CardLoader } from 'components/loaders';
 import Spinner from 'components/Spinner';
 import Advertisement from 'components/advertisement';
+import window from 'global';
 import TopVideoPosts from './TopVideoPosts';
 
 import BlogSlider from './BlogSlider';
@@ -25,6 +26,9 @@ import blogsEnhancer from './blogEnhancer';
 import Page from '../Page';
 import Button from '../../components/Button/Button';
 import BlogPageMetaTags from '../blogPage/BlogPageMetaTags';
+
+let googletag = window.googletag || {};
+googletag.cmd = googletag.cmd || [];
 
 const SubscribeContainer = styled.div`
   width: 100%;
@@ -48,19 +52,17 @@ const PostItemT = (item, index) => {
       </React.Fragment>
     );
   }
-  if (item && item.id === 'adunit') {
+  if (item && item.id === 'adunit' && googletag) {
+    googletag.cmd.push(() => { googletag.display('div-gpt-ad-1550497747165-0'); });
+
     return (
       <div key={Math.random()} className="category-page__ad-unit post-item">
-        <Advertisement
-          border
-          slot="4678789705"
-          format=""
-          style={{
-            display: 'inline-block',
-            width: '300px',
-            height: '250px',
-          }}
-        />
+        <Advertisement border>
+          <div
+            id="div-gpt-ad-1550497747165-0"
+            style={{ height: '250px', width: '300px' }}
+          />
+        </Advertisement>
       </div>
     );
   }

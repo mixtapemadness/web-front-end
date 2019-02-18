@@ -134,7 +134,7 @@ var Leaderboard = googletag.sizeMapping().
   addSize([768, 0], [728, 90]).
   addSize([1, 1], [320, 100]).
 
-
+build();
     googletag.defineSlot('/29554951/Leaderboard_Homepage', [[320, 100], [728, 90]], 'div-gpt-ad-1550497711029-0').defineSizeMapping(Leaderboard)
 .addService(googletag.pubads());
     googletag.pubads().enableSingleRequest();

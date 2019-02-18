@@ -54,7 +54,7 @@ const PostItemT = (item, index) => {
         <Advertisement
           border
           slot="4678789705"
-          format="auto"
+          format=""
           style={{
             display: 'inline-block',
             width: '300px',

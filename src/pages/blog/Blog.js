@@ -47,9 +47,6 @@ const PostItemT = (item, index) => {
     );
   }
   if (item && item.id === 'adunit') {
-    if (googletag) {
-      googletag.cmd.push(() => { googletag.display('div-gpt-ad-1550497747165-0'); });
-    }
     return (
       <div key={Math.random()} className="category-page__ad-unit post-item">
         <Advertisement border>
@@ -59,7 +56,6 @@ const PostItemT = (item, index) => {
             style={{ height: '250px', width: '300px' }}
           />
           <script dangerouslySetInnerHTML={{ __html: 'googletag.cmd.push(function() { googletag.display(\'div-gpt-ad-1550497747165-0\'); });' }} />
-
         </Advertisement>
       </div>
     );

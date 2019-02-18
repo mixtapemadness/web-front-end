@@ -15,12 +15,6 @@ import getPostBySlug from 'graphql/getPostBySlug.graphql';
 import { loadDataAsync, withAuthor, withMedia } from 'hocs';
 import window from 'global/window';
 
-const handleGoogleTagPush = () => {
-  if (googletag) {
-    googletag.cmd.push(() => { googletag.display('div-gpt-ad-1550497711029-0'); });
-  }
-};
-
 export default compose(
   withRouter,
   loadDataAsync({
@@ -58,7 +52,6 @@ export default compose(
     componentDidMount() {
       window.scrollTo(0, 0);
       this.props.updateSpinner(false);
-      handleGoogleTagPush();
     },
     componentWillMount() {
       this.props.updateSpinner(true);
@@ -66,7 +59,6 @@ export default compose(
     componentWillReceiveProps(nextProps, prevProps) {
       if (nextProps.location.pathname !== this.props.location.pathname) {
         window.scrollTo(0, 0);
-        handleGoogleTagPush();
       }
     },
   }),

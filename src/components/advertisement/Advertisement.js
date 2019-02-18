@@ -1,3 +1,5 @@
+/* global googletag */
+
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
@@ -5,6 +7,18 @@ import AdSense from 'react-adsense';
 
 class Advertisement extends Component {
   componentDidMount() {
+    this.updateGoogleTags();
+  }
+
+  componentWillReceiveProps() {
+    // this.updateGoogleTags();
+  }
+
+  updateGoogleTags = () => {
+    if (googletag) {
+      googletag.cmd.push(() => { googletag.display('div-gpt-ad-1550497711029-0'); });
+      googletag.cmd.push(() => { googletag.display('div-gpt-ad-1550497747165-0'); });
+    }
   }
 
   render() {

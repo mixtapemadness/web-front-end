@@ -30,7 +30,7 @@ const PORT = process.env.PORT || 8003;
 let adsbygoogle = [];
 let googletag = {};
 
-googletag = window.googletag || {};
+googletag = googletag || {};
 googletag.cmd = googletag.cmd || [];
 
 app.use(bodyParser.json());
@@ -112,6 +112,21 @@ app.get('*', (req, res) => {
         <link href="/bundle.css" rel="stylesheet" />
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossOrigin="anonymous" />
         <script async type="text/javascript" src="//platform-api.sharethis.com/js/sharethis.js#property=5c64bf387056550011c4a0bc&product=inline-share-buttons" />
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" />
+
+        <script async="async" src="https://www.googletagservices.com/tag/js/gpt.js" />
+        <script dangerouslySetInnerHTML={{ __html:
+            `var googletag = googletag || {};
+              googletag.cmd = googletag.cmd || [];` }}
+        />
+        <script dangerouslySetInnerHTML={{
+          __html: `googletag.cmd.push(function() {
+    googletag.defineSlot('/29554951/MPU_Homepage', [300, 250], 'div-gpt-ad-1550497747165-0').addService(googletag.pubads());
+    googletag.pubads().enableSingleRequest();
+    googletag.enableServices();
+  });`,
+        }}
+        />
         {styleTags}
       </head>
       <body>
@@ -123,20 +138,7 @@ app.get('*', (req, res) => {
           }}
         />
         <script src="/bundle.js" charSet="UTF-8" async />
-        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" />
-        <script async src="https://www.googletagservices.com/tag/js/gpt.js" />
 
-        <script dangerouslySetInnerHTML={{
-          __html: `${JSON.stringify(
-            googletag.cmd.push(() => {
-              googletag.defineSlot('/29554951/MPU_Homepage', [300, 250], 'div-gpt-ad-1550448838929-0').addService(googletag.pubads());
-              googletag.pubads().enableSingleRequest();
-              googletag.pubads().collapseEmptyDivs();
-              googletag.enableServices();
-            }),
-          )};`,
-        }}
-        />
         <script dangerouslySetInnerHTML={{
           __html: `${JSON.stringify(
             (adsbygoogle = window.adsbygoogle || []).push({

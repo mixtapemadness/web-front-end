@@ -6,6 +6,7 @@
 /* eslint no-unneeded-ternary: 0 */
 /* eslint implicit-arrow-linebreak: 0 */
 /* eslint react/jsx-closing-tag-location: 0 */
+/* global googletag */
 
 import React, { Fragment, Component } from 'react';
 import styled from 'styled-components';
@@ -57,37 +58,11 @@ class BlogPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isMobile: window && window.matchMedia && window.matchMedia('(max-width: 768px)').matches,
-      adUnitSlot: '',
-      adUnitStyle: {
-        display: '',
-        width: '',
-        height: '',
-      },
     };
   }
 
   componentDidMount() {
-    const { isMobile } = this.state;
-    let adUnitSlot = '5406499701';
-    let adUnitStyle = {
-      display: 'inline-block',
-      width: '320px',
-      height: '100px',
-    };
-    if (!isMobile) {
-      adUnitSlot = '7632256105';
-      adUnitStyle = {
-        display: 'inline-block',
-        width: '728px',
-        height: '90px',
-      };
-    }
-
-    this.setState({
-      adUnitSlot,
-      adUnitStyle,
-    });
+    this.pushGoogleTags();
   }
 
   componentDidUpdate() {
@@ -97,6 +72,13 @@ class BlogPage extends Component {
       const plainTitle = stripHtml(data.Post.title);
       const postLink = `${ROUTES.base}/blog/${match.params.category}/${data.Post.slug}`;
       this.renderShareData(plainTitle, data.Post.excerpt, postLink);
+    }
+    this.pushGoogleTags();
+  }
+
+  pushGoogleTags = () => {
+    if (googletag) {
+      googletag.cmd.push(() => { googletag.display('div-gpt-ad-1550497711029-0'); });
     }
   }
 
@@ -177,9 +159,8 @@ class BlogPage extends Component {
           <BlogPageMetaTags description={excerptText} postTitle={postData.title} url={postLink} type="article" />
           <div className="post container">
             <Advertisement>
-              <div id="div-gpt-ad-1550497711029-0" className="center">
-                <script dangerouslySetInnerHTML={{ __html: 'googletag.cmd.push(function() { googletag.display(\'div-gpt-ad-1550497711029-0\'); });' }} />
-              </div>
+              <div id="div-gpt-ad-1550497711029-0" className="center" />
+              <script dangerouslySetInnerHTML={{ __html: 'googletag.cmd.push(function() { googletag.display(\'div-gpt-ad-1550497711029-0\'); });' }} />
             </Advertisement>
             <header className="post__heading">
               <Link className="post__category-link" to={postUrl}>

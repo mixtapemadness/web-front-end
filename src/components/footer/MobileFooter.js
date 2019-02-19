@@ -5,7 +5,7 @@ import { RESPONSIVE_BREAKPOINTS } from '../../constants';
 import FooterLinks from './FooterLinks';
 
 const MobileFooterContainer = styled.div`
-  margin: 20px auto;
+  padding: 20px 0;
   display: block;
   @media only screen and (min-width: ${RESPONSIVE_BREAKPOINTS.tablet}) {
     display: none;

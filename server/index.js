@@ -146,6 +146,18 @@ app.get('*', (req, res) => {
         />
       </head>
       <body>
+        <div id="skinContainer" style={{ position: 'fixed', width: '100%', height: '100%', top: '0', left: '0', overflow: 'hidden' }}>
+          <div style={{
+            position: 'relative',
+            width: '100%',
+            height: '100%',
+          }}
+          >
+            <div id="skinContainerImage" />
+            <div id="bgleft" style={{ position: 'absolute', zIndex: '0', top: '0', left: '0', width: '250px', height: '100%', display: 'block' }} />
+            <div id="bgright" style={{ position: 'absolute', zIndex: '0', top: '0', right: '0', width: '250px', height: '100%', display: 'block' }} />
+          </div>
+        </div>
         <div id="root" dangerouslySetInnerHTML={{ __html: content }} />
         <script
           charSet="UTF-8"

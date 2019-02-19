@@ -4,6 +4,7 @@ import { compose, withStateHandlers, lifecycle } from 'recompose';
 
 import Header from 'components/header';
 import { CLOSE_MEGAMENU } from 'constants';
+import Advertisement from 'components/advertisement';
 import AppContent from './AppContent';
 import getEmitter from './eventEmitter';
 
@@ -15,6 +16,11 @@ const App = (props) => {
   } = props;
   return (
     <Fragment>
+      <Advertisement>
+        <div id="div-gpt-ad-1550568793125-0" style={{ height: '1px', width: '1px' }} />
+
+        <script dangerouslySetInnerHTML={{ __html: 'googletag.cmd.push(function() { googletag.display(\'div-gpt-ad-1550568793125-0\'); });' }} />
+      </Advertisement>
       <Header
         toggleSearch={toggleSearch}
         menuOpened={menuOpened}

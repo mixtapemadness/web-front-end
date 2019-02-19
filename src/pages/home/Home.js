@@ -1,5 +1,3 @@
-/* global googletag */
-
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import LazyLoad from 'react-lazyload';
@@ -19,22 +17,11 @@ import {
 } from '../../constants';
 
 const SubscribeContainer = styled.div`
-  margin: 40px;
+  margin: 30px 0;
 `;
 
 class Home extends Component {
   componentDidMount() {
-    this.pushGoogleTags();
-  }
-
-  componentDidUpdate() {
-    this.pushGoogleTags();
-  }
-
-  pushGoogleTags = () => {
-    if (googletag) {
-      googletag.cmd.push(() => { googletag.display('div-gpt-ad-1550497711029-0'); });
-    }
   }
 
   render() {

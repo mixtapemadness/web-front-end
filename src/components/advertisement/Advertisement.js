@@ -19,7 +19,7 @@ class Advertisement extends Component {
       googletag.cmd.push(() => { googletag.display('div-gpt-ad-1550497711029-0'); });
       googletag.cmd.push(() => { googletag.display('div-gpt-ad-1550497747165-0'); });
     }
-  }
+  };
 
   render() {
     const {

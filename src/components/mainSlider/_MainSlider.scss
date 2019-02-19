@@ -1,8 +1,13 @@
+
 .main-slider {
-  height: 370px;
+
+  height: $small-device-height;
 
   @include desktop {
-    height: 600px;
+    height: $medium-device-height;
+  }
+  @include large_desktop {
+    height: $large-device-height;
   }
   .slick-slider {
     height: 100%;
@@ -196,10 +201,14 @@
   .card-loader {
     min-width: auto;
   }
-  height: 370px;
+  height: $small-device-height;
   @include desktop {
-    height: 600px;
+    height: $medium-device-height;
     overflow: hidden;
+  }
+
+  @include large_desktop {
+    height: $large-device-height;
   }
   .slick-slider {
     display: flex;

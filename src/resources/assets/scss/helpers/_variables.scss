@@ -5,8 +5,16 @@ $light-grey: #efefef;
 $lighter-grey: #f1f3f5;
 $dark-grey: #666666;
 $max-page-width: 1200px;
+$min-page-width: 992px;
 $header-height: 60px;
 
-$desktop-min-width: 768px;
-$small-device-width: 401px;
+$large-desktop-min-width: 1440px;
+$desktop-min-width: 1200px;
+$medium-device-width: 992px;
+$small-device-width: 768px;
 
+
+/*Slider Vars*/
+$small-device-height: 370px;
+$medium-device-height: 500px;
+$large-device-height: 600px;

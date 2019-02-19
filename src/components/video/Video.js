@@ -17,10 +17,8 @@ import placeholderImg from '../../resources/assets/img/placeholderImg.jpg';
 import IconButton from '../IconButton/IconButton';
 
 const Container = styled.div`
-  flex: 1;
   @media only screen and (min-width: ${RESPONSIVE_BREAKPOINTS.tablet}) {
-    margin: 7px;
-    max-width: 386px;
+    margin: 5px;
   }
 `;
 
@@ -36,7 +34,7 @@ const ContentContainer = styled.div`
   background-color: #eeeeef;
   width: calc(100% - 30px);
   padding: 20px 15px;
-  height: 140px;
+  height: 100px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -94,9 +92,6 @@ const Video = ({ data, media, tags, category }) => {
             <Name
               dangerouslySetInnerHTML={{ __html: data.title }}
               to={postUrl}
-            />
-            <Excerpt
-              dangerouslySetInnerHTML={{ __html: truncate(data.excerpt, 90) }}
             />
           </Fragment>
           <div className="post-item__meta">

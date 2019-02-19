@@ -20,8 +20,6 @@ const SubscribeContainer = styled.div`
 const SubscribeThakYou = styled.div`
   max-height: ${p => (p.isSubscribed ? '400px' : '0px')};
   overflow: hidden;
-  transition: 1s;
-  transition-delay: 1s;
   font-weight: 800;
   font-size: 18px;
   text-align: center;
@@ -146,8 +144,7 @@ const Subscribe = ({ handleSubscribe, handleInput, res }) => {
         </SubscribeThakYou>
         <SubscribeForm isSubscribed={isSubscribed && isSubscribed}>
           <Span>
-            Subscribe to Mixtape Madness for the
-            latest on news, music, and upcoming releases
+            Subscribe for latest on news, music, and upcoming releases.
           </Span>
           <Form onSubmit={e => e.preventDefault()}>
             <Input

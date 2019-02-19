@@ -79,7 +79,7 @@
     .slick-slide > div {
       display: flex;
       flex-direction: column;
-      width: calc(100% / 3);
+      width: 33.3%;
     }
   }
 
@@ -307,7 +307,7 @@
   justify-content: space-between;
   align-items: flex-start;
   margin: auto;
-  max-width: 1200px;
+  max-width: $max-page-width;
 }
 
 .slick-slide {

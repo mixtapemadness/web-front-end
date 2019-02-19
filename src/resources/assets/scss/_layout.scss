@@ -2,10 +2,15 @@
   margin-top: 40px;
 }
 .page__container, .container {
-  max-width: 1200px;
+  background: #fff;
   margin: auto;
   padding: 0 20px;
-  @include desktop {
-    padding: 0;
+  max-width: $min-page-width;
+  @include medium {
+    padding: 0 15px;
+  }
+  @include large_desktop {
+    max-width: $max-page-width;
+
   }
 }

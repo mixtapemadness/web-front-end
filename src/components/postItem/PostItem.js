@@ -124,7 +124,7 @@ const PostItem = (props) => {
           />
           <div
             className="post-item__excerpt"
-            dangerouslySetInnerHTML={{ __html: truncate(data.excerpt, 90) }}
+            dangerouslySetInnerHTML={{ __html: truncate(data.excerpt, 70) }}
           />
         </div>
         <div className="post-item__meta">

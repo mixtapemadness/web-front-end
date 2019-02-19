@@ -137,6 +137,13 @@ app.get('*', (req, res) => {
   });
 ` }}
         />
+
+        <script dangerouslySetInnerHTML={{
+          __html: `googletag.cmd.push(function() {
+        googletag.defineSlot('/29554951/Wallpaper', [1, 1], 'div-gpt-ad-1550568793125-0').addService(googletag.pubads());
+        googletag.enableServices();
+      });` }}
+        />
       </head>
       <body>
         <div id="root" dangerouslySetInnerHTML={{ __html: content }} />

@@ -10,14 +10,11 @@ class Advertisement extends Component {
     this.updateGoogleTags();
   }
 
-  componentWillReceiveProps() {
-    // this.updateGoogleTags();
-  }
-
   updateGoogleTags = () => {
     if (googletag) {
       googletag.cmd.push(() => { googletag.display('div-gpt-ad-1550497711029-0'); });
       googletag.cmd.push(() => { googletag.display('div-gpt-ad-1550497747165-0'); });
+      googletag.cmd.push(() => { googletag.display('div-gpt-ad-1550568793125-0'); });
     }
   };
 

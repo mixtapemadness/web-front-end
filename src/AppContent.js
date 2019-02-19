@@ -8,7 +8,7 @@ import AboutUs from 'pages/aboutUs';
 import AuthorPage from 'pages/authorPage';
 import Blog from 'pages/blog';
 import Search from 'components/search';
-// import Music from 'pages/music';
+import Music from 'pages/music';
 // import MusicProfilePage from 'pages/musicProfilePage';
 // import TeamPage from 'pages/teamPage';
 import SearchResult from 'pages/searchResult/SearchResult';
@@ -36,7 +36,7 @@ const AppContent = ({ searchOpened, toggleSearch, menuOpened }) => (
         <Route path={ROUTES.contactUs} component={Contact} />
         <Route path="/author/:slug" component={AuthorPage} />
         {/* <Route path="/events" component={EventPage} /> */}
-        {/* <Route path="/music" component={Music} /> */}
+        <Route path="/test1902" component={Music} />
         {/* <Route path="/music-profile/:slug" component={MusicProfilePage} /> */}
         {/* <Route path="/team" component={TeamPage} /> */}
         {/* <Route path="/moremenu" component={MoreMenu} /> */}

@@ -33,7 +33,7 @@ const ContentContainer = styled.div`
 `;
 
 const FlexDiv = styled.div`
-margin: 20px 0;
+padding: 20px 0;
   display: flex;
   flex-direction: column;
     justify-content: center;
@@ -148,15 +148,12 @@ const Footer = ({ width, menuOpened }) => (
             <SignUpButton menuOpened={menuOpened}>SIGN UP</SignUpButton>
           </SignUpContainer>
           <SocialIcons menuOpened={menuOpened} />
-          <Line mb={10} menuOpened={menuOpened} />
+          <Span fsize={12} color="#000000">
+        Copyright &copy; Mixtape Madness.
+      </Span>
         </NewsletterContainer>
       </ContentContainer>
     </FooterContainer>
-    <FlexDiv>
-      <Span fsize={12} color="#000000">
-        Copyright &copy; Mixtape Madness.
-      </Span>
-    </FlexDiv>
     <MobileFooter menuOpened={menuOpened} />
   </div>
 );

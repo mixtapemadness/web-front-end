@@ -21,7 +21,7 @@ Media query for large desktop devices (over 1440px)
  ```
  */
 @mixin large_desktop {
-  @media only screen and (min-width: $large-desktop-min-width) {
+  @media only screen and (min-width: $large-desktop-min-width + 1) {
     @content;
   }
 }

@@ -6,16 +6,15 @@
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 <!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
 
-
+  <url>
+    <loc>https://www.mixtapemadness.com/</loc>
+    <lastmod>2019-02-19T01:13:31+00:00</lastmod>
+    <priority>1</priority>
+  </url>
 <url>
   <loc>https://www.mixtapemadness.com/blog</loc>
   <lastmod>2019-02-20T13:26:55+00:00</lastmod>
   <priority>1.00</priority>
-</url>
-<url>
-  <loc>https://www.mixtapemadness.com/</loc>
-  <lastmod>2019-02-19T01:13:31+00:00</lastmod>
-  <priority>0.80</priority>
 </url>
 <url>
   <loc>https://www.mixtapemadness.com/blog/category/news</loc>

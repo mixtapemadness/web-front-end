@@ -25,7 +25,7 @@ class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isMobile: window && window.matchMedia('(max-width: 768px)').matches,
+      isMobile: window && window.matchMedia && window.matchMedia('(max-width: 768px)').matches,
     };
   }
 

@@ -58,13 +58,19 @@ class Home extends Component {
         </Helmet>
         <Advertisement>
           <div id="div-gpt-ad-1550497711029-0" className="center" />
-          <script dangerouslySetInnerHTML={{ __html: 'googletag.cmd.push(function() { googletag.display(\'div-gpt-ad-1550497711029-0\'); });' }} />
         </Advertisement>
         <LazyLoad height={400} once offsetVertical={0}>
           <MainSlider />
         </LazyLoad>
         <LazyLoad height={400} once offset={0}>
           <Videos />
+          <Advertisement key="div-gpt-ad-1550497747165-0" border hideDesktop>
+            <div
+              id="div-gpt-ad-1550497747165-0"
+              className="center"
+              style={{ height: '250px', width: '300px' }}
+            />
+          </Advertisement>
         </LazyLoad>
         <LazyLoad height={400} once offset={0}>
           <Posts />

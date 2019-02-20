@@ -17,4 +17,17 @@
   .center {
     margin: auto;
   }
+
+  &--hide-desktop {
+    @include desktop {
+      display: none;
+    }
+  }
+
+  &--hide-mobile {
+      display: none;
+    @include desktop {
+      display: block;
+    }
+  }
 }

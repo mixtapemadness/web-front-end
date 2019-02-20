@@ -1,9 +1,9 @@
 
 .main-slider {
-
   height: $small-device-height;
 
   @include desktop {
+    width: 100%;
     height: $medium-device-height;
   }
   @include large_desktop {

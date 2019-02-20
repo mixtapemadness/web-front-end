@@ -15,7 +15,7 @@ export default compose(
       options: props => ({
         variables: {
           page: 1,
-          perPage: window.innerWidth > 550 ? 18 : 9,
+          perPage: window.innerWidth > 550 ? 17 : 9,
           filter: { categories: 'VIDEOS' },
         },
       }),

@@ -48,14 +48,13 @@ const PostItemT = (item, index) => {
   }
   if (item && item.id === 'adunit') {
     return (
-      <div key={Math.random()} className="category-page__ad-unit post-item">
+      <div key="div-gpt-ad-1550497747165-0" className="category-page__ad-unit post-item">
         <Advertisement border>
           <div
             id="div-gpt-ad-1550497747165-0"
             className="center"
             style={{ height: '250px', width: '300px' }}
           />
-          <script dangerouslySetInnerHTML={{ __html: 'googletag.cmd.push(function() { googletag.display(\'div-gpt-ad-1550497747165-0\'); });' }} />
         </Advertisement>
       </div>
     );
@@ -70,9 +69,8 @@ const Blog = ({ data, page, handleLoadMore, match, isMoreData }) => {
     let dataWithAds = Data && [...Data];
 
   if (dataWithAds) {
-    let adUnitIndexes = [];
-    adUnitIndexes.push(2);
-    adUnitIndexes.forEach((count, index) => {
+    let adUnitIndexes = [2];
+    adUnitIndexes.forEach((count) => {
       dataWithAds.splice(count, 0, { id: 'adunit' });
     });
   }

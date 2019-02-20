@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import LazyLoad from 'react-lazyload';
 import Helmet from 'react-helmet';
 
+import window from 'global/window';
 import Advertisement from 'components/advertisement';
 import MainSlider from 'components/mainSlider';
 import Subscribe from 'components/subscribe';
@@ -21,10 +22,15 @@ const SubscribeContainer = styled.div`
 `;
 
 class Home extends Component {
-  componentDidMount() {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isMobile: window && window.matchMedia && window.matchMedia('(max-width: 768px)').matches,
+    };
   }
 
   render() {
+    const { isMobile } = this.state;
     return (
       <div className="page__container">
         <Helmet>
@@ -64,13 +70,15 @@ class Home extends Component {
         </LazyLoad>
         <LazyLoad height={400} once offset={0}>
           <Videos />
-          <Advertisement key="div-gpt-ad-1550497747165-0" border hideDesktop>
-            <div
-              id="div-gpt-ad-1550497747165-0"
-              className="center"
-              style={{ height: '250px', width: '300px' }}
-            />
-          </Advertisement>
+          {isMobile && (
+            <Advertisement key="div-gpt-ad-1550497747165-0" border hideDesktop>
+              <div
+                id="div-gpt-ad-1550497747165-0"
+                className="center"
+                style={{ height: '250px', width: '300px' }}
+              />
+            </Advertisement>
+          )}
         </LazyLoad>
         <LazyLoad height={400} once offset={0}>
           <Posts />

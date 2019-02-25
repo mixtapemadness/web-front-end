@@ -2,6 +2,7 @@ import React from 'react';
 import { hydrate } from 'react-dom';
 import { ApolloProvider } from 'react-apollo';
 import { HelmetProvider } from 'react-helmet-async';
+import moment from 'moment';
 import window from 'global/window';
 import document from 'global/document';
 
@@ -13,6 +14,7 @@ import 'resources/assets/scss/main.scss';
 
 const supportsHistory = 'pushState' in window.history;
 const helmetContext = {};
+moment.locale('en-gb');
 
 if (document && typeof document !== 'undefined') {
   hydrate(

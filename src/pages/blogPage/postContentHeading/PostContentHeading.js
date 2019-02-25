@@ -13,6 +13,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import moment from 'moment';
 import { dateStringify } from 'helpers/';
 import blogPageImgEnhancer from './postContentHeadingEnhancer';
 
@@ -37,16 +38,18 @@ const AuthorName = styled(Link)`
   cursor: pointer;
 `;
 
-const Date = styled.span`
+const DateHeader = styled.span`
   border-right: 1px solid #ccc;
   padding-right: 10px;
 `;
 
 const PostContentHeading = ({ date, userName, location, userSlug }) => {
+  const postDate = new Date(date);
+  const formattedDate = moment(postDate).format('LL');
   return (
     <Container>
       <ContainerBottom>
-        <Date>{dateStringify(date, false, true)}</Date>{' '}
+        <DateHeader>{formattedDate}</DateHeader>{' '}
         <AuthorName to={`/author/${userSlug}`}>{userName}</AuthorName>
       </ContainerBottom>
     </Container>

@@ -20,10 +20,16 @@ class Advertisement extends Component {
 
   render() {
     const {
-      slot, client, style, format, responsive, border, uniqueKey, children, hideDesktop, hideMobile,
+      slot, client, style, format, responsive, border, uniqueKey, children, hideDesktop, hideMobile, hidden,
     } = this.props;
     return (
-      <section className={`advertisement ${border ? 'advertisement--border' : ''} ${hideDesktop ? 'advertisement--hide-desktop' : ''} ${hideMobile ? 'advertisement--hide-mobile' : ''}`}>
+      <section className={`advertisement
+      ${border ? 'advertisement--border' : ''}
+      ${hideDesktop ? 'advertisement--hide-desktop' : ''}
+      ${hideMobile ? 'advertisement--hide-mobile' : ''}
+      ${hidden ? 'advertisement--hide' : ''}
+      `}
+      >
         <span className="advertisement__text">Advertisement</span>
         {children || (
           <AdSense.Google
@@ -50,6 +56,7 @@ Advertisement.propTypes = {
   border: PropTypes.bool,
   hideDesktop: PropTypes.bool,
   hideMobile: PropTypes.bool,
+  hidden: PropTypes.bool,
 };
 
 Advertisement.defaultProps = {
@@ -61,5 +68,6 @@ Advertisement.defaultProps = {
   border: false,
   hideDesktop: false,
   hideMobile: false,
+  hidden: false,
 };
 export default Advertisement;

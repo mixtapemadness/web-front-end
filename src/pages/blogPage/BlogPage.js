@@ -55,12 +55,6 @@ const DisqusContainer = styled.div`
 const pathname = window.location ? window.location.pathname : '';
 
 class BlogPage extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-    };
-  }
-
   componentDidUpdate() {
     const { data, match } = this.props;
 
@@ -100,7 +94,6 @@ class BlogPage extends Component {
       user,
       match,
     } = this.props;
-    const { adUnitSlot, adUnitStyle } = this.state;
     const userName = user && user.user && user.user.name && user.user.name;
     const userSlug = user && user.user && user.user.slug && user.user.slug;
     const postData = data && data.Post ? data.Post : null;

@@ -88,3 +88,64 @@
     height: 100%;
   }
 }
+
+
+blockquote.wp-block-quote{
+  width:100%;
+  margin:20px auto;
+  font-style:italic;
+  color: #555555;
+  padding: 10px;
+  @include desktop {
+    padding:20px;
+  }
+
+  border-left:6px solid $base-orange ;
+
+  position: relative;
+  background:$lighter-grey;
+  p {
+    font-size: 20px;
+    @include desktop {
+      font-size: 30px;
+      line-height:1.6;
+    }
+
+  }
+  &::before{
+    content: "\201C";
+    color:$base-orange;
+    font-size:60px;
+    position: absolute;
+    left: 10px;
+    top:-30px;
+  }
+  &::after{
+    content: '';
+  }
+
+  cite{
+    display:block;
+    color:$paragraph-text;
+    font-style: normal;
+    font-weight: bold;
+    margin-top:1em;
+    font-size: 14px;
+  }
+}
+
+.wp-block-image figure, figure.wp-block-image {
+  text-align: center;
+  margin: 20px 0;
+  img {
+    max-width: 100%;
+  }
+  figcaption {
+    max-width: 50%;
+    font-size: 12px;
+    font-style: italic;
+    color: $dark-grey;
+    margin: 10px auto;
+  }
+
+}

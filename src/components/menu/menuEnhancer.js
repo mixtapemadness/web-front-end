@@ -3,7 +3,6 @@ import { compose, withStateHandlers, lifecycle } from 'recompose';
 import window from 'global/window';
 
 import { loadDataAsync } from 'hocs';
-import getPosts from 'graphql/getPosts.graphql';
 import { withRouter } from 'react-router-dom';
 import { CLOSE_MEGAMENU } from 'constants';
 import getEmitter from '../../eventEmitter';
@@ -20,17 +19,6 @@ export default compose(
   lifecycle({
     componentDidUpdate(prevProps, prevState) {
       eventEmitter.emit(CLOSE_MEGAMENU);
-    },
-  }),
-  loadDataAsync({
-    query: getPosts,
-    config: {
-      options: props => ({
-        variables: {
-          page: 1,
-          perPage: 3,
-        },
-      }),
     },
   }),
 );

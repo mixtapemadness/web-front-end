@@ -47,7 +47,7 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
 
 body {
     margin: 0;
-    font-family: 'Montserrat', sans-serif;
+    font-family: $title-font, sans-serif;
     font-size: 16px;
     font-weight: normal;
     line-height: 1.6;
@@ -142,7 +142,7 @@ input:required {
 }
 
 p {
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: $body-font, sans-serif;
   line-height: 26px;
   margin-bottom: 18px;
 }

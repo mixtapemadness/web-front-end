@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import navigationLinks from '../../constants/navigation';
 import IconButton from '../IconButton/IconButton';
+import navigationEnhancer from './navigationEnhancer';
 
-const NavListItem = ({ location = '', slug = '', name = '' }) => (
+const NavListItem = ({ location = '', slug = null, name = '' }) => (
   <li
     className={`navigation__item ${location === slug ? 'navigation__item--is-active' : ''}`}
   >
@@ -36,19 +37,18 @@ class Navigation extends Component {
   render() {
     const { location, categories } = this.props;
     const { showSecondaryNav } = this.state;
-    if (categories) {
+    if (categories && categories.category) {
       return (
         <nav className="header__nav">
           <ul className="navigation">
-            <RenderNavItems links={navigationLinks.topLevel} categories={categories} location={location} />
+            <RenderNavItems links={navigationLinks.topLevel} categories={categories.category} location={location} />
             <li className={`navigation__item ${showSecondaryNav ? 'navigation__item--is-active' : ''}`} key="second-nav">
               <IconButton iconClassName={`fa ${showSecondaryNav ? 'fa-chevron-up' : 'fa-chevron-down'}`} className="btn-link" onClick={this.toggleMore}>More </IconButton>
               <nav className={`header__nav--secondary ${showSecondaryNav ? 'header__nav--secondary--is-active' : ''}`}>
                 <ul className="navigation">
-                  <RenderNavItems links={navigationLinks.more} categories={categories} location={location} />
+                  <RenderNavItems links={navigationLinks.more} categories={categories.category} location={location} />
                 </ul>
               </nav>
-
             </li>
           </ul>
         </nav>
@@ -58,4 +58,4 @@ class Navigation extends Component {
   }
 }
 
-export default Navigation;
+export default navigationEnhancer(Navigation);

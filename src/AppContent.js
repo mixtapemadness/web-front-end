@@ -50,10 +50,9 @@ const AppContent = ({ searchOpened, toggleSearch, menuOpened }) => (
         {/* /> */}
         <Route component={ErrorPage} />
       </Switch>
-      {menuOpened && <Menu />}
+      <Footer />
     </div>
-    <Footer />
-
+    {menuOpened && <Menu menuOpened={menuOpened} />}
     {searchOpened && (
       <Search toggleSearch={toggleSearch} searchOpened={searchOpened} />
     )}

@@ -7,14 +7,12 @@ import MixtapeLogo from 'resources/assets/img/mixtape-logo.png';
 import headerEnhancer from './headerEnhancer';
 import IconButton from '../IconButton';
 import Navigation from '../Navigation';
-// import './_Header.scss';
 
 const Header = ({
   toggleSearch,
   toggleMenu,
   menuOpened,
   location,
-  categories,
 }) => (
   <header className={`header ${menuOpened ? 'header--is-open' : ''}`}>
     <div className="header__content">
@@ -25,13 +23,13 @@ const Header = ({
           <span />
           <span />
         </button>
-        <Link to="/">
-          <img className="header__logo" src={MixtapeLogo} alt="Mixtape Madness logo" />
+        <Link to="/" className="header__logo">
+          <img src={MixtapeLogo} alt="Mixtape Madness logo" />
         </Link>
-        <Navigation toggleMenu={toggleMenu} categories={categories.category} location={location} />
+        <Navigation toggleMenu={toggleMenu} location={location} />
         <IconButton iconClassName="fas fa-search" className="header__search" onClick={toggleSearch} />
       </div>
-      <div className="header__right">
+      <div className="header__right header__social-links">
         <SocialIcons menuOpened={menuOpened} />
       </div>
     </div>

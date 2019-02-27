@@ -1,22 +1,20 @@
 import { ROUTES } from './index';
 
 const {
-  news, events, community, audio, videos, interviews, reviews, articles, coors, madaboutmixtapes,
+  news, events, audio, videos, interviews, reviews, articles, nextup,
 } = ROUTES.categories;
 export default {
   topLevel: {
     news,
     videos,
-    events,
     articles,
-    interviews,
+    audio,
   },
   more: {
     'mad-about-bars': ROUTES.categories['mad-about-bars'],
-    community,
-    coors,
-    audio,
-    madaboutmixtapes,
+    nextup,
+    events,
     reviews,
+    interviews,
   },
 };

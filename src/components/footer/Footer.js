@@ -104,14 +104,7 @@ const SignUpButton = styled.button`
   box-sizing: content-box;
   border: 0;
 `;
-const Line = styled.div`
-  width: 100%;
-  height: 1px;
-  background-color: '#979797';
-`;
-const Flex = styled.div`
-  display: flex;
-`;
+
 const Span = styled.span`
   font-weight: 600;
   ${props => props.fsize && `font-size: ${props.fsize}px`};
@@ -131,13 +124,13 @@ const NewsletterContainer = styled.div`
 
 const Footer = ({ width, menuOpened }) => (
   <div>
-    <FooterContainer menuOpened={menuOpened}>
+    <FooterContainer>
       <ContentContainer>
         <ListContainer>
           <FooterLinks />
         </ListContainer>
         <NewsletterContainer>
-          <ContentHeader menuOpened={menuOpened}>
+          <ContentHeader>
             Sign up to our newsletter
           </ContentHeader>
           <SignUpContainer>
@@ -145,12 +138,12 @@ const Footer = ({ width, menuOpened }) => (
               placeholder="email@example.com"
               menuOpened={menuOpened}
             />
-            <SignUpButton menuOpened={menuOpened}>SIGN UP</SignUpButton>
+            <SignUpButton>SIGN UP</SignUpButton>
           </SignUpContainer>
-          <SocialIcons menuOpened={menuOpened} />
+          <SocialIcons />
           <Span fsize={12} color="#000000">
         Copyright &copy; Mixtape Madness.
-      </Span>
+          </Span>
         </NewsletterContainer>
       </ContentContainer>
     </FooterContainer>

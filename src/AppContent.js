@@ -8,12 +8,8 @@ import AboutUs from 'pages/aboutUs';
 import AuthorPage from 'pages/authorPage';
 import Blog from 'pages/blog';
 import Search from 'components/search';
-import Music from 'pages/music';
-// import MusicProfilePage from 'pages/musicProfilePage';
-// import TeamPage from 'pages/teamPage';
 import SearchResult from 'pages/searchResult/SearchResult';
-// import SignForm from 'components/signForm/SignForm';
-// import MoreMenu from 'components/moreMenu';
+
 import PrivacyAndPolicy from 'pages/privacyAndPolicy';
 import TermsAndConditions from 'pages/termsAndConditions';
 import Footer from 'components/footer';
@@ -36,7 +32,6 @@ const AppContent = ({ searchOpened, toggleSearch, menuOpened }) => (
         <Route path={ROUTES.contactUs} component={Contact} />
         <Route path="/author/:slug" component={AuthorPage} />
         {/* <Route path="/events" component={EventPage} /> */}
-        <Route path="/test1902" component={Music} />
         {/* <Route path="/music-profile/:slug" component={MusicProfilePage} /> */}
         {/* <Route path="/team" component={TeamPage} /> */}
         {/* <Route path="/moremenu" component={MoreMenu} /> */}

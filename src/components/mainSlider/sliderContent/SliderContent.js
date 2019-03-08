@@ -9,6 +9,7 @@ import placeholderImg from '../../../resources/assets/img/placeholderImg.jpg';
 const MainSlider = ({ media, category, data }) => {
   const Image = media && media.img && media.img.large && media.img.large;
   const CategoriesData = category && category.category;
+  const altText = media && media.img && (media.img.alt_text || data.title);
 
   if (data && CategoriesData) {
     let postDate = new Date(data.date);
@@ -22,6 +23,7 @@ const MainSlider = ({ media, category, data }) => {
             src={Image && Image}
             fallbackImage={placeholderImg}
             initialImage={placeholderImg}
+            alt={altText}
           />
           <div className="slider-content__overlay" />
           <div className="slider-content__text">

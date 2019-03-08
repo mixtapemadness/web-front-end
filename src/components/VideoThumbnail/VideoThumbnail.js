@@ -23,6 +23,7 @@ const VideoThumbnail = ({ data, media, tags, category }) => {
   postDate = postDate && moment(postDate).startOf('day').fromNow();
   const Image =
     media && media.img && media.img.medium && media.img.medium;
+  const altText = media && media.img && (media.img.alt_text || data.title);
   const categorySlug = categoriesData && categoriesData.map(({ slug }) => slug)[0];
   const postUrl = `blog/${categorySlug}/${data.slug}`;
   return (
@@ -36,6 +37,7 @@ const VideoThumbnail = ({ data, media, tags, category }) => {
             src={Image}
             fallbackImage={placeholderImg}
             initialImage={placeholderImg}
+            alt={altText}
           />
           <i className="fa fa-play video-thumbnail__image-icon" />
         </Link>

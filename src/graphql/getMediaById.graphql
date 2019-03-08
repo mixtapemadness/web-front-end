@@ -7,5 +7,6 @@ query getMediaById($id: ID) {
     large
     thumbnail
     id
+    alt_text
   }
 }

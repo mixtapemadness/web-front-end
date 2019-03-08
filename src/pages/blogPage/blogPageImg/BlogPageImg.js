@@ -22,9 +22,10 @@ const Container = styled.div`
   }
 `;
 
-const BlogPageImg = ({ data, renderVideo }) => {
+const BlogPageImg = ({ data, renderVideo, title }) => {
   const fullImage = data && data.img && data.img.large;
   const thumbnail = data && data.img && data.img.medium_large;
+  const altText = data && data.img && (data.img.alt_text || title);
   return (
     <Container renderVideo={renderVideo}>
       <Helmet>
@@ -43,6 +44,7 @@ const BlogPageImg = ({ data, renderVideo }) => {
           src={fullImage && fullImage}
           fallbackImage={placeholderImg}
           initialImage={placeholderImg}
+          alt={altText}
         />
       )}
     </Container>

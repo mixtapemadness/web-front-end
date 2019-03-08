@@ -172,7 +172,7 @@ class BlogPage extends Component {
                   dangerouslySetInnerHTML={{ __html: Video && Video }}
                 />
               )}
-              <BlogPageImg renderVideo={renderVideo} id={postData && postData.featured_media} />
+              <BlogPageImg renderVideo={renderVideo} id={postData && postData.featured_media} title={postData.title} />
             </div>
             <div
               className="post__content"

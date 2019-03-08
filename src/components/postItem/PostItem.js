@@ -83,6 +83,7 @@ const PostItem = (props) => {
   const { media, category, user, data } = props;
   const Image =
     media && media.img && media.img.medium && media.img.medium;
+  const altText = media && media.img && (media.img.alt_text || data.title);
   const CategoriesData = category && category.category && category.category;
   const User = user && user.user && user.user;
   const postUrl = CategoriesData && `/blog/${CategoriesData[0].slug}/${data.slug}`;
@@ -103,6 +104,7 @@ const PostItem = (props) => {
           src={Image && Image}
           fallbackImage={placeholderImg}
           initialImage={placeholderImg}
+          alt={altText}
         />
       </Link>
       <ContentContainer>

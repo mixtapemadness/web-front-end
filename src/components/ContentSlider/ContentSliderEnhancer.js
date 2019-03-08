@@ -11,12 +11,13 @@ export default compose(
   loadDataAsync({
     query: getPosts,
     config: {
-      options: props => ({
+      options: ({
+ id, category = '', perPage = 6, page = 1,
+}) => ({
         variables: {
-          id: props.id,
-          page: 1,
-          perPage: 6,
-          filter: { categories: 'REVIEWS' },
+          page,
+          perPage,
+          filter: { categories: category.toUpperCase() },
         },
       }),
     },

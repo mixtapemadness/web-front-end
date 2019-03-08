@@ -34,13 +34,13 @@ class SliderComponent extends Component {
       centerPadding: settings.centerPadding,
       responsive: [...settings.responsive],
     };
-    const hideNavOnDesktop = children && children[0].length > (innerSettings.slidesToScroll * innerSettings.slidesPerRow);
+    const hideNavOnDesktop = (children && children.length) <= (innerSettings.slidesToScroll * innerSettings.slidesPerRow);
     return (
       <section className="slider">
         <div className="slider__header">
           <header className="slider__header-text">
             <h3 className="slider__title">{title}</h3>
-            <p className="slider__subtitle">{subTitle}</p>
+            {subTitle ? <p className="slider__subtitle">{subTitle}</p> : null}
             <div className="slider__cta">{cta}</div>
           </header>
           <div className={`slider__nav-wrapper ${hideNavOnDesktop ? 'slider__nav-wrapper--hide-desktop' : ''}`}>
@@ -65,14 +65,14 @@ class SliderComponent extends Component {
 
 SliderComponent.defaultProps = {
   title: '',
-  subTitle: '',
+  subTitle: null,
   settings: {
     dots: false,
     infinite: true,
     speed: 500,
     slidesToShow: 1,
-    rows: 3,
-    slidesPerRow: 2,
+    rows: 2,
+    slidesPerRow: 3,
     slidesToScroll: 3,
     slidesToShowResponsive: 2,
     slidesToScrollResponsive: 2,

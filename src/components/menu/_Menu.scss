@@ -55,11 +55,18 @@
     display: none;
   }
 
-
   list-style: none;
 
   .header__nav, .navigation {
     display: block;
+  }
+
+  .footer__links {
+    display: block;
+    li {
+      display: block;
+      margin: inherit;
+    }
   }
   .navigation__item, li {
     display: block;

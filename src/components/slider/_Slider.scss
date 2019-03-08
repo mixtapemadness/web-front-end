@@ -76,15 +76,20 @@
     min-height: 1px;
   }
 
-  .slick-slide .post-item {
-    width: auto;
+  .slick-slide > div {
+    width: 100%;
   }
 
-  @include desktop {
+  @include small {
+    .slick-slide {
+      flex-direction: column;
+      .post-item, .video-thumbnail { //TODO: make this less restrictive
+        width: 33.3%;
+      }
+    }
     .slick-slide > div {
       display: flex;
-      flex-direction: column;
-      width: 33.3%;
+      flex-direction: row;
     }
   }
 

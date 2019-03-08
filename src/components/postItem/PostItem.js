@@ -37,14 +37,7 @@ const ContentContainer = styled.div`
 `;
 
 const Media = styled(Link)`
-  width: 100%;
-  height: 200px;
-  transition: 0.8s;
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
+  
 `;
 
 const PostTitle = styled(Link)`
@@ -100,7 +93,8 @@ const PostItem = (props) => {
   postDate = postDate && moment(postDate).startOf('day').fromNow();
   return (
     <div className="post-item">
-      <Media
+      <Link
+        className="post-item__image"
         to={{
           pathname: postUrl,
         }}
@@ -110,7 +104,7 @@ const PostItem = (props) => {
           fallbackImage={placeholderImg}
           initialImage={placeholderImg}
         />
-      </Media>
+      </Link>
       <ContentContainer>
         <div>
           <CategoryContainer>

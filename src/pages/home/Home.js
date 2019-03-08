@@ -9,13 +9,10 @@ import MainSlider from 'components/mainSlider';
 import Subscribe from 'components/subscribe';
 import Videos from 'components/videos';
 import Download from 'components/download';
-import WhatsOn from './whatsOn';
-import Interviews from './interviews';
-import Posts from './posts';
-import Reviews from './reviews';
 import {
   IMAGES_URL, ROUTES, SEO,
 } from '../../constants';
+import ContentSlider from '../../components/ContentSlider/ContentSlider';
 
 const SubscribeContainer = styled.div`
   margin: 30px 0;
@@ -69,7 +66,7 @@ class Home extends Component {
           <MainSlider />
         </LazyLoad>
         <LazyLoad height={400} once offset={0}>
-          <Videos />
+          <Videos isMobile={isMobile} />
           {isMobile && (
             <Advertisement key="div-gpt-ad-1550497747165-0" border hideDesktop>
               <div
@@ -81,16 +78,16 @@ class Home extends Component {
           )}
         </LazyLoad>
         <LazyLoad height={400} once offset={0}>
-          <Posts />
+          <ContentSlider title="News" category="news" />
+        </LazyLoad>
+        <LazyLoad height={400} once offset={50}>
+          <ContentSlider title="Articles" category="articles" />
         </LazyLoad>
         <LazyLoad height={400} once offset={0}>
-          <Interviews />
+          <ContentSlider title="Interviews" category="interviews" />
         </LazyLoad>
         <LazyLoad height={200} once offset={0}>
           <Download />
-        </LazyLoad>
-        <LazyLoad height={400} once offset={50}>
-          <WhatsOn />
         </LazyLoad>
         <LazyLoad height={400} once offset={50}>
           <SubscribeContainer>
@@ -98,7 +95,7 @@ class Home extends Component {
           </SubscribeContainer>
         </LazyLoad>
         <LazyLoad height={400} once offset={50}>
-          <Reviews />
+          <ContentSlider title="Reviews" category="reviews" />
         </LazyLoad>
       </div>
     );

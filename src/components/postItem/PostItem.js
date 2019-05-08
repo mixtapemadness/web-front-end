@@ -21,25 +21,6 @@ import truncate from '../../helpers/textHelpers';
 import { ROUTES } from '../../constants';
 import CardLoader from '../loaders/CardLoader';
 
-const ContentContainer = styled.div`
-  background-color: #f1f3f5;
-  width: 100%;
-  padding: 15px 10px;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  flex: 1;
-  height: 400px;
-  @media only screen and (max-width: 1150px) {
-    height: auto;
-  }
-`;
-
-const Media = styled(Link)`
-  
-`;
-
 const PostTitle = styled(Link)`
   width: 100%;
   font-weight: 800;
@@ -107,7 +88,7 @@ const PostItem = (props) => {
           alt={altText}
         />
       </Link>
-      <ContentContainer>
+      <div className="post-item__meta-container">
         <div>
           <CategoryContainer>
             <Categories data={CategoriesData} />
@@ -132,7 +113,7 @@ const PostItem = (props) => {
             </Link>
           )} <span className="post-item__date"><i className="far fa-clock" /> {postDate}</span>
         </div>
-      </ContentContainer>
+      </div>
     </div>
   );
 };

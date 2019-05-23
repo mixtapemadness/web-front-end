@@ -1,6 +1,8 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 import window from 'global';
+import { stripHtml } from '../../helpers/textHelpers';
+
 import { TWITTER_HANDLE, SEO } from '../../constants';
 
 const BlogPageMetaTags = ({
@@ -8,7 +10,7 @@ const BlogPageMetaTags = ({
 }) => (
   <Helmet>
     <title>{`Mixtape Madness ${
-      postTitle ? `| ${postTitle} ` : SEO.title
+      postTitle ? `| ${stripHtml(postTitle)} ` : SEO.title
     }`}
     </title>
     <meta property="og:image" content={image} />
@@ -20,7 +22,7 @@ const BlogPageMetaTags = ({
     />
     <meta
       property="og:title"
-      content={`${postTitle}`}
+      content={`${stripHtml(postTitle)}`}
     />
     <meta
       property="og:description"

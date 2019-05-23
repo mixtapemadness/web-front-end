@@ -12,6 +12,7 @@ import SearchResult from 'pages/searchResult/SearchResult';
 
 import PrivacyAndPolicy from 'pages/privacyAndPolicy';
 import TermsAndConditions from 'pages/termsAndConditions';
+import Faq from 'pages/Faq';
 import Footer from 'components/footer';
 import GA from 'components/googleAnalytics';
 import Contact from './pages/contact';
@@ -37,6 +38,7 @@ const AppContent = ({ searchOpened, toggleSearch, menuOpened }) => (
         {/* <Route path="/moremenu" component={MoreMenu} /> */}
         <Route path={ROUTES.termsAndConditions} component={TermsAndConditions} />
         <Route path={ROUTES.privacyPolicy} component={PrivacyAndPolicy} />
+        <Route path={ROUTES.faqs} component={Faq} />
         <Route path="/searchresult/:category/:key" component={SearchResult} />
         {/* <Route path="/login" component={() => <SignForm type="login" />} /> */}
         {/* <Route */}

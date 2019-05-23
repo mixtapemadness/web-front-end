@@ -24,7 +24,7 @@ import PostContentHeading from './postContentHeading';
 import Tag from './Tag';
 import {
   DISQUS_SHORTNAME,
-  ROUTES, TWITTER,
+  ROUTES, TWITTER, VIDEO_CATEGORY_ID,
 } from '../../constants';
 import truncate, { decodeHtml, stripHtml } from '../../helpers/textHelpers';
 import Shimmer from '../../components/loaders/shimmer/Shimmer';
@@ -58,10 +58,12 @@ class BlogPage extends Component {
   componentDidUpdate() {
     const { data, match } = this.props;
 
-    if (data && data.Post && window.__sharethis__) {
+    if (data && data.Post) {
       const plainTitle = stripHtml(data.Post.title);
       const postLink = `${ROUTES.base}/blog/${match.params.category}/${data.Post.slug}`;
-      this.renderShareData(plainTitle, data.Post.excerpt, postLink);
+      if (window.__sharethis__) {
+        this.renderShareData(plainTitle, data.Post.excerpt, postLink);
+      }
     }
   }
 
@@ -86,7 +88,7 @@ class BlogPage extends Component {
       description,
       username: TWITTER, // custom @username for twitter sharing
     });
-  }
+  };
 
   render() {
     const {
@@ -94,14 +96,14 @@ class BlogPage extends Component {
       user,
       match,
     } = this.props;
-    const userName = user && user.user && user.user.name && user.user.name;
-    const userSlug = user && user.user && user.user.slug && user.user.slug;
+    const userName = user && user.user && user.user.name;
+    const userSlug = user && user.user && user.user.slug;
     const postData = data && data.Post ? data.Post : null;
     const noHTML = /(<([^>]+)>)/gi;
     const categories =
       postData && postData.categories && postData.categories;
     const isVideoArr =
-      categories && categories.filter(item => parseInt(item, 10) === 15); // TODO: find a better was to detect if there is a video embed.
+      categories && categories.filter(item => parseInt(item, 10) === VIDEO_CATEGORY_ID); // TODO: find a better was to detect if there is a video embed.
     const isVideo = isVideoArr && isVideoArr.length > 0;
     const PostDate = postData && postData.date && postData.date;
     const tags = postData && postData.tags && postData.tags;
@@ -135,14 +137,13 @@ class BlogPage extends Component {
       const postUrl = `${ROUTES.categories[match.params.category]}`;
       const postLink = `${ROUTES.base}/blog/${match.params.category}/${postData.slug}`;
       const renderVideo = !!(data && !data.loading && isVideo && Video);
-
+      const strippedPostTitle = stripHtml(postData.title);
       return (
         <Fragment>
-          <BlogPageMetaTags description={excerptText} postTitle={postData.title} url={postLink} type="article" />
+          <BlogPageMetaTags description={excerptText} postTitle={strippedPostTitle} url={postLink} type="article" />
           <div className="post container">
             <Advertisement>
               <div id="div-gpt-ad-1550497711029-0" className="center" />
-              <script dangerouslySetInnerHTML={{ __html: 'googletag.cmd.push(function() { googletag.display(\'div-gpt-ad-1550497711029-0\'); });' }} />
             </Advertisement>
             <header className="post__heading">
               <Link className="post__category-link" to={postUrl}>

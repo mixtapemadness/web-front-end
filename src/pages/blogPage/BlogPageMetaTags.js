@@ -20,7 +20,7 @@ const BlogPageMetaTags = ({
     />
     <meta
       property="og:title"
-      content={postTitle}
+      content={`${postTitle}`}
     />
     <meta
       property="og:description"

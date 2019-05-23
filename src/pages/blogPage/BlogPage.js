@@ -137,10 +137,9 @@ class BlogPage extends Component {
       const postUrl = `${ROUTES.categories[match.params.category]}`;
       const postLink = `${ROUTES.base}/blog/${match.params.category}/${postData.slug}`;
       const renderVideo = !!(data && !data.loading && isVideo && Video);
-      const strippedPostTitle = stripHtml(postData.title);
       return (
         <Fragment>
-          <BlogPageMetaTags description={excerptText} postTitle={strippedPostTitle} url={postLink} type="article" />
+          <BlogPageMetaTags description={excerptText} postTitle={postData.title} url={postLink} type="article" />
           <div className="post container">
             <Advertisement>
               <div id="div-gpt-ad-1550497711029-0" className="center" />

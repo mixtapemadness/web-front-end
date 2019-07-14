@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import SocialIcons from 'components/SocialIcons';
 
-import MixtapeLogo from 'resources/assets/img/mixtape-logo.png';
+import MixtapeLogo from 'resources/assets/svg/mm-logo.svg';
 
 import headerEnhancer from './headerEnhancer';
 import IconButton from '../IconButton';

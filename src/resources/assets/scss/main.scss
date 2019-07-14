@@ -3,6 +3,7 @@
 @import "helpers/variables";
 @import "helpers/breakpoints";
 @import "buttons";
+@import "inputs";
 @import "layout";
 
 @import "../../../components/advertisement/Advertisment";
@@ -26,6 +27,7 @@
 @import "../../../pages/blog/CategoryPage";
 @import "../../../pages/blogPage/BlogPage";
 @import "../../../pages/errorPage/ErrorPage";
+@import "../../../pages/CompetitionPage/CompetitionPage";
 
 *,
 *::before,
@@ -83,7 +85,6 @@ button,
 select,
 optgroup,
 textarea {
-  margin: 0;
   font-family: inherit;
   font-size: inherit;
   line-height: inherit;

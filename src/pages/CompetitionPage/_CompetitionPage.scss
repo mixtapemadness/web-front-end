@@ -1,0 +1,54 @@
+.competition-page {
+  h1 {
+    margin-bottom: 30px;
+  }
+
+  h2 {
+    margin-bottom: 20px;
+  }
+  &__header {
+    background: #041d55;
+    width: 100%;
+    text-align: center;
+    color: white;
+    img {
+      max-width: 100%;
+      text-align: center;
+    }
+   }
+
+  .page {
+    top: -40px;
+  }
+
+  &__content {
+    @include medium {
+      display: flex;
+    }
+  }
+
+  &__intro {
+
+    margin: auto;
+  }
+}
+.competition-page__form {
+  padding-left: 30px;
+  margin-top: 30px;
+  @include medium {
+    padding-left: 0;
+    margin-top: 0;
+  }
+  form {
+    @include medium {
+      width: 350px;
+    }
+  }
+}
+.competition-page__fw-section {
+  margin-top: 30px;
+  &--orange {
+    background-color: $base-orange;
+    color: white;
+  }
+}

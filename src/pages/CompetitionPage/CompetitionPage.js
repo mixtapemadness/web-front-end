@@ -27,9 +27,10 @@ class CompetitionPage extends Component {
         <Page>
           <div className="competition-page__content">
             <div className="competition-page__rules">
-              <h2>Fifa and Mixtape Madness have teamed up to give one lucky person a chance of performing in O2 arena amongst 2000 people.</h2>
+              <h1>Fifa x MM Competition</h1>
+              <h2>Win a chance to perform infront of 2000 people.</h2>
               <div className="competition-page__intro">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla tempor urna vitae elit consequat fringilla. Donec elementum tincidunt purus, sed finibus nulla rhoncus eget. In vitae laoreet lectus.</p>
+                <p>Fifa and Mixtape Madness have teamed up to give one lucky person a chance of performing in O2 arena amongst 2000 people.</p>
               </div>
 
               <div className="competition-page__list">

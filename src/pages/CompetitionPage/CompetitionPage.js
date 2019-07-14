@@ -26,21 +26,26 @@ class CompetitionPage extends Component {
         </div>
         <Page>
           <div className="competition-page__content">
-            <div>
+            <div className="competition-page__rules">
               <h2>Fifa and Mixtape Madness have teamed up to give one lucky person a chance of performing in O2 arena amongst 2000 people.</h2>
               <div className="competition-page__intro">
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla tempor urna vitae elit consequat fringilla. Donec elementum tincidunt purus, sed finibus nulla rhoncus eget. In vitae laoreet lectus.</p>
               </div>
-              <h3>Whats in it for you:</h3>
-              <ul>
-                <li>A chance to perform at O2</li>
-                <li>Some goody bags</li>
-              </ul>
-              <h3>Requirements:</h3>
-              <ul>
-                <li>You must be over 18.</li>
-                <li>You can only enter once.</li>
-              </ul>
+
+              <div className="competition-page__list">
+                <h3 className="competition-page__list-title">Whats in it for you:</h3>
+                <ul className="list list--check">
+                  <li>A chance to perform at O2.</li>
+                  <li>Some goody bags.</li>
+                </ul>
+              </div>
+              <div className="competition-page__list">
+                <h3 className="competition-page__list-title">Requirements:</h3>
+                <ul className="list list--check">
+                  <li>You must be over 18.</li>
+                  <li>You can only enter once.</li>
+                </ul>
+              </div>
             </div>
             <div className="competition-page__form">
               <form onSubmit={() => {}}>
@@ -48,9 +53,9 @@ class CompetitionPage extends Component {
                   <input className="input input--primary" name="firstname" placeholder="First name" value={fname} />
                   <input className="input input--primary" name="lastname" placeholder="Last name" value={lname} />
                   <input className="input input--primary" name="email" placeholder="Email address" type="email" value={email} />
-                  <label htmlFor="agreement">
+                  <label htmlFor="agreement" className="input-label">
+                    <input id="agreement" className="checkbox" type="checkbox" checked={termsAgreed} />
                     Do you agree to the terms & conditions?
-                    <input id="agreement" type="checkbox" checked={termsAgreed} />
                   </label>
                 </fieldset>
                 <Button secondary> Apply Now</Button>

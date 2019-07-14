@@ -32,16 +32,24 @@
     margin: auto;
   }
 }
+
+.competition-page__rules {
+  @include medium {
+    width: 60%;
+    padding-right: 30px;
+  }
+}
+
 .competition-page__form {
-  padding-left: 30px;
   margin-top: 30px;
   @include medium {
     padding-left: 0;
     margin-top: 0;
+    width: 40%;
   }
   form {
     @include medium {
-      width: 350px;
+      width: 100%;
     }
   }
 }
@@ -50,5 +58,14 @@
   &--orange {
     background-color: $base-orange;
     color: white;
+  }
+}
+
+.competition-page__list {
+  .list {
+    &::before {
+
+      color: $base-orange;
+    }
   }
 }

@@ -9,6 +9,16 @@
     width: 100%;
   }
 }
+.checkbox {
+  border: 1px solid;
+  margin-right: 8px;
+}
+
+.input-label {
+  font-size: small;
+  color: $dark-grey;
+
+}
 
 fieldset {
   border: 0;

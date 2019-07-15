@@ -32,6 +32,9 @@ module.exports = {
   entry: {
     bundle: ['@babel/polyfill', path.resolve(__dirname, '../../src/index.js')],
   },
+  resolve: {
+    extensions: ['.js', '.jsx', '.json', '.css', '.scss', '.png', '.gif', '.jpg', '.svg'],
+  },
   output: {
     filename: 'bundle.js',
     path: path.join(__dirname, '../../dist/client'),

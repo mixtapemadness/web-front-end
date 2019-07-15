@@ -19,6 +19,7 @@ import Contact from './pages/contact';
 import { ROUTES } from './constants';
 import './App.scss';
 import ErrorPage from './pages/errorPage';
+import CompetitionPage from './pages/CompetitionPage';
 
 const AppContent = ({ searchOpened, toggleSearch, menuOpened }) => (
   <React.Fragment>
@@ -32,6 +33,7 @@ const AppContent = ({ searchOpened, toggleSearch, menuOpened }) => (
         <Route path={ROUTES.about} component={AboutUs} />
         <Route path={ROUTES.contactUs} component={Contact} />
         <Route path="/author/:slug" component={AuthorPage} />
+        <Route path="/competition-page" component={CompetitionPage} />
         {/* <Route path="/events" component={EventPage} /> */}
         {/* <Route path="/music-profile/:slug" component={MusicProfilePage} /> */}
         {/* <Route path="/team" component={TeamPage} /> */}

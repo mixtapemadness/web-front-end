@@ -8,17 +8,11 @@ module.exports = [
   {
     test: /\.(js|jsx)$/,
     exclude: /node_modules/,
-    // use: ['babel-loader', 'eslint-loader'], maybe turn on this in production building
     loader: 'babel-loader',
   },
   {
     test: /\.css$/,
     loaders: [
-      // devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
-      // 'style-loader',
-      // ExtractCssChunks.loader,
-      // 'css-loader?importLoaders=1',
-
       MiniCssExtractPlugin.loader,
       'css-loader',
     ],
@@ -27,13 +21,6 @@ module.exports = [
   {
     test: /\.scss$/,
     loaders: [
-      // devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
-      // 'style-loader',
-      // ExtractCssChunks.loader,
-      // 'css-loader?importLoaders=1',
-      // 'sass-loader',
-      // 'postcss-loader',
-
       MiniCssExtractPlugin.loader,
       'css-loader',
       'sass-loader',
@@ -47,43 +34,33 @@ module.exports = [
     loader: 'graphql-tag/loader',
   },
   {
-    test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
-    exclude: /(node_modules|bower_components)/,
-    loader: 'file-loader',
+    test: /\.(gif|png|jpe?g|svg)$/i,
+    use: [
+      'url-loader', {
+        loader: 'image-webpack-loader',
+        options: {
+          enforce: 'pre',
+          emitFile: false,
+          mozjpeg: {
+            progressive: false,
+            quality: 50, // default: 65
+          },
+          optipng: {
+            enabled: false,
+            optimizationLevel: 7, // disabled by default
+          },
+          pngquant: {
+            quality: '55-80', // '65-90' by default
+            speed: 6, // 4 by default
+          },
+          gifsicle: {
+            interlaced: false,
+          },
+        },
+      }],
   },
   {
-    test: /\.otf(\?v=\d+\.\d+\.\d+)?$/,
-    exclude: /(node_modules|bower_components)/,
-    loader: 'file-loader',
-  },
-  {
-    test: /\.(woff|woff2)$/,
-    exclude: /(node_modules|bower_components)/,
-    loader: 'url-loader?prefix=font/&limit=5000',
-  },
-  {
-    test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
-    exclude: /(node_modules|bower_components)/,
-    loader: 'url-loader?limit=10000&mimetype=application/octet-stream',
-  },
-  {
-    test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
-    exclude: /(node_modules|bower_components)/,
-    loader: 'url-loader?limit=50000&mimetype=image/svg+xml',
-  },
-  {
-    test: /\.gif/,
-    exclude: /(node_modules|bower_components)/,
-    loader: 'url-loader?limit=10000&mimetype=image/gif',
-  },
-  {
-    test: /\.jpg/,
-    exclude: /(node_modules|bower_components)/,
-    loader: 'url-loader?limit=50000&mimetype=image/jpg',
-  },
-  {
-    test: /\.png/,
-    exclude: /(node_modules|bower_components)/,
-    loader: 'url-loader?limit=50000&mimetype=image/png',
+    test: /\.(woff|woff2|eot|ttf|otf)$/,
+    use: ['file-loader'],
   },
 ];

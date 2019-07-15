@@ -34,9 +34,9 @@
   background: #fff;
   position: relative;
   margin: auto;
-  max-width: $min-page-width;
+  //max-width: $min-page-width;
   @include large_desktop {
-    max-width: $max-page-width;
+    //max-width: $max-page-width;
 
   }
 }

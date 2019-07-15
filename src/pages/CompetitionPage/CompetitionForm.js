@@ -54,8 +54,8 @@ class CompetitionForm extends Component {
             <input onClick={this.handleOnClickCheckBox} id="agreement" className="checkbox" type="checkbox" value={termsAgreed} required />
             Do you agree to the <a className="competition-page__link" href="/fifa-e-world-up-terms">terms & conditions</a>?
           </label>
+          <Button secondary type="submit"> Apply Now</Button>
         </fieldset>
-        <Button secondary onClick={this.handleSubmitForm} type="submit"> Apply Now</Button>
       </form>
     );
   }

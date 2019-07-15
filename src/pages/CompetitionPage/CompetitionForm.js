@@ -52,7 +52,7 @@ class CompetitionForm extends Component {
           <input onChange={this.handleOnChangeInput} className="input input--primary" name="emailAddress" placeholder="Email address here" type="email" required value={emailAddress} />
           <label htmlFor="agreement" className="input-label">
             <input onClick={this.handleOnClickCheckBox} id="agreement" className="checkbox" type="checkbox" value={termsAgreed} required />
-            Do you agree to the terms & conditions?
+            Do you agree to the <a className="competition-page__link" href="/fifa-e-world-up-terms">terms & conditions</a>?
           </label>
         </fieldset>
         <Button secondary onClick={this.handleSubmitForm} type="submit"> Apply Now</Button>

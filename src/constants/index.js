@@ -16,6 +16,7 @@ export const RESPONSIVE_BREAKPOINTS = {
 
 export const IMAGES_URL = 'https://s3-eu-west-1.amazonaws.com/images.mixtapemadness.co.uk';
 export const COMPETITION_DOWNLOAD_URL = 'https://www.dropbox.com/s/1fuke4f7t7rwclt/test-download-mm-fifa.mp3?dl=1';
+export const COMPETITION_HASHTAG_URL = 'https://www.instagram.com/explore/tags/Head2HeadFreestyle/';
 export const ROUTES = {
   base: 'https://www.mixtapemadness.com',
   about: '/about',

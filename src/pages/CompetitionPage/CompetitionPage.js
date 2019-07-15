@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import Page from '../Page/Page';
 
-import fifaHead2Head from '../../resources/assets/img/competition/mm_fifa_head2head.jpg';
+import fifaHead2Head from '../../resources/assets/img/competition/mm-head2head-freestyle.png';
 import CompetitionForm from './CompetitionForm';
 import Spinner from '../../components/Spinner/Spinner';
 import DownloadForm from './DownloadForm';
+import { COMPETITION_HASHTAG_URL } from '../../constants/index';
 
 class CompetitionPage extends Component {
   constructor(props) {
@@ -45,17 +46,19 @@ class CompetitionPage extends Component {
         <Page>
           <div className="competition-page__content">
             <div className="competition-page__rules">
-              <h1>Fifa x MM Competition</h1>
+              <h1>FIFA x MM Competition</h1>
               <h2>Win a chance to perform infront of 2000 people.</h2>
               <div className="competition-page__intro">
-                <p>Fifa and Mixtape Madness have teamed up to give one lucky person a chance of performing in O2 arena amongst 2000 people.</p>
+                <p>FIFA and Mixtape Madness have teamed up to give one lucky person a chance of performing in O2 arena amongst 2000 people.</p>
               </div>
 
               <div className="competition-page__list">
-                <h3 className="competition-page__list-title">Whats in it for you:</h3>
+                <h3 className="competition-page__list-title">How to enter:</h3>
                 <ul className="list list--check">
-                  <li>A chance to perform at O2.</li>
-                  <li>Some goody bags.</li>
+                  <li>Sign up below with your name and email.</li>
+                  <li>Download the beat and record a freestyle.</li>
+                  <li>Post it on your social media using the hashtag <strong><a href={COMPETITION_HASHTAG_URL} rel="noopener noreferrer" target="_blank">#Head2HeadFreestyle</a></strong>.</li>
+                  <li>The winner will be announced on July 18th.</li>
                 </ul>
               </div>
               <div className="competition-page__list">

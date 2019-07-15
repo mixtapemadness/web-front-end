@@ -69,3 +69,15 @@
     }
   }
 }
+
+.competition-page__download {
+  text-align: center;
+  background-color: $base-orange;
+  color: white;
+
+  padding: 20px;
+}
+
+.competition-page__download-btn {
+  display: inline-block;
+}

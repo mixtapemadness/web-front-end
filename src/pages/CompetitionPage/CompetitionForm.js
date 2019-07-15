@@ -47,8 +47,8 @@ class CompetitionForm extends Component {
     return (
       <form onSubmit={this.handleSubmitForm}>
         <fieldset>
-          <input onChange={this.handleOnChangeInput} className="input input--primary" name="firstname" placeholder="First name" required value={firstname} />
-          <input onChange={this.handleOnChangeInput} className="input input--primary" name="lastname" placeholder="Last name" required value={lastname} />
+          <input onChange={this.handleOnChangeInput} className="input input--primary" name="firstname" placeholder="First name here" required value={firstname} />
+          <input onChange={this.handleOnChangeInput} className="input input--primary" name="lastname" placeholder="Last name here" required value={lastname} />
           <input onChange={this.handleOnChangeInput} className="input input--primary" name="emailAddress" placeholder="Email address" type="email" required value={emailAddress} />
           <label htmlFor="agreement" className="input-label">
             <input onClick={this.handleOnClickCheckBox} id="agreement" className="checkbox" type="checkbox" value={termsAgreed} required />

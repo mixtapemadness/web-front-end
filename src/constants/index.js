@@ -6,6 +6,7 @@ export const TWITTER_HANDLE = '@mixtapemadness';
 export const TWITTER = 'mixtapemadness';
 export const GA_TRACKING_CODE = 'UA-75737603-1';
 export const DISQUS_SHORTNAME = 'mixtapemadnessuk';
+export const MAILCHIMP_API_KEY = 'db5c526aa1c0046561694c2e99754779-us18';
 
 export const RESPONSIVE_BREAKPOINTS = {
   mobile: '320px',
@@ -14,7 +15,7 @@ export const RESPONSIVE_BREAKPOINTS = {
 };
 
 export const IMAGES_URL = 'https://s3-eu-west-1.amazonaws.com/images.mixtapemadness.co.uk';
-
+export const COMPETITION_DOWNLOAD_URL = 'https://www.dropbox.com/s/1fuke4f7t7rwclt/test-download-mm-fifa.mp3?dl=1';
 export const ROUTES = {
   base: 'https://www.mixtapemadness.com',
   about: '/about',

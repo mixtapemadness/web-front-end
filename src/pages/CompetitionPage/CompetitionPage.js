@@ -1,24 +1,42 @@
 import React, { Component } from 'react';
 import Page from '../Page/Page';
 
-import Button from '../../components/Button/Button';
 import fifaHead2Head from '../../resources/assets/img/competition/mm_fifa_head2head.jpg';
+import CompetitionForm from './CompetitionForm';
+import Spinner from '../../components/Spinner/Spinner';
+import DownloadForm from './DownloadForm';
 
 class CompetitionPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      fname: '',
-      lname: '',
-      email: '',
-      termsAgreed: false,
+      showLoader: false,
+      showCompletePage: false,
     };
   }
 
+  handleOnSubmitForm = () => {
+    this.setState({
+      showLoader: true,
+    }, () => {
+      // TODO: call mailchimp API
+      this.setState({
+        showLoader: false,
+        showCompletePage: true,
+      });
+    });
+    return false;
+  };
+
+  resetForm = () => {
+    this.setState({
+      showLoader: false,
+      showCompletePage: false,
+    });
+  };
+
   render() {
-    const {
-      fname, lname, email, termsAgreed,
-    } = this.state;
+    const { showLoader, showCompletePage } = this.state;
     return (
       <div className="competition-page">
         <div className="competition-page__header">
@@ -45,22 +63,13 @@ class CompetitionPage extends Component {
                 <ul className="list list--check">
                   <li>You must be over 18.</li>
                   <li>You can only enter once.</li>
+                  <li>If you do not submit your name and email, your submissions will not be accepted.</li>
                 </ul>
               </div>
             </div>
             <div className="competition-page__form">
-              <form onSubmit={() => {}}>
-                <fieldset>
-                  <input className="input input--primary" name="firstname" placeholder="First name" value={fname} />
-                  <input className="input input--primary" name="lastname" placeholder="Last name" value={lname} />
-                  <input className="input input--primary" name="email" placeholder="Email address" type="email" value={email} />
-                  <label htmlFor="agreement" className="input-label">
-                    <input id="agreement" className="checkbox" type="checkbox" checked={termsAgreed} />
-                    Do you agree to the terms & conditions?
-                  </label>
-                </fieldset>
-                <Button secondary> Apply Now</Button>
-              </form>
+              {showLoader && <Spinner />}
+              {showCompletePage ? <DownloadForm handleOnClickGoBack={this.resetForm} /> : <CompetitionForm handleSubmit={this.handleOnSubmitForm} />}
             </div>
           </div>
         </Page>

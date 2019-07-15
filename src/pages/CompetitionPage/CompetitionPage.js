@@ -57,8 +57,9 @@ class CompetitionPage extends Component {
                 <ul className="list list--check">
                   <li>Sign up below with your name and email.</li>
                   <li>Download the beat and record a freestyle.</li>
-                  <li>Post it on your social media using the hashtag <strong><a href={COMPETITION_HASHTAG_URL} rel="noopener noreferrer" target="_blank">#Head2HeadFreestyle</a></strong>.</li>
-                  <li>The winner will be announced on July 18th.</li>
+                  <li>Post it on your Instagram using the hashtag <strong><a href={COMPETITION_HASHTAG_URL} rel="noopener noreferrer" target="_blank">#FIFAeWorldCup</a></strong> & <strong><a href={COMPETITION_HASHTAG_URL} rel="noopener noreferrer" target="_blank">#FIFAFreestyle</a></strong>.</li>
+                  <li>The competition will be closed on the 22nd July at Mid Day.</li>
+                  <li>The winner will be announced on July 29th July.</li>
                 </ul>
               </div>
               <div className="competition-page__list">

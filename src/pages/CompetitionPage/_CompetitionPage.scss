@@ -10,11 +10,11 @@
     position: relative;
     background: #02205f;
     background-position: center;
-    background-size: cover;
+    background-size: contain;
     background-repeat: no-repeat;
-    height: 400px;
+    height: 280px;
     @include medium {
-      height: 90vh;
+      height: 600px;
     }
     width: 100%;
     text-align: center;

@@ -16,11 +16,14 @@ class CompetitionPage extends Component {
     };
   }
 
-  handleOnSubmitForm = () => {
+  handleOnSubmitForm = async () => {
     this.setState({
       showLoader: true,
     }, () => {
       // TODO: call mailchimp API
+      // const response = fetch(MAILCHIMP_API, { method: 'post', body: JSON.stringify(this.state.form) })
+      // const data = await response.json()
+      // data.then().catch()
       this.setState({
         showLoader: false,
         showCompletePage: true,

@@ -34,7 +34,7 @@ const AppContent = ({ searchOpened, toggleSearch, menuOpened }) => (
         <Route path={ROUTES.about} component={AboutUs} />
         <Route path={ROUTES.contactUs} component={Contact} />
         <Route path="/author/:slug" component={AuthorPage} />
-        <Route path="/competition-page" component={CompetitionPage} />
+        <Route path={ROUTES.competitionPage} component={CompetitionPage} />
         <Route path="/fifa-e-world-up-terms" component={CompetitionTerms} />
         {/* <Route path="/events" component={EventPage} /> */}
         {/* <Route path="/music-profile/:slug" component={MusicProfilePage} /> */}

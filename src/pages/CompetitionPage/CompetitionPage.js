@@ -54,8 +54,7 @@ class CompetitionPage extends Component {
         <Page>
           <div className="competition-page__content">
             <div className="competition-page__rules">
-              <h1>FIFA x MM Competition</h1>
-              <h2>Win a chance to perform in front of 2000 people.</h2>
+              <h1>Win a chance to perform in front of 2000 people!</h1>
               <div className="competition-page__intro">
                 <p>FIFA and Mixtape Madness have teamed up to give 4 lucky artists a chance to battle it out on stage in the ultimate freestyle competition, live at the O2 arena in front of an audience of 2,000+ at the FIFA eWorld Cup Final.</p>
                 <p>If chosen you will need to attend a content day on 25th July and then the live final on 4th August.</p>

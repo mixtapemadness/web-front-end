@@ -5,7 +5,7 @@ import fifaHead2Head from '../../resources/assets/img/competition/mm-head2head-f
 import CompetitionForm from './CompetitionForm';
 import Spinner from '../../components/Spinner/Spinner';
 import DownloadForm from './DownloadForm';
-import { COMPETITION_HASHTAG_URL } from '../../constants/index';
+import { COMPETITION_HASHTAG_URL, COMPETITION_HASHTAG2_URL } from '../../constants/index';
 
 class CompetitionPage extends Component {
   constructor(props) {
@@ -66,7 +66,7 @@ class CompetitionPage extends Component {
                   <li>Sign up below with your name and email.</li>
                   <li>Download the beat and record a freestyle.</li>
                   <li>Use the beat provided to create a Football or FIFA inspired freestyle.</li>
-                  <li>Post it on your Instagram using the hashtag <strong><a href={COMPETITION_HASHTAG_URL} rel="noopener noreferrer" target="_blank">#FIFAeWorldCup</a></strong> & <strong><a href={COMPETITION_HASHTAG_URL} rel="noopener noreferrer" target="_blank">#FIFAFreestyle</a></strong>.</li>
+                  <li>Post it on your Instagram using the hashtag <strong><a href={COMPETITION_HASHTAG2_URL} rel="noopener noreferrer" target="_blank">#FIFAeWorldCup</a></strong> & <strong><a href={COMPETITION_HASHTAG_URL} rel="noopener noreferrer" target="_blank">#FIFAFreestyle</a></strong>.</li>
                   <li>The competition will be closed on the 22nd July at Midday.</li>
                   <li>The finalists will be announced publically on the 29th July, but will be contacted directly on the 23rd July if successful.</li>
                   <li>Click here for <a href="/fifa-e-world-up-terms">full terms and conditions.</a></li>

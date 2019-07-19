@@ -7,7 +7,9 @@ import Spinner from '../../components/Spinner/Spinner';
 import DownloadForm from './DownloadForm';
 import {
   COMPETITION_HASHTAG_URL, COMPETITION_HASHTAG2_URL, REVUE_SIGN_UP_URL,
+  COMPETITION_IMAGE,
 } from '../../constants/index';
+import BlogPageMetaTags from '../blogPage/BlogPageMetaTags';
 
 class CompetitionPage extends Component {
   constructor(props) {
@@ -55,6 +57,12 @@ class CompetitionPage extends Component {
     const { showLoader, showCompletePage } = this.state;
     return (
       <Fragment>
+        <BlogPageMetaTags
+          keywords="FIFA, eWorld Cup, Head 2 Head Freestyle, Competition, O2, Mixtape Madness, #FIFAFreestyle, #FIFAeWorldCup"
+          postTitle="FIFA eWorld Cup x Mixtape Madness - Head 2 Head Freestyle Competition"
+          description="FIFA and Mixtape Madness have teamed up to give 4 lucky artists a chance to battle it out on stage in the ultimate freestyle competition, live at the O2 arena in front of an audience of 2,000+ at the FIFA eWorld Cup Final."
+          image={COMPETITION_IMAGE}
+        />
         <div className="competition-page">
           <div
             className="competition-page__header"

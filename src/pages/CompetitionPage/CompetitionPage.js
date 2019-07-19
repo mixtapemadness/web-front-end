@@ -5,7 +5,7 @@ import fifaHead2Head from '../../resources/assets/img/competition/mm-head2head-f
 import CompetitionForm from './CompetitionForm';
 import Spinner from '../../components/Spinner/Spinner';
 import DownloadForm from './DownloadForm';
-import { COMPETITION_HASHTAG_URL, COMPETITION_HASHTAG2_URL } from '../../constants/index';
+import { COMPETITION_HASHTAG_URL, COMPETITION_HASHTAG2_URL, REVUE_SIGN_UP_URL } from '../../constants/index';
 
 class CompetitionPage extends Component {
   constructor(props) {
@@ -16,14 +16,24 @@ class CompetitionPage extends Component {
     };
   }
 
-  handleOnSubmitForm = async () => {
+  handleOnSubmitForm = async (form) => {
     this.setState({
       showLoader: true,
     }, () => {
-      // TODO: call mailchimp API
-      // const response = fetch(MAILCHIMP_API, { method: 'post', body: JSON.stringify(this.state.form) })
-      // const data = await response.json()
-      // data.then().catch()
+      const formData = new FormData();
+      formData.set('member[first_name]', form.firstname);
+      formData.set('member[last_name]', form.lastname);
+      formData.set('member[email]', form.emailAddress);
+      fetch(REVUE_SIGN_UP_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        body: formData,
+      }).then((response) => {
+        console.log(response);
+      })
+        .catch((error) => {
+          console.log(error);
+        });
       this.setState({
         showLoader: false,
         showCompletePage: true,

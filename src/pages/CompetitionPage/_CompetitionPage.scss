@@ -1,0 +1,124 @@
+.competition-page {
+  a {
+    color: $base-orange;
+  }
+  h1 {
+    margin-bottom: 30px;
+  }
+
+  h2 {
+    margin-bottom: 20px;
+  }
+  &__header {
+    position: relative;
+    background: #02205f;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 280px;
+    @include medium {
+      height: 600px;
+    }
+    width: 100%;
+    text-align: center;
+    color: white;
+    img {
+      max-width: 100%;
+      text-align: center;
+    }
+   }
+
+  &__scroll {
+    position: absolute;
+    bottom: 10px;
+    font-size: 30px;
+  }
+
+  .page {
+    top: -40px;
+  }
+
+  &__content {
+    @include medium {
+      display: flex;
+    }
+  }
+
+  &__intro {
+
+    margin: auto;
+  }
+
+  &__link {
+    color: $base-orange;
+  }
+}
+
+.competition-page__rules {
+  @include medium {
+    width: 60%;
+    padding-right: 30px;
+  }
+}
+
+.competition-page__form {
+  margin-top: 30px;
+  .competition-page__download-btn {
+    color: #ffffff;
+  }
+  @include medium {
+    padding-left: 0;
+    margin-top: 0;
+    width: 40%;
+  }
+  form {
+    @include medium {
+      width: 100%;
+    }
+  }
+}
+.competition-page__fw-section {
+  margin-top: 30px;
+  &--orange {
+    background-color: $base-orange;
+    color: white;
+  }
+}
+
+.competition-page__list {
+  .list {
+    &::before {
+
+      color: $base-orange;
+    }
+  }
+}
+
+.competition-page__download {
+  text-align: center;
+  background-color: $base-orange;
+  color: white;
+
+  padding: 20px;
+}
+
+.competition-page__download-btn {
+  display: inline-block;
+  color: #ffffff;
+}
+
+.bounce {
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-30px);
+  }
+  60% {
+    transform: translateY(-15px);
+  }
+}

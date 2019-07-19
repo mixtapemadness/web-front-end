@@ -6,6 +6,7 @@ export const TWITTER_HANDLE = '@mixtapemadness';
 export const TWITTER = 'mixtapemadness';
 export const GA_TRACKING_CODE = 'UA-75737603-1';
 export const DISQUS_SHORTNAME = 'mixtapemadnessuk';
+export const MAILCHIMP_API_KEY = 'db5c526aa1c0046561694c2e99754779-us18';
 
 export const RESPONSIVE_BREAKPOINTS = {
   mobile: '320px',
@@ -15,7 +16,17 @@ export const RESPONSIVE_BREAKPOINTS = {
 
 export const IMAGES_URL = 'https://s3-eu-west-1.amazonaws.com/images.mixtapemadness.co.uk';
 
+export const COMPETITION_DOWNLOAD_URL = 'https://www.dropbox.com/s/ayfbf4gtflcxsni/mm-fifia-head-to-head-freestyle-beat.mp3?dl=1';
+export const COMPETITION_HASHTAG_URL = 'https://www.instagram.com/explore/tags/FIFAFreestyle/';
+export const COMPETITION_HASHTAG2_URL = 'https://www.instagram.com/explore/tags/FIFAeWorldCup/';
+export const COMPETITION_PAGE_URL = '/fifa-eworld-cup-competition';
+export const REVUE_SIGN_UP_URL = 'https://www.getrevue.co/profile/mixtapemadness/add_subscriber';
+export const MAILCHIMP_DC = 'us18';
+export const MAILCHIMP_API_URL = `https://${MAILCHIMP_DC}.api.mailchimp.com/3.0/`;
+export const COMPETITION_IMAGE = 'https://s3-eu-west-1.amazonaws.com/images.mixtapemadness.co.uk/images/fifa_mm_head2head_freestyle.jpg';
+
 export const ROUTES = {
+  competitionPage: COMPETITION_PAGE_URL,
   base: 'https://www.mixtapemadness.com',
   about: '/about',
   termsAndConditions: '/terms',

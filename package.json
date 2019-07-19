@@ -91,6 +91,7 @@
     "apollo-upload-client": "8.1.0",
     "apollo-utilities": "1.0.20",
     "autoprefixer": "9.1.5",
+    "base-64": "^0.1.0",
     "body-parser": "1.18.3",
     "cross-env": "5.2.0",
     "decode-html": "2.0.0",

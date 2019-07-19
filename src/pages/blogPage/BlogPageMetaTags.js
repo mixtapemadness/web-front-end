@@ -1,6 +1,7 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 import window from 'global';
+import PropTypes from 'prop-types';
 import { TWITTER_HANDLE, SEO } from '../../constants';
 
 const BlogPageMetaTags = ({
@@ -41,8 +42,24 @@ const BlogPageMetaTags = ({
       content={description}
     />
     <meta name="twitter:creator" content={`${TWITTER_HANDLE}`} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta property="og:image:type" content="image/png" />
 
+    {image && <meta property="og:image" content={image} />}
+    {image && <meta property="og:image:url" content={image} />}
+    {image && <meta property="og:image:secure_url" content={image} />}
+    {image && <meta name="twitter:image" content={image} />}
+    {image && <meta name="twitter:image:src" content={image} />}
   </Helmet>
 );
+
+BlogPageMetaTags.propTypes = {
+  description: PropTypes.string,
+  postTitle: PropTypes.string,
+  keywords: PropTypes.string,
+  url: PropTypes.string,
+  image: PropTypes.string,
+  type: PropTypes.string,
+};
 
 export default BlogPageMetaTags;

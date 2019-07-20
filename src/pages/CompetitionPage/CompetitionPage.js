@@ -20,7 +20,7 @@ class CompetitionPage extends Component {
     };
   }
 
-  handleOnSubmitForm = async (form) => {
+  handleOnSubmitForm = (form) => {
     this.setState({
       showLoader: true,
     }, () => {
@@ -34,16 +34,14 @@ class CompetitionPage extends Component {
         body: formData,
       }).then((response) => {
         console.log(response);
-      })
-        .catch((error) => {
-          console.log(error);
-        });
+      }).catch((error) => {
+        console.log(error);
+      });
       this.setState({
         showLoader: false,
         showCompletePage: true,
       });
     });
-    return false;
   };
 
   resetForm = () => {

@@ -33,7 +33,8 @@ class CompetitionForm extends Component {
     });
   };
 
-  handleSubmitForm = () => {
+  handleSubmitForm = (e) => {
+    e.preventDefault();
     const { handleSubmit } = this.props;
     const { form, termsAgreed } = this.state;
     if (termsAgreed) handleSubmit(form);

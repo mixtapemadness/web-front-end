@@ -32,9 +32,6 @@ const Header = ({
         <IconButton iconClassName="fas fa-search" className="header__search" onClick={toggleSearch} />
       </div>
       <div className="header__right header__social-links">
-        <Link to={ROUTES.competitionPage}>
-          <img src={fifaLogo} alt="FIFA eWorldCup" />
-        </Link>
         <SocialIcons menuOpened={menuOpened} />
       </div>
     </div>

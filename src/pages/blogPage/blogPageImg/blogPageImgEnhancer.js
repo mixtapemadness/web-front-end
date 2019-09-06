@@ -6,7 +6,7 @@ import { loadDataAsync } from 'hocs';
 
 export default compose(
   branch(
-    props => (props.id > -1 ? true : false),
+    props => (props.id),
     loadDataAsync({
       query: getMediaById,
       skip: props => !props.id,

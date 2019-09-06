@@ -29,7 +29,7 @@ export default compose(
   }),
   branch(
     ({ data }) =>
-      data && data.Post && data.Post.featured_media ? true : false,
+      !!(data && data.Post && data.Post.featured_media),
     withMedia,
   ),
   withStateHandlers(
@@ -63,7 +63,7 @@ export default compose(
     },
   }),
   branch(
-    ({ data }) => (data && data.Post && data.Post.author ? true : false),
+    ({ data }) => !!(data && data.Post && data.Post.author),
     withAuthor,
   ),
 );

@@ -7,6 +7,7 @@ import ReactImageFallback from 'react-image-fallback';
 import { Helmet } from 'react-helmet';
 import blogPageImgEnhancer from './blogPageImgEnhancer';
 import placeholderImg from '../../../resources/assets/img/placeholderImg.jpg';
+import { PLACEHOLDER_IMAGE } from '../../../constants';
 
 const Container = styled.div`
   width: 100%;
@@ -24,7 +25,7 @@ const Container = styled.div`
 
 const BlogPageImg = ({ data, renderVideo, title }) => {
   const fullImage = data && data.img && data.img.large;
-  const thumbnail = data && data.img && data.img.medium_large;
+  const thumbnail = (data && data.img && data.img.medium_large) || PLACEHOLDER_IMAGE;
   const altText = data && data.img && (data.img.alt_text || title);
   return (
     <Container renderVideo={renderVideo}>

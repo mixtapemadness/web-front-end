@@ -24,6 +24,7 @@ export const REVUE_SIGN_UP_URL = 'https://www.getrevue.co/profile/mixtapemadness
 export const MAILCHIMP_DC = 'us18';
 export const MAILCHIMP_API_URL = `https://${MAILCHIMP_DC}.api.mailchimp.com/3.0/`;
 export const COMPETITION_IMAGE = 'https://s3-eu-west-1.amazonaws.com/images.mixtapemadness.co.uk/images/fifa_mm_head2head_freestyle.jpg';
+export const PLACEHOLDER_IMAGE = 'https://s3-eu-west-1.amazonaws.com/images.mixtapemadness.co.uk/assets/images/placeholderImg.jpg';
 
 export const ROUTES = {
   competitionPage: COMPETITION_PAGE_URL,

@@ -3,6 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import authorNameEnhancer from './authorNameEnhancer';
+import { ROUTES } from '../../constants';
 
 const Container = styled(Link)`
   color: #ff9600;
@@ -14,7 +15,7 @@ const Container = styled(Link)`
 const AuthorName = ({ data }) => {
   const userName = data && data.user && data.user.name;
   const userSlug = data && data.user && data.user.slug;
-  return <Container to={`/author/${userSlug}`}>{userName}</Container>;
+  return <Container to={`${ROUTES.author}/${userSlug}`}>{userName}</Container>;
 };
 
 export default authorNameEnhancer(AuthorName);

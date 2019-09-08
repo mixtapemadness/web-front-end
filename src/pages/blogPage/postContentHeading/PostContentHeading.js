@@ -16,6 +16,7 @@ import { Link } from 'react-router-dom';
 import moment from 'moment';
 import { dateStringify } from 'helpers/';
 import blogPageImgEnhancer from './postContentHeadingEnhancer';
+import { ROUTES } from '../../../constants';
 
 const Container = styled.div`
   width: 100%;
@@ -50,7 +51,7 @@ const PostContentHeading = ({ date, userName, location, userSlug }) => {
     <Container>
       <ContainerBottom>
         <DateHeader>{formattedDate}</DateHeader>{' '}
-        <AuthorName to={`/author/${userSlug}`}>{userName}</AuthorName>
+        <AuthorName to={`${ROUTES.author}/${userSlug}`}>{userName}</AuthorName>
       </ContainerBottom>
     </Container>
   );

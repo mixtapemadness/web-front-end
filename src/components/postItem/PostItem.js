@@ -108,7 +108,7 @@ const PostItem = (props) => {
           {User && (
             <Link
               className="post-item__link post-item__author"
-              to={`/author/${User.slug}`}
+              to={`${ROUTES.author}/${User.slug}`}
             >{User.name}
             </Link>
           )} <span className="post-item__date"><i className="far fa-clock" /> {postDate}</span>

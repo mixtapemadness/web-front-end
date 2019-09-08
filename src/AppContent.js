@@ -19,37 +19,34 @@ import Contact from './pages/contact';
 import { ROUTES } from './constants';
 import './App.scss';
 import ErrorPage from './pages/errorPage';
-import CompetitionPage from './pages/CompetitionPage';
-import CompetitionTerms from './pages/CompetitionPage/CompetitionTerms';
 
 const AppContent = ({ searchOpened, toggleSearch, menuOpened }) => (
   <React.Fragment>
     <div className={`app ${searchOpened || menuOpened ? 'app--menu-open' : ''}`}>
       <GA.RouteTracker />
       <Switch>
+        {/* This must be first */}
+        <Route exact path={`${ROUTES.author}/:slug`} component={AuthorPage} />
         <Route exact path="/" component={Home} />
         <Route exact path="/blog/category/:filter" component={Blog} />
-        <Route path="/blog/:category/:slug" component={BlogPage} />
-        <Route path="/blog" component={Home} />
-        <Route path={ROUTES.about} component={AboutUs} />
-        <Route path={ROUTES.contactUs} component={Contact} />
-        <Route path="/author/:slug" component={AuthorPage} />
-        <Route path={ROUTES.competitionPage} component={CompetitionPage} />
-        <Route path="/fifa-e-world-up-terms" component={CompetitionTerms} />
+        <Route strict path="/blog/:category/:slug" component={BlogPage} />
+        <Route exact path="/blog" component={Home} />
+        <Route exact path={ROUTES.about} component={AboutUs} />
+        <Route exact path={ROUTES.contactUs} component={Contact} />
         {/* <Route path="/events" component={EventPage} /> */}
         {/* <Route path="/music-profile/:slug" component={MusicProfilePage} /> */}
         {/* <Route path="/team" component={TeamPage} /> */}
         {/* <Route path="/moremenu" component={MoreMenu} /> */}
-        <Route path={ROUTES.termsAndConditions} component={TermsAndConditions} />
-        <Route path={ROUTES.privacyPolicy} component={PrivacyAndPolicy} />
-        <Route path={ROUTES.faqs} component={Faq} />
-        <Route path="/searchresult/:category/:key" component={SearchResult} />
+        <Route exact path={ROUTES.termsAndConditions} component={TermsAndConditions} />
+        <Route exact path={ROUTES.privacyPolicy} component={PrivacyAndPolicy} />
+        <Route exact path={ROUTES.faqs} component={Faq} />
+        <Route exact path="/searchresult/:category/:key" component={SearchResult} />
         {/* <Route path="/login" component={() => <SignForm type="login" />} /> */}
         {/* <Route */}
         {/* path="/register" */}
         {/* component={() => <SignForm type="register" />} */}
         {/* /> */}
-        <Route component={ErrorPage} />
+        <Route exact component={ErrorPage} />
       </Switch>
       <Footer />
     </div>

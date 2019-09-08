@@ -8,6 +8,7 @@ import TwitterIcon from 'resources/assets/svg/twitter-logo.svg';
 import InstagramIcon from 'resources/assets/svg/instagram-logo.svg';
 import profileInfoEnhancer from './profileInfoEnhancer';
 import BlogPageMetaTags from '../../pages/blogPage/BlogPageMetaTags';
+import CardLoader from '../loaders/CardLoader';
 
 const ProfileContainer = styled.div`
   width: 100%;
@@ -17,14 +18,13 @@ const ProfileContainer = styled.div`
     flex-direction: column;
   }
   @media only screen and (max-width: 450px) {
-    width: 90%;
+  text-align: center;
     margin: 30px auto 0px auto;
   }
 `;
 
 const ProfileImg = styled.div`
 font-size: 100px;
-margin-right: 40px;
 `;
 
 const ProfileDesc = styled.div`
@@ -106,23 +106,13 @@ const ProfileDescTxt = styled.span`
   font-size: 14px;
   letter-spacing: 0.8px;
   font-weight: 800;
-  max-height: ${props => (props.showAuthorBio ? '10ch' : '2ch')};
-  overflow: hidden;
   transition: 0.3s;
 `;
-
-const ShowMore = styled.div`
-  font-size: 12px;
-  font-weight: 800;
-  color: #949494;
-  cursor: pointer;
-  margin-top: 3px;
-`;
-
 const ProfileInformation = ({ data, showAuthorBio, handleShowAuthorBio }) => {
-  const name = data && data.name;
-  const description = data && data.description;
-
+  if (!data) {
+    return <CardLoader />;
+  }
+  const { name = '', description = '', url = '' } = data;
   return (
     <ProfileContainer>
       <BlogPageMetaTags description={description} postTitle={`${name} | Author`} type="article" />
@@ -141,20 +131,14 @@ const ProfileInformation = ({ data, showAuthorBio, handleShowAuthorBio }) => {
         <MobileProfileDescTitle>
           <ProfileDescName>{name}</ProfileDescName>
           <MobileProfileBottom>
-            <ProfileDescIcon src={InstagramIcon} />
-            <ProfileDescIcon src={TwitterIcon} />
+            {url && <a href={url}><ProfileDescIcon src={TwitterIcon} /></a>}
           </MobileProfileBottom>
         </MobileProfileDescTitle>
 
         <ProfileDescContent>
-          <ProfileDescTxt showAuthorBio={showAuthorBio}>
+          <ProfileDescTxt>
             {description}
           </ProfileDescTxt>
-          {!showAuthorBio ? (
-            <ShowMore onClick={handleShowAuthorBio}>+ Show More</ShowMore>
-          ) : (
-            <ShowMore onClick={handleShowAuthorBio}>- Show Less</ShowMore>
-          )}
         </ProfileDescContent>
       </ProfileDesc>
     </ProfileContainer>

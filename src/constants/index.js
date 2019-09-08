@@ -35,6 +35,7 @@ export const ROUTES = {
   faqs: '/faqs',
   contactUs: '/contact-us',
   blog: 'blog/category/',
+  author: '/blog/author',
   categories: {
     articles: '/blog/category/articles',
     community: '/blog/category/community',

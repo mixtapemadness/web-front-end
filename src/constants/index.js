@@ -20,6 +20,7 @@ export const COMPETITION_DOWNLOAD_URL = 'https://www.dropbox.com/s/ayfbf4gtflcxs
 export const COMPETITION_HASHTAG_URL = 'https://www.instagram.com/explore/tags/FIFAFreestyle/';
 export const COMPETITION_HASHTAG2_URL = 'https://www.instagram.com/explore/tags/FIFAeWorldCup/';
 export const COMPETITION_PAGE_URL = '/fifa-eworld-cup-competition';
+export const MMTALKS_URL = 'http://bit.ly/mm-talks-video-directors';
 export const REVUE_SIGN_UP_URL = 'https://www.getrevue.co/profile/mixtapemadness/add_subscriber';
 export const MAILCHIMP_DC = 'us18';
 export const MAILCHIMP_API_URL = `https://${MAILCHIMP_DC}.api.mailchimp.com/3.0/`;
@@ -28,6 +29,7 @@ export const PLACEHOLDER_IMAGE = 'https://s3-eu-west-1.amazonaws.com/images.mixt
 
 export const ROUTES = {
   competitionPage: COMPETITION_PAGE_URL,
+  mmtalks: COMPETITION_PAGE_URL,
   base: 'https://www.mixtapemadness.com',
   about: '/about',
   termsAndConditions: '/terms',

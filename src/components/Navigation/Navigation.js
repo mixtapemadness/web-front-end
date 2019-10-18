@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import navigationLinks from '../../constants/navigation';
 import IconButton from '../IconButton/IconButton';
 import navigationEnhancer from './navigationEnhancer';
+import MMTalksLogo from '../../resources/assets/img/mm-talks-logo.png';
+import { MMTALKS_URL } from '../../constants';
 
 const NavListItem = ({ location = '', slug = null, name = '' }) => (
   <li
@@ -51,6 +53,7 @@ class Navigation extends Component {
               </nav>
             </li>
           </ul>
+          <a className="advertisement--hide-desktop" href={MMTALKS_URL} target="_blank" rel="noopener noreferrer"><img src={MMTalksLogo} alt="MM Talks" width="60px" /></a>
         </nav>
       );
     }

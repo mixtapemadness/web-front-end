@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { SOCIAL_MEDIA } from '../../constants';
+import { MMTALKS_URL, SOCIAL_MEDIA } from '../../constants';
+import MMTalksLogo from '../../resources/assets/img/mm-talks-logo.png';
 
 const SocialIconsContainer = styled.div`
   display: flex;
@@ -44,6 +45,7 @@ const SocialIcons = ({ menuOpened }) => (
     <SocialIcon target="_blank" href={`mailto:${SOCIAL_MEDIA.email}`} color="#282828">
       <i className="far fa-envelope" />
     </SocialIcon>
+    <a href={MMTALKS_URL} className="advertisement--hide-mobile" target="_blank" rel="noopener noreferrer"><img src={MMTalksLogo} alt="MM Talks" width="30%" /></a>
   </SocialIconsContainer>
 );
 export default SocialIcons;

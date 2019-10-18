@@ -3,12 +3,9 @@ import { Link } from 'react-router-dom';
 import SocialIcons from 'components/SocialIcons';
 
 import MixtapeLogo from 'resources/assets/svg/mm-logo.svg';
-import fifaLogo from 'resources/assets/img/competition/fifa-blacklockup.png';
-
 import headerEnhancer from './headerEnhancer';
 import IconButton from '../IconButton';
 import Navigation from '../Navigation';
-import { ROUTES } from '../../constants/index';
 
 const Header = ({
   toggleSearch,

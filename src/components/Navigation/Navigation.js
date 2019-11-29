@@ -53,7 +53,7 @@ class Navigation extends Component {
               </nav>
             </li>
           </ul>
-          <a className="advertisement--hide-desktop" href={MMTALKS_URL} target="_blank" rel="noopener noreferrer"><img src={MMTalksLogo} alt="MM Talks" width="60px" /></a>
+          {MMTALKS_URL && <a className="advertisement--hide-desktop" href={MMTALKS_URL} target="_blank" rel="noopener noreferrer"><img src={MMTalksLogo} alt="MM Talks" width="60px" /></a>}
         </nav>
       );
     }

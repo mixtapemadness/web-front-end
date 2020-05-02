@@ -53,6 +53,7 @@ export const ROUTES = {
     nextup: '/blog/category/nextup',
     onetake: '/blog/category/onetake',
     performance: '/blog/category/performance',
+    underrated: '/blog/category/underrated',
   },
 };
 
@@ -71,6 +72,7 @@ export const CATEGORY_KEYS = {
   nextup: 'nextup',
   onetake: 'onetake',
   performance: 'performance',
+  underrated: 'underrated',
 };
 
 export const CONTACT_DETAILS = {

@@ -8,7 +8,6 @@ import Advertisement from 'components/advertisement';
 import MainSlider from 'components/mainSlider';
 import Subscribe from 'components/subscribe';
 import Videos from 'components/videos';
-import Download from 'components/download';
 import {
   IMAGES_URL, ROUTES, SEO,
 } from '../../constants';
@@ -81,13 +80,13 @@ class Home extends Component {
           <ContentSlider title="News" category="news" />
         </LazyLoad>
         <LazyLoad height={400} once offset={50}>
+          <ContentSlider title="Features" category="features" />
+        </LazyLoad>
+        <LazyLoad height={400} once offset={50}>
           <ContentSlider title="Articles" category="articles" />
         </LazyLoad>
         <LazyLoad height={400} once offset={0}>
           <ContentSlider title="Interviews" category="interviews" />
-        </LazyLoad>
-        <LazyLoad height={200} once offset={0}>
-          <Download />
         </LazyLoad>
         <LazyLoad height={400} once offset={50}>
           <SubscribeContainer>

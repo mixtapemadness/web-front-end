@@ -19,7 +19,7 @@ const ProfileContainer = styled.div`
   }
   @media only screen and (max-width: 450px) {
   text-align: center;
-    margin: 30px auto 0px auto;
+    margin: 30px auto 0 auto;
   }
 `;
 

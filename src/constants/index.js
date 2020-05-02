@@ -54,6 +54,7 @@ export const ROUTES = {
     onetake: '/blog/category/onetake',
     performance: '/blog/category/performance',
     underrated: '/blog/category/underrated',
+    features: '/blog/category/features',
   },
 };
 
@@ -73,6 +74,7 @@ export const CATEGORY_KEYS = {
   onetake: 'onetake',
   performance: 'performance',
   underrated: 'underrated',
+  features: 'features',
 };
 
 export const CONTACT_DETAILS = {

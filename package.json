@@ -74,7 +74,7 @@
     "universal-webpack": "0.6.6",
     "url-loader": "1.1.1",
     "webpack": "4.17.1",
-    "webpack-bundle-analyzer": "2.13.1",
+    "webpack-bundle-analyzer": "3.3.2",
     "webpack-cleanup-plugin": "0.5.1",
     "webpack-cli": "3.1.0",
     "webpack-dev-server": "3.1.14",

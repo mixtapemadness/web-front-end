@@ -80,10 +80,10 @@ class Home extends Component {
           <ContentSlider title="News" category="news" />
         </LazyLoad>
         <LazyLoad height={400} once offset={50}>
-          <ContentSlider title="Articles" category="articles" />
+          <ContentSlider title="Features" category="features" />
         </LazyLoad>
         <LazyLoad height={400} once offset={50}>
-          <ContentSlider title="Features" category="features" />
+          <ContentSlider title="Articles" category="articles" />
         </LazyLoad>
         <LazyLoad height={400} once offset={0}>
           <ContentSlider title="Interviews" category="interviews" />

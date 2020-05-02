@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import navigationLinks from '../../constants/navigation';
 import navigationEnhancer from './navigationEnhancer';
 import DropDownNavItem from './DropDownNavItem';
@@ -14,14 +14,15 @@ const NavListItem = ({ location = '', slug = null, name = '' }) => (
   </li>
 );
 
-export const RenderNavItems = ({ links = [], categories = [], location = '' }) => (links && Object.keys(links).map((i) => {
+export const RenderNavItems = ({ links = {}, categories = [], location = '' }) => (links && Object.keys(links).map((i) => {
   const slug = links[i];
   const categoryData = categories.find(category => category.slug === i);
   return (<NavListItem location={location.pathname} slug={slug} name={categoryData ? categoryData.name : i} key={slug} />);
 }));
 
 
-const Navigation = ({ location, categories }) => {
+const Navigation = ({ categories }) => {
+  const location = useLocation();
   if (categories && categories.category) {
     return (
       <nav className="header__nav">

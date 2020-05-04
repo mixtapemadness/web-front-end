@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import navigationLinks from '../../constants/navigation';
 import navigationEnhancer from './navigationEnhancer';
 import DropDownNavItem from './DropDownNavItem';
@@ -21,8 +21,7 @@ export const RenderNavItems = ({ links = {}, categories = [], location = '' }) =
 }));
 
 
-const Navigation = ({ categories }) => {
-  const location = useLocation();
+const Navigation = ({ categories, location }) => {
   if (categories && categories.category) {
     return (
       <nav className="header__nav">

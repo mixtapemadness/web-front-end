@@ -49,12 +49,12 @@ export default compose(
     },
   ),
   lifecycle({
+    constructor() {
+      this.props.updateSpinner(true);
+    },
     componentDidMount() {
       window.scrollTo(0, 0);
       this.props.updateSpinner(false);
-    },
-    componentWillMount() {
-      this.props.updateSpinner(true);
     },
     componentWillReceiveProps(nextProps, prevProps) {
       if (nextProps.location.pathname !== this.props.location.pathname) {

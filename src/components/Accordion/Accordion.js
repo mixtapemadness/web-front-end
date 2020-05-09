@@ -35,8 +35,6 @@ class Accordion extends Component {
             <li><strong>Package A (£300)</strong>: Youtube Upload.</li>
 
             <li><strong>Package B (£400)</strong>: 3 Tweets, 1 Blog Post. Including Package A.</li>
-
-            <li><strong>Package C (£500)</strong>: 2 Instagram posts. Including Package A + B.*</li>
           </ul>
           <p>* this is package is by discretion of our internal social media team.</p>
         </Panel>

@@ -16,7 +16,7 @@ const App = (props) => {
   } = props;
   return (
     <Fragment>
-      <Advertisement hidden>
+      <Advertisement>
         <div id="div-gpt-ad-1550568793125-0" style={{ height: '1px', width: '1px' }} />
       </Advertisement>
       <Header

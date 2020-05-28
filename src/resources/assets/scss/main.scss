@@ -138,3 +138,10 @@ button::-moz-focus-inner,
 input:required {
   box-shadow: none;
 }
+
+#skinContainer {
+  display: none;
+  @media only screen and (min-width: $desktop-min-width) {
+    display: block;
+  }
+}
